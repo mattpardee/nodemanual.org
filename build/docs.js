@@ -79,7 +79,7 @@ function traverse(type, files, destFile, cb)
 		{
 			var readStream = fs.createReadStream(contentFile);
 	  		var writeStream = fs.createWriteStream(destFile, {flags: "a+"});
-
+  
 			readStream.addListener("data", function(chunk) {
 				var lines = chunk.toString().split('\n');
 				var title = lines[0]; // save the first line for additional processing
@@ -106,18 +106,18 @@ function traverse(type, files, destFile, cb)
 
 					title = "\n\n" + idLink + "\n\n" + title + "\n" + byline + "\n\n";
 
-					writeStream.write(title + cleanChunk);
+                    writeStream.write(title + cleanChunk);
 				});
     		});
 
-    		readStream.addListener("close",function() {
-  				writeStream.end();
+    		readStream.addListener("end",function() {
+  				 cb(null); // go on to the next file
 			});
     	}
-    	else
-	    	console.log("Warning: " + contentFile + " does not exist.");	
-
-	    cb(null); // go on to the next file
+    	else {
+	    	console.log("Warning: " + contentFile + " does not exist.");
+            cb(null);
+    	}
 	});	
 }
 
@@ -132,21 +132,24 @@ docs.assemble = function(outName)
 	var readHeaderStream = fs.createReadStream(headerFile);
 	var writeStream = fs.createWriteStream(outFile, {flags: "a+"});
 
-	readHeaderStream.pipe(writeStream);
+    readHeaderStream.on('open', function() {
+        readHeaderStream.pipe(writeStream, { end: false } );
+    });
+    
+    readHeaderStream.on('end', function() {
+       var readTmpStream = fs.createReadStream(tmpFile);
 
-	var readTmpStream = fs.createReadStream(tmpFile);
-	readTmpStream.on('open', function () {
-		readTmpStream.pipe(writeStream);
-  	});
+        readTmpStream.on('data', function(data) {
+      		writeStream.write(gfm.parse(data.toString()));
+      	});
+    
+      	readTmpStream.on('end', function() {
+      		var readFooterStream = fs.createReadStream(footerFile);
+      		readFooterStream.pipe(writeStream);
+      	});
+    });
+    
 
-  	readTmpStream.on('data', function(data) {
-  		writeStream.write(gfm.parse(data.toString()));
-  	});
-
-  	readTmpStream.on('end', function() {
-  		var readFooterStream = fs.createReadStream(footerFile);
-  		readFooterStream.pipe(writeStream);
-  	});
 }
 
 docs.copyassets = function(outName)

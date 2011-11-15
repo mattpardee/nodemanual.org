@@ -226,6 +226,34 @@ If you want to remove a specific callback, you can use `removeListener()`. If yo
 
 For more information, you can refer to [the official Node.js reference page on the `EventEmitter` object](http://nodejs.org/docs/latest/api/events.html).
 
+<a id="globals-in-node-js"></a>
+
+### A (Brief) List of Globals in Node.js
+<span class="cite">By Charlie McConnell (Aug 26 2011)</span>
+
+
+Node.js has a number of built-in global identifiers that every Node.js developer should have some familiarity with. Some of these are true globals, being visible everywhere; others exist at the module level, but are inherent to every module, thus being pseudo-globals.
+
+First, let's go through the list of 'true globals':
+
+* `global`: The global namespace. Setting a property to this namespace makes it globally visible within the running process.
+
+* `process`: Node's built-in `process` module, which provides interaction with the current Node process.  For more information, see [the section on this module](#the-process-module).
+
+* `console`: Node's built-in `console` module, which wraps various standard input and output functionality in a browser-like way. For more information, see [the section on this module](#the-console-module).
+
+* `setTimeout()`, `clearTimeout()`, `setInterval()`, `clearInterval()`: These built-in timer functions are globals. Fore more information, see [the section on using timer functions](#what-are-the-built-in-timer-functions).
+
+As mentioned above, there are also a number of pseudo-globals included at the module level in every module:
+
+* `module`, `module.exports`, `exports`: These objects all pertain to Node's module system. For more information see [the section about requiring modules](#what-is-require). Tangential to this is `require()`, which is a built-in function, exposed per-module, that allows other valid modules to be included.
+
+* `__filename`: The `__filename` keyword contains the path of the currently executing file.  **Note**: this is not defined while running the [Node REPL](#how-to-use-nodejs-repl).
+
+* `__dirname`: Like `__filename`, the `__dirname` keyword contains the path to the root directory of the currently executing script. This is also not present in the Node REPL.
+
+Much of this functionality can be extremely useful for a Node.js developer's daily life&mdash;but at the very least, remember these as bad names to use for your own functions! 
+
 <a id="what-is-require"></a>
 
 ### Defining require()
@@ -285,6 +313,318 @@ As you can see from the above, `example.js` is evaluated the first time, but all
 The rules of where `require()` finds the files can be a little complex, but a simple rule of thumb is that if the file doesn't start with "./" or "/", then it is either considered a core module (and the local Node.js path is checked), or a dependency in your directory's `node_modules` folder. If the file starts with "./" it is considered a relative file to the file that called `require()`. If the file starts with "/", it is considered an absolute path. **Note**: you can omit ".js" and `require()` will automatically append it if needed. For more detailed information, see [the official docs](http://nodejs.org/docs/latest/api/modules.html) for more information.
 
 If the filename passed to `require()` is actually a directory, it will first look for `package.json` in the directory and load the file referenced in the `main` property. Otherwise, it will look for an `index.js` file.
+
+<a id="the-process-module"></a>
+
+### The Process Module
+<span class="cite">By Charlie McConnell (Aug 26 2011)</span>
+
+
+Each Node.js process has a set of built-in functionality, accessible through the global `process` module.  The `process` module doesn't need to be required: it is somewhat literally a wrapper around the currently executing process, and many of the methods it exposes are actually wrappers around calls into some of Node's core C libraries.
+
+#### Events
+
+There are two built-in events worth noting in the `process` module: `exit` and `uncaughtException`.
+
+The `exit` event fires whenever the process is about to exit.
+
+  process.on('exit', function () {
+    fs.writeFileSync('/tmp/myfile', 'This MUST be saved on exit.', function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+    });
+  });
+
+Code like the above can occasionally be useful for saving some kind of final report before you exit.  Note the use of a synchronous file system call. This is to make sure the I/O finishes before the process actually exits.
+
+The `uncaughtException` event fires, as you might guess, whenever an exception has occurred that hasn't been caught or dealt with somewhere else in your program. It's not the ideal way to handle errors, but it can be very useful as a last line of defense if a program needs to stay running indefinitely. For example:
+
+     process.on('uncaughtException', function (err) {
+       console.error('An uncaught error occurred!');
+       console.error(err.stack);
+     });
+
+The default behavior on `uncaughtException` is to print a stack trace and exit. Using the above as an example, your program displays the message provided and the stack trace, but will **not** exit.
+
+#### Streams
+
+The `process` object also provides wrappings for the three standard input and output streams: `stdout`,`stderr`, and `stdin`. Briefly:
+
+* `stdout` is a non-blocking (asynchronous) writeable stream
+* `stderr` is a blocking (synchronous) writeable stream.
+* `stdin` is a readable stream (where one would read input from the user)
+
+The simplest one to describe is `process.stdout`.  Technically, most output in Node is accomplished by using `process.stdout.write()`.  The following is from `console.js` in Node core:
+
+      exports.log = function() {
+        process.stdout.write(format.apply(this, arguments) + '\n');
+      };
+
+Since most people are used to the `console.log` syntax from browser development, it was provided as a convenient wrapper for `process.stdout.write()`.
+
+Next is `process.stderr`, which is very similar to `process.stdout` with one key exception: your process blocks until the write is completed. Node.js provides a number of alias functions for output, most of which either end up using `stdout` or `stderr` under the hood.  Here's a quick reference list:
+
+* STDOUT, or non-blocking functions: `console.log`, `console.info`, `util.puts`, `util.print`
+
+* STDERR, or blocking functions: `console.warn`, `console.error`, `util.debug`
+
+Lastly, `process.stdin` is a readable stream for getting user input. For more information, see [the section on prompting for input](api.html#how-to-prompt-for-command-line-input).
+
+For a complete list of properties and methods available to `process`, see [the official Node.js documentation](http://nodejs.org/docs/latest/api/process.html).
+
+#### Additional Properties
+
+The `process` module contains a variety of properties that allow you to access information about the running process.  Let's run through a few quick examples. First, type `node` in the command line. Then, type the following commands:
+
+      > process.pid
+      3290
+      > process.version
+      'v0.6.1'
+      > process.platform
+      'linux'
+      > process.title
+      'node'
+
+You values may be different. Here's what these properties mean:
+
+* `process.version` refers to your Node version
+* `process.pid` is the operating system process ID
+* `process.platform` is something general like 'linux' or 'darwin'
+* `process.title` is a little bit different. While set to `node` by default, it can be set to anything you want, and defines the name displayed when viewing a list of running processes.
+
+The `process` module also exposes `process.argv`, an array containing the command-line arguments to the current process, and `process.argc`, an integer representing the number of arguments passed in.  Here's more information on [how to parse command line arguments](api.html#how-to-parse-command-line-arguments).
+
+#### Additional Methods
+
+There are also a variety of methods attached to the `process` object, many of which deal with quite advanced aspects of a program. Here's a look at a few of the more commonly useful ones.
+
+`process.exit()` exits the process.  If you call an asynchronous function, and then call `process.exit()` immediately afterwards, you will be in a race condition--the asynchronous call may or may not complete before the process is exited.  `process.exit` accepts one optional argument, an integer exit code. `0`, by convention, is an exit with no errors.
+
+`process.cwd` returns the current working directory of the process. This is often the directory from which the command to start the process was issued.
+
+`process.chdir` is used to change the current working directory.  For example:
+
+  > process.cwd()
+  '/home/avian/dev'
+  > process.chdir('/home/avian')
+  > process.cwd()
+  '/home/avian'
+
+Finally, on a more advanced note, there's `process.nextTick()`. This method accepts one argument--a callback--and places it at the top of the next iteration of the event loop.  Some people do something like this:
+
+  setTimeout(function () {
+  // code here
+  }, 0)
+
+This, however, is not ideal.  In Node.js, this should be used instead:
+
+  process.nextTick(function () {
+    console.log('Next trip around the event loop, wheeee!');
+  });
+
+It is much more efficient, and much more accurate.
+
+<a id="the-console-module"></a>
+
+### The Console Module
+<span class="cite">By Charlie McConnell (Aug 26 2011)</span>
+
+
+Anyone familiar with browser-side development has probably used `console.log` for debugging purposes. Node.js has implemented a built-in `console` object to mimic much of this experience.  Since we're working server-side, however, it wraps content to `stdout`, `stdin`, and `stderr` instead of the browser's debugging console.
+
+Because of this browser parallel, the `console` module has become home to quite a bit of Node's standard output functionality. The simplest is `console.log()`.
+
+    console.log('Hi, everybody!');
+    console.log('This script is:', __filename);
+    console.log(__filename, process.title, process.argv);
+
+This example just prints the provided string to `stdout`.  It can also be used to output the contents of variables, as evidenced in by the second line. Furthermore, `console.dir()` is called on any objects passed in as arguments, enumerating their properties.
+
+#### Styling the Output
+
+`console.log()` accepts three format characters: `%s`, `%d`, and `%j`. These format characters can be used to insert string, integer, or JSON data into your output. The order of format characters must match the order of arguments.
+
+For example:
+
+  var name = 'Harry',
+    number = 17,
+    myObj = {
+      propOne: 'stuff',
+      propTwo: 'more stuff'
+    };
+  console.log('My name is %s, my number is %d, my object is %j', name, number, myObj);
+
+A caveat with `console.log`, and all functions that depend on it, is that it buffers the output. If your process ends suddenly, whether it be from an exception or from `process.exit()`, it is entirely possible that the buffered output will never reach the screen. This can cause a great deal of frustration, so watch out for this unfortunate situation.
+
+`console.error()` works the same as `console.log`, except that the output is sent to `stderr` instead of `stdout`.  This is an extremely important difference, as `stderr` is always written synchronously.  Any use of `console.error`, or any of the other functions in Node.js core that write to `stderr`, blocks your process until the output has all been written.  This is useful for error messages--you get them exactly when they occur--but can greatly slow down your process if used everywhere.
+
+`console.dir()` is an alias for `util.inspect()`. It is used to enumerate object properties. You can read more about it [here](api.html#how-to-use-util-inspect).
+
+#### Additional Methods
+
+That covers the basic `console` module functionality, but there are a few other methods worth mentioning as well. First, the `console` module allows for the marking of time via `console.time()` and `console.timeEnd()`.  Here is an example:
+
+  console.time('myTimer');
+  var string = '';
+  for (var i = 0; i < 300; i++) {
+  (function (i) {
+    string += 'aaaa' + i.toString();
+  })(i);
+  }
+  console.timeEnd('myTimer');
+
+This would determine the amount of time taken to perform the actions in between the `console.time` and `console.timeEnd` calls.
+
+One last function worth mentioning is `console.trace()`, which prints a stack trace to its location in your code without throwing an error.  This can occasionally be useful if you'd like to figure out where a particular failing function was called from.
+
+For a complete list of properties and methods available to `console`, see [the official Node.js documentation](http://nodejs.org/docs/latest/api/stdio.html).
+
+<a id="how-to-debug-nodejs-applications"></a>
+
+### Debugging Node.js Applications
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Often times, not just in the Node.js community but in software at large, people debug simply with a liberal sprinkle of standard output statements. This allows you to track down where unexpected values are being generated. However, this method can be tedious, or worse, not robust enough to detect real problems.
+
+Thankfully, through the use of the `node-inspector` module, we can harness the power of webkit-debuggers to work with our Node.js code. The process itself is simple.
+
+#### Setting up
+
+First, ensure that node-inspector is installed:
+
+    npm -g install node-inspector
+
+Here's a good example application to experiment with, copied from the `node-inspector` repo. It is a "hello world" server with a counter :
+
+    var http = require('http');
+
+  var x = 0;
+
+  http.createServer(function (req, res) {
+        x += 1;
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('Hello World ' + x);
+  }).listen(8124);
+
+    console.log('Server running at http://127.0.0.1:8124/');
+
+First, start the node program with debugging enabled:
+
+    node --debug app.js
+
+This should print something along the lines of `debugger listening on port 5858` to stderr. Take note of the port number: it is the port that the debugger is running on.
+
+Next, start up `node-inspector` in a separate command line window. By default, `node-inspector` uses port 8080, so you may want to pass it a custom port number with the `--web-port` option: If your program uses port 8080, then you may have to pass it a custom port.
+
+  node-inspector --web-port=1123
+
+Finally, start a webkit browser (like Chrome or Safari), and go to `http://127.0.0.1:1123/debug?port=5858`. Here, 5858 represents the port the debugger is listening on, and 1123 represents your `node-inspector` webport. You may have to modify these values to match your environment.
+
+At this point, you will be met with a fairly empty screen with the Scripts, Profiles, and Cnsole tabs.
+
+#### Scripts tab
+
+This tab is just like most Webkit debuggers. It has a list of all the Javascript files (including Node.js core and third-party libraries). You can select each one and dive into them.
+
+To stop the interpreter on a specific line, set a breakpoint by clicking on the number of the desired line. When the execution is frozen, by a breakpoint or by manually pausing interpretation by pressing the pause button, you can check the callstack and examine all the local, closure, and global variables. You can also modify the code to try and fix the behavior. Note that when you modify the code through the Script tab, it does not get saved to the file, so you will need to transfer the modifications back by hand.
+
+#### Profiles tab
+
+To use the profile tab, you need a library called `v8-profiler`, which you can install with npm:
+
+  npm install v8-profiler
+
+Next, you have to require it inside the file you are debugging:
+
+  var profiler = require('v8-profiler');
+
+Now you can finally enable the `Profiles` tab. Unfortunately, all you can do from this screen is take a heap snapshot. From the code, you need to select where you want to start to CPU profiler. You can also select more precise location for heap snapshots.
+
+To take a heap snapshot, just insert this line in the desired location and optionally pass it a name.
+
+  var snapshot = profiler.takeSnapshot(name);
+
+To take a CPU profile, just surround the code that you are profiling with the two lines shown below.  Optionally, a name can be included to indentify the cpu profile.
+
+  profiler.startProfiling(name);
+  //..lots and lots of methods and code called..//
+  var cpuProfile = profiler.stopProfiling([name]);
+
+As an example how to use these, here is the code from above, modified to take a CPU profile on every request, and take a heap snapshot after the server is created.
+
+  var http = require('http');
+  var profiler = require('v8-profiler');
+
+  var x = 0;
+  http.createServer(function (req, res) {
+    x += 1;
+    profiler.startProfiling('request '+x);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World ' + x);
+    profiler.stopProfiling('request '+x);
+  }).listen(8124);
+  
+  profiler.takeSnapshot('Post-Server Snapshot');
+  console.log('Server running at http://127.0.0.1:8124/');
+
+Despite these APIs returning objects, it is much easier to sort through the data through the `node-inspector` interface. Hopefully, with these tools, you can make more informed decisions about memory leaks and bottlenecks.
+
+#### Console tab
+
+The console tab allows you to use Node's REPL in your program's global scope. This has a few caveats, since it means you can't access in local variables. Thus, the variables you _can_ read or write are variables that were defined without a `var` statement. 
+
+The other exception is that when you use `console.log`, it refers to Node's `console.log`, and not webkit's `console.log`. This means the output goes to stdout and not to your console tab. 
+
+Other than these, it is a very straightforward node REPL.
+
+<a id="how-to-use-util-inspect"></a>
+
+### Debugging with Util.Inspect()
+<span class="cite">By Charlie McConnell (Aug 26 2011)</span>
+
+
+Node.js provides a utility function, for debugging purposes, that returns a string representation of an object.  It's called `util.inspect()`, and it can be very useful when working with properties of large, complex objects. 
+
+`util.inspect()` can be used on any object. As a demonstration, we'll use one of Node's built-in objects. Type `node` in your command prompt, and then enter the following line:
+
+     var util = require('util')
+     util.inspect(console)
+     
+The output should be:
+
+     { log: [Function], info: [Function], warn: [Function], 
+       error: [Function], dir: [Function], time: [Function], 
+       timeEnd: [Function], trace: [Function], 
+       assert: [Function] }
+     
+This is a listing of all the enumerable properties of the `console` object.  It is also worth noting that `console.dir()` is a wrapper around `util.inspect()`, and uses its default arguments.
+
+In the command prompt, `util.inspect()` immediately returns its output--this is not usually the case.  In the context of normal Node.js code in a file, something must be done with the output. The simplest thing to do is wrap it within a `console.log()` call:
+
+     console.log(util.inspect(myObj));
+
+`util.inspect()` can also be passed several optional arguments, shown here with their defaults:
+
+     util.inspect(object, showHidden=false, depth=2, colorize=true);
+
+For example, `util.inspect(myObj, true, 7, true)` inspects `myObj`, showing all the hidden and non-hidden properties up to a depth of `7` and colorize the output. Let's go over the arguments individually.
+
+The argument `showHidden` is a boolean that determines whether or not the "non-enumerable" properties of an object are displayed--it defaults to `false`, which tends to result in vastly more readable output. This isn't something a beginner needs to worry about most of the time, but it's worth demonstrating briefly. Try the following in the command prompt:
+
+     var util = require('util');
+     util.inspect(console, true);
+
+The `depth` argument is the number of levels deep into a nested object to recurse--it defaults to 2.  Setting it to `null` causes it to recurse "all the way," showing every level.  Compare the (size of) the outputs of these two `util.inspect` statements in the command prompt:
+
+     var http = require('http');
+     util.inspect(http, true, 1);
+     util.inspect(http, true, 3);
+
+Finally, the optional argument `colorize` is a boolean that adds ANSI escape codes to the string output. When logged to a terminal window, it should be pretty printed with colors.
+
+     var util = require('util');
+     console.log(util.inspect({a:1, b:"b"}, false,2,true));
 
 <a id="npm"></a>
 
@@ -1109,6 +1449,788 @@ For example:
 
  * `Object.__noSuchMethod__`: (This is a Mozilla extension, not ECMAScript 5)
  * `"use strict";`:  This syntax extension is a [v8 issue](http://code.google.com/p/v8/issues/detail?id=919)
+
+<a id="how-to-use-nodejs-repl"></a>
+
+## REPL
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+### Using REPL
+
+Node.js ships with a REPL, which is short for Read-Eval-Print Loop.  It is the Node.js shell; any valid Javascript which can be written in a script can be passed to the REPL. It can be extremely useful for experimenting with Node.js, debugging code, and figuring out some of Javascript's more eccentric behaviors.
+
+Running it is simple: just run `node` without a filename:
+
+     user:~/$ node
+
+It then drops you into a simple prompt (`>`) where you can type any Javascript command you wish. As in most shells, you can press the up and down arrow keys to scroll through your command history and modify previous commands. The REPL also supports auto-completing commands by pressing Tab.
+
+Whenever you type a command, REPL prints the return value of the command. If you want to reuse the previous return value, you can use the special `_` variable. For example:
+
+     node
+     > 1+1
+     2
+     > _+1
+     3
+
+One thing worth noting where REPL return values are concerned: when the `var` keyword is used, the value of the expression is stored, but _not_ returned.  When a bare identifier is used, the value is also returned, as well as stored. For example:
+
+     > x = 10
+     10
+     > var y = 5
+     > x
+     10
+     > y
+     5
+
+If you need to access any of the built-in modules, or any third party modules, they can be accessed with `require`, just like in the rest of Node.
+
+For example:
+
+     node
+     > path = require('path')
+     { resolve: [Function],
+       normalize: [Function],
+       join: [Function],
+       dirname: [Function],
+       basename: [Function],
+       extname: [Function],
+       exists: [Function],
+       existsSync: [Function] }
+     > path.basename("/a/b/c.txt")
+     'c.txt'
+
+Note once again that without the `var` keyword, the contents of the object are returned immediately and displayed to `stdout`.
+
+<a id="how-to-create-a-custom-repl"></a>
+
+### Creating a Custom REPL
+<span class="cite">By Joshua Holbrook (Aug 26 2011)</span>
+
+
+Node allows users to create their own REPLs with the [repl module](http://nodejs.org/docs/latest/api/repl.html). Its basic use looks like this:
+
+    repl.start(prompt, stream);
+
+`prompt` is a string that's used for the prompt of your REPL and defaults to "> ". `stream` is the stream that the REPL listens on and defaults to `process.stdin`. When you run `node` from the command prompt, it's actually running `repl.start()` to give you the standard REPL.
+
+#### Advanced REPL Usage
+
+The REPL is pretty flexible. Here's an example that shows this off:
+
+    var net = require("net"),
+        repl = require("repl");
+
+    var mood = function () {
+        var m = [ "^__^", "-___-;", ">.<", "<_>" ];
+        return m[Math.floor(Math.random()*m.length)];
+    };
+
+    //A remote node repl that you can telnet to!
+    net.createServer(function (socket) {
+      var remote = repl.start("node::remote> ", socket);
+      //Adding "mood" and "bonus" to the remote REPL's context.
+      remote.context.mood = mood;
+      remote.context.bonus = "UNLOCKED";
+    }).listen(5001);
+
+    console.log("Remote REPL started on port 5001.");
+
+    //A "local" node repl with a custom prompt
+    var local = repl.start("node::local> ");
+
+    // Exposing the function "mood" to the local REPL's context.
+    local.context.mood = mood;
+
+This script creates _two_ REPLs. The `local` REPL is normal (except for its custom prompt), but the *other* is exposed via the `net` module so that you can telnet into it. In addition, it uses the `context` property to expose the function "mood" to both REPLs, and the "bonus" string to the remote REPL only. As you will see, this approach of trying to expose objects to one REPL and not the other **doesn't really work**.
+
+In addition, all objects in the global scope will also be accessible to your REPLs.
+
+Here's what happens when the script runs:
+
+    $ node repl.js 
+    Remote REPL started on port 5001.
+    node::local> .exit
+    ^Cuser:/tmp/telnet$ node repl.js 
+    Remote REPL started on port 5001.
+    node::local> mood()
+    '^__^'
+    node::local> bonus
+    ReferenceError: bonus is not defined
+        at [object Context]:1:1
+        at Interface.<anonymous> (repl.js:171:22)
+        at Interface.emit (events.js:64:17)
+        at Interface._onLine (readline.js:153:10)
+        at Interface._line (readline.js:408:8)
+        at Interface._ttyWrite (readline.js:585:14)
+        at ReadStream.<anonymous> (readline.js:73:12)
+        at ReadStream.emit (events.js:81:20)
+        at ReadStream._emitKey (tty_posix.js:307:10)
+        at ReadStream.onData (tty_posix.js:70:12)
+
+As may be seen, the `mood` function is usable within the local REPL, but the
+`bonus` string is not. This is as expected.
+
+Now, here's what happens when you try to telnet to port 5001:
+
+    user:/tmp/telnet$ telnet localhost 5001
+    Trying ::1...
+    Trying 127.0.0.1...
+    Connected to localhost.
+    Escape character is '^]'.
+    node::remote> mood()
+    '>.<'
+    node::remote> bonus
+    'UNLOCKED'
+
+As you can see, the `mood()`  and `bonus` functions are also available over telnet.
+
+As an interesting consequence of these actions, `bonus()` is now also defined on the local REPL:
+
+    node::local> bonus
+    'UNLOCKED'
+
+It seems we "unlocked" the `bonus` string on the local REPL as well. As it turns out, any variables created in one REPL are also available to the other:
+
+    node::local> var str = "AWESOME!"
+
+    node::remote> str
+    'AWESOME!'
+
+As you can see, the node REPL is powerful and flexible.
+
+<a id="HTTP-servers"></a>
+
+## HTTP Servers
+
+
+
+
+<a id="how-to-create-a-HTTP-server"></a>
+
+### Creating an HTTP Server
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Making a simple HTTP server in Node.js has become the de-facto 'hello world' for the platform. Node.js provides extremely easy-to-use HTTP APIs; in addition, a simple web server also serves as an excellent demonstration of Node's asynchronous strengths.
+
+Let's take a look at a very simple example:
+
+    var http = require('http');
+    var requestListener = function (req, res) {
+        res.writeHead(200);
+        res.end('Hello, World!\n');
+    }
+
+    var server = http.createServer(requestListener);
+    server.listen(8080);
+
+Save this in a file called `server.js`, ande from the command line, run `node server.js`. Your program will hang there: it's waiting for connections to respond to, and you'll have to give it one if you want to see it do anything. Open up a browser, and type `localhost:8080` into the location bar. If everything has been set up correctly, you should see your server saying hello!
+
+Let's take a more in-depth look at what the above code is doing.  First, a function is defined called `requestListener` that takes a `request` object  (`req`) and a `response` object (`res`) as parameters. 
+
+The `request` object contains things such as the requested URL, but in this example we ignore it and always return "Hello World!". 
+
+The `response` object is how we send the headers and contents of the response back to the user making the request. Here, we return a 200 response code (signaling a successful response) with the body "Hello World!".  Other headers, such as `Content-type`, would also be set here.
+
+Next, the `http.createServer()` method creates a server that calls `requestListener` whenever a request comes in. The next line, `server.listen(8080)`, calls the `listen` method, which causes the server to wait for incoming requests on the specified port--8080, in this case. 
+
+<a id="how-to-create-a-HTTPS-server"></a>
+
+### Creating an HTTPS Server
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+To create an HTTPS server, you need two things: an SSL certificate, and Node's built-in `https` module.
+
+We need to start out with a word about SSL certificates.  Speaking generally, there are two kinds of certificates: those signed by a 'Certificate Authority', or CA, and a 'self-signed certificates'.  A Certificate Authority is a trusted source for an SSL certificate, and using a certificate from a CA allows your users to be trust the identity of your website. In most cases, you would want to use a CA-signed certificate in a production environment; for testing purposes, however, a self-signed certicate will do just fine.
+
+To generate a self-signed certificate, run the following in your shell:
+
+	openssl genrsa -out key.pem
+	openssl req -new -key key.pem -out csr.pem
+	openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
+	rm csr.pem
+
+This should leave you with two files, `cert.pem` (the certificate) and `key.pem` (the private key). This is all you need for a SSL connection. 
+
+Next, set up a quick "hello world" example. ():
+
+    var https = require('https');
+    var fs = require('fs');
+
+    // read the certificate
+    var options = {
+      key: fs.readFileSync('key.pem'),
+      cert: fs.readFileSync('cert.pem')
+    };
+
+    var a = https.createServer(options, function (req, res) {
+      res.writeHead(200);
+      res.end("hello world\n");
+    }).listen(8000);
+
+The biggest difference between [http](api.html#how-do-i-create-a-http-server) and https is the additional `options` parameter
+
+**Note**: `fs.readFileSync()`--unlike `fs.readFile()`--blocks the entire process until it completes.  In situations like this--loading vital configuration data--the `Sync` functions are okay.  In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!
+
+Now that your server is set up and started, you should be able to get the file with curl:
+
+	curl -k https://localhost:8000
+
+or in your browser, by going to `https://localhost:8000`. 
+
+<a id="how-to-serve-static-files"></a>
+
+### Serving Static Files
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+A basic necessity for most [http servers](api.html#how-do-i-create-a-https-server) is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:
+
+  var fs = require('fs'),
+  http = require('http');
+
+    http.createServer(function (req, res) {
+      fs.readFile(__dirname + req.url, function (err,data) {
+        if (err) {
+          res.writeHead(404);
+          res.end(JSON.stringify(err));
+          return;
+        }
+        res.writeHead(200);
+        res.end(data);
+      });
+    }).listen(8080);
+
+This example takes the path requested and it serves that path, relative to the local directory. This works fine as a quick solution; however, there are a few problems with this approach. First, this code does not correctly handle MIME types. Additionally, a proper static file server should really be taking advantage of client side caching, and should send a "Not Modified" response if nothing has changed.  Furthermore, there are security bugs that can enable a malicious user to break out of the current directory, (for example, by issuing `GET /../../../`). 
+
+Each of these can be addressed invidually without much difficulty. You can send the proper MIME type header. You can figure how to utilize the client caches. You can take advantage of `path.normalize` to make sure that requests don't break out of the current directory. But why write all that code when you can just use someone else's library? 
+
+There is a good static file server called [node-static](https://github.com/cloudhead/node-static) written by Alexis Sellier which you can leverage. Here is a script which functions similarly to the previous one:
+
+    var static = require('node-static');
+    var http = require('http');
+
+    var file = new(static.Server)();
+
+    http.createServer(function (req, res) {
+      file.serve(req, res);
+    }).listen(8080);
+
+This is a fully functional file server that doesn't have any of the bugs previously mentioned. This is just the most basic set up. There are more things you can do if you investigate [the API](https://github.com/cloudhead/node-static). Since it's an open source project, you can always modify it to your needs (and contribute back to the project).
+
+<a id="how-to-read-POST-data"></a>
+
+### Reading POST Data
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Reading the data from a POST request (i.e. a form submission) can be a little bit of a pitfall in Node.js, so we're going to go through an example of how to do it properly.  
+
+The first step is to listen for incoming data. The trick is to wait for the data to finish, so that you can process all the form data without losing anything. 
+
+Here is a quick script that shows you how to do exactly that:
+
+  var http = require('http');
+    var postHTML = 
+    '<html><head><title>Post Example</title></head>' +
+    '<body>' +
+    '<form method="post">' +
+      'Input 1: <input name="input1"><br>' +
+        'Input 2: <input name="input2"><br>' +
+        '<input type="submit">' +
+        '</form>' +
+        '</body></html>';
+
+    http.createServer(function (req, res) {
+      var body = "";
+      req.on('data', function (chunk) {
+        body += chunk;
+      });
+      req.on('end', function () {
+        console.log('POSTed: ' + body);
+        res.writeHead(200);
+        res.end(postHTML);
+      });
+    }).listen(8080);
+
+The variable `postHTML` is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can `POST` example data. This is **not** the right way to serve static HTML; to do that, see [How to Serve Static Files](api.html#how-to-serve-static-files) for a more proper example.
+
+With the HTML out of the way, we [create a server](api.html#how-do-i-create-a-http-server) to listen for requests. It is important to note, when listening for POST data, that the `req` object is also an [Event Emitter](api.html#what-are-event-emitters).  `req`, therefore, will emit a `data` event whenever a chunk of incoming data is received; when there is no more incoming data, the `end` event is emitted. In our case, we listen for `data` events. Once all the data is recieved, we log the data to the console and send the response. 
+
+Something important to note is that the event listeners are being added immediately after the request object is received. If you don't immediately set them, then there is a possibility of missing some of the events. If, for example, an event listener was attached from inside a callback, then the `data` and `end` events might be fired in the meantime with no listeners attached!
+
+You can save this script to `server.js` and run it with `node server.js`. Once you run it you will notice that occassionally you will see lines with no data:  `POSTed: `. This happens because regular `GET` requests go through the same codepath. In a more real-world application, it would be proper practice to check the type of request and handle the different request types differently.
+
+<a id="how-to-handle-multipart-form-data"></a>
+
+### Handling Multi-Part Form Data
+<span class="cite">By AvianFlu (Sep 09 2011)</span>
+
+
+Handling form data and file uploads properly is an important and complex problem in HTTP servers.  Doing it by hand would involve parsing streaming binary data, writing it to the file system, parsing out additional form data, and several other complex concerns. Luckily, only a very few people will need to worry about it on that deep level. 
+
+Felix Geisendorfer, one of the Node.js core committers, wrote a library called `node-formidable` that handles all the hard parts for you. With its friendly API, you can be parsing forms and receiving file uploads in no time.
+
+This example is taken directly from the `node-formidable` GitHub page, with some additional explanation added.
+
+    var formidable = require('formidable'),
+    http = require('http'),
+    util = require('util');
+
+    http.createServer(function(req, res) {
+      
+      // This if statement is here to catch form submissions, 
+      // and initiate multipart form data parsing.     
+      if (req.url == '/upload' && req.method.toLowerCase() == 'post') {
+      
+        // Instantiate a new formidable form for processing.
+        var form = new formidable.IncomingForm();
+        
+        // form.parse() analyzes the incoming stream data, 
+        // picking apart the different fields and files for you.
+        form.parse(req, function(err, fields, files) {
+          if (err) {
+            // Check for and handle any errors here.
+            console.error(err.message);
+            return;
+          }
+
+          res.writeHead(200, {'content-type': 'text/plain'});
+          res.write('received upload:\n\n');
+                    
+          // This last line responds to the form submission 
+          // with a list of the parsed data and files.
+          res.end(util.inspect({fields: fields, files: files}));
+        });
+
+        return;
+      }
+
+      // If this is a regular request, and not a form submission, then send the form
+      res.writeHead(200, {'content-type': 'text/html'});
+      res.end(
+        '<form action="/upload" enctype="multipart/form-data" method="post">'+
+        '<input type="text" name="title"><br>'+
+        '<input type="file" name="upload" multiple="multiple"><br>'+
+        '<input type="submit" value="Upload">'+
+        '</form>'
+      );
+    }).listen(8080);
+
+Using `node-formidable` is definitely the simplest solution, and it is a battle-hardened, production-ready library. Let userland solve problems like this for you, so that you can get back to writing the rest of your code!
+
+<a id="HTTP-clients"></a>
+
+## HTTP Clients
+
+
+
+
+<a id="how-to-access-query-string-parameters"></a>
+
+### Accessing Query String Parameters
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+In Node.js, functionality to aid in the accessing of URL query string parameters is built into the standard library. The `url.parse()` method takes care of most of the heavy lifting.  Here is an example script using this handy function and an explanation on how it works:
+
+    var fs = require('fs');
+    var http = require('http');
+    var url = require('url') ;
+
+    http.createServer(function (req, res) {
+      var queryObject = url.parse(req.url,true).query;
+      console.log(queryObject);
+
+      res.writeHead(200);
+      res.end('Feel free to add query parameters to the end of the url');
+    }).listen(8080);
+
+The key part of this whole script is this line:
+
+	var queryObject = url.parse(req.url,true).query;`
+
+Let's take a look at things from the inside-out.  First off, `req.url` looks something like `/app.js?foo=bad&baz=foo`. This is the part that is in the URL bar of the browser. Next, it gets passed to `url.parse()` which parses out the various elements of the URL. The second parameter of the function is a boolean stating whether the method should parse the query string, so we set it to `true`. Finally, we access the `.query` property, which returns us a nice, friendly JSON with our query string data. 
+
+<a id="how-to-create-a-HTTP-request"></a>
+
+### Creating HTTP GET and POST Requests
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Another extremely common programming task is making an HTTP request to a web server.  Node.js provides an extremely simple API for this functionality in the form of `http.request`.
+
+As an example, we are going to preform a GET request to [www.random.org](www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new) (which returns a random integer between 1 and 10) and print the result to the console:
+
+    var http = require('http');
+
+    //The url we want
+    var options = {
+      host: 'www.random.org',
+      path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+    };
+
+    callback = function(response) {
+      var str = '';
+
+      // another chunk of data has been recieved, so append it to `str`
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+
+      //the whole response has been recieved, so we just print it out here
+      response.on('end', function () {
+        console.log(str);
+      });
+    }
+
+    http.request(options, callback).end();
+
+
+Making a POST request is just as easy. Let's make a POST request to `www.nodejitsu.com:1337`, which is running a server that will echo back what we send. The code for making a POST request is almost identical to making a GET request, with just a few simple modifications:
+
+    var http = require('http');
+
+    //The url we want
+    var options = {
+      host: 'www.nodejitsu.com',
+      path: '/',
+      //since we are listening on a custom port, we need to specify it by hand
+      port: '1337',
+      //This is what changes the request to a POST request
+      method: 'POST'
+    };
+
+    callback = function(response) {
+      var str = ''
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+
+      response.on('end', function () {
+        console.log(str);
+      });
+    }
+
+    var req = http.request(options, callback);
+
+    //This is the data we are POSTing, it needs to be a string or a buffer
+    req.write("hello world!");
+    req.end();
+
+Adding custom headers requires a few more steps. `www.nodejitsu.com:1338` is running a server that prints out the `custom` header. We'll just make a quick request to it:
+
+    var http = require('http');
+
+    var options = {
+      host: 'www.nodejitsu.com',
+      path: '/',
+      port: '1338',
+      //This is the only line that is new. `headers` is an object with the headers to request
+      headers: {'custom': 'Custom Header Demo works'}
+    };
+
+    callback = function(response) {
+      var str = ''
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+
+      response.on('end', function () {
+        console.log(str);
+      });
+    }
+
+    var req = http.request(options, callback);
+    req.end();
+
+<a id="file-system"></a>
+
+## File System
+
+
+
+
+<a id="how-to-read-files-in-nodejs"></a>
+
+### Reading Files
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Reading the contents of a file into memory is a very common programming task, and, as with many other things, the Node.js core API provides methods to make this trivial.  There are a variety of file system methods, all contained in the `fs` module.  The easiest way to read the entire contents of a file is with `fs.readFile()`, as follows:
+
+    fs = require('fs');
+    fs.readFile(file, [encoding], [callback]);
+
+Here's what the parameters do:
+
+* `file` is a string filepath of the file to read
+* `encoding` is an optional parameter that specifies the type of encoding to read the file. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding is provided, the default is `utf8`.
+* `callback` is an optional function to call when the file has been read and the contents are ready. It is passed two arguments: `error` and `data`.  If there is no error, `error` will be `null` and `data` will contain the file contents; otherwise `err` contains the error message.
+
+If we wanted to read `/etc/hosts` and print it to stdout (just like UNIX `cat`), we might try doing this:
+
+    fs = require('fs')
+    fs.readFile('/etc/hosts', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(data);
+    });
+
+The contents of `/etc/hosts` should now be visible to you, provided you have permission to read the file in the first place.
+
+Let's now take a look at an example of what happens when you try to read an invalid file--the easiest example is one that doesn't exist.
+
+    fs = require('fs');
+    fs.readFile('/doesnt/exist', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(data);
+    });
+
+This is the output:
+
+    { stack: [Getter/Setter],
+      arguments: undefined,
+      type: undefined,
+      message: 'ENOENT, No such file or directory \'/doesnt/exist\'',
+      errno: 2,
+      code: 'ENOENT',
+      path: '/doesnt/exist' }
+
+This is a basic Node.js [Error object](api.html#what-is-the-error-object). It can often be useful to log `err.stack` directly, since this contains a stack trace to the location in code at which the Error object was created.
+
+<a id="how-to-write-files-in-nodejs"></a>
+
+### Writing files in Node.js
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Writing to a file is another of the basic programming tasks that one usually needs to know about. This task is very simple in Node.js.  We can use the handy `writeFile()` method inside the standard library's `fs` module, which can save all sorts of time and trouble.
+
+    fs = require('fs');
+    fs.writeFile(filename, data, [encoding], [callback])
+
+Here's what the parameters mean:
+
+*`file` is a string filepath of the file to read
+* `data` is a string or buffer of the data you want to write to the file
+* `encoding` is an optional string defining the encoding of the `data`. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding provided, then the default is 'utf8'
+* `callback` is an optional function that receives an error message, like so: `function (err) {}`. If there is no error, `err === null`; otherwise `err` contains the error message.
+
+For example, if we wanted to write "Hello World" to `helloworld.txt`:
+
+    fs = require('fs');
+    fs.writeFile('helloworld.txt', 'Hello World!', function (err) {
+      if (err) return console.log(err);
+      console.log('Hello World > helloworld.txt');
+    });
+
+    [contents of helloworld.txt]:
+    Hello World!
+
+If we purposely want to cause an error, we can try to write to a file that we don't have permission to access:
+
+    fs = require('fs')
+    fs.writeFile('/etc/doesntexist', 'abc', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(data);
+    });
+
+The console then prints:
+
+    { stack: [Getter/Setter],
+      arguments: undefined,
+      type: undefined,
+      message: 'EACCES, Permission denied \'/etc/doesntexist\'',
+      errno: 13,
+      code: 'EACCES',
+      path: '/etc/doesntexist' }
+
+<a id="how-to-store-local-config-data"></a>
+
+### Storing Local Data
+<span class="cite">By Charlie McConnell (Aug 26 2011)</span>
+
+
+Storing your Node.js application's configuration data is quite simple. Every object in Javascript can be easily rendered as [JSON](api.html#what-is-json), which in turn is just string data that can be sent or saved any way you'd like. The simplest way to do this involves the built-in `JSON.parse()` and `JSON.stringify()` methods.
+
+Let's take a look at a very simple (and contrived) example.  First, to save some very simple data:
+
+  // always require('fs') when using the file system  
+  var fs = require('fs');
+
+  var myOptions = {
+        name: 'Avian',
+        dessert: 'cake'
+        flavor: 'chocolate',
+        beverage: 'coffee'
+  };
+
+  var data = JSON.stringify(myOptions);
+
+  fs.writeFile('./config.json', data, function (err) {
+        if (err) {
+          console.log('There has been an error saving your configuration data.');
+          console.log(err.message);
+          return;
+        }
+        console.log('Configuration saved successfully.')
+  });
+
+It's really that simple: just `JSON.stringify()`, and then save it however you'd like.
+
+Now, let's load some configuration data, by reading from the file:
+
+  var fs = require('fs');
+
+      var data = fs.readFileSync('./config.json'),
+          myObj;
+
+      try {
+        myObj = JSON.parse(data);
+        console.dir(myObj);
+      } catch (err) {
+        console.log('There has been an error parsing your JSON.')
+        console.log(err);
+      }
+
+Even if you don't like using `try/catch`, this is a place to use it.  `JSON.parse()` is a very strict JSON parser, and errors are common--most importantly, though, `JSON.parse()` uses the `throw` statement rather than giving a callback, so `try/catch` is the only way to guard against the error. In addition, since we're again loading conifiguration data, we need to rely on the synchronous `fs.readFileSync()`.
+
+Using the built-in `JSON` methods can take you far, but as with so many other problems you might be looking to solve with Node.js, there is already a solution in Userland that can take you much further. Written by Charlie Robbins, `nconf` is a configuration manager for Node.js, supporting in-memory storage and local file storage. There's also support for a `redis` backend, provided in a separate module.
+
+Let's take a look now at how we'd perform some local configuration access with `nconf`.  First, you'll need to install it to your project's working directory:
+
+  npm install nconf
+
+After that, the syntax is a breeze. Have a look at an example:
+
+      var nconf = require('nconf');
+
+      nconf.use('file', { file: './config.json' });
+      nconf.load();
+      nconf.set('name', 'Avian');
+      nconf.set('dessert:name', 'Ice Cream');
+      nconf.set('dessert:flavor', 'chocolate');
+
+      console.log(nconf.get('dessert'));
+
+      nconf.save(function (err) {
+        if (err) {
+          console.error(err.message);
+          return;
+        }
+        console.log('Configuration saved successfully.');
+      });
+
+The only tricky thing to notice here is the ':' delimiter. When accessing nested properties with `nconf`, a colon is used to delimit the namespaces of key names.  If a specific sub-key is not provided, the whole object is set or returned.
+
+When using `nconf` to store your configuration data to a file, `nconf.save()` and `nconf.load()` are the only times that any actual file interaction will happen.  All other access is performed on an in-memory copy of your data, which will not persist without a call to `nconf.save()`.  Similarly, if you're trying to bring back configuration data from the last time your application ran, it will not exist in memory without a call to `nconf.load()`, as shown above.
+
+<a id="how-to-search-files-and-directories-in-nodejs"></a>
+
+### Searching for Files
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+Suppose you want to list all the files in the current directory.  One approach is to use the builtin `fs.readdir()` [method](api.html#how-do-i-read-files-in-node-js). This will get you an array of all the files and directories on the specified path:
+
+    fs = require('fs');
+
+    fs.readdir(process.cwd(), function (err, files) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log(files);
+    });
+
+
+Unfortunately, if you want to do a recursive list of files, then things get much more complicated very quickly. To avoid all of this scary complexity, a Node.js userland library can save the day. [Node-findit](https://github.com/substack/node-findit), by James Halliday (aka SubStack), is a helper module to make searching for files easier.  It has interfaces to let you work with callbacks, events, or just plain old synchronously (which is not a good idea most of the time).
+
+To install `node-findit`, simply use npm:
+
+    npm install findit
+
+In the same folder, create a file called `example.js`, and then add this code.  Run it with `node example.js`. This example uses the `node-findit` event-based interface.
+
+    //This sets up the file finder
+    var finder = require('findit').find(__dirname);
+
+    //This listens for directories found
+    finder.on('directory', function (dir) {
+      console.log('Directory: ' + dir + '/');
+    });
+
+    //This listens for files found
+    finder.on('file', function (file) {
+      console.log('File: ' + file);
+    });
+
+<a id="how-to-use-the-path-module"></a>
+
+### Using the path module
+<span class="cite">By Nico Reed (Aug 26 2011)</span>
+
+
+The `path` module contains several helper functions to help make path manipulation easier.
+
+The first function worth mentioning is `path.normalize()`.  This function takes a path (in the form of a string) and strips it of duplicate slashes and normalizes directory abbreviations, like '.' for 'this directory' and '..' for 'one level up'. For example:
+
+    > var path = require('path');
+    > path.normalize('/a/.///b/d/../c/')
+    '/a/b/c/'
+
+A closely related function to `normalize()` is `join()`.  This function takes a variable number of arguments, joins them together, and normalizes the path.
+
+    > var path = require('path');
+    > path.join('/a/.', './//b/', 'd/../c/')
+    '/a/b/c'
+
+A possible use of `join` is to manipulate paths when serving urls:
+
+    > var path = require('path');
+    > var url = '/index.html';
+    > path.join(process.cwd(), 'static', url);
+    '/home/nico/static/index.html'
+
+There are three functions which are used to extract the various parts of the path name: `basename`, `extname`, and `dirname`:
+
+- `basename()` returns the last portion of the path passed in
+- `extname()` returns the extension of the last portion. Generally for directories, `extname` just returns ''. 
+- `dirname()` returns everything that `basename` does not return.
+
+For example:
+
+    > var path = require('path')
+    > var a = '/a/b/c.html'
+    > path.basename(a)
+    'c.html'
+    > path.extname(a)
+    '.html'
+    > path.dirname(a)
+    '/a/b'
+
+`basename`() has an optional second parameter that will strip out the extension if you pass the correct extension:
+
+    > var path = require('path')
+    > var a = '/a/b/c.html'
+    > path.basename(a, path.extname(a))
+    'c'
+
+In addition, the `path` module provides methods to check whether or not a given path exists: `exists()` and `existsSync()`. They both take the path of a file for the first parameter; however:
+
+* `exists` takes a callback function as its second parameter, to which is returned a boolean representing the existance of the file
+* `existsSync` checks the given path synchronously, returning the boolean directly. In Node.js, you will typically want to use the asynchronous functions for most file system I/O--the synchronous versions will block your entire process until they finish. 
+
+Blocking isn't always a bad thing.  Checking the existence of a vital configuration file synchronously makes sense, for example--it doesn't matter much if your process is blocking for something it can't run without!  Conversely, though, in a busy HTTP server, any per-request file I/O **MUST** be asynchronous, or else you'll be responding to requests one by one. See the section on [asynchronous operations](api.html#how-to-write-asynchronous-code) for more details.
 
 <a id="security"></a>
 

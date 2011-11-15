@@ -28,7 +28,32 @@
                ]
             },
             {
+               "name":"globals-in-node-js",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
                "name":"what-is-require",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"the-process-module",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"the-console-module",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-debug-nodejs-applications",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-use-util-inspect",
                "content":"content.md",
                "metadata":"page.json"
             }
@@ -96,6 +121,104 @@
                "content":"content.md",
                "metadata":"page.json"
             }
+         ]
+      },
+      {
+         "name":"REPL",
+         "content":"content.md",
+         "metadata":"page.json",
+         "folder":[
+            {
+               "name":"how-to-use-nodejs-repl",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-create-a-custom-repl",
+               "content":"content.md",
+               "metadata":"page.json"
+            }      
+         ]
+      },
+      {
+         "name":"HTTP-servers",
+         "content":"content.md",
+         "metadata":"page.json",
+         "folder":[
+            {
+               "name":"how-to-create-a-HTTP-server",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-create-a-HTTPS-server",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-serve-static-files",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-read-POST-data",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-handle-multipart-form-data",
+               "content":"content.md",
+               "metadata":"page.json"
+            }      
+         ]
+      },
+      {
+         "name":"HTTP-clients",
+         "content":"content.md",
+         "metadata":"page.json",
+         "folder":[
+            {
+               "name":"how-to-access-query-string-parameters",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-create-a-HTTP-request",
+               "content":"content.md",
+               "metadata":"page.json"
+            }     
+         ]
+      },
+      {
+         "name":"file-system",
+         "content":"content.md",
+         "metadata":"page.json",
+         "folder":[
+            {
+               "name":"how-to-read-files-in-nodejs",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-write-files-in-nodejs",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-store-local-config-data",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-search-files-and-directories-in-nodejs",
+               "content":"content.md",
+               "metadata":"page.json"
+            },
+            {
+               "name":"how-to-use-the-path-module",
+               "content":"content.md",
+               "metadata":"page.json"
+            }      
          ]
       },
       {
