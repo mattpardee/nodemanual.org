@@ -17,7 +17,7 @@ Now save it, and type the following in your shell:
        'four',
        'five' ]
 
-There you have it--an array containing any arguments you passed in.  Notice the first two elements: `node`, and the path to your script.  These will always be present; even if your program takes no arguments of its own, your script's interpreter and path are still considered arguments to the shell you're using.  
+There you have i&mdash;an array containing any arguments you passed in.  Notice the first two elements: `node`, and the path to your script.  These will always be present; even if your program takes no arguments of its own, your script's interpreter and path are still considered arguments to the shell you're using.  
 
 Where everyday CLI arguments are concerned, you'll want to skip the first two.  Now, try typing this in `argv.js`:
 
@@ -52,7 +52,7 @@ Fortunately, there's a third party module that makes all of this trivial. It's c
 
      npm install optimist
      
-Once you have it, give it a try--it can really be a life-saver.:
+Once you have it, give it a try&mdash;it can really be a life-saver.:
 
      var myArgs = require('optimist').argv,
          help = 'Ceci n\'est pas une mandoc';

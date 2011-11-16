@@ -39,13 +39,13 @@ Save this code in a file called `logger.js`. You can then import this module, an
     
 Because `logger.debugLevel` was set to `warn`, the warning message and the error would both be displayed, but the `info` message would not be.
 
-The advantage here is that the behavior of our logging mechanisms can now be modified and controlled from a central part of our code. In this case, logging levels were added, and messages are converted to JSON if they aren't already in string form. There is a lot more that could be done here - saving logs to a file, pushing them to a database, setting custom colors and formatting the output--but by the time you want that much functionality from your custom logging function, it might be time to use an already-existing library.
+The advantage here is that the behavior of our logging mechanisms can now be modified and controlled from a central part of our code. In this case, logging levels were added, and messages are converted to JSON if they aren't already in string form. There is a lot more that could be done here&mdash;saving logs to a file, pushing them to a database, setting custom colors and formatting the output&mdash;but by the time you want that much functionality from your custom logging function, it might be time to use an already-existing library.
 
 #### Extended Logging Functionality
 
 [Winston](https://github.com/indexzero/winston) is a multi-transport and asynchronous logging library for Node.js.  It is conceptually similar to our custom logger, but comes with a wide variety of useful features and functionality baked in. In addition, `winston` is battle-hardened by internal use at [Nodejitsu](http://nodejitsu.com/).
 
-Here's an example of setting up a `winston` logger.  This example includes most of the transports one could ever possibly want--most use cases will only warrant a few of these:
+Here's an example of setting up a `winston` logger.  This example includes most of the transports one could ever possibly want&mdash;most use cases will only warrant a few of these:
 
       var winston = require('winston');
 
@@ -81,4 +81,4 @@ Note that winston's file logger formats the logs differently for file logging (J
 
 Winston also supports logging to Riak, CouchDB, MongoDB and even [Loggly](http://loggly.com).  The `logger.warn()` call we used before also put the same message into each database, according to the options we gave to each transport.
 
-For further information, please see the [thorough documentation for Winston.](https://github.com/indexzero/winston).
+For further information, please see the [thorough documentation for Winston](https://github.com/indexzero/winston).

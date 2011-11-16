@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Node.js Developer's Guide</title> 
+    <title>Node.js Developer's Guide</title>
 	<link rel="stylesheet" href="../css/style.css" type="text/css" />
 	<link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+       $('a').click(function(){
+           window.location.hash = $(this).attr('href');
+});
+    });
+</script>
 </head>
 <body>
 
@@ -27,7 +35,7 @@
 
 <h3>Writing Asynchronous Code</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>At its core, Node.js promotes an asynchronous coding style, which is in contrast to many other web frameworks. There are a number of important things to be aware of when learning to write asynchronous code&mdash;otherwise, you will often find your code executing in extremely unexpected ways.</p>
 
@@ -68,7 +76,7 @@ console.log(data);
 
 <p>Event emitters are another basic concept in Node.js. A constructor for the object is provided in Node.js core: <code>require('events').EventEmitter</code>. </p>
 
-<p>An event emitter is typically used when you know tht there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see <a href="api.html#what-are-event-emitters">the article on event emitters</a>.</p>
+<p>An event emitter is typically used when you know that there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see <a href="nodejs_dev_guide/index.html#what-are-event-emitters">the article on event emitters</a>.</p>
 
 <h4>Caveats in Asynchronous Code</h4>
 
@@ -81,7 +89,7 @@ console.log(data);
  }
 </code></pre>
 
-<p>Here, we're trying to print to The undesired (and unexpected) output is:</p>
+<p>Here, we're trying to print sequentially the numbers one through five. The undesired (and unexpected) output is:</p>
 
 <pre><code>5
 5
@@ -115,7 +123,7 @@ console.log(data);
 
 <h3>Understanding Callbacks</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>In a synchronous program, you could write a function that looks like this:</p>
 
@@ -164,13 +172,13 @@ asyncOperation ( params.., function ( err, returnValues.. ) {
 });
 </code></pre>
 
-<p>You will almost always want to follow the <a href="api.html#what-are-the-error-conventions">error callback convention</a>, since most Node.js users will expect your project to follow them. The general idea is that the callback is the last parameter. The callback gets called after the function is done with all of its operations. Traditionally, the first parameter of the callback is the <code>error</code> value. If the function hits an error, then it typically calls the callback with the first parameter being an <code>Error</code> object. If the function cleanly exits, then it calls the callback with the first parameter being <code>null</code> and the rest being the return value(s).</p>
+<p>You will almost always want to follow the <a href="#what-are-the-error-conventions">error callback convention</a>, since most Node.js users will expect your project to follow them. The general idea is that the callback is the last parameter. The callback gets called after the function is done with all of its operations. Traditionally, the first parameter of the callback is the <code>error</code> value. If the function hits an error, then it typically calls the callback with the first parameter being an <code>Error</code> object. If the function cleanly exits, then it calls the callback with the first parameter being <code>null</code> and the rest being the return value(s).</p>
 
 <p><a id="what-are-event-emitters"></a></p>
 
 <h3>Understanding Event Emitters</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>In Node.js, an event can be described simply as a string with a corresponding callback. An event can be "emitted" (or in other words, have the corresponding callback be called) multiple times; or, you can choose to only listen for the first time it is emitted. </p>
 
@@ -251,7 +259,7 @@ http.createServer(function (req, res) {
 
 <h3>A (Brief) List of Globals in Node.js</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>Node.js has a number of built-in global identifiers that every Node.js developer should have some familiarity with. Some of these are true globals, being visible everywhere; others exist at the module level, but are inherent to every module, thus being pseudo-globals.</p>
 
@@ -259,7 +267,7 @@ http.createServer(function (req, res) {
 
 <ul>
 <li><p><code>global</code>: The global namespace. Setting a property to this namespace makes it globally visible within the running process.</p></li>
-<li><p><code>process</code>: Node's built-in <code>process</code> module, which provides interaction with the current Node process.  For more information, see <a href="#the-process-module">the section on this module</a>.</p></li>
+<li><p><code>process</code>: Node's built-in <code>process</code> module, which provides interaction with the current Node.js process.  For more information, see <a href="#the-process-module">the section on this module</a>.</p></li>
 <li><p><code>console</code>: Node's built-in <code>console</code> module, which wraps various standard input and output functionality in a browser-like way. For more information, see <a href="#the-console-module">the section on this module</a>.</p></li>
 <li><p><code>setTimeout()</code>, <code>clearTimeout()</code>, <code>setInterval()</code>, <code>clearInterval()</code>: These built-in timer functions are globals. Fore more information, see <a href="#what-are-the-built-in-timer-functions">the section on using timer functions</a>.</p></li>
 </ul>
@@ -268,17 +276,17 @@ http.createServer(function (req, res) {
 
 <ul>
 <li><p><code>module</code>, <code>module.exports</code>, <code>exports</code>: These objects all pertain to Node's module system. For more information see <a href="#what-is-require">the section about requiring modules</a>. Tangential to this is <code>require()</code>, which is a built-in function, exposed per-module, that allows other valid modules to be included.</p></li>
-<li><p><code>__filename</code>: The <code>__filename</code> keyword contains the path of the currently executing file.  <strong>Note</strong>: this is not defined while running the <a href="#how-to-use-nodejs-repl">Node REPL</a>.</p></li>
-<li><p><code>__dirname</code>: Like <code>__filename</code>, the <code>__dirname</code> keyword contains the path to the root directory of the currently executing script. This is also not present in the Node REPL.</p></li>
+<li><p><code>__filename</code>: The <code>__filename</code> keyword contains the path of the currently executing file.  <strong>Note</strong>: this is not defined while running the <a href="#how-to-use-nodejs-repl">Node.js REPL</a>.</p></li>
+<li><p><code>__dirname</code>: Like <code>__filename</code>, the <code>__dirname</code> keyword contains the path to the root directory of the currently executing script. This is also not present in the Node.js REPL.</p></li>
 </ul>
 
 <p>Much of this functionality can be extremely useful for a Node.js developer's daily life&mdash;but at the very least, remember these as bad names to use for your own functions! </p>
 
 <p><a id="what-is-require"></a></p>
 
-<h3>Defining require()</h3>
+<h3>Understanding <code>require()</code></h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Node.js follows the <a href="http://wiki.commonjs.org/wiki/Modules/1.1">CommonJS module system</a>, and the built-in <code>require()</code> function is the easiest way to include modules that exist in separate files. The basic functionality of <code>require()</code> is that it reads a Javascript file, executes the file, and then proceeds to return the <code>exports</code> object. </p>
 
@@ -342,7 +350,7 @@ node&gt; require('./example.js')
 
 <h3>The Process Module</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>Each Node.js process has a set of built-in functionality, accessible through the global <code>process</code> module.  The <code>process</code> module doesn't need to be required: it is somewhat literally a wrapper around the currently executing process, and many of the methods it exposes are actually wrappers around calls into some of Node's core C libraries.</p>
 
@@ -352,7 +360,13 @@ node&gt; require('./example.js')
 
 <p>The <code>exit</code> event fires whenever the process is about to exit.</p>
 
-<p>process.on('exit', function () {<br />    fs.writeFileSync('/tmp/myfile', 'This MUST be saved on exit.', function (err) {<br />    if (err) throw err;<br />    console.log('It\'s saved!');<br />    });<br />  });</p>
+<pre><code>process.on('exit', function () {
+    fs.writeFileSync('/tmp/myfile', 'This MUST be saved on exit.', function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+    });
+});
+</code></pre>
 
 <p>Code like the above can occasionally be useful for saving some kind of final report before you exit.  Note the use of a synchronous file system call. This is to make sure the I/O finishes before the process actually exits.</p>
 
@@ -376,14 +390,14 @@ node&gt; require('./example.js')
 <li><code>stdin</code> is a readable stream (where one would read input from the user)</li>
 </ul>
 
-<p>The simplest one to describe is <code>process.stdout</code>.  Technically, most output in Node is accomplished by using <code>process.stdout.write()</code>.  The following is from <code>console.js</code> in Node core:</p>
+<p>The simplest one to describe is <code>process.stdout</code>.  Technically, most output in Node.js is accomplished by using <code>process.stdout.write()</code>.  The following is from <code>console.js</code>:</p>
 
 <pre><code>  exports.log = function() {
     process.stdout.write(format.apply(this, arguments) + '\n');
   };
 </code></pre>
 
-<p>Since most people are used to the <code>console.log</code> syntax from browser development, it was provided as a convenient wrapper for <code>process.stdout.write()</code>.</p>
+<p>Since most people are used to the <code>console.log()</code> syntax from browser development, it was provided as a convenient wrapper for <code>process.stdout.write()</code>.</p>
 
 <p>Next is <code>process.stderr</code>, which is very similar to <code>process.stdout</code> with one key exception: your process blocks until the write is completed. Node.js provides a number of alias functions for output, most of which either end up using <code>stdout</code> or <code>stderr</code> under the hood.  Here's a quick reference list:</p>
 
@@ -392,7 +406,7 @@ node&gt; require('./example.js')
 <li><p>STDERR, or blocking functions: <code>console.warn</code>, <code>console.error</code>, <code>util.debug</code></p></li>
 </ul>
 
-<p>Lastly, <code>process.stdin</code> is a readable stream for getting user input. For more information, see <a href="api.html#how-to-prompt-for-command-line-input">the section on prompting for input</a>.</p>
+<p>Lastly, <code>process.stdin</code> is a readable stream for getting user input. For more information, see <a href="#how-to-prompt-for-command-line-input">the section on prompting for input</a>.</p>
 
 <p>For a complete list of properties and methods available to <code>process</code>, see <a href="http://nodejs.org/docs/latest/api/process.html">the official Node.js documentation</a>.</p>
 
@@ -400,48 +414,57 @@ node&gt; require('./example.js')
 
 <p>The <code>process</code> module contains a variety of properties that allow you to access information about the running process.  Let's run through a few quick examples. First, type <code>node</code> in the command line. Then, type the following commands:</p>
 
-<pre><code>  &gt; process.pid
-  3290
-  &gt; process.version
-  'v0.6.1'
-  &gt; process.platform
-  'linux'
-  &gt; process.title
-  'node'
+<pre><code>&gt; process.pid
+3290
+&gt; process.version
+'v0.6.1'
+&gt; process.platform
+'linux'
+&gt; process.title
+'node'
 </code></pre>
 
 <p>You values may be different. Here's what these properties mean:</p>
 
 <ul>
-<li><code>process.version</code> refers to your Node version</li>
+<li><code>process.version</code> refers to your Node.js version</li>
 <li><code>process.pid</code> is the operating system process ID</li>
 <li><code>process.platform</code> is something general like 'linux' or 'darwin'</li>
 <li><code>process.title</code> is a little bit different. While set to <code>node</code> by default, it can be set to anything you want, and defines the name displayed when viewing a list of running processes.</li>
 </ul>
 
-<p>The <code>process</code> module also exposes <code>process.argv</code>, an array containing the command-line arguments to the current process, and <code>process.argc</code>, an integer representing the number of arguments passed in.  Here's more information on <a href="api.html#how-to-parse-command-line-arguments">how to parse command line arguments</a>.</p>
+<p>The <code>process</code> module also exposes <code>process.argv</code>, an array containing the command-line arguments to the current process, and <code>process.argc</code>, an integer representing the number of arguments passed in.  Here's more information on <a href="#how-to-parse-command-line-arguments">how to parse command line arguments</a>.</p>
 
 <h4>Additional Methods</h4>
 
 <p>There are also a variety of methods attached to the <code>process</code> object, many of which deal with quite advanced aspects of a program. Here's a look at a few of the more commonly useful ones.</p>
 
-<p><code>process.exit()</code> exits the process.  If you call an asynchronous function, and then call <code>process.exit()</code> immediately afterwards, you will be in a race condition--the asynchronous call may or may not complete before the process is exited.  <code>process.exit</code> accepts one optional argument, an integer exit code. <code>0</code>, by convention, is an exit with no errors.</p>
+<p><code>process.exit()</code> exits the process.  If you call an asynchronous function, and then call <code>process.exit()</code> immediately afterwards, you will be in a race condition&mdash;the asynchronous call may or may not complete before the process is exited.  <code>process.exit</code> accepts one optional argument, an integer exit code. <code>0</code>, by convention, is an exit with no errors.</p>
 
 <p><code>process.cwd</code> returns the current working directory of the process. This is often the directory from which the command to start the process was issued.</p>
 
 <p><code>process.chdir</code> is used to change the current working directory.  For example:</p>
 
-<blockquote>
-  <p>process.cwd()<br />  '/home/avian/dev'<br />process.chdir('/home/avian')<br />process.cwd()<br />  '/home/avian'</p>
-</blockquote>
+<pre><code>&gt; process.cwd()
+'/home/avian/dev'
+&gt; process.chdir('/home/avian')
+&gt; process.cwd()
+'/home/avian'
+</code></pre>
 
-<p>Finally, on a more advanced note, there's <code>process.nextTick()</code>. This method accepts one argument--a callback--and places it at the top of the next iteration of the event loop.  Some people do something like this:</p>
+<p>Finally, on a more advanced note, there's <code>process.nextTick()</code>. This method accepts one argument&mdash;a callback&mdash;and places it at the top of the next iteration of the event loop.  Some people do something like this:</p>
 
-<p>setTimeout(function () {<br />  // code here<br />  }, 0)</p>
+<pre><code>setTimeout(function () {
+  // code here
+}, 0)
+</code></pre>
 
 <p>This, however, is not ideal.  In Node.js, this should be used instead:</p>
 
-<p>process.nextTick(function () {<br />    console.log('Next trip around the event loop, wheeee!');<br />  });</p>
+<pre><code>process.nextTick(function () {
+    console.log('Next trip around the event loop, wheeee!');
+});
+</code></pre>
 
 <p>It is much more efficient, and much more accurate.</p>
 
@@ -449,7 +472,7 @@ node&gt; require('./example.js')
 
 <h3>The Console Module</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>Anyone familiar with browser-side development has probably used <code>console.log</code> for debugging purposes. Node.js has implemented a built-in <code>console</code> object to mimic much of this experience.  Since we're working server-side, however, it wraps content to <code>stdout</code>, <code>stdin</code>, and <code>stderr</code> instead of the browser's debugging console.</p>
 
@@ -468,19 +491,34 @@ console.log(__filename, process.title, process.argv);
 
 <p>For example:</p>
 
-<p>var name = 'Harry',<br />    number = 17,<br />    myObj = {<br />      propOne: 'stuff',<br />      propTwo: 'more stuff'<br />    };<br />  console.log('My name is %s, my number is %d, my object is %j', name, number, myObj);</p>
+<pre><code>var name = 'Harry',
+    number = 17,
+    myObj = {
+        propOne: 'stuff',
+        propTwo: 'more stuff'
+    };
+console.log('My name is %s, my number is %d, my object is %j', name, number, myObj);
+</code></pre>
 
 <p>A caveat with <code>console.log</code>, and all functions that depend on it, is that it buffers the output. If your process ends suddenly, whether it be from an exception or from <code>process.exit()</code>, it is entirely possible that the buffered output will never reach the screen. This can cause a great deal of frustration, so watch out for this unfortunate situation.</p>
 
-<p><code>console.error()</code> works the same as <code>console.log</code>, except that the output is sent to <code>stderr</code> instead of <code>stdout</code>.  This is an extremely important difference, as <code>stderr</code> is always written synchronously.  Any use of <code>console.error</code>, or any of the other functions in Node.js core that write to <code>stderr</code>, blocks your process until the output has all been written.  This is useful for error messages--you get them exactly when they occur--but can greatly slow down your process if used everywhere.</p>
+<p><code>console.error()</code> works the same as <code>console.log</code>, except that the output is sent to <code>stderr</code> instead of <code>stdout</code>.  This is an extremely important difference, as <code>stderr</code> is always written synchronously.  Any use of <code>console.error</code>, or any of the other functions in Node.js core that write to <code>stderr</code>, blocks your process until the output has all been written.  This is useful for error messages&mdash;you get them exactly when they occur&mdash;but can greatly slow down your process if used everywhere.</p>
 
-<p><code>console.dir()</code> is an alias for <code>util.inspect()</code>. It is used to enumerate object properties. You can read more about it <a href="api.html#how-to-use-util-inspect">here</a>.</p>
+<p><code>console.dir()</code> is an alias for <code>util.inspect()</code>. It is used to enumerate object properties. You can read more about it <a href="#how-to-use-util-inspect">here</a>.</p>
 
 <h4>Additional Methods</h4>
 
 <p>That covers the basic <code>console</code> module functionality, but there are a few other methods worth mentioning as well. First, the <code>console</code> module allows for the marking of time via <code>console.time()</code> and <code>console.timeEnd()</code>.  Here is an example:</p>
 
-<p>console.time('myTimer');<br />  var string = '';<br />  for (var i = 0; i &lt; 300; i++) {<br />  (function (i) {<br />    string += 'aaaa' + i.toString();<br />  })(i);<br />  }<br />  console.timeEnd('myTimer');</p>
+<pre><code>console.time('myTimer');
+var string = '';
+for (var i = 0; i &lt; 300; i++) {
+(function (i) {
+    string += 'aaaa' + i.toString();
+})(i);
+}
+console.timeEnd('myTimer');
+</code></pre>
 
 <p>This would determine the amount of time taken to perform the actions in between the <code>console.time</code> and <code>console.timeEnd</code> calls.</p>
 
@@ -492,7 +530,7 @@ console.log(__filename, process.title, process.argv);
 
 <h3>Debugging Node.js Applications</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Often times, not just in the Node.js community but in software at large, people debug simply with a liberal sprinkle of standard output statements. This allows you to track down where unexpected values are being generated. However, this method can be tedious, or worse, not robust enough to detect real problems.</p>
 
@@ -508,16 +546,18 @@ console.log(__filename, process.title, process.argv);
 <p>Here's a good example application to experiment with, copied from the <code>node-inspector</code> repo. It is a "hello world" server with a counter :</p>
 
 <pre><code>var http = require('http');
+var x = 0;
+
+http.createServer(function (req, res) {
+    x += 1;
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World ' + x);
+}).listen(8124);
+
+console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');
 </code></pre>
 
-<p>var x = 0;</p>
-
-<p>http.createServer(function (req, res) {<br />        x += 1;<br />        res.writeHead(200, {'Content-Type': 'text/plain'});<br />        res.end('Hello World ' + x);<br />  }).listen(8124);</p>
-
-<pre><code>console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');
-</code></pre>
-
-<p>First, start the node program with debugging enabled:</p>
+<p>First, start the Node.js program with debugging enabled:</p>
 
 <pre><code>node --debug app.js
 </code></pre>
@@ -526,9 +566,10 @@ console.log(__filename, process.title, process.argv);
 
 <p>Next, start up <code>node-inspector</code> in a separate command line window. By default, <code>node-inspector</code> uses port 8080, so you may want to pass it a custom port number with the <code>--web-port</code> option: If your program uses port 8080, then you may have to pass it a custom port.</p>
 
-<p>node-inspector --web-port=1123</p>
+<pre><code>node-inspector --web-port=1123
+</code></pre>
 
-<p>Finally, start a webkit browser (like Chrome or Safari), and go to <code><a href='http://127.0.0.1:1123/debug?port=5858'>http://127.0.0.1:1123/debug?port=5858</a></code>. Here, 5858 represents the port the debugger is listening on, and 1123 represents your <code>node-inspector</code> webport. You may have to modify these values to match your environment.</p>
+<p>Finally, start a Webkit browser (like Chrome or Safari), and go to <code><a href='http://127.0.0.1:1123/debug?port=5858'>http://127.0.0.1:1123/debug?port=5858</a></code>. Here, 5858 represents the port the debugger is listening on, and 1123 represents your <code>node-inspector</code> webport. You may have to modify these values to match your environment.</p>
 
 <p>At this point, you will be met with a fairly empty screen with the Scripts, Profiles, and Cnsole tabs.</p>
 
@@ -542,11 +583,13 @@ console.log(__filename, process.title, process.argv);
 
 <p>To use the profile tab, you need a library called <code>v8-profiler</code>, which you can install with npm:</p>
 
-<p>npm install v8-profiler</p>
+<pre><code>npm install v8-profiler
+</code></pre>
 
 <p>Next, you have to require it inside the file you are debugging:</p>
 
-<p>var profiler = require('v8-profiler');</p>
+<pre><code>var profiler = require('v8-profiler');
+</code></pre>
 
 <p>Now you can finally enable the <code>Profiles</code> tab. Unfortunately, all you can do from this screen is take a heap snapshot. From the code, you need to select where you want to start to CPU profiler. You can also select more precise location for heap snapshots.</p>
 
@@ -556,15 +599,28 @@ console.log(__filename, process.title, process.argv);
 
 <p>To take a CPU profile, just surround the code that you are profiling with the two lines shown below.  Optionally, a name can be included to indentify the cpu profile.</p>
 
-<p>profiler.startProfiling(name);<br />  //..lots and lots of methods and code called..//<br />  var cpuProfile = profiler.stopProfiling([name]);</p>
+<pre><code>profiler.startProfiling(name);
+//..lots and lots of methods and code called..//
+var cpuProfile = profiler.stopProfiling([name]);
+</code></pre>
 
 <p>As an example how to use these, here is the code from above, modified to take a CPU profile on every request, and take a heap snapshot after the server is created.</p>
 
-<p>var http = require('http');<br />  var profiler = require('v8-profiler');</p>
+<pre><code>var http = require('http');
+var profiler = require('v8-profiler');
 
-<p>var x = 0;<br />  http.createServer(function (req, res) {<br />    x += 1;<br />    profiler.startProfiling('request '+x);<br />    res.writeHead(200, {'Content-Type': 'text/plain'});<br />    res.end('Hello World ' + x);<br />    profiler.stopProfiling('request '+x);<br />  }).listen(8124);</p>
+var x = 0;
+http.createServer(function (req, res) {
+    x += 1;
+    profiler.startProfiling('request '+x);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World ' + x);
+    profiler.stopProfiling('request '+x);
+}).listen(8124);
 
-<p>profiler.takeSnapshot('Post-Server Snapshot');<br />  console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');</p>
+profiler.takeSnapshot('Post-Server Snapshot');
+console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');
+</code></pre>
 
 <p>Despite these APIs returning objects, it is much easier to sort through the data through the <code>node-inspector</code> interface. Hopefully, with these tools, you can make more informed decisions about memory leaks and bottlenecks.</p>
 
@@ -574,13 +630,13 @@ console.log(__filename, process.title, process.argv);
 
 <p>The other exception is that when you use <code>console.log</code>, it refers to Node's <code>console.log</code>, and not webkit's <code>console.log</code>. This means the output goes to stdout and not to your console tab. </p>
 
-<p>Other than these, it is a very straightforward node REPL.</p>
+<p>Other than these, it is a very straightforward Node.js REPL.</p>
 
 <p><a id="how-to-use-util-inspect"></a></p>
 
 <h3>Debugging with Util.Inspect()</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>Node.js provides a utility function, for debugging purposes, that returns a string representation of an object.  It's called <code>util.inspect()</code>, and it can be very useful when working with properties of large, complex objects. </p>
 
@@ -600,7 +656,7 @@ console.log(__filename, process.title, process.argv);
 
 <p>This is a listing of all the enumerable properties of the <code>console</code> object.  It is also worth noting that <code>console.dir()</code> is a wrapper around <code>util.inspect()</code>, and uses its default arguments.</p>
 
-<p>In the command prompt, <code>util.inspect()</code> immediately returns its output--this is not usually the case.  In the context of normal Node.js code in a file, something must be done with the output. The simplest thing to do is wrap it within a <code>console.log()</code> call:</p>
+<p>In the command prompt, <code>util.inspect()</code> immediately returns its output&mdash;this is not usually the case.  In the context of normal Node.js code in a file, something must be done with the output. The simplest thing to do is wrap it within a <code>console.log()</code> call:</p>
 
 <pre><code> console.log(util.inspect(myObj));
 </code></pre>
@@ -612,13 +668,13 @@ console.log(__filename, process.title, process.argv);
 
 <p>For example, <code>util.inspect(myObj, true, 7, true)</code> inspects <code>myObj</code>, showing all the hidden and non-hidden properties up to a depth of <code>7</code> and colorize the output. Let's go over the arguments individually.</p>
 
-<p>The argument <code>showHidden</code> is a boolean that determines whether or not the "non-enumerable" properties of an object are displayed--it defaults to <code>false</code>, which tends to result in vastly more readable output. This isn't something a beginner needs to worry about most of the time, but it's worth demonstrating briefly. Try the following in the command prompt:</p>
+<p>The argument <code>showHidden</code> is a boolean that determines whether or not the "non-enumerable" properties of an object are displayed&mdash;it defaults to <code>false</code>, which tends to result in vastly more readable output. This isn't something a beginner needs to worry about most of the time, but it's worth demonstrating briefly. Try the following in the command prompt:</p>
 
 <pre><code> var util = require('util');
  util.inspect(console, true);
 </code></pre>
 
-<p>The <code>depth</code> argument is the number of levels deep into a nested object to recurse--it defaults to 2.  Setting it to <code>null</code> causes it to recurse "all the way," showing every level.  Compare the (size of) the outputs of these two <code>util.inspect</code> statements in the command prompt:</p>
+<p>The <code>depth</code> argument is the number of levels deep into a nested object to recurse&mdash;it defaults to 2.  Setting it to <code>null</code> causes it to recurse "all the way," showing every level.  Compare the (size of) the outputs of these two <code>util.inspect</code> statements in the command prompt:</p>
 
 <pre><code> var http = require('http');
  util.inspect(http, true, 1);
@@ -639,15 +695,15 @@ console.log(__filename, process.title, process.argv);
 
 <h3>Understanding the NPM</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>npm, short for Node Package Manager, is two things: first and foremost, it is an online repository for the publishing of open-source Node.js projects; second, it is a command-line utility for interacting with said repository that aids in package installation, version management, and dependency management.  A plethora of Node.js libraries and applications are published on npm, and many more are added every day. These applications can be searched for on <a href="http://search.npmjs.org">the npm registry</a>. Once you have a package you want to install, it can be installed with a single line command.</p>
 
-<p>Let's say you're hard at work one day, developing the Next Great Application.  You come across a problem, and you decide that it's time to use that cool library you keep hearing about--it happens to be <a href="http://github.com/caolan/async">async</a> (as an example). Thankfully, npm is very simple to use: you only have to run <code>npm install async</code> on the command line, and the specified module will be installed in the current directory under <code>./node_modules/</code>.  Once installed to your <code>node_modules</code> folder, you'll be able to use <code>require()</code> on them, just as if they were built-ins to Node.js.</p>
+<p>Let's say you're hard at work one day, developing the Next Great Application.  You come across a problem, and you decide that it's time to use that cool library you keep hearing about&mdash;it happens to be <a href="http://github.com/caolan/async">async</a> (as an example). Thankfully, npm is very simple to use: you only have to run <code>npm install async</code> on the command line, and the specified module will be installed in the current directory under <code>./node_modules/</code>.  Once installed to your <code>node_modules</code> folder, you'll be able to use <code>require()</code> on them, just as if they were built-ins to Node.js.</p>
 
 <p>There's also the concept of a "global" install. Let's say we want to globall install the <a href="https://github.com/jashkenas/coffee-script">Coffescript Node.js package</a>. The npm command for a global install is simple: <code>npm install coffee-script -g</code>. This will install the program and put a symlink to it in <code>/usr/local/bin/</code>. You can then run the program from the console just like any other CLI tool.  In this case, running <code>coffee</code> will now allow you to use the coffee-script command line interface.</p>
 
-<p>Another important use for npm is dependency management.  When you have a node project with a <a href="api.html#what-is-the-file-package-json">package.json</a> file, you can run <code>npm install</code> from the project root, and npm will install all the dependencies listed in the package.json. This makes installing a Node.js project from a git repo much easier! For example, <code>vows</code>, one of Node's testing frameworks, can be installed from git, and its single dependency, <code>eyes</code>, can be automatically handled:</p>
+<p>Another important use for npm is dependency management.  When you have a Node.js project with a <a href="#what-is-the-file-package-json">package.json</a> file, you can run <code>npm install</code> from the project root, and npm will install all the dependencies listed in the package.json. This makes installing a Node.js project from a git repo much easier! For example, <code>vows</code>, one of Node's testing frameworks, can be installed from git, and its single dependency, <code>eyes</code>, can be automatically handled:</p>
 
 <pre><code>git clone <a href='https://github.com/cloudhead/vows.git'>https://github.com/cloudhead/vows.git</a>
 cd vows
@@ -660,7 +716,7 @@ npm install
 
 <h3>Accessing Module Package Info</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>There are many situations in the world of software development where using the wrong version of a dependency or submodule can cause all sorts of pain and anguish. Node.js has a module available called <code>pkginfo</code> that can help keep these sorts of troubles at bay.</p>
 
@@ -691,19 +747,19 @@ npm install
 
 <h3>Explaining "Node Core" versus "Userland"</h3>
 
-<p><span class="cite">By Isaac Z. Schlueter (Aug 26 2011)</span></p>
+<p><span class="cite">by Isaac Z. Schlueter (Aug 26 2011)</span></p>
 
-<p>Occasionally, in the discussions in the Node.js mailing lists and IRC channels, you may hear things referred to as "node core" and "userland".</p>
+<p>Occasionally, in the discussions in the Node.js mailing lists and IRC channels, you may hear things referred to as "node-core" and "userland".</p>
 
 <p>Of course, traditionally, "userland" or "userspace" refer to everything outside the operating system kernel. In that sense, Node.js itself is a "userland" program.</p>
 
 <p>However, in the context of Node.js, "core" refers to the modules and bindings that are compiled into Node.js.  In general, they provide a hook into very well-understood low-level functionality which almost all networking programs require: TCP, HTTP, DNS, the file system, child processes, and a few other things. If something is fancy enough to argue about, there's a good chance it won't be part of node-core. HTTP is about as big as it gets, and if it wasn't so popular, it'd certainly not be a part of Node.js.</p>
 
-<p>There are also some things in node core that are simply too painful to do within a JavaScript environment, or which have been created to implement some browser object model (BOM) constructs which are not part of the Javascript language, but may as well be (e.g., <code>setTimeout()</code>, <code>setInterval()</code>, and <code>console</code>).</p>
+<p>There are also some things in node-core that are simply too painful to do within a JavaScript environment, or which have been created to implement some browser object model (BOM) constructs which are not part of the Javascript language, but may as well be (e.g., <code>setTimeout()</code>, <code>setInterval()</code>, and <code>console</code>).</p>
 
 <p>Everything else is "userland".  This includes: npm, express, request, coffee-script, mysql clients, redis clients, and so on.  You can often install these programs using <a href="http://npmjs.org/">npm</a>.</p>
 
-<p>The question of what is properly "node-core" and what belongs in "userland" is a constant battleground.  In general, node is based on the philosophy that it should <strong>not</strong> come with "batteries included."  It is easier to move things out of node-core than it is to move them in, which means that core modules must continually "pay rent" in terms of providing necessary functionality that nearly everyone finds valuable.</p>
+<p>The question of what is properly "node-core" and what belongs in "userland" is a constant battleground.  In general, Node.js is based on the philosophy that it should <strong>not</strong> come with "batteries included."  It is easier to move things out of node-core than it is to move them in, which means that core modules must continually "pay rent" in terms of providing necessary functionality that nearly everyone finds valuable.</p>
 
 <h4>This is a Good Thing.</h4>
 
@@ -711,23 +767,25 @@ npm install
 
 <h4>Userland Isn't Less</h4>
 
-<p>If anything, it's more. Building functionality in userland rather than in the node core means:</p>
+<p>If anything, it's more. Building functionality in userland rather than in the node-core means:</p>
 
 <ul>
 <li>You have a lot more freedom to iterate on the idea.</li>
 <li>Everyone who wants your module can install it easily enough (if you publish it with npm).</li>
-<li>You have freedom to break node conventions if that makes sense for your use case.</li>
+<li>You have freedom to break Node.js conventions if that makes sense for your use case.</li>
 </ul>
 
 <p>If you believe that something <strong>really</strong> just <em>needs</em> to be part of node's core library set, you should <em>still</em> build it as a module!  It's much more likely to be pulled into node-core if people have a chance to see your great ideas in action, and if its core principles are iterated and polished and tested with real-world use.</p>
 
-<p>Changing functionality that is included in node core is very costly.  We do it sometimes, but it's not easy, and carries a high risk of regressions.  Better to experiment outside, and then pull it into node core once it's stable.  Once it's usable as a userland package, you may even find that it's less essential to node core than you first thought.</p>
+<p>Changing functionality that is included in node-core is very costly.  We do it sometimes, but it's not easy, and carries a high risk of regressions.  Better to experiment outside, and then pull it into node-core once </p><p>it's stable.  Once it's available as a userland package, you may even find that it's less essential to node-core than you first thought.</p>
 
 <p><a id="what-is-the-file-package-json"></a></p>
 
-<h3>Understa</h3><p>nding the File Package JSON?<br /><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<h3>Understanding the File Package JSON</h3>
 
-<p>All NPM packages contain a file, usually in the project root, called <code>package.json</code>. This file holds various metadata relevant to the project.  It's used to give information to <code>npm</code> that allows it to identify the project, as well as handle the project's dependencies. It can also contain other metadata such as a project description, the version of the project in a particular distribution, license information, even configuration data--all of which can be vital to both <code>npm</code> and to the end users of the package. The <code>package.json</code> file is normally located at the root directory of a Node.js project.</p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
+
+<p>All NPM packages contain a file, usually in the project root, called <code>package.json</code>. This file holds various metadata relevant to the project.  It's used to give information to <code>npm</code> that allows it to identify the project, as well as handle the project's dependencies. It can also contain other metadata such as a project description, the version of the project in a particular distribution, license information, even configuration data&mdash;all of which can be vital to both <code>npm</code> and to the end users of the package. The <code>package.json</code> file is normally located at the root directory of a Node.js project.</p>
 
 <p>Node.js itself is only aware of two fields in the <code>package.json</code>:</p>
 
@@ -771,7 +829,7 @@ npm install
 
 <p><a id="how-to-create-default-parameters-for-functions"></a></p>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <h3>Creating Default Parameters for Funtions</h3>
 
@@ -808,7 +866,7 @@ betterExample("");
 
 <p>See the difference? </p>
 
-<p>If the optional value is in the middle of the argument list, it can cause some undesired effects, since all the parameters are shifted over. The optional parameter is not the <code>undefined</code> value in this case--the last parameter is the <code>undefined</code> one. You have to check if the last parameter is <code>undefined</code> and then manually fix all the other parameters before continuing in the code. This example shows you how to do that:</p>
+<p>If the optional value is in the middle of the argument list, it can cause some undesired effects, since all the parameters are shifted over. The optional parameter is not the <code>undefined</code> value in this case&mdash;the last parameter is the <code>undefined</code> one. You have to check if the last parameter is <code>undefined</code> and then manually fix all the other parameters before continuing in the code. This example shows you how to do that:</p>
 
 <pre><code>example = function (param1, optParam, callback) {
 if (typeof callback === 'undefined') {
@@ -843,7 +901,7 @@ example("The first parameter", "and second parameter", "and third parameter", "e
 
 <h3>Using Timer Functions Correctly</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>There are two built-in timer functions: <code>setTimeout()</code> and <code>setInterval()</code>. They can be used to call a function at a later time. For example:</p>
 
@@ -866,7 +924,7 @@ setInterval: It's been another second!
 <pre><code>setInterval(ping, 1000);
 </code></pre>
 
-<p>This can cause problems, however, if your server is slow and it takes, say, three seconds to respond to the first request. In the time it takes to get back the response, you would have sent off three more requests--not exactly desirable!  This isn't a problem when serving small static files, but if you're doing an expensive operation, like a database query or a complicated computation, this can have some undiserable results. </p>
+<p>This can cause problems, however, if your server is slow and it takes, say, three seconds to respond to the first request. In the time it takes to get back the response, you would have sent off three more requests&mdash;not exactly desirable!  This isn't a problem when serving small static files, but if you're doing an expensive operation, like a database query or a complicated computation, this can have some undiserable results. </p>
 
 <p>A more common solution looks like this:</p>
 
@@ -915,42 +973,36 @@ This only has one
 
 <h3>The Arguments Object</h3>
 
-<p><span class="cite">By Marco Rogers (Aug 26 2011)</span></p>
+<p><span class="cite">by Marco Rogers (Aug 26 2011)</span></p>
 
-<p>The <code>arguments</code> object is a special construct available inside all<br />function calls. It represents the list of arguments that were passed<br />in when invoking the function. Since Javascript allows functions to be<br />called with any number of arguments, we need a way to dynamically discover and<br />access them.</p>
+<p>The <code>arguments</code> object is a special construct available inside all function calls. It represents the list of arguments that were passed in when invoking the function. Since Javascript allows functions to be called with any number of arguments, we need a way to dynamically discover and access them.</p>
 
-<p>The <code>arguments</code> object is an array-like object. It has a <code>length</code><br />property that corresponds to the number of arguments passed into the<br />function. You can access these values by indexing into the array,<br />i.e. <code>arguments[0]</code> is the first argument. Here's an example that illustrates the<br />properties of <code>arguments</code>.</p>
+<p>The <code>arguments</code> object is an array-like object. It has a <code>length</code> property that corresponds to the number of arguments passed into the function. You can access these values by indexing into the array, <em>i.e.</em> <code>arguments[0]</code> is the first argument. Here's an example that illustrates the properties of <code>arguments</code>:</p>
 
 <pre><code>var myfunc = function(one) 
 {
-if (arguments[0] === one)
-{
-  console.log("First argument is 1");   
-}
-if (arguments[1] === 2)
-{
-  console.log("Second argument is 2");   
-}
-if (arguments.length === 3)
-{
-  console.log("Third argument is 3");
-}
+    if (arguments[0] === one)
+        console.log("First argument is 1");   
+    if (arguments[1] === 2)
+        console.log("Second argument is 2");   
+    if (arguments.length === 3)
+        console.log("Third argument is 3");
 }
 
 myfunc(1, 2, 3);
 </code></pre>
 
-<p>This construct is very useful and gives Javascript functions a lot of<br />flexibility. But there is an important caveat. The <code>arguments</code> object<br />behaves like an array, but it is <em>not</em> an actual array. It doesn't have the<br /><code>Array</code> object in its prototype chain, and it doesn't respond to any other array<br />methods, such as <code>arguments.sort()</code>. This raises a <code>TypeError</code>. Instead, you need to<br />copy the values into a true array before performin such operations. This is pretty easy to do with a <code>for</code> loop:</p>
+<p>This construct is very useful and gives Javascript functions a lot of flexibility. But there's an important caveat: although the <code>arguments</code> object behaves like an array, but it is <em>not</em> an actual array. It doesn't have the <code>Array</code> object in its prototype chain, and it doesn't respond to any other array methods, such as <code>arguments.sort()</code>. This raises a <code>TypeError</code>. Instead, you need to copy the values into a true array before performin such operations. This is pretty easy to do with a <code>for</code> loop:</p>
 
 <pre><code>var args = [];
 for(var i = 0; i &lt; arguments.length; i++) {
-args.push(arguments[i]);
+    args.push(arguments[i]);
 }
 </code></pre>
 
-<p>In certain cases you can still treat <code>arguments</code> as an array. You can<br />use <code>arguments</code> in dynamic function invocations using apply. And most<br />native Array methods will also accept <code>arguments</code> when dynamically<br />invoked using call or apply. </p>
+<p>In certain cases you can still treat <code>arguments</code> as an array. You can use <code>arguments</code> in dynamic function invocations using apply. And most native Array methods will also accept <code>arguments</code> when dynamically invoked using call or apply. </p>
 
-<p>This technique also suggests another way<br />to convert <code>arguments</code> into a true array using the <code>Array.slice()</code> method:</p>
+<p>This technique also suggests another way to convert <code>arguments</code> into a true array using the <code>Array.slice()</code> method:</p>
 
 <pre><code>// concat arguments onto the list
 Array.prototype.concat.apply([1,2,3], arguments).
@@ -968,9 +1020,9 @@ args = Array.prototype.slice.call(arguments, 1);
 
 <h3>About JSON</h3>
 
-<p><span class="cite">By Marco Rogers (Aug 26 2011)</span></p>
+<p><span class="cite">by Marco Rogers (Aug 26 2011)</span></p>
 
-<p>Javascript Object Notation, or JSON, is a lightweight data format that<br />has become the de-facto standard for the web, toppling the long and unweildy curse of XML. JSON can be represented<br />as either a list of values, like an Array, or as a hash of properties and<br />values, like an Object:</p>
+<p>Javascript Object Notation, or JSON, is a lightweight data format that has become the de-facto standard for the web, toppling the long and unweildy curse of XML. JSON can be represented as either a list of values, like an Array, or as a hash of properties and values, like an Object:</p>
 
 <pre><code>// a JSON array
 ["one", "two", "three"]
@@ -983,14 +1035,14 @@ args = Array.prototype.slice.call(arguments, 1);
 
 <h4>Encoding and Decoding JSON</h4>
 
-<p>Javascript provides two methods for encoding data structures to JSON and<br />encoding JSON back to javascript objects and arrays. They are both<br />available on the <code>JSON</code> object that is available in the global scope.</p>
+<p>Javascript provides two methods for encoding data structures to JSON and encoding JSON back to javascript objects and arrays. They are both available on the <code>JSON</code> object that is available in the global scope.</p>
 
-<p><code>JSON.stringify()</code> takes a Javascript object or array and returns a<br />serialized string in the JSON format. For example:</p>
+<p><code>JSON.stringify()</code> takes a Javascript object or array and returns a serialized string in the JSON format. For example:</p>
 
 <pre><code>var data = {
-  name: "John Doe"
-  , age: 32
-  , title: "VP of JavaScript"
+  name: "John Doe",
+  age: 32,
+  title: "VP of JavaScript"
 }
 
 var jsonStr = JSON.stringify(data);
@@ -1001,7 +1053,7 @@ console.log(jsonStr);
 
 <p>The full method declaration of <code>JSON.stringify()</code> is actually <code>JSON.stringify(obj [, replacer [, space]])</code>. You can pass in an optional function to replace elements in the JSON object, or define how much whitespace to present before an element. For example:</p>
 
-<pre><code>onsole.log(JSON.stringify([1, 2, 3])); // returns [1, 2, 3]
+<pre><code>console.log(JSON.stringify([1, 2, 3])); // returns [1, 2, 3]
 
 console.log(JSON.stringify([1, 2, 3], function replacer(key, value) {
   if (!Array.isArray(value)) {
@@ -1024,7 +1076,7 @@ console.log(JSON.stringify({ a: 1, b: 2}, null, 4));
 console.log(JSON.stringify({ a: 1, b: 2}, null, '\t'));
 </code></pre>
 
-<p><code>JSON.parse()</code> does the reverse, taking a JSON string and decoding it to a Javascript data<br />structure:</p>
+<p><code>JSON.parse()</code> does the reverse, taking a JSON string and decoding it to a Javascript data structure:</p>
 
 <pre><code>var jsonStr = '{"name":"John Doe","age":32,"title":"VP of JavaScript"}';
 
@@ -1036,7 +1088,7 @@ console.log(data.title);
 
 <h4>Defining Valid JSON</h4>
 
-<p>There are a few rules to remember when dealing with data in the JSON<br />format:</p>
+<p>There are a few rules to remember when dealing with data in the JSON format:</p>
 
 <ul>
 <li>Empty objects and arrays are okay</li>
@@ -1088,13 +1140,13 @@ null
 }
 </code></pre>
 
-<p>Calling <code>JSON.parse</code> with an invalid JSON string will result in a<br /><code>SyntaxError</code> being thrown. If you are not sure of the validity of your<br />JSON data, you can anticipate errors by wrapping the call in a<br />try/catch block.</p>
+<p>Calling <code>JSON.parse</code> with an invalid JSON string will result in a <code>SyntaxError</code> being thrown. If you are not sure of the validity of your JSON data, you can anticipate errors by wrapping the call in a <code>try/catch</code> block.</p>
 
-<p>Notice that the only complex values allowed in JSON are objects and<br />arrays. Functions, dates and other types are excluded. This may not<br />seem to make sense at first. But remember that JSON is a data format,<br />not a format for transfering complex javascript objects along with<br />their functionality.</p>
+<p>Notice that the only complex values allowed in JSON are objects and arrays. Functions, dates and other types are excluded. This may not seem to make sense at first. But remember that JSON is a data format, not a format for transfering complex javascript objects along with their functionality.</p>
 
 <h4>JSON in other languages</h4>
 
-<p>Although JSON was inspired by the simplicity of Javascript data<br />structures, it's use is not limited to the Javascript language. Many<br />other languages have methods of transfering native hashes and lists<br />into stringified JSON objects. Here's a quick example in Ruby:</p>
+<p>Although JSON was inspired by the simplicity of Javascript data structures, it's use is not limited to the Javascript language. Many other languages have methods of transfering native hashes and lists into stringified JSON objects. Here's a quick example in Ruby:</p>
 
 <pre><code>require 'json'
 
@@ -1108,9 +1160,9 @@ puts data.to_json
 
 <h3>Defining "Truthy" and "Falsy" values</h3>
 
-<p><span class="cite">By Marco Rogers (Aug 26 2011)</span></p>
+<p><span class="cite">by Marco Rogers (Aug 26 2011)</span></p>
 
-<p>Javascript is weakly typed language. That means different types can be<br />used in operations and the language will try to convert the types<br />until the operation makes sense. For example, look at the following code:</p>
+<p>Javascript is weakly typed language. That means different types can be used in operations and the language will try to convert the types until the operation makes sense. For example, look at the following code:</p>
 
 <pre><code>console.log("1" &gt; 0); // true, "1" converted to number
 console.log(1 + "1"); // 11, 1 converted to string
@@ -1118,7 +1170,7 @@ console.log(1 + "1"); // 11, 1 converted to string
 
 <p>In the first example, the <code>&gt;</code> operator expected two binary values, so Javascript converts the string numeral <code>"1"</code> into a <code>Number</code>. Similarly, in the second example, the numeral 1 is converted into a string, so that the concatenation with the <code>+</code> operator makes sense.</p>
 
-<p>Type conversion also applys when values are used in unary boolean<br />operations, most notably <code>if</code> statements. If a value converts to the<br />boolean <code>true</code>, then it is said to be "truthy." If it converts to <code>false</code>,<br />it is "falsy." For example:</p>
+<p>Type conversion also applys when values are used in unary boolean operations, most notably <code>if</code> statements. If a value converts to the boolean <code>true</code>, then it is said to be "truthy." If it converts to <code>false</code>, it is "falsy." For example:</p>
 
 <pre><code>var myval = "value";
 if(myval) 
@@ -1133,7 +1185,7 @@ if(!myval)
 }
 </code></pre>
 
-<p>Since most values in Javascript are truthy, like objects, arrays, most<br />numbers and strings, it's easier to just list all of the falsy<br />values. These are:</p>
+<p>Since most values in Javascript are truthy, like objects, arrays, most numbers and strings, it's easier to just list all of the falsy values. These are:</p>
 
 <pre><code>false // obviously
 0     // The only falsy number
@@ -1143,9 +1195,9 @@ undefined
 NaN
 </code></pre>
 
-<p>Note that all objects and arrays are truthy, even empty ones.</p>
+<p><strong>Note</strong>: all objects and arrays are truthy, even empty ones.</p>
 
-<p>Truthiness and falsiness also come into play with logical<br />operators. When using the logical AND/OR operators, the values are converted<br />based on truthiness or falsiness, and normal short circuit rules applu. The logical expression resolves to the last truthy value in the sequence. Here's an extended example demonstrating this:</p>
+<p>Truthiness and falsiness also come into play with logical operators. When using the logical AND/OR operators, the values are converted based on truthiness or falsiness, and normal short circuit rules applu. The logical expression resolves to the last truthy value in the sequence. Here's an extended example demonstrating this:</p>
 
 <pre><code>var first = "truthy"
   , second = "also truthy";
@@ -1173,7 +1225,7 @@ myvalue = falsy ? true : false;
 
 <h3>Using ECMA5 in Node.js</h3>
 
-<p><span class="cite">By Community (Aug 26 2011)</span></p>
+<p><span class="cite">by Community (Aug 26 2011)</span></p>
 
 <p>When developing for a browser, there are many built-in Javascript functions that we can't use because certain browsers don't implement them.  As a result, most developers never use them.  In Node.js, however, we can assume that everyone has the same Javascript implementation (since it's always running on <a href="http://code.google.com/p/v8/">the V8 engine</a>). As such, we can use these wonderful functions and not implement them over and over in our own libraries.</p>
 
@@ -1213,37 +1265,59 @@ console.log("Hello, " + speak.name);
 <ul>
 <li><code>indexOf(value)</code>: Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found.</li>
 <li><code>lastIndexOf(value)</code>: Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.</li>
-<li><p><code>filter(callback)</code>: Creates a new array with all of the elements of this array for which the provided filtering function returns <code>true</code>.</p>
-
-<p>For example:</p>
-
-<p>var myArray = ([1, 2, 3, 4]).filter(function(x) {<br />                    return x > 2;<br />                });<br />// myArray is now [3, 4]</p></li>
-<li><p><code>forEach(callback)</code>: Calls a function for each element in the array.</p></li>
-<li><p><code>every(callback)</code>: Returns <code>true</code> if every element in this array satisfies the provided testing function.</p>
-
-<p>For example:</p>
-
-<p>([-1, 0, 1, 2, 3]).every(function(x) {<br />  return x > 0;<br />});<br />// false, since -1 and 0 are not greater than 0.</p></li>
-<li><p><code>some(callback)</code>: Returns <code>true</code> if at least one element in this array satisfies the provided testing function.</p></li>
-<li><p><code>map(callback)</code>: Creates a new array with the results of calling a provided function on every element in this array.</p>
-
-<p>For example:</p>
-
-<p>var myArray = ([1, 2, 3]).map(function(x) {<br />    return x * 2;<br />});<br />// myArray is now [2, 4, 6]</p></li>
-<li><p><code>reduce(callback[, initialValue])</code>: Apply a function simultaneously against two values of the array (from left-to-right), reducing it to a single value.</p>
-
-<p>For example:</p>
-
-<p>var myString = (['a', 'b', 'c', 'd']).reduce(function(x, y) {<br />  return x + y;<br />});<br />// myString is now 'abcd'</p></li>
+<li><code>filter(callback)</code>: Creates a new array with all of the elements of this array for which the provided filtering function returns <code>true</code>. For example:</li>
 </ul>
+
+<pre>
+    var myArray = ([1, 2, 3, 4]).filter(function(x) {
+                        return x > 2;
+                    });
+    // myArray is now [3, 4]
+</pre>
+
+<ul>
+<li><code>forEach(callback)</code>: Calls a function for each element in the array.</li>
+<li><code>every(callback)</code>: Returns <code>true</code> if every element in this array satisfies the provided testing function. For example:</li>
+</ul>
+
+<pre>
+    ([-1, 0, 1, 2, 3]).every(function(x) {
+      return x > 0;
+    });
+    // false, since -1 and 0 are not greater than 0.
+</pre>
+
+<ul>
+<li><p><code>some(callback)</code>: Returns <code>true</code> if at least one element in this array satisfies the provided testing function.</p></li>
+<li><p><code>map(callback)</code>: Creates a new array with the results of calling a provided function on every element in this array. For example:</p></li>
+</ul>
+
+<pre>
+    var myArray = ([1, 2, 3]).map(function(x) {
+        return x * 2;
+    });
+    // myArray is now [2, 4, 6]
+</pre>
+
+<ul>
+<li><code>reduce(callback[, initialValue])</code>: Apply a function simultaneously against two values of the array (from left-to-right), reducing it to a single value. For example:</li>
+</ul>
+
+<pre>
+    var myString = (['a', 'b', 'c', 'd']).reduce(function(x, y) {
+      return x + y;
+    });
+    // myString is now 'abcd'
+</pre>
 
 <p>If the <code>initialValue</code> parameter is provided, it is the very first parameter called by the function. For example:</p>
 
-<pre><code>var myString = (['a', 'b', 'c', 'd']).reduce(function(x, y) {
-  return x + y;
-}, '*');
-// myString is now '*abcd'
-</code></pre>
+<pre>
+    var myString = (['a', 'b', 'c', 'd']).reduce(function(x, y) {
+      return x + y;
+    }, '*');
+    // myString is now '*abcd'
+</pre>
 
 <ul>
 <li><code>reduceRight(callback[, initialValue])</code>: Apply a function simultaneously against two values of the array (from right-to-left), reducing it to a single value.</li>
@@ -1264,57 +1338,126 @@ console.log("Hello, " + speak.name);
 <h4>Object</h4>
 
 <ul>
-<li><p><code>Object.create(proto, props)</code>: Creates a new object whose prototype is the passed in parent object and whose properties are those specified by <code>props</code>.</p>
-
-<p>For example:<br />var obj = Object.create(x: 10, y: 20);<br />// obj.x = 10; obj.y = 20</p></li>
-<li><p><code>Object.keys(obj)</code>: Returns a list of the ownProperties of an object that are enumerable.</p>
-
-<p>For example: </p>
-
-<p>function o() {<br />  this.a = 1;<br />}<br />console.log(Object.keys(new o())); // [ 'a' ]<br />function p() {<br />  this.b = 2;<br />}</p>
-
-<p>var obj = Object.create({a: 10, b: 20}, {<br />  x: {<br />    value: 30,<br />    enumerable: true<br />  },<br />  y: {<br />    value: 40,<br />    enumerable: false<br />  }<br />});<br />console.log(Object.keys(obj)); // [ 'x' ]</p></li>
-<li><p><code>Object.getOwnPropertyNames(obj)</code>: Returns a list of the ownProperties of an object including ones that are not enumerable.</p></li>
-<li><p><code>Object.getPrototypeOf(obj)</code>: Returns the prototype of an object.</p>
-
-<p>For example: </p>
-
-<p>var obj = Object.create({a: 10, b: 20}, {<br />  x: {<br />    value: 30,<br />    enumerable: true<br />  },<br />  y: {<br />    value: 40,<br />    enumerable: false<br />  }<br />});<br />console.log(Object.getPrototypeOf(obj)); // { a: 10, b: 20 }</p>
-
-<ul><li><code>Object.getOwnPropertyDescriptor(obj, property)</code>: Returns an object with keys describing the description of a property (value, writable, enumerable, configurable).</li></ul></li>
+<li><code>Object.create(proto, props)</code>: Creates a new object whose prototype is the passed in parent object and whose properties are those specified by <code>props</code>. For example:</li>
 </ul>
 
-<p>For example:</p>
-
-<pre><code>var obj = Object.create({a: 10, b: 20}, {
-  x: {
-    value: 30,
-    enumerable: true
-  },
-  y: {
-    value: 40,
-    enumerable: false
-  }
-});
-console.log(Object.getOwnPropertyDescriptor(obj, 'x'));
-// { value: 30,
-//   writable: false,
-//   enumerable: true,
-//   configurable: false }
-</code></pre>
+<pre>
+    var obj = Object.create(x: 10, y: 20);
+    // obj.x = 10; obj.y = 20
+</pre>
 
 <ul>
-<li><p><code>Object.defineProperty(obj, prop, desc)</code>: Defines a property on an object with the given descriptor.</p>
+<li><code>Object.keys(obj)</code>: Returns a list of the ownProperties of an object that are enumerable. For example: </li>
+</ul>
 
-<p>For example:</p>
+<pre>
+     function o() {
+      this.a = 1;
+    }
+    console.log(Object.keys(new o())); // [ 'a' ]
+    function p() {
+      this.b = 2;
+    }
 
-<p>var obj = {};<br />Object.defineProperty(obj, 'num', {<br />  value: 10,<br />  writable: false,<br />  enumerable: false,<br />  configurable: false<br />});<br />log(obj.num); // 10<br />for (var i in obj) {<br />  log(i); // not display<br />}<br />obj.num = 20;<br />log(obj.num); // still 10</p></li>
-<li><p><code>Object.defineProperties(obj, props)</code>: Adds own properties, and/or updates the attributes of existing own properties of an object.</p>
+    var obj = Object.create({a: 10, b: 20}, {
+      x: {
+        value: 30,
+        enumerable: true
+      },
+      y: {
+        value: 40,
+        enumerable: false
+      }
+    });
+    console.log(Object.keys(obj)); // [ 'x' ]
+</pre>
 
-<p>For example:</p>
+<ul>
+<li><p><code>Object.getOwnPropertyNames(obj)</code>: Returns a list of the ownProperties of an object including ones that are not enumerable.</p></li>
+<li><p><code>Object.getPrototypeOf(obj)</code>: Returns the prototype of an object. For example: </p></li>
+</ul>
 
-<p>var obj = {};<br />Object.defineProperties(obj, {<br />  num: {<br />    value: 4,<br />    writable: false,<br />    enumerable: false,<br />    configurable: false<br />  },<br />  root: {<br />    get: function() {<br />      return Math.pow(this.num, 0.5);<br />    }<br />  }<br />});<br />log(obj.num); // 4<br />log(obj.root); // 2</p></li>
-<li><p><code>Object.preventExtensions(obj)</code>: Prevents any new properties from being added to the given <code>obj</code> object.</p></li>
+<pre>
+     var obj = Object.create({a: 10, b: 20}, {
+      x: {
+        value: 30,
+        enumerable: true
+      },
+      y: {
+        value: 40,
+        enumerable: false
+      }
+    });
+    console.log(Object.getPrototypeOf(obj)); // { a: 10, b: 20 }
+</pre>
+
+<ul>
+<li><code>Object.getOwnPropertyDescriptor(obj, property)</code>: Returns an object with keys describing the description of a property (value, writable, enumerable, configurable). For example:</li>
+</ul>
+
+<pre>
+    var obj = Object.create({a: 10, b: 20}, {
+      x: {
+        value: 30,
+        enumerable: true
+      },
+      y: {
+        value: 40,
+        enumerable: false
+      }
+    });
+    console.log(Object.getOwnPropertyDescriptor(obj, 'x'));
+    // { value: 30,
+    //   writable: false,
+    //   enumerable: true,
+    //   configurable: false }
+</pre>
+
+<ul>
+<li><code>Object.defineProperty(obj, prop, desc)</code>: Defines a property on an object with the given descriptor. For example:</li>
+</ul>
+
+<pre>
+    var obj = {};
+    Object.defineProperty(obj, 'num', {
+      value: 10,
+      writable: false,
+      enumerable: false,
+      configurable: false
+    });
+    log(obj.num); // 10
+    for (var i in obj) {
+      log(i); // not display
+    }
+    obj.num = 20;
+    log(obj.num); // still 10
+</pre>
+
+<ul>
+<li><code>Object.defineProperties(obj, props)</code>: Adds own properties, and/or updates the attributes of existing own properties of an object. For example:</li>
+</ul>
+
+<pre>
+    var obj = {};
+    Object.defineProperties(obj, {
+      num: {
+        value: 4,
+        writable: false,
+        enumerable: false,
+        configurable: false
+      },
+      root: {
+        get: function() {
+          return Math.pow(this.num, 0.5);
+        }
+      }
+    });
+    log(obj.num); // 4
+    log(obj.root); // 2
+</pre>
+
+<ul>
+<li><code>Object.preventExtensions(obj)</code>: Prevents any new properties from being added to the given <code>obj</code> object.</li>
 <li><code>Object.isExtensible(obj)</code>: Returns <code>true</code> if properties can still be added, <code>false</code> otherwise (in other words, <code>false</code> if Object.preventExtensions() was called).</li>
 <li><code>Object.seal(obj)</code>: Prevents code from adding or deleting properties, or changing the descriptors of any property on an object. However, property values can still change.</li>
 <li><code>Object.isSealed(obj)</code>: Returns <code>true</code> if <code>Object.seal</code> was called on this object.</li>
@@ -1329,22 +1472,41 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'x'));
 <li><code>__lookupGetter__(name)</code>: Returns the function associated with the specified property by the <strong>defineGetter</strong> method. This functions is a Mozilla extension and is not in ECMAScript 5.</li>
 <li><code>__defineSetter__(name, callback)</code>: Associates a function with a property that, when set, executes that function which modifies the property. This functions is a Mozilla extension and is not in ECMAScript 5.</li>
 <li><code>__lookupSetter__(name)</code>: Returns the function associated with the specified property by the <strong>defineSetter</strong> method. This functions is a Mozilla extension and is not in ECMAScript 5.</li>
-<li><p><code>isPrototypeOf(obj)</code> - (Available in ECMAScript 3 and 5) Returns true if <code>this</code> is a prototype of the passed in object. For example:</p>
-
-<p>var proto = {a: 10, b: 20};<br />var obj = Object.create(proto);<br />console.log(proto.isPrototypeOf(obj)); // true</p></li>
+<li><code>isPrototypeOf(obj)</code> - (Available in ECMAScript 3 and 5) Returns true if <code>this</code> is a prototype of the passed in object. For example:</li>
 </ul>
+
+<pre>
+    var proto = {a: 10, b: 20};
+    var obj = Object.create(proto);
+    console.log(proto.isPrototypeOf(obj)); // true
+</pre>
 
 <h4>Function.prototype</h4>
 
 <ul>
-<li><p><code>bind(thisArg[, arg1[, arg2, arg3...]])</code> - Sets the value of <code>this</code> inside the function to always be the value of <code>thisArg</code> when the function is called. Optionally, function arguments can also be specified (arg1, arg2, e.t.c.) that will automatically be prepended to the argument list whenever this function is called. For example:</p>
-
-<p>var f = function() {return this.a + this.b };<br />console.log(f()); // NaN<br />var g = f.bind({ a: 10, b: 20 });<br />console.log(g()); // 30</p>
-
-<p>var f = function(c) {<br />    return this.a + this.b + c;<br />};<br />log(f()); // NaN<br />var g = f.bind({ a: 10, b: 20 }, 30);<br />console.log(g()); // 60</p>
-
-<p>var f = function(c, d) {<br />    return this.a + this.b + c + d;<br />};<br />log(f()); // NaN<br />var g = f.bind({ a: 10, b: 20 }, 30);<br />console.log(g(40)); // 100</p></li>
+<li><code>bind(thisArg[, arg1[, arg2, arg3...]])</code> - Sets the value of <code>this</code> inside the function to always be the value of <code>thisArg</code> when the function is called. Optionally, function arguments can also be specified (arg1, arg2, e.t.c.) that will automatically be prepended to the argument list whenever this function is called. For example:</li>
 </ul>
+
+<pre>
+    var f = function() {return this.a + this.b };
+    console.log(f()); // NaN
+    var g = f.bind({ a: 10, b: 20 });
+    console.log(g()); // 30
+
+    var f = function(c) {
+        return this.a + this.b + c;
+    };
+    log(f()); // NaN
+    var g = f.bind({ a: 10, b: 20 }, 30);
+    console.log(g()); // 60
+
+    var f = function(c, d) {
+        return this.a + this.b + c + d;
+    };
+    log(f()); // NaN
+    var g = f.bind({ a: 10, b: 20 }, 30);
+    console.log(g(40)); // 100
+</pre>
 
 <h4>String.prototype</h4>
 
@@ -1376,7 +1538,7 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'x'));
 
 <h2>REPL</h2>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <h3>Using REPL</h3>
 
@@ -1433,9 +1595,9 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'x'));
 
 <h3>Creating a Custom REPL</h3>
 
-<p><span class="cite">By Joshua Holbrook (Aug 26 2011)</span></p>
+<p><span class="cite">by Joshua Holbrook (Aug 26 2011)</span></p>
 
-<p>Node allows users to create their own REPLs with the <a href="http://nodejs.org/docs/latest/api/repl.html">repl module</a>. Its basic use looks like this:</p>
+<p>Node.js allows users to create their own REPLs with the <a href="http://nodejs.org/docs/latest/api/repl.html">repl module</a>. Its basic use looks like this:</p>
 
 <pre><code>repl.start(prompt, stream);
 </code></pre>
@@ -1529,7 +1691,7 @@ node::remote&gt; str
 'AWESOME!'
 </code></pre>
 
-<p>As you can see, the node REPL is powerful and flexible.</p>
+<p>As you can see, the Node.js REPL is powerful and flexible.</p>
 
 <p><a id="HTTP-servers"></a></p>
 
@@ -1539,7 +1701,7 @@ node::remote&gt; str
 
 <h3>Creating an HTTP Server</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Making a simple HTTP server in Node.js has become the de-facto 'hello world' for the platform. Node.js provides extremely easy-to-use HTTP APIs; in addition, a simple web server also serves as an excellent demonstration of Node's asynchronous strengths.</p>
 
@@ -1563,13 +1725,13 @@ server.listen(8080);
 
 <p>The <code>response</code> object is how we send the headers and contents of the response back to the user making the request. Here, we return a 200 response code (signaling a successful response) with the body "Hello World!".  Other headers, such as <code>Content-type</code>, would also be set here.</p>
 
-<p>Next, the <code>http.createServer()</code> method creates a server that calls <code>requestListener</code> whenever a request comes in. The next line, <code>server.listen(8080)</code>, calls the <code>listen</code> method, which causes the server to wait for incoming requests on the specified port--8080, in this case. </p>
+<p>Next, the <code>http.createServer()</code> method creates a server that calls <code>requestListener</code> whenever a request comes in. The next line, <code>server.listen(8080)</code>, calls the <code>listen</code> method, which causes the server to wait for incoming requests on the specified port&mdash;8080, in this case. </p>
 
 <p><a id="how-to-create-a-HTTPS-server"></a></p>
 
 <h3>Creating an HTTPS Server</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>To create an HTTPS server, you need two things: an SSL certificate, and Node's built-in <code>https</code> module.</p>
 
@@ -1602,9 +1764,9 @@ var a = https.createServer(options, function (req, res) {
 }).listen(8000);
 </code></pre>
 
-<p>The biggest difference between <a href="api.html#how-do-i-create-a-http-server">http</a> and https is the additional <code>options</code> parameter</p>
+<p>The biggest difference between <a href="#how-do-i-create-a-http-server">HTTP</a> and HTTPS is the additional <code>options</code> parameter</p>
 
-<p><strong>Note</strong>: <code>fs.readFileSync()</code>--unlike <code>fs.readFile()</code>--blocks the entire process until it completes.  In situations like this--loading vital configuration data--the <code>Sync</code> functions are okay.  In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!</p>
+<p><strong>Note</strong>: <code>fs.readFileSync()</code>&mdash;unlike <code>fs.readFile()</code>&mdash;blocks the entire process until it completes.  In situations like this&mdash;loading vital configuration data&mdash;the <code>Sync</code> functions are okay.  In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!</p>
 
 <p>Now that your server is set up and started, you should be able to get the file with curl:</p>
 
@@ -1617,13 +1779,14 @@ var a = https.createServer(options, function (req, res) {
 
 <h3>Serving Static Files</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
-<p>A basic necessity for most <a href="api.html#how-do-i-create-a-https-server">http servers</a> is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:</p>
+<p>A basic necessity for most <a href="#how-do-i-create-a-https-server">HTTP servers</a> is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:</p>
 
-<p>var fs = require('fs'),<br />  http = require('http');</p>
+<pre><code>var fs = require('fs'),
+http = require('http');
 
-<pre><code>http.createServer(function (req, res) {
+http.createServer(function (req, res) {
   fs.readFile(__dirname + req.url, function (err,data) {
     if (err) {
       res.writeHead(404);
@@ -1638,9 +1801,9 @@ var a = https.createServer(options, function (req, res) {
 
 <p>This example takes the path requested and it serves that path, relative to the local directory. This works fine as a quick solution; however, there are a few problems with this approach. First, this code does not correctly handle MIME types. Additionally, a proper static file server should really be taking advantage of client side caching, and should send a "Not Modified" response if nothing has changed.  Furthermore, there are security bugs that can enable a malicious user to break out of the current directory, (for example, by issuing <code>GET /../../../</code>). </p>
 
-<p>Each of these can be addressed invidually without much difficulty. You can send the proper MIME type header. You can figure how to utilize the client caches. You can take advantage of <code>path.normalize</code> to make sure that requests don't break out of the current directory. But why write all that code when you can just use someone else's library? </p>
+<p>Each of these can be addresse</p><p>d invidually without much difficulty. You can send the proper MIME type header. You can figure how to utilize the client caches. You can take advantage of <code>path.normalize</code> to make sure that requests don't break out of the current directory. But why write all that code when you can just use someone else's library? </p>
 
-<p>There is a good static file server called [node-static](<a href='https://github.c'>https://github.c</a></p><p>om/cloudhead/node-static) written by Alexis Sellier which you can leverage. Here is a script which functions similarly to the previous one:</p>
+<p>There is a good static file server called <a href="https://github.com/cloudhead/node-static">node-static</a> written by Alexis Sellier which you can leverage. Here is a script which functions similarly to the previous one:</p>
 
 <pre><code>var static = require('node-static');
 var http = require('http');
@@ -1658,7 +1821,7 @@ http.createServer(function (req, res) {
 
 <h3>Reading POST Data</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Reading the data from a POST request (i.e. a form submission) can be a little bit of a pitfall in Node.js, so we're going to go through an example of how to do it properly.  </p>
 
@@ -1666,9 +1829,16 @@ http.createServer(function (req, res) {
 
 <p>Here is a quick script that shows you how to do exactly that:</p>
 
-<p>var http = require('http');<br />    var postHTML = <br />    '<html><head><title>Post Example</title></head>' +<br />    '<body>' +<br />    '<form method="post">' +<br />      'Input 1: <input name="input1"><br>' +<br />        'Input 2: <input name="input2"><br>' +<br />        '<input type="submit">' +<br />        '</form>' +<br />        '</body></html>';</p>
+<pre><code>var http = require('http');
+var postHTML = "&lt;html&gt;&lt;head&gt;&lt;title&gt;Post Example&lt;/title&gt;&lt;/head&gt;&lt;body&gt;" +
+'&lt;form method="post"&gt;' +
+  'Input 1: &lt;input name="input1"&gt;&lt;br&gt;' +
+    'Input 2: &lt;input name="input2"&gt;&lt;br&gt;' +
+    '&lt;input type="submit"&gt;' +
+    '&lt;/form&gt;' +
+    '&lt;/body&gt;&lt;/html&gt;';
 
-<pre><code>http.createServer(function (req, res) {
+http.createServer(function (req, res) {
   var body = "";
   req.on('data', function (chunk) {
     body += chunk;
@@ -1681,9 +1851,9 @@ http.createServer(function (req, res) {
 }).listen(8080);
 </code></pre>
 
-<p>The variable <code>postHTML</code> is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can <code>POST</code> example data. This is <strong>not</strong> the right way to serve static HTML; to do that, see <a href="api.html#how-to-serve-static-files">How to Serve Static Files</a> for a more proper example.</p>
+<p>The variable <code>postHTML</code> is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can <code>POST</code> example data. This is <strong>not</strong> the right way to serve static HTML; to do that, see <a href="#how-to-serve-static-files">How to Serve Static Files</a> for a more proper example.</p>
 
-<p>With the HTML out of the way, we <a href="api.html#how-do-i-create-a-http-server">create a server</a> to listen for requests. It is important to note, when listening for POST data, that the <code>req</code> object is also an <a href="api.html#what-are-event-emitters">Event Emitter</a>.  <code>req</code>, therefore, will emit a <code>data</code> event whenever a chunk of incoming data is received; when there is no more incoming data, the <code>end</code> event is emitted. In our case, we listen for <code>data</code> events. Once all the data is recieved, we log the data to the console and send the response. </p>
+<p>With the HTML out of the way, we <a href="#how-do-i-create-a-http-server">create a server</a> to listen for requests. It is important to note, when listening for POST data, that the <code>req</code> object is also an <a href="#what-are-event-emitters">Event Emitter</a>.  <code>req</code>, therefore, will emit a <code>data</code> event whenever a chunk of incoming data is received; when there is no more incoming data, the <code>end</code> event is emitted. In our case, we listen for <code>data</code> events. Once all the data is recieved, we log the data to the console and send the response. </p>
 
 <p>Something important to note is that the event listeners are being added immediately after the request object is received. If you don't immediately set them, then there is a possibility of missing some of the events. If, for example, an event listener was attached from inside a callback, then the <code>data</code> and <code>end</code> events might be fired in the meantime with no listeners attached!</p>
 
@@ -1693,7 +1863,7 @@ http.createServer(function (req, res) {
 
 <h3>Handling Multi-Part Form Data</h3>
 
-<p><span class="cite">By AvianFlu (Sep 09 2011)</span></p>
+<p><span class="cite">by AvianFlu (Sep 09 2011)</span></p>
 
 <p>Handling form data and file uploads properly is an important and complex problem in HTTP servers.  Doing it by hand would involve parsing streaming binary data, writing it to the file system, parsing out additional form data, and several other complex concerns. Luckily, only a very few people will need to worry about it on that deep level. </p>
 
@@ -1756,7 +1926,7 @@ http.createServer(function(req, res) {
 
 <h3>Accessing Query String Parameters</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>In Node.js, functionality to aid in the accessing of URL query string parameters is built into the standard library. The <code>url.parse()</code> method takes care of most of the heavy lifting.  Here is an example script using this handy function and an explanation on how it works:</p>
 
@@ -1784,7 +1954,7 @@ http.createServer(function (req, res) {
 
 <h3>Creating HTTP GET and POST Requests</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Another extremely common programming task is making an HTTP request to a web server.  Node.js provides an extremely simple API for this functionality in the form of <code>http.request</code>.</p>
 
@@ -1882,7 +2052,7 @@ req.end();
 
 <h3>Reading Files</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Reading the contents of a file into memory is a very common programming task, and, as with many other things, the Node.js core API provides methods to make this trivial.  There are a variety of file system methods, all contained in the <code>fs</code> module.  The easiest way to read the entire contents of a file is with <code>fs.readFile()</code>, as follows:</p>
 
@@ -1911,7 +2081,7 @@ fs.readFile('/etc/hosts', 'utf8', function (err,data) {
 
 <p>The contents of <code>/etc/hosts</code> should now be visible to you, provided you have permission to read the file in the first place.</p>
 
-<p>Let's now take a look at an example of what happens when you try to read an invalid file--the easiest example is one that doesn't exist.</p>
+<p>Let's now take a look at an example of what happens when you try to read an invalid fil&mdash;the easiest example is one that doesn't exist.</p>
 
 <pre><code>fs = require('fs');
 fs.readFile('/doesnt/exist', 'utf8', function (err,data) {
@@ -1933,13 +2103,13 @@ fs.readFile('/doesnt/exist', 'utf8', function (err,data) {
   path: '/doesnt/exist' }
 </code></pre>
 
-<p>This is a basic Node.js <a href="api.html#what-is-the-error-object">Error object</a>. It can often be useful to log <code>err.stack</code> directly, since this contains a stack trace to the location in code at which the Error object was created.</p>
+<p>This is a basic Node.js <a href="#what-is-the-error-object">Error object</a>. It can often be useful to log <code>err.stack</code> directly, since this contains a stack trace to the location in code at which the Error object was created.</p>
 
 <p><a id="how-to-write-files-in-nodejs"></a></p>
 
 <h3>Writing files in Node.js</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Writing to a file is another of the basic programming tasks that one usually needs to know about. This task is very simple in Node.js.  We can use the handy <code>writeFile()</code> method inside the standard library's <code>fs</code> module, which can save all sorts of time and trouble.</p>
 
@@ -1949,7 +2119,12 @@ fs.writeFile(filename, data, [encoding], [callback])
 
 <p>Here's what the parameters mean:</p>
 
-<p>*<code>file</code> is a string filepath of the file to read<br />* <code>data</code> is a string or buffer of the data you want to write to the file<br />* <code>encoding</code> is an optional string defining the encoding of the <code>data</code>. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding provided, then the default is 'utf8'<br />* <code>callback</code> is an optional function that receives an error message, like so: <code>function (err) {}</code>. If there is no error, <code>err === null</code>; otherwise <code>err</code> contains the error message.</p>
+<ul>
+<li><p><code>file</code> is a string filepath of the file to read</p></li>
+<li><p><code>data</code> is a string or buffer of the data you want to write to the file</p></li>
+<li><p><code>encoding</code> is an optional string defining the encoding of the <code>data</code>. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding provided, then the default is 'utf8'<br />*</p></li>
+<li><code>callback</code> is an optional function that receives an error message, like so: <code>function (err) {}</code>. If there is no error, <code>err === null</code>; otherwise <code>err</code> contains the error message.</li>
+</ul>
 
 <p>For example, if we wanted to write "Hello World" to <code>helloworld.txt</code>:</p>
 
@@ -1989,68 +2164,84 @@ fs.writeFile('/etc/doesntexist', 'abc', function (err,data) {
 
 <h3>Storing Local Data</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
-<p>Storing your Node.js application's configuration data is quite simple. Every object in Javascript can be easily rendered as <a href="api.html#what-is-json">JSON</a>, which in turn is just string data that can be sent or saved any way you'd like. The simplest way to do this involves the built-in <code>JSON.parse()</code> and <code>JSON.stringify()</code> methods.</p>
+<p>Storing your Node.js application's configuration data is quite simple. Every object in Javascript can be easily rendered as <a href="#what-is-json">JSON</a>, which in turn is just string data that can be sent or saved any way you'd like. The simplest way to do this involves the built-in <code>JSON.parse()</code> and <code>JSON.stringify()</code> methods.</p>
 
 <p>Let's take a look at a very simple (and contrived) example.  First, to save some very simple data:</p>
 
-<p>// always require('fs') when using the file system <br /><br />  var fs = require('fs');</p>
+<pre><code>// always require('fs') when using the file system  
+var fs = require('fs');
 
-<p>var myOptions = {<br />        name: 'Avian',<br />        dessert: 'cake'<br />        flavor: 'chocolate',<br />        beverage: 'coffee'<br />  };</p>
+var myOptions = {
+    name: 'Avian',
+    dessert: 'cake'
+    flavor: 'chocolate',
+    beverage: 'coffee'
+};
 
-<p>var data = JSON.stringify(myOptions);</p>
+var data = JSON.stringify(myOptions);
 
-<p>fs.writeFile('./config.json', data, function (err) {<br />        if (err) {<br />          console.log('There has been an error saving your configuration data.');<br />          console.log(err.message);<br />          return;<br />        }<br />        console.log('Configuration saved successfully.')<br />  });</p>
+fs.writeFile('./config.json', data, function (err) {
+    if (err) {
+      console.log('There has been an error saving your configuration data.');
+      console.log(err.message);
+      return;
+    }
+    console.log('Configuration saved successfully.')
+</code></pre>
+
+<p>});</p>
 
 <p>It's really that simple: just <code>JSON.stringify()</code>, and then save it however you'd like.</p>
 
 <p>Now, let's load some configuration data, by reading from the file:</p>
 
-<p>var fs = require('fs');</p>
+<pre><code>var fs = require('fs');
 
-<pre><code>  var data = fs.readFileSync('./config.json'),
-      myObj;
+var data = fs.readFileSync('./config.json'),
+    myObj;
 
-  try {
+try {
     myObj = JSON.parse(data);
     console.dir(myObj);
   } catch (err) {
-    console.log('There has been an error parsing your JSON.')
+    console.log('There was an error parsing your JSON.')
     console.log(err);
-  }
+}
 </code></pre>
 
-<p>Even if you don't like using <code>try/catch</code>, this is a place to use it.  <code>JSON.parse()</code> is a very strict JSON parser, and errors are common--most importantly, though, <code>JSON.parse()</code> uses the <code>throw</code> statement rather than giving a callback, so <code>try/catch</code> is the only way to guard against the error. In addition, since we're again loading conifiguration data, we need to rely on the synchronous <code>fs.readFileSync()</code>.</p>
+<p>Even if you don't like using <code>try/catch</code>, this is a place to use it.  <code>JSON.parse()</code> is a very strict JSON parser, and errors are common&mdash;most importantly, though, <code>JSON.parse()</code> uses the <code>throw</code> statement rather than giving a callback, so <code>try/catch</code> is the only way to guard against the error. In addition, since we're again loading conifiguration data, we need to rely on the synchronous <code>fs.readFileSync()</code>.</p>
 
 <p>Using the built-in <code>JSON</code> methods can take you far, but as with so many other problems you might be looking to solve with Node.js, there is already a solution in Userland that can take you much further. Written by Charlie Robbins, <code>nconf</code> is a configuration manager for Node.js, supporting in-memory storage and local file storage. There's also support for a <code>redis</code> backend, provided in a separate module.</p>
 
 <p>Let's take a look now at how we'd perform some local configuration access with <code>nconf</code>.  First, you'll need to install it to your project's working directory:</p>
 
-<p>npm install nconf</p>
+<pre><code>npm install nconf
+</code></pre>
 
 <p>After that, the syntax is a breeze. Have a look at an example:</p>
 
-<pre><code>  var nconf = require('nconf');
+<pre><code>var nconf = require('nconf');
 
-  nconf.use('file', { file: './config.json' });
-  nconf.load();
-  nconf.set('name', 'Avian');
-  nconf.set('dessert:name', 'Ice Cream');
-  nconf.set('dessert:flavor', 'chocolate');
+nconf.use('file', { file: './config.json' });
+nconf.load();
+nconf.set('name', 'Avian');
+nconf.set('dessert:name', 'Ice Cream');
+nconf.set('dessert:flavor', 'chocolate');
 
-  console.log(nconf.get('dessert'));
+console.log(nconf.get('dessert'));
 
-  nconf.save(function (err) {
+nconf.save(function (err) {
     if (err) {
-      console.error(err.message);
-      return;
+        console.error(err.message);
+        return;
     }
     console.log('Configuration saved successfully.');
-  });
+});
 </code></pre>
 
-<p>The only tricky thing to notice here is the ':' delimiter. When accessing nested properties with <code>nconf</code>, a colon is used to delimit the namespaces of key names.  If a specific sub-key is not provided, the whole object is set or returned.</p>
+<p>The only tricky thing to notice here is the <code>:</code> delimiter. When accessing nested properties with <code>nconf</code>, a colon is used to delimit the namespaces of key names.  If a specific sub-key is not provided, the whole object is set or returned.</p>
 
 <p>When using <code>nconf</code> to store your configuration data to a file, <code>nconf.save()</code> and <code>nconf.load()</code> are the only times that any actual file interaction will happen.  All other access is performed on an in-memory copy of your data, which will not persist without a call to <code>nconf.save()</code>.  Similarly, if you're trying to bring back configuration data from the last time your application ran, it will not exist in memory without a call to <code>nconf.load()</code>, as shown above.</p>
 
@@ -2058,9 +2249,9 @@ fs.writeFile('/etc/doesntexist', 'abc', function (err,data) {
 
 <h3>Searching for Files</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
-<p>Suppose you want to list all the files in the current directory.  One approach is to use the builtin <code>fs.readdir()</code> <a href="api.html#how-do-i-read-files-in-node-js">method</a>. This will get you an array of all the files and directories on the specified path:</p>
+<p>Suppose you want to list all the files in the current directory.  One approach is to use the builtin <code>fs.readdir()</code> <a href="#how-do-i-read-files-in-node-js">method</a>. This will get you an array of all the files and directories on the specified path:</p>
 
 <pre><code>fs = require('fs');
 
@@ -2100,7 +2291,7 @@ finder.on('file', function (file) {
 
 <h3>Using the path module</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>The <code>path</code> module contains several helper functions to help make path manipulation easier.</p>
 
@@ -2158,10 +2349,10 @@ finder.on('file', function (file) {
 
 <ul>
 <li><code>exists</code> takes a callback function as its second parameter, to which is returned a boolean representing the existance of the file</li>
-<li><code>existsSync</code> checks the given path synchronously, returning the boolean directly. In Node.js, you will typically want to use the asynchronous functions for most file system I/O--the synchronous versions will block your entire process until they finish. </li>
+<li><code>existsSync</code> checks the given path synchronously, returning the boolean directly. In Node.js, you will typically want to use the asynchronous functions for most file system I/O&mdash;the synchronous versions will block your entire process until they finish. </li>
 </ul>
 
-<p>Blocking isn't always a bad thing.  Checking the existence of a vital configuration file synchronously makes sense, for example--it doesn't matter much if your process is blocking for something it can't run without!  Conversely, though, in a busy HTTP server, any per-request file I/O <strong>MUST</strong> be asynchronous, or else you'll be responding to requests one by one. See the section on <a href="api.html#how-to-write-asynchronous-code">asynchronous operations</a> for more details.</p>
+<p>Blocking isn't always a bad thing.  Checking the existence of a vital configuration file synchronously makes sense, for example&mdash;it doesn't matter much if your process is blocking for something it can't run without!  Conversely, though, in a busy HTTP server, any per-request file I/O <strong>MUST</strong> be asynchronous, or else you'll be responding to requests one by one. See the section on <a href="#how-to-write-asynchronous-code">asynchronous operations</a> for more details.</p>
 
 <p><a id="security"></a></p>
 
@@ -2173,7 +2364,7 @@ finder.on('file', function (file) {
 
 <h3>A Brief Primer</h3>
 
-<p><span class="cite">By Jann Horn (Sept 10 2011)</span></p>
+<p><span class="cite">by Jann Horn (Sept 10 2011)</span></p>
 
 <h4>Poison Null Bytes</h4>
 
@@ -2188,7 +2379,7 @@ finder.on('file', function (file) {
 
 <h4>Whitelisting</h4>
 
-<p>You won't always be able to use whitelisting, but if you are, do it--it's very easy to implement and hard to get wrong. For example, if you know that all filenames are lowercase alphanumeric strings, you can use this regular expression to block anything else:</p>
+<p>You won't always be able to use whitelisting, but if you are, do it&mdash;it's very easy to implement and hard to get wrong. For example, if you know that all filenames are lowercase alphanumeric strings, you can use this regular expression to block anything else:</p>
 
 <pre><code>if (!/^[a-z0-9]+$/.test(filename)) {
   return respond('illegal character');
@@ -2206,13 +2397,13 @@ finder.on('file', function (file) {
 <pre><code>var rootDirectory = '/var/www/';
 </code></pre>
 
-<p>(Make sure that you have a slash at the end of the allowed folders name--you don't want people to be able to access <code>/var/www-secret/</code>, do you?)</p>
+<p>(Make sure that you have a slash at the end of the allowed folders name&mdash;you don't want people to be able to access <code>/var/www-secret/</code>, do you?)</p>
 
 <pre><code>var path = require('path');
 var filename = path.join(rootDirectory, userSuppliedFilename);
 </code></pre>
 
-<p>Now <code>filename</code> contains an absolute path and doesn't contain <code>..</code> sequences anymore--<code>path.join</code> takes care of that. However, it might be something like <code>/etc/passwd</code> now, so you have to check whether it starts with the <code>rootDirectory</code>:</p>
+<p>Now <code>filename</code> contains an absolute path and doesn't contain <code>..</code> sequences anymore&mdash;<code>path.join</code> takes care of that. However, it might be something like <code>/etc/passwd</code> now, so you have to check whether it starts with the <code>rootDirectory</code>:</p>
 
 <pre><code>if (filename.indexOf(rootDirectory) !== 0) {
   return respond('trying to sneak out of the web root?');
@@ -2229,18 +2420,16 @@ var filename = path.join(rootDirectory, userSuppliedFilename);
 
 <h3>The Error Object</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>The error object is a built-in object that provides a standard set of useful information when an error occurs, such as a stack trace and the error message. For example:</p>
-
-<p>Code:</p>
 
 <pre><code> var error = new Error("The error message");
  console.log(error);
  console.log(error.stack);
 </code></pre>
 
-<p>Result:</p>
+<p>The result of this code is:</p>
 
 <pre><code> { stack: [Getter/Setter],
    arguments: undefined,
@@ -2265,15 +2454,15 @@ error.http_code = 404;
 console.log(error);
 </code></pre>
 
-<p>For more details how to use the Error object, check out the <a href="api.html#what-are-the-error-conventions">article on error conventions</a>.</p>
+<p>For more details how to use the Error object, check out the <a href="#what-are-the-error-conventions">article on error conventions</a>.</p>
 
 <p><a id="what-is-try-catch"></a></p>
 
 <h3>Understanding try/catch()</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
-<p>Javascript's <code>try-catch-finally</code> statement works very similarly to the <code>try-catch-finally</code> encountered in C++ and Java.  It's best to describe this concept with an example:<br />Example:</p>
+<p>Javascript's <code>try-catch-finally</code> statement works very similarly to the <code>try-catch-finally</code> encountered in C++ and Java.  It's best to describe this concept with an example:</p>
 
 <pre><code>console.log("entering try-catch statement");
 
@@ -2294,7 +2483,7 @@ finally {
 console.log("leaving try-catch statement");
 </code></pre>
 
-<p>Results:</p>
+<p>The results of this code block are:</p>
 
 <pre><code>entering try-catch statement
 entering try block
@@ -2328,13 +2517,13 @@ try {
 
 <h4>Is it Node.js convention to not use try-catch?</h4>
 
-<p>In the core Node.js libraries, the only place that one really <strong>needs</strong> to use a try-catch is around <code>JSON.parse()</code>. All of the other methods use either the standard <code>Error</code> object through the first parameter of the callback or emit an <code>error</code> event. Because of this, it is generally considered <a href="api.html#what-are-the-error-conventions">standard convention</a> to return errors through the callback rather than to use the <code>throw</code> statement. </p>
+<p>In the core Node.js libraries, the only place that one really <strong>needs</strong> to use a try-catch is around <code>JSON.parse()</code>. All of the other methods use either the standard <code>Error</code> object through the first parameter of the callback or emit an <code>error</code> event. Because of this, it is generally considered <a href="#what-are-the-error-conventions">standard convention</a> to return errors through the callback rather than to use the <code>throw</code> statement. </p>
 
 <p><a id="what-are-the-error-conventions"></a></p>
 
 <h3>Understanding the Error Conventions</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>In Node.js, it is considered standard practice to handle errors in asynchronous functions by returning them as the first argument to the current function's callback.  If there is an error, the first parameter is passed an <code>Error</code> object with all the details. Otherwise, the first parameter is <code>null</code>. </p>
 
@@ -2367,7 +2556,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <p>As you can see from the example, the callback is called with <code>null</code> as its first argument if there is no error. However, if there is an error, you create an <code>Error</code> object, which then becomes the callback's only parameter. </p>
 
-<p>The <code>callback</code> function shows the reason for this: it allows a user to easily know whether or not an error occurred.  If <code>null</code> was not the first argument passed on success, the user would need to check the object being returned and determine themselves whether or not the object constituted an error--a much more complex and less user-friendly approach.</p>
+<p>The <code>callback</code> function shows the reason for this: it allows a user to easily know whether or not an error occurred.  If <code>null</code> was not the first argument passed on success, the user would need to check the object being returned and determine themselves whether or not the object constituted an error&mdash;a much more complex and less user-friendly approach.</p>
 
 <p>To wrap it all up: when using callbacks, if an error comes up, then pass it as the first argument.  Otherwise, pass <code>null</code> first, and then your return arguments.  On the receiving end, inside the callback function, check if the first parameter is non-null;  if it is, handle it as an error.</p>
 
@@ -2379,7 +2568,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <h3>Spawning Child Processes</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>If you find yourself wishing you could have your Node.js process start another program for you, then look no further than the <code>child_process</code> module.</p>
 
@@ -2403,11 +2592,11 @@ isTrue(true,  callback); // output 'Value was true'
  });
 </code></pre>
 
-<p>(<code>error.stack</code> is a stack trace to the point that the <a href="api.html#what-is-the-error-object">Error object</a> was created.)</p>
+<p>(<code>error.stack</code> is a stack trace to the point that the <a href="#what-is-the-error-object">Error object</a> was created.)</p>
 
 <p>It should be noted that the <code>stderr</code> of a given process is not exclusively reserved for error messages. Many programs use it as a channel for secondary data instead.  As such, when trying to work with a program that you have not previously spawned as a child process, it can be helpful to start out dumping both <code>stdout</code> and <code>stderr</code>, as shown above, to avoid any surprises.</p>
 
-<p>While <code>child_process.exec</code> buffers the output of the child process for you, it also returns a <code>ChildProcess</code> object, Node's way of wrapping a still-running process.  In the example above, since we are using <code>ls</code>, a program that will exit immediately regardless, the only part of the <code>ChildProcess</code> object worth worrying about is the <code>on exit</code> handler.  It is not necessary here--the process will still exit and the error code will still be shown on errors.</p>
+<p>While <code>child_process.exec</code> buffers the output of the child process for you, it also returns a <code>ChildProcess</code> object, Node's way of wrapping a still-running process.  In the example above, since we are using <code>ls</code>, a program that will exit immediately regardless, the only part of the <code>ChildProcess</code> object worth worrying about is the <code>on exit</code> handler.  It is not necessary her&mdash;the process will still exit and the error code will still be shown on errors.</p>
 
 <p><a id="command-line"></a></p>
 
@@ -2417,7 +2606,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <h3>Parsing Command Line Arguments</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>Passing in arguments via the command line is an extremely basic programming task, and a necessity for anyone trying to write a simple Command-Line Interface (CLI).  In Node.js, as in C and many related environments, all command-line arguments received by the shell are given to the process in an array called <code>argv</code> (short for argument values).  </p>
 
@@ -2438,7 +2627,7 @@ isTrue(true,  callback); // output 'Value was true'
    'five' ]
 </code></pre>
 
-<p>There you have it--an array containing any arguments you passed in.  Notice the first two elements: <code>node</code>, and the path to your script.  These will always be present; even if your program takes no arguments of its own, your script's interpreter and path are still considered arguments to the shell you're using.  </p>
+<p>There you have i&mdash;an array containing any arguments you passed in.  Notice the first two elements: <code>node</code>, and the path to your script.  These will always be present; even if your program takes no arguments of its own, your script's interpreter and path are still considered arguments to the shell you're using.  </p>
 
 <p>Where everyday CLI arguments are concerned, you'll want to skip the first two.  Now, try typing this in <code>argv.js</code>:</p>
 
@@ -2477,7 +2666,7 @@ isTrue(true,  callback); // output 'Value was true'
 <pre><code> npm install optimist
 </code></pre>
 
-<p>Once you have it, give it a try--it can really be a life-saver.:</p>
+<p>Once you have it, give it a try&mdash;it can really be a life-saver.:</p>
 
 <pre><code> var myArgs = require('optimist').argv,
      help = 'Ceci n\'est pas une mandoc';
@@ -2516,7 +2705,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <h3>Colors on the Command Line</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>When working on the command line, it can be both fun and extremely useful to colorize one's output. To colorize console output, you need to use ANSI escape codes. The <code>colors</code> module, available on <code>npm</code>, provides an extremely easy to use wrapper that makes adding colors a breeze.</p>
 
@@ -2557,7 +2746,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <p>Regarding the final line of the example script:  while a color code was set previously, a 'bold' code was not, so the example was made bold, but not given a different color.</p>
 
-<p>Keep in mind that the colors can look quite different in different terminals. Sometimes, <code>bold</code> is bold, sometimes it's just a different color. Try it out and see for yourself!</p>
+<p>Keep in mind that the colors ca</p><p>n look quite different in different terminals. Sometimes, <code>bold</code> is bold, sometimes it's just a different color. Try it out and see for yourself!</p>
 
 <p>For reference, here's the full list of available <code>colors.js</code> properties.</p>
 
@@ -2577,11 +2766,11 @@ isTrue(true,  callback); // output 'Value was true'
 <li>rainbow</li>
 </ul>
 
-<p><a id="how-to-prompt-for-command-line-inpu</p><p>t"></a></p>
+<p><a id="how-to-prompt-for-command-line-input"></a></p>
 
 <h3>Prompting for Command Line Input</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>Say you've got a little CLI tool, but you want to be able to prompt a user for additional data after the script has started, rather than passing it in as a command line argument or putting it in a file.  To do this, you'll need to listen to STDIN ("standard input"), which Node.js exposes for you as <code>process.stdin</code>, a readable stream.</p>
 
@@ -2607,7 +2796,7 @@ isTrue(true,  callback); // output 'Value was true'
   }
 </code></pre>
 
-<p>If all of this sounds complicated, or if you want a higher-level interface to this sort of thing, don't worry--as usual, the Node.js community has come to the rescue.  One particularly friendly module to use for this is Prompt, maintained by Nodejitsu.  It's available on <code>npm</code>:</p>
+<p>If all of this sounds complicated, or if you want a higher-level interface to this sort of thing, don't worry&mdash;as usual, the Node.js community has come to the rescue.  One particularly friendly module to use for this is Prompt, maintained by Nodejitsu.  It's available on <code>npm</code>:</p>
 
 <pre><code> npm install prompt
 </code></pre>
@@ -2674,7 +2863,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <h3>Logging</h3>
 
-<p><span class="cite">By Joshua Holbrook (Aug 26 2011)</span></p>
+<p><span class="cite">by Joshua Holbrook (Aug 26 2011)</span></p>
 
 <p>Many processes, including most servers, write logs in one form or another. Some reasons for logging include debugging, keeping track of users and resource usage, and reporting application state.</p>
 
@@ -2718,13 +2907,13 @@ isTrue(true,  callback); // output 'Value was true'
 
 <p>Because <code>logger.debugLevel</code> was set to <code>warn</code>, the warning message and the error would both be displayed, but the <code>info</code> message would not be.</p>
 
-<p>The advantage here is that the behavior of our logging mechanisms can now be modified and controlled from a central part of our code. In this case, logging levels were added, and messages are converted to JSON if they aren't already in string form. There is a lot more that could be done here - saving logs to a file, pushing them to a database, setting custom colors and formatting the output--but by the time you want that much functionality from your custom logging function, it might be time to use an already-existing library.</p>
+<p>The advantage here is that the behavior of our logging mechanisms can now be modified and controlled from a central part of our code. In this case, logging levels were added, and messages are converted to JSON if they aren't already in string form. There is a lot more that could be done here&mdash;saving logs to a file, pushing them to a database, setting custom colors and formatting the output&mdash;but by the time you want that much functionality from your custom logging function, it might be time to use an already-existing library.</p>
 
 <h4>Extended Logging Functionality</h4>
 
 <p><a href="https://github.com/indexzero/winston">Winston</a> is a multi-transport and asynchronous logging library for Node.js.  It is conceptually similar to our custom logger, but comes with a wide variety of useful features and functionality baked in. In addition, <code>winston</code> is battle-hardened by internal use at <a href="http://nodejitsu.com/">Nodejitsu</a>.</p>
 
-<p>Here's an example of setting up a <code>winston</code> logger.  This example includes most of the transports one could ever possibly want--most use cases will only warrant a few of these:</p>
+<p>Here's an example of setting up a <code>winston</code> logger.  This example includes most of the transports one could ever possibly want&mdash;most use cases will only warrant a few of these:</p>
 
 <pre><code>  var winston = require('winston');
 
@@ -2764,7 +2953,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <p>Winston also supports logging to Riak, CouchDB, MongoDB and even <a href="http://loggly.com">Loggly</a>.  The <code>logger.warn()</code> call we used before also put the same message into each database, according to the options we gave to each transport.</p>
 
-<p>For further information, please see the <a href="https://github.com/indexzero/winston">thorough documentation for Winston.</a>.</p>
+<p>For further information, please see the <a href="https://github.com/indexzero/winston">thorough documentation for Winston</a>.</p>
 
 <p><a id="advanced"></a></p>
 
@@ -2774,7 +2963,7 @@ isTrue(true,  callback); // output 'Value was true'
 
 <h3>Understanding Buffers</h3>
 
-<p><span class="cite">By Joshua Holbrook (Aug 26 2011)</span></p>
+<p><span class="cite">by Joshua Holbrook (Aug 26 2011)</span></p>
 
 <p>Pure Javascript, while great with unicode-encoded strings, does not handle straight binary data very well. This is fine on the browser, where most data is in the form of strings. However, Node.js servers have to also deal with TCP streams and reading and writing to the filesystem, both of which make it necessary to deal with purely binary streams of data.</p>
 
@@ -2867,42 +3056,63 @@ buffer.write("Hello", "utf-8")
 
 <ul>
 <li><p><code>Buffer.isBuffer(object)</code>: This method checks to see if <code>object</code> is a buffer, similar to <code>Array.isArray()</code>.</p></li>
-<li><p><code>Buffer.byteLength(string, encoding)</code>: With this function, you can check the number of bytes required to encode a string with a given encoding (which defaults to UTF-8). This length is not the same as string length, since many characters require more bytes to encode. For example:</p>
-
-<blockquote>
-  <p>var snowman = "☃";<br />snowman.length<br />1<br />Buffer.byteLength(snowman)<br />3</p>
-</blockquote></li>
+<li><p><code>Buffer.byteLength(string, encoding)</code>: With this function, you can check the number of bytes required to encode a string with a given encoding (which defaults to UTF-8). This length is not the same as string length, since many characters require more bytes to encode. For example:</p></li>
 </ul>
+
+<pre>
+    > var snowman = "☃";
+    > snowman.length
+    1
+    > Buffer.byteLength(snowman)
+    3
+</pre>
 
 <p>The unicode snowman is only one character, but takes 3 entire bytes to encode!</p>
 
 <ul>
-<li><p><code>Buffer.length()</code>: This is the length of your buffer, and represents how much memory is allocated. It is not the same as the size of the buffer's contents, since a buffer may be half-filled. For example:</p>
-
-<blockquote>
-  <p>var buffer = new Buffer(16)<br />buffer.write(snowman)<br />3<br />buffer.length<br />16</p>
-</blockquote></li>
+<li><code>Buffer.length()</code>: This is the length of your buffer, and represents how much memory is allocated. It is not the same as the size of the buffer's contents, since a buffer may be half-filled. For example:</li>
 </ul>
+
+<pre>
+    > var buffer = new Buffer(16)
+    > buffer.write(snowman)
+    3
+    > buffer.length
+    16
+</pre>
 
 <p>In this example, the contents written to the buffer only consist of three groups (since they represent the single-character snowman), but the buffer's length is still 16, as it was initialized.</p>
 
 <ul>
-<li><p><code>Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length): This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of</code>buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:</p>
-
-<blockquote>
-  <p>var frosty = new Buffer(24)<br />var snowman = new Buffer("☃", "utf-8")<br />frosty.write("Happy birthday! ", "utf-8")<br />16<br />snowman.copy(frosty, 16)<br />3<br />frosty.toString("utf-8", 0, 19)<br />'Happy birthday! ☃'</p>
-</blockquote></li>
+<li><code>Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length): This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of</code>buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:</li>
 </ul>
+
+<pre>
+    > var frosty = new Buffer(24)
+    > var snowman = new Buffer("☃", "utf-8")
+    > frosty.write("Happy birthday! ", "utf-8")
+    16
+    > snowman.copy(frosty, 16)
+    3
+    > frosty.toString("utf-8", 0, 19)
+    'Happy birthday! ☃'
+</pre>
 
 <p>In this example, the <code>snowman</code> buffer, which contains a 3 byte long character, is copied to to the <code>frosty</code> buffer, which has the first 16 bytes written to it. Because the snowman character is 3 bytes long, the result takes up 19 bytes of the buffer.</p>
 
 <ul>
-<li><p><code>Buffer.slice(start, end=buffer.length)</code>: This function is generally the same as that of <code>Array.prototype.slice()</code>, but with one very import difference: the slice is <strong>not</strong> a new buffer and merely references a subset of the memory space. In other words: <strong>modifying the slice will also modify the original buffer</strong>! For example:</p>
-
-<blockquote>
-  <p>var puddle = frosty.slice(16, 19)<br />puddle.toString()<br />'☃'<br />puddle.write("<strong>_")<br />3<br />frosty.toString("utf-8", 0, 19)<br />'Happy birthday! _</strong>'</p>
-</blockquote></li>
+<li><code>Buffer.slice(start, end=buffer.length)</code>: This function is generally the same as that of <code>Array.prototype.slice()</code>, but with one very import difference: the slice is <strong>not</strong> a new buffer and merely references a subset of the memory space. In other words: <strong>modifying the slice will also modify the original buffer</strong>! For example:</li>
 </ul>
+
+<pre>
+    > var puddle = frosty.slice(16, 19)
+    > puddle.toString()
+    '☃'
+    > puddle.write("___")
+    3
+    > frosty.toString("utf-8", 0, 19)
+    'Happy birthday! ___'
+</pre>
 
 <p>Now Frosty has melted into a puddle of underscores. Bummer.</p>
 
@@ -2910,11 +3120,11 @@ buffer.write("Hello", "utf-8")
 
 <h3>Understanding Streams</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>Streams are another basic construct in Node.js that encourages asynchronous coding. A 'stream' is Node's I/O abstraction. Streams allow you to process the data as it is generated or retrieved. Streams can be readable, writeable, or both.</p>
 
-<p>Basically, treams use events to deal with data as it happens, rather than only with a callback at the end.  Readable streams emit the event <code>data</code> for each chunk of data that comes in, and an <code>end</code> event, which is emitted when there is no more data. Writeable streams can be written to with the <code>write()</code> function, and closed with the <code>end()</code> function.  All types of streams emit <code>error</code> events when errors arise.</p>
+<p>Basically, streams use events to deal with data as it happens, rather than only with a callback at the end.  Readable streams emit the event <code>data</code> for each chunk of data that comes in, and an <code>end</code> event, which is emitted when there is no more data. Writeable streams can be written to with the <code>write()</code> function, and closed with the <code>end()</code> function.  All types of streams emit <code>error</code> events when errors arise.</p>
 
 <p>As a quick example, we can write a simple version of <code>cp</code> (the Unix utility that copies files). We could do this by reading the whole file with standard filesystem calls and then writing it out to a file. Unfortunately, that requires that the whole file be read in before it can be written. In the case of a one or two gigabyte file, you could run into out of memory operations failry quickly. </p>
 
@@ -2948,13 +3158,13 @@ writeStream.on('error', function (err) {
 
 <p>Run this script with arguments like <code>node cp.js src.txt dest.txt</code>. This would mean, in the code above, that <code>process.argv[2]</code> is <code>src.txt</code> and <code>process.argv[3]</code> is <code>desc.txt</code>. Obviously, you'll need some dummy text files before you can run the script.</p>
 
-<p>The code sets up a readable stream from the source file and a writable stream to the destination file. Whenever the readable stream gets data, it is written to the writeable stream. After it's done, it closes the writable stream when the readable stream is finished. <strong>Note</strong>: it would have been better to use <a href="api.html#how-to-use-stream-pipe">pipe</a> like <code>readStream.pipe(writeStream);</code>. However, to show how streams work, we have done things the long way.</p>
+<p>The code sets up a readable stream from the source file and a writable stream to the destination file. Whenever the readable stream gets data, it is written to the writeable stream. After it's done, it closes the writable stream when the readable stream is finished. <strong>Note</strong>: it would have been better to use <a href="#how-to-use-stream-pipe">pipe</a> like <code>readStream.pipe(writeStream);</code>. However, to show how streams work, we have done things the long way.</p>
 
 <p><a id="how-to-use-fs-create-read-stream"></a></p>
 
 <h3>Using fs.createReadStream()</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>The function <code>fs.createReadStream(filepath)</code> allows you to open up a readable stream in a very simple manner. All you have to do is pass the path of the file to start streaming in. </p>
 
@@ -2987,11 +3197,11 @@ http.createServer(function(req, res) {
 
 <h3>Using fs.createWriteStream()</h3>
 
-<p><span class="cite">By Nico Reed (Aug 26 2011)</span></p>
+<p><span class="cite">by Nico Reed (Aug 26 2011)</span></p>
 
 <p>The function <code>fs.createWriteStream()</code> creates a writable stream in a very simple manner. After a call to <code>fs.createWriteStream(filepath)</code>, you have a writeable stream to work with directly to your <code>filepath</code>. </p>
 
-<p>When you <a href="api.html#how-to-create-a-http-server">create an HTTP server</a>, the response and request objects are streams. We can stream the POST data to a file called <code>output</code>. Since the code is simple enough, it is pretty easy just to read through it and comment why each line is necessary.</p>
+<p>When you <a href="#how-to-create-a-http-server">create an HTTP server</a>, the response and request objects are streams. We can stream the POST data to a file called <code>output</code>. Since the code is simple enough, it is pretty easy just to read through it and comment why each line is necessary.</p>
 
 <pre><code>var http = require('http');
 var fs = require('fs');
@@ -3020,7 +3230,7 @@ http.createServer(function(req, res) {
 
 <h3>Using the Stream Pipe</h3>
 
-<p><span class="cite">By Charlie McConnell (Aug 26 2011)</span></p>
+<p><span class="cite">by Charlie McConnell (Aug 26 2011)</span></p>
 
 <p>If you've been using Node.js for a while, you've definitely run into streams. HTTP connections are streams,  open files are streams;  <code>stdin</code>, <code>stdout</code>, and <code>stderr</code> are all streams as well.  If you feel like you still need to understand them better, you can read more about them <a href="http://nodejs.org/docs/latest/api/streams.html">here</a>.</p>
 
@@ -3114,7 +3324,7 @@ http.createServer(function(req, res) {
 
 <h3>Hashes</h3>
 
-<p><span class="cite">By Joshua Holbrook (Aug 26 2011)</span></p>
+<p><span class="cite">by Joshua Holbrook (Aug 26 2011)</span></p>
 
 <h4>Understanding a Hash</h4>
 
@@ -3123,7 +3333,7 @@ http.createServer(function(req, res) {
 <ul>
 <li><p>A fixed length: This means that, no matter what the input, the length of the hash is the same. For example, md5 hashes are always 128 bits long whether the input data is a few bits or a few gigabytes.</p></li>
 <li><p>Deterministic: For the same input, you should expect to be able to calculate exactly the same hash. This makes hashes useful for checksums.</p></li>
-<li><p>Collision-Resistant: A collision is when the same hash is generated for two different input blocks of data. Hash algorithms are designed to be extremely unlikely to have collisions--exactly how unlikely is a property of the hash algorithm. The importance of this property depends on the use case.</p></li>
+<li><p>Collision-Resistant: A collision is when the same hash is generated for two different input blocks of data. Hash algorithms are designed to be extremely unlikely to have collisions&mdash;exactly how unlikely is a property of the hash algorithm. The importance of this property depends on the use case.</p></li>
 <li><p>Unidirectional: A good hash algorithm is easy to apply, but hard to undo. This means that, given a hash, there isn't any reasonable way to find out what the original piece of data was.</p></li>
 </ul>
 
@@ -3209,12 +3419,12 @@ if (argv.e &amp;&amp; argv.password) {
 <p>Using this script to encode a message looks like this:</p>
 
 <pre><code>$ ./secretmsg.js -e --password="popcorn" "My treasure is buried behind Carl's Jr. on Telegraph."
-6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8fead928cff620b37e3e79be8de519f490527a
+6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8
 </code></pre>
 
 <p>Now, if I gave somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:</p>
 
-<pre><code>$ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8fead928cff620b37e3e79be8de519f490527a
+<pre><code>$ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8
 My treasure is buried behind Carl's Jr. on Telegraph.
 </code></pre>
 
@@ -3236,7 +3446,7 @@ My treasure is buried behind Carl's Jr. on Telegraph.
 
 <h3>Using TLS</h3>
 
-<p><span class="cite">By Joshua Holbrook (Aug 26 2011)</span></p>
+<p><span class="cite">by Joshua Holbrook (Aug 26 2011)</span></p>
 
 <p><a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a> (TLS) is the successor to Secure Sockets Layer (SSL). It, along with SSL, are the de-facto standard cryptographic protocols for secure communications over the web. TSL encrypts communications on top of a network transport layer (typically TCP), and uses public-key cryptography to encrypt messages.</p>
 
@@ -3246,7 +3456,7 @@ My treasure is buried behind Carl's Jr. on Telegraph.
 
 <p>In TLS connections, the public key is called a <em><a href="http://en.wikipedia.org/wiki/Digital_certificate">certificate</a></em>. This is because it's "<a href="http://en.wikipedia.org/wiki/Digital_signature">signed</a>" to prove that the public key belongs to its owner. TLS certificates may either be signed by a third-party certificate authority (CA), or they may be <a href="http://en.wikipedia.org/wiki/Self-signed_certificate">self-signed</a>. In the case of Certificate Authorities, Mozilla keeps <a href="http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt">a list of trusted root CAs</a> that are generally agreed upon by most web browsers. These root CAs may then issue certificates to other signing authorities, which in turn sign certificates for the general public.</p>
 
-<p>TLS support in node is relatively new. The first stable version of Node.js to support TSL and HTTPS was the v0.4 branch, which was released in early 2011. As such, the TSL APIs in Node.js are still a little rough around the edges.</p>
+<p>TLS support in Node.js is relatively new. The first stable version of Node.js to support TSL and HTTPS was the v0.4 branch, which was released in early 2011. As such, the TSL APIs in Node.js are still a little rough around the edges.</p>
 
 <h4>Creating a TLS Server</h4>
 
@@ -3307,7 +3517,7 @@ Locality Name (eg, city) []:Oakland
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:Panco, Inc.
 Organizational Unit Name (eg, section) []:
 Common Name (eg, YOUR name) []:Joshua Holbrook
-Email Address []:<a href='mailto:josh.holbrook@gmail.com'>josh.holbrook@gmail.com</a>
+Email Address []:<a href='mailto:blah@boo.com'>blah@boo.com</a>
 
 Please enter the following 'extra' attributes
 to be sent with your certificate request
@@ -3321,7 +3531,7 @@ An optional company name []:
 
 <pre><code>$ openssl x509 -req -in csr.pem -signkey private-key.pem -out public-cert.pem
 Signature ok
-subject=/C=US/ST=California/L=Oakland/O=Panco, Inc./CN=Joshua Holbrook/<a href='mailto:emailAddress=josh.holbrook@gmail.com'>emailAddress=josh.holbrook@gmail.com</a>
+subject=/C=US/ST=California/L=Oakland/O=Panco, Inc./CN=Joshua Holbrook/<a href='mailto:emailAddress=blah@boo.com'>emailAddress=blah@boo.com</a>
 Getting Private key
 </code></pre>
 
@@ -3363,7 +3573,7 @@ conn.on("data", function (data) {
 
 <p>The idea is similar, except instead of creating a server, this script connects to one instead. <code>tls.connect()</code> also takes an <code>options</code> object, and then returns a stream.</p>
 
-<p><code>tls.connect()</code> also fires a callback when the connection is made, which allows for checking to see if the connection is authorized---that is, if all the certificates are in order. <code>conn.authorized</code> is a boolean, and <code>conn.authorizationError</code> is a string containing the reason that the connection is unauthorized.</p>
+<p><code>tls.connect()</code> also fires a callback when the connection is made, which allows for checking to see if the connection is authorized&mdash;that is, if all the certificates are in order. <code>conn.authorized</code> is a boolean, and <code>conn.authorizationError</code> is a string containing the reason that the connection is unauthorized.</p>
 
 <p>This is what happens when the client is run (with the server running):</p>
 
@@ -3380,6 +3590,8 @@ Connection not authorized: DEPTH_ZERO_SELF_SIGNED_CERT
 <p>Note that self-signing the server certificate results in a non-authorized status because you're not listed as a trusted certificate authority.</p>
 
 <p>It's entirely possible to "upgrade" an existing tcp connection into a TLS-encrypted one with Node.js. However, Node.js does not have a special functions for doing so as of the v0.6 branch. Therefore, it needs to be done "by-hand", using the crypto module and some undocumented <code>tls</code> module functionality. Node's documentation points to <a href="https://gist.github.com/848444"><a href='https://gist.github.com/848444'>https://gist.github.com/848444</a></a>, which aims to abstract the process.</p>
+
+<p><a id="reference"></a></p>
 
 <h2>Node.js API Reference</h2>
 

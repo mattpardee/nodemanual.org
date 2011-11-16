@@ -38,7 +38,7 @@ Callbacks are essential in Javascript, and are a basic idiom in Node.js for asyn
 
 Event emitters are another basic concept in Node.js. A constructor for the object is provided in Node.js core: `require('events').EventEmitter`. 
 
-An event emitter is typically used when you know tht there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see [the article on event emitters](api.html#what-are-event-emitters).
+An event emitter is typically used when you know that there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see [the article on event emitters](#what-are-event-emitters).
 
 #### Caveats in Asynchronous Code
 
@@ -50,7 +50,7 @@ A common mistake in asynchronous code with Javascript is to write code with a lo
        }, i);
      }
 
-Here, we're trying to print to The undesired (and unexpected) output is:
+Here, we're trying to print sequentially the numbers one through five. The undesired (and unexpected) output is:
 
     5
     5

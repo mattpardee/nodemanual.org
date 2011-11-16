@@ -1,6 +1,6 @@
 ### Creating a Custom REPL
 
-Node allows users to create their own REPLs with the [repl module](http://nodejs.org/docs/latest/api/repl.html). Its basic use looks like this:
+Node.js allows users to create their own REPLs with the [repl module](http://nodejs.org/docs/latest/api/repl.html). Its basic use looks like this:
 
     repl.start(prompt, stream);
 
@@ -89,4 +89,4 @@ It seems we "unlocked" the `bonus` string on the local REPL as well. As it turns
     node::remote> str
     'AWESOME!'
 
-As you can see, the node REPL is powerful and flexible.
+As you can see, the Node.js REPL is powerful and flexible.

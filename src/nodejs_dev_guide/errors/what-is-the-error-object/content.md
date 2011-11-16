@@ -2,13 +2,11 @@
 
 The error object is a built-in object that provides a standard set of useful information when an error occurs, such as a stack trace and the error message. For example:
 
-Code:
-
      var error = new Error("The error message");
      console.log(error);
      console.log(error.stack);
 
-Result:
+The result of this code is:
 
      { stack: [Getter/Setter],
        arguments: undefined,
@@ -31,4 +29,4 @@ If you want to add more information to the Error object, you can always add prop
     error.http_code = 404;
     console.log(error);
 
-For more details how to use the Error object, check out the [article on error conventions](api.html#what-are-the-error-conventions).
+For more details how to use the Error object, check out the [article on error conventions](#what-are-the-error-conventions).

@@ -1,9 +1,6 @@
 ### About JSON
 
-Javascript Object Notation, or JSON, is a lightweight data format that
-has become the de-facto standard for the web, toppling the long and unweildy curse of XML. JSON can be represented
-as either a list of values, like an Array, or as a hash of properties and
-values, like an Object:
+Javascript Object Notation, or JSON, is a lightweight data format that has become the de-facto standard for the web, toppling the long and unweildy curse of XML. JSON can be represented as either a list of values, like an Array, or as a hash of properties and values, like an Object:
 
     // a JSON array
     ["one", "two", "three"]
@@ -15,17 +12,14 @@ You can view the full specifications of JSON on [the official website](http://ww
 
 #### Encoding and Decoding JSON
 
-Javascript provides two methods for encoding data structures to JSON and
-encoding JSON back to javascript objects and arrays. They are both
-available on the `JSON` object that is available in the global scope.
+Javascript provides two methods for encoding data structures to JSON and encoding JSON back to javascript objects and arrays. They are both available on the `JSON` object that is available in the global scope.
 
-`JSON.stringify()` takes a Javascript object or array and returns a
-serialized string in the JSON format. For example:
+`JSON.stringify()` takes a Javascript object or array and returns a serialized string in the JSON format. For example:
 
     var data = {
-      name: "John Doe"
-      , age: 32
-      , title: "VP of JavaScript"
+      name: "John Doe",
+      age: 32,
+      title: "VP of JavaScript"
     }
 
     var jsonStr = JSON.stringify(data);
@@ -35,7 +29,7 @@ serialized string in the JSON format. For example:
 
 The full method declaration of `JSON.stringify()` is actually `JSON.stringify(obj [, replacer [, space]])`. You can pass in an optional function to replace elements in the JSON object, or define how much whitespace to present before an element. For example:
 
-    onsole.log(JSON.stringify([1, 2, 3])); // returns [1, 2, 3]
+    console.log(JSON.stringify([1, 2, 3])); // returns [1, 2, 3]
 
     console.log(JSON.stringify([1, 2, 3], function replacer(key, value) {
       if (!Array.isArray(value)) {
@@ -57,8 +51,7 @@ The full method declaration of `JSON.stringify()` is actually `JSON.stringify(ob
     //inserts a tab character
     console.log(JSON.stringify({ a: 1, b: 2}, null, '\t'));
 
-`JSON.parse()` does the reverse, taking a JSON string and decoding it to a Javascript data
-structure:
+`JSON.parse()` does the reverse, taking a JSON string and decoding it to a Javascript data structure:
 
     var jsonStr = '{"name":"John Doe","age":32,"title":"VP of JavaScript"}';
 
@@ -69,8 +62,7 @@ structure:
 
 #### Defining Valid JSON
 
-There are a few rules to remember when dealing with data in the JSON
-format:
+There are a few rules to remember when dealing with data in the JSON format:
 
 * Empty objects and arrays are okay
 * Strings can contain any unicode character, this includes object properties
@@ -118,23 +110,13 @@ These are all examples of bad JSON formatting.
       }
     }
 
-Calling `JSON.parse` with an invalid JSON string will result in a
-`SyntaxError` being thrown. If you are not sure of the validity of your
-JSON data, you can anticipate errors by wrapping the call in a
-try/catch block.
+Calling `JSON.parse` with an invalid JSON string will result in a `SyntaxError` being thrown. If you are not sure of the validity of your JSON data, you can anticipate errors by wrapping the call in a `try/catch` block.
 
-Notice that the only complex values allowed in JSON are objects and
-arrays. Functions, dates and other types are excluded. This may not
-seem to make sense at first. But remember that JSON is a data format,
-not a format for transfering complex javascript objects along with
-their functionality.
+Notice that the only complex values allowed in JSON are objects and arrays. Functions, dates and other types are excluded. This may not seem to make sense at first. But remember that JSON is a data format, not a format for transfering complex javascript objects along with their functionality.
 
 #### JSON in other languages
 
-Although JSON was inspired by the simplicity of Javascript data
-structures, it's use is not limited to the Javascript language. Many
-other languages have methods of transfering native hashes and lists
-into stringified JSON objects. Here's a quick example in Ruby:
+Although JSON was inspired by the simplicity of Javascript data structures, it's use is not limited to the Javascript language. Many other languages have methods of transfering native hashes and lists into stringified JSON objects. Here's a quick example in Ruby:
 
     require 'json'
 

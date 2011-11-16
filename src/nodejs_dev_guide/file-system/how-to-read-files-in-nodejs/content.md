@@ -23,7 +23,7 @@ If we wanted to read `/etc/hosts` and print it to stdout (just like UNIX `cat`),
 
 The contents of `/etc/hosts` should now be visible to you, provided you have permission to read the file in the first place.
 
-Let's now take a look at an example of what happens when you try to read an invalid file--the easiest example is one that doesn't exist.
+Let's now take a look at an example of what happens when you try to read an invalid fil&mdash;the easiest example is one that doesn't exist.
 
     fs = require('fs');
     fs.readFile('/doesnt/exist', 'utf8', function (err,data) {
@@ -43,4 +43,4 @@ This is the output:
       code: 'ENOENT',
       path: '/doesnt/exist' }
 
-This is a basic Node.js [Error object](api.html#what-is-the-error-object). It can often be useful to log `err.stack` directly, since this contains a stack trace to the location in code at which the Error object was created.
+This is a basic Node.js [Error object](#what-is-the-error-object). It can often be useful to log `err.stack` directly, since this contains a stack trace to the location in code at which the Error object was created.

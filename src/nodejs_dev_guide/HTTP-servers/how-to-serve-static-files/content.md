@@ -1,9 +1,9 @@
 ### Serving Static Files
 
-A basic necessity for most [http servers](api.html#how-do-i-create-a-https-server) is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:
+A basic necessity for most [HTTP servers](#how-do-i-create-a-https-server) is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:
 
-  var fs = require('fs'),
-  http = require('http');
+    var fs = require('fs'),
+    http = require('http');
 
     http.createServer(function (req, res) {
       fs.readFile(__dirname + req.url, function (err,data) {

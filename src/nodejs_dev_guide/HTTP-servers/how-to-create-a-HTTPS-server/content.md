@@ -29,12 +29,12 @@ Next, set up a quick "hello world" example. ():
       res.end("hello world\n");
     }).listen(8000);
 
-The biggest difference between [http](api.html#how-do-i-create-a-http-server) and https is the additional `options` parameter
+The biggest difference between [HTTP](#how-do-i-create-a-http-server) and HTTPS is the additional `options` parameter
 
-**Note**: `fs.readFileSync()`--unlike `fs.readFile()`--blocks the entire process until it completes.  In situations like this--loading vital configuration data--the `Sync` functions are okay.  In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!
+**Note**: `fs.readFileSync()`&mdash;unlike `fs.readFile()`&mdash;blocks the entire process until it completes.  In situations like this&mdash;loading vital configuration data&mdash;the `Sync` functions are okay.  In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!
 
 Now that your server is set up and started, you should be able to get the file with curl:
 
-	curl -k https://localhost:8000
+    curl -k https://localhost:8000
 
 or in your browser, by going to `https://localhost:8000`. 

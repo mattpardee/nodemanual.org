@@ -8,7 +8,7 @@ A hash is a fixed-length string of bits that is procedurally and deterministiall
 
 * Deterministic: For the same input, you should expect to be able to calculate exactly the same hash. This makes hashes useful for checksums.
 
-* Collision-Resistant: A collision is when the same hash is generated for two different input blocks of data. Hash algorithms are designed to be extremely unlikely to have collisions--exactly how unlikely is a property of the hash algorithm. The importance of this property depends on the use case.
+* Collision-Resistant: A collision is when the same hash is generated for two different input blocks of data. Hash algorithms are designed to be extremely unlikely to have collisions&mdash;exactly how unlikely is a property of the hash algorithm. The importance of this property depends on the use case.
 
 * Unidirectional: A good hash algorithm is easy to apply, but hard to undo. This means that, given a hash, there isn't any reasonable way to find out what the original piece of data was.
 
@@ -89,11 +89,11 @@ Here's an example, slightly less trivial than previous examples, that uses crypt
 Using this script to encode a message looks like this:
 
     $ ./secretmsg.js -e --password="popcorn" "My treasure is buried behind Carl's Jr. on Telegraph."
-    6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8fead928cff620b37e3e79be8de519f490527a
+    6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
 
 Now, if I gave somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:
 
-    $ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8fead928cff620b37e3e79be8de519f490527a
+    $ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
     My treasure is buried behind Carl's Jr. on Telegraph.
 
 You should know that what I buried behind Carl's Jr was just a cigarette butt, and that this script is obviously not for serious use.

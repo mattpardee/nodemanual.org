@@ -12,7 +12,7 @@ Always use code like this when accessing files with user-supplied names:
 
 #### Whitelisting
 
-You won't always be able to use whitelisting, but if you are, do it--it's very easy to implement and hard to get wrong. For example, if you know that all filenames are lowercase alphanumeric strings, you can use this regular expression to block anything else:
+You won't always be able to use whitelisting, but if you are, do it&mdash;it's very easy to implement and hard to get wrong. For example, if you know that all filenames are lowercase alphanumeric strings, you can use this regular expression to block anything else:
 
     if (!/^[a-z0-9]+$/.test(filename)) {
       return respond('illegal character');
@@ -28,12 +28,12 @@ This example assumes that you already checked the `userSuppliedFilename` variabl
 
     var rootDirectory = '/var/www/';
 
-(Make sure that you have a slash at the end of the allowed folders name--you don't want people to be able to access `/var/www-secret/`, do you?)
+(Make sure that you have a slash at the end of the allowed folders name&mdash;you don't want people to be able to access `/var/www-secret/`, do you?)
 
     var path = require('path');
     var filename = path.join(rootDirectory, userSuppliedFilename);
 
-Now `filename` contains an absolute path and doesn't contain `..` sequences anymore--`path.join` takes care of that. However, it might be something like `/etc/passwd` now, so you have to check whether it starts with the `rootDirectory`:
+Now `filename` contains an absolute path and doesn't contain `..` sequences anymore&mdash;`path.join` takes care of that. However, it might be something like `/etc/passwd` now, so you have to check whether it starts with the `rootDirectory`:
 
     if (filename.indexOf(rootDirectory) !== 0) {
       return respond('trying to sneak out of the web root?');

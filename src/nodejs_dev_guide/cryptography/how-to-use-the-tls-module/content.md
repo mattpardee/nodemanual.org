@@ -8,7 +8,7 @@ In public-key cryptography, each peer has two keys: a public key, and a private 
 
 In TLS connections, the public key is called a _[certificate](http://en.wikipedia.org/wiki/Digital_certificate)_. This is because it's "[signed](http://en.wikipedia.org/wiki/Digital_signature)" to prove that the public key belongs to its owner. TLS certificates may either be signed by a third-party certificate authority (CA), or they may be [self-signed](http://en.wikipedia.org/wiki/Self-signed_certificate). In the case of Certificate Authorities, Mozilla keeps [a list of trusted root CAs](http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt) that are generally agreed upon by most web browsers. These root CAs may then issue certificates to other signing authorities, which in turn sign certificates for the general public.
 
-TLS support in node is relatively new. The first stable version of Node.js to support TSL and HTTPS was the v0.4 branch, which was released in early 2011. As such, the TSL APIs in Node.js are still a little rough around the edges.
+TLS support in Node.js is relatively new. The first stable version of Node.js to support TSL and HTTPS was the v0.4 branch, which was released in early 2011. As such, the TSL APIs in Node.js are still a little rough around the edges.
 
 #### Creating a TLS Server
 
@@ -68,7 +68,7 @@ Next, create a Certificate Signing Request file using your private key:
     Organization Name (eg, company) [Internet Widgits Pty Ltd]:Panco, Inc.
     Organizational Unit Name (eg, section) []:
     Common Name (eg, YOUR name) []:Joshua Holbrook
-    Email Address []:josh.holbrook@gmail.com
+    Email Address []:blah@boo.com
 
     Please enter the following 'extra' attributes
     to be sent with your certificate request
@@ -81,7 +81,7 @@ Alternately, however, you may self-sign your certificate, again using your priva
 
     $ openssl x509 -req -in csr.pem -signkey private-key.pem -out public-cert.pem
     Signature ok
-    subject=/C=US/ST=California/L=Oakland/O=Panco, Inc./CN=Joshua Holbrook/emailAddress=josh.holbrook@gmail.com
+    subject=/C=US/ST=California/L=Oakland/O=Panco, Inc./CN=Joshua Holbrook/emailAddress=blah@boo.com
     Getting Private key
 
 This generates your certificate. Now you're cooking!
@@ -120,7 +120,7 @@ The `tls` module also supplies tools for connecting to such a server:
 
 The idea is similar, except instead of creating a server, this script connects to one instead. `tls.connect()` also takes an `options` object, and then returns a stream.
 
-`tls.connect()` also fires a callback when the connection is made, which allows for checking to see if the connection is authorized---that is, if all the certificates are in order. `conn.authorized` is a boolean, and `conn.authorizationError` is a string containing the reason that the connection is unauthorized.
+`tls.connect()` also fires a callback when the connection is made, which allows for checking to see if the connection is authorized&mdash;that is, if all the certificates are in order. `conn.authorized` is a boolean, and `conn.authorizationError` is a string containing the reason that the connection is unauthorized.
 
 This is what happens when the client is run (with the server running):
 
@@ -136,7 +136,3 @@ This is what happens when the client is run (with the server running):
 Note that self-signing the server certificate results in a non-authorized status because you're not listed as a trusted certificate authority.
 
 It's entirely possible to "upgrade" an existing tcp connection into a TLS-encrypted one with Node.js. However, Node.js does not have a special functions for doing so as of the v0.6 branch. Therefore, it needs to be done "by-hand", using the crypto module and some undocumented `tls` module functionality. Node's documentation points to [https://gist.github.com/848444](https://gist.github.com/848444), which aims to abstract the process.
-
-## Node.js API Reference 
-
-Here's a link to the latest Node.js API Reference: [http://nodejs.org/docs/latest/api/](http://nodejs.org/docs/latest/api/).

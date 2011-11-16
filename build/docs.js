@@ -54,7 +54,6 @@ function storeTOCInfo(dirName, fileContent, fileMetadata)
 
 function printContents(i, type, files, destFile)
 {
-	
 	var destFile  = "tmp/" + type + ".md";
 
 	if (i < files.length) {
@@ -99,7 +98,7 @@ function traverse(type, files, destFile, cb)
 							console.log("There was an error parsing the JSON metadata for " + metadataFile + ": " + err);
 						}
 
-						byline = "<span class=\"cite\">By " + metadata.author + " (" + metadata.date + ")</span>";
+						byline = "<span class=\"cite\">by " + metadata.author + " (" + metadata.date + ")</span>";
 					}
 					else
 						byline = "";

@@ -16,32 +16,32 @@ This example just prints the provided string to `stdout`.  It can also be used t
 
 For example:
 
-  var name = 'Harry',
-    number = 17,
-    myObj = {
-      propOne: 'stuff',
-      propTwo: 'more stuff'
-    };
-  console.log('My name is %s, my number is %d, my object is %j', name, number, myObj);
+    var name = 'Harry',
+        number = 17,
+        myObj = {
+            propOne: 'stuff',
+            propTwo: 'more stuff'
+        };
+    console.log('My name is %s, my number is %d, my object is %j', name, number, myObj);
 
 A caveat with `console.log`, and all functions that depend on it, is that it buffers the output. If your process ends suddenly, whether it be from an exception or from `process.exit()`, it is entirely possible that the buffered output will never reach the screen. This can cause a great deal of frustration, so watch out for this unfortunate situation.
 
-`console.error()` works the same as `console.log`, except that the output is sent to `stderr` instead of `stdout`.  This is an extremely important difference, as `stderr` is always written synchronously.  Any use of `console.error`, or any of the other functions in Node.js core that write to `stderr`, blocks your process until the output has all been written.  This is useful for error messages--you get them exactly when they occur--but can greatly slow down your process if used everywhere.
+`console.error()` works the same as `console.log`, except that the output is sent to `stderr` instead of `stdout`.  This is an extremely important difference, as `stderr` is always written synchronously.  Any use of `console.error`, or any of the other functions in Node.js core that write to `stderr`, blocks your process until the output has all been written.  This is useful for error messages&mdash;you get them exactly when they occur&mdash;but can greatly slow down your process if used everywhere.
 
-`console.dir()` is an alias for `util.inspect()`. It is used to enumerate object properties. You can read more about it [here](api.html#how-to-use-util-inspect).
+`console.dir()` is an alias for `util.inspect()`. It is used to enumerate object properties. You can read more about it [here](#how-to-use-util-inspect).
 
 #### Additional Methods
 
 That covers the basic `console` module functionality, but there are a few other methods worth mentioning as well. First, the `console` module allows for the marking of time via `console.time()` and `console.timeEnd()`.  Here is an example:
 
-  console.time('myTimer');
-  var string = '';
-  for (var i = 0; i < 300; i++) {
-  (function (i) {
-    string += 'aaaa' + i.toString();
-  })(i);
-  }
-  console.timeEnd('myTimer');
+    console.time('myTimer');
+    var string = '';
+    for (var i = 0; i < 300; i++) {
+    (function (i) {
+        string += 'aaaa' + i.toString();
+    })(i);
+    }
+    console.timeEnd('myTimer');
 
 This would determine the amount of time taken to perform the actions in between the `console.time` and `console.timeEnd` calls.
 

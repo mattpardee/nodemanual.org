@@ -164,6 +164,7 @@ h6 {
     border: 1px solid #e8e8e8;
     border-width: 1px 1px 1px 6px;
     margin: -0.5em 0 1.1em;
+    width: 110%;
   }
   
   pre + h3 {
@@ -305,7 +306,7 @@ hr {
 font-style: italic;
 }
 
-p tt, p code {
+p tt, p code, li code {
   background: #f8f8ff;
   border: 1px solid #dedede;
   padding: 0 0.2em;

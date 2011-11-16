@@ -83,26 +83,31 @@ In this example, the remaining bytes are set manually, such that they represent 
 
 * `Buffer.byteLength(string, encoding)`: With this function, you can check the number of bytes required to encode a string with a given encoding (which defaults to UTF-8). This length is not the same as string length, since many characters require more bytes to encode. For example:
 
+<pre>
     > var snowman = "☃";
     > snowman.length
     1
     > Buffer.byteLength(snowman)
     3
+</pre>
 
 The unicode snowman is only one character, but takes 3 entire bytes to encode!
 
 * `Buffer.length()`: This is the length of your buffer, and represents how much memory is allocated. It is not the same as the size of the buffer's contents, since a buffer may be half-filled. For example:
 
+<pre>
     > var buffer = new Buffer(16)
     > buffer.write(snowman)
     3
     > buffer.length
     16
+</pre>
 
 In this example, the contents written to the buffer only consist of three groups (since they represent the single-character snowman), but the buffer's length is still 16, as it was initialized.
 
-* `Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length): This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of `buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:
+* `Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length)`: This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of `buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:
 
+<pre>
     > var frosty = new Buffer(24)
     > var snowman = new Buffer("☃", "utf-8")
     > frosty.write("Happy birthday! ", "utf-8")
@@ -111,11 +116,13 @@ In this example, the contents written to the buffer only consist of three groups
     3
     > frosty.toString("utf-8", 0, 19)
     'Happy birthday! ☃'
+</pre>
 
 In this example, the `snowman` buffer, which contains a 3 byte long character, is copied to to the `frosty` buffer, which has the first 16 bytes written to it. Because the snowman character is 3 bytes long, the result takes up 19 bytes of the buffer.
 
 * `Buffer.slice(start, end=buffer.length)`: This function is generally the same as that of `Array.prototype.slice()`, but with one very import difference: the slice is **not** a new buffer and merely references a subset of the memory space. In other words: **modifying the slice will also modify the original buffer**! For example:
 
+<pre>
     > var puddle = frosty.slice(16, 19)
     > puddle.toString()
     '☃'
@@ -123,5 +130,6 @@ In this example, the `snowman` buffer, which contains a 3 byte long character, i
     3
     > frosty.toString("utf-8", 0, 19)
     'Happy birthday! ___'
+</pre>
 
 Now Frosty has melted into a puddle of underscores. Bummer.

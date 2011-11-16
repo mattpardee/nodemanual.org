@@ -1,7 +1,6 @@
 ### Understanding try/catch()
 
 Javascript's `try-catch-finally` statement works very similarly to the `try-catch-finally` encountered in C++ and Java.  It's best to describe this concept with an example:
-Example:
 
     console.log("entering try-catch statement");
 
@@ -21,7 +20,7 @@ Example:
 
     console.log("leaving try-catch statement");
 
-Results:
+The results of this code block are:
 
     entering try-catch statement
     entering try block
@@ -53,4 +52,4 @@ Note that you must always have at least one `catch` or `finally` block, both bot
 
 #### Is it Node.js convention to not use try-catch?
 
-In the core Node.js libraries, the only place that one really **needs** to use a try-catch is around `JSON.parse()`. All of the other methods use either the standard `Error` object through the first parameter of the callback or emit an `error` event. Because of this, it is generally considered [standard convention](api.html#what-are-the-error-conventions) to return errors through the callback rather than to use the `throw` statement. 
+In the core Node.js libraries, the only place that one really **needs** to use a try-catch is around `JSON.parse()`. All of the other methods use either the standard `Error` object through the first parameter of the callback or emit an `error` event. Because of this, it is generally considered [standard convention](#what-are-the-error-conventions) to return errors through the callback rather than to use the `throw` statement. 

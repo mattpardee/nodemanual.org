@@ -13,18 +13,17 @@ First, ensure that node-inspector is installed:
 Here's a good example application to experiment with, copied from the `node-inspector` repo. It is a "hello world" server with a counter :
 
     var http = require('http');
+    var x = 0;
 
-  var x = 0;
-
-  http.createServer(function (req, res) {
+    http.createServer(function (req, res) {
         x += 1;
         res.writeHead(200, {'Content-Type': 'text/plain'});
         res.end('Hello World ' + x);
-  }).listen(8124);
+    }).listen(8124);
 
     console.log('Server running at http://127.0.0.1:8124/');
 
-First, start the node program with debugging enabled:
+First, start the Node.js program with debugging enabled:
 
     node --debug app.js
 
@@ -32,9 +31,9 @@ This should print something along the lines of `debugger listening on port 5858`
 
 Next, start up `node-inspector` in a separate command line window. By default, `node-inspector` uses port 8080, so you may want to pass it a custom port number with the `--web-port` option: If your program uses port 8080, then you may have to pass it a custom port.
 
-  node-inspector --web-port=1123
+    node-inspector --web-port=1123
 
-Finally, start a webkit browser (like Chrome or Safari), and go to `http://127.0.0.1:1123/debug?port=5858`. Here, 5858 represents the port the debugger is listening on, and 1123 represents your `node-inspector` webport. You may have to modify these values to match your environment.
+Finally, start a Webkit browser (like Chrome or Safari), and go to `http://127.0.0.1:1123/debug?port=5858`. Here, 5858 represents the port the debugger is listening on, and 1123 represents your `node-inspector` webport. You may have to modify these values to match your environment.
 
 At this point, you will be met with a fairly empty screen with the Scripts, Profiles, and Cnsole tabs.
 
@@ -48,11 +47,11 @@ To stop the interpreter on a specific line, set a breakpoint by clicking on the 
 
 To use the profile tab, you need a library called `v8-profiler`, which you can install with npm:
 
-  npm install v8-profiler
+    npm install v8-profiler
 
 Next, you have to require it inside the file you are debugging:
 
-  var profiler = require('v8-profiler');
+    var profiler = require('v8-profiler');
 
 Now you can finally enable the `Profiles` tab. Unfortunately, all you can do from this screen is take a heap snapshot. From the code, you need to select where you want to start to CPU profiler. You can also select more precise location for heap snapshots.
 
@@ -62,26 +61,26 @@ To take a heap snapshot, just insert this line in the desired location and optio
 
 To take a CPU profile, just surround the code that you are profiling with the two lines shown below.  Optionally, a name can be included to indentify the cpu profile.
 
-  profiler.startProfiling(name);
-  //..lots and lots of methods and code called..//
-  var cpuProfile = profiler.stopProfiling([name]);
+    profiler.startProfiling(name);
+    //..lots and lots of methods and code called..//
+    var cpuProfile = profiler.stopProfiling([name]);
 
 As an example how to use these, here is the code from above, modified to take a CPU profile on every request, and take a heap snapshot after the server is created.
 
-  var http = require('http');
-  var profiler = require('v8-profiler');
+    var http = require('http');
+    var profiler = require('v8-profiler');
 
-  var x = 0;
-  http.createServer(function (req, res) {
-    x += 1;
-    profiler.startProfiling('request '+x);
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World ' + x);
-    profiler.stopProfiling('request '+x);
-  }).listen(8124);
+    var x = 0;
+    http.createServer(function (req, res) {
+        x += 1;
+        profiler.startProfiling('request '+x);
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('Hello World ' + x);
+        profiler.stopProfiling('request '+x);
+    }).listen(8124);
   
-  profiler.takeSnapshot('Post-Server Snapshot');
-  console.log('Server running at http://127.0.0.1:8124/');
+    profiler.takeSnapshot('Post-Server Snapshot');
+    console.log('Server running at http://127.0.0.1:8124/');
 
 Despite these APIs returning objects, it is much easier to sort through the data through the `node-inspector` interface. Hopefully, with these tools, you can make more informed decisions about memory leaks and bottlenecks.
 
@@ -91,4 +90,4 @@ The console tab allows you to use Node's REPL in your program's global scope. Th
 
 The other exception is that when you use `console.log`, it refers to Node's `console.log`, and not webkit's `console.log`. This means the output goes to stdout and not to your console tab. 
 
-Other than these, it is a very straightforward node REPL.
+Other than these, it is a very straightforward Node.js REPL.

@@ -23,7 +23,7 @@ Here's a simple example.  Try to run the following in a new file:
         process.exit();
       }
       
-If all of this sounds complicated, or if you want a higher-level interface to this sort of thing, don't worry--as usual, the Node.js community has come to the rescue.  One particularly friendly module to use for this is Prompt, maintained by Nodejitsu.  It's available on `npm`:
+If all of this sounds complicated, or if you want a higher-level interface to this sort of thing, don't worry&mdash;as usual, the Node.js community has come to the rescue.  One particularly friendly module to use for this is Prompt, maintained by Nodejitsu.  It's available on `npm`:
 
      npm install prompt
 

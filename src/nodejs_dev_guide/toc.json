@@ -363,6 +363,11 @@
                      "metadata":"page.json"
                   }
                ]
+            },
+            {
+               "name":"reference",
+               "content":"content.md",
+               "metadata":"page.json"
             }
          ]
       }

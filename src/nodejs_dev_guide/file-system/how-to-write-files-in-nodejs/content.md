@@ -7,9 +7,12 @@ Writing to a file is another of the basic programming tasks that one usually nee
 
 Here's what the parameters mean:
 
-*`file` is a string filepath of the file to read
+* `file` is a string filepath of the file to read
+
 * `data` is a string or buffer of the data you want to write to the file
+
 * `encoding` is an optional string defining the encoding of the `data`. Possible encodings are 'ascii', 'utf8', and 'base64'. If no encoding provided, then the default is 'utf8'
+*
 * `callback` is an optional function that receives an error message, like so: `function (err) {}`. If there is no error, `err === null`; otherwise `err` contains the error message.
 
 For example, if we wanted to write "Hello World" to `helloworld.txt`:
