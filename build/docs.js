@@ -11,7 +11,7 @@ docs.generate = exports.generate = function (type) {
 		toc;
 
 	try {
-    	toc = JSON.parse(tocFile).toc;
+        toc = JSON.parse(tocFile).toc;
 	} catch (err) {
 	    console.log("There was an error parsing the JSON TOC for " + tocFile + ": " + err);
 	}
@@ -21,38 +21,39 @@ docs.generate = exports.generate = function (type) {
 		storeTOCInfo(toc[i].name, combineToc(i, "src/" + type, toc[i]), toc[i].metadata);
 	}
 
-	var files = fileOrder.filter(function(value){return (value==undefined) ? 0 : 1;});
+	var files = fileOrder.filter(function(value){return (value === undefined) ? 0 : 1;});
 	fileOrder = [];
 
-	printContents(0, type, files, type);
-}
+	printContents(0, type, files);
+};
 
 function combineToc(i, prefix, toc)
 {
-	var files = new Array(1),
-		contentFile = prefix + "/" + toc.name + "/" + toc.content;	
-	
-	storeTOCInfo(toc.name, contentFile, toc.metadata);
-	
-	if (toc.folder != undefined)
+	for (var j = 0; j < toc.content.length; j++)
+    {
+        var contentFile = prefix + "/" + toc.name + "/" + toc.content[j];
+        storeTOCInfo(toc.name, contentFile, toc.metadata);      
+    }
+    
+	if (toc.folder !== undefined)
 	{
-		for (var i = 0; i < toc.folder.length; i++)
+		for (var k = 0; k < toc.folder.length; k++)
 		{
-			storeTOCInfo(toc.folder[i].name, combineToc(i, prefix + "/" + toc.name, toc.folder[i], fileOrder), toc.folder[i].metadata);
+			storeTOCInfo(toc.folder[k].name, combineToc(i, prefix + "/" + toc.name, toc.folder[k], fileOrder), toc.folder[k].metadata);
 		}
 	}
 }
 
 function storeTOCInfo(dirName, fileContent, fileMetadata)
 {
-	if (fileContent != undefined)
+	if (fileContent !== undefined)
 	{
 		var srcDir = fileContent.substring(0, fileContent.lastIndexOf("/"));
 		fileOrder.push({name: dirName, content: fileContent, metadata: srcDir + "/" + fileMetadata});	
 	}
 }
 
-function printContents(i, type, files, destFile)
+function printContents(i, type, files)
 {
 	var destFile  = "tmp/" + type + ".md";
 
@@ -77,7 +78,7 @@ function traverse(type, files, destFile, cb)
 		if (exists)
 		{
 			var readStream = fs.createReadStream(contentFile);
-	  		var writeStream = fs.createWriteStream(destFile, {flags: "a+"});
+            var writeStream = fs.createWriteStream(destFile, {flags: "a+"});
   
 			readStream.addListener("data", function(chunk) {
 				var lines = chunk.toString().split('\n');
@@ -107,7 +108,7 @@ function traverse(type, files, destFile, cb)
 
                     writeStream.write(title + cleanChunk);
 				});
-    		});
+            });
 
     		readStream.addListener("end",function() {
   				 cb(null); // go on to the next file

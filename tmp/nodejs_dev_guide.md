@@ -95,6 +95,14 @@ This gives the proper output:
     3
     4
 
+<a id="how-to-write-asynchronous-code"></a>
+
+## Fah
+<span class="cite">by Nico Reed (Aug 26 2011)</span>
+
+
+Tralallala
+
 <a id="what-are-callbacks"></a>
 
 ### Understanding Callbacks
@@ -2885,7 +2893,7 @@ The unicode snowman is only one character, but takes 3 entire bytes to encode!
 
 In this example, the contents written to the buffer only consist of three groups (since they represent the single-character snowman), but the buffer's length is still 16, as it was initialized.
 
-* `Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length): This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of `buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:
+* `Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length)`: This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of `buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:
 
 <pre>
     > var frosty = new Buffer(24)
@@ -3209,11 +3217,11 @@ Here's an example, slightly less trivial than previous examples, that uses crypt
 Using this script to encode a message looks like this:
 
     $ ./secretmsg.js -e --password="popcorn" "My treasure is buried behind Carl's Jr. on Telegraph."
-    6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8
+    6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
 
 Now, if I gave somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:
 
-    $ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8
+    $ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
     My treasure is buried behind Carl's Jr. on Telegraph.
 
 You should know that what I buried behind Carl's Jr was just a cigarette butt, and that this script is obviously not for serious use.

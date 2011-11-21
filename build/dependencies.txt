@@ -1,2 +1,0 @@
-optimist
-findit

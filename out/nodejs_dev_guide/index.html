@@ -1,27 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <head> 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Node.js Developer's Guide</title>
+<title> Node.js Developer 's Guide</title>
 	<link rel="stylesheet" href="../css/style.css" type="text/css" />
 	<link rel="stylesheet" href="../css/sh.css" type="text/css" />
     <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-       $('a').click(function(){
-           window.location.hash = $(this).attr('href');
-});
-    });
-</script>
+
 </head>
 <body>
 
 <div id="toc">
-	<div id="toctitle">Node.js Developer's Guide</div>
-	<noscript>JavaScript must be enabled in your browser to display the table of contents.</noscript>
-</div>
+	<div id="toctitle">Node.js Developer's Guide </div>
+	<noscript>JavaScript must be enabled in your browser to display the table of contents.</noscript> </div>
 <div id='man'>
-<div id="man-content">
-<p><a id="getting-started"></a></p>
+<div id="man-content"><p><a id="getting-started"></a></p>
 
 <h2>Introduction</h2>
 
@@ -76,7 +67,7 @@ console.log(data);
 
 <p>Event emitters are another basic concept in Node.js. A constructor for the object is provided in Node.js core: <code>require('events').EventEmitter</code>. </p>
 
-<p>An event emitter is typically used when you know that there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see <a href="nodejs_dev_guide/index.html#what-are-event-emitters">the article on event emitters</a>.</p>
+<p>An event emitter is typically used when you know that there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see <a href="#what-are-event-emitters">the article on event emitters</a>.</p>
 
 <h4>Caveats in Asynchronous Code</h4>
 
@@ -3084,7 +3075,7 @@ buffer.write("Hello", "utf-8")
 <p>In this example, the contents written to the buffer only consist of three groups (since they represent the single-character snowman), but the buffer's length is still 16, as it was initialized.</p>
 
 <ul>
-<li><code>Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length): This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of</code>buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:</li>
+<li><code>Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length)</code>: This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of <code>buffer</code>, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:</li>
 </ul>
 
 <pre>
@@ -3419,12 +3410,12 @@ if (argv.e &amp;&amp; argv.password) {
 <p>Using this script to encode a message looks like this:</p>
 
 <pre><code>$ ./secretmsg.js -e --password="popcorn" "My treasure is buried behind Carl's Jr. on Telegraph."
-6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8
+6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
 </code></pre>
 
 <p>Now, if I gave somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:</p>
 
-<pre><code>$ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe11099963fb3bd9627986c60fa7e5120d8
+<pre><code>$ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
 My treasure is buried behind Carl's Jr. on Telegraph.
 </code></pre>
 
@@ -3597,7 +3588,6 @@ Connection not authorized: DEPTH_ZERO_SELF_SIGNED_CERT
 
 <p>Here's a link to the latest Node.js API Reference: <a href="http://nodejs.org/docs/latest/api/"><a href='http://nodejs.org/docs/latest/api/'>http://nodejs.org/docs/latest/api/</a></a>.</p></div>
 </div>
-<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/sh_main.js"></script>
 <script type="text/javascript" src="../js/sh_javascript.min.js"></script>
 <script type="text/javascript" src="../js/doc.js"></script>
