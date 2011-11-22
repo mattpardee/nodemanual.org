@@ -1,0 +1,26 @@
+{
+   "toc":[
+      {
+         "name":"getting-started",
+         "folder":[
+            {
+               "name":"ide-components",
+               "content":[
+                  "dashboard.md",
+                  "editor.md",
+                  "console.md"
+               ],
+               "metadata":"page.json"
+            },
+            {
+               "name":"tutorial",
+               "content":[
+                  "lesson1.md",
+                  "lesson2.md",
+                  "lesson3.md"
+               ]
+            }
+         ]
+      }
+   ]
+}

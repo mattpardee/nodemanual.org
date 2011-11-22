@@ -1,0 +1,20 @@
+.header, div[role="tabpanel"] {
+background: whiteSmoke; 
+border: 0;
+}
+
+h3[role="tab"] {
+border-color: whiteSmoke;    
+}
+
+#toc ul li {
+    list-style:none;    
+}
+
+.hero-unit {
+    margin-top: -8px;
+}
+
+code, pre {
+    background: #F5F5FF;
+}

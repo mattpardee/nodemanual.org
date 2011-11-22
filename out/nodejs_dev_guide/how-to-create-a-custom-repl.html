@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="creating-a-custom-repl"></a></p>
+
+<h2>Creating a Custom REPL</h2>
+
+<p><span class="cite">by Joshua Holbrook (Last Updated: Aug 26 2011)</span></p>
+
+<p>Node.js allows users to create their own REPLs with the <a href="http://nodejs.org/docs/latest/api/repl.html">repl module</a>. Its basic use looks like this:</p>
+
+<pre><code>repl.start(prompt, stream);
+</code></pre>
+
+<p><code>prompt</code> is a string that's used for the prompt of your REPL and defaults to "> ". <code>stream</code> is the stream that the REPL listens on and defaults to <code>process.stdin</code>. When you run <code>node</code> from the command prompt, it's actually running <code>repl.start()</code> to give you the standard REPL.</p>
+
+<h4>Advanced REPL Usage</h4>
+
+<p>The REPL is pretty flexible. Here's an example that shows this off:</p>
+
+<pre><code>var net = require("net"),
+    repl = require("repl");
+
+var mood = function () {
+    var m = [ "^__^", "-___-;", "&gt;.&lt;", "&lt;_&gt;" ];
+    return m[Math.floor(Math.random()*m.length)];
+};
+
+//A remote node repl that you can telnet to!
+net.createServer(function (socket) {
+  var remote = repl.start("node::remote&gt; ", socket);
+  //Adding "mood" and "bonus" to the remote REPL's context.
+  remote.context.mood = mood;
+  remote.context.bonus = "UNLOCKED";
+}).listen(5001);
+
+console.log("Remote REPL started on port 5001.");
+
+//A "local" node repl with a custom prompt
+var local = repl.start("node::local&gt; ");
+
+// Exposing the function "mood" to the local REPL's context.
+local.context.mood = mood;
+</code></pre>
+
+<p>This script creates <em>two</em> REPLs. The <code>local</code> REPL is normal (except for its custom prompt), but the <em>other</em> is exposed via the <code>net</code> module so that you can telnet into it. In addition, it uses the <code>context</code> property to expose the function "mood" to both REPLs, and the "bonus" string to the remote REPL only. As you will see, this approach of trying to expose objects to one REPL and not the other <strong>doesn't really work</strong>.</p>
+
+<p>In addition, all objects in the global scope will also be accessible to your REPLs.</p>
+
+<p>Here's what happens when the script runs:</p>
+
+<pre><code>$ node repl.js 
+Remote REPL started on port 5001.
+node::local&gt; .exit
+^Cuser:/tmp/telnet$ node repl.js 
+Remote REPL started on port 5001.
+node::local&gt; mood()
+'^__^'
+node::local&gt; bonus
+ReferenceError: bonus is not defined
+    at [object Context]:1:1
+    at Interface.&lt;anonymous&gt; (repl.js:171:22)
+    at Interface.emit (events.js:64:17)
+    at Interface._onLine (readline.js:153:10)
+    at Interface._line (readline.js:408:8)
+    at Interface._ttyWrite (readline.js:585:14)
+    at ReadStream.&lt;anonymous&gt; (readline.js:73:12)
+    at ReadStream.emit (events.js:81:20)
+    at ReadStream._emitKey (tty_posix.js:307:10)
+    at ReadStream.onData (tty_posix.js:70:12)
+</code></pre>
+
+<p>As may be seen, the <code>mood</code> function is usable within the local REPL, but the<br /><code>bonus</code> string is not. This is as expected.</p>
+
+<p>Now, here's what happens when you try to telnet to port 5001:</p>
+
+<pre><code>user:/tmp/telnet$ telnet localhost 5001
+Trying ::1...
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+node::remote&gt; mood()
+'&gt;.&lt;'
+node::remote&gt; bonus
+'UNLOCKED'
+</code></pre>
+
+<p>As you can see, the <code>mood()</code>  and <code>bonus</code> functions are also available over telnet.</p>
+
+<p>As an interesting consequence of these actions, <code>bonus()</code> is now also defined on the local REPL:</p>
+
+<pre><code>node::local&gt; bonus
+'UNLOCKED'
+</code></pre>
+
+<p>It seems we "unlocked" the <code>bonus</code> string on the local REPL as well. As it turns out, any variables created in one REPL are also available to the other:</p>
+
+<pre><code>node::local&gt; var str = "AWESOME!"
+
+node::remote&gt; str
+'AWESOME!'
+</code></pre>
+
+<p>As you can see, the Node.js REPL is powerful and flexible.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>

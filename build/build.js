@@ -9,8 +9,8 @@ case "b":
     console.log("GENERATING DOCUMENTATION".yellow);
     docs.clean("tmp");
     docs.clean("out");
-    docs.copyassets("nodejs_dev_guide");
-    docs.generate("nodejs_dev_guide");
+    docs.copyassets(type);
+    docs.generate(type);
     break;
 case "s":
     console.log("SERVING DOCUMENTATION".yellow);

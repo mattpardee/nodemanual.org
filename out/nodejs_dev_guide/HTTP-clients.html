@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="creating-an-http-server"></a></p>
+
+<h3>Creating an HTTP Server</h3>
+
+<p>Making a simple HTTP server in Node.js has become the de-facto 'hello world' for the platform. Node.js provides extremely easy-to-use HTTP APIs; in addition, a simple web server also serves as an excellent demonstration of Node's asynchronous strengths.</p>
+
+<p>Let's take a look at a very simple example:</p>
+
+<pre><code>var http = require('http');
+var requestListener = function (req, res) {
+    res.writeHead(200);
+    res.end('Hello, World!\n');
+}
+
+var server = http.createServer(requestListener);
+server.listen(8080);
+</code></pre>
+
+<p>Save this in a file called <code>server.js</code>, ande from the command line, run <code>node server.js</code>. Your program will hang there: it's waiting for connections to respond to, and you'll have to give it one if you want to see it do anything. Open up a browser, and type <code>localhost:8080</code> into the location bar. If everything has been set up correctly, you should see your server saying hello!</p>
+
+<p>Let's take a more in-depth look at what the above code is doing.  First, a function is defined called <code>requestListener</code> that takes a <code>request</code> object  (<code>req</code>) and a <code>response</code> object (<code>res</code>) as parameters. </p>
+
+<p>The <code>request</code> object contains things such as the requested URL, but in this example we ignore it and always return "Hello World!". </p>
+
+<p>The <code>response</code> object is how we send the headers and contents of the response back to the user making the request. Here, we return a 200 response code (signaling a successful response) with the body "Hello World!".  Other headers, such as <code>Content-type</code>, would also be set here.</p>
+
+<p>Next, the <code>http.createServer()</code> method creates a server that calls <code>requestListener</code> whenever a request comes in. The next line, <code>server.listen(8080)</code>, calls the <code>listen</code> method, which causes the server to wait for incoming requests on the specified port&mdash;8080, in this case. </div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="accessing-query-string-parameters"></a></p>
+
+<h3>Accessing Query String Parameters</h3>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>In Node.js, functionality to aid in the accessing of URL query string parameters is built into the standard library. The <code>url.parse()</code> method takes care of most of the heavy lifting.  Here is an example script using this handy function and an explanation on how it works:</p>
+
+<pre><code>var fs = require('fs');
+var http = require('http');
+var url = require('url') ;
+
+http.createServer(function (req, res) {
+  var queryObject = url.parse(req.url,true).query;
+  console.log(queryObject);
+
+  res.writeHead(200);
+  res.end('Feel free to add query parameters to the end of the url');
+}).listen(8080);
+</code></pre>
+
+<p>The key part of this whole script is this line:</p>
+
+<pre><code>var queryObject = url.parse(req.url,true).query;`
+</code></pre>
+
+<p>Let's take a look at things from the inside-out.  First off, <code>req.url</code> looks something like <code>/app.js?foo=bad&amp;baz=foo</code>. This is the part that is in the URL bar of the browser. Next, it gets passed to <code>url.parse()</code> which parses out the various elements of the URL. The second parameter of the function is a boolean stating whether the method should parse the query string, so we set it to <code>true</code>. Finally, we access the <code>.query</code> property, which returns us a nice, friendly JSON with our query string data. </div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="creating-http-get-and-post-requests"></a></p>
+
+<h3>Creating HTTP GET and POST Requests</h3>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>Another extremely common programming task is making an HTTP request to a web server.  Node.js provides an extremely simple API for this functionality in the form of <code>http.request</code>.</p>
+
+<p>As an example, we are going to preform a GET request to <a href="www.random.org/integers/?num=1&amp;min=1&amp;max=10&amp;col=1&amp;base=10&amp;format=plain&amp;rnd=new">www.random.org</a> (which returns a random integer between 1 and 10) and print the result to the console:</p>
+
+<pre><code>var http = require('http');
+
+//The url we want
+var options = {
+  host: 'www.random.org',
+  path: '/integers/?num=1&amp;min=1&amp;max=10&amp;col=1&amp;base=10&amp;format=plain&amp;rnd=new'
+};
+
+callback = function(response) {
+  var str = '';
+
+  // another chunk of data has been recieved, so append it to `str`
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  //the whole response has been recieved, so we just print it out here
+  response.on('end', function () {
+    console.log(str);
+  });
+}
+
+http.request(options, callback).end();
+</code></pre>
+
+<p>Making a POST request is just as easy. Let's make a POST request to <code>www.nodejitsu.com:1337</code>, which is running a server that will echo back what we send. The code for making a POST request is almost identical to making a GET request, with just a few simple modifications:</p>
+
+<pre><code>var http = require('http');
+
+//The url we want
+var options = {
+  host: 'www.nodejitsu.com',
+  path: '/',
+  //since we are listening on a custom port, we need to specify it by hand
+  port: '1337',
+  //This is what changes the request to a POST request
+  method: 'POST'
+};
+
+callback = function(response) {
+  var str = ''
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  response.on('end', function () {
+    console.log(str);
+  });
+}
+
+var req = http.request(options, callback);
+
+//This is the data we are POSTing, it needs to be a string or a buffer
+req.write("hello world!");
+req.end();
+</code></pre>
+
+<p>Adding custom headers requires a few more steps. <code>www.nodejitsu.com:1338</code> is running a server that prints out the <code>custom</code> header. We'll just make a quick request to it:</p>
+
+<pre><code>var http = require('http');
+
+var options = {
+  host: 'www.nodejitsu.com',
+  path: '/',
+  port: '1338',
+  //This is the only line that is new. `headers` is an object with the headers to request
+  headers: {'custom': 'Custom Header Demo works'}
+};
+
+callback = function(response) {
+  var str = ''
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  response.on('end', function () {
+    console.log(str);
+  });
+}
+
+var req = http.request(options, callback);
+req.end();</div&gt;
+</code></pre></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>

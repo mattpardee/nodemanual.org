@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="debugging-with-utilinspect"></a></p>
+
+<h3>Debugging with Util.Inspect()</h3>
+
+<p><span class="cite">by Charlie McConnell (Last Updated: Aug 26 2011)</span></p>
+
+<p>Node.js provides a utility function, for debugging purposes, that returns a string representation of an object.  It's called <code>util.inspect()</code>, and it can be very useful when working with properties of large, complex objects. </p>
+
+<p><code>util.inspect()</code> can be used on any object. As a demonstration, we'll use one of Node's built-in objects. Type <code>node</code> in your command prompt, and then enter the following line:</p>
+
+<pre><code> var util = require('util')
+ util.inspect(console)
+</code></pre>
+
+<p>The output should be:</p>
+
+<pre><code> { log: [Function], info: [Function], warn: [Function], 
+   error: [Function], dir: [Function], time: [Function], 
+   timeEnd: [Function], trace: [Function], 
+   assert: [Function] }
+</code></pre>
+
+<p>This is a listing of all the enumerable properties of the <code>console</code> object.  It is also worth noting that <code>console.dir()</code> is a wrapper around <code>util.inspect()</code>, and uses its default arguments.</p>
+
+<p>In the command prompt, <code>util.inspect()</code> immediately returns its output&mdash;this is not usually the case.  In the context of normal Node.js code in a file, something must be done with the output. The simplest thing to do is wrap it within a <code>console.log()</code> call:</p>
+
+<pre><code> console.log(util.inspect(myObj));
+</code></pre>
+
+<p><code>util.inspect()</code> can also be passed several optional arguments, shown here with their defaults:</p>
+
+<pre><code> util.inspect(object, showHidden=false, depth=2, colorize=true);
+</code></pre>
+
+<p>For example, <code>util.inspect(myObj, true, 7, true)</code> inspects <code>myObj</code>, showing all the hidden and non-hidden properties up to a depth of <code>7</code> and colorize the output. Let's go over the arguments individually.</p>
+
+<p>The argument <code>showHidden</code> is a boolean that determines whether or not the "non-enumerable" properties of an object are displayed&mdash;it defaults to <code>false</code>, which tends to result in vastly more readable output. This isn't something a beginner needs to worry about most of the time, but it's worth demonstrating briefly. Try the following in the command prompt:</p>
+
+<pre><code> var util = require('util');
+ util.inspect(console, true);
+</code></pre>
+
+<p>The <code>depth</code> argument is the number of levels deep into a nested object to recurse&mdash;it defaults to 2.  Setting it to <code>null</code> causes it to recurse "all the way," showing every level.  Compare the (size of) the outputs of these two <code>util.inspect</code> statements in the command prompt:</p>
+
+<pre><code> var http = require('http');
+ util.inspect(http, true, 1);
+ util.inspect(http, true, 3);
+</code></pre>
+
+<p>Finally, the optional argument <code>colorize</code> is a boolean that adds ANSI escape codes to the string output. When logged to a terminal window, it should be pretty printed with colors.</p>
+
+<pre><code> var util = require('util');
+ console.log(util.inspect({a:1, b:"b"}, false,2,true));</div&gt;
+</code></pre></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>

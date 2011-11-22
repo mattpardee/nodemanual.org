@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p>&amp;ltdiv class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="about-json"></a></p>
+
+<h2>About JSON</h2>
+
+<p><span class="cite">by Marco Rogers (Last Updated: Aug 26 2011)</span></p>
+
+<p>Javascript Object Notation, or JSON, is a lightweight data format that has become the de-facto standard for the web, toppling the long and unweildy curse of XML. JSON can be represented as either a list of values, like an Array, or as a hash of properties and values, like an Object:</p>
+
+<pre><code>// a JSON array
+["one", "two", "three"]
+
+// a JSON object
+{ "one": 1, "two": 2, "three": 3 }
+</code></pre>
+
+<p>You can view the full specifications of JSON on <a href="http://www.json.org/">the official website</a>.</p>
+
+<h4>Encoding and Decoding JSON</h4>
+
+<p>Javascript provides two methods for encoding data structures to JSON and encoding JSON back to javascript objects and arrays. They are both available on the <code>JSON</code> object that is available in the global scope.</p>
+
+<p><code>JSON.stringify()</code> takes a Javascript object or array and returns a serialized string in the JSON format. For example:</p>
+
+<pre><code>var data = {
+  name: "John Doe",
+  age: 32,
+  title: "VP of JavaScript"
+}
+
+var jsonStr = JSON.stringify(data);
+
+console.log(jsonStr);
+// prints '{"name":"John Doe", "age":32, "title":"VP of JavaScript"}'
+</code></pre>
+
+<p>The full method declaration of <code>JSON.stringify()</code> is actually <code>JSON.stringify(obj [, replacer [, space]])</code>. You can pass in an optional function to replace elements in the JSON object, or define how much whitespace to present before an element. For example:</p>
+
+<pre><code>console.log(JSON.stringify([1, 2, 3])); // returns [1, 2, 3]
+
+console.log(JSON.stringify([1, 2, 3], function replacer(key, value) {
+  if (!Array.isArray(value)) {
+    return value;
+  }
+  var len = value.length;
+  var result = { length: len };
+
+  for (var i = 0; i &lt; len; ++i) {
+    result[i] = value[i];
+  }
+  return result;
+}));
+
+// inserts two spaces
+console.log(JSON.stringify({ a: 1, b: 2}, null, 2));
+// insertes four spaces
+console.log(JSON.stringify({ a: 1, b: 2}, null, 4));
+//inserts a tab character
+console.log(JSON.stringify({ a: 1, b: 2}, null, '\t'));
+</code></pre>
+
+<p><code>JSON.parse()</code> does the reverse, taking a JSON string and decoding it to a Javascript data structure:</p>
+
+<pre><code>var jsonStr = '{"name":"John Doe","age":32,"title":"VP of JavaScript"}';
+
+var data = JSON.parse(jsonStr);
+
+console.log(data.title);
+// prints 'VP of JavaScript'
+</code></pre>
+
+<h4>Defining Valid JSON</h4>
+
+<p>There are a few rules to remember when dealing with data in the JSON format:</p>
+
+<ul>
+<li>Empty objects and arrays are okay</li>
+<li>Strings can contain any unicode character, this includes object properties</li>
+<li><code>null</code> is a valid JSON value on its own</li>
+<li>All object properties should always be double quoted</li>
+<li>Object property values must be one of the following: <code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Object</code>, <code>Array</code>, <code>null</code></li>
+<li>Number values must be in decimal format, no octal or hex representations</li>
+<li>Trailing commas on arrays are not allowed</li>
+</ul>
+
+<p>These are all examples of valid JSON.</p>
+
+<pre><code>{"name":"John Doe","age":32,"title":"Vice President of JavaScript"}
+
+["one", "two", "three"]
+
+// nesting valid values is okay
+{"names": ["John Doe", "Jane Doe"] }
+
+[ { "name": "John Doe"}, {"name": "Jane Doe"} ]
+
+{} // empty hash
+
+[] // empty list
+
+null
+
+{ "key": "\uFDD0" } // unicode escape codes
+</code></pre>
+
+<p>These are all examples of bad JSON formatting.</p>
+
+<pre><code>// name and age should be in double quotes
+{ name: "John Doe", 'age': 32 } 
+
+// hex numbers are not allowed
+[32, 64, 128, 0xFFF] 
+
+// undefined is an invalid value
+{ "name": "John Doe", age: undefined } 
+
+// functions and dates are not allowed
+{ "name": "John Doe"
+  , "birthday": new Date('Fri, 26 Aug 2011 07:13:10 GMT')
+  , "getName": function() {
+      return this.name;
+  }
+}
+</code></pre>
+
+<p>Calling <code>JSON.parse</code> with an invalid JSON string will result in a <code>SyntaxError</code> being thrown. If you are not sure of the validity of your JSON data, you can anticipate errors by wrapping the call in a <code>try/catch</code> block.</p>
+
+<p>Notice that the only complex values allowed in JSON are objects and arrays. Functions, dates and other types are excluded. This may not seem to make sense at first. But remember that JSON is a data format, not a format for transfering complex javascript objects along with their functionality.</p>
+
+<h4>JSON in other languages</h4>
+
+<p>Although JSON was inspired by the simplicity of Javascript data structures, it's use is not limited to the Javascript language. Many other languages have methods of transfering native hashes and lists into stringified JSON objects. Here's a quick example in Ruby:</p>
+
+<pre><code>require 'json'
+
+data = { :one =&gt; 1 }
+puts data.to_json
+
+# prints "{ \"one\": 1 }"&amp;lt/div&gt;
+</code></pre></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>

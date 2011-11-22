@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="the-arguments-object"></a></p>
+
+<h3>The Arguments Object</h3>
+
+<p><span class="cite">by Marco Rogers (Last Updated: Aug 26 2011)</span></p>
+
+<p>The <code>arguments</code> object is a special construct available inside all function calls. It represents the list of arguments that were passed in when invoking the function. Since Javascript allows functions to be called with any number of arguments, we need a way to dynamically discover and access them.</p>
+
+<p>The <code>arguments</code> object is an array-like object. It has a <code>length</code> property that corresponds to the number of arguments passed into the function. You can access these values by indexing into the array, <em>i.e.</em> <code>arguments[0]</code> is the first argument. Here's an example that illustrates the properties of <code>arguments</code>:</p>
+
+<pre><code>var myfunc = function(one) 
+{
+    if (arguments[0] === one)
+        console.log("First argument is 1");   
+    if (arguments[1] === 2)
+        console.log("Second argument is 2");   
+    if (arguments.length === 3)
+        console.log("Third argument is 3");
+}
+
+myfunc(1, 2, 3);
+</code></pre>
+
+<p>This construct is very useful and gives Javascript functions a lot of flexibility. But there's an important caveat: although the <code>arguments</code> object behaves like an array, but it is <em>not</em> an actual array. It doesn't have the <code>Array</code> object in its prototype chain, and it doesn't respond to any other array methods, such as <code>arguments.sort()</code>. This raises a <code>TypeError</code>. Instead, you need to copy the values into a true array before performin such operations. This is pretty easy to do with a <code>for</code> loop:</p>
+
+<pre><code>var args = [];
+for(var i = 0; i &lt; arguments.length; i++) {
+    args.push(arguments[i]);
+}
+</code></pre>
+
+<p>In certain cases you can still treat <code>arguments</code> as an array. You can use <code>arguments</code> in dynamic function invocations using apply. And most native Array methods will also accept <code>arguments</code> when dynamically invoked using call or apply. </p>
+
+<p>This technique also suggests another way to convert <code>arguments</code> into a true array using the <code>Array.slice()</code> method:</p>
+
+<pre><code>// concat arguments onto the list
+Array.prototype.concat.apply([1,2,3], arguments).
+
+// turn arguments into a true array
+var args = Array.prototype.slice.call(arguments);
+
+// cut out first argument
+args = Array.prototype.slice.call(arguments, 1);
+</code></pre>
+
+<p>The only other standard property of <code>arguments</code> is the <code>callee</code> property. This always refers to the function currently being executed. However, it's use is not recommended, as it has been deprecated. For a good explanation as to why this happened, see <a href="http://stackoverflow.com/questions/103598/why-was-the-arguments-callee-caller-property-deprecated-in-javascript">this post on StackOverflow</a>.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>

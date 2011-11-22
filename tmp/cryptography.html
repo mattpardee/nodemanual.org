@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p>&amp;ltdiv class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="cryptography"></a></p>
+
+<h2>Cryptography</h2>
+
+<p>&amp;lt/div></p>
+
+<p>&amp;ltdiv class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="hashes"></a></p>
+
+<h3>Hashes</h3>
+
+<p><span class="cite">by Joshua Holbrook (Last Updated: Aug 26 2011)</span></p>
+
+<h4>Understanding a Hash</h4>
+
+<p>A hash is a fixed-length string of bits that is procedurally and deterministially generated from some arbitrary block of source data. Some important properties of these hashes (the type useful for cryptography) include:</p>
+
+<ul>
+<li><p>A fixed length: This means that, no matter what the input, the length of the hash is the same. For example, md5 hashes are always 128 bits long whether the input data is a few bits or a few gigabytes.</p></li>
+<li><p>Deterministic: For the same input, you should expect to be able to calculate exactly the same hash. This makes hashes useful for checksums.</p></li>
+<li><p>Collision-Resistant: A collision is when the same hash is generated for two different input blocks of data. Hash algorithms are designed to be extremely unlikely to have collisions&mdash;exactly how unlikely is a property of the hash algorithm. The importance of this property depends on the use case.</p></li>
+<li><p>Unidirectional: A good hash algorithm is easy to apply, but hard to undo. This means that, given a hash, there isn't any reasonable way to find out what the original piece of data was.</p></li>
+</ul>
+
+<h4>Hash Algorithms That Work With Crypto</h4>
+
+<p>The hashes that work with crypto are dependent on what your version of OpenSSL supports. If you have a new enough version of OpenSSL, you can get a list of hash types your OpenSSL supports by typing <code>openssl list-message-digest-algorithms</code> into the command line. For older versions, type <code>openssl list-message-digest-commands</code> instead. Some of the most common hash types are <a href="http://en.wikipedia.org/wiki/Sha1">sha1</a> and <a href="http://en.wikipedia.org/wiki/Md5">md5</a>.</p>
+
+<h4>How To Calculate Hashes with Crypto</h4>
+
+<p>The <code>Crypto</code> module has a method called <code>createHash</code> which allows you to calculate a hash. Its only argument is a string representing the hash.</p>
+
+<p>This example finds the md5 hash for the string, "Man oh man do I love node!":</p>
+
+<pre><code>require("crypto")
+  .createHash("md5")
+  .update("Man oh man do I love node!")
+  .digest("hex");
+</code></pre>
+
+<p>The <code>update()</code> method is used to push data to later be turned into a hash with the <code>digest()</code> method. <code>update()</code> can be invoked multiple times to ingest streaming data, such as buffers from a file read stream. The argument for <code>digest</code> represents the output format, and may either be "binary", "hex", or "base64". It defaults to binary.</p>
+
+<h4>HMAC</h4>
+
+<p>HMAC stands for Hash-based Message Authentication Code, and is a process for applying a hash algorithm to both data and a secret key that results in a single final hash. Its use is similar to that of a vanilla hash, but also allows to check the <em>authenticity</em> of data as well as the integrity of data (as you can using md5 checksums).</p>
+
+<p>The API for hmacs is very similar to that of <code>createHash()</code>, except that the method is called <code>createHmac()</code> and it takes a key as a second argument:</p>
+
+<pre><code>require("crypto").createHmac("md5", "password")
+  .update("If you love node so much why don't you marry it?")
+  .digest("hex");
+</code></pre>
+
+<p>The resulting md5 hash is unique to both the input data and the key.</p>
+
+<h4>Ciphers</h4>
+
+<p>Ciphers allow you to encode and decode messages given a password.</p>
+
+<p>Like crypto's hash algorithms, the cyphers that work with <code>Crypto</code> are dependent on what your version of OpenSSL supports. You can get a list of hash types your OpenSSL supports by typing <code>openssl list-cipher-commands</code> into the command line for older versions, or <code>openssl list-cipher-algorithms</code> for newer versions of OpenSSL. OpenSSL supports many ciphers. A good and popular one is <a href="http://en.wikipedia.org/wiki/Aes192">AES192</a>.</p>
+
+<h4>How To Use Cipher Algorithms with Crypto:</h4>
+
+<p><code>Crypto</code> comes with two methods for ciphering and deciphering:</p>
+
+<ul>
+<li><code>crypto.createCypher(algorithm, key)</code></li>
+<li><code>crypto.createDecipher(algorithm, key)</code></li>
+</ul>
+
+<p>Both of these methods take arguments similarly to <code>createHmac</code>. They also both have analogous <code>update()</code> functions. However, each use of <code>update()</code> returns a chunk of the encoded/decoded data instead of requiring one to call <code>digest()</code> to get the result. Moreover, after encoding (or decoding) your data, you will likely have to call the <code>final()</code> method to get the last chunk of encoded information.</p>
+
+<p>Here's an example, slightly less trivial than previous examples, that uses crypto and <a href="https://github.com/substack/node-optimist">optimist</a> to encode and decode messages from the command line:</p>
+
+<pre><code>#!/usr/bin/env node
+
+var crypto = require("crypto"),
+    argv = require("optimist").argv;
+
+if (argv.e &amp;&amp; argv.password) {
+    var cipher = crypto.createCipher("aes192", argv.password),
+        msg = [];
+
+    argv._.forEach( function (phrase) {
+        msg.push(cipher.update(phrase, "binary", "hex"));
+    });
+
+    msg.push(cipher.final("hex"));
+    console.log(msg.join(""));
+
+} else if (argv.d &amp;&amp; argv.password) {
+    var decipher = crypto.createDecipher("aes192", argv.password),
+        msg = [];
+
+    argv._.forEach( function (phrase) {
+        msg.push(decipher.update(phrase, "hex", "binary"));
+    });
+
+    msg.push(decipher.final("binary"));
+    console.log(msg.join(""));   
+}
+</code></pre>
+
+<p>Using this script to encode a message looks like this:</p>
+
+<pre><code>$ ./secretmsg.js -e --password="popcorn" "My treasure is buried behind Carl's Jr. on Telegraph."
+6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
+</code></pre>
+
+<p>Now, if I gave somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:</p>
+
+<pre><code>$ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
+My treasure is buried behind Carl's Jr. on Telegraph.
+</code></pre>
+
+<p>You should know that what I buried behind Carl's Jr was just a cigarette butt, and that this script is obviously not for serious use.</p>
+
+<h4>Signing and Verification</h4>
+
+<p><code>Crypto</code> has other methods used for dealing with certificates and credentials, as used for TLS:</p>
+
+<ul>
+<li><code>Crypto.createCredentials</code></li>
+<li><code>Crypto.createSign</code></li>
+<li><code>Crypto.createVerify</code></li>
+</ul>
+
+<p>These methods supply the last building blocks for a complete cryptographic protocol, and require an advanced knowledge of real-world cryptographic protocols to be useful. Again, it is recommended that developers use either the <a href="http://nodejs.org/docs/latest/api/tls.html">tls</a> module or the <a href="http://nodejs.org/docs/latest/api/https.html">https</a> module if applicable.&amp;lt/div></p>
+
+<p>&amp;ltdiv class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="using-tls"></a></p>
+
+<h3>Using TLS</h3>
+
+<p><span class="cite">by Joshua Holbrook (Last Updated: Aug 26 2011)</span></p>
+
+<p><a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a> (TLS) is the successor to Secure Sockets Layer (SSL). It, along with SSL, are the de-facto standard cryptographic protocols for secure communications over the web. TSL encrypts communications on top of a network transport layer (typically TCP), and uses public-key cryptography to encrypt messages.</p>
+
+<h4>Public-Key Cryptography</h4>
+
+<p>In public-key cryptography, each peer has two keys: a public key, and a private key. The public key is shared with everyone, and the private key is kept secret. In order to encrypt a message, a computer requires its private key and the recipient's public key. Then, in order to decrypt the message, the recipient requires its <em>own</em> private key and the <em>sender</em>'s public key.</p>
+
+<p>In TLS connections, the public key is called a <em><a href="http://en.wikipedia.org/wiki/Digital_certificate">certificate</a></em>. This is because it's "<a href="http://en.wikipedia.org/wiki/Digital_signature">signed</a>" to prove that the public key belongs to its owner. TLS certificates may either be signed by a third-party certificate authority (CA), or they may be <a href="http://en.wikipedia.org/wiki/Self-signed_certificate">self-signed</a>. In the case of Certificate Authorities, Mozilla keeps <a href="http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt">a list of trusted root CAs</a> that are generally agreed upon by most web browsers. These root CAs may then issue certificates to other signing authorities, which in turn sign certificates for the general public.</p>
+
+<p>TLS support in Node.js is relatively new. The first stable version of Node.js to support TSL and HTTPS was the v0.4 branch, which was released in early 2011. As such, the TSL APIs in Node.js are still a little rough around the edges.</p>
+
+<h4>Creating a TLS Server</h4>
+
+<p>In most ways, the TLS module's server API is similar to that of the net module. Besides the fact that it's for encrypted connections, the major difference is that the options object passed to <code>tls.connect()</code> or <code>tls.createServer()</code> needs to include information on both the private key and the certificate, in <a href="http://en.wikipedia.org/wiki/X.509#Certificate_filename_extensions">pem format</a>. Here's an example of a TLS server:</p>
+
+<pre><code>var tls = require('tls'),
+    fs = require('fs'),
+    colors = require('colors'),
+    msg = [
+            ".-..-..-.  .-.   .-. .--. .---. .-.   .---. .-.",
+            ": :; :: :  : :.-.: :: ,. :: .; :: :   : .  :: :",
+            ":    :: :  : :: :: :: :: ::   .': :   : :: :: :",
+            ": :: :: :  : `' `' ;: :; :: :.`.: :__ : :; ::_;",
+            ":_;:_;:_;   `.,`.,' `.__.':_;:_;:___.':___.':_;" 
+          ].join("\n").cyan;
+
+var options = {
+  key: fs.readFileSync('private-key.pem'),
+  cert: fs.readFileSync('public-cert.pem')
+};
+
+tls.createServer(options, function (s) {
+  s.write(msg+"\n");
+  s.pipe(s);
+}).listen(8000);
+</code></pre>
+
+<p>In this example, a "hello world" TLS server is created, listening on port 8000. The options object includes two properties: <code>key</code> and <code>cert</code>. The contents of these properties come directly from the private key and public certificate stored on the filesystem. In this case they are binary buffers, but the TLS module can also accept unicode strings.</p>
+
+<h4>Generating Your Private Key And Certificate With OpenSSL:</h4>
+
+<p>In order for this example server to work, of course, you will need a private key and a certificate. You can generate both of these with OpenSSL.</p>
+
+<p>First, generate a private key:</p>
+
+<pre><code>$ openssl genrsa -out private-key.pem 1024
+Generating RSA private key, 1024 bit long modulus
+......................................++++++
+........++++++
+e is 65537 (0x10001)
+</code></pre>
+
+<p>This creates a suitable private key and writes it to <code>./private-key.pem</code>.</p>
+
+<p>Next, create a Certificate Signing Request file using your private key:</p>
+
+<pre><code>$ openssl req -new -key private-key.pem -out csr.pem
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:California
+Locality Name (eg, city) []:Oakland
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Panco, Inc.
+Organizational Unit Name (eg, section) []:
+Common Name (eg, YOUR name) []:Joshua Holbrook
+Email Address []:<a href='mailto:blah@boo.com'>blah@boo.com</a>
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:dangerface
+An optional company name []:
+</code></pre>
+
+<p>The purpose of this CSR is to "request" a certificate. That is, if you wanted a CA to sign your certificate, you could give this file to them to process and they would give you back a certificate.</p>
+
+<p>Alternately, however, you may self-sign your certificate, again using your private key:</p>
+
+<pre><code>$ openssl x509 -req -in csr.pem -signkey private-key.pem -out public-cert.pem
+Signature ok
+subject=/C=US/ST=California/L=Oakland/O=Panco, Inc./CN=Joshua Holbrook/<a href='mailto:emailAddress=blah@boo.com'>emailAddress=blah@boo.com</a>
+Getting Private key
+</code></pre>
+
+<p>This generates your certificate. Now you're cooking!</p>
+
+<p>One way to test out your new "hello world" server is to again use OpenSSL:</p>
+
+<pre><code>$ openssl s_client -connect 127.0.0.1:8000
+</code></pre>
+
+<p>You should see a bunch of output regarding the handshaking process, and then at the very end you should see a big, cyan figlet banner saying, "Hi world!"</p>
+
+<h4>Connecting to a TLS Server</h4>
+
+<p>The <code>tls</code> module also supplies tools for connecting to such a server:</p>
+
+<pre><code>var tls = require('tls'),
+    fs = require('fs');
+
+var options = {
+  key: fs.readFileSync('private-key.pem'),
+  cert: fs.readFileSync('public-cert.pem')
+};
+
+var conn = tls.connect(8000, options, function() {
+  if (conn.authorized) {
+    console.log("Connection authorized by a Certificate Authority.");
+  } else {
+    console.log("Connection not authorized: " + conn.authorizationError)
+  }
+    console.log();
+});
+
+conn.on("data", function (data) {
+  console.log(data.toString());
+  conn.end();
+});
+</code></pre>
+
+<p>The idea is similar, except instead of creating a server, this script connects to one instead. <code>tls.connect()</code> also takes an <code>options</code> object, and then returns a stream.</p>
+
+<p><code>tls.connect()</code> also fires a callback when the connection is made, which allows for checking to see if the connection is authorized&mdash;that is, if all the certificates are in order. <code>conn.authorized</code> is a boolean, and <code>conn.authorizationError</code> is a string containing the reason that the connection is unauthorized.</p>
+
+<p>This is what happens when the client is run (with the server running):</p>
+
+<pre><code>$ node client.js
+Connection not authorized: DEPTH_ZERO_SELF_SIGNED_CERT
+
+.-..-..-.  .-.   .-. .--. .---. .-.   .---. .-.
+: :; :: :  : :.-.: :: ,. :: .; :: :   : .  :: :
+:    :: :  : :: :: :: :: ::   .': :   : :: :: :
+: :: :: :  : `' `' ;: :; :: :.`.: :__ : :; ::_;
+:_;:_;:_;   `.,`.,' `.__.':_;:_;:___.':___.':_;
+</code></pre>
+
+<p>Note that self-signing the server certificate results in a non-authorized status because you're not listed as a trusted certificate authority.</p>
+
+<p>It's entirely possible to "upgrade" an existing tcp connection into a TLS-encrypted one with Node.js. However, Node.js does not have a special functions for doing so as of the v0.6 branch. Therefore, it needs to be done "by-hand", using the crypto module and some undocumented <code>tls</code> module functionality. Node's documentation points to <a href="https://gist.github.com/848444"><a href='https://gist.github.com/848444'>https://gist.github.com/848444</a></a>, which aims to abstract the process.&amp;lt/div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>

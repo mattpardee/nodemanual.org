@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h3>Overview</h3>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h3>Tutorial </h3>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="HTTP-servers.html">Serving Files</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+</ul>
+</div>
+<h3>Reference </h3>
+<div>
+<ul>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="creating-an-http-server"></a></p>
+
+<h3>Creating an HTTP Server</h3>
+
+<p>Making a simple HTTP server in Node.js has become the de-facto 'hello world' for the platform. Node.js provides extremely easy-to-use HTTP APIs; in addition, a simple web server also serves as an excellent demonstration of Node's asynchronous strengths.</p>
+
+<p>Let's take a look at a very simple example:</p>
+
+<pre><code>var http = require('http');
+var requestListener = function (req, res) {
+    res.writeHead(200);
+    res.end('Hello, World!\n');
+}
+
+var server = http.createServer(requestListener);
+server.listen(8080);
+</code></pre>
+
+<p>Save this in a file called <code>server.js</code>, ande from the command line, run <code>node server.js</code>. Your program will hang there: it's waiting for connections to respond to, and you'll have to give it one if you want to see it do anything. Open up a browser, and type <code>localhost:8080</code> into the location bar. If everything has been set up correctly, you should see your server saying hello!</p>
+
+<p>Let's take a more in-depth look at what the above code is doing.  First, a function is defined called <code>requestListener</code> that takes a <code>request</code> object  (<code>req</code>) and a <code>response</code> object (<code>res</code>) as parameters. </p>
+
+<p>The <code>request</code> object contains things such as the requested URL, but in this example we ignore it and always return "Hello World!". </p>
+
+<p>The <code>response</code> object is how we send the headers and contents of the response back to the user making the request. Here, we return a 200 response code (signaling a successful response) with the body "Hello World!".  Other headers, such as <code>Content-type</code>, would also be set here.</p>
+
+<p>Next, the <code>http.createServer()</code> method creates a server that calls <code>requestListener</code> whenever a request comes in. The next line, <code>server.listen(8080)</code>, calls the <code>listen</code> method, which causes the server to wait for incoming requests on the specified port&mdash;8080, in this case. </div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="serving-files"></a></p>
+
+<h2>Serving Files</h2>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p></div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="creating-an-https-server"></a></p>
+
+<h3>Creating an HTTPS Server</h3>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>To create an HTTPS server, you need two things: an SSL certificate, and Node's built-in <code>https</code> module.</p>
+
+<p>We need to start out with a word about SSL certificates.  Speaking generally, there are two kinds of certificates: those signed by a 'Certificate Authority', or CA, and a 'self-signed certificates'.  A Certificate Authority is a trusted source for an SSL certificate, and using a certificate from a CA allows your users to be trust the identity of your website. In most cases, you would want to use a CA-signed certificate in a production environment; for testing purposes, however, a self-signed certicate will do just fine.</p>
+
+<p>To generate a self-signed certificate, run the following in your shell:</p>
+
+<pre><code>openssl genrsa -out key.pem
+openssl req -new -key key.pem -out csr.pem
+openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
+rm csr.pem
+</code></pre>
+
+<p>This should leave you with two files, <code>cert.pem</code> (the certificate) and <code>key.pem</code> (the private key). This is all you need for a SSL connection. </p>
+
+<p>Next, set up a quick "hello world" example. ():</p>
+
+<pre><code>var https = require('https');
+var fs = require('fs');
+
+// read the certificate
+var options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+
+var a = https.createServer(options, function (req, res) {
+  res.writeHead(200);
+  res.end("hello world\n");
+}).listen(8000);
+</code></pre>
+
+<p>The biggest difference between <a href="#how-do-i-create-a-http-server">HTTP</a> and HTTPS is the additional <code>options</code> parameter</p>
+
+<p><strong>Note</strong>: <code>fs.readFileSync()</code>&mdash;unlike <code>fs.readFile()</code>&mdash;blocks the entire process until it completes.  In situations like this&mdash;loading vital configuration data&mdash;the <code>Sync</code> functions are okay.  In a busy server, however, using a synchronous function during a request will force the server to deal with the requests one by one!</p>
+
+<p>Now that your server is set up and started, you should be able to get the file with curl:</p>
+
+<pre><code>curl -k <a href='https://localhost:8000'>https://localhost:8000</a>
+</code></pre>
+
+<p>or in your browser, by going to <code><a href='https://localhost:8000'>https://localhost:8000</a></code>. </div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="serving-static-files"></a></p>
+
+<h3>Serving Static Files</h3>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>A basic necessity for most <a href="#how-do-i-create-a-https-server">HTTP servers</a> is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:</p>
+
+<pre><code>var fs = require('fs'),
+http = require('http');
+
+http.createServer(function (req, res) {
+  fs.readFile(__dirname + req.url, function (err,data) {
+    if (err) {
+      res.writeHead(404);
+      res.end(JSON.stringify(err));
+      return;
+    }
+    res.writeHead(200);
+    res.end(data);
+  });
+}).listen(8080);
+</code></pre>
+
+<p>This example takes the path requested and it serves that path, relative to the local directory. This works fine as a quick solution; however, there are a few problems with this approach. First, this code does not correctly handle MIME types. Additionally, a proper static file server should really be taking advantage of client side caching, and should send a "Not Modified" response if nothing has changed.  Furthermore, there are security bugs that can enable a malicious user to break out of the current directory, (for example, by issuing <code>GET /../../../</code>). </p>
+
+<p>Each of these can be addressed invidually without much difficulty. You can send the proper MIME type header. You can figure how to utilize the client caches. You can take advantage of <code>path.normalize</code> to make sure that requests don't break out of the current directory. But why write all that code when you can just use someone else's library? </p>
+
+<p>There is a good static file server called <a href="https://github.com/cloudhead/node-static">node-static</a> written by Alexis Sellier which you can leverage. Here is a script which functions similarly to the previous one:</p>
+
+<pre><code>var static = require('node-static');
+var http = require('http');
+
+var file = new(static.Server)();
+
+http.createServer(function (req, res) {
+  file.serve(req, res);
+}).listen(8080);
+</code></pre>
+
+<p>This is a fully functional file server that doesn't have any of the bugs previously mentioned. This is just the most basic set up. There are more things you can do if you investigate <a href="https://github.com/cloudhead/node-static">the API</a>. Since it's an open source project, you can always modify it to your needs (and contribute back to the project).</div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="reading-post-data"></a></p>
+
+<h3>Reading POST Data</h3>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>Reading the data from a POST request (i.e. a form submission) can be a little bit of a pitfall in Node.js, so we're going to go through an example of how to do it properly.  </p>
+
+<p>The first step is to listen for incoming data. The trick is to wait for the data to finish, so that you can process all the form data without losing anything. </p>
+
+<p>Here is a quick script that shows you how to do exactly that:</p>
+
+<pre><code>var http = require('http');
+var postHTML = "&lt;html&gt;&lt;head&gt;&lt;title&gt;Post Example&lt;/title&gt;&lt;/head&gt;&lt;body&gt;" +
+'&lt;form method="post"&gt;' +
+  'Input 1: &lt;input name="input1"&gt;&lt;br&gt;' +
+    'Input 2: &lt;input name="input2"&gt;&lt;br&gt;' +
+    '&lt;input type="submit"&gt;' +
+    '&lt;/form&gt;' +
+    '&lt;/body&gt;&lt;/html&gt;';
+
+http.createServer(function (req, res) {
+  var body = "";
+  req.on('data', function (chunk) {
+    body += chunk;
+  });
+  req.on('end', function () {
+    console.log('POSTed: ' + body);
+    res.writeHead(200);
+    res.end(postHTML);
+  });
+}).listen(8080);
+</code></pre>
+
+<p>The variable <code>postHTML</code> is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can <code>POST</code> example data. This is <strong>not</strong> the right way to serve static HTML; to do that, see <a href="#how-to-serve-static-files">How to Serve Static Files</a> for a more proper example.</p>
+
+<p>With the HTML out of the way, we <a href="#how-do-i-create-a-http-server">create a server</a> to listen for requests. It is important to note, when listening for POST data, that the <code>req</code> object is also an <a href="#what-are-event-emitters">Event Emitter</a>.  <code>req</code>, therefore, will emit a <code>data</code> event whenever a chunk of incoming data is received; when there is no more incoming data, the <code>end</code> event is emitted. In our case, we listen for <code>data</code> events. Once all the data is recieved, we log the data to the console and send the response. </p>
+
+<p>Something important to note is that the event listeners are being added immediately after the request object is received. If you don't immediately set them, then there is a possibility of missing some of the events. If, for example, an event listener was attached from inside a callback, then the <code>data</code> and <code>end</code> events might be fired in the meantime with no listeners attached!</p>
+
+<p>You can save this script to <code>server.js</code> and run it with <code>node server.js</code>. Once you run it you will notice that occassionally you will see lines with no data:  <code>POSTed:</code>. This happens because regular <code>GET</code> requests go through the same codepath. In a more real-world application, it would be proper practice to check the type of request and handle the different request types differently.</div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="handling-multipart-form-data"></a></p>
+
+<h3>Handling Multi-Part Form Data</h3>
+
+<p><span class="cite">by AvianFlu (Last Updated: Sep 09 2011)</span></p>
+
+<p>Handling form data and file uploads properly is an important and complex problem in HTTP servers.  Doing it by hand would involve parsing streaming binary data, writing it to the file system, parsing out additional form data, and several other complex concerns. Luckily, only a very few people will need to worry about it on that deep level. </p>
+
+<p>Felix Geisendorfer, one of the Node.js core committers, wrote a library called <code>node-formidable</code> that handles all the hard parts for you. With its friendly API, you can be parsing forms and receiving file uploads in no time.</p>
+
+<p>This example is taken directly from the <code>node-formidable</code> GitHub page, with some additional explanation added.</p>
+
+<pre><code>var formidable = require('formidable'),
+http = require('http'),
+util = require('util');
+
+http.createServer(function(req, res) {
+
+  // This if statement is here to catch form submissions, 
+  // and initiate multipart form data parsing.     
+  if (req.url == '/upload' &amp;&amp; req.method.toLowerCase() == 'post') {
+
+    // Instantiate a new formidable form for processing.
+    var form = new formidable.IncomingForm();
+
+    // form.parse() analyzes the incoming stream data, 
+    // picking apart the different fields and files for you.
+    form.parse(req, function(err, fields, files) {
+      if (err) {
+        // Check for and handle any errors here.
+        console.error(err.message);
+        return;
+      }
+
+      res.writeHead(200, {'content-type': 'text/plain'});
+      res.write('received upload:\n\n');
+
+      // This last line responds to the form submission 
+      // with a list of the parsed data and files.
+      res.end(util.inspect({fields: fields, files: files}));
+    });
+
+    return;
+  }
+
+  // If this is a regular request, and not a form submission, then send the form
+  res.writeHead(200, {'content-type': 'text/html'});
+  res.end(
+    '&lt;form action="/upload" enctype="multipart/form-data" method="post"&gt;'+
+    '&lt;input type="text" name="title"&gt;&lt;br&gt;'+
+    '&lt;input type="file" name="upload" multiple="multiple"&gt;&lt;br&gt;'+
+    '&lt;input type="submit" value="Upload"&gt;'+
+    '&lt;/form&gt;'
+  );
+}).listen(8080);
+</code></pre>
+
+<p>Using <code>node-formidable</code> is definitely the simplest solution, and it is a battle-hardened, production-ready library. Let userland solve problems like this for you, so that you can get back to writing the rest of your code!</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+<!--<script type="text/javascript" src="../js/toc.js"></script>-->
+</div>
+    </div>
+
+  </body>
+</html>
