@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Reference Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Node.js Reference Guide</h5>
+<div>
+<ul>
+<li><a class="upper" href="synopsis.html">Synopsis</a></li>
+<li><a class="upper" href="globals.html">Global Objects</a></li>
+<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="timers.html">Timers</a></li>
+<li><a class="upper" href="modules.html">Modules</a></li>
+<li><a class="upper" href="addons.html">Addons</a></li>
+<li><a class="upper" href="process.html">process</a></li>
+<li><a class="upper" href="util.html">util</a></li>
+<li><a class="upper" href="events.html">Events</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="crypto.html">Crypto</a></li>
+<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="net.html">net</a></li>
+<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dns.html">DNS</a></li>
+<li><a class="upper" href="http.html">HTTP</a></li>
+<li><a class="upper" href="https.html">HTTPS</a></li>
+<li><a class="upper" href="url.html">URL</a></li>
+<li><a class="upper" href="querystring.html">Query String</a></li>
+<li><a class="upper" href="readline.html">Readline</a></li>
+<li><a class="upper" href="repl.html">REPL</a></li>
+<li><a class="upper" href="vm.html">Executing JavaScript</a></li>
+<li><a class="upper" href="child_processes.html">Child Processes</a></li>
+<li><a class="upper" href="assert.html">Assert</a></li>
+<li><a class="upper" href="tty.html">TTY</a></li>
+<li><a class="upper" href="zlib.html">Zlib</a></li>
+<li><a class="upper" href="os.html">os Module</a></li>
+<li><a class="upper" href="debugger.html">Debugger</a></li>
+<li><a class="upper" href="cluster.html">Cluster</a></li>
+<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+</ul></div>
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="os-module"></a></p>
+
+<h2>os Module</h2>
+
+<p>Use <code>require('os')</code> to access this module.</p>
+
+<h3>os.hostname()</h3>
+
+<p>Returns the hostname of the operating system.</p>
+
+<h3>os.type()</h3>
+
+<p>Returns the operating system name.</p>
+
+<h3>os.platform()</h3>
+
+<p>Returns the operating system platform.</p>
+
+<h3>os.arch()</h3>
+
+<p>Returns the operating system CPU architecture.</p>
+
+<h3>os.release()</h3>
+
+<p>Returns the operating system release.</p>
+
+<h3>os.uptime()</h3>
+
+<p>Returns the system uptime in seconds.</p>
+
+<h3>os.loadavg()</h3>
+
+<p>Returns an array containing the 1, 5, and 15 minute load averages.</p>
+
+<h3>os.totalmem()</h3>
+
+<p>Returns the total amount of system memory in bytes.</p>
+
+<h3>os.freemem()</h3>
+
+<p>Returns the amount of free system memory in bytes.</p>
+
+<h3>os.cpus()</h3>
+
+<p>Returns an array of objects containing information about each CPU/core installed: model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).</p>
+
+<p>Example inspection of os.cpus:</p>
+
+<pre><code>[ { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 252020,
+       nice: 0,
+       sys: 30340,
+       idle: 1070356870,
+       irq: 0 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 306960,
+       nice: 0,
+       sys: 26980,
+       idle: 1071569080,
+       irq: 0 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 248450,
+       nice: 0,
+       sys: 21750,
+       idle: 1070919370,
+       irq: 0 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 256880,
+       nice: 0,
+       sys: 19430,
+       idle: 1070905480,
+       irq: 20 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 511580,
+       nice: 20,
+       sys: 40900,
+       idle: 1070842510,
+       irq: 0 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 291660,
+       nice: 0,
+       sys: 34360,
+       idle: 1070888000,
+       irq: 10 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 308260,
+       nice: 0,
+       sys: 55410,
+       idle: 1071129970,
+       irq: 880 } },
+  { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+    speed: 2926,
+    times:
+     { user: 266450,
+       nice: 1480,
+       sys: 34920,
+       idle: 1072572010,
+       irq: 30 } } ]
+</code></pre>
+
+<h3>os.networkInterfaces()</h3>
+
+<p>Get a list of network interfaces:</p>
+
+<pre><code>{ lo0: 
+   [ { address: '::1', family: 'IPv6', internal: true },
+     { address: 'fe80::1', family: 'IPv6', internal: true },
+     { address: '127.0.0.1', family: 'IPv4', internal: true } ],
+  en1: 
+   [ { address: 'fe80::cabc:c8ff:feef:f996', family: 'IPv6',
+       internal: false },
+     { address: '10.0.1.123', family: 'IPv4', internal: false } ],
+  vmnet1: [ { address: '10.99.99.254', family: 'IPv4', internal: false } ],
+  vmnet8: [ { address: '10.88.88.1', family: 'IPv4', internal: false } ],
+  ppp0: [ { address: '10.2.0.231', family: 'IPv4', internal: false } ] }
+</code></pre>
+
+<p></div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

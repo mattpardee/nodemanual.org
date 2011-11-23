@@ -75,7 +75,7 @@ function printContents(i, type, files)
         if (splitPaths.length > 3)
             destFile = "tmp/" + splitPaths[3] + ".md";
         else if (files[i].name == "")
-            destFile = "tmp/index.md";
+            destFile = "tmp/" + files[i].content.substring(files[i].content.lastIndexOf("/") + 1);
         else
             destFile = "tmp/" + files[i].name + ".md";
 
@@ -167,7 +167,7 @@ function traverse(type, files, destFile, cb)
 
 docs.assemble = function(outName, tmpFile)
 {
-    var filename = tmpFile.substring(3, tmpFile.length - 3);
+    var filename = tmpFile.substring(3, tmpFile.lastIndexOf(".") + 1);
 	var outTmpFile = "tmp/" + filename + ".html";
     var outFile = "out/" + outName + "/" + filename + ".html";
 	var headerFile = "build/" + outName + "_header.html";
