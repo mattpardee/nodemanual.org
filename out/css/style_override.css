@@ -11,10 +11,15 @@ border-color: whiteSmoke;
     list-style:none;    
 }
 
-.hero-unit {
-    margin-top: -8px;
+/* Unfortunate hack due to markdown->html conversion whitespace */
+div.content>p:first-of-type {  
+display: none;
 }
 
 code, pre {
     background: #F5F5FF;
+}
+
+li {
+    color: black;
 }

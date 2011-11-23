@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Reference Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Node.js Reference Guide</h5>
+<div>
+<ul>
+<li><a class="upper" href="synopsis.html">Synopsis</a></li>
+<li><a class="upper" href="globals.html">Global Objects</a></li>
+<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="timers.html">Timers</a></li>
+<li><a class="upper" href="modules.html">Modules</a></li>
+<li><a class="upper" href="addons.html">Addons</a></li>
+<li><a class="upper" href="process.html">process</a></li>
+<li><a class="upper" href="util.html">util</a></li>
+<li><a class="upper" href="events.html">Events</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="crypto.html">Crypto</a></li>
+<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="net.html">net</a></li>
+<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dns.html">DNS</a></li>
+<li><a class="upper" href="http.html">HTTP</a></li>
+<li><a class="upper" href="https.html">HTTPS</a></li>
+<li><a class="upper" href="url.html">URL</a></li>
+<li><a class="upper" href="querystring.html">Query String</a></li>
+<li><a class="upper" href="readline.html">Readline</a></li>
+<li><a class="upper" href="repl.html">REPL</a></li>
+<li><a class="upper" href="vm.html">Executing JavaScript</a></li>
+<li><a class="upper" href="child_processes.html">Child Processes</a></li>
+<li><a class="upper" href="assert.html">Assert</a></li>
+<li><a class="upper" href="tty.html">TTY</a></li>
+<li><a class="upper" href="zlib.html">Zlib</a></li>
+<li><a class="upper" href="os.html">os Module</a></li>
+<li><a class="upper" href="debugger.html">Debugger</a></li>
+<li><a class="upper" href="cluster.html">Cluster</a></li>
+<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+</ul></div>
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="query-string"></a></p>
+
+<h2>Query String</h2>
+
+<p>This module provides utilities for dealing with query strings.<br />It provides the following methods:</p>
+
+<h3>querystring.stringify(obj, sep='&amp;', eq='=')</h3>
+
+<p>Serialize an object to a query string.<br />Optionally override the default separator and assignment characters.</p>
+
+<p>Example:</p>
+
+<pre><code>querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' })
+// returns
+'foo=bar&amp;baz=qux&amp;baz=quux&amp;corge='
+
+querystring.stringify({foo: 'bar', baz: 'qux'}, ';', ':')
+// returns
+'foo:bar;baz:qux'
+</code></pre>
+
+<h3>querystring.parse(str, sep='&amp;', eq='=')</h3>
+
+<p>Deserialize a query string to an object.<br />Optionally override the default separator and assignment characters.</p>
+
+<p>Example:</p>
+
+<pre><code>querystring.parse('foo=bar&amp;baz=qux&amp;baz=quux&amp;corge')
+// returns
+{ foo: 'bar', baz: ['qux', 'quux'], corge: '' }
+</code></pre>
+
+<h3>querystring.escape</h3>
+
+<p>The escape function used by <code>querystring.stringify</code>,<br />provided so that it could be overridden if necessary.</p>
+
+<h3>querystring.unescape</h3>
+
+<p>The unescape function used by <code>querystring.parse</code>,<br />provided so that it could be overridden if necessary.<br /></div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Reference Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Node.js Reference Guide</h5>
+<div>
+<ul>
+<li><a class="upper" href="synopsis.html">Synopsis</a></li>
+<li><a class="upper" href="globals.html">Global Objects</a></li>
+<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="timers.html">Timers</a></li>
+<li><a class="upper" href="modules.html">Modules</a></li>
+<li><a class="upper" href="addons.html">Addons</a></li>
+<li><a class="upper" href="process.html">process</a></li>
+<li><a class="upper" href="util.html">util</a></li>
+<li><a class="upper" href="events.html">Events</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="streams.html">Streams</a></li>
+<li><a class="upper" href="crypto.html">Crypto</a></li>
+<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="net.html">net</a></li>
+<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dns.html">DNS</a></li>
+<li><a class="upper" href="http.html">HTTP</a></li>
+<li><a class="upper" href="https.html">HTTPS</a></li>
+<li><a class="upper" href="url.html">URL</a></li>
+<li><a class="upper" href="querystring.html">Query String</a></li>
+<li><a class="upper" href="readline.html">Readline</a></li>
+<li><a class="upper" href="repl.html">REPL</a></li>
+<li><a class="upper" href="vm.html">Executing JavaScript</a></li>
+<li><a class="upper" href="child_processes.html">Child Processes</a></li>
+<li><a class="upper" href="assert.html">Assert</a></li>
+<li><a class="upper" href="tty.html">TTY</a></li>
+<li><a class="upper" href="zlib.html">Zlib</a></li>
+<li><a class="upper" href="os.html">os Module</a></li>
+<li><a class="upper" href="debugger.html">Debugger</a></li>
+<li><a class="upper" href="cluster.html">Cluster</a></li>
+<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+</ul></div>
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="streams"></a></p>
+
+<h2>Streams</h2>
+
+<p>A stream is an abstract interface implemented by various objects in Node.<br />For example a request to an HTTP server is a stream, as is stdout. Streams<br />are readable, writable, or both. All streams are instances of <code>EventEmitter</code>.</p>
+
+<h2>Readable Stream</h2>
+
+<p>A <code>Readable Stream</code> has the following methods, members, and events.</p>
+
+<h3>Event: 'data'</h3>
+
+<p><code>function (data) { }</code></p>
+
+<p>The <code>'data'</code> event emits either a <code>Buffer</code> (by default) or a string if<br /><code>setEncoding()</code> was used.</p>
+
+<h3>Event: 'end'</h3>
+
+<p><code>function () { }</code></p>
+
+<p>Emitted when the stream has received an EOF (FIN in TCP terminology).<br />Indicates that no more <code>'data'</code> events will happen. If the stream is also<br />writable, it may be possible to continue writing.</p>
+
+<h3>Event: 'error'</h3>
+
+<p><code>function (exception) { }</code></p>
+
+<p>Emitted if there was an error receiving data.</p>
+
+<h3>Event: 'close'</h3>
+
+<p><code>function () { }</code></p>
+
+<p>Emitted when the underlying file descriptor has been closed. Not all streams<br />will emit this.  (For example, an incoming HTTP request will not emit<br /><code>'close'</code>.)</p>
+
+<h3>stream.readable</h3>
+
+<p>A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code><br />occurred, the stream came to an <code>'end'</code>, or <code>destroy()</code> was called.</p>
+
+<h3>stream.setEncoding(encoding)</h3>
+
+<p>Makes the data event emit a string instead of a <code>Buffer</code>. <code>encoding</code> can be<br /><code>'utf8'</code>, <code>'ascii'</code>, or <code>'base64'</code>.</p>
+
+<h3>stream.pause()</h3>
+
+<p>Pauses the incoming <code>'data'</code> events.</p>
+
+<h3>stream.resume()</h3>
+
+<p>Resumes the incoming <code>'data'</code> events after a <code>pause()</code>.</p>
+
+<h3>stream.destroy()</h3>
+
+<p>Closes the underlying file descriptor. Stream will not emit any more events.</p>
+
+<h3>stream.destroySoon()</h3>
+
+<p>After the write queue is drained, close the file descriptor.</p>
+
+<h3>stream.pipe(destination, [options])</h3>
+
+<p>This is a <code>Stream.prototype</code> method available on all <code>Stream</code>s.</p>
+
+<p>Connects this read stream to <code>destination</code> WriteStream. Incoming<br />data on this stream gets written to <code>destination</code>. The destination and source<br />streams are kept in sync by pausing and resuming as necessary.</p>
+
+<p>This function returns the <code>destination</code> stream.</p>
+
+<p>Emulating the Unix <code>cat</code> command:</p>
+
+<pre><code>process.stdin.resume();
+process.stdin.pipe(process.stdout);
+</code></pre>
+
+<p>By default <code>end()</code> is called on the destination when the source stream emits<br /><code>end</code>, so that <code>destination</code> is no longer writable. Pass <code>{ end: false }</code> as<br /><code>options</code> to keep the destination stream open.</p>
+
+<p>This keeps <code>process.stdout</code> open so that "Goodbye" can be written at the end.</p>
+
+<pre><code>process.stdin.resume();
+
+process.stdin.pipe(process.stdout, { end: false });
+
+process.stdin.on("end", function() {
+  process.stdout.write("Goodbye\n");
+});
+</code></pre>
+
+<h2>Writable Stream</h2>
+
+<p>A <code>Writable Stream</code> has the following methods, members, and events.</p>
+
+<h3>Event: 'drain'</h3>
+
+<p><code>function () { }</code></p>
+
+<p>After a <code>write()</code> method returned <code>false</code>, this event is emitted to<br />indicate that it is safe to write again.</p>
+
+<h3>Event: 'error'</h3>
+
+<p><code>function (exception) { }</code></p>
+
+<p>Emitted on error with the exception <code>exception</code>.</p>
+
+<h3>Event: 'close'</h3>
+
+<p><code>function () { }</code></p>
+
+<p>Emitted when the underlying file descriptor has been closed.</p>
+
+<h3>Event: 'pipe'</h3>
+
+<p><code>function (src) { }</code></p>
+
+<p>Emitted when the stream is passed to a readable stream's pipe method.</p>
+
+<h3>stream.writable</h3>
+
+<p>A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code><br />occurred or <code>end()</code> / <code>destroy()</code> was called.</p>
+
+<h3>stream.write(string, encoding='utf8', [fd])</h3>
+
+<p>Writes <code>string</code> with the given <code>encoding</code> to the stream.  Returns <code>true</code> if<br />the string has been flushed to the kernel buffer.  Returns <code>false</code> to<br />indicate that the kernel buffer is full, and the data will be sent out in<br />the future. The <code>'drain'</code> event will indicate when the kernel buffer is<br />empty again. The <code>encoding</code> defaults to <code>'utf8'</code>.</p>
+
+<p>If the optional <code>fd</code> parameter is specified, it is interpreted as an integral<br />file descriptor to be sent over the stream. This is only supported for UNIX<br />streams, and is silently ignored otherwise. When writing a file descriptor in<br />this manner, closing the descriptor before the stream drains risks sending an<br />invalid (closed) FD.</p>
+
+<h3>stream.write(buffer)</h3>
+
+<p>Same as the above except with a raw buffer.</p>
+
+<h3>stream.end()</h3>
+
+<p>Terminates the stream with EOF or FIN.<br />This call will allow queued write data to be sent before closing the stream.</p>
+
+<h3>stream.end(string, encoding)</h3>
+
+<p>Sends <code>string</code> with the given <code>encoding</code> and terminates the stream with EOF<br />or FIN. This is useful to reduce the number of packets sent.</p>
+
+<h3>stream.end(buffer)</h3>
+
+<p>Same as above but with a <code>buffer</code>.</p>
+
+<h3>stream.destroy()</h3>
+
+<p>Closes the underlying file descriptor. Stream will not emit any more events.<br />Any queued write data will not be sent.</p>
+
+<h3>stream.destroySoon()</h3>
+
+<p>After the write queue is drained, close the file descriptor. <code>destroySoon()</code><br />can still destroy straight away, as long as there is no data left in the queue<br />for writes.<br /></div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

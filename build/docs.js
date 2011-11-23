@@ -74,12 +74,14 @@ function printContents(i, type, files)
         // to be placed into npm.md as a long file
         if (splitPaths.length > 3)
             destFile = "tmp/" + splitPaths[3] + ".md";
+        else if (files[i].name == "")
+            destFile = "tmp/index.md";
         else
             destFile = "tmp/" + files[i].name + ".md";
 
 		traverse(type, files[i], destFile, function(err) {
 			if (err) console.log("Error printing contents: " + err);
-			printContents(i + 1, type, files, destFile);
+			else printContents(i + 1, type, files, destFile);
 		});
 	}
 	else {   // no more? then turn the *.md files into HTML
@@ -101,7 +103,7 @@ function traverse(type, files, destFile, cb)
 		{
 			var readStream = fs.createReadStream(contentFile);
             var writeStream = fs.createWriteStream(destFile, {flags: "a+"});
-  
+
 			readStream.addListener("data", function(chunk) {
 				var lines = chunk.toString().split('\n');
 				var title = lines[0]; // save first line for additional processing
@@ -133,7 +135,7 @@ function traverse(type, files, destFile, cb)
                         if (tocHTML != "")
                             tocHTML += "</ul>\n</div>\n";
                         
-                        tocHTML += "<h3>" + title.substring(title.indexOf(" ") + 1) + "</h3>\n<div>\n<ul>\n";   
+                        tocHTML += "<h5>" + title.substring(title.indexOf(" ") + 1) + "</h5>\n<div>\n<ul>\n";   
                         //tocHTML += "<h3><a class=\"header\" href=\"#\">" + title.substring(title.indexOf(" ") + 1) + "</a></h3>\n<div>\n<ul>\n";                  
                     }
                     else if (title.match("^## "))
