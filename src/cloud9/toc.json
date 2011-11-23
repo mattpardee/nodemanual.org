@@ -2,22 +2,41 @@
    "toc":[
       {
          "name":"getting-started",
+         "content":[
+            "content.md"
+         ],
          "folder":[
             {
                "name":"ide-components",
                "content":[
-                  "dashboard.md",
-                  "editor.md",
-                  "console.md"
+                  "components.md"
                ],
-               "metadata":"page.json"
+               "metadata":"page.json",
+               "folder":[
+                  {
+                     "name":"components",
+                     "content":[
+                        "dashboard.md",
+                        "console.md",
+                        "editor.md"
+                     ]
+                  }
+               ]
             },
             {
                "name":"tutorial",
                "content":[
-                  "lesson1.md",
-                  "lesson2.md",
-                  "lesson3.md"
+                  "tutorial.md"
+               ],
+               "folder":[
+                  {
+                     "name":"lessons",
+                     "content":[
+                        "lesson1.md",
+                        "lesson2.md",
+                        "lesson3.md"
+                     ]
+                  }
                ]
             }
          ]
