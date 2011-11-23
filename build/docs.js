@@ -167,7 +167,7 @@ function traverse(type, files, destFile, cb)
 
 docs.assemble = function(outName, tmpFile)
 {
-    var filename = tmpFile.substring(3, tmpFile.lastIndexOf(".") + 1);
+    var filename = tmpFile.substring(3, tmpFile.lastIndexOf(".") + 2);
 	var outTmpFile = "tmp/" + filename + ".html";
     var outFile = "out/" + outName + "/" + filename + ".html";
 	var headerFile = "build/" + outName + "_header.html";
