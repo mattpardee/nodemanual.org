@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,23 +94,23 @@
 
 <h2>Addons</h2>
 
-<p>Addons are dynamically linked shared objects. They can provide glue to C and<br />C++ libraries. The API (at the moment) is rather complex, involving<br />knowledge of several libraries:</p>
+<p>Addons are dynamically linked shared objects. They can provide glue to C and C++ libraries. The API (at the moment) is rather complex, involving knowledge of several libraries:</p>
 
 <ul>
-<li><p>V8 JavaScript, a C++ library. Used for interfacing with JavaScript:<br />creating objects, calling functions, etc.  Documented mostly in the<br /><code>v8.h</code> header file (<code>deps/v8/include/v8.h</code> in the Node source tree).</p></li>
-<li><p><a href="https://github.com/joyent/libuv">libuv</a>, C event loop library. Anytime one<br />needs to wait for a file descriptor to become readable, wait for a timer, or<br />wait for a signal to received one will need to interface with libuv. That is,<br />if you perform any I/O, libuv will need to be used.</p></li>
-<li><p>Internal Node libraries. Most importantly is the <code>node::ObjectWrap</code><br />class which you will likely want to derive from.</p></li>
-<li><p>Others. Look in <code>deps/</code> for what else is available.</p></li>
+<li><p>V8 JavaScript, a C++ library. Used for interfacing with JavaScript: creating objects, calling functions, etc. These are documented mostly in the <code>v8.h</code> header file (<code>deps/v8/include/v8.h</code> in the Node.js source tree).</p></li>
+<li><p><a href="https://github.com/joyent/libuv">libuv</a>, a C event loop library. Anytime one needs to wait for a file descriptor to become readable, wait for a timer, or wait for a signal to received one needs to interface with libuv. That is, if you perform any I/O, libuv needs to be used.</p></li>
+<li><p>Internal Node libraries. Most importantly is the <code>node::ObjectWrap</code> class which you will likely want to derive from.</p></li>
+<li><p>Additional libraries, located the <code>deps/</code> folder.</p></li>
 </ul>
 
-<p>Node statically compiles all its dependencies into the executable. When<br />compiling your module, you don't need to worry about linking to any of these<br />libraries.</p>
+<p>Node.js statically compiles all its dependencies into the executable. When compiling your module, you don't need to worry about linking to any of these libraries.</p>
 
-<p>To get started let's make a small Addon which is the C++ equivalent of<br />the following Javascript code:</p>
+<p>To get started, let's make a small addon which is the C++ equivalent of the following Javascript code:</p>
 
 <pre><code>exports.hello = function() { return 'world'; };
 </code></pre>
 
-<p>To get started we create a file <code>hello.cc</code>:</p>
+<p>First, we'll create a file called <code>hello.cc</code>:</p>
 
 <pre><code>#include &lt;node.h&gt;
 #include &lt;v8.h&gt;
@@ -129,15 +128,15 @@ void init(Handle&lt;Object&gt; target) {
 NODE_MODULE(hello, init)
 </code></pre>
 
-<p>Note that all Node addons must export an initialization function:</p>
+<p>Note that all Node.js addons must export an initialization function:</p>
 
 <pre><code>void Initialize (Handle&lt;Object&gt; target);
 NODE_MODULE(module_name, Initialize)
 </code></pre>
 
-<p>There is no semi-colon after <code>NODE_MODULE</code> as it's not a function (see <code>node.h</code>).</p>
+<p>There is no semi-colon after <code>NODE_MODULE</code>, as it's not a function (for more information, see <code>node.h</code>).</p>
 
-<p>The source code needs to be built into <code>hello.node</code>, the binary Addon. To<br />do this we create a file called <code>wscript</code> which is python code and looks<br />like this:</p>
+<p>The source code needs to be built into <code>hello.node</code>, the binary addon. To do this we create a file called <code>wscript</code>, which is Python code and looks like this:</p>
 
 <pre><code>srcdir = '.'
 blddir = 'build'
@@ -156,11 +155,11 @@ def build(bld):
   obj.source = 'hello.cc'
 </code></pre>
 
-<p>Running <code>node-waf configure build</code> will create a file<br /><code>build/default/hello.node</code> which is our Addon.</p>
+<p>Running <code>node-waf configure build</code> will create a file <code>build/default/hello.node</code> which is our addon.</p>
 
-<p><code>node-waf</code> is just <a href="http://code.google.com/p/waf">WAF</a>, the python-based build system. <code>node-waf</code> is<br />provided for the ease of users.</p>
+<p><code>node-waf</code> is just <a href="http://code.google.com/p/waf">WAF</a>, the Python-based build system. <code>node-waf</code> is provided for developers to easily access it.</p>
 
-<p>You can now use the binary addon in a Node project <code>hello.js</code> by pointing <code>require</code> to<br />the recently built module:</p>
+<p>You can now use the binary addon in a Node project <code>hello.js</code> by pointing <code>require</code> to the recently built module:</p>
 
 <pre><code>var addon = require('./build/Release/hello');
 

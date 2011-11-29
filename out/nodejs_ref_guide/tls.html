@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -91,50 +90,150 @@
 </div>
 <div class="content"><p><div class="hero-unit"></p>
 
-<p><a class="hiddenLink" id="tls-ssl"></a></p>
+<p><a class="hiddenLink" id="implementing-tls-ssl"></a></p>
 
-<h2>TLS (SSL)</h2>
+<h2>Implementing TLS &amp; SSL</h2>
 
-<p>Use <code>require('tls')</code> to access this module.</p>
+<p>The <code>tls</code> module uses OpenSSL to provide both the Transport Layer Security and the Secure Socket Layer; in other words, encrypted stream communications. </p>
 
-<p>The <code>tls</code> module uses OpenSSL to provide Transport Layer Security and/or<br />Secure Socket Layer: encrypted stream communication.</p>
-
-<p>TLS/SSL is a public/private key infrastructure. Each client and each<br />server must have a private key. A private key is created like this</p>
+<p>TLS/SSL is a public/private key infrastructure. Each client and each server must have a private key. A private key is created in your terminal like this:</p>
 
 <pre><code>openssl genrsa -out ryans-key.pem 1024
 </code></pre>
 
-<p>All severs and some clients need to have a certificate. Certificates are public<br />keys signed by a Certificate Authority or self-signed. The first step to<br />getting a certificate is to create a "Certificate Signing Request" (CSR)<br />file. This is done with:</p>
+<p>where <code>ryans-key.pm</code> is the name of your file. All servers (and some clients) need to have a certificate. Certificates are public keys signed by a Certificate Authority&mdash;or they are self-signed. The first step to getting a certificate is to create a "Certificate Signing Request" (CSR) file. This is done using:</p>
 
 <pre><code>openssl req -new -key ryans-key.pem -out ryans-csr.pem
 </code></pre>
 
-<p>To create a self-signed certificate with the CSR, do this:</p>
+<p>To create a self-signed certificate with the CSR, enter this:</p>
 
 <pre><code>openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 </code></pre>
 
-<p>Alternatively you can send the CSR to a Certificate Authority for signing.</p>
+<p>Alternatively, you can send the CSR to a Certificate Authority for signing.</p>
 
-<p>(TODO: docs on creating a CA, for now interested users should just look at<br /><code>test/fixtures/keys/Makefile</code> in the Node source code)</p>
+<p>(Docs on creating a CA are pending;, for now, interested users should just look at <code>test/fixtures/keys/Makefile</code> in the Node.js source code.)</p>
 
-<h4>tls.createServer(options, [secureConnectionListener])</h4>
+<p>To access this module, add <code>require('tls')</code> in your code. </p>
 
-<p>Creates a new <a href="#tls.Server">tls.Server</a>.<br />The <code>connectionListener</code> argument is automatically set as a listener for the<br /><a href="#event_secureConnection_">secureConnection</a> event.<br />The <code>options</code> object has these possibilities:</p>
+<h3>Using STARTTLS</h3>
+
+<p>As of the v0.4 Node.js branch, no function exists for starting a TLS session on an already existing TCP connection.  This is possible, but it requires a bit of<br />work. </p>
+
+<p>The technique is to use <code>tls.createSecurePair()</code>, which returns two streams: an encrypted stream and a cleartext stream. The encrypted stream is then piped to the socket, the cleartext stream is what the user interacts with thereafter.</p>
+
+<p><a href="http://gist.github.com/848444">Here is a gist that does it.</a></p>
+
+<h3>Using NPN and SNI</h3>
+
+<p>NPN (Next Protocol Negotitation) and SNI (Server Name Indication) are TLS handshake extensions. </p>
+
+<p>NPN is to use one TLS server for multiple protocols (HTTP, SPDY)</p>
+
+<p>SNI is to use one TLS server for multiple hostnames with different SSL certificates.</p>
+
+<h3>Events</h3>
+
+<p><h4 class="eventHeader"> <code>'secure'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function()</code>: The callback to execute once the event fires</li></ul></p>
+
+<p>The event is emitted from the SecurePair once the pair has successfully established a secure connection.</p>
+
+<p>Similarly to the checking for the server <code>'secureConnection'</code> event, `pair.cleartext.authorized should be checked to confirm whether the certificate<br />used properly authorized.</p>
+
+<h4>Event: 'secureConnect'</h4>
+
+<p>@cb <code>function()</code>: The callback to execute once the event fires</p>
+
+<p>This event is emitted after a new connection has been successfully handshaked. <br />The listener will be called no matter if the server's certificate was<br />authorized or not. It is up to the user to test <code>cleartextStream.authorized</code><br />to see if the server certificate was signed by one of the specified CAs.<br />If <code>cleartextStream.authorized === false</code> then the error can be found in<br /><code>cleartextStream.authorizationError</code>. Also if NPN was used - you can check<br /><code>cleartextStream.npnProtocol</code> for negotiated protocol.</p>
+
+<h4>Event: 'secureConnection'</h4>
+
+<p>@cb <code>function()</code>: The callback to execute once the event fires, <code>cleartextStream</code>: A boolean value indicating if the client has verified by one of the supplied certificate authorities for the server.</p>
+
+<p>This event is emitted after a new connection has been successfully<br />handshaked. The argument is a instance of<br /><a href="#tls.CleartextStream">CleartextStream</a>. It has all the common stream methods<br />and events.</p>
+
+<p><code>cleartextStream.authorized</code> is  If <code>cleartextStream.authorized</code> is false, then<br /><code>cleartextStream.authorizationError</code> is set to describe how authorization<br />failed. Implied but worth mentioning: depending on the settings of the TLS<br />server, you unauthorized connections may be accepted.<br /><code>cleartextStream.npnProtocol</code> is a string containing selected NPN protocol.<br /><code>cleartextStream.servername</code> is a string containing servername requested with<br />SNI.</p>
+
+<h3>TLS Methods</h3>
+
+<p><h4 class="methodHeader"> <code>tls.connect(port, [host=localhost], [options], [secureConnectListener])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>port</code>: The port to connect to<li> <code>host</code>: An optional hostname to connect to; defaults to <code>localhost</code></li><li> <code>options</code>: Any options you want to pass to the server</li><li> <code>secureConnectionListener</code>: An optional listener</li></ul></p>
+
+<p>Creates a new client connection to the given <code>port</code> and <code>host</code>. This function returns a <a href="#tls.CleartextStream"><code>CleartextStream</code></a> object.</p>
+
+<p><code>options</code> should be an object that specifies the following values:</p>
 
 <ul>
-<li><p><code>key</code>: A string or <code>Buffer</code> containing the private key of the server in<br />PEM format. (Required)</p></li>
-<li><p><code>passphrase</code>: A string of passphrase for the private key.</p></li>
-<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the server in<br />PEM format. (Required)</p></li>
-<li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. If this is<br />omitted several well known "root" CAs will be used, like VeriSign.<br />These are used to authorize connections.</p></li>
-<li><p><code>requestCert</code>: If <code>true</code> the server will request a certificate from<br />clients that connect and attempt to verify that certificate. Default:<br /><code>false</code>.</p></li>
-<li><p><code>rejectUnauthorized</code>: If <code>true</code> the server will reject any connection<br />which is not authorized with the list of supplied CAs. This option only<br />has an effect if <code>requestCert</code> is <code>true</code>. Default: <code>false</code>.</p></li>
-<li><p><code>NPNProtocols</code>: An array or <code>Buffer</code> of possible NPN protocols. (Protocols<br />should be ordered by their priority).</p></li>
-<li><p><code>SNICallback</code>: A function that will be called if client supports SNI TLS<br />extension. Only one argument will be passed to it: <code>servername</code>. And<br /><code>SNICallback</code> should return SecureContext instance.<br />(You can use <code>crypto.createCredentials(...).context</code> to get proper<br />SecureContext). If <code>SNICallback</code> wasn't provided - default callback with<br />high-level API will be used (see below).</p></li>
-<li><p><code>sessionIdContext</code>: A string containing a opaque identifier for session<br />resumption. If <code>requestCert</code> is <code>true</code>, the default is MD5 hash value<br />generated from command-line. Otherwise, the default is not provided.</p></li>
+<li><p><code>key</code>: A string or <code>Buffer</code> containing the private key of the client in aPEM format.</p></li>
+<li><p><code>passphrase</code>: A string of a passphrase for the private key.</p></li>
+<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the client in a PEM format.</p></li>
+<li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. </p></li>
+<li><p><code>NPNProtocols</code>: An array of strings or a  <code>Buffer</code> containing supported NPN protocols. <br />    <code>Buffer</code> should have the following format: <code>0x05hello0x05world</code>, where the preceding byte indicates the following protocol name's length. Passing an array is usually much simplier: <code>['hello', 'world']</code>. <br />    Protocols should be ordered by their priority.</p></li>
+<li><p><code>servername</code>: The server name for the SNI (Server Name Indication) TLS extension.</p></li>
 </ul>
 
-<p>Here is a simple example echo server:</p>
+<p><code>secureConnectionListener</code> automatically sets a listener for the<br /><a href="#event_secureConnection_">secureConnection</a> event.</p>
+
+<h4>Example</h4>
+
+<p>Here's an example of a client connecting to an echo server:</p>
+
+<pre><code>var tls = require('tls');
+var fs = require('fs');
+
+var options = {
+  // These are necessary only if using the client certificate authentication
+  key: fs.readFileSync('client-key.pem'),
+  cert: fs.readFileSync('client-cert.pem'),
+
+  // This is necessary only if the server uses the self-signed certificate
+  ca: [ fs.readFileSync('server-cert.pem') ]
+};
+
+var cleartextStream = tls.connect(8000, options, function() {
+  console.log('client connected',
+              cleartextStream.authorized ? 'authorized' : 'unauthorized');
+  process.stdin.pipe(cleartextStream);
+  process.stdin.resume();
+});
+cleartextStream.setEncoding('utf8');
+cleartextStream.on('data', function(data) {
+  console.log(data);
+});
+cleartextStream.on('end', function() {
+  server.close();
+});
+</code></pre>
+
+<p><h4 class="methodHeader"> <code>pair = tls.createSecurePair([credentials], [isServer], [requestCert], [rejectUnauthorized])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>credentials</code>: An optional credentials object from <code>crypto.createCredentials( ... )</code><li> <code>isServer</code>: An optional boolean indicating whether this TLS connection should be opened as a server (<code>true</code>) or a client (<code>false</code>)</li><li> <code>requestCert</code>: A boolean indicating whether a server should request a certificate from a connecting client; only applies to server connections</li><li> <code>rejectUnauthorized</code>: A boolean indicating whether a server should automatically reject clients with invalid certificates; only applies to servers with <code>requestCert</code> enabled</li></ul></p>
+
+<p>Creates a new secure <code>pair</code> object with two streams, one of which reads/writes<br />encrypted data, and one reads/writes cleartext data. This function returns a SecurePair object with <a href="#tls.CleartextStream">cleartext</a> and <code>encrypted</code> stream properties.</p>
+
+<p>Generally, the encrypted one is piped to/from an incoming encrypted data stream,<br />and the cleartext one is used as a replacement for the initial encrypted stream.</p>
+
+<p><h4 class="methodHeader"> <code>tls.createServer(options, [secureConnectionListener])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>options</code>: Any options you want to pass to the server<li> <code>secureConnectionListener</code>: An optional listener</li></ul></p>
+
+<p>Creates a new <a href="#tls.Server">tls.Server</a>.</p>
+
+<p>The <code>options</code> object has a mix of required and optional values:</p>
+
+<ul>
+<li><code>key</code>: A string or <code>Buffer</code> containing the private key of the server in a PEM format. (Required)</li>
+<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the server in a PEM format. (Required)</p></li>
+<li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. </p></li>
+<li><p><code>NPNProtocols</code>: An array of strings or a  <code>Buffer</code> containing supported NPN protocols. <br />    <code>Buffer</code> should have the following format: <code>0x05hello0x05world</code>, where the preceding byte indicates the following protocol name's length. Passing an array is usually much simplier: <code>['hello', 'world']</code>. <br />    Protocols should be ordered by their priority.</p></li>
+<li><p><code>passphrase</code>: A string of a passphrase for the private key.</p></li>
+<li><p><code>rejectUnauthorized</code>: If <code>true</code> the server rejects any connection that is not authorized with the list of supplied CAs. This option only has an effect if <code>requestCert</code> is <code>true</code>. This defaults to <code>false</code>.</p></li>
+<li><p><code>requestCert</code>: If <code>true</code> the server requests a certificate from clients that connect and attempt to verify that certificate. This defaults to <code>false</code>.</p></li>
+<li><p><code>sessionIdContext</code>: A string containing an opaque identifier for session resumption. If <code>requestCert</code> is <code>true</code>, the default is an MD5 hash value generated from the command line. Otherwise, the default is not provided.</p></li>
+<li><p><code>SNICallback</code>: A function that is called if the client supports the SNI TLS extension. Only one argument will be passed to it: <code>servername</code>. <code>SNICallback</code> should return a SecureContext instance. You can use <code>crypto.createCredentials(...).context</code> to get a proper SecureContext. If <code>SNICallback</code> wasn't provided, a default callback within the high-level API is used (for more information, see below).</p></li>
+</ul>
+
+<p><code>secureConnectionListener</code> automatically sets a listener for the<br /><a href="#event_secureConnection_">secureConnection</a> event.</p>
+
+<h4>Example</h4>
+
+<p>Here's a simple "echo" server:</p>
 
 <pre><code>var tls = require('tls');
 var fs = require('fs');
@@ -167,98 +266,9 @@ server.listen(8000, function() {
 <pre><code>openssl s_client -connect 127.0.0.1:8000
 </code></pre>
 
-<h4>tls.connect(port, [host], [options], [secureConnectListener])</h4>
-
-<p>Creates a new client connection to the given <code>port</code> and <code>host</code>. (If <code>host</code><br />defaults to <code>localhost</code>.) <code>options</code> should be an object which specifies</p>
-
-<ul>
-<li><p><code>key</code>: A string or <code>Buffer</code> containing the private key of the client in<br />PEM format.</p></li>
-<li><p><code>passphrase</code>: A string of passphrase for the private key.</p></li>
-<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the client in<br />PEM format.</p></li>
-<li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. If this is<br />omitted several well known "root" CAs will be used, like VeriSign.<br />These are used to authorize connections.</p></li>
-<li><p><code>NPNProtocols</code>: An array of string or <code>Buffer</code> containing supported NPN<br />protocols. <code>Buffer</code> should have following format: <code>0x05hello0x05world</code>,<br />where first byte is next protocol name's length. (Passing array should<br />usually be much simplier: <code>['hello', 'world']</code>.)</p></li>
-<li><p><code>servername</code>: Servername for SNI (Server Name Indication) TLS extension.</p></li>
-</ul>
-
-<p>The <code>secureConnectListener</code> parameter will be added as a listener for the<br /><a href="#event_secureConnect_">'secureConnect'</a> event.</p>
-
-<p><code>tls.connect()</code> returns a <a href="#tls.CleartextStream">CleartextStream</a> object.</p>
-
-<p>Here is an example of a client of echo server as described previously:</p>
-
-<pre><code>var tls = require('tls');
-var fs = require('fs');
-
-var options = {
-  // These are necessary only if using the client certificate authentication
-  key: fs.readFileSync('client-key.pem'),
-  cert: fs.readFileSync('client-cert.pem'),
-
-  // This is necessary only if the server uses the self-signed certificate
-  ca: [ fs.readFileSync('server-cert.pem') ]
-};
-
-var cleartextStream = tls.connect(8000, options, function() {
-  console.log('client connected',
-              cleartextStream.authorized ? 'authorized' : 'unauthorized');
-  process.stdin.pipe(cleartextStream);
-  process.stdin.resume();
-});
-cleartextStream.setEncoding('utf8');
-cleartextStream.on('data', function(data) {
-  console.log(data);
-});
-cleartextStream.on('end', function() {
-  server.close();
-});
-</code></pre>
-
-<h3>STARTTLS</h3>
-
-<p>In the v0.4 branch no function exists for starting a TLS session on an<br />already existing TCP connection.  This is possible it just requires a bit of<br />work. The technique is to use <code>tls.createSecurePair()</code> which returns two<br />streams: an encrypted stream and a cleartext stream. The encrypted stream is<br />then piped to the socket, the cleartext stream is what the user interacts with<br />thereafter.</p>
-
-<p><a href="http://gist.github.com/848444">Here is some code that does it.</a></p>
-
-<h3>NPN and SNI</h3>
-
-<p>NPN (Next Protocol Negotitation) and SNI (Server Name Indication) are TLS<br />handshake extensions allowing you:</p>
-
-<ul>
-<li>NPN - to use one TLS server for multiple protocols (HTTP, SPDY)</li>
-<li>SNI - to use one TLS server for multiple hostnames with different SSL
-certificates.</li>
-</ul>
-
-<h3>pair = tls.createSecurePair([credentials], [isServer], [requestCert], [rejectUnauthorized])</h3>
-
-<p>Creates a new secure pair object with two streams, one of which reads/writes<br />encrypted data, and one reads/writes cleartext data.<br />Generally the encrypted one is piped to/from an incoming encrypted data stream,<br />and the cleartext one is used as a replacement for the initial encrypted stream.</p>
-
-<ul>
-<li><p><code>credentials</code>: A credentials object from crypto.createCredentials( ... )</p></li>
-<li><p><code>isServer</code>: A boolean indicating whether this tls connection should be<br />opened as a server or a client.</p></li>
-<li><p><code>requestCert</code>: A boolean indicating whether a server should request a<br />certificate from a connecting client. Only applies to server connections.</p></li>
-<li><p><code>rejectUnauthorized</code>: A boolean indicating whether a server should<br />automatically reject clients with invalid certificates. Only applies to<br />servers with <code>requestCert</code> enabled.</p></li>
-</ul>
-
-<p><code>tls.createSecurePair()</code> returns a SecurePair object with<br /><a href="#tls.CleartextStream">cleartext</a> and <code>encrypted</code> stream properties.</p>
-
-<h4>Event: 'secure'</h4>
-
-<p>The event is emitted from the SecurePair once the pair has successfully<br />established a secure connection.</p>
-
-<p>Similarly to the checking for the server 'secureConnection' event,<br />pair.cleartext.authorized should be checked to confirm whether the certificate<br />used properly authorized.</p>
-
 <h3>tls.Server</h3>
 
 <p>This class is a subclass of <code>net.Server</code> and has the same methods on it.<br />Instead of accepting just raw TCP connections, this accepts encrypted<br />connections using TLS or SSL.</p>
-
-<h4>Event: 'secureConnection'</h4>
-
-<p><code>function (cleartextStream) {}</code></p>
-
-<p>This event is emitted after a new connection has been successfully<br />handshaked. The argument is a instance of<br /><a href="#tls.CleartextStream">CleartextStream</a>. It has all the common stream methods<br />and events.</p>
-
-<p><code>cleartextStream.authorized</code> is a boolean value which indicates if the<br />client has verified by one of the supplied certificate authorities for the<br />server. If <code>cleartextStream.authorized</code> is false, then<br /><code>cleartextStream.authorizationError</code> is set to describe how authorization<br />failed. Implied but worth mentioning: depending on the settings of the TLS<br />server, you unauthorized connections may be accepted.<br /><code>cleartextStream.npnProtocol</code> is a string containing selected NPN protocol.<br /><code>cleartextStream.servername</code> is a string containing servername requested with<br />SNI.</p>
 
 <h4>server.listen(port, [host], [callback])</h4>
 
@@ -293,12 +303,6 @@ certificates.</li>
 <p>This is a stream on top of the <em>Encrypted</em> stream that makes it possible to<br />read/write an encrypted data as a cleartext data.</p>
 
 <p>This instance implements a duplex <a href="streams.html#streams">Stream</a> interfaces.<br />It has all the common stream methods and events.</p>
-
-<h4>Event: 'secureConnect'</h4>
-
-<p><code>function () {}</code></p>
-
-<p>This event is emitted after a new connection has been successfully handshaked. <br />The listener will be called no matter if the server's certificate was<br />authorized or not. It is up to the user to test <code>cleartextStream.authorized</code><br />to see if the server certificate was signed by one of the specified CAs.<br />If <code>cleartextStream.authorized === false</code> then the error can be found in<br /><code>cleartextStream.authorizationError</code>. Also if NPN was used - you can check<br /><code>cleartextStream.npnProtocol</code> for negotiated protocol.</p>
 
 <h4>cleartextStream.authorized</h4>
 

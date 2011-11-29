@@ -1,54 +1,70 @@
-## console
+## Printing to Console
 
-For printing to stdout and stderr.  Similar to the console object functions
-provided by most web browsers, here the output is sent to stdout or stderr.
+These methods are useful for printing to stdout and stderr. They are similar to the `console` object functions provided by most web browsers.
 
+It's important to note that printing to stdout and stderr us synchronous, and therefore, blocking.
 
-### console.log()
+### Methods
 
-Prints to stdout with newline. This function can take multiple arguments in a
-`printf()`-like way. Example:
+@method `console.assert()`
+
+An alias to `assert.ok()`.
+
+@method `console.dir(obj)`
+@param `obj`: An object to inspect
+
+Uses `util.inspect()` on `obj` and prints the resulting string to stderr.
+
+@method `console.error()`
+
+This performs the same role as `console.log()`, but prints to stderr instead.
+
+@method `console.info()`
+
+This is just an alias to `console.log()`.
+
+@method `console.log([arg...])`
+@param `[arg]`: The string to print, and any additional formatting arguments
+
+Prints to stdout with a newline. This function can take multiple arguments in a
+`printf()`-like way. For example:
 
     console.log('count: %d', count);
 
-If formating elements are not found in the first string then `util.inspect`
-is used on each argument.
-See [util.format()](util.html#util.format) for more infomation.
+If formating elements are not found in the first string then `util.inspect` is used on each argument. For way more information, see [`util.format()`](util.html#util.format).
 
-### console.info()
+@method `console.time(label)`
+@param `label`: An identifing string 
 
-Same as `console.log`.
+Marks a time by printing it out to the console. This is used in conjunction with `console.time()`.
 
-### console.warn()
-### console.error()
+#### Example
 
-Same as `console.log` but prints to stderr.
-
-### console.dir(obj)
-
-Uses `util.inspect` on `obj` and prints resulting string to stderr.
-
-### console.time(label)
-
-Mark a time.
-
-
-### console.timeEnd(label)
-
-Finish timer, record output. Example
-
-    console.time('100-elements');
-    for (var i = 0; i < 100; i++) {
+    console.time('elements');
+    for (var i = 0; i < 1000000; i++) {
       ;
     }
-    console.timeEnd('100-elements');
+    console.timeEnd('elements');
+    // print 4ms
+    
+@method `console.timeEnd(label)`
+@param `label`: An identifying string
 
+Finish the previous timer and prints output.
 
-### console.trace()
+#### Example
 
-Print a stack trace to stderr of the current position.
+    console.time('elements');
+    for (var i = 0; i < 1000000; i++) {
+      ;
+    }
+    console.timeEnd('elements');
+    // prints 4ms
 
-### console.assert()
+@method `console.trace()`
 
-Same as `assert.ok()`.
+Prints a stack trace to stderr of the current position.
 
+@method `console.warn()`
+
+This performs the same role as `console.log()`, but prints to stderr instead.

@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,75 +94,59 @@
 
 <h2>Streams</h2>
 
-<p>A stream is an abstract interface implemented by various objects in Node.<br />For example a request to an HTTP server is a stream, as is stdout. Streams<br />are readable, writable, or both. All streams are instances of <code>EventEmitter</code>.</p>
+<p>A stream is an abstract interface implemented by various objects in Node.js. For example a request to an HTTP server is a stream, as is stdout. Streams are readable, writable, or both. All streams are instances of <code>EventEmitter</code>.</p>
 
-<h2>Readable Stream</h2>
+<h3>Readable Stream</h3>
 
-<p>A <code>Readable Stream</code> has the following methods, members, and events.</p>
+<p>A <code>Readable Stream</code> has the following methods, members, and events:</p>
 
-<h3>Event: 'data'</h3>
+<h4>Events</h4>
 
-<p><code>function (data) { }</code></p>
+<p><h4 class="eventHeader"> <code>close</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function()</code>: The callback to execute once the event fires</li></ul></p>
 
-<p>The <code>'data'</code> event emits either a <code>Buffer</code> (by default) or a string if<br /><code>setEncoding()</code> was used.</p>
+<p>Emitted when the underlying file descriptor has been closed. Not all streams emit this.  For example, an incoming HTTP request don't emit<br /><code>close</code>.</p>
 
-<h3>Event: 'end'</h3>
+<p><h4 class="eventHeader"> <code>data</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(data)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>data</code> : The data being emitted</li></ul></li></ul></p>
 
-<p><code>function () { }</code></p>
+<p>The <code>data</code> event emits either a <code>Buffer</code> (by default) or a string if<br /><code>setEncoding()</code> was previously used on the stream.</p>
 
-<p>Emitted when the stream has received an EOF (FIN in TCP terminology).<br />Indicates that no more <code>'data'</code> events will happen. If the stream is also<br />writable, it may be possible to continue writing.</p>
+<p><h4 class="eventHeader"> <code>end</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function()</code>: The callback to execute once the event fires</li></ul></p>
 
-<h3>Event: 'error'</h3>
+<p>Emitted when the stream has received an EOF (FIN in TCP terminology). Indicates that no more <code>data</code> events will happen. If the stream is also writable, it may be possible to continue writing.</p>
 
-<p><code>function (exception) { }</code></p>
+<p><h4 class="eventHeader"> <code>error</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function()</code>: The callback to execute once the event fires</li></ul></p>
 
 <p>Emitted if there was an error receiving data.</p>
 
-<h3>Event: 'close'</h3>
+<h3>Methods</h3>
 
-<p><code>function () { }</code></p>
-
-<p>Emitted when the underlying file descriptor has been closed. Not all streams<br />will emit this.  (For example, an incoming HTTP request will not emit<br /><code>'close'</code>.)</p>
-
-<h3>stream.readable</h3>
-
-<p>A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code><br />occurred, the stream came to an <code>'end'</code>, or <code>destroy()</code> was called.</p>
-
-<h3>stream.setEncoding(encoding)</h3>
-
-<p>Makes the data event emit a string instead of a <code>Buffer</code>. <code>encoding</code> can be<br /><code>'utf8'</code>, <code>'ascii'</code>, or <code>'base64'</code>.</p>
-
-<h3>stream.pause()</h3>
-
-<p>Pauses the incoming <code>'data'</code> events.</p>
-
-<h3>stream.resume()</h3>
-
-<p>Resumes the incoming <code>'data'</code> events after a <code>pause()</code>.</p>
-
-<h3>stream.destroy()</h3>
+<p><h4 class="methodHeader"> <code>stream.destroy()</code></h4></p>
 
 <p>Closes the underlying file descriptor. Stream will not emit any more events.</p>
 
-<h3>stream.destroySoon()</h3>
+<p><h4 class="methodHeader"> <code>stream.destroySoon()</code></h4></p>
 
 <p>After the write queue is drained, close the file descriptor.</p>
 
-<h3>stream.pipe(destination, [options])</h3>
+<p><h4 class="methodHeader"> <code>stream.pause()</code></h4></p>
 
-<p>This is a <code>Stream.prototype</code> method available on all <code>Stream</code>s.</p>
+<p>Pauses the incoming <code>'data'</code> events.</p>
 
-<p>Connects this read stream to <code>destination</code> WriteStream. Incoming<br />data on this stream gets written to <code>destination</code>. The destination and source<br />streams are kept in sync by pausing and resuming as necessary.</p>
+<p><h4 class="methodHeader"> <code>stream.pipe(destination, [options])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>destination</code>: The WriteStream to connect to<li> <code>[options]</code>: Any optional commands to send</li></ul></p>
+
+<p>This is the <code>Stream.prototype()</code> method available on all <code>Stream</code> objects. It connects this read stream to a <code>destination</code>. Incoming data on this stream is written to <code>destination</code>. The destination and source streams are kept in sync by Node.js pausing and resuming as necessary.</p>
 
 <p>This function returns the <code>destination</code> stream.</p>
+
+<p>By default, <code>end()</code> is called on the destination when the source stream emits <code>end</code>, so that <code>destination</code> is no longer writable. Pass <code>{ end: false }</code> as <code>options</code> to keep the destination stream open.</p>
+
+<h4>Example</h4>
 
 <p>Emulating the Unix <code>cat</code> command:</p>
 
 <pre><code>process.stdin.resume();
 process.stdin.pipe(process.stdout);
 </code></pre>
-
-<p>By default <code>end()</code> is called on the destination when the source stream emits<br /><code>end</code>, so that <code>destination</code> is no longer writable. Pass <code>{ end: false }</code> as<br /><code>options</code> to keep the destination stream open.</p>
 
 <p>This keeps <code>process.stdout</code> open so that "Goodbye" can be written at the end.</p>
 
@@ -176,67 +159,75 @@ process.stdin.on("end", function() {
 });
 </code></pre>
 
+<p><h4 class="methodHeader"> <code>stream.readable()</code></h4></p>
+
+<p>A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>error</code> event<br />occurrs, the stream comes to an <code>'end'</code>, or if <code>destroy()</code> was called.</p>
+
+<p><h4 class="methodHeader"> <code>stream.setEncoding(encoding)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>encoding</code>: The encoding to use</ul></p>
+
+<p>Makes the <code>data</code> event emit a string instead of a <code>Buffer</code>. <code>encoding</code> can be<br /><code>'utf8'</code>, <code>'ascii'</code>, or <code>'base64'</code>.</p>
+
+<p><h4 class="methodHeader"> <code>stream.resume()</code></h4></p>
+
+<p>Resumes the incoming <code>'data'</code> events after a <code>pause()</code>.</p>
+
 <h2>Writable Stream</h2>
 
-<p>A <code>Writable Stream</code> has the following methods, members, and events.</p>
+<p>A <code>Writable Stream</code> has the following methods, members, and events:</p>
 
-<h3>Event: 'drain'</h3>
+<h3>Events</h3>
 
-<p><code>function () { }</code></p>
-
-<p>After a <code>write()</code> method returned <code>false</code>, this event is emitted to<br />indicate that it is safe to write again.</p>
-
-<h3>Event: 'error'</h3>
-
-<p><code>function (exception) { }</code></p>
-
-<p>Emitted on error with the exception <code>exception</code>.</p>
-
-<h3>Event: 'close'</h3>
-
-<p><code>function () { }</code></p>
+<p><h4 class="eventHeader"> <code>close</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function()</code>: The callback to execute once the event fires</li></ul></p>
 
 <p>Emitted when the underlying file descriptor has been closed.</p>
 
-<h3>Event: 'pipe'</h3>
+<p><h4 class="eventHeader"> <code>drain</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function()</code>: The callback to execute once the event fires</li></ul></p>
 
-<p><code>function (src) { }</code></p>
+<p>After a <code>write()</code> method returns <code>false</code>, this event is emitted to indicate that it is safe to write again.</p>
+
+<p><h4 class="eventHeader"> <code>error</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(exception)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>exception</code>: The exception that was received</li></ul></li></ul></p>
+
+<p>Emitted when there's an error with the exception <code>exception</code>.</p>
+
+<p><h4 class="eventHeader"> <code>pipe</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(src)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>src</code>: The readable stream</li></ul></li></ul></p>
 
 <p>Emitted when the stream is passed to a readable stream's pipe method.</p>
 
-<h3>stream.writable</h3>
+<h3>Methods</h3>
 
-<p>A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code><br />occurred or <code>end()</code> / <code>destroy()</code> was called.</p>
+<p><h4 class="methodHeader"> <code>stream.destroy()</code></h4></p>
 
-<h3>stream.write(string, encoding='utf8', [fd])</h3>
+<p>Closes the underlying file descriptor. The stream doesn't emit any more events. Any queued write data is not sent.</p>
 
-<p>Writes <code>string</code> with the given <code>encoding</code> to the stream.  Returns <code>true</code> if<br />the string has been flushed to the kernel buffer.  Returns <code>false</code> to<br />indicate that the kernel buffer is full, and the data will be sent out in<br />the future. The <code>'drain'</code> event will indicate when the kernel buffer is<br />empty again. The <code>encoding</code> defaults to <code>'utf8'</code>.</p>
+<p><h4 class="methodHeader"> <code>stream.destroySoon()</code></h4></p>
 
-<p>If the optional <code>fd</code> parameter is specified, it is interpreted as an integral<br />file descriptor to be sent over the stream. This is only supported for UNIX<br />streams, and is silently ignored otherwise. When writing a file descriptor in<br />this manner, closing the descriptor before the stream drains risks sending an<br />invalid (closed) FD.</p>
+<p>After the write queue is drained, this closes the file descriptor. <code>destroySoon()</code> can still destroy straight away, as long as there is no data left in the queue for writes.</p>
 
-<h3>stream.write(buffer)</h3>
+<p><h4 class="methodHeader"> <code>stream.end()</code></h4></p>
 
-<p>Same as the above except with a raw buffer.</p>
+<p>Terminates the stream with EOF or FIN. This call send queued write data before closing the stream.</p>
 
-<h3>stream.end()</h3>
-
-<p>Terminates the stream with EOF or FIN.<br />This call will allow queued write data to be sent before closing the stream.</p>
-
-<h3>stream.end(string, encoding)</h3>
+<p><h4 class="methodHeader"> <code>stream.end(string, encoding)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>string</code>: The message to send<li> <code>encoding</code>: The encoding to use</li></ul></p>
 
 <p>Sends <code>string</code> with the given <code>encoding</code> and terminates the stream with EOF<br />or FIN. This is useful to reduce the number of packets sent.</p>
 
-<h3>stream.end(buffer)</h3>
+<p><h4 class="methodHeader"> <code>stream.end(buffer)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>buffer</code>: The buffer to send</ul></p>
 
-<p>Same as above but with a <code>buffer</code>.</p>
+<p>Same as above, but using a <code>buffer</code> object instead.</p>
 
-<h3>stream.destroy()</h3>
+<p><h4 class="methodHeader"> <code>stream.writable()</code></h4></p>
 
-<p>Closes the underlying file descriptor. Stream will not emit any more events.<br />Any queued write data will not be sent.</p>
+<p>A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code><br />occurrs,  or if <code>end()</code> or <code>destroy()</code> were called.</p>
 
-<h3>stream.destroySoon()</h3>
+<p><h4 class="methodHeader"> <code>stream.write(string, encoding='utf8', [fd])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>string</code>: The string to write<li> <code>encoding</code>: The encoding to use; defaults to <code>utf8</code></li><li> <code>[fd]</code>: An optional file descriptor to pass</li></ul></p>
 
-<p>After the write queue is drained, close the file descriptor. <code>destroySoon()</code><br />can still destroy straight away, as long as there is no data left in the queue<br />for writes.<br /></div></p></div>
+<p>Writes <code>string</code> with the given <code>encoding</code> to the stream.  Returns <code>true</code> if<br />the string has been flushed to the kernel buffer.  Returns <code>false</code> to<br />indicate that the kernel buffer is full, and the data will be sent out in<br />the future. The <code>drain</code> event indicates when the kernel buffer is<br />empty again.</p>
+
+<p>If <code>fd</code> is specified, it is interpreted as an integral file descriptor to be sent over the stream. This is only supported for UNIX streams, and is ignored otherwise. When writing a file descriptor in this manner, closing the descripton before the stream drains risks sending an invalid (closed) FD.</p>
+
+<p><h4 class="methodHeader"> <code>stream.write(buffer)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>buffer</code>: The buffer to write to</ul></p>
+
+<p>Same as above, except using a raw buffer.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

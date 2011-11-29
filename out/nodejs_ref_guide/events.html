@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,43 +94,84 @@
 
 <h2>Events</h2>
 
-<p>Many objects in Node emit events: a <code>net.Server</code> emits an event each time<br />a peer connects to it, a <code>fs.readStream</code> emits an event when the file is<br />opened. All objects which emit events are instances of <code>events.EventEmitter</code>.<br />You can access this module by doing: <code>require("events");</code></p>
+<p>Many objects in Node.js emit events; for example:</p>
 
-<p>Typically, event names are represented by a camel-cased string, however,<br />there aren't any strict restrictions on that, as any string will be accepted.</p>
+<ul>
+<li><code>net.Server</code> emits an event each time a peer connects to it</li>
+<li><code>fs.readStream</code> emits an event when the file is opened. </li>
+</ul>
 
-<p>Functions can then be attached to objects, to be executed when an event<br />is emitted. These functions are called <em>listeners</em>.</p>
+<p>All objects that emit events are instances of <code>events.EventEmitter</code>.</p>
 
-<h3>events.EventEmitter</h3>
+<p>Typically, event names are represented by a camel-cased string. However, there aren't any strict restrictions on that, as any string is accepted.</p>
 
-<p>To access the EventEmitter class, <code>require('events').EventEmitter</code>.</p>
+<p>These functions can then be attached to objects, to be executed when an event is emitted. Such functions are called <em>listeners</em>.</p>
 
-<p>When an <code>EventEmitter</code> instance experiences an error, the typical action is<br />to emit an <code>'error'</code> event.  Error events are treated as a special case in node.<br />If there is no listener for it, then the default action is to print a stack<br />trace and exit the program.</p>
+<h4>Accessing Event Emitters</h4>
 
-<p>All EventEmitters emit the event <code>'newListener'</code> when new listeners are<br />added.</p>
+<p>To access the <code>EventEmitter</code> class, call <code>require('events').EventEmitter</code>.</p>
 
-<h4>emitter.addListener(event, listener)</h4>
+<p>When an <code>EventEmitter</code> instance experiences an error, the typical action is to emit an <code>'error'</code> event. Error events are treated as a special case in Node.js. If there is no listener for it, then the default action is to print a stack trace and exit the program.</p>
 
-<h4>emitter.on(event, listener)</h4>
+<p>All EventEmitters automatically emit the event <code>'newListener'</code> when new listeners are added.</p>
+
+<h3>Events</h3>
+
+<p><h4 class="eventHeader"> <code>newListener</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function (event<div class="listenerParamParam"><h6>Parameters</h6><ul><li> listener)</code></li><li> The callback to execute once the event fires</li><li> <code>event</code>: The event to emit</li><li> <code>listener</code>: The attaching listener</li></ul></li></ul></p>
+
+<p>This event is emitted any time someone adds a new listener, but <em>before</em> the listener is attached.</p>
+
+<h3>Methods</h3>
+
+<p><h4 class="methodHeader"> <code>emitter.addListener(event, callback())</code> / <code>emitter.on(event, callback())</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>event</code>: The event to listen for<li> <code>callback()</code>: The listener callback to execute</li></ul></p>
 
 <p>Adds a listener to the end of the listeners array for the specified event.</p>
+
+<h4>Example</h4>
 
 <pre><code>server.on('connection', function (stream) {
   console.log('someone connected!');
 });
 </code></pre>
 
-<h4>emitter.once(event, listener)</h4>
+<p><h4 class="methodHeader"> <code>emitter.emit(event, [arg...])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>event</code>: The event to listen for<li> <code>[arg...]</code>: Any optional arguments for the listeners</li></ul></p>
 
-<p>Adds a <strong>one time</strong> listener for the event. This listener is<br />invoked only the next time the event is fired, after which<br />it is removed.</p>
+<p>Execute each of the subscribed listeners in order with the supplied arguments.</p>
+
+<p><h4 class="methodHeader"> <code>emitter.listeners(event)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>event</code>: The event type to listen for</ul></p>
+
+<p>Returns an array of listeners for the specified event. This array can be<br />manipulated, e.g. to remove listeners.</p>
+
+<h4>Example</h4>
+
+<pre><code>server.on('connection', function (stream) {
+  console.log('someone connected!');
+});
+console.log(util.inspect(server.listeners('connection'))); // [ [Function] ]
+</code></pre>
+
+<p><h4 class="methodHeader"> <code>emitter.once(event, listener)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>event</code>: The event to listen for<li> <code>callback()</code>: The listener callback to execute</li></ul></p>
+
+<p>Adds a <strong>one time</strong> listener for the event. This listener is invoked only the next time the event is fired, after which it is removed.</p>
+
+<h4>Example</h4>
 
 <pre><code>server.once('connection', function (stream) {
   console.log('Ah, we have our first user!');
 });
 </code></pre>
 
-<h4>emitter.removeListener(event, listener)</h4>
+<p><h4 class="methodHeader"> <code>emitter.removeAllListeners([event])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>event</code>: An optional event type to remove</ul></p>
 
-<p>Remove a listener from the listener array for the specified event.<br /><strong>Caution</strong>: changes array indices in the listener array behind the listener.</p>
+<p>Removes all listeners, or those of the specified event.</p>
+
+<p><h4 class="methodHeader"> <code>emitter.removeListener(event, listener)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>event</code>: The event to listen for<li> <code>callback()</code>: The listener callback to execute</li></ul></p>
+
+<p>Remove a listener from the listener array for the specified event.</p>
+
+<p><strong>Caution</strong>: this can change array indices in the listener array behind the listener.</p>
+
+<h4>Example</h4>
 
 <pre><code>var callback = function(stream) {
   console.log('someone connected!');
@@ -141,33 +181,11 @@ server.on('connection', callback);
 server.removeListener('connection', callback);
 </code></pre>
 
-<h4>emitter.removeAllListeners([event])</h4>
+<p><h4 class="methodHeader"> <code>emitter.setMaxListeners(n)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>n</code>: An integer indicated the max</ul></p>
 
-<p>Removes all listeners, or those of the specified event.</p>
+<p>By default, EventEmitters print a warning if more than 10 listeners are added for a particular event. This is a useful default which helps finding memory leaks.</p>
 
-<h4>emitter.setMaxListeners(n)</h4>
-
-<p>By default EventEmitters will print a warning if more than 10 listeners are<br />added for a particular event. This is a useful default which helps finding memory leaks.<br />Obviously not all Emitters should be limited to 10. This function allows<br />that to be increased. Set to zero for unlimited.</p>
-
-<h4>emitter.listeners(event)</h4>
-
-<p>Returns an array of listeners for the specified event. This array can be<br />manipulated, e.g. to remove listeners.</p>
-
-<pre><code>server.on('connection', function (stream) {
-  console.log('someone connected!');
-});
-console.log(util.inspect(server.listeners('connection'))); // [ [Function] ]
-</code></pre>
-
-<h4>emitter.emit(event, [arg1], [arg2], [...])</h4>
-
-<p>Execute each of the listeners in order with the supplied arguments.</p>
-
-<h4>Event: 'newListener'</h4>
-
-<p><code>function (event, listener) { }</code></p>
-
-<p>This event is emitted any time someone adds a new listener.<br /></div></p></div>
+<p>Obviously, not all Emitters should be limited to 10. This function allows<br />that to be increased. Set it to <code>0</code> for unlimited listeners.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

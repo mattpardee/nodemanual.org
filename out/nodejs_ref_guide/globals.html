@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,79 +94,87 @@
 
 <h2>Global Objects</h2>
 
-<p>These objects are available in all modules. Some of these objects aren't<br />actually in the global scope but in the module scope - this will be noted.</p>
+<p>These objects are available to all modules. Some of these objects aren't actually in the global scope, but in the module scope; they'll be noted as such below.</p>
 
-<h3>global</h3>
+<h3>Objects</h3>
 
-<p>The global namespace object.</p>
-
-<p>In browsers, the top-level scope is the global scope. That means that in<br />browsers if you're in the global scope <code>var something</code> will define a global<br />variable. In Node this is different. The top-level scope is not the global<br />scope; <code>var something</code> inside a Node module will be local to that module.</p>
-
-<h3>process</h3>
-
-<p>The process object. See the <a href="process.html#process">process object</a> section.</p>
-
-<h3>console</h3>
-
-<p>Used to print to stdout and stderr. See the <a href="stdio.html">stdio</a> section.</p>
-
-<h3>Buffer</h3>
-
-<p>Used to handle binary data. See the <a href="buffers.html">buffers</a> section.</p>
-
-<h3>require()</h3>
-
-<p>To require modules. See the <a href="modules.html#modules">Modules</a> section.<br /><code>require</code> isn't actually a global but rather local to each module.</p>
-
-<h3>require.resolve()</h3>
-
-<p>Use the internal <code>require()</code> machinery to look up the location of a module,<br />but rather than loading the module, just return the resolved filename.</p>
-
-<h3>require.cache</h3>
-
-<p>Modules are cached in this object when they are required. By deleting a key<br />value from this object, the next <code>require</code> will reload the module.</p>
-
-<h3>__filename</h3>
-
-<p>The filename of the code being executed.  This is the resolved absolute path<br />of this code file.  For a main program this is not necessarily the same<br />filename used in the command line.  The value inside a module is the path<br />to that module file.</p>
-
-<p>Example: running <code>node example.js</code> from <code>/Users/mjr</code></p>
-
-<pre><code>console.log(__filename);
-// /Users/mjr/example.js
-</code></pre>
-
-<p><code>__filename</code> isn't actually a global but rather local to each module.</p>
-
-<h3>__dirname</h3>
+<p><h4 class="objHeader"><code>__dirname</code></h4></p>
 
 <p>The name of the directory that the currently executing script resides in.</p>
 
-<p>Example: running <code>node example.js</code> from <code>/Users/mjr</code></p>
+<p><code>__dirname</code> isn't actually on the global scope, but is local to each module.</p>
+
+<h5>Example</h5>
+
+<p>If you're running <code>node example.js</code> from <code>/Users/mjr</code>:</p>
 
 <pre><code>console.log(__dirname);
-// /Users/mjr
+// prints /Users/mjr
 </code></pre>
 
-<p><code>__dirname</code> isn't actually a global but rather local to each module.</p>
+<p><h4 class="objHeader"><code>__filename</code></h4></p>
 
-<h3>module</h3>
+<p>The filename of the code being executed.  This is the resolved absolute path<br />of this code file.  For a main program this is not necessarily the same<br />filename used in the command line.  The value inside a module is the path<br />to that module file.</p>
 
-<p>A reference to the current module. In particular<br /><code>module.exports</code> is the same as the <code>exports</code> object. See <code>src/node.js</code><br />for more information.<br /><code>module</code> isn't actually a global but rather local to each module.</p>
+<p><code>__filename</code> isn't actually on the global scope, but is local to each module.</p>
 
-<h3>exports</h3>
+<h5>Example</h5>
 
-<p>An object which is shared between all instances of the current module and<br />made accessible through <code>require()</code>.<br /><code>exports</code> is the same as the <code>module.exports</code> object. See <code>src/node.js</code><br />for more information.<br /><code>exports</code> isn't actually a global but rather local to each module.</p>
+<p>If you're running <code>node example.js</code> from <code>/Users/mjr</code>:</p>
 
-<h3>setTimeout(cb, ms)</h3>
+<pre><code>console.log(__filename);
+// prints /Users/mjr/example.js
+</code></pre>
 
-<h3>clearTimeout(t)</h3>
+<p><h4 class="objHeader"><code>Buffer</code></h4></p>
 
-<h3>setInterval(cb, ms)</h3>
+<p>Used to handle binary data. See the <a href="buffers.html">buffers</a> section for more information.</p>
 
-<h3>clearInterval(t)</h3>
+<p><h4 class="objHeader"><code>console</code></h4></p>
 
-<p>The timer functions are global variables. See the <a href="timers.html">timers</a> section.<br /></div></p></div>
+<p>Used to print to stdout and stderr. See the <a href="stdio.html">stdio</a> section for more information.</p>
+
+<p><h4 class="objHeader"><code>exports</code></h4></p>
+
+<p>An object which is shared between all instances of the current module and<br />made accessible through <code>require()</code>.<br /><code>exports</code> is the same as the <code>module.exports</code> object. See <code>src/node.js</code><br />for more information.</p>
+
+<p><code>exports</code> isn't actually on the global scope, but is local to each module.</p>
+
+<p><h4 class="objHeader"><code>global</code></h4></p>
+
+<p>The global namespace object.</p>
+
+<p>In browsers, the top-level scope is the global scope. That means that in<br />browsers if you're in the global scope <code>var something</code> will define a global<br />variable. In Node.js this is different. The top-level scope is not the global<br />scope; <code>var something</code> inside a Node.js module is local only to that module.</p>
+
+<p><h4 class="objHeader"><code>module</code></h4></p>
+
+<p>A reference to the current module. In particular<br /><code>module.exports</code> is the same as the <code>exports</code> object. See <code>src/node.js</code><br />for more information.</p>
+
+<p><code>module</code> isn't actually on the global scope, but is local to each module.</p>
+
+<p><h4 class="objHeader"><code>process</code></h4></p>
+
+<p>The process object. See the <a href="process.html">process object</a> section for more information.</p>
+
+<p><h4 class="objHeader"><code>require()</code></h4></p>
+
+<p>This is necessary to require modules. See the <a href="modules.html#modules">Modules</a> section for more information.</p>
+
+<p><code>require</code> isn't actually on the global scope, but is local to each module.</p>
+
+<p><h4 class="objHeader"><code>require.cache</code></h4></p>
+
+<p>Modules are cached in this object when they are required. By deleting a key<br />value from this object, the next <code>require</code> will reload the module.</p>
+
+<p><h4 class="objHeader"><code>require.resolve()</code></h4></p>
+
+<p>Use the internal <code>require()</code> machinery to look up the location of a module,<br />but rather than loading the module, just return the resolved filename.</p>
+
+<p><h4 class="objHeader"><code>setTimeout(cb, ms)</code> / <code>clearTimeout(t)</code></h4></p>
+
+<p><h4 class="objHeader"><code>setInterval(cb, ms)</code> / <code>clearInterval(t)</code></h4></p>
+
+<p>These timer functions are all global variables. See the <a href="timers.html">timers</a> section for more information.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

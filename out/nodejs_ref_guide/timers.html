@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,23 +94,25 @@
 
 <h2>Timers</h2>
 
-<h3>setTimeout(callback, delay, [arg], [...])</h3>
+<p>The timer functions are useful for scheduling functions to run after a defined amount of time. It is important to note that your callback will probably <em>not</em> be called in exactly <code>delay</code> milliseconds. Node.js makes no guarantees about the exact timing of when the callback is fired, nor of the ordering things will fire in. The callback is called as close as possible to the time specified.</p>
 
-<p>To schedule execution of a one-time <code>callback</code> after <code>delay</code> milliseconds. Returns a<br /><code>timeoutId</code> for possible use with <code>clearTimeout()</code>. Optionally you can<br />also pass arguments to the callback.</p>
+<h3>Methods</h3>
 
-<p>It is important to note that your callback will probably not be called in exactly<br /><code>delay</code> milliseconds - Node.js makes no guarantees about the exact timing of when<br />the callback will fire, nor of the ordering things will fire in. The callback will<br />be called as close as possible to the time specified.</p>
+<p><h4 class="methodHeader"> <code>clearInterval(intervalId)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>intervalId</code>: The id of the interval</ul></p>
 
-<h3>clearTimeout(timeoutId)</h3>
+<p>Stops a interval from triggering.</p>
+
+<p><h4 class="methodHeader"> <code>clearTimeout(timeoutId)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>timeoutId</code>: The id of the timeout</ul></p>
 
 <p>Prevents a timeout from triggering.</p>
 
-<h3>setInterval(callback, delay, [arg], [...])</h3>
+<p><h4 class="methodHeader"> <code>setInterval(callback, delay, [arg...])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>callback()</code>: The callback function to execute<li> <code>delay</code>: The delay (in milliseconds) before executing the callback</li><li> <code>[arg...]</code>: Any optional arguments to pass the to callback</li></ul></p>
 
-<p>To schedule the repeated execution of <code>callback</code> every <code>delay</code> milliseconds.<br />Returns a <code>intervalId</code> for possible use with <code>clearInterval()</code>. Optionally<br />you can also pass arguments to the callback.</p>
+<p>This schedules the repeated execution of a callback function after a defined delay. It returns a <code>intervalId</code> for possible use with <code>clearInterval()</code>. Optionally, you can also pass arguments to the callback.</p>
 
-<h3>clearInterval(intervalId)</h3>
+<p><h4 class="methodHeader"> <code>setTimeout(callback(), delay, [arg...])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>callback()</code>: The callback function to execute<li> <code>delay</code>: The delay (in milliseconds) before executing the callback</li><li> <code>[arg...]</code>: Any optional arguments to pass the to callback</li></ul></p>
 
-<p>Stops a interval from triggering.<br /></div></p></div>
+<p>This function schedules the execution of a one-time callback function after a defined delay, It returns a <code>timeoutId</code>, which can be used later with <code>clearTimeout()</code>. Optionally, you can also pass arguments to the callback.</div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

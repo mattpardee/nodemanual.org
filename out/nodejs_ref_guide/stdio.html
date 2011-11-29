@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -91,59 +90,76 @@
 </div>
 <div class="content"><p><div class="hero-unit"></p>
 
-<p><a class="hiddenLink" id="console"></a></p>
+<p><a class="hiddenLink" id="printing-to-console"></a></p>
 
-<h2>console</h2>
+<h2>Printing to Console</h2>
 
-<p>For printing to stdout and stderr.  Similar to the console object functions<br />provided by most web browsers, here the output is sent to stdout or stderr.</p>
+<p>These methods are useful for printing to stdout and stderr. They are similar to the <code>console</code> object functions provided by most web browsers.</p>
 
-<h3>console.log()</h3>
+<p>It's important to note that printing to stdout and stderr us synchronous, and therefore, blocking.</p>
 
-<p>Prints to stdout with newline. This function can take multiple arguments in a<br /><code>printf()</code>-like way. Example:</p>
+<h3>Methods</h3>
+
+<p><h4 class="methodHeader"> <code>console.assert()</code></h4></p>
+
+<p>An alias to <code>assert.ok()</code>.</p>
+
+<p><h4 class="methodHeader"> <code>console.dir(obj)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>obj</code>: An object to inspect</ul></p>
+
+<p>Uses <code>util.inspect()</code> on <code>obj</code> and prints the resulting string to stderr.</p>
+
+<p><h4 class="methodHeader"> <code>console.error()</code></h4></p>
+
+<p>This performs the same role as <code>console.log()</code>, but prints to stderr instead.</p>
+
+<p><h4 class="methodHeader"> <code>console.info()</code></h4></p>
+
+<p>This is just an alias to <code>console.log()</code>.</p>
+
+<p><h4 class="methodHeader"> <code>console.log([arg...])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>[arg]</code>: The string to print<li> and any additional formatting arguments</li></ul></p>
+
+<p>Prints to stdout with a newline. This function can take multiple arguments in a<br /><code>printf()</code>-like way. For example:</p>
 
 <pre><code>console.log('count: %d', count);
 </code></pre>
 
-<p>If formating elements are not found in the first string then <code>util.inspect</code><br />is used on each argument.<br />See <a href="util.html#util.format">util.format()</a> for more infomation.</p>
+<p>If formating elements are not found in the first string then <code>util.inspect</code> is used on each argument. For way more information, see <a href="util.html#util.format"><code>util.format()</code></a>.</p>
 
-<h3>console.info()</h3>
+<p><h4 class="methodHeader"> <code>console.time(label)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>label</code>: An identifing string </ul></p>
 
-<p>Same as <code>console.log</code>.</p>
+<p>Marks a time by printing it out to the console. This is used in conjunction with <code>console.time()</code>.</p>
 
-<h3>console.warn()</h3>
+<h4>Example</h4>
 
-<h3>console.error()</h3>
-
-<p>Same as <code>console.log</code> but prints to stderr.</p>
-
-<h3>console.dir(obj)</h3>
-
-<p>Uses <code>util.inspect</code> on <code>obj</code> and prints resulting string to stderr.</p>
-
-<h3>console.time(label)</h3>
-
-<p>Mark a time.</p>
-
-<h3>console.timeEnd(label)</h3>
-
-<p>Finish timer, record output. Example</p>
-
-<pre><code>console.time('100-elements');
-for (var i = 0; i &lt; 100; i++) {
+<pre><code>console.time('elements');
+for (var i = 0; i &lt; 1000000; i++) {
   ;
 }
-console.timeEnd('100-elements');
+console.timeEnd('elements');
+// print 4ms
 </code></pre>
 
-<h3>console.trace()</h3>
+<p><h4 class="methodHeader"> <code>console.timeEnd(label)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>label</code>: An identifying string</ul></p>
 
-<p>Print a stack trace to stderr of the current position.</p>
+<p>Finish the previous timer and prints output.</p>
 
-<h3>console.assert()</h3>
+<h4>Example</h4>
 
-<p>Same as <code>assert.ok()</code>.</p>
+<pre><code>console.time('elements');
+for (var i = 0; i &lt; 1000000; i++) {
+  ;
+}
+console.timeEnd('elements');
+// prints 4ms
+</code></pre>
 
-<p></div></p></div>
+<p><h4 class="methodHeader"> <code>console.trace()</code></h4></p>
+
+<p>Prints a stack trace to stderr of the current position.</p>
+
+<p><h4 class="methodHeader"> <code>console.warn()</code></h4></p>
+
+<p>This performs the same role as <code>console.log()</code>, but prints to stderr instead.</div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

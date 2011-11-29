@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,13 +94,19 @@
 
 <h2>util</h2>
 
-<p>These functions are in the module <code>'util'</code>. Use <code>require('util')</code> to access<br />them.</p>
+<p>These functions are in the module <code>'util'</code>. To access them, use <code>require('util')</code>.</p>
 
-<h3>util.format()</h3>
+<h3>Methods</h3>
 
-<p>Returns a formatted string using the first argument as a <code>printf</code>-like format.</p>
+<p><h4 class="methodHeader"> <code>util.debug(str)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>str</code>: The string to print</ul></p>
 
-<p>The first argument is a string that contains zero or more <em>placeholders</em>.<br />Each placeholder is replaced with the converted value from its corresponding<br />argument. Supported placeholders are:</p>
+<p>A synchronous output function. This block the process and outputs <code>string</code> immediately to <code>stderr</code>.</p>
+
+<p><h4 class="methodHeader"> <code>util.format([arg...])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>[arg]</code>: The string to print<li> and any additional formatting arguments</li></ul></p>
+
+<p>Returns a formatted string using the first argument in a <code>printf()</code>-like format.</p>
+
+<p>The first argument is a string that contains zero or more placeholders. Each placeholder is replaced with the converted value from its corresponding argument. Supported placeholders are:</p>
 
 <ul>
 <li><code>%s</code> - String.</li>
@@ -110,55 +115,40 @@
 <li><code>%%</code> - single percent sign (<code>'%'</code>). This does not consume an argument.</li>
 </ul>
 
-<p>If the placeholder does not have a corresponding argument, the placeholder is<br />not replaced.</p>
+<p>If the placeholder does not have a corresponding argument, the placeholder is not replaced, as in this example:</p>
 
 <pre><code>util.format('%s:%s', 'foo'); // 'foo:%s'
 </code></pre>
 
-<p>If there are more arguments than placeholders, the extra arguments are<br />converted to strings with <code>util.inspect()</code> and these strings are concatenated,<br />delimited by a space.</p>
+<p>If there are more arguments than placeholders, the extra arguments are converted to strings with <code>util.inspect()</code> and these strings are concatenated, delimited by a space:</p>
 
 <pre><code>util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 </code></pre>
 
-<p>If the first argument is not a format string then <code>util.format()</code> returns<br />a string that is the concatenation of all its arguments separated by spaces.<br />Each argument is converted to a string with <code>util.inspect()</code>.</p>
+<p>If the first argument is not a format string, then <code>util.format()</code> returns a string that is the concatenation of all its arguments separated by spaces. Each argument is converted to a string with <code>util.inspect()</code>.</p>
 
 <pre><code>util.format(1, 2, 3); // '1 2 3'
 </code></pre>
 
-<h3>util.debug(string)</h3>
+<p><h4 class="methodHeader"> <code>util.inspect(object, showHidden=false, depth=2)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>object</code>: The object to be represented<li> <code>showHidden</code>: Identifies whether the non-enumerable properties are also shown; the default is <code>false</code></li><li> <code>depth</code>: Indicates how many times to recurse while formatting the object; the default is <code>2</code></li></ul></p>
 
-<p>A synchronous output function. Will block the process and<br />output <code>string</code> immediately to <code>stderr</code>.</p>
+<p>Returns a string representation of <code>object</code>, which is useful for debugging.</p>
 
-<pre><code>require('util').debug('message on stderr');
-</code></pre>
+<p>To make the function recurse an object indefinitely, pass in <code>null</code> for <code>depth</code>.</p>
 
-<h3>util.log(string)</h3>
+<h4>Example</h4>
 
-<p>Output with timestamp on <code>stdout</code>.</p>
-
-<pre><code>require('util').log('Timestamped message.');
-</code></pre>
-
-<h3>util.inspect(object, showHidden=false, depth=2)</h3>
-
-<p>Return a string representation of <code>object</code>, which is useful for debugging.</p>
-
-<p>If <code>showHidden</code> is <code>true</code>, then the object's non-enumerable properties will be<br />shown too.</p>
-
-<p>If <code>depth</code> is provided, it tells <code>inspect</code> how many times to recurse while<br />formatting the object. This is useful for inspecting large complicated objects.</p>
-
-<p>The default is to only recurse twice.  To make it recurse indefinitely, pass<br />in <code>null</code> for <code>depth</code>.</p>
-
-<p>Example of inspecting all properties of the <code>util</code> object:</p>
+<p>Here's an example inspecting all the properties of the <code>util</code> object:</p>
 
 <pre><code>var util = require('util');
-
 console.log(util.inspect(util, true, null));
 </code></pre>
 
-<h3>util.isArray(object)</h3>
+<p><h4 class="methodHeader"> <code>util.isArray(object)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>object</code>: The object to be identified</ul></p>
 
-<p>Returns <code>true</code> if the given "object" is an <code>Array</code>. <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> if the given object is an <code>Array</code>.</p>
+
+<h4>Example</h4>
 
 <pre><code>var util = require('util');
 
@@ -170,23 +160,11 @@ util.isArray({})
   // false
 </code></pre>
 
-<h3>util.isRegExp(object)</h3>
+<p><h4 class="methodHeader"> <code>util.isDate(object)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>object</code>: The object to be identified</ul></p>
 
-<p>Returns <code>true</code> if the given "object" is a <code>RegExp</code>. <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> if the given object is a <code>Date</code>.</p>
 
-<pre><code>var util = require('util');
-
-util.isRegExp(/some regexp/)
-  // true
-util.isRegExp(new RegExp('another regexp'))
-  // true
-util.isRegExp({})
-  // false
-</code></pre>
-
-<h3>util.isDate(object)</h3>
-
-<p>Returns <code>true</code> if the given "object" is a <code>Date</code>. <code>false</code> otherwise.</p>
+<h4>Example</h4>
 
 <pre><code>var util = require('util');
 
@@ -198,9 +176,11 @@ util.isDate({})
   // false
 </code></pre>
 
-<h3>util.isError(object)</h3>
+<p><h4 class="methodHeader"> <code>util.isError(object)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>object</code>: The object to be identified</ul></p>
 
-<p>Returns <code>true</code> if the given "object" is an <code>Error</code>. <code>false</code> otherwise.</p>
+<p>Returns <code>true</code> if the given object is an <code>Error</code>.</p>
+
+<h4>Example</h4>
 
 <pre><code>var util = require('util');
 
@@ -212,17 +192,39 @@ util.isError({ name: 'Error', message: 'an error occurred' })
   // false
 </code></pre>
 
-<h3>util.pump(readableStream, writableStream, [callback])</h3>
+<p><h4 class="methodHeader"> <code>util.isRegExp(object)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>object</code>: The object to be identified</ul></p>
 
-<p>Experimental</p>
+<p>Returns <code>true</code> if the given "object" is a <code>RegExp</code>.</p>
 
-<p>Read the data from <code>readableStream</code> and send it to the <code>writableStream</code>.<br />When <code>writableStream.write(data)</code> returns <code>false</code> <code>readableStream</code> will be<br />paused until the <code>drain</code> event occurs on the <code>writableStream</code>. <code>callback</code> gets<br />an error as its only argument and is called when <code>writableStream</code> is closed or<br />when an error occurs.</p>
+<h4>Example</h4>
 
-<h3>util.inherits(constructor, superConstructor)</h3>
+<pre><code>var util = require('util');
 
-<p>Inherit the prototype methods from one<br /><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor">constructor</a><br />into another.  The prototype of <code>constructor</code> will be set to a new<br />object created from <code>superConstructor</code>.</p>
+util.isRegExp(/some regexp/)
+  // true
+util.isRegExp(new RegExp('another regexp'))
+  // true
+util.isRegExp({})
+  // false
+</code></pre>
 
-<p>As an additional convenience, <code>superConstructor</code> will be accessible<br />through the <code>constructor.super_</code> property.</p>
+<p><h4 class="methodHeader"> <code>util.log(str)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>str</code>: The string to print</ul></p>
+
+<p>Outputs to <code>stdout</code>...but with a timestamp!</p>
+
+<p><h4 class="methodHeader"> <code>util.pump(readableStream, writableStream, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>readableStream</code>: The stream to read from<li> <code>writableStream</code>: The stream to write to</li><li> <code>callback()</code>: An optional callback function once the pump is through</li></ul></p>
+
+<p>Reads the data from <code>readableStream</code> and sends it to the <code>writableStream</code>.</p>
+
+<p>When <code>writableStream.write(data)</code> returns <code>false</code>, <code>readableStream</code> is<br />paused until the <code>drain</code> event occurs on the <code>writableStream</code>. <code>callback</code> gets<br />an error as its only argument and is called when <code>writableStream</code> is closed or<br />when an error occurs.</p>
+
+<p><h4 class="methodHeader"> <code>util.inherits(constructor, superConstructor)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>constructor</code>: The prototpye methods to inherit<li> <code>superConstructor</code>: The new object's type</li></ul></p>
+
+<p>Inherit the prototype methods from one <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor">constructor</a><br />into another.  The prototype of <code>constructor</code> is set to a new<br />object created from <code>superConstructor</code>.</p>
+
+<p>As an additional convenience, <code>superConstructor</code> is accessible through the <code>constructor.super_</code> property.</p>
+
+<h4>Example</h4>
 
 <pre><code>var util = require("util");
 var events = require("events");

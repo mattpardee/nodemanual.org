@@ -1,52 +1,86 @@
 ## Events
 
-Many objects in Node emit events: a `net.Server` emits an event each time
-a peer connects to it, a `fs.readStream` emits an event when the file is
-opened. All objects which emit events are instances of `events.EventEmitter`.
-You can access this module by doing: `require("events");`
+Many objects in Node.js emit events; for example:
 
-Typically, event names are represented by a camel-cased string, however,
-there aren't any strict restrictions on that, as any string will be accepted.
+* `net.Server` emits an event each time a peer connects to it
+* `fs.readStream` emits an event when the file is opened. 
 
-Functions can then be attached to objects, to be executed when an event
-is emitted. These functions are called _listeners_.
+All objects that emit events are instances of `events.EventEmitter`.
 
+Typically, event names are represented by a camel-cased string. However, there aren't any strict restrictions on that, as any string is accepted.
 
-### events.EventEmitter
+These functions can then be attached to objects, to be executed when an event is emitted. Such functions are called _listeners_.
 
-To access the EventEmitter class, `require('events').EventEmitter`.
+#### Accessing Event Emitters
 
-When an `EventEmitter` instance experiences an error, the typical action is
-to emit an `'error'` event.  Error events are treated as a special case in node.
-If there is no listener for it, then the default action is to print a stack
-trace and exit the program.
+To access the `EventEmitter` class, call `require('events').EventEmitter`.
 
-All EventEmitters emit the event `'newListener'` when new listeners are
-added.
+When an `EventEmitter` instance experiences an error, the typical action is to emit an `'error'` event. Error events are treated as a special case in Node.js. If there is no listener for it, then the default action is to print a stack trace and exit the program.
 
-#### emitter.addListener(event, listener)
-#### emitter.on(event, listener)
+All EventEmitters automatically emit the event `'newListener'` when new listeners are added.
+
+### Events
+
+@event `newListener`
+@cb `function (event, listener)`, The callback to execute once the event fires, `event`: The event to emit, `listener`: The attaching listener
+
+This event is emitted any time someone adds a new listener, but *before* the listener is attached.
+
+### Methods
+
+@method `emitter.addListener(event, callback())` / `emitter.on(event, callback())`
+@param `event`: The event to listen for, `callback()`: The listener callback to execute
 
 Adds a listener to the end of the listeners array for the specified event.
+
+#### Example
 
     server.on('connection', function (stream) {
       console.log('someone connected!');
     });
 
-#### emitter.once(event, listener)
+@method `emitter.emit(event, [arg...])`
+@param `event`: The event to listen for, `[arg...]`: Any optional arguments for the listeners
 
-Adds a **one time** listener for the event. This listener is
-invoked only the next time the event is fired, after which
-it is removed.
+Execute each of the subscribed listeners in order with the supplied arguments.
+
+@method `emitter.listeners(event)`
+@param `event`: The event type to listen for
+
+Returns an array of listeners for the specified event. This array can be
+manipulated, e.g. to remove listeners.
+
+#### Example
+
+    server.on('connection', function (stream) {
+      console.log('someone connected!');
+    });
+    console.log(util.inspect(server.listeners('connection'))); // [ [Function] ]
+    
+@method `emitter.once(event, listener)`
+@param `event`: The event to listen for, `callback()`: The listener callback to execute
+
+Adds a **one time** listener for the event. This listener is invoked only the next time the event is fired, after which it is removed.
+
+#### Example
 
     server.once('connection', function (stream) {
       console.log('Ah, we have our first user!');
     });
 
-#### emitter.removeListener(event, listener)
+@method `emitter.removeAllListeners([event])`
+@param `event`: An optional event type to remove
+
+Removes all listeners, or those of the specified event.
+
+@method `emitter.removeListener(event, listener)`
+@param `event`: The event to listen for, `callback()`: The listener callback to execute
 
 Remove a listener from the listener array for the specified event.
-**Caution**: changes array indices in the listener array behind the listener.
+
+**Caution**: this can change array indices in the listener array behind the listener.
+
+#### Example
 
     var callback = function(stream) {
       console.log('someone connected!');
@@ -56,35 +90,10 @@ Remove a listener from the listener array for the specified event.
     server.removeListener('connection', callback);
 
 
-#### emitter.removeAllListeners([event])
+@method `emitter.setMaxListeners(n)`
+@param `n`: An integer indicated the max
 
-Removes all listeners, or those of the specified event.
+By default, EventEmitters print a warning if more than 10 listeners are added for a particular event. This is a useful default which helps finding memory leaks.
 
-
-#### emitter.setMaxListeners(n)
-
-By default EventEmitters will print a warning if more than 10 listeners are
-added for a particular event. This is a useful default which helps finding memory leaks.
-Obviously not all Emitters should be limited to 10. This function allows
-that to be increased. Set to zero for unlimited.
-
-
-#### emitter.listeners(event)
-
-Returns an array of listeners for the specified event. This array can be
-manipulated, e.g. to remove listeners.
-
-    server.on('connection', function (stream) {
-      console.log('someone connected!');
-    });
-    console.log(util.inspect(server.listeners('connection'))); // [ [Function] ]
-
-#### emitter.emit(event, [arg1], [arg2], [...])
-
-Execute each of the listeners in order with the supplied arguments.
-
-#### Event: 'newListener'
-
-`function (event, listener) { }`
-
-This event is emitted any time someone adds a new listener.
+Obviously, not all Emitters should be limited to 10. This function allows
+that to be increased. Set it to `0` for unlimited listeners.

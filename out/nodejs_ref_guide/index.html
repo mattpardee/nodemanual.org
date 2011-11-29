@@ -54,9 +54,8 @@
         <h5>Node.js Reference Guide</h5>
 <div>
 <ul>
-<li><a class="upper" href="synopsis.html">Synopsis</a></li>
 <li><a class="upper" href="globals.html">Global Objects</a></li>
-<li><a class="upper" href="stdio.html">console</a></li>
+<li><a class="upper" href="stdio.html">Printing to Console</a></li>
 <li><a class="upper" href="timers.html">Timers</a></li>
 <li><a class="upper" href="modules.html">Modules</a></li>
 <li><a class="upper" href="addons.html">Addons</a></li>
@@ -65,8 +64,8 @@
 <li><a class="upper" href="events.html">Events</a></li>
 <li><a class="upper" href="buffers.html">Buffers</a></li>
 <li><a class="upper" href="streams.html">Streams</a></li>
-<li><a class="upper" href="crypto.html">Crypto</a></li>
-<li><a class="upper" href="tls.html">TLS (SSL)</a></li>
+<li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
+<li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
 <li><a class="upper" href="fs.html">File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
 <li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
@@ -95,7 +94,29 @@
 
 <h1>Node.js Reference Guide</h1>
 
-<p>Oh man, here's some stuff!</div></p></div>
+<p>Node.js is an asynchronous, event-driven server side Javascript language. It is pretty awesome for running servers and the like.</p>
+
+<p>For example, here's a <a href="http.html">web server</a> written with Node.js which responds with 'Hello World':</p>
+
+<pre><code>var http = require('http');
+
+http.createServer(function (request, response) {
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+  response.end('Hello World\n');
+}).listen(8124);
+
+console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');
+</code></pre>
+
+<p>To run the server, put the code into a file called <code>example.js</code> and execute<br />it with the node program</p>
+
+<pre><code>&gt; node example.js
+Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>
+</code></pre>
+
+<p>All of the examples in this reference documentation can be run in a similar manner.</p>
+
+<p>The sidebar to the left indicates all the top-level objects you can access in Node.js. Happy coding!</div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

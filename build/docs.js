@@ -16,7 +16,7 @@ docs = exports;
 docs.generate = exports.generate = function (type) {
     var toc;
 
-	try {
+    try {
         toc = JSON.parse(fs.readFileSync("src/" + type + "/toc.json")).toc;
 	} catch (err) {
 	    console.log("There was an error parsing the JSON TOC for " + tocFile + ": " + err);
@@ -73,12 +73,21 @@ function printContents(i, type, files)
         // for sub-directories, like npm/foo, we want foo 
         // to be placed into npm.md as a long file
         if (splitPaths.length > 3)
-            destFile = "tmp/" + splitPaths[3] + ".md";
+        {
+            var fileName = splitPaths[3];
+            
+            if (fileName != "")
+                destFile = "tmp/" + splitPaths[3] + ".md";
+            else
+                destFile = "tmp/" + files[i].content.substring(files[i].content.lastIndexOf("/") + 1, files[i].content.lastIndexOf(".")) + ".md";
+                
+        }
         else if (files[i].name == "")
             destFile = "tmp/" + files[i].content.substring(files[i].content.lastIndexOf("/") + 1);
         else
             destFile = "tmp/" + files[i].name + ".md";
 
+        //console.log(destFile);
 		traverse(type, files[i], destFile, function(err) {
 			if (err) console.log("Error printing contents: " + err);
 			else printContents(i + 1, type, files, destFile);
@@ -129,7 +138,7 @@ function traverse(type, files, destFile, cb)
 					else
 						byline = "";
 
-                    var destFileName = destFile.substring(4, destFile.length - 3);
+                    var destFileName = destFile.substring(4, destFile.lastIndexOf("."));
                     if (title.match("^# "))
                     {
                         if (tocHTML != "")
@@ -167,7 +176,7 @@ function traverse(type, files, destFile, cb)
 
 docs.assemble = function(outName, tmpFile)
 {
-    var filename = tmpFile.substring(3, tmpFile.lastIndexOf(".") + 2);
+    var filename = tmpFile.substring(3, tmpFile.lastIndexOf("."));
 	var outTmpFile = "tmp/" + filename + ".html";
     var outFile = "out/" + outName + "/" + filename + ".html";
 	var headerFile = "build/" + outName + "_header.html";
@@ -184,12 +193,13 @@ docs.assemble = function(outName, tmpFile)
          // create sidebar toc semi-dynamically
          // this is probably the worst way to do this   
         writeStream.write(tocHTML);
-        // close up accordian, start content writing
+        // close up toc, start content writing
        writeStream.write("\n</div>\n</div>\n<div class=\"content\">");
    
        var readTmpStream = fs.createReadStream(tmpFile);
 
         readTmpStream.on('data', function(data) {
+            // initial md->html conversion
       		writeStream.write(gfm.parse(data.toString()));
       	});
     
@@ -202,11 +212,105 @@ docs.assemble = function(outName, tmpFile)
                 var writeFinalStream = fs.createWriteStream(outFile, {flags: "a+"});
                 
                 readTmpHTMLStream.on('data', function(data) {
-          	        writeFinalStream.write(data.toString().replace(new RegExp("&amp;lt", 'g'), "<")); // Markdown doesn't work inside block elements, so we need to re-run and replace elements
+            
+            var content = data.toString();
+                if (outName == "nodejs_ref_guide")
+                    content = jsdocReplacements(content);
+            
+            // Markdown doesn't work inside block elements, so we need
+            // to re-run and replace elements
+            content = content.replace(new RegExp("&amp;lt", 'g'), "<");
+          	        writeFinalStream.write(content); 
       	        });
             });
       	});
     });
+}
+
+function jsdocReplacements(content)
+{
+    var lines = content.split("\n");
+    
+    for (var i = 0; i < lines.length; i++)
+        if (lines[i].indexOf("@event") >= 0)
+        {
+            var unbrokenLine = lines[i].replace("<p>", "").replace("</p>", "").split("<br />");
+            
+            var eventHeader = "<h4 class=\"eventHeader\">" + unbrokenLine[0].substring("@event".length) + "</h4>";
+            var lParamsList = "<div class=\"listenerParam\"><h5>Listener Parameters</h5><ul>";
+            var lParamsParamsList = "<div class=\"listenerParamParam\"><h6>Parameters</h6><ul>"
+            
+            for (var j = 1; j < unbrokenLine.length; j++)
+            {
+                 var params = unbrokenLine[j].split(",");
+                 lParamsList += "<li>" + params[0].substring("@cb ".length);
+     
+                 if (params.length > 1)
+                 {
+                     lParamsList += lParamsParamsList;
+                     
+                     for (var k = 1; k < params.length; k++)
+                     {
+                         lParamsList += "<li>" + params[k] + "</li>";
+                     }
+                     lParamsList += "</ul>";
+                 }
+                 
+                 lParamsList += "</li>";
+            }
+            
+            lParamsList += "</ul>";
+            
+            lines[i] = "<p>" + eventHeader + lParamsList + "</p>";
+        }
+        else if (lines[i].indexOf("@method") >= 0)
+        {
+          var unbrokenLine = lines[i].replace("<p>", "").replace("</p>", "").split("<br />");  
+          
+           var methodHeader = "<h4 class=\"methodHeader\">" + unbrokenLine[0].substring("@method".length) + "</h4>";
+          var paramsList = "";
+          
+          if (unbrokenLine.length > 1)
+          {
+
+            paramsList = "<div class=\"methodParam\"><h5>Parameters</h5><ul>";
+            var params = unbrokenLine[1].split(",");
+                 
+            for (var j = 0; j < params.length; j++)
+            {
+                if (j == 0)
+                {
+                   paramsList += "<li>" + params[0].substring("@param ".length); + "</li>"; 
+                }
+                else 
+                {
+                     paramsList += "<li>" + params[j] + "</li>"; 
+                }
+            }
+            
+            paramsList += "</ul>";
+          }
+            lines[i] = "<p>" + methodHeader + paramsList + "</p>";
+        }
+    else if (lines[i].indexOf("@prop") >= 0)
+        {
+           
+          var unbrokenLine = lines[i].replace("<p>", "").replace("</p>", "").split("<br />"); 
+          
+           var propertyHeader = "<h4 class=\"propertyHeader\">" + unbrokenLine[0].substring("@prop".length) + "</h4>";
+          
+            lines[i] = "<p>" + propertyHeader + "</p>";
+        }
+            else if (lines[i].indexOf("@obj") >= 0)
+        {
+          var unbrokenLine = lines[i].replace("<p>", "").replace("</p>", "").split("<br />");  
+          
+           var objHeader = "<h4 class=\"objHeader\">" + unbrokenLine[0].substring("@prop".length) + "</h4>";
+          
+            lines[i] = "<p>" + objHeader  + "</p>";
+        }
+        
+    return lines.join("\n");    
 }
 
 docs.copyassets = function(outName)
@@ -230,7 +334,6 @@ docs.copyassets = function(outName)
 docs.clean = function (dir) 
 {
 	var wrench = require('wrench');
-	var fs = require('fs');
 
     if (path.existsSync(dir))
         wrench.rmdirSyncRecursive(dir);
