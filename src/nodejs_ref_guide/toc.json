@@ -171,13 +171,18 @@
                ],
          "metadata":"page.json"
       },
-      {
-         "name": "",
-         "content":[
+              {
+         "name": "Concepts",
+         "folder":[
+            {
+               "name":"",
+               "content":[
                   "repl.markdown"
                ],
-         "metadata":"page.json"
-      },  
+               "metadata":"page.json"
+            }
+        ]
+      }, 
       {
          "name": "",
          "content":[
@@ -220,13 +225,18 @@
                ],
          "metadata":"page.json"
       },
-      {
-         "name": "",
-         "content":[
+              {
+         "name": "Concepts",
+         "folder":[
+            {
+               "name":"",
+               "content":[
                   "debugger.markdown"
                ],
-         "metadata":"page.json"
-      }, 
+               "metadata":"page.json"
+            }
+        ]
+      },
       {
          "name": "",
          "content":[
@@ -234,19 +244,29 @@
                ],
          "metadata":"page.json"
       },
-      {
-         "name": "",
-         "content":[
+                    {
+         "name": "Appendix",
+         "folder":[
+            {
+               "name":"",
+               "content":[
                   "appendix_1.markdown"
                ],
-         "metadata":"page.json"
+               "metadata":"page.json"
+            }
+        ]
       },
-      {
-         "name": "",
-         "content":[
+                    {
+         "name": "Appendix",
+         "folder":[
+            {
+               "name":"",
+               "content":[
                   "appendix_2.markdown"
                ],
-         "metadata":"page.json"
-      }                          
+               "metadata":"page.json"
+            }
+        ]
+      }                        
     ]
 }

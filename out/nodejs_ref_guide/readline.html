@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -94,9 +94,9 @@
 
 <h2>Readline</h2>
 
-<p>To use this module, do <code>require('readline')</code>. Readline allows reading of a<br />stream (such as STDIN) on a line-by-line basis.</p>
+<p>Readline allows reading of a stream (such as STDIN) on a line-by-line basis. To use this module, add <code>require('readline')</code> to your code.</p>
 
-<p>Note that once you've invoked this module, your node program will not<br />terminate until you've closed the interface, and the STDIN stream. Here's how<br />to allow your program to gracefully terminate:</p>
+<p><span class="label success">Note</span> Once you've invoked this module, your Node.js program won't terminate until you've closed the interface, and the STDIN stream. Here's how to allow your program to gracefully terminate:</p>
 
 <pre><code>var rl = require('readline');
 
@@ -112,85 +112,7 @@ i.question("What do you think of node.js?", function(answer) {
 });
 </code></pre>
 
-<h3>rl.createInterface(input, output, completer)</h3>
-
-<p>Takes two streams and creates a readline interface. The <code>completer</code> function<br />is used for autocompletion. When given a substring, it returns <code>[[substr1,<br />substr2, ...], originalsubstring]</code>.</p>
-
-<p>Also <code>completer</code> can be run in async mode if it accepts two arguments:</p>
-
-<p>function completer(linePartial, callback) {<br />    callback(null, [['123'], linePartial]);<br />  }</p>
-
-<p><code>createInterface</code> is commonly used with <code>process.stdin</code> and<br /><code>process.stdout</code> in order to accept user input:</p>
-
-<pre><code>var readline = require('readline'),
-  rl = readline.createInterface(process.stdin, process.stdout);
-</code></pre>
-
-<h3>rl.setPrompt(prompt, length)</h3>
-
-<p>Sets the prompt, for example when you run <code>node</code> on the command line, you see<br /><code>&gt;</code>, which is node's prompt.</p>
-
-<h3>rl.prompt()</h3>
-
-<p>Readies readline for input from the user, putting the current <code>setPrompt</code><br />options on a new line, giving the user a new spot to write.</p>
-
-<!-- ### rl.getColumns() Not available? -->
-
-<h3>rl.question(query, callback)</h3>
-
-<p>Prepends the prompt with <code>query</code> and invokes <code>callback</code> with the user's<br />response. Displays the query to the user, and then invokes <code>callback</code> with the<br />user's response after it has been typed.</p>
-
-<p>Example usage:</p>
-
-<pre><code>interface.question('What is your favorite food?', function(answer) {
-  console.log('Oh, so your favorite food is ' + answer);
-});
-</code></pre>
-
-<h3>rl.close()</h3>
-
-<p>Closes tty.</p>
-
-<h3>rl.pause()</h3>
-
-<p>Pauses tty.</p>
-
-<h3>rl.resume()</h3>
-
-<p>Resumes tty.</p>
-
-<h3>rl.write()</h3>
-
-<p>Writes to tty.</p>
-
-<h3>Event: 'line'</h3>
-
-<p><code>function (line) {}</code></p>
-
-<p>Emitted whenever the <code>in</code> stream receives a <code>\n</code>, usually received when the<br />user hits enter, or return. This is a good hook to listen for user input.</p>
-
-<p>Example of listening for <code>line</code>:</p>
-
-<pre><code>rl.on('line', function (cmd) {
-  console.log('You just typed: '+cmd);
-});
-</code></pre>
-
-<h3>Event: 'close'</h3>
-
-<p><code>function () {}</code></p>
-
-<p>Emitted whenever the <code>in</code> stream receives a <code>^C</code> or <code>^D</code>, respectively known<br />as <code>SIGINT</code> and <code>EOT</code>. This is a good way to know the user is finished using<br />your program.</p>
-
-<p>Example of listening for <code>close</code>, and exiting the program afterward:</p>
-
-<pre><code>rl.on('close', function() {
-  console.log('goodbye!');
-  process.exit(0);
-});
-</code></pre>
-
-<p>Here's an example of how to use all these together to craft a tiny command<br />line interface:</p>
+<p>Here's an example of how to use all the methods together to craft a tiny command line interface:</p>
 
 <pre><code>var readline = require('readline'),
   rl = readline.createInterface(process.stdin, process.stdout),
@@ -216,7 +138,92 @@ rl.setPrompt(prefix, prefix.length);
 rl.prompt();
 </code></pre>
 
-<p>Take a look at this slightly more complicated<br /><a href="https://gist.github.com/901104">example</a>, and<br /><a href="https://github.com/cloudhead/http-console">http-console</a> for a real-life use<br />case.<br /></div></p></div>
+<p>Take a look at this slightly more complicated <a href="https://gist.github.com/901104">example</a>, as well as <a href="https://github.com/cloudhead/http-console">http-console</a> for a real-life use case.</p>
+
+<h3>Events</h3>
+
+<p><h4 class="eventHeader"> <code>'close'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function ()</code>: The callback to execute once the event fires</li></ul></p>
+
+<p>Emitted whenever the <code>in</code> stream receives a <code>^C</code> (<code>SIGINT</code>) or <code>^D</code> (<code>EOT</code>). This is a good way to know the user is finished using your program.</p>
+
+<h4>Examples</h4>
+
+<p>Example of listening for <code>close</code>, and exiting the program afterward:</p>
+
+<pre><code>rl.on('close', function() {
+  console.log('goodbye!');
+  process.exit(0);
+});
+</code></pre>
+
+<p><h4 class="eventHeader"> <code>'line'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function (line)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>line</code>: The line that prompted the event</li></ul></li></ul></p>
+
+<p>Emitted whenever the <code>in</code> stream receives a <code>\n</code>, usually received when the user hits enter, or return. This is a good hook to listen for user input.</p>
+
+<h4>Example</h4>
+
+<pre><code>rl.on('line', function (cmd) {
+  console.log('You just typed: '+cmd);
+});
+</code></pre>
+
+<h3>Methods</h3>
+
+<p><h4 class="methodHeader"> <code>rl.close()</code></h4></p>
+
+<p>Closes <code>tty</code>.</p>
+
+<p><h4 class="methodHeader"> <code>rl.createInterface(input, output, completer())</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>input</code>: The readable stream<li> <code>output</code>: The writeable stream</li><li> <code>completer()</code>: A function to use for autocompletion</li></ul></p>
+
+<p>Takes two streams and creates a readline interface. </p>
+
+<p>When given a substring, <code>completer()</code> returns <code>[[substr1, substr2, ...], originalsubstring]</code>.</p>
+
+<p>Also, <code>completer()</code> can be run in an asynchronous manner if it accepts two arguments:</p>
+
+<pre><code>function completer(linePartial, callback) {
+    callback(null, [['123'], linePartial]);
+}
+</code></pre>
+
+<h4>Example</h4>
+
+<p><code>createInterface()</code> is commonly used with <code>process.stdin</code> and <code>process.stdout</code> in order to accept user input:</p>
+
+<pre><code>var readline = require('readline'), 
+    rl = readline.createInterface(process.stdin, process.stdout);
+</code></pre>
+
+<p><h4 class="methodHeader"> <code>rl.pause()</code></h4></p>
+
+<p>Pauses <code>tty</code>.</p>
+
+<p><h4 class="methodHeader"> <code>rl.prompt()</code></h4></p>
+
+<p>Readies readline for input from the user, putting the current <code>setPrompt</code> options on a new line, giving the user a new spot to write.</p>
+
+<p><h4 class="methodHeader"> <code>rl.question(query, callback())</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>query</code>: A string to display the user<li> <code>callback()</code>: The function to execute once the method completes</li></ul></p>
+
+<p>Prepends the prompt with <code>query</code> and invokes <code>callback</code> with the user's respons after it has been entered.</p>
+
+<h4>Example</h4>
+
+<pre><code>interface.question('What is your favorite food?', function(answer) {
+  console.log('Oh, so your favorite food is ' + answer);
+});
+</code></pre>
+
+<p><h4 class="methodHeader"> <code>rl.resume()</code></h4></p>
+
+<p>Resumes <code>tty</code>.</p>
+
+<p><h4 class="methodHeader"> <code>rl.setPrompt(prompt, length)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>prompt</code>: The prompting character<li> <code>length</code>: The length before line wrapping</li></ul></p>
+
+<p>Sets the prompt. For example when you run <code>node</code> on the command line, you see <code>&gt;</code>, which is Node's prompt.</p>
+
+<p><h4 class="methodHeader"> <code>rl.write()</code></h4></p>
+
+<p>Writes to <code>tty</code>.</div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

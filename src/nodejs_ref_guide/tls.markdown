@@ -84,11 +84,11 @@ Creates a new client connection to the given `port` and `host`. This function re
 
 `options` should be an object that specifies the following values:
 
-  - `key`: A string or `Buffer` containing the private key of the client in aPEM format.
+  - `key`: A string or `Buffer` containing the private key of the client in aPEM format. The default is `null`.
 
-  - `passphrase`: A string of a passphrase for the private key.
+  - `passphrase`: A string of a passphrase for the private key. The default is `null`.
 
-  - `cert`: A string or `Buffer` containing the certificate key of the client in a PEM format.
+  - `cert`: A string or `Buffer` containing the certificate key of the client in a PEM format; in other words, the public x509 certificate to use. The default is `null`.
 
   - `ca`: An array of strings or `Buffer`s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. 
 
@@ -205,85 +205,90 @@ You can test this server by connecting to it with `openssl s_client`:
     openssl s_client -connect 127.0.0.1:8000
 
  
+## `tls.Server`
+
+This class is a subclass of `net.Server` and has the same methods on it. Instead of accepting just raw TCP connections, it accepts encrypted connections using TLS or SSL.
+
+### Methods
+
+@method `server.addContext(hostname, credentials)`
+@param `hostname`: The hostname to match, `credentials`: The credentials to use
+
+Add secure context that will be used if client request's SNI hostname is
+matching passed `hostname` (wildcards can be used). `credentials` can contain
+`key`, `cert`, and `ca`.
+
+@method `server.address()`
+
+Returns the bound address and port of the server as reported by the operating
+system. 
+
+For more information, see [net.Server.address()](net.html#server.address).
 
 
+@method `server.close()`
 
-### tls.Server
+Stops the server from accepting new connections. This function is asynchronous, and the server is finally closed when it emits a `'close'` event.
 
-This class is a subclass of `net.Server` and has the same methods on it.
-Instead of accepting just raw TCP connections, this accepts encrypted
-connections using TLS or SSL.
-
-
-
-
-#### server.listen(port, [host], [callback])
+@method `server.listen(port, [host], [callback()])`
+@param `port`: The specific port to listen to, `host`: An optional host to listen to, `callback()`: An optional callback to execute when the server has been bound
 
 Begin accepting connections on the specified `port` and `host`.  If the
 `host` is omitted, the server will accept connections directed to any
 IPv4 address (`INADDR_ANY`).
 
-This function is asynchronous. The last parameter `callback` will be called
-when the server has been bound.
+For more information, see `net.Server`.
 
-See `net.Server` for more information.
+### Properties
 
-
-#### server.close()
-
-Stops the server from accepting new connections. This function is
-asynchronous, the server is finally closed when the server emits a `'close'`
-event.
-
-#### server.address()
-
-Returns the bound address and port of the server as reported by the operating
-system.
-See [net.Server.address()](net.html#server.address) for more information.
-
-#### server.addContext(hostname, credentials)
-
-Add secure context that will be used if client request's SNI hostname is
-matching passed `hostname` (wildcards can be used). `credentials` can contain
-`key`, `cert` and `ca`.
-
-#### server.maxConnections
-
-Set this property to reject connections when the server's connection count
-gets high.
-
-#### server.connections
+@prop `server.connections`
 
 The number of concurrent connections on the server.
 
+@prop `server.maxConnections`
 
-### tls.CleartextStream
+Set this property to reject connections when the server's connection count gets high.
 
-This is a stream on top of the *Encrypted* stream that makes it possible to
-read/write an encrypted data as a cleartext data.
+### Methods
 
-This instance implements a duplex [Stream](streams.html#streams) interfaces.
-It has all the common stream methods and events.
+@method `cleartextStream.address()`
 
+Returns the bound address and port of the underlying socket as reported by the operating system. Returns an object with two properties, _e.g._ `{"address":"192.168.57.1", "port":62053}`
 
+### Objects
 
+@obj `tls.CleartextStream`
 
-#### cleartextStream.authorized
+This is a stream on top of the `Encrypted` stream that makes it possible to read/write an encrypted data as a cleartext data.
 
-A boolean that is `true` if the peer certificate was signed by one of the
-specified CAs, otherwise `false`
+This instance implements the duplex [Stream](streams.html#streams) interfaces. It has all the common stream methods and events.
 
-#### cleartextStream.authorizationError
+### Properties 
+
+@prop `cleartextStream.authorizationError`
 
 The reason why the peer's certificate has not been verified. This property
 becomes available only when `cleartextStream.authorized === false`.
 
-#### cleartextStream.getPeerCertificate()
+@prop `cleartextStream.authorized`
 
-Returns an object representing the peer's certicicate. The returned object has
-some properties corresponding to the field of the certificate.
+A boolean that is `true` if the peer certificate was signed by one of the specified CAs; otherwise `false`
 
-Example:
+@prop `cleartextStream.getPeerCertificate()`
+
+Returns an object representing the peer's certicicate. The returned object has some properties corresponding to the field of the certificate.
+
+If the peer does not provide a certificate, it returns `null` or an empty object.
+
+@prop `cleartextStream.remoteAddress`
+
+The string representation of the remote IP address. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`.
+
+@prop `cleartextStream.remotePort`
+
+The numeric representation of the remote port. For example, `443`.
+
+#### Example
 
     { subject: 
        { C: 'UK',
@@ -302,21 +307,3 @@ Example:
       valid_from: 'Nov 11 09:52:22 2009 GMT',
       valid_to: 'Nov  6 09:52:22 2029 GMT',
       fingerprint: '2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF' }
-
-If the peer does not provide a certificate, it returns `null` or an empty
-object.
-
-#### cleartextStream.address()
-
-Returns the bound address and port of the underlying socket as reported by the
-operating system. Returns an object with two properties, e.g.
-`{"address":"192.168.57.1", "port":62053}`
-
-#### cleartextStream.remoteAddress
-
-The string representation of the remote IP address. For example,
-`'74.125.127.100'` or `'2001:4860:a005::68'`.
-
-#### cleartextStream.remotePort
-
-The numeric representation of the remote port. For example, `443`.

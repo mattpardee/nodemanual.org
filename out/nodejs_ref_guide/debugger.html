@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,21 +80,23 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
 <div class="content"><p><div class="hero-unit"></p>
 
-<p><a class="hiddenLink" id="debugger"></a></p>
+<p><a class="hiddenLink" id="debugging-nodejs"></a></p>
 
-<h2>Debugger</h2>
+<h2>Debugging Node.js</h2>
 
-<p>V8 comes with an extensive debugger which is accessible out-of-process via a<br />simple <a href="http://code.google.com/p/v8/wiki/DebuggerProtocol">TCP protocol</a>.<br />Node has a built-in client for this debugger. To use this, start Node with the<br /><code>debug</code> argument; a prompt will appear:</p>
+<p>V8 comes with an extensive debugger which is accessible out-of-process via a simple <a href="http://code.google.com/p/v8/wiki/DebuggerProtocol">TCP protocol</a>.</p>
+
+<p>Node.js has a built-in client for this debugger. To use this, start Node.js with the <code>debug</code> argument; a prompt appears, ready to take your command:</p>
 
 <pre><code>% node debug myscript.js
 &lt; debugger listening on port 5858
@@ -106,7 +108,7 @@ break in /home/indutny/Code/git/indutny/myscript.js:1
 debug&gt;
 </code></pre>
 
-<p>Node's debugger client doesn't support the full range of commands, but<br />simple step and inspection is possible. By putting the statement <code>debugger;</code><br />into the source code of your script, you will enable a breakpoint.</p>
+<p>Node's debugger client doesn't support the full range of commands, but simple step and inspection is possible. By putting the statement <code>debugger;</code> into the source code of your script, you will enable a breakpoint.</p>
 
 <p>For example, suppose <code>myscript.js</code> looked like this:</p>
 
@@ -161,67 +163,65 @@ debug&gt; quit
 %
 </code></pre>
 
-<p>The <code>repl</code> command allows you to evaluate code remotely. The <code>next</code> command<br />steps over to the next line. There are a few other commands available and more<br />to come. Type <code>help</code> to see others.</p>
+<p>The <code>repl</code> command allows you to evaluate code remotely. The <code>next</code> command steps over to the next line. There are a few other commands available and more to come. Type <code>help</code> to see others.</p>
 
 <h3>Watchers</h3>
 
-<p>You can watch expression and variable values while debugging your code.<br />On every breakpoint each expression from the watchers list will be evaluated<br />in the current context and displayed just before the breakpoint's source code<br />listing.</p>
+<p>You can watch expressions and variable values while debugging your code.</p>
 
-<p>To start watching an expression, type <code>watch("my_expression")</code>. <code>watchers</code><br />prints the active watchers. To remove a watcher, type<br /><code>unwatch("my_expression")</code>.</p>
+<p>On every breakpoint each expression from the watchers list will be evaluated in the current context and displayed just before the breakpoint's source code listing.</p>
 
-<h3>Commands reference</h3>
+<p>To start watching an expression, type <code>watch("my_expression")</code>. <code>watchers</code> prints the active watchers. To remove a watcher, type <code>unwatch("my_expression")</code>.</p>
+
+<h3>Commands Reference</h3>
 
 <h4>Stepping</h4>
 
 <ul>
-<li><code>cont</code>, <code>c</code> - Continue execution</li>
-<li><code>next</code>, <code>n</code> - Step next</li>
-<li><code>step</code>, <code>s</code> - Step in</li>
-<li><code>out</code>, <code>o</code> - Step out</li>
+<li><code>cont</code>, <code>c</code>: Continue</li>
+<li><code>next</code>, <code>n</code>: Step next</li>
+<li><code>step</code>, <code>s</code>: Step in</li>
+<li><code>out</code>, <code>o</code>: Step out</li>
 </ul>
 
 <h4>Breakpoints</h4>
 
 <ul>
-<li><code>setBreakpoint()</code>, <code>sb()</code> - Set breakpoint on current line</li>
-<li><code>setBreakpoint('fn()')</code>, <code>sb(...)</code> - Set breakpoint on a first statement in
-functions body</li>
-<li><code>setBreakpoint('script.js', 1)</code>, <code>sb(...)</code> - Set breakpoint on first line of
-script.js</li>
-<li><code>clearBreakpoint</code>, <code>cb(...)</code> - Clear breakpoint</li>
+<li><code>setBreakpoint()</code>, <code>sb()</code>: Sets a breakpoint on the current line</li>
+<li><code>setBreakpoint('fn()')</code>, <code>sb(...)</code>: Sets a breakpoint on the first statement in the function's body</li>
+<li><code>setBreakpoint('script.js', 1)</code>, <code>sb(...)</code>: Sets a  breakpoint on the first line of <code>script.js</code></li>
+<li><code>clearBreakpoint</code>, <code>cb(...)</code>: Clears a breakpoint</li>
 </ul>
 
 <h4>Info</h4>
 
 <ul>
-<li><code>backtrace</code>, <code>bt</code> - Print backtrace of current execution frame</li>
-<li><code>list(5)</code> - List scripts source code with 5 line context (5 lines before and
-after)</li>
-<li><code>watch(expr)</code> - Add expression to watch list</li>
-<li><code>unwatch(expr)</code> - Remove expression from watch list</li>
-<li><code>watchers</code> - List all watchers and their values (automatically listed on each
-breakpoint)</li>
-<li><code>repl</code> - Open debugger's repl for evaluation in debugging script's context</li>
+<li><code>backtrace</code>, <code>bt</code>: Prints a backtrace of the current execution frame</li>
+<li><code>list(c)</code>: Lists the script's source code with a five line context (five lines before and after)</li>
+<li><code>watch(expr)</code>: Adds an expression to the watch list</li>
+<li><code>unwatch(expr)</code>: Removes am expression from the watch list</li>
+<li><code>watchers</code>: Lists all the watchers and their values (automatically listed on each breakpoint)</li>
+<li><code>repl</code>: Open the debugger's REPL for evaluation in debugging a script's context</li>
 </ul>
 
 <h4>Execution control</h4>
 
 <ul>
-<li><code>run</code> - Run script (automatically runs on debugger's start)</li>
-<li><code>restart</code> - Restart script</li>
-<li><code>kill</code> - Kill script</li>
+<li><code>run</code>: Run a script (automatically runs on debugger's start)</li>
+<li><code>restart</code>: Restart a script</li>
+<li><code>kill</code>: Kill a script</li>
 </ul>
 
 <h4>Various</h4>
 
 <ul>
-<li><code>scripts</code> - List all loaded scripts</li>
-<li><code>version</code> - Display v8's version</li>
+<li><code>scripts</code>: List all the loaded scripts</li>
+<li><code>version</code>: Display the V8 version</li>
 </ul>
 
 <h3>Advanced Usage</h3>
 
-<p>The V8 debugger can be enabled and accessed either by starting Node with<br />the <code>--debug</code> command-line flag or by signaling an existing Node process<br />with <code>SIGUSR1</code>.</p>
+<p>The V8 debugger can be enabled and accessed either by starting Node.js with the <code>--debug</code> command-line flag or by signaling an existing Node.js process with <code>SIGUSR1</code>.</p>
 
 <p></div></p></div>
 </div>

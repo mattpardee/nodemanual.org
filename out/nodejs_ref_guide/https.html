@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -94,17 +94,33 @@
 
 <h2>HTTPS</h2>
 
-<p>HTTPS is the HTTP protocol over TLS/SSL. In Node this is implemented as a<br />separate module.</p>
+<p>HTTPS is the HTTP protocol over TLS/SSL. In Node.js, this is implemented as a separate module.</p>
 
-<h2>https.Server</h2>
+<p><h4 class="objHeader"><code>https.Server</code></h4></p>
 
-<p>This class is a subclass of <code>tls.Server</code> and emits events same as<br /><code>http.Server</code>. See <code>http.Server</code> for more information.</p>
+<p>This class is a subclass of <code>tls.Server</code> and emits the same events as <code>http.Server</code>. For more information, see <code>http.Server</code>.</p>
 
-<h2>https.createServer(options, [requestListener])</h2>
+<p><h4 class="methodHeader"> <code>https.createServer(options, [requestListener])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>options</code>: Any options you want to pass to the server<li> <code>requestListener</code>: An optional listener</li></ul></p>
 
-<p>Returns a new HTTPS web server object. The <code>options</code> is similer to<br /><code>tls.createServer()</code>. The <code>requestListener</code> is a function which is<br />automatically added to the <code>'request'</code> event.</p>
+<p>Returns a new HTTPS web server object. </p>
 
-<p>Example:</p>
+<p>The <code>options</code> object has a mix of required and optional values:</p>
+
+<ul>
+<li><code>key</code>: A string or <code>Buffer</code> containing the private key of the server in a PEM format. (Required)</li>
+<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the server in a PEM format. (Required)</p></li>
+<li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. </p></li>
+<li><p><code>NPNProtocols</code>: An array of strings or a  <code>Buffer</code> containing supported NPN protocols. <br />    <code>Buffer</code> should have the following format: <code>0x05hello0x05world</code>, where the preceding byte indicates the following protocol name's length. Passing an array is usually much simplier: <code>['hello', 'world']</code>. <br />    Protocols should be ordered by their priority.</p></li>
+<li><p><code>passphrase</code>: A string of a passphrase for the private key.</p></li>
+<li><p><code>rejectUnauthorized</code>: If <code>true</code> the server rejects any connection that is not authorized with the list of supplied CAs. This option only has an effect if <code>requestCert</code> is <code>true</code>. This defaults to <code>false</code>.</p></li>
+<li><p><code>requestCert</code>: If <code>true</code> the server requests a certificate from clients that connect and attempt to verify that certificate. This defaults to <code>false</code>.</p></li>
+<li><p><code>sessionIdContext</code>: A string containing an opaque identifier for session resumption. If <code>requestCert</code> is <code>true</code>, the default is an MD5 hash value generated from the command line. Otherwise, the default is not provided.</p></li>
+<li><p><code>SNICallback</code>: A function that is called if the client supports the SNI TLS extension. Only one argument will be passed to it: <code>servername</code>. <code>SNICallback</code> should return a SecureContext instance. You can use <code>crypto.createCredentials(...).context</code> to get a proper SecureContext. If <code>SNICallback</code> wasn't provided, a default callback within the high-level API is used (for more information, see below).</p></li>
+</ul>
+
+<p>The <code>requestListener</code> is a function which is automatically added to the <code>'request'</code> event.</p>
+
+<h3>Examples</h3>
 
 <pre><code>// curl -k <a href='https://localhost:8000/'>https://localhost:8000/</a>
 var https = require('https');
@@ -121,11 +137,38 @@ https.createServer(options, function (req, res) {
 }).listen(8000);
 </code></pre>
 
-<h2>https.request(options, callback)</h2>
+<p><h4 class="methodHeader"> <code>https.request(options, callback())</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>options</code>: Any options you want to pass to the server<li> <code>callback()</code>: The callback to execute</li></ul></p>
 
-<p>Makes a request to a secure web server.<br />All options from <a href="http.html#http.request">http.request()</a> are valid.</p>
+<p>Makes a request to a secure web server. </p>
 
-<p>Example:</p>
+<p>All options from <a href="http.html#http.request">http.request()</a> are valid for <code>options</code>:</p>
+
+<ul>
+<li><code>host</code>: a domain name or IP address of the server to issue the request to. Defaults to <code>'localhost'</code>.</li>
+<li><code>hostname</code>: this supports <code>url.parse()</code>; <code>hostname</code> is prefered over <code>host</code></li>
+<li><code>port</code>: the port of the remote server. Defaults to <code>80</code>.</li>
+<li><code>socketPath</code>: the Unix Domain Socket (use either <code>host:port</code> or <code>socketPath</code>)</li>
+<li><code>method</code>: a string specifying the HTTP request method. Defaults to <code>'GET'</code>.</li>
+<li><code>path</code>: the request path. Defaults to <code>'/'</code>. This should include a query string (if any) For example, <code>'/index.html?page=12'</code></li>
+<li><code>headers</code>: an object containing request headers</li>
+<li><code>auth</code>: used for basic authentication. For example, <code>'user:password'</code> computes an Authorization header.</li>
+<li><code>agent</code>: this controls <a href="#http.Agent">Agent</a> behavior. When an Agent is used, the request defaults to <code>Connection: keep-alive</code>. The possible values are:
+<ul><li><code>undefined</code>: uses <a href="#http.globalAgent">global Agent</a> for this host
+and port (default).</li>
+<li><code>Agent</code> object: this explicitlys use the passed in <code>Agent</code></li>
+<li><code>false</code>: this opts out of connection pooling with an Agent, and defaults the request to <code>Connection: close</code>.</li></ul></li>
+</ul>
+
+<p>The following options from <a href="tls.html#tls.connect">tls.connect()</a> can also be<br />specified. However, a <a href="#https.globalAgent">globalAgent</a> silently ignores these.</p>
+
+<ul>
+<li><p><code>key</code>: A string or <code>Buffer</code> containing the private key of the client in aPEM format. The default is <code>null</code>.</p></li>
+<li><p><code>passphrase</code>: A string of a passphrase for the private key. The default is <code>null</code>.</p></li>
+<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the client in a PEM format; in other words, the public x509 certificate to use. The default is <code>null</code>.</p></li>
+<li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. </p></li>
+</ul>
+
+<h3>Example</h3>
 
 <pre><code>var https = require('https');
 
@@ -151,44 +194,7 @@ req.on('error', function(e) {
 });
 </code></pre>
 
-<p>The options argument has the following options</p>
-
-<ul>
-<li>host: IP or domain of host to make request to. Defaults to <code>'localhost'</code>.</li>
-<li>port: port of host to request to. Defaults to 443.</li>
-<li>path: Path to request. Default <code>'/'</code>.</li>
-<li><p>method: HTTP request method. Default <code>'GET'</code>.</p></li>
-<li><p><code>host</code>: A domain name or IP address of the server to issue the request to.<br />Defaults to <code>'localhost'</code>.</p></li>
-<li><code>hostname</code>: To support <code>url.parse()</code> <code>hostname</code> is prefered over <code>host</code></li>
-<li><code>port</code>: Port of remote server. Defaults to 443.</li>
-<li><code>method</code>: A string specifying the HTTP request method. Defaults to <code>'GET'</code>.</li>
-<li><code>path</code>: Request path. Defaults to <code>'/'</code>. Should include query string if any.
-E.G. <code>'/index.html?page=12'</code></li>
-<li><code>headers</code>: An object containing request headers.</li>
-<li><code>auth</code>: Basic authentication i.e. <code>'user:password'</code> to compute an
-Authorization header.</li>
-<li><code>agent</code>: Controls <a href="#https.Agent">Agent</a> behavior. When an Agent is
-used request will default to <code>Connection: keep-alive</code>. Possible values:
-<ul><li><code>undefined</code> (default): use <a href="#https.globalAgent">globalAgent</a> for this
-host and port.</li>
-<li><code>Agent</code> object: explicitly use the passed in <code>Agent</code>.</li>
-<li><code>false</code>: opts out of connection pooling with an Agent, defaults request to
-<code>Connection: close</code>.</li></ul></li>
-</ul>
-
-<p>The following options from <a href="tls.html#tls.connect">tls.connect()</a> can also be<br />specified. However, a <a href="#https.globalAgent">globalAgent</a> silently ignores these.</p>
-
-<ul>
-<li><code>key</code>: Private key to use for SSL. Default <code>null</code>.</li>
-<li><code>passphrase</code>: A string of passphrase for the private key. Default <code>null</code>.</li>
-<li><code>cert</code>: Public x509 certificate to use. Default <code>null</code>.</li>
-<li><code>ca</code>: An authority certificate or array of authority certificates to check
-the remote host against.</li>
-</ul>
-
-<p>In order to specify these options, use a custom <code>Agent</code>.</p>
-
-<p>Example:</p>
+<p>Here's an example specifying these options using a custom <code>Agent</code>:</p>
 
 <pre><code>var options = {
   host: 'encrypted.google.com',
@@ -205,9 +211,7 @@ var req = https.request(options, function(res) {
 }
 </code></pre>
 
-<p>Or does not use an <code>Agent</code>.</p>
-
-<p>Example:</p>
+<p>Or, if you choose not to use an <code>Agent</code>:</p>
 
 <pre><code>var options = {
   host: 'encrypted.google.com',
@@ -224,11 +228,11 @@ var req = https.request(options, function(res) {
 }
 </code></pre>
 
-<h2>https.get(options, callback)</h2>
+<p><h4 class="methodHeader"> <code>https.get(options, callback)</code></h4></p>
 
-<p>Like <code>http.get()</code> but for HTTPS.</p>
+<p>Exactly like <code>http.get()</code> but for HTTPS.</p>
 
-<p>Example:</p>
+<h3>Example</h3>
 
 <pre><code>var https = require('https');
 
@@ -245,13 +249,13 @@ https.get({ host: 'encrypted.google.com', path: '/' }, function(res) {
 });
 </code></pre>
 
-<h2>https.Agent</h2>
+<p><h4 class="objHeader"><code>https.Agent</code></h4></p>
 
-<p>An Agent object for HTTPS similer to <a href="http.html#http.Agent">http.Agent</a>.<br />See <a href="#https.request">https.request()</a> for more information.</p>
+<p>An <code>Agent</code> object for HTTPS, similar to <a href="http.html#http.Agent">http.Agent</a>. For more information, see <a href="#https.request">https.request()</a>.</p>
 
-<h2>https.globalAgent</h2>
+<p><h4 class="propertyHeader"> <code>https.globalAgent</code></h4></p>
 
-<p>Global instance of <a href="#https.Agent">https.Agent</a> which is used as the default<br />for all HTTPS client requests.<br /></div></p></div>
+<p>A global instance of the <a href="#https.Agent">https.Agent</a>, which is used as the default for all HTTPS client requests.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

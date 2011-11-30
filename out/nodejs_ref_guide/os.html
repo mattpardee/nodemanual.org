@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,61 +80,33 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
 <div class="content"><p><div class="hero-unit"></p>
 
-<p><a class="hiddenLink" id="os-module"></a></p>
+<p><a class="hiddenLink" id="accessing-the-os"></a></p>
 
-<h2>os Module</h2>
+<h2>Accessing the OS</h2>
 
-<p>Use <code>require('os')</code> to access this module.</p>
+<p>This provides a way to retrieve various information about the underlaying operating system. Add <code>require('os')</code> in your code to access this module.</p>
 
-<h3>os.hostname()</h3>
+<h3>Methods</h3>
 
-<p>Returns the hostname of the operating system.</p>
-
-<h3>os.type()</h3>
-
-<p>Returns the operating system name.</p>
-
-<h3>os.platform()</h3>
-
-<p>Returns the operating system platform.</p>
-
-<h3>os.arch()</h3>
+<p><h4 class="methodHeader"> <code>os.arch()</code></h4></p>
 
 <p>Returns the operating system CPU architecture.</p>
 
-<h3>os.release()</h3>
+<p><h4 class="methodHeader"> <code>os.cpus()</code></h4></p>
 
-<p>Returns the operating system release.</p>
+<p>Returns an array of objects containing information about each CPU/core installed: the model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).</p>
 
-<h3>os.uptime()</h3>
-
-<p>Returns the system uptime in seconds.</p>
-
-<h3>os.loadavg()</h3>
-
-<p>Returns an array containing the 1, 5, and 15 minute load averages.</p>
-
-<h3>os.totalmem()</h3>
-
-<p>Returns the total amount of system memory in bytes.</p>
-
-<h3>os.freemem()</h3>
-
-<p>Returns the amount of free system memory in bytes.</p>
-
-<h3>os.cpus()</h3>
-
-<p>Returns an array of objects containing information about each CPU/core installed: model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).</p>
+<h4>Example</h4>
 
 <p>Example inspection of os.cpus:</p>
 
@@ -204,9 +176,19 @@
        irq: 30 } } ]
 </code></pre>
 
-<h3>os.networkInterfaces()</h3>
+<p><h4 class="methodHeader"> <code>os.freemem()</code></h4></p>
 
-<p>Get a list of network interfaces:</p>
+<p>Returns the amount of free system memory in bytes.</p>
+
+<p><h4 class="methodHeader"> <code>os.hostname()</code></h4></p>
+
+<p>Returns the hostname of the operating system.</p>
+
+<p><h4 class="methodHeader"> <code>os.networkInterfaces()</code></h4></p>
+
+<p>Returns a list of network interfaces.</p>
+
+<h4>Example</h4>
 
 <pre><code>{ lo0: 
    [ { address: '::1', family: 'IPv6', internal: true },
@@ -220,6 +202,30 @@
   vmnet8: [ { address: '10.88.88.1', family: 'IPv4', internal: false } ],
   ppp0: [ { address: '10.2.0.231', family: 'IPv4', internal: false } ] }
 </code></pre>
+
+<p><h4 class="methodHeader"> <code>os.loadavg()</code></h4></p>
+
+<p>Returns an array containing the 1, 5, and 15 minute load averages.</p>
+
+<p><h4 class="methodHeader"> <code>os.platform()</code></h4></p>
+
+<p>Returns the operating system platform.</p>
+
+<p><h4 class="methodHeader"> <code>os.release()</code></h4></p>
+
+<p>Returns the operating system release.</p>
+
+<p><h4 class="methodHeader"> <code>os.totalmem()</code></h4></p>
+
+<p>Returns the total amount of system memory in bytes.</p>
+
+<p><h4 class="methodHeader"> <code>os.type()</code></h4></p>
+
+<p>Returns the operating system name.</p>
+
+<p><h4 class="methodHeader"> <code>os.uptime()</code></h4></p>
+
+<p>Returns the system uptime in seconds.</p>
 
 <p></div></p></div>
 </div>

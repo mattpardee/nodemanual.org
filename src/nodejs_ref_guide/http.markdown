@@ -1,12 +1,6 @@
 ## HTTP
 
-To use the HTTP server and client one must `require('http')`.
-
-The HTTP interfaces in Node are designed to support many features
-of the protocol which have been traditionally difficult to use.
-In particular, large, possibly chunk-encoded, messages. The interface is
-careful to never buffer entire requests or responses--the
-user is able to stream data.
+The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses&mdash;the user is always able to stream data. To use the HTTP server and client one must `require('http')` in their code.
 
 HTTP message headers are represented by an object like this:
 
@@ -17,167 +11,118 @@ HTTP message headers are represented by an object like this:
 
 Keys are lowercased. Values are not modified.
 
-In order to support the full spectrum of possible HTTP applications, Node's
-HTTP API is very low-level. It deals with stream handling and message
-parsing only. It parses a message into headers and body but it does not
-parse the actual headers or the body.
+In order to support the full spectrum of possible HTTP applications, Node's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
 
-## http.Server
+@obj `http.Server`
 
-This is an `EventEmitter` with the following events:
+### Events
 
-### Event: 'request'
+@event `'request'`
+@cb `function(request, response)`: The callback to execute once the event fires, `request`: An instance of `http.ServerRequest`, `response`: an instance of `http.ServerResponse`
 
-`function (request, response) { }`
+Emitted each time there is a request. Note that, in the case of keep-alive connections, there may be multiple requests per connection.
 
-Emitted each time there is a request. Note that there may be multiple requests
-per connection (in the case of keep-alive connections).
- `request` is an instance of `http.ServerRequest` and `response` is
- an instance of `http.ServerResponse`
-
-### Event: 'connection'
+@event `'connection'`
+@cb `function(socket)`: The callback to execute once the event fires, `socket`: An object of type `net.Socket`
 
 `function (socket) { }`
 
- When a new TCP stream is established. `socket` is an object of type
- `net.Socket`. Usually users will not want to access this event. The
- `socket` can also be accessed at `request.connection`.
+When a new TCP stream is established. `socket` is . Usually users will not want to access this event. The `socket` can also be accessed at `request.connection`.
 
-### Event: 'close'
-
-`function () { }`
+@event `'close'`
+@cb `function(socket)`: The callback to execute once the event fires
 
  Emitted when the server closes.
 
-### Event: 'checkContinue'
+@event `'checkContinue'`
+@cb `function(request, response)`: The callback to execute once the event fires, `request`: An instance of `http.ServerRequest`, `response`: an instance of `http.ServerResponse`
 
-`function (request, response) { }`
+Emitted each time a request with an `http Expect: 100-continue` is received. If this event isn't listened for, the server will automatically respond with a `100 Continue` as appropriate.
 
-Emitted each time a request with an http Expect: 100-continue is received.
-If this event isn't listened for, the server will automatically respond
-with a 100 Continue as appropriate.
+Handling this event involves calling `response.writeContinue` if the client should continue to send the request body, or generating an appropriate HTTP response (_e.g._ `400 Bad Request`) if the client should not continue to send the request body.
 
-Handling this event involves calling `response.writeContinue` if the client
-should continue to send the request body, or generating an appropriate HTTP
-response (e.g., 400 Bad Request) if the client should not continue to send the
-request body.
+**Note**: when this event is emitted and handled, the `request` event is not be emitted.
 
-Note that when this event is emitted and handled, the `request` event will
-not be emitted.
+@event `'upgrade'`
+@cb `function(request, socket, head)`: The callback to execute once the event fires, `request`: The arguments for the http request, as it is in the request event, `socket`: The network socket between the server and client, `head`: An instance of `Buffer`, the first packet of the upgraded stream, this may be empty
 
-### Event: 'upgrade'
+Emitted each time a client requests a http upgrade. If this event isn't listened for, then clients requesting an upgrade will have their connections closed.
 
-`function (request, socket, head) { }`
+After this event is emitted, the request's socket will not have a `data` event listener, meaning you will need to bind to it in order to handle data sent to the server on that socket.
 
-Emitted each time a client requests a http upgrade. If this event isn't
-listened for, then clients requesting an upgrade will have their connections
-closed.
+@event `'clientError'`
+@cb `function(exception)`: The callback to execute once the event fires, `exception` : The exception being thrown
 
-* `request` is the arguments for the http request, as it is in the request event.
-* `socket` is the network socket between the server and client.
-* `head` is an instance of Buffer, the first packet of the upgraded stream, this may be empty.
+If a client connection emits an `'error'` event, it's forwarded here.
 
-After this event is emitted, the request's socket will not have a `data`
-event listener, meaning you will need to bind to it in order to handle data
-sent to the server on that socket.
-
-### Event: 'clientError'
-
-`function (exception) { }`
-
-If a client connection emits an 'error' event - it will forwarded here.
-
-### http.createServer([requestListener])
+@method `http.createServer([requestListener()])`
+@param `[requestListener()]`: A function that is automatically added to the `'request'` event
 
 Returns a new web server object.
 
-The `requestListener` is a function which is automatically
-added to the `'request'` event.
+@method `server.listen(port, [hostname], [callback()])`
+@param `port`: The port to listen to, `[hostname]`: The hostname to listen to, `[callback()]`: The function to execute once the server has been bound to the port
 
-### server.listen(port, [hostname], [callback])
+Begin accepting connections on the specified port and hostname. If the hostname is omitted, the server accepts connections directed to any IPv4 address (`INADDR_ANY`).
 
-Begin accepting connections on the specified port and hostname.  If the
-hostname is omitted, the server will accept connections directed to any
-IPv4 address (`INADDR_ANY`).
-
-To listen to a unix socket, supply a filename instead of port and hostname.
-
-This function is asynchronous. The last parameter `callback` will be called
-when the server has been bound to the port.
-
-
-### server.listen(path, [callback])
+@method `server.listen(path, [callback])`
+@param `path`: The path to listen to, `[callback()]`: The function to execite once the server has been boundt
 
 Start a UNIX socket server listening for connections on the given `path`.
 
-This function is asynchronous. The last parameter `callback` will be called
-when the server has been bound.
-
-
-### server.close()
+@method `server.close()`
 
 Stops the server from accepting new connections.
 
+### Objects
 
-## http.ServerRequest
+@obj `http.ServerRequest`
 
-This object is created internally by a HTTP server -- not by
-the user -- and passed as the first argument to a `'request'` listener.
+This object is created internally by an HTTP server&mdash;not by the user&mdash;and passed as the first argument to a `'request'` listener.
 
-This is an `EventEmitter` with the following events:
+### Events
 
-### Event: 'data'
+@event `'data'`
+@cb `function(chunk)`: The callback to execute once the event fires, `chunk` : A big ol' hunk of data that's received (as a string)
 
-`function (chunk) { }`
+Emitted when a piece of the message body is received. For example, a chunk of the body is given as the single argument. The transfer-encoding has been decoded. 
 
-Emitted when a piece of the message body is received.
+The body encoding is set with `request.setEncoding()`.
 
-Example: A chunk of the body is given as the single
-argument. The transfer-encoding has been decoded.  The
-body chunk is a string.  The body encoding is set with
-`request.setEncoding()`.
+@event `'end'`
+@cb `function()`: The callback to execute once the event fires
 
-### Event: 'end'
+Emitted exactly once for each request. After that, no more `'data'` events are emitted on the request.
 
-`function () { }`
+@event `'close'`
+@cb `function()`: The callback to execute once the event fires
 
-Emitted exactly once for each request. After that, no more `'data'` events
-will be emitted on the request.
+Indicates that the underlaying connection was terminated before `response.end()` was called or able to flush.
 
-### Event: 'close'
-
-`function () { }`
-
-Indicates that the underlaying connection was terminated before
-`response.end()` was called or able to flush.
-
-Just like `'end'`, this event occurs only once per request, and no more `'data'`
-events will fire afterwards.
+Just like `'end'`, this event occurs only once per request, and no more `'data'` events will fire afterwards.
 
 Note: `'close'` can fire after `'end'`, but not vice versa.
 
-### request.method
+### Properties 
 
-The request method as a string. Read only. Example:
-`'GET'`, `'DELETE'`.
+@prop <span class="label notice">Read-Only</span> `request.method`
 
+The request method as a string like `'GET'` or `'DELETE'`.
 
-### request.url
+@prop `request.url`
 
-Request URL string. This contains only the URL that is
-present in the actual HTTP request. If the request is:
+Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
 
     GET /status?name=ryan HTTP/1.1\r\n
     Accept: text/plain\r\n
     \r\n
 
-Then `request.url` will be:
+Then `request.url` becomes:
 
     '/status?name=ryan'
 
-If you would like to parse the URL into its parts, you can use
-`require('url').parse(request.url)`.  Example:
+If you would like to parse the URL into its parts, you can use `require('url').parse(request.url)`. For example:
 
     node> require('url').parse('/status?name=ryan')
     { href: '/status?name=ryan',
@@ -185,9 +130,7 @@ If you would like to parse the URL into its parts, you can use
       query: 'name=ryan',
       pathname: '/status' }
 
-If you would like to extract the params from the query string,
-you can use the `require('querystring').parse` function, or pass
-`true` as the second argument to `require('url').parse`.  Example:
+If you would like to extract the params from the query string, you can use the `require('querystring').parse` function, or pass `true` as the second argument to `require('url').parse`.  For example:
 
     node> require('url').parse('/status?name=ryan', true)
     { href: '/status?name=ryan',
@@ -196,166 +139,116 @@ you can use the `require('querystring').parse` function, or pass
       pathname: '/status' }
 
 
+@prop <span class="label notice">Read-Only</span> `request.headers`
 
-### request.headers
+Returns the request header.
 
-Read only.
+@prop <span class="label notice">Read-Only</span> `request.trailers`
 
-### request.trailers
+Contains the HTTP trailers (if present). Only populated after the `'end'` event.
 
-Read only; HTTP trailers (if present). Only populated after the 'end' event.
+@prop <span class="label notice">Read-Only</span> `request.httpVersion`
 
-### request.httpVersion
+The HTTP protocol version as a string; for example: `'1.1'`, `'1.0'`. Also `request.httpVersionMajor` is the first integer and `request.httpVersionMinor` is the second.
 
-The HTTP protocol version as a string. Read only. Examples:
-`'1.1'`, `'1.0'`.
-Also `request.httpVersionMajor` is the first integer and
-`request.httpVersionMinor` is the second.
+@method `request.setEncoding(encoding=null)`
+@param `encoding`: The encoding to use, either `'utf8'` or `'binary'`
 
+Set the encoding for the request body. Defaults to `null`, which means that the `'data'` event emits a `Buffer` object..
 
-### request.setEncoding(encoding=null)
-
-Set the encoding for the request body. Either `'utf8'` or `'binary'`. Defaults
-to `null`, which means that the `'data'` event will emit a `Buffer` object..
-
-
-### request.pause()
+@method `request.pause()`
 
 Pauses request from emitting events.  Useful to throttle back an upload.
 
-
-### request.resume()
+@method `request.resume()`
 
 Resumes a paused request.
 
-### request.connection
+@prop `request.connection`
 
 The `net.Socket` object associated with the connection.
 
+With HTTPS support, use `request.connection.verifyPeer()` and `request.connection.getPeerCertificate()` to obtain the client's authentication details.
 
-With HTTPS support, use request.connection.verifyPeer() and
-request.connection.getPeerCertificate() to obtain the client's
-authentication details.
+@obj http.ServerResponse
 
+This object is created internally by a HTTP server&mdash;not by the user. It is passed as the second parameter to the `'request'` event. It is a `Writable Stream`.
 
+@method `response.writeContinue()`
 
-## http.ServerResponse
+Sends an `HTTP/1.1 100 Continue` message to the client, indicating that the request body should be sent. See the [checkContinue](#event_checkContinue_) event on `Server`.
 
-This object is created internally by a HTTP server--not by the user. It is
-passed as the second parameter to the `'request'` event. It is a `Writable Stream`.
+@method `response.writeHead(statusCode, [reasonPhrase], [headers])`
+@param `statusCode`: The 3-digit HTTP status code, like `404`, `reasonPhrase`: A human-readable string describing the status, `headers`: Any response headers
 
-### response.writeContinue()
+Sends a response header to the request.
 
-Sends a HTTP/1.1 100 Continue message to the client, indicating that
-the request body should be sent. See the [checkContinue](#event_checkContinue_) event on
-`Server`.
+This method must only be called once on a message and it must be called before `response.end()` is called.
 
-### response.writeHead(statusCode, [reasonPhrase], [headers])
+If you call `response.write()` or `response.end()` before calling this, the implicit/mutable headers will be calculated and call this function for you.
 
-Sends a response header to the request. The status code is a 3-digit HTTP
-status code, like `404`. The last argument, `headers`, are the response headers.
-Optionally one can give a human-readable `reasonPhrase` as the second
-argument.
-
-Example:
+#### Example 
 
     var body = 'hello world';
     response.writeHead(200, {
       'Content-Length': body.length,
       'Content-Type': 'text/plain' });
 
-This method must only be called once on a message and it must
-be called before `response.end()` is called.
+<span class="label success">Note</span> `Content-Length` is given in bytes not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Node.js does not check whether `Content-Length` and the length of the body which has been transmitted are equal or not.
 
-If you call `response.write()` or `response.end()` before calling this, the
-implicit/mutable headers will be calculated and call this function for you.
+@prop `response.statusCode`
 
-Note: that Content-Length is given in bytes not characters. The above example
-works because the string `'hello world'` contains only single byte characters.
-If the body contains higher coded characters then `Buffer.byteLength()`
-should be used to determine the number of bytes in a given encoding.
-And Node does not check whether Content-Length and the length of the body
-which has been transmitted are equal or not.
+When using implicit headers (not calling `response.writeHead()` explicitly), this property controls the status code that will be send to the client when the headers get flushed. For example: `response.statusCode = 404;`. 
 
-### response.statusCode
+After response header is sent to the client, this property indicates the status code which was sent out.
 
-When using implicit headers (not calling `response.writeHead()` explicitly), this property
-controls the status code that will be send to the client when the headers get
-flushed.
+@method `response.setHeader(name, value)`
+@param `name`: The name of the header to set, `value`: The value to set
 
-Example:
+Sets a single header value for implicit headers. If this header already exists
+in the to-be-sent headers, its value is replaced.  Use an array of strings here if you need to send multiple headers with the same name.
 
-    response.statusCode = 404;
-
-After response header was sent to the client, this property indicates the
-status code which was sent out.
-
-### response.setHeader(name, value)
-
-Sets a single header value for implicit headers.  If this header already exists
-in the to-be-sent headers, its value will be replaced.  Use an array of strings
-here if you need to send multiple headers with the same name.
-
-Example:
+#### Examples
 
     response.setHeader("Content-Type", "text/html");
-
-or
 
     response.setHeader("Set-Cookie", ["type=ninja", "language=javascript"]);
 
 
-### response.getHeader(name)
+@method `response.getHeader(name)`
+@param `name`: The name of the header to retrieve
 
-Reads out a header that's already been queued but not sent to the client.  Note
-that the name is case insensitive.  This can only be called before headers get
-implicitly flushed.
+Reads out a header that's already been queued but not sent to the client.  Note that the name is case-insensitive.  This can only be called before headers get implicitly flushed.
 
-Example:
+#### Example
 
     var contentType = response.getHeader('content-type');
 
-### response.removeHeader(name)
+@method `response.removeHeader(name)`
 
-Removes a header that's queued for implicit sending.
-
-Example:
+Removes a header that's queued for implicit sending. For example:
 
     response.removeHeader("Content-Encoding");
 
+@method `response.write(chunk, encoding='utf8')`
+@param `chunk`: A string or buffer to write, `encoding`: The encoding to use (if `chunk` is a string)
 
-### response.write(chunk, encoding='utf8')
+If this method is called and `response.writeHead()` has not been called, it'll switch to implicit header mode and flush the implicit headers.
 
-If this method is called and `response.writeHead()` has not been called, it will
-switch to implicit header mode and flush the implicit headers.
+This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
 
-This sends a chunk of the response body. This method may
-be called multiple times to provide successive parts of the body.
+<span class="label success">New</span> This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
-`chunk` can be a string or a buffer. If `chunk` is a string,
-the second parameter specifies how to encode it into a byte stream.
-By default the `encoding` is `'utf8'`.
+The first time `response.write()` is called, it sends the buffered header information and the first body to the client. The second time `response.write()` is called, Node.js assumes you're going to be streaming data, and sends that separately. That is, the response is buffered up to the first chunk of body.
 
-**Note**: This is the raw HTTP body and has nothing to do with
-higher-level multi-part body encodings that may be used.
+@method `response.addTrailers(headers)`
+@param `headers`: The trailing header to add
 
-The first time `response.write()` is called, it will send the buffered
-header information and the first body to the client. The second time
-`response.write()` is called, Node assumes you're going to be streaming
-data, and sends that separately. That is, the response is buffered up to the
-first chunk of body.
+This method adds HTTP trailing headers (a header, but at the end of the message) to the response.
 
-### response.addTrailers(headers)
+Trailers are only emitted if chunked encoding is used for the response; if it is not (_e.g._ if the request was HTTP/1.0), they are silently discarded.
 
-This method adds HTTP trailing headers (a header but at the end of the
-message) to the response.
-
-Trailers will **only** be emitted if chunked encoding is used for the
-response; if it is not (e.g., if the request was HTTP/1.0), they will
-be silently discarded.
-
-Note that HTTP requires the `Trailer` header to be sent if you intend to
-emit trailers, with a list of the header fields in its value. E.g.,
+**Note**: HTTP requires the `Trailer` header to be sent if you intend to emit trailers, with a list of the header fields in its value. For example:
 
     response.writeHead(200, { 'Content-Type': 'text/plain',
                               'Trailer': 'Content-MD5' });
@@ -364,49 +257,37 @@ emit trailers, with a list of the header fields in its value. E.g.,
     response.end();
 
 
-### response.end([data], [encoding])
+@method `response.end([data], [encoding])`
+@param `data`: Some data to write before finishing, `encoding`: The encoding for the data
 
-This method signals to the server that all of the response headers and body
-has been sent; that server should consider this message complete.
-The method, `response.end()`, MUST be called on each
-response.
+This method signals to the server that all of the response headers and body has been sent; that server should consider this message complete. `response.end()` **must** be called on each response.
 
-If `data` is specified, it is equivalent to calling `response.write(data, encoding)`
-followed by `response.end()`.
+If `data` is specified, it is equivalent to calling `response.write(data, encoding)` followed by `response.end()`.
 
+@method `http.request(options, callback())`
+@param `options`: Options to pass to the request, `callback()`: The callback to execute once the method finishes
 
-## http.request(options, callback)
+Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.  
 
-Node maintains several connections per server to make HTTP requests.
-This function allows one to transparently issue requests.  `options` align
-with [url.parse()](url.html#url.parse).
+The `options` align with [url.parse()](url.html#url.parse):
 
-Options:
+- `host`: a domain name or IP address of the server to issue the request to. Defaults to `'localhost'`.
+- `hostname`: this supports `url.parse()`; `hostname` is prefered over `host`
+- `port`: the port of the remote server. Defaults to `80`.
+- `socketPath`: the Unix Domain Socket (use either `host:port` or `socketPath`)
+- `method`: a string specifying the HTTP request method. Defaults to `'GET'`.
+- `path`: the request path. Defaults to `'/'`. This should include a query string (if any) For example, `'/index.html?page=12'`
+- `headers`: an object containing request headers
+- `auth`: used for basic authentication. For example, `'user:password'` computes an Authorization header.
+- `agent`: this controls [Agent](#http.Agent) behavior. When an Agent is used, the request defaults to `Connection: keep-alive`. The possible values are:
+ - `undefined`: uses [global Agent](#http.globalAgent) for this host
+   and port (default).
+ - `Agent` object: this explicitlys use the passed in `Agent`
+ - `false`: this opts out of connection pooling with an Agent, and defaults the request to `Connection: close`.
 
-- `host`: A domain name or IP address of the server to issue the request to.
-  Defaults to `'localhost'`.
-- `hostname`: To support `url.parse()` `hostname` is prefered over `host`
-- `port`: Port of remote server. Defaults to 80.
-- `socketPath`: Unix Domain Socket (use one of host:port or socketPath)
-- `method`: A string specifying the HTTP request method. Defaults to `'GET'`.
-- `path`: Request path. Defaults to `'/'`. Should include query string if any.
-  E.G. `'/index.html?page=12'`
-- `headers`: An object containing request headers.
-- `auth`: Basic authentication i.e. `'user:password'` to compute an
-  Authorization header.
-- `agent`: Controls [Agent](#http.Agent) behavior. When an Agent is used
-  request will default to `Connection: keep-alive`. Possible values:
- - `undefined` (default): use [global Agent](#http.globalAgent) for this host
-   and port.
- - `Agent` object: explicitly use the passed in `Agent`.
- - `false`: opts out of connection pooling with an Agent, defaults request to
-   `Connection: close`.
+`http.request()` returns an instance of the `http.ClientRequest` class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write it to the `ClientRequest` object.
 
-`http.request()` returns an instance of the `http.ClientRequest`
-class. The `ClientRequest` instance is a writable stream. If one needs to
-upload a file with a POST request, then write to the `ClientRequest` object.
-
-Example:
+### Example
 
     var options = {
       host: 'www.google.com',
@@ -433,36 +314,28 @@ Example:
     req.write('data\n');
     req.end();
 
-Note that in the example `req.end()` was called. With `http.request()` one
-must always call `req.end()` to signify that you're done with the request -
-even if there is no data being written to the request body.
+Note that in the example, `req.end()` was called. With `http.request()` one must always call `req.end()` to signify that you're done with the request&mdash;even if there is no data being written to the request body.
 
-If any error is encountered during the request (be that with DNS resolution,
-TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted
-on the returned request object.
+If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object.
 
 There are a few special headers that should be noted.
 
-* Sending a 'Connection: keep-alive' will notify Node that the connection to
-  the server should be persisted until the next request.
+* Sending a `'Connection: keep-alive'` notifies Node.js that the connection to the server should be persisted until the next request.
 
-* Sending a 'Content-length' header will disable the default chunked encoding.
+* Sending a `'Content-length'` header disables the default chunked encoding.
 
-* Sending an 'Expect' header will immediately send the request headers.
-  Usually, when sending 'Expect: 100-continue', you should both set a timeout
-  and listen for the `continue` event. See RFC2616 Section 8.2.3 for more
-  information.
+* Sending an 'Expect' header immediately sends the request headers.
+  Usually, when sending `'Expect: 100-continue'`, you should both set a timeout
+  and listen for the `continue` event. For more information, see [RFC2616 Section 8.2.3](http://tools.ietf.org/html/rfc2616#section-8.2.3).
 
-* Sending an Authorization header will override useing the `auth` option
-  to compute basic authentication.
+* Sending an Authorization header overrides using the `auth` option to compute basic authentication.
 
-## http.get(options, callback)
+@method `http.get(options, callback)`
+@param 
 
-Since most requests are GET requests without bodies, Node provides this
-convenience method. The only difference between this method and `http.request()` is
-that it sets the method to GET and calls `req.end()` automatically.
+Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and `http.request()` is that it sets the method to GET and calls `req.end()` automatically.
 
-Example:
+### Example
 
     var options = {
       host: 'www.google.com',
@@ -477,24 +350,15 @@ Example:
     });
 
 
-## http.Agent
+@obj http.Agent
 
-In node 0.5.3+ there is a new implementation of the HTTP Agent which is used
-for pooling sockets used in HTTP client requests.
+Starting with Node.js version 0.5.3, there's a new implementation of the HTTP Agent which is used for pooling sockets used in HTTP client requests.
 
-Previously, a single agent instance help the pool for single host+port. The
-current implementation now holds sockets for any number of hosts.
+Previously, a single agent instance help the pool for single host+port. The current implementation now holds sockets for any number of hosts.
 
-The current HTTP Agent also defaults client requests to using
-Connection:keep-alive. If no pending HTTP requests are waiting on a socket
-to become free the socket is closed. This means that node's pool has the
-benefit of keep-alive when under load but still does not require developers
-to manually close the HTTP clients using keep-alive.
+The current HTTP Agent also defaults client requests to using `Connection:keep-alive`. If no pending HTTP requests are waiting on a socket to become free ,the socket is closed. This means that Node's pool has the benefit of keep-alive when under load but still does not require developers to manually close the HTTP clients using keep-alive.
 
-Sockets are removed from the agent's pool when the socket emits either a
-"close" event or a special "agentRemove" event. This means that if you intend
-to keep one HTTP request open for a long time and don't want it to stay in the
-pool you can do something along the lines of:
+Sockets are removed from the agent's pool when the socket emits either a "close" event or a special "agentRemove" event. This means that if you intend to keep one HTTP request open for a long time and don't want it to stay in the pool you can do something along the lines of:
 
     http.get(options, function(res) {
       // Do stuff
@@ -508,46 +372,31 @@ Alternatively, you could just opt out of pooling entirely using `agent:false`:
       // Do stuff
     })
 
-## http.globalAgent
+@obj `http.globalAgent`
 
-Global instance of Agent which is used as the default for all http client requests.
+This is the global instance of `Agent` which is used as the default for all HTTP client requests.
 
-### agent.maxSockets
+@prop `agent.maxSockets`
 
-By default set to 5. Determines how many concurrent sockets the agent can have 
-open per host.
+Determines how many concurrent sockets the agent can have open per host. By default, this is set to 5. 
 
-### agent.sockets
+@obj `agent.sockets`
 
-An object which contains arrays of sockets currently in use by the Agent. Do not 
-modify.
+An object which contains arrays of sockets currently in use by the Agent. **Do not  modify this!**
 
-### agent.requests
+@prop `agent.requests`
 
-An object which contains queues of requests that have not yet been assigned to 
-sockets. Do not modify.
+An object which contains queues of requests that have not yet been assigned to  sockets. **Do not  modify this!**
 
+@obj `http.ClientRequest`
 
-## http.ClientRequest
+This object is created internally and returned from `http.request()`.  It represents an _in-progress_ request whose header has already been queued.  The header is still mutable using the `setHeader(name, value)`, `getHeader(name)`, and `removeHeader(name)` methods.  The actual header will be sent along with the first data chunk or when closing the connection.
 
-This object is created internally and returned from `http.request()`.  It
-represents an _in-progress_ request whose header has already been queued.  The
-header is still mutable using the `setHeader(name, value)`, `getHeader(name)`,
-`removeHeader(name)` API.  The actual header will be sent along with the first
-data chunk or when closing the connection.
+To get the response, add a listener for `'response'` to the request object. `'response'` will be emitted from the request object when the response headers have been received.  The `'response'` event is executed with one argument which is an instance of `http.ClientResponse`.
 
-To get the response, add a listener for `'response'` to the request object.
-`'response'` will be emitted from the request object when the response
-headers have been received.  The `'response'` event is executed with one
-argument which is an instance of `http.ClientResponse`.
+During the `'response'` event, one can add listeners to the response object, particularly to listen for the `'data'` event. Note that the `'response'` event is called before any part of the response body is received, so there is no need to worry about racing to catch the first part of the body. As long as a listener for `'data'` is added during the `'response'` event, the entire body will be caught.
 
-During the `'response'` event, one can add listeners to the
-response object; particularly to listen for the `'data'` event. Note that
-the `'response'` event is called before any part of the response body is received,
-so there is no need to worry about racing to catch the first part of the
-body. As long as a listener for `'data'` is added during the `'response'`
-event, the entire body will be caught.
-
+### Example
 
     // Good
     request.on('response', function (response) {
@@ -565,38 +414,36 @@ event, the entire body will be caught.
       }, 10);
     });
 
-This is a `Writable Stream`.
-Note: Node does not check whether Content-Length and the length of the body
-which has been transmitted are equal or not.
 
-This is an `EventEmitter` with the following events:
 
-### Event 'response'
+<span class="label success">Note</span> Node.js does not check whether `Content-Length`and the length of the body which has been transmitted are equal or not.
 
-`function (response) { }`
+This is a `Writable Stream` and `EventEmitter` with the following events:
 
-Emitted when a response is received to this request. This event is emitted only once. The
-`response` argument will be an instance of `http.ClientResponse`.
+### Events
 
-Options:
+@event `'response'`
+@obj `function (response)`: : The callback to execute once the event fires, `response` : An instance of `http.ClientResponse`
 
-- `host`: A domain name or IP address of the server to issue the request to.
-- `port`: Port of remote server.
-- `socketPath`: Unix Domain Socket (use one of host:port or socketPath)
+Emitted when a response is received to this request. This event is emitted only once. 
 
-### Event: 'socket'
+Options include:
 
-`function (socket) { }`
+- `host`: a domain name or IP address of the server to issue the request to
+- `port`: the port of remote server
+- `socketPath`: Unix Domain Socket (use either `host:port` or `socketPath`)
+
+@event `'socket'`
+@cb `function (socket)`: The callback to execute once the event fires, `socket` : The assigned socket
 
 Emitted after a socket is assigned to this request.
 
-### Event: 'upgrade'
+@event `'upgrade'`
+@cb `function (response, socket, head)`: The callback to execute once the event fires, `response` : The response, `socket`: The assigned socket, `head`: The upgrade header
 
-`function (response, socket, head) { }`
+Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for, clients receiving an upgrade header will have their connections closed.
 
-Emitted each time a server responds to a request with an upgrade. If this
-event isn't being listened for, clients receiving an upgrade header will have
-their connections closed.
+### Example
 
 A client server pair that show you how to listen for the `upgrade` event using `http.getAgent`:
 
@@ -642,34 +489,23 @@ A client server pair that show you how to listen for the `upgrade` event using `
       });
     });
 
-### Event: 'continue'
-
+@event `'continue'`
+@cb `function()`: The function to execite when the event fires
 `function ()`
 
-Emitted when the server sends a '100 Continue' HTTP response, usually because
-the request contained 'Expect: 100-continue'. This is an instruction that
-the client should send the request body.
+Emitted when the server sends a `'100 Continue'` HTTP response, usually because the request contained `'Expect: 100-continue'`. This is an instruction that the client should send the request body.
 
-### request.write(chunk, encoding='utf8')
+### Methods
 
-Sends a chunk of the body.  By calling this method
-many times, the user can stream a request body to a
-server--in that case it is suggested to use the
-`['Transfer-Encoding', 'chunked']` header line when
-creating the request.
+@method `request.write(chunk, [encoding='utf8'])`
+@param `chunk`: An array of integers or a string, `encoding`: The encoding of the chunk (but only if it's a string)
 
-The `chunk` argument should be an array of integers
-or a string.
+Sends a chunk of the body.  By calling this method many times, the user can stream a request body to a server&mdash;in that case, it's suggested you use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only
-applies when `chunk` is a string.
+@method `request.end([data], [encoding])`
+@param `data`: The data to send at the end, `encoding`: The encoding to use for the data 
 
-
-### request.end([data], [encoding])
-
-Finishes sending the request. If any parts of the body are
-unsent, it will flush them to the stream. If the request is
-chunked, this will send the terminating `'0\r\n\r\n'`.
+Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
 If `data` is specified, it is equivalent to calling `request.write(data, encoding)`
 followed by `request.end()`.

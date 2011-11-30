@@ -1,46 +1,18 @@
-## os Module
+## Accessing the OS
 
-Use `require('os')` to access this module.
+This provides a way to retrieve various information about the underlaying operating system. Add `require('os')` in your code to access this module.
 
-### os.hostname()
+### Methods
 
-Returns the hostname of the operating system.
-
-### os.type()
-
-Returns the operating system name.
-
-### os.platform()
-
-Returns the operating system platform.
-
-### os.arch()
+@method `os.arch()`
 
 Returns the operating system CPU architecture.
 
-### os.release()
+@method `os.cpus()`
 
-Returns the operating system release.
+Returns an array of objects containing information about each CPU/core installed: the model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).
 
-### os.uptime()
-
-Returns the system uptime in seconds.
-
-### os.loadavg()
-
-Returns an array containing the 1, 5, and 15 minute load averages.
-
-### os.totalmem()
-
-Returns the total amount of system memory in bytes.
-
-### os.freemem()
-
-Returns the amount of free system memory in bytes.
-
-### os.cpus()
-
-Returns an array of objects containing information about each CPU/core installed: model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).
+#### Example
 
 Example inspection of os.cpus:
 
@@ -108,10 +80,20 @@ Example inspection of os.cpus:
            sys: 34920,
            idle: 1072572010,
            irq: 30 } } ]
+           
+@method `os.freemem()`
 
-### os.networkInterfaces()
+Returns the amount of free system memory in bytes.
 
-Get a list of network interfaces:
+@method `os.hostname()`
+
+Returns the hostname of the operating system.
+
+@method `os.networkInterfaces()`
+
+Returns a list of network interfaces.
+
+#### Example
 
     { lo0: 
        [ { address: '::1', family: 'IPv6', internal: true },
@@ -124,4 +106,34 @@ Get a list of network interfaces:
       vmnet1: [ { address: '10.99.99.254', family: 'IPv4', internal: false } ],
       vmnet8: [ { address: '10.88.88.1', family: 'IPv4', internal: false } ],
       ppp0: [ { address: '10.2.0.231', family: 'IPv4', internal: false } ] }
+
+
+@method `os.loadavg()`
+
+Returns an array containing the 1, 5, and 15 minute load averages.
+
+@method `os.platform()`
+
+Returns the operating system platform.
+
+@method `os.release()`
+
+Returns the operating system release.
+
+@method `os.totalmem()`
+
+Returns the total amount of system memory in bytes.
+
+@method `os.type()`
+
+Returns the operating system name.
+
+@method `os.uptime()`
+
+Returns the system uptime in seconds.
+
+
+
+
+
 

@@ -1,6 +1,5 @@
 require("colors");
 var argv = require("optimist").argv,
-    path = require("path"),
     docs = require("./docs");
 var task = argv._[0];
 var type = argv._[1];

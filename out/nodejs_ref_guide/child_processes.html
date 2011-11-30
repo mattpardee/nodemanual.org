@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -94,41 +94,49 @@
 
 <h2>Child Processes</h2>
 
-<p>Node provides a tri-directional <code>popen(3)</code> facility through the <code>ChildProcess</code><br />class.</p>
+<p>Node.js provides a tri-directional <code>popen(3)</code> facility through the <code>ChildProcess</code> class.</p>
 
-<p>It is possible to stream data through the child's <code>stdin</code>, <code>stdout</code>, and<br /><code>stderr</code> in a fully non-blocking way.</p>
+<p>It is possible to stream data through the child's <code>stdin</code>, <code>stdout</code>, and <code>stderr</code> in a fully non-blocking way.</p>
 
-<p>To create a child process use <code>require('child_process').spawn()</code>.</p>
+<p>To create a child process, use <code>require('child_process').spawn()</code> in your code.</p>
 
-<p>Child processes always have three streams associated with them. <code>child.stdin</code>,<br /><code>child.stdout</code>, and <code>child.stderr</code>.</p>
+<p>Child processes always have three streams associated with them. They are:</p>
 
-<p><code>ChildProcess</code> is an <code>EventEmitter</code>.</p>
+<ul>
+<li><code>child.stdin</code></li>
+<li><code>child.stdout</code></li>
+<li><code>child.stderr</code></li>
+</ul>
 
-<h3>Event:  'exit'</h3>
+<p><code>ChildProcess</code> is also an <code>EventEmitter</code>.</p>
 
-<p><code>function (code, signal) {}</code></p>
+<h3>Events</h3>
 
-<p>This event is emitted after the child process ends. If the process terminated<br />normally, <code>code</code> is the final exit code of the process, otherwise <code>null</code>. If<br />the process terminated due to receipt of a signal, <code>signal</code> is the string name<br />of the signal, otherwise <code>null</code>.</p>
+<p><h4 class="eventHeader"> <code>'exit'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(code<div class="listenerParamParam"><h6>Parameters</h6><ul><li> signal)</code>: The function to execute once the event fires</li><li> <code>code</code>: The final exit code of the process (otherwise</li><li> <code>null</code>)</li><li> <code>signal</code>: The string name of the signal (otherwise</li><li> <code>null</code>)</li></ul></li></ul></p>
 
-<p>See <code>waitpid(2)</code>.</p>
+<p>This event is emitted after the child process ends.</p>
 
-<h3>child.stdin</h3>
+<p>For more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/wait.2.html">waitpid(2)</a>.</p>
 
-<p>A <code>Writable Stream</code> that represents the child process's <code>stdin</code>.<br />Closing this stream via <code>end()</code> often causes the child process to terminate.</p>
+<h3>Properties</h3>
 
-<h3>child.stdout</h3>
+<p><h4 class="propertyHeader"> <code>child.stdin</code></h4></p>
+
+<p>A <code>Writable Stream</code> that represents the child process's <code>stdin</code>. Closing this stream via <code>end()</code> often causes the child process to terminate.</p>
+
+<p><h4 class="propertyHeader"> <code>child.stdout</code></h4></p>
 
 <p>A <code>Readable Stream</code> that represents the child process's <code>stdout</code>.</p>
 
-<h3>child.stderr</h3>
+<p><h4 class="propertyHeader"> <code>child.stderr</code></h4></p>
 
 <p>A <code>Readable Stream</code> that represents the child process's <code>stderr</code>.</p>
 
-<h3>child.pid</h3>
+<p><h4 class="propertyHeader"> <code>child.pid</code></h4></p>
 
 <p>The PID of the child process.</p>
 
-<p>Example:</p>
+<h4>Example</h4>
 
 <pre><code>var spawn = require('child_process').spawn,
     grep  = spawn('grep', ['ssh']);
@@ -137,11 +145,11 @@ console.log('Spawned child pid: ' + grep.pid);
 grep.stdin.end();
 </code></pre>
 
-<h3>child_process.spawn(command, args=[], [options])</h3>
+<p><h4 class="methodHeader"> <code>child_process.spawn(command, args=[], [options])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>command</code>: The command to use<li> <code>args</code>: The command line arguments to pass</li><li> <code>[options]</code>: Any additional options you want to transfer</li></ul></p>
 
-<p>Launches a new process with the given <code>command</code>, with  command line arguments in <code>args</code>.<br />If omitted, <code>args</code> defaults to an empty Array.</p>
+<p>Launches a new process with the given <code>command</code>, with  command line arguments in <code>args</code>.</p>
 
-<p>The third argument is used to specify additional options, which defaults to:</p>
+<p><code>optiones</code> specifies additional options, which default to:</p>
 
 <pre><code>{ cwd: undefined,
   env: process.env,
@@ -149,11 +157,16 @@ grep.stdin.end();
 }
 </code></pre>
 
-<p><code>cwd</code> allows you to specify the working directory from which the process is spawned.<br />Use <code>env</code> to specify environment variables that will be visible to the new process.</p>
+<p>They mean:</p>
 
-<p><code>setsid</code>, if set true, will cause the subprocess to be run in a new session.</p>
+<ul>
+<li><code>cwd</code>: specifies the working directory from which the process is spawned</li>
+<li><code>env</code>: specifies environment variables that will be visible to the new process* <code>setsid</code>: if <code>true</code>, causes the subprocess to be run in a new session</li>
+</ul>
 
-<p>Example of running <code>ls -lh /usr</code>, capturing <code>stdout</code>, <code>stderr</code>, and the exit code:</p>
+<h4>Example</h4>
+
+<p>Running <code>ls -lh /usr</code>, capturing <code>stdout</code>, <code>stderr</code>, and the exit code:</p>
 
 <pre><code>var util  = require('util'),
     spawn = require('child_process').spawn,
@@ -172,7 +185,7 @@ ls.on('exit', function (code) {
 });
 </code></pre>
 
-<p>Example: A very elaborate way to run 'ps ax | grep ssh'</p>
+<p>A very elaborate way to run <code>'ps ax | grep ssh'</code>:</p>
 
 <pre><code>var util  = require('util'),
     spawn = require('child_process').spawn,
@@ -209,7 +222,7 @@ grep.on('exit', function (code) {
 });
 </code></pre>
 
-<p>Example of checking for failed exec:</p>
+<p>Checking for failed <code>exec</code>:</p>
 
 <pre><code>var spawn = require('child_process').spawn,
     child = spawn('bad_command');
@@ -222,17 +235,31 @@ child.stderr.on('data', function (data) {
 });
 </code></pre>
 
-<p>Note that if spawn receives an empty options object, it will result in<br />spawning the process with an empty environment rather than using<br /><code>process.env</code>. This due to backwards compatibility issues with a deprecated<br />API.</p>
+<p>Note that if <code>spawn</code>receives an empty options object, it spawns the process with an empty environment rather than using <code>process.env</code>. This due to backwards compatibility issues with a deprecated API.</p>
 
-<p>There is a deprecated option called <code>customFds</code> which allows one to specify<br />specific file descriptors for the stdio of the child process. This API was<br />not portable to all platforms and therefore removed.<br />With <code>customFds</code> it was possible to hook up the new process' [stdin, stdout,<br />stderr] to existing streams; <code>-1</code> meant that a new stream should be created.<br />Use at your own risk.</p>
+<p>There is also a deprecated option called <code>customFds</code> which allows one to specify<br />specific file descriptors for the stdio of the child process. This API was<br />not portable to all platforms and therefore removed. With <code>customFds</code> it was possible to hook up the new process' [stdin, stdout, stderr] to existing stream ; <code>-1</code> meant that a new stream should be created. Use at your own risk.</p>
 
-<p>There are several internal options. In particular <code>stdinStream</code>,<br /><code>stdoutStream</code>, <code>stderrStream</code>. They are for INTERNAL USE ONLY. As with all<br />undocumented APIs in Node, they should not be used.</p>
+<p>There are also several internal options. In particular <code>stdinStream</code>, <code>stdoutStream</code>, <code>stderrStream</code>. They are for INTERNAL USE ONLY. As with all undocumented APIs in Node, they shouldn't be used.</p>
 
-<p>See also: <code>child_process.exec()</code></p>
+<p>For more information, see also <a href="#child_process.exec"><code>child_process.exec()</code></a>.</p>
 
-<h3>child_process.exec(command, [options], callback)</h3>
+<p><h4 class="methodHeader"> <code>child_process.exec(command, [options], callback(error, stdout, stderr))</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>command</code>: The command to run<li> <code>[options]</code>: The options to use</li><li> <code>callback(error</li><li> stdout</li><li> stderr)</code>: The function to run after the method completes; <code>error</code> is the standard <code>Error</code> object</li><li> except <code>err.code</code> is the exit code of the child process</li><li> and <code>err.signal</code> is set to the signal that terminated the process; <code>stdout</code> is the stdout stream and <code>stderr</code> is the stderr stream</li></ul></p>
 
 <p>Runs a command in a shell and buffers the output.</p>
+
+<p>There is a second optional argument to specify several options. The default options are:</p>
+
+<pre><code>{ encoding: 'utf8',
+  timeout: 0,
+  maxBuffer: 200*1024,
+  killSignal: 'SIGTERM',
+  cwd: null,
+  env: null }
+</code></pre>
+
+<p>If <code>timeout</code> is greater than <code>0</code>, then it will kill the child process if it runs longer than <code>timeout</code> milliseconds. The child process is killed with <code>killSignal</code>. <code>maxBuffer</code> specifies the largest amount of data allowed on stdout or stderr; if this value is exceeded then the child process is killed.</p>
+
+<h4>Example</h4>
 
 <pre><code>var util = require('util'),
     exec = require('child_process').exec,
@@ -248,29 +275,19 @@ child = exec('cat *.js bad_file | wc -l',
 });
 </code></pre>
 
-<p>The callback gets the arguments <code>(error, stdout, stderr)</code>. On success, <code>error</code><br />will be <code>null</code>.  On error, <code>error</code> will be an instance of <code>Error</code> and <code>err.code</code><br />will be the exit code of the child process, and <code>err.signal</code> will be set to the<br />signal that terminated the process.</p>
+<p><h4 class="methodHeader"> <code>child_process.execFile(file, args, options,</code>callback(error, stdout, stderr))<code></h4><div class="methodParam"><h5>Parameters</h5><ul><li></code>file<code>: The file with the commands to run<li></code>args<code>: The command line arguments to pass</li><li></code>[options]<code>: Any additional options you want to transfer</li><li></code>callback(error</li><li> stdout</li><li> stderr)<code>: The function to run after the method completes;</code>error<code>is the standard</code>Error<code>object</li><li> except</code>err.code<code>is the exit code of the child process</li><li> and</code>err.signal<code>is set to the signal that terminated the process;</code>stdout<code>is the stdout stream and</code>stderr` is the stderr stream</li></ul></p>
 
-<p>There is a second optional argument to specify several options. The default options are</p>
+<p>This is similar to <code>child_process.exec()</code> except it does not execute a<br />subshell but rather the specified file directly. This makes it slightly<br />leaner than <code>child_process.exec</code>. It has the same options and callback.</p>
 
-<pre><code>{ encoding: 'utf8',
-  timeout: 0,
-  maxBuffer: 200*1024,
-  killSignal: 'SIGTERM',
-  cwd: null,
-  env: null }
-</code></pre>
+<p><h4 class="methodHeader"> <code>child_process.fork(modulePath, arguments, options)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>modulePath</code>: The location of the module<li> <code>arguments</code>: Any starting arguments to use</li><li> <code>options</code>: Any additional options to pass</li></ul></p>
 
-<p>If <code>timeout</code> is greater than 0, then it will kill the child process<br />if it runs longer than <code>timeout</code> milliseconds. The child process is killed with<br /><code>killSignal</code> (default: <code>'SIGTERM'</code>). <code>maxBuffer</code> specifies the largest<br />amount of data allowed on stdout or stderr - if this value is exceeded then<br />the child process is killed.</p>
+<p>This is a special case of the <code>spawn()</code> functionality for spawning Node.js processes. In addition to having all the methods in a normal ChildProcess instance, the returned object has a communication channel built-in. The channel is written with <code>child.send(message, [sendHandle])</code>, and messages are recieved by a <code>'message'</code> event on the child.</p>
 
-<h3>child_process.execFile(file, args, options, callback)</h3>
+<p>By default the spawned Node.js process will have the stdin, stdout, stderr associated with the parent's.</p>
 
-<p>This is similar to <code>child_process.exec()</code> except it does not execute a<br />subshell but rather the specified file directly. This makes it slightly<br />leaner than <code>child_process.exec</code>. It has the same options.</p>
+<p>These child Nodes are still whole new instances of V8. Assume at least 30ms startup and 10mb memory for each new Node. That is, you cannot create many thousands of them.</p>
 
-<h3>child_process.fork(modulePath, arguments, options)</h3>
-
-<p>This is a special case of the <code>spawn()</code> functionality for spawning Node<br />processes. In addition to having all the methods in a normal ChildProcess<br />instance, the returned object has a communication channel built-in. The<br />channel is written to with <code>child.send(message, [sendHandle])</code> and messages<br />are recieved by a <code>'message'</code> event on the child.</p>
-
-<p>For example:</p>
+<h4>Example</h4>
 
 <pre><code>var cp = require('child_process');
 
@@ -283,7 +300,7 @@ n.on('message', function(m) {
 n.send({ hello: 'world' });
 </code></pre>
 
-<p>And then the child script, <code>'sub.js'</code> might look like this:</p>
+<p>The child script, <code>'sub.js'</code>, might look like this:</p>
 
 <pre><code>process.on('message', function(m) {
   console.log('CHILD got message:', m);
@@ -292,13 +309,9 @@ n.send({ hello: 'world' });
 process.send({ foo: 'bar' });
 </code></pre>
 
-<p>In the child the <code>process</code> object will have a <code>send()</code> method, and <code>process</code><br />will emit objects each time it receives a message on its channel.</p>
+<p>In the child the <code>process</code> object will have a <code>send()</code> method, and <code>process</code>  emits objects each time it receives a message on its channel.</p>
 
-<p>By default the spawned Node process will have the stdin, stdout, stderr<br />associated with the parent's.</p>
-
-<p>These child Nodes are still whole new instances of V8. Assume at least 30ms<br />startup and 10mb memory for each new Node. That is, you cannot create many<br />thousands of them.</p>
-
-<p>The <code>sendHandle</code> option to <code>child.send()</code> is for sending a handle object to<br />another process. Child will receive the handle as as second argument to the<br /><code>message</code> event. Here is an example of sending a handle:</p>
+<p>The <code>sendHandle</code> option to <code>child.send()</code> is for sending a handle object to another process. The child receives the handle as as second argument to the <code>message</code> event. Here is an example of sending a handle:</p>
 
 <pre><code>var server = require('net').createServer();
 var child = require('child_process').fork(__dirname + '/child.js');
@@ -308,7 +321,7 @@ server.listen(1337, function() {
 });
 </code></pre>
 
-<p>Here is an example of receiving the server handle and sharing it between<br />processes:</p>
+<p>Here's an example of receiving the server handle and sharing it between processes:</p>
 
 <pre><code>process.on('message', function(m, serverHandle) {
   if (serverHandle) {
@@ -318,9 +331,15 @@ server.listen(1337, function() {
 });
 </code></pre>
 
-<h3>child.kill(signal='SIGTERM')</h3>
+<p><h4 class="methodHeader"> <code>child.kill(signal='SIGTERM')</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>signal</code>: The kill signal to send</ul></p>
 
-<p>Send a signal to the child process. If no argument is given, the process will<br />be sent <code>'SIGTERM'</code>. See <code>signal(7)</code> for a list of available signals.</p>
+<p>Send a signal to the child process. See <a href="http://www.kernel.org/doc/man-pages/online/pages/man7/signal.7.html"><code>signal(7)</code></a> for a list of available signals.</p>
+
+<p>Note that while the function is called <code>kill</code>, the signal delivered to the child process may not actually kill it.  <code>kill</code> really just sends a signal to a process.</p>
+
+<p>For more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/kill.2.html"><code>kill(2)</code></a>.</p>
+
+<h4>Example</h4>
 
 <pre><code>var spawn = require('child_process').spawn,
     grep  = spawn('grep', ['ssh']);
@@ -330,12 +349,8 @@ grep.on('exit', function (code, signal) {
 });
 
 // send SIGHUP to process
-grep.kill('SIGHUP');
-</code></pre>
-
-<p>Note that while the function is called <code>kill</code>, the signal delivered to the child<br />process may not actually kill it.  <code>kill</code> really just sends a signal to a process.</p>
-
-<p>See <code>kill(2)</code><br /></div></p></div>
+grep.kill('SIGHUP');</div&gt;
+</code></pre></div>
 </div>
 <footer>
     <p>&nbsp;</p>

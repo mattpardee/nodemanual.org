@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -94,45 +94,47 @@
 
 <h2>Assert</h2>
 
-<p>This module is used for writing unit tests for your applications, you can<br />access it with <code>require('assert')</code>.</p>
+<p>This module is used for writing unit tests for your applications. You can access it by adding <code>require('assert')</code> to your code.</p>
 
-<h3>assert.fail(actual, expected, message, operator)</h3>
+<p><h4 class="methodHeader"> <code>assert.fail(actual, expected, message, operator)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li><li> <code>operator</code>: The operator used to separate the <code>actual</code> and <code>expected</code> values in the <code>message</code></li></ul></p>
 
 <p>Throws an exception that displays the values for <code>actual</code> and <code>expected</code> separated by the provided operator.</p>
 
-<h3>assert(value, message), assert.ok(value, [message])</h3>
+<p><h4 class="methodHeader"> <code>assert(value, message), assert.ok(value, [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>value</code>: The value you receive<li> <code>message</code>: The message to send to the console</li></ul></p>
 
-<p>Tests if value is a <code>true</code> value, it is equivalent to <code>assert.equal(true, value, message);</code></p>
+<p>Tests if value is a <code>true</code> value. This is equivalent to <code>assert.equal(true, value, message);</code></p>
 
-<h3>assert.equal(actual, expected, [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.equal(actual, expected, [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
 <p>Tests shallow, coercive equality with the equal comparison operator ( <code>==</code> ).</p>
 
-<h3>assert.notEqual(actual, expected, [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.notEqual(actual, expected, [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
 <p>Tests shallow, coercive non-equality with the not equal comparison operator ( <code>!=</code> ).</p>
 
-<h3>assert.deepEqual(actual, expected, [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.deepEqual(actual, expected, [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
 <p>Tests for deep equality.</p>
 
-<h3>assert.notDeepEqual(actual, expected, [message])</h3>
+<p><h4 class="methodHeader"> assert.notDeepEqual(actual, expected, [message])</h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
-<p>Tests for any deep inequality.</p>
+<p>Tests for any deep inequality ,,</p>
 
-<h3>assert.strictEqual(actual, expected, [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.strictEqual(actual, expected, [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
 <p>Tests strict equality, as determined by the strict equality operator ( <code>===</code> )</p>
 
-<h3>assert.notStrictEqual(actual, expected, [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.notStrictEqual(actual, expected, [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>actual</code>: The value you receive<li> <code>expected</code>: The expected value you're looking for</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
 <p>Tests strict non-equality, as determined by the strict not equal operator ( <code>!==</code> )</p>
 
-<h3>assert.throws(block, [error], [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.throws(block, [error], [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>block</code>: A block of code to check against<li> <code>error</code>: The expected error that's thrown; this can be a constructor</li><li> regexp</li><li> or validation function</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
-<p>Expects <code>block</code> to throw an error. <code>error</code> can be constructor, regexp or <br />validation function.</p>
+<p>Expects <code>block</code> to throw an error.</p>
 
-<p>Validate instanceof using constructor:</p>
+<h4>Examples</h4>
+
+<p>Validate <code>instanceof</code> using a constructor:</p>
 
 <pre><code>assert.throws(
   function() {
@@ -167,13 +169,13 @@
 );
 </code></pre>
 
-<h3>assert.doesNotThrow(block, [error], [message])</h3>
+<p><h4 class="methodHeader"> <code>assert.doesNotThrow(block, [error], [message])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>block</code>: A block of code to check against<li> <code>error</code>: The expected error that's thrown; this can be a constructor</li><li> regexp</li><li> or validation function</li><li> <code>message</code>: The message to send to the console</li></ul></p>
 
-<p>Expects <code>block</code> not to throw an error, see assert.throws for details.</p>
+<p>Expects <code>block</code> not to throw an error; for more details, see <code>assert.throws()</code>.</p>
 
-<h3>assert.ifError(value)</h3>
+<p><h4 class="methodHeader"> <code>assert.ifError(value)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>value</code>: The value to check against</ul></p>
 
-<p>Tests if value is not a false value, throws if it is a true value. Useful when<br />testing the first argument, <code>error</code> in callbacks.<br /></div></p></div>
+<p>Tests if value is <code>false</code>; throws an error if it is <code>true</code>. Useful when testing the first argument, <code>error</code>, in callbacks.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

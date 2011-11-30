@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -164,9 +164,9 @@
 <p><code>options</code> should be an object that specifies the following values:</p>
 
 <ul>
-<li><p><code>key</code>: A string or <code>Buffer</code> containing the private key of the client in aPEM format.</p></li>
-<li><p><code>passphrase</code>: A string of a passphrase for the private key.</p></li>
-<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the client in a PEM format.</p></li>
+<li><p><code>key</code>: A string or <code>Buffer</code> containing the private key of the client in aPEM format. The default is <code>null</code>.</p></li>
+<li><p><code>passphrase</code>: A string of a passphrase for the private key. The default is <code>null</code>.</p></li>
+<li><p><code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the client in a PEM format; in other words, the public x509 certificate to use. The default is <code>null</code>.</p></li>
 <li><p><code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. </p></li>
 <li><p><code>NPNProtocols</code>: An array of strings or a  <code>Buffer</code> containing supported NPN protocols. <br />    <code>Buffer</code> should have the following format: <code>0x05hello0x05world</code>, where the preceding byte indicates the following protocol name's length. Passing an array is usually much simplier: <code>['hello', 'world']</code>. <br />    Protocols should be ordered by their priority.</p></li>
 <li><p><code>servername</code>: The server name for the SNI (Server Name Indication) TLS extension.</p></li>
@@ -266,57 +266,81 @@ server.listen(8000, function() {
 <pre><code>openssl s_client -connect 127.0.0.1:8000
 </code></pre>
 
-<h3>tls.Server</h3>
+<h2><code>tls.Server</code></h2>
 
-<p>This class is a subclass of <code>net.Server</code> and has the same methods on it.<br />Instead of accepting just raw TCP connections, this accepts encrypted<br />connections using TLS or SSL.</p>
+<p>This class is a subclass of <code>net.Server</code> and has the same methods on it. Instead of accepting just raw TCP connections, it accepts encrypted connections using TLS or SSL.</p>
 
-<h4>server.listen(port, [host], [callback])</h4>
+<h3>Methods</h3>
+
+<p><h4 class="methodHeader"> <code>server.addContext(hostname, credentials)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>hostname</code>: The hostname to match<li> <code>credentials</code>: The credentials to use</li></ul></p>
+
+<p>Add secure context that will be used if client request's SNI hostname is<br />matching passed <code>hostname</code> (wildcards can be used). <code>credentials</code> can contain<br /><code>key</code>, <code>cert</code>, and <code>ca</code>.</p>
+
+<p><h4 class="methodHeader"> <code>server.address()</code></h4></p>
+
+<p>Returns the bound address and port of the server as reported by the operating<br />system. </p>
+
+<p>For more information, see <a href="net.html#server.address">net.Server.address()</a>.</p>
+
+<p><h4 class="methodHeader"> <code>server.close()</code></h4></p>
+
+<p>Stops the server from accepting new connections. This function is asynchronous, and the server is finally closed when it emits a <code>'close'</code> event.</p>
+
+<p><h4 class="methodHeader"> <code>server.listen(port, [host], [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>port</code>: The specific port to listen to<li> <code>host</code>: An optional host to listen to</li><li> <code>callback()</code>: An optional callback to execute when the server has been bound</li></ul></p>
 
 <p>Begin accepting connections on the specified <code>port</code> and <code>host</code>.  If the<br /><code>host</code> is omitted, the server will accept connections directed to any<br />IPv4 address (<code>INADDR_ANY</code>).</p>
 
-<p>This function is asynchronous. The last parameter <code>callback</code> will be called<br />when the server has been bound.</p>
+<p>For more information, see <code>net.Server</code>.</p>
 
-<p>See <code>net.Server</code> for more information.</p>
+<h3>Properties</h3>
 
-<h4>server.close()</h4>
-
-<p>Stops the server from accepting new connections. This function is<br />asynchronous, the server is finally closed when the server emits a <code>'close'</code><br />event.</p>
-
-<h4>server.address()</h4>
-
-<p>Returns the bound address and port of the server as reported by the operating<br />system.<br />See <a href="net.html#server.address">net.Server.address()</a> for more information.</p>
-
-<h4>server.addContext(hostname, credentials)</h4>
-
-<p>Add secure context that will be used if client request's SNI hostname is<br />matching passed <code>hostname</code> (wildcards can be used). <code>credentials</code> can contain<br /><code>key</code>, <code>cert</code> and <code>ca</code>.</p>
-
-<h4>server.maxConnections</h4>
-
-<p>Set this property to reject connections when the server's connection count<br />gets high.</p>
-
-<h4>server.connections</h4>
+<p><h4 class="propertyHeader"> <code>server.connections</code></h4></p>
 
 <p>The number of concurrent connections on the server.</p>
 
-<h3>tls.CleartextStream</h3>
+<p><h4 class="propertyHeader"> <code>server.maxConnections</code></h4></p>
 
-<p>This is a stream on top of the <em>Encrypted</em> stream that makes it possible to<br />read/write an encrypted data as a cleartext data.</p>
+<p>Set this property to reject connections when the server's connection count gets high.</p>
 
-<p>This instance implements a duplex <a href="streams.html#streams">Stream</a> interfaces.<br />It has all the common stream methods and events.</p>
+<h3>Methods</h3>
 
-<h4>cleartextStream.authorized</h4>
+<p><h4 class="methodHeader"> <code>cleartextStream.address()</code></h4></p>
 
-<p>A boolean that is <code>true</code> if the peer certificate was signed by one of the<br />specified CAs, otherwise <code>false</code></p>
+<p>Returns the bound address and port of the underlying socket as reported by the operating system. Returns an object with two properties, <em>e.g.</em> <code>{"address":"192.168.57.1", "port":62053}</code></p>
 
-<h4>cleartextStream.authorizationError</h4>
+<h3>Objects</h3>
+
+<p><h4 class="objHeader"><code>tls.CleartextStream</code></h4></p>
+
+<p>This is a stream on top of the <code>Encrypted</code> stream that makes it possible to read/write an encrypted data as a cleartext data.</p>
+
+<p>This instance implements the duplex <a href="streams.html#streams">Stream</a> interfaces. It has all the common stream methods and events.</p>
+
+<h3>Properties</h3>
+
+<p><h4 class="propertyHeader"> <code>cleartextStream.authorizationError</code></h4></p>
 
 <p>The reason why the peer's certificate has not been verified. This property<br />becomes available only when <code>cleartextStream.authorized === false</code>.</p>
 
-<h4>cleartextStream.getPeerCertificate()</h4>
+<p><h4 class="propertyHeader"> <code>cleartextStream.authorized</code></h4></p>
 
-<p>Returns an object representing the peer's certicicate. The returned object has<br />some properties corresponding to the field of the certificate.</p>
+<p>A boolean that is <code>true</code> if the peer certificate was signed by one of the specified CAs; otherwise <code>false</code></p>
 
-<p>Example:</p>
+<p><h4 class="propertyHeader"> <code>cleartextStream.getPeerCertificate()</code></h4></p>
+
+<p>Returns an object representing the peer's certicicate. The returned object has some properties corresponding to the field of the certificate.</p>
+
+<p>If the peer does not provide a certificate, it returns <code>null</code> or an empty object.</p>
+
+<p><h4 class="propertyHeader"> <code>cleartextStream.remoteAddress</code></h4></p>
+
+<p>The string representation of the remote IP address. For example, <code>'74.125.127.100'</code> or <code>'2001:4860:a005::68'</code>.</p>
+
+<p><h4 class="propertyHeader"> <code>cleartextStream.remotePort</code></h4></p>
+
+<p>The numeric representation of the remote port. For example, <code>443</code>.</p>
+
+<h4>Example</h4>
 
 <pre><code>{ subject: 
    { C: 'UK',
@@ -337,19 +361,7 @@ server.listen(8000, function() {
   fingerprint: '2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF' }
 </code></pre>
 
-<p>If the peer does not provide a certificate, it returns <code>null</code> or an empty<br />object.</p>
-
-<h4>cleartextStream.address()</h4>
-
-<p>Returns the bound address and port of the underlying socket as reported by the<br />operating system. Returns an object with two properties, e.g.<br /><code>{"address":"192.168.57.1", "port":62053}</code></p>
-
-<h4>cleartextStream.remoteAddress</h4>
-
-<p>The string representation of the remote IP address. For example,<br /><code>'74.125.127.100'</code> or <code>'2001:4860:a005::68'</code>.</p>
-
-<h4>cleartextStream.remotePort</h4>
-
-<p>The numeric representation of the remote port. For example, <code>443</code>.<br /></div></p></div>
+<p></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

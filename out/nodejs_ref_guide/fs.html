@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,27 +80,27 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
 <div class="content"><p><div class="hero-unit"></p>
 
-<p><a class="hiddenLink" id="file-system"></a></p>
+<p><a class="hiddenLink" id="working-with-the-file-system"></a></p>
 
-<h2>File System</h2>
+<h2>Working with the File System</h2>
 
-<p>File I/O is provided by simple wrappers around standard POSIX functions.  To<br />use this module do <code>require('fs')</code>. All the methods have asynchronous and<br />synchronous forms.</p>
+<p>File I/O is provided by simple wrappers around standard POSIX functions. To use this module, include <code>require('fs')</code> in your code. All the read and write methods methods have asynchronous and synchronous forms.</p>
 
-<p>The asynchronous form always take a completion callback as its last argument.<br />The arguments passed to the completion callback depend on the method, but the<br />first argument is always reserved for an exception. If the operation was<br />completed successfully, then the first argument will be <code>null</code> or <code>undefined</code>.</p>
+<p>The asynchronous form always take a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be <code>null</code> or <code>undefined</code>.</p>
 
-<p>When using the synchronous form any exceptions are immediately thrown.<br />You can use try/catch to handle exceptions or allow them to bubble up.</p>
+<p>When using the synchronous form, any exceptions are immediately thrown. You can use <code>try/catch</code> to handle exceptions, or allow them to bubble up.</p>
 
-<p>Here is an example of the asynchronous version:</p>
+<p>Here's an example of a asynchronous delete:</p>
 
 <pre><code>var fs = require('fs');
 
@@ -110,7 +110,7 @@ fs.unlink('/tmp/hello', function (err) {
 });
 </code></pre>
 
-<p>Here is the synchronous version:</p>
+<p>And here's the synchronous version:</p>
 
 <pre><code>var fs = require('fs');
 
@@ -118,7 +118,7 @@ fs.unlinkSync('/tmp/hello')
 console.log('successfully deleted /tmp/hello');
 </code></pre>
 
-<p>With the asynchronous methods there is no guaranteed ordering. So the<br />following is prone to error:</p>
+<p>With the asynchronous methods, there is no guaranteed ordering. As an example, the following is prone to error:</p>
 
 <pre><code>fs.rename('/tmp/hello', '/tmp/world', function (err) {
   if (err) throw err;
@@ -130,7 +130,7 @@ fs.stat('/tmp/world', function (err, stats) {
 });
 </code></pre>
 
-<p>It could be that <code>fs.stat</code> is executed before <code>fs.rename</code>.<br />The correct way to do this is to chain the callbacks.</p>
+<p>It could be that <code>fs.stat</code> is executed before <code>fs.rename</code>. The correct way to do this is to chain the callbacks like this:</p>
 
 <pre><code>fs.rename('/tmp/hello', '/tmp/world', function (err) {
   if (err) throw err;
@@ -141,254 +141,263 @@ fs.stat('/tmp/world', function (err, stats) {
 });
 </code></pre>
 
-<p>In busy processes, the programmer is <em>strongly encouraged</em> to use the<br />asynchronous versions of these calls. The synchronous versions will block<br />the entire process until they complete--halting all connections.</p>
+<p>In busy processes, the programmer is <strong>strongly encouraged</strong> to use the asynchronous versions of these calls. The synchronous versions block the entire process until they complete&mdash;halting all connections.</p>
 
-<p>Relative path to filename can be used, remember however that this path will be relative<br />to <code>process.cwd()</code>.</p>
+<p>When processing files, relative paths to filename can be used; however, this path is relative to <code>process.cwd()</code>.</p>
 
-<h3>fs.rename(path1, path2, [callback])</h3>
+<h3>Methods</h3>
 
-<p>Asynchronous rename(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.rename(path1, path2, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path1</code>: The original filename and path<li> <code>path2</code>: The new filename and path</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.renameSync(path1, path2)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/rename.2.html">rename(2)</a> operation. Turns <code>path1</code> into <code>path2</code>, like magic.</p>
 
-<p>Synchronous rename(2).</p>
+<p><h4 class="methodHeader"> <code>fs.renameSync(path1, path2)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path1</code>: The original filename and path<li> <code>path2</code>: The new filename and path</li></ul></p>
 
-<h3>fs.truncate(fd, len, [callback])</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/rename.2.html">rename(2)</a> operation. Turns <code>path1</code> into <code>path2</code>, like witchcraft.</p>
 
-<p>Asynchronous ftruncate(2). No arguments other than a possible exception are<br />given to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.truncate(fd, len, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>len</code>: The final file length</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.truncateSync(fd, len)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/truncate.2.html">ftruncate(2)</a>. It truncates a file to the specified length.</p>
 
-<p>Synchronous ftruncate(2).</p>
+<p><h4 class="methodHeader"> <code>fs.truncateSync(fd, len)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>len</code>: The final file length</li></ul></p>
 
-<h3>fs.chown(path, uid, gid, [callback])</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/truncate.2.html">ftruncate(2)</a>. It truncates a file to the specified length.</p>
 
-<p>Asynchronous chown(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.chown(path, uid, gid, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>uid</code>: The new owner id</li><li> <code>gid</code>: The new group id</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.chownSync(path, uid, gid)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/chown.2.html">chown(2)</a>. This changes the ownership of the file specified by <code>path</code>, which is dereferenced if it is a symbolic link.</p>
 
-<p>Synchronous chown(2).</p>
+<p><h4 class="methodHeader"> <code>fs.chownSync(path, uid, gid)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>uid</code>: The new owner id</li><li> <code>gid</code>: The new group id</li></ul></p>
 
-<h3>fs.fchown(fd, uid, gid, [callback])</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/chown.2.html">chown(2)</a>. This changes the ownership of the file specified by <code>path</code>, which is dereferenced if it is a symbolic link</p>
 
-<p>Asynchronous fchown(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.fchown(fd, uid, gid, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>uid</code>: The new owner id</li><li> <code>gid</code>: The new group id</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.fchownSync(fd, uid, gid)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/fchown.2.html">fchown(2)</a>. This changes the ownership of the file referred to by the open file descriptor fd.</p>
 
-<p>Synchronous fchown(2).</p>
+<p><h4 class="methodHeader"> <code>fs.fchownSync(fd, uid, gid)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>uid</code>: The new owner id</li><li> <code>gid</code>: The new group id</li></ul></p>
 
-<h3>fs.lchown(path, uid, gid, [callback])</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/fchown.2.html">fchown(2)</a>. This changes the ownership of the file referred to by the open file descriptor fd.</p>
 
-<p>Asynchronous lchown(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.lchown(path, uid, gid, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>uid</code>: The new owner id</li><li> <code>gid</code>: The new group id</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.lchownSync(path, uid, gid)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/lchown.2.html">lchown(2)</a>. This is like <code>chown()</code>, but doesn't dereference symbolic links</p>
 
-<p>Synchronous lchown(2).</p>
+<p><h4 class="methodHeader"> <code>fs.lchownSync(path, uid, gid)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>uid</code>: The new owner id</li><li> <code>gid</code>: The new group id</li></ul></p>
 
-<h3>fs.chmod(path, mode, [callback])</h3>
+<p>Synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/lchown.2.html">lchown(2)</a>. This is like <code>chown()</code>, but doesn't dereference symbolic links</p>
 
-<p>Asynchronous chmod(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.chmod(path, mode, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>mode</code>: The new permissions</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.chmodSync(path, mode)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/chmod.2.html">chmod(2)</a>. This changes the permissions of the file specified whose, which is dereferenced if it is a symbolic link.</p>
 
-<p>Synchronous chmod(2).</p>
+<p><h4 class="methodHeader"> <code>fs.chmodSync(path, mode)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>mode</code>: The new permissions</li></ul></p>
 
-<h3>fs.fchmod(fd, mode, [callback])</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/chmod.2.html">chmod(2)</a>. This changes the permissions of the file specified whose, which is dereferenced if it is a symbolic link.</p>
 
-<p>Asynchronous fchmod(2). No arguments other than a possible exception<br />are given to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.fchmod(fd, mode, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>mode</code>: The new permissions</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.fchmodSync(fd, mode)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/fchmod.2.html">fchmod(2)</a>. This changes the permissions of the file referred to by the open file descriptor.</p>
 
-<p>Synchronous fchmod(2).</p>
+<p><h4 class="methodHeader"> <code>fs.fchmodSync(fd, mode)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>mode</code>: The new permissions</li></ul></p>
 
-<h3>fs.lchmod(path, mode, [callback])</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/fchmod.2.html">fchmod(2)</a>. This changes the permissions of the file referred to by the open file descriptor.</p>
 
-<p>Asynchronous lchmod(2). No arguments other than a possible exception<br />are given to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.lchmod(path, mode, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>mode</code>: The new permissions</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<h3>fs.lchmodSync(path, mode)</h3>
+<p>An asynchronous <a href="http://www.daemon-systems.org/man/lchmod.2.html">lchmod(2)</a>. This is like <code>chmod()</code> except in the case where the named file is a symbolic link, in which case <code>lchmod()</code> sets the permission bits of the link, while <code>chmod()</code> sets the bits of the file the link references.</p>
 
-<p>Synchronous lchmod(2).</p>
+<p><h4 class="methodHeader"> <code>fs.lchmodSync(path, mode)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>mode</code>: The new permissions</li></ul></p>
 
-<h3>fs.stat(path, [callback])</h3>
+<p>A synchronous <a href="http://www.daemon-systems.org/man/lchmod.2.html">lchmod(2)</a>. This is like <code>chmod()</code> except in the case where the named file is a symbolic link, in which case <code>lchmod()</code> sets the permission bits of the link, while <code>chmod()</code> sets the bits of the file the link references.</p>
 
-<p>Asynchronous stat(2). The callback gets two arguments <code>(err, stats)</code> where<br /><code>stats</code> is a <a href="#fs.Stats">fs.Stats</a> object.  See the <a href="#fs.Stats">fs.Stats</a><br />section below for more information.</p>
+<p><h4 class="methodHeader"> <code>fs.stat(path, [callback(err, stats)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>[callback(err</li><li> stats)]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<h3>fs.lstat(path, [callback])</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html">stat(2)</a>. </p>
 
-<p>Asynchronous lstat(2). The callback gets two arguments <code>(err, stats)</code> where<br /><code>stats</code> is a <code>fs.Stats</code> object. <code>lstat()</code> is identical to <code>stat()</code>, except that if<br /><code>path</code> is a symbolic link, then the link itself is stat-ed, not the file that it<br />refers to.</p>
+<p>The callback gets two arguments <code>(err, stats)</code> where <code>stats</code> is a <a href="#fs.Stats">fs.Stats</a> object. For more information, see the <a href="#fs.Stats">fs.Stats</a> section .</p>
 
-<h3>fs.fstat(fd, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.lstat(path, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>[callback(err</li><li> stats)]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<p>Asynchronous fstat(2). The callback gets two arguments <code>(err, stats)</code> where<br /><code>stats</code> is a <code>fs.Stats</code> object. <code>fstat()</code> is identical to <code>stat()</code>, except that<br />the file to be stat-ed is specified by the file descriptor <code>fd</code>.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html">lstat(2)</a>. </p>
 
-<h3>fs.statSync(path)</h3>
+<p>The callback gets two arguments <code>(err, stats)</code> where <code>stats</code> is a <code>fs.Stats</code> object. <code>lstat()</code> is identical to <code>stat()</code>, except that if <code>path</code> is a symbolic link, then the link itself is stat-ed, not the file that it refers to.</p>
 
-<p>Synchronous stat(2). Returns an instance of <code>fs.Stats</code>.</p>
+<p><h4 class="methodHeader"> <code>fs.fstat(fd, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>[callback(err</li><li> stats)]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<h3>fs.lstatSync(path)</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html">fstat(2)</a>. </p>
 
-<p>Synchronous lstat(2). Returns an instance of <code>fs.Stats</code>.</p>
+<p>The callback gets two arguments <code>(err, stats)</code> where <code>stats</code> is a <code>fs.Stats</code> object. <code>fstat()</code> is identical to <code>stat()</code>, except that the file to be stat-ed is specified by the file descriptor <code>fd</code>.</p>
 
-<h3>fs.fstatSync(fd)</h3>
+<p><h4 class="methodHeader"> <code>fs.statSync(path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file</ul></p>
 
-<p>Synchronous fstat(2). Returns an instance of <code>fs.Stats</code>.</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html">stat(2)</a>. Returns an instance of <code>fs.Stats</code>.</p>
 
-<h3>fs.link(srcpath, dstpath, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.lstatSync(path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file</ul></p>
 
-<p>Asynchronous link(2). No arguments other than a possible exception are given to<br />the completion callback.</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html">lstat(2)</a>. Returns an instance of <code>fs.Stats</code>.</p>
 
-<h3>fs.linkSync(srcpath, dstpath)</h3>
+<p><h4 class="methodHeader"> <code>fs.fstatSync(fd)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor</ul></p>
 
-<p>Synchronous link(2).</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html">fstat(2)</a>. Returns an instance of <code>fs.Stats</code>.</p>
 
-<h3>fs.symlink(linkdata, path, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.link(srcpath, dstpath, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>srcpath</code>: The original path of a file<li> <code>dstpath</code>: The new file link path</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<p>Asynchronous symlink(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/link.2.html">link(2)</a>.</p>
 
-<h3>fs.symlinkSync(linkdata, path)</h3>
+<p><h4 class="methodHeader"> <code>fs.linkSync(srcpath, dstpath)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>srcpath</code>: The original path of a file<li> <code>dstpath</code>: The new file link path</li></ul></p>
 
-<p>Synchronous symlink(2).</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/link.2.html">link(2)</a>.</p>
 
-<h3>fs.readlink(path, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.symlink(linkdata, path, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>linkdata</code>: The original path of a file<li> <code>path</code>: The new file link path</li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<p>Asynchronous readlink(2). The callback gets two arguments <code>(err,<br />linkString)</code>.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.html">symlink(2)</a>.</p>
 
-<h3>fs.readlinkSync(path)</h3>
+<p><h4 class="methodHeader"> <code>fs.symlinkSync(linkdata, path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>linkdata</code>: The original path of a file<li> <code>path</code>: The new file link path</li></ul></p>
 
-<p>Synchronous readlink(2). Returns the symbolic link's string value.</p>
+<p>Synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.html">symlink(2)</a>.</p>
 
-<h3>fs.realpath(path, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.readlink(path, [callback(err, linkString)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The original path of a link<li> <code>[callback(err</li><li> linkString)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception and <code>linkString</code> is the symlink's string value</li></ul></p>
 
-<p>Asynchronous realpath(2).  The callback gets two arguments <code>(err,<br />resolvedPath)</code>.  May use <code>process.cwd</code> to resolve relative paths.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/readlink.2.html">readlink(2)</a>.</p>
 
-<h3>fs.realpathSync(path)</h3>
+<p><h4 class="methodHeader"> <code>fs.readlinkSync(path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The original path of a link</ul></p>
 
-<p>Synchronous realpath(2). Returns the resolved path.</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/readlink.2.html">readlink(2)</a>. Returns the symbolic link's string value.</p>
 
-<h3>fs.unlink(path, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.realpath(path, [callback(err, resolvedPath)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: A path<li> <code>[callback(err</li><li> resolvedPath)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception and <code>resolvedPath</code> is the resolved path string</li></ul></p>
 
-<p>Asynchronous unlink(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.html">realpath(3)</a>. You can  use <code>process.cwd()</code> to resolve relative paths.</p>
 
-<h3>fs.unlinkSync(path)</h3>
+<p><h4 class="methodHeader"> <code>fs.realpathSync(path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: A path</ul></p>
 
-<p>Synchronous unlink(2).</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.html">realpath(3)</a>. Returns the resolved path.</p>
 
-<h3>fs.rmdir(path, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.unlink(path, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>srcpath</code>: The path to a file<li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<p>Asynchronous rmdir(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/unlink.2.html">unlink(2)</a>.</p>
+
+<p><h4 class="methodHeader"> <code>fs.unlinkSync(path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>srcpath</code>: The path to a file</ul></p>
+
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/unlink.2.html">unlink(2)</a>.</p>
+
+<p><h4 class="methodHeader"> <code>fs.rmdir(path, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to a directory<li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
+
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/rmdir.2.html">rmdir(2)</a>.</p>
 
 <h3>fs.rmdirSync(path)</h3>
 
-<p>Synchronous rmdir(2).</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/rmdir.2.html">rmdir(2)</a>.</p>
 
-<h3>fs.mkdir(path, [mode], [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.mkdir(path, [mode=0777], [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the new directory<li> <code>mode</code>: An optional permission to set; defaults to <code>0777</code></li><li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<p>Asynchronous mkdir(2). No arguments other than a possible exception are given<br />to the completion callback. <code>mode</code> defaults to <code>0777</code>.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mkdir.2.html">mkdir(2)</a>. </p>
 
-<h3>fs.mkdirSync(path, [mode])</h3>
+<p><h4 class="methodHeader"> <code>fs.mkdirSync(path, [mode=0777])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the new directory<li> <code>mode</code>: An optional permission to set; defaults to <code>0777</code></li></ul></p>
 
-<p>Synchronous mkdir(2).</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/mkdir.2.html">mkdir(2)</a>.</p>
 
-<h3>fs.readdir(path, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.readdir(path, [callback(err, files)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the directory<li> <code>[callback(err</li><li> files)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception; <code>files</code> is an array of the names of the files in the directory (excluding <code>'.'</code> and <code>'..'</code>)</li></ul></p>
 
-<p>Asynchronous readdir(3).  Reads the contents of a directory.<br />The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of<br />the names of the files in the directory excluding <code>'.'</code> and <code>'..'</code>.</p>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/readdir.3.html">readdir(3)</a>.  It reads the contents of a directory.</p>
 
-<h3>fs.readdirSync(path)</h3>
+<p><h4 class="methodHeader"> <code>fs.readdirSync(path)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the directory</ul></p>
 
-<p>Synchronous readdir(3). Returns an array of filenames excluding <code>'.'</code> and<br /><code>'..'</code>.</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/readdir.3.html">readdir(3)</a>. Returns an array of filenames, excluding <code>'.'</code> and<br /><code>'..'</code>.</p>
 
-<h3>fs.close(fd, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.close(fd, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>[callback(err)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception</li></ul></p>
 
-<p>Asynchronous close(2).  No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p>An asynchronous file close; for more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/close.2.html">close(2)</a>.</p>
 
-<h3>fs.closeSync(fd)</h3>
+<p><h4 class="methodHeader"> <code>fs.closeSync(fd)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor</ul></p>
 
-<p>Synchronous close(2).</p>
+<p>A synchronous file close; for more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/close.2.html">close(2)</a>.</p>
 
-<h3>fs.open(path, flags, [mode], [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.open(path, flags, [mode=0666], [callback(err, fd)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>flags</code>: A string indicating how to open the file</li><li> <code>[mode]</code>: The optional permissions to give the file if it's created</li><li> <code>[callback(err</li><li> fd)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception; <code>fd</code> is an open file descriptor</li></ul></p>
 
-<p>Asynchronous file open. See open(2). <code>flags</code> can be:</p>
+<p>An asynchronous file open; for more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/open.2.html">open(2)</a>. </p>
+
+<p><code>flags</code> can be one of the following:</p>
 
 <ul>
-<li><p><code>'r'</code> - Open file for reading.<br />An exception occurs if the file does not exist.</p></li>
-<li><p><code>'r+'</code> - Open file for reading and writing.<br />An exception occurs if the file does not exist.</p></li>
-<li><p><code>'w'</code> - Open file for writing.<br />The file is created (if it does not exist) or truncated (if it exists).</p></li>
-<li><p><code>'w+'</code> - Open file for reading and writing.<br />The file is created (if it does not exist) or truncated (if it exists).</p></li>
-<li><p><code>'a'</code> - Open file for appending.<br />The file is created if it does not exist.</p></li>
-<li><p><code>'a+'</code> - Open file for reading and appending.<br />The file is created if it does not exist.</p></li>
+<li><p><code>'r'</code>: Opens the file for reading. An exception occurs if the file does not exist.</p></li>
+<li><p><code>'r+'</code>: Opens the file for reading and writing. An exception occurs if the file does not exist.</p></li>
+<li><p><code>'w'</code>: Opens the file for writing. The file is created (if it does not exist) or truncated (if it exists).</p></li>
+<li><p><code>'w+'</code>: Opens the file for reading and writing. The file is created (if it doesn't exist) or truncated (if it exists).</p></li>
+<li><p><code>'a'</code>: Opens the file for appending. The file is created if it doesn't exist.</p></li>
+<li><p><code>'a+'</code>: Opens the file for reading and appending. The file is created if it doesn't exist.</p></li>
 </ul>
 
-<p><code>mode</code> defaults to <code>0666</code>. The callback gets two arguments <code>(err, fd)</code>.</p>
+<p><h4 class="methodHeader"> <code>fs.openSync(path, flags, [mode=0666])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>flags</code>: A string indicating how to open the file</li><li> <code>[mode]</code>: The optional permissions to give the file if it's created</li></ul></p>
 
-<h3>fs.openSync(path, flags, [mode])</h3>
+<p>A synchronous file open; for more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/open.2.html">open(2)</a>. This returns an open file descriptor.</p>
 
-<p>Synchronous open(2).</p>
+<p><code>flags</code> can be one of the following:</p>
 
-<h3>fs.utimes(path, atime, mtime, [callback])</h3>
+<ul>
+<li><p><code>'r'</code>: Opens the file for reading. An exception occurs if the file does not exist.</p></li>
+<li><p><code>'r+'</code>: Opens the file for reading and writing. An exception occurs if the file does not exist.</p></li>
+<li><p><code>'w'</code>: Opens the file for writing. The file is created (if it does not exist) or truncated (if it exists).</p></li>
+<li><p><code>'w+'</code>: Opens the file for reading and writing. The file is created (if it doesn't exist) or truncated (if it exists).</p></li>
+<li><p><code>'a'</code>: Opens the file for appending. The file is created if it doesn't exist.</p></li>
+<li><p><code>'a+'</code>: Opens the file for reading and appending. The file is created if it doesn't exist.</p></li>
+</ul>
 
-<h3>fs.utimesSync(path, atime, mtime)</h3>
+<p><h4 class="methodHeader"> <code>fs.utimes(path, atime, mtime, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>atime</code>: The new access time</li><li> <code>mtime</code>: The new modification time</li><li> <code>[callback()]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<p>Change file timestamps of the file referenced by the supplied path.</p>
+<p>An asynchronous <a href="http://kernel.org/doc/man-pages/online/pages/man2/utime.2.html">utime(2)</a>. Change file timestamps of the file referenced by the supplied path.</p>
 
-<h3>fs.futimes(fd, atime, mtime, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.utimesSync(path, atime, mtime)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to the file<li> <code>atime</code>: The new access time</li><li> <code>mtime</code>: The new modification time</li></ul></p>
 
-<h3>fs.futimesSync(fd, atime, mtime)</h3>
+<p>A synchronous <a href="http://kernel.org/doc/man-pages/online/pages/man2/utime.2.html">utime(2)</a>. Change file timestamps of the file referenced by the supplied path.</p>
 
-<p>Change the file timestamps of a file referenced by the supplied file<br />descriptor.</p>
+<p><h4 class="methodHeader"> <code>fs.futimes(fd, atime, mtime, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>atime</code>: The new access time</li><li> <code>mtime</code>: The new modification time</li><li> <code>[callback()]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<h3>fs.fsync(fd, [callback])</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/lutimes.3.html">futimes(3)</a>. Change the file timestamps of a file referenced by the supplied file descriptor.</p>
 
-<p>Asynchronous fsync(2). No arguments other than a possible exception are given<br />to the completion callback.</p>
+<p><h4 class="methodHeader"> <code>fs.futimesSync(fd, atime, mtime)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>atime</code>: The new access time</li><li> <code>mtime</code>: The new modification time</li></ul></p>
 
-<h3>fs.fsyncSync(fd)</h3>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man3/lutimes.3.html">futimes(3)</a>. Change the file timestamps of a file referenced by the supplied file descriptor.</p>
 
-<p>Synchronous fsync(2).</p>
+<p><h4 class="methodHeader"> <code>fs.fsync(fd, [callback(err)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>[callback()]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<h3>fs.write(fd, buffer, offset, length, position, [callback])</h3>
+<p>An asynchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/fsync.2.html">fsync(2)</a>.</p>
 
-<p>Write <code>buffer</code> to the file specified by <code>fd</code>.</p>
+<p><h4 class="methodHeader"> <code>fs.fsyncSync(fd)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor</ul></p>
 
-<p><code>offset</code> and <code>length</code> determine the part of the buffer to be written.</p>
+<p>A synchronous <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/fsync.2.html">fsync(2)</a>.</p>
 
-<p><code>position</code> refers to the offset from the beginning of the file where this data<br />should be written. If <code>position</code> is <code>null</code>, the data will be written at the<br />current position.<br />See pwrite(2).</p>
+<p><h4 class="methodHeader"> <code>fs.write(fd, buffer, offset, length, position, [callback(err, written, buffer)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>buffer</code>: The buffer to write</li><li> <code>offset</code>: Indicates where in the buffer to start at</li><li> <code>length</code>: Indicates how much of the buffer to use</li><li> <code>position</code>: The offset from the beginning of the file where this data should be written</li><li> <code>[callback(err</li><li> written</li><li> buffer)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception; <code>written</code> specifies how many bytes were written from <code>buffer</code>; <code>buffer</code> is the rest of the buffer</li></ul></p>
 
-<p>The callback will be given three arguments <code>(err, written, buffer)</code> where <code>written</code><br />specifies how many <em>bytes</em> were written from <code>buffer</code>.</p>
+<p>Writes <code>buffer</code> to the file specified by <code>fd</code>. Note that it's unsafe to use <code>fs.write</code> multiple times on the same file without waiting for the callback. For this scenario, <code>fs.createWriteStream()</code> is strongly recommended.</p>
 
-<p>Note that it is unsafe to use <code>fs.write</code> multiple times on the same file<br />without waiting for the callback. For this scenario,<br /><code>fs.createWriteStream</code> is strongly recommended.</p>
+<p>For more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/pwrite.2.html">pwrite(2)</a>.</p>
 
-<h3>fs.writeSync(fd, buffer, offset, length, position)</h3>
+<p><h4 class="methodHeader"> <code>fs.writeSync(fd, buffer, offset, length, position)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>buffer</code>: The buffer to write</li><li> <code>offset</code>: Indicates where in the buffer to start at</li><li> <code>length</code>: Indicates how much of the buffer to use</li><li> <code>position</code> The offset from the beginning of the file where this data should be written</li></ul></p>
 
-<p>Synchronous version of buffer-based <code>fs.write()</code>. Returns the number of bytes<br />written.</p>
+<p>A synchronous version of the buffer-based <code>fs.write()</code>. Returns the number of bytes written.</p>
 
-<h3>fs.writeSync(fd, str, position, encoding='utf8')</h3>
+<p><h4 class="methodHeader"> <code>fs.writeSync(fd, str, position, encoding='utf8')</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor<li> <code>str</code>: The string to write</li><li> <code>offset</code>: Indicates where in the buffer to start at</li><li> <code>position</code> The offset from the beginning of the string where thiyou should start writing from</li><li> <code>encoding</code>: The encoding to use during the write</li></ul></p>
 
-<p>Synchronous version of string-based <code>fs.write()</code>. Returns the number of <em>bytes</em><br />written.</p>
+<p>A synchronous version of the string-based <code>fs.write()</code>. This returns the number of bytes written.</p>
 
-<h3>fs.read(fd, buffer, offset, length, position, [callback])</h3>
+<p><h4 class="methodHeader"> <code>fs.read(fd, buffer, offset, length, position, [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor to read from<li> <code>buffer</code>: The buffer to write to</li><li> <code>offset</code>: Indicates where in the buffer to start writing at</li><li> <code>length</code>: Indicates the number of bytes to read</li><li> <code>position</code>: The offset from the beginning of the file where the reading should begin</li><li> <code>[callback(err</li><li> bytesRead</li><li> buffer)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception; <code>bytesRead</code> specifies how many bytes were read from <code>buffer</code>; <code>buffer</code> is the rest of the buffer</li></ul></p>
 
-<p>Read data from the file specified by <code>fd</code>.</p>
+<p>Read data from the file specified by <code>fd</code> and writes it to <code>buffer</code>. If <code>position</code> is <code>null</code>, data will be read from the current file position.</p>
 
-<p><code>buffer</code> is the buffer that the data will be written to.</p>
+<p><h4 class="methodHeader"> <code>fs.readSync(fd, buffer, offset, length, position)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor to read from<li> <code>buffer</code>: The buffer to write to</li><li> <code>offset</code>: Indicates where in the buffer to start writing at</li><li> <code>length</code>: Indicates the number of bytes to read</li><li> <code>position</code>: The offset from the beginning of the file where the reading should begin</li></ul></p>
 
-<p><code>offset</code> is offset within the buffer where writing will start.</p>
+<p>The synchronous version of buffer-based <code>fs.read()</code>. Returns the number of bytes read.</p>
 
-<p><code>length</code> is an integer specifying the number of bytes to read.</p>
+<p><h4 class="methodHeader"> <code>fs.readSync(fd, length, position, encoding)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor to read from<li> <code>length</code>: Indicates the number of bytes to read</li><li> <code>position</code>: The offset from the beginning of the file where the reading should begin</li><li> <code>encoding</code>: The encoding to use</li></ul></p>
 
-<p><code>position</code> is an integer specifying where to begin reading from in the file.<br />If <code>position</code> is <code>null</code>, data will be read from the current file position.</p>
+<p>Synchronous version of string-based <code>fs.read</code>. Returns the number of bytes read.</p>
 
-<p>The callback is given the three arguments, <code>(err, bytesRead, buffer)</code>.</p>
+<p><h4 class="methodHeader"> <code>fs.readFile(filename, [encoding], [callback(err, data)])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The name of the file to read<li> <code>encoding</code>: The encoding to use</li><li> <code>[callback(err</li><li> data)]</code>: An optional callback to execute once the function completes; <code>err</code> is the possible exception; <code>data</code> is the contents of the file</li></ul></p>
 
-<h3>fs.readSync(fd, buffer, offset, length, position)</h3>
+<p>Asynchronously reads the entire contents of a file. If no encoding is specified, then the raw buffer is returned.</p>
 
-<p>Synchronous version of buffer-based <code>fs.read</code>. Returns the number of<br /><code>bytesRead</code>.</p>
-
-<h3>fs.readSync(fd, length, position, encoding)</h3>
-
-<p>Synchronous version of string-based <code>fs.read</code>. Returns the number of<br /><code>bytesRead</code>.</p>
-
-<h3>fs.readFile(filename, [encoding], [callback])</h3>
-
-<p>Asynchronously reads the entire contents of a file. Example:</p>
+<h4>Example</h4>
 
 <pre><code>fs.readFile('/etc/passwd', function (err, data) {
   if (err) throw err;
@@ -396,21 +405,17 @@ fs.stat('/tmp/world', function (err, stats) {
 });
 </code></pre>
 
-<p>The callback is passed two arguments <code>(err, data)</code>, where <code>data</code> is the<br />contents of the file.</p>
+<p><h4 class="methodHeader"> <code>fs.readFileSync(filename, [encoding])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The name of the file to read<li> <code>encoding</code>: The encoding to use</li></ul></p>
 
-<p>If no encoding is specified, then the raw buffer is returned.</p>
+<p>Synchronous version of <code>fs.readFile()</code>. Returns the contents of the <code>filename</code>.</p>
 
-<h3>fs.readFileSync(filename, [encoding])</h3>
+<p>If <code>encoding</code> is specified, then this function returns a string. Otherwise it returns a buffer.</p>
 
-<p>Synchronous version of <code>fs.readFile</code>. Returns the contents of the <code>filename</code>.</p>
+<p><h4 class="methodHeader"> <code>fs.writeFile(filename, data, encoding='utf8', [callback()])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The name of the file to write to<li> <code>data</code>: The data to write (this can be a string or a buffer)</li><li> <code>encoding</code>: The encoding to use (this is ignored if <code>data</code> is a buffer)</li><li> <code>[callback()]</code>: An optional callback to execute once the function completes</li></ul></p>
 
-<p>If <code>encoding</code> is specified then this function returns a string. Otherwise it<br />returns a buffer.</p>
+<p>Asynchronously writes data to a file, replacing the file if it already exists.</p>
 
-<h3>fs.writeFile(filename, data, encoding='utf8', [callback])</h3>
-
-<p>Asynchronously writes data to a file, replacing the file if it already exists.<br /><code>data</code> can be a string or a buffer. The <code>encoding</code> argument is ignored if<br /><code>data</code> is a buffer.</p>
-
-<p>Example:</p>
+<h4>Example</h4>
 
 <pre><code>fs.writeFile('message.txt', 'Hello Node', function (err) {
   if (err) throw err;
@@ -418,17 +423,17 @@ fs.stat('/tmp/world', function (err, stats) {
 });
 </code></pre>
 
-<h3>fs.writeFileSync(filename, data, encoding='utf8')</h3>
+<p><h4 class="methodHeader"> <code>fs.writeFileSync(filename, data, encoding='utf8')</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The name of the file to write to<li> <code>data</code>: The data to write (this can be a string or a buffer)</li><li> <code>encoding</code>: The encoding to use (this is ignored if <code>data</code> is a buffer)</li></ul></p>
 
-<p>The synchronous version of <code>fs.writeFile</code>.</p>
+<p>The synchronous version of <code>fs.writeFile()</code>.</p>
 
-<h3>fs.watchFile(filename, [options], listener)</h3>
+<p><h4 class="methodHeader"> <code>fs.watchFile(filename, [options={ persistent: true, interval: 0 }], listener(curr, prev))</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The name of the file to watch<li> <code>[options]</code>: Any optional arguments indicating how often to watch</li><li> <code>listener(curr</li><li> prev)</code>: The callback to execute each time the file is accessed; <code>curr</code> is the current time; <code>prev</code> was the last change time</li></ul></p>
 
-<p>Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each<br />time the file is accessed.</p>
+<p>Watches for changes on <code>filename</code>. </p>
 
-<p>The second argument is optional. The <code>options</code> if provided should be an object<br />containing two members a boolean, <code>persistent</code>, and <code>interval</code>. <code>persistent</code><br />indicates whether the process should continue to run as long as files are<br />being watched. <code>interval</code> indicates how often the target should be polled,<br />in milliseconds. (On Linux systems with inotify, <code>interval</code> is ignored.) The<br />default is <code>{ persistent: true, interval: 0 }</code>.</p>
+<p><code>options</code>, if provided, should be an object containing two boolean members: <code>persistent</code> and <code>interval</code>. <code>persistent</code> indicates whether the process should continue to run as long as files are being watched. <code>interval</code> indicates how often the target should be polled, in milliseconds. (On Linux systems with <a href="http://en.wikipedia.org/wiki/Inotify">inotify</a>, <code>interval</code> is ignored.) </p>
 
-<p>The <code>listener</code> gets two arguments the current stat object and the previous<br />stat object:</p>
+<p>The <code>listener()</code> gets two arguments the current stat object and the previous stat object:</p>
 
 <pre><code>fs.watchFile('message.text', function (curr, prev) {
   console.log('the current mtime is: ' + curr.mtime);
@@ -438,35 +443,35 @@ fs.stat('/tmp/world', function (err, stats) {
 
 <p>These stat objects are instances of <code>fs.Stat</code>.</p>
 
-<p>If you want to be notified when the file was modified, not just accessed<br />you need to compare <code>curr.mtime</code> and <code>prev.mtime</code>.</p>
+<p>If you want to be notified when the file was modified, not just accessed, you need to compare <code>curr.mtime</code> and <code>prev.mtime</code>.</p>
 
-<h3>fs.unwatchFile(filename)</h3>
+<p><h4 class="methodHeader"> <code>fs.unwatchFile(filename)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The filename to watch</ul></p>
 
-<p>Stop watching for changes on <code>filename</code>.</p>
+<p>Stops watching for changes on <code>filename</code>.</p>
 
-<h3>fs.watch(filename, [options], listener)</h3>
+<p><h4 class="methodHeader"> <code>fs.watch(filename, [options = {persistent: true}], listener(event, filename))</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>filename</code>: The filename (or directory) to watch<li> <code>[options]</code>: An optional arguments indicating how to watch</li><li> <code>listener(event</li><li> filename)</code>: The callback to execute each time the file is accessed; <code>event</code> is either <code>'rename'</code> or '<code>change'</code>; <code>filename</code> is the name of the file which triggered the event</li></ul></p>
 
-<p>Watch for changes on <code>filename</code>, where <code>filename</code> is either a file or a<br />directory.  The returned object is <a href="#fs.FSWatcher">fs.FSWatcher</a>.</p>
+<p>Watch for changes on <code>filename</code>. The returned object is an <a href="#fs.FSWatcher">fs.FSWatcher</a>.</p>
 
-<p>The second argument is optional. The <code>options</code> if provided should be an object<br />containing a boolean member <code>persistent</code>, which indicates whether the process<br />should continue to run as long as files are being watched. The default is<br /><code>{ persistent: true }</code>.</p>
+<p><code>options</code>, if provided, should be an object containing a boolean member <code>persistent</code>, which indicates whether the process should continue to run as long as files are being watched.</p>
 
-<p>The listener callback gets two arguments <code>(event, filename)</code>.  <code>event</code> is either<br />'rename' or 'change', and <code>filename</code> is the name of the file which triggered<br />the event.</p>
-
-<p><strong><em>Warning:</em></strong><br />Providing <code>filename</code> argument in the callback is not supported<br />on every platform (currently it's only supported on Linux and Windows).  Even<br />on supported platforms <code>filename</code> is not always guaranteed to be provided.<br />Therefore, don't assume that <code>filename</code> argument is always provided in the<br />callback, and have some fallback logic if it is null.</p>
+<p><strong>Warning:</strong> Providing the <code>filename</code> argument in the callback is not supported on every platform (currently it's only supported on Linux and Windows).  Even on supported platforms, <code>filename</code> is <strong>not</strong> always guaranteed to be provided. Therefore, don't assume that <code>filename</code> argument is always provided in the callback, and have some fallback logic if it is <code>null</code>:</p>
 
 <pre><code>fs.watch('somedir', function (event, filename) {
-  console.log('event is: ' + event);
-  if (filename) {
-    console.log('filename provided: ' + filename);
-  } else {
+    console.log('event is: ' + event);
+    if (filename) {
+        console.log('filename provided: ' + filename);
+    } else {
     console.log('filename not provided');
-  }
+    }
 });
 </code></pre>
 
-<h2>fs.Stats</h2>
+<h3>Objects</h3>
 
-<p>Objects returned from <code>fs.stat()</code>, <code>fs.lstat()</code> and <code>fs.fstat()</code> and their<br />synchronous counterparts are of this type.</p>
+<p><h4 class="objHeader"><code>fs.Stats</code></h4></p>
+
+<p>Objects returned from <code>fs.stat()</code>, <code>fs.lstat()</code> and <code>fs.fstat()</code> (and their synchronous counterparts) are of this type.</p>
 
 <ul>
 <li><code>stats.isFile()</code></li>
@@ -478,7 +483,7 @@ fs.stat('/tmp/world', function (err, stats) {
 <li><code>stats.isSocket()</code></li>
 </ul>
 
-<p>For a regular file <code>util.inspect(stats)</code> would return a string very<br />similar to this:</p>
+<p>For a regular file, <code>util.inspect(stats)</code> returns a string similar to this:</p>
 
 <pre><code>{ dev: 2114,
   ino: 48064969,
@@ -495,21 +500,21 @@ fs.stat('/tmp/world', function (err, stats) {
   ctime: Mon, 10 Oct 2011 23:24:11 GMT }
 </code></pre>
 
-<p>Please note that <code>atime</code>, <code>mtime</code> and <code>ctime</code> are instances<br />of <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">Date</a> object and to compare the values of<br />these objects you should use appropriate methods. For most<br />general uses <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getTime">getTime()</a> will return<br />the number of milliseconds elapsed since <em>1 January 1970<br />00:00:00 UTC</em> and this integer should be sufficient for<br />any comparison, however there additional methods which can<br />be used for displaying fuzzy information. More details can<br />be found in the <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">MDN JavaScript Reference</a> page.</p>
+<p>Please note that <code>atime</code>, <code>mtime</code> and <code>ctime</code> are instances of the <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">Date</a> object, and to compare the values of these objects you should use appropriate methods. For most general uses, <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getTime">getTime()</a> will return the number of milliseconds elapsed since <em>1 January 1970 00:00:00 UTC</em>, and this integer should be sufficient for any comparison. However there are additional methods which can be used for displaying fuzzy information. More details can be found on the <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">MDN JavaScript Reference</a> page.</p>
 
-<h2>fs.ReadStream</h2>
+<p><h4 class="objHeader"><code>fs.ReadStream</code></h4></p>
 
 <p><code>ReadStream</code> is a <a href="streams.html#readable_Stream">Readable Stream</a>.</p>
 
-<h3>Event: 'open'</h3>
+<h3>Event</h3>
 
-<p><code>function (fd) { }</code></p>
+<p><h4 class="eventHeader"> <code>'open'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(fd)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>fd</code> : The file descriptor used by the <code>ReadStream</code></li></ul></li></ul></p>
 
-<p><code>fd</code> is the file descriptor used by the ReadStream.</p>
+<p>Emitted when a file is opened.</p>
 
-<h3>fs.createReadStream(path, [options])</h3>
+<p><h4 class="methodHeader"> <code>fs.createReadStream(path, [options])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to read from<li> <code>[options]</code>: Any optional arguments indicating how to read the stream</li></ul></p>
 
-<p>Returns a new ReadStream object (See <code>Readable Stream</code>).</p>
+<p>Returns a new <a href="#readstream">ReadStream</a> object.</p>
 
 <p><code>options</code> is an object with the following defaults:</p>
 
@@ -523,28 +528,32 @@ fs.stat('/tmp/world', function (err, stats) {
 
 <p><code>options</code> can include <code>start</code> and <code>end</code> values to read a range of bytes from<br />the file instead of the entire file.  Both <code>start</code> and <code>end</code> are inclusive and<br />start at 0.</p>
 
-<p>An example to read the last 10 bytes of a file which is 100 bytes long:</p>
+<h4>Example</h4>
+
+<p>Here's an example to read the last 10 bytes of a file which is 100 bytes long:</p>
 
 <pre><code>fs.createReadStream('sample.txt', {start: 90, end: 99});
 </code></pre>
 
-<h2>fs.WriteStream</h2>
+<h3>Object</h3>
+
+<p><h4 class="objHeader"><code>fs.WriteStream</code></h4></p>
 
 <p><code>WriteStream</code> is a <a href="streams.html#writable_Stream">Writable Stream</a>.</p>
 
-<h3>Event: 'open'</h3>
+<h3>Events</h3>
 
-<p><code>function (fd) { }</code></p>
+<p><h4 class="eventHeader"> <code>'open'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(fd)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>fd</code> : The file descriptor used by the <code>WriteStream</code></li></ul></li></ul></p>
 
-<p><code>fd</code> is the file descriptor used by the WriteStream.</p>
+<p>Emitted when a file is opened.</p>
 
-<h3>file.bytesWritten</h3>
+<p><h4 class="propertyHeader"> <code>file.bytesWritten</code></h4></p>
 
-<p>The number of bytes written so far. Does not include data that is still queued<br />for writing.</p>
+<p>The number of bytes written so far. This doesn't include data that is still queued<br />for writing.</p>
 
-<h3>fs.createWriteStream(path, [options])</h3>
+<p><h4 class="methodHeader"> <code>fs.createWriteStream(path, [options])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>path</code>: The path to read from<li> <code>[options]</code>: Any optional arguments indicating how to write the stream</li></ul></p>
 
-<p>Returns a new WriteStream object (See <code>Writable Stream</code>).</p>
+<p>Returns a new <a href="#writestream">WriteStream</a> object.</p>
 
 <p><code>options</code> is an object with the following defaults:</p>
 
@@ -553,25 +562,27 @@ fs.stat('/tmp/world', function (err, stats) {
   mode: 0666 }
 </code></pre>
 
-<p><code>options</code> may also include a <code>start</code> option to allow writing data at<br />some position past the beginning of the file.  Modifying a file rather<br />than replacing it may require a <code>flags</code> mode of <code>r+</code> rather than the<br />default mode <code>w</code>.</p>
+<p><code>options</code> may also include a <code>start</code> option to allow writing data at some position past the beginning of the file.  </p>
 
-<h2>fs.FSWatcher</h2>
+<p>Modifying a file rather than replacing it may require a <code>flags</code> mode of <code>r+</code> rather than the default mode <code>w</code>.</p>
+
+<h3>Object</h3>
+
+<p><h4 class="objHeader"><code>fs.FSWatcher</code></h4></p>
 
 <p>Objects returned from <code>fs.watch()</code> are of this type.</p>
 
-<h4>watcher.close()</h4>
+<p><h4 class="methodHeader"> <code>watcher.close()</code></h4></p>
 
 <p>Stop watching for changes on the given <code>fs.FSWatcher</code>.</p>
 
-<h4>Event: 'change'</h4>
+<h3>Event</h3>
 
-<p><code>function (event, filename) {}</code></p>
+<p><h4 class="eventHeader"> <code>'change'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(event<div class="listenerParamParam"><h6>Parameters</h6><ul><li> filename)</code>: The callback to execute once the event fires</li><li> <code>event</code>: The event that occured</li><li> either <code>'rename'</code> or '<code>change'</code></li><li> <code>filename</code> is the name of the file which triggered the event</li></ul></li></ul></p>
 
-<p>Emitted when something changes in a watched directory or file.<br />See more details in <a href="#fs.watch">fs.watch</a>.</p>
+<p>Emitted when something changes in a watched directory or file. See more details in <a href="#fs.watch">fs.watch</a>.</p>
 
-<h4>Event: 'error'</h4>
-
-<p><code>function (exception) {}</code></p>
+<p><h4 class="eventHeader"> <code>'error'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(exception)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>exception</code>: The exception that was caught</li></ul></li></ul></p>
 
 <p>Emitted when an error occurs.<br /></div></p></div>
 </div>

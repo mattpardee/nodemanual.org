@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -94,13 +94,30 @@
 
 <h2>Query String</h2>
 
-<p>This module provides utilities for dealing with query strings.<br />It provides the following methods:</p>
+<p>This module provides utilities for dealing with query strings.</p>
 
-<h3>querystring.stringify(obj, sep='&amp;', eq='=')</h3>
+<h3>Methods</h3>
 
-<p>Serialize an object to a query string.<br />Optionally override the default separator and assignment characters.</p>
+<p><h4 class="methodHeader"> <code>querystring.escape()</code></h4></p>
 
-<p>Example:</p>
+<p>The escape function used by <code>querystring.stringify()</code>, provided so that it could be overridden if necessary.</p>
+
+<p><h4 class="methodHeader"> <code>querystring.parse(str, [sep='&amp;'], [eq='='])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>str</code>: The query string to parse<li> <code>sep</code>: The separator character</li><li> <code>eq</code>: The equivalency character</li></ul></p>
+
+<p>Deserialize a query string to an object and returns it. You can choose to override the default separator and assignment characters.</p>
+
+<h3>Example</h3>
+
+<pre><code>querystring.parse('foo=bar&amp;baz=qux&amp;baz=quux&amp;corge')
+// returns
+{ foo: 'bar', baz: ['qux', 'quux'], corge: '' }
+</code></pre>
+
+<p><h4 class="methodHeader"> <code>querystring.stringify(obj, [sep='&amp;'], [eq='='])</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>obj</code>: The JSON object to serialize<li> <code>sep</code>: The separator character</li><li> <code>eq</code>: The equivalency character</li></ul></p>
+
+<p>Serialize an object to a query string and returns it. You can choose to override the default separator and assignment characters.</p>
+
+<h4>Examples</h4>
 
 <pre><code>querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' })
 // returns
@@ -111,24 +128,9 @@ querystring.stringify({foo: 'bar', baz: 'qux'}, ';', ':')
 'foo:bar;baz:qux'
 </code></pre>
 
-<h3>querystring.parse(str, sep='&amp;', eq='=')</h3>
+<p><h4 class="methodHeader"> <code>querystring.unescape</code></h4></p>
 
-<p>Deserialize a query string to an object.<br />Optionally override the default separator and assignment characters.</p>
-
-<p>Example:</p>
-
-<pre><code>querystring.parse('foo=bar&amp;baz=qux&amp;baz=quux&amp;corge')
-// returns
-{ foo: 'bar', baz: ['qux', 'quux'], corge: '' }
-</code></pre>
-
-<h3>querystring.escape</h3>
-
-<p>The escape function used by <code>querystring.stringify</code>,<br />provided so that it could be overridden if necessary.</p>
-
-<h3>querystring.unescape</h3>
-
-<p>The unescape function used by <code>querystring.parse</code>,<br />provided so that it could be overridden if necessary.<br /></div></p></div>
+<p>The unescape function used by <code>querystring.parse()</code>, provided so that it could be overridden if necessary.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

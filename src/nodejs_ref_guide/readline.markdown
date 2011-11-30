@@ -1,11 +1,8 @@
 ## Readline
 
-To use this module, do `require('readline')`. Readline allows reading of a
-stream (such as STDIN) on a line-by-line basis.
+Readline allows reading of a stream (such as STDIN) on a line-by-line basis. To use this module, add `require('readline')` to your code.
 
-Note that once you've invoked this module, your node program will not
-terminate until you've closed the interface, and the STDIN stream. Here's how
-to allow your program to gracefully terminate:
+<span class="label success">Note</span> Once you've invoked this module, your Node.js program won't terminate until you've closed the interface, and the STDIN stream. Here's how to allow your program to gracefully terminate:
 
     var rl = require('readline');
 
@@ -20,94 +17,7 @@ to allow your program to gracefully terminate:
       process.stdin.destroy();
     });
 
-### rl.createInterface(input, output, completer)
-
-Takes two streams and creates a readline interface. The `completer` function
-is used for autocompletion. When given a substring, it returns `[[substr1,
-substr2, ...], originalsubstring]`.
-
-Also `completer` can be run in async mode if it accepts two arguments:
-
-  function completer(linePartial, callback) {
-    callback(null, [['123'], linePartial]);
-  }
-
-`createInterface` is commonly used with `process.stdin` and
-`process.stdout` in order to accept user input:
-
-    var readline = require('readline'),
-      rl = readline.createInterface(process.stdin, process.stdout);
-
-### rl.setPrompt(prompt, length)
-
-Sets the prompt, for example when you run `node` on the command line, you see
-`> `, which is node's prompt.
-
-### rl.prompt()
-
-Readies readline for input from the user, putting the current `setPrompt`
-options on a new line, giving the user a new spot to write.
-
-<!-- ### rl.getColumns() Not available? -->
-
-### rl.question(query, callback)
-
-Prepends the prompt with `query` and invokes `callback` with the user's
-response. Displays the query to the user, and then invokes `callback` with the
-user's response after it has been typed.
-
-Example usage:
-
-    interface.question('What is your favorite food?', function(answer) {
-      console.log('Oh, so your favorite food is ' + answer);
-    });
-
-### rl.close()
-
-  Closes tty.
-
-### rl.pause()
-
-  Pauses tty.
-
-### rl.resume()
-
-  Resumes tty.
-
-### rl.write()
-
-  Writes to tty.
-
-### Event: 'line'
-
-`function (line) {}`
-
-Emitted whenever the `in` stream receives a `\n`, usually received when the
-user hits enter, or return. This is a good hook to listen for user input.
-
-Example of listening for `line`:
-
-    rl.on('line', function (cmd) {
-      console.log('You just typed: '+cmd);
-    });
-
-### Event: 'close'
-
-`function () {}`
-
-Emitted whenever the `in` stream receives a `^C` or `^D`, respectively known
-as `SIGINT` and `EOT`. This is a good way to know the user is finished using
-your program.
-
-Example of listening for `close`, and exiting the program afterward:
-
-    rl.on('close', function() {
-      console.log('goodbye!');
-      process.exit(0);
-    });
-
-Here's an example of how to use all these together to craft a tiny command
-line interface:
+Here's an example of how to use all the methods together to craft a tiny command line interface:
 
     var readline = require('readline'),
       rl = readline.createInterface(process.stdin, process.stdout),
@@ -133,7 +43,89 @@ line interface:
     rl.prompt();
 
 
-Take a look at this slightly more complicated
-[example](https://gist.github.com/901104), and
-[http-console](https://github.com/cloudhead/http-console) for a real-life use
-case.
+Take a look at this slightly more complicated [example](https://gist.github.com/901104), as well as [http-console](https://github.com/cloudhead/http-console) for a real-life use case.
+
+### Events
+
+@event `'close'`
+@cb `function ()`: The callback to execute once the event fires
+
+Emitted whenever the `in` stream receives a `^C` (`SIGINT`) or `^D` (`EOT`). This is a good way to know the user is finished using your program.
+
+#### Examples
+
+Example of listening for `close`, and exiting the program afterward:
+
+    rl.on('close', function() {
+      console.log('goodbye!');
+      process.exit(0);
+    });
+    
+@event `'line'`
+@cb `function (line)`: The callback to execute once the event fires, `line`: The line that prompted the event
+
+Emitted whenever the `in` stream receives a `\n`, usually received when the user hits enter, or return. This is a good hook to listen for user input.
+
+#### Example
+
+    rl.on('line', function (cmd) {
+      console.log('You just typed: '+cmd);
+    });
+    
+### Methods
+
+@method `rl.close()`
+
+  Closes `tty`.
+  
+@method `rl.createInterface(input, output, completer())`
+@param `input`: The readable stream, `output`: The writeable stream, `completer()`: A function to use for autocompletion
+
+Takes two streams and creates a readline interface. 
+
+When given a substring, `completer()` returns `[[substr1, substr2, ...], originalsubstring]`.
+
+Also, `completer()` can be run in an asynchronous manner if it accepts two arguments:
+
+    function completer(linePartial, callback) {
+        callback(null, [['123'], linePartial]);
+    }
+
+#### Example
+
+`createInterface()` is commonly used with `process.stdin` and `process.stdout` in order to accept user input:
+
+    var readline = require('readline'), 
+        rl = readline.createInterface(process.stdin, process.stdout);
+
+@method `rl.pause()`
+
+  Pauses `tty`.
+  
+@method `rl.prompt()`
+
+Readies readline for input from the user, putting the current `setPrompt` options on a new line, giving the user a new spot to write.
+
+@method `rl.question(query, callback())`
+@param `query`: A string to display the user, `callback()`: The function to execute once the method completes
+
+Prepends the prompt with `query` and invokes `callback` with the user's respons after it has been entered.
+
+#### Example
+
+    interface.question('What is your favorite food?', function(answer) {
+      console.log('Oh, so your favorite food is ' + answer);
+    });
+  
+@method `rl.resume()`
+
+Resumes `tty`.
+
+@method `rl.setPrompt(prompt, length)`
+@param `prompt`: The prompting character, `length`: The length before line wrapping
+
+Sets the prompt. For example when you run `node` on the command line, you see `> `, which is Node's prompt.
+
+@method `rl.write()`
+
+Writes to `tty`.

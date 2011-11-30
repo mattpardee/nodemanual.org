@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,23 +80,23 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
 <div class="content"><p><div class="hero-unit"></p>
 
-<p><a class="hiddenLink" id="cluster"></a></p>
+<p><a class="hiddenLink" id="clusters"></a></p>
 
-<h2>Cluster</h2>
+<h2>Clusters</h2>
 
-<p>A single instance of Node runs in a single thread. To take advantage of<br />multi-core systems the user will sometimes want to launch a cluster of Node<br />processes to handle the load.</p>
+<p>A single instance of Node.js runs in a single thread. To take advantage of multi-core systems the user will sometimes want to launch a cluster of Node.js processes to handle the load.</p>
 
-<p>The cluster module allows you to easily create a network of processes that<br />all share server ports.</p>
+<p>The cluster module allows you to easily create a network of processes that all share server ports:</p>
 
 <pre><code>var cluster = require('cluster');
 var http = require('http');
@@ -120,14 +120,16 @@ if (cluster.isMaster) {
 }
 </code></pre>
 
-<p>Running node will now share port 8000 between the workers:</p>
+<p>Running node now shares port 8000 between the workers:</p>
 
 <pre><code>% node server.js
 Worker 2438 online
 Worker 2437 online
 </code></pre>
 
-<p>The difference between <code>cluster.fork()</code> and <code>child_process.fork()</code> is simply<br />that cluster allows TCP servers to be shared between workers. <code>cluster.fork</code><br />is implemented on top of <code>child_process.fork</code>. The message passing API that<br />is available with <code>child_process.fork</code> is available with <code>cluster</code> as well.<br />As an example, here is a cluster which keeps count of the number of requests<br />in the master process via message passing:</p>
+<p>The difference between <code>cluster.fork()</code> and <code>child_process.fork()</code> is simply that cluster allows TCP servers to be shared between workers. <code>cluster.fork</code> is implemented on top of <code>child_process.fork</code>. The message passing API that is available with <code>child_process.fork</code> is available with <code>cluster</code> as well.</p>
+
+<p>As an example, here is a cluster which keeps count of the number of requests in the master process via message passing:</p>
 
 <pre><code>var cluster = require('cluster');
 var http = require('http');
@@ -159,19 +161,13 @@ if (cluster.isMaster) {
 }
 </code></pre>
 
-<h3>cluster.fork()</h3>
+<h3>Events</h3>
 
-<p>Spawn a new worker process. This can only be called from the master process.</p>
+<p><h4 class="eventHeader"> <code>'death'</code></h4><div class="listenerParam"><h5>Listener Parameters</h5><ul><li><code>function(worker)</code>: The callback to execute once the event fires<div class="listenerParamParam"><h6>Parameters</h6><ul><li> <code>worker</code>: The dying worker in the cluster</li></ul></li></ul></p>
 
-<h3>cluster.isMaster</h3>
+<p>When any of the workers die the cluster module will emit the 'death' event. This can be used to restart the worker by calling <code>fork()</code> again.</p>
 
-<h3>cluster.isWorker</h3>
-
-<p>Boolean flags to determine if the current process is a master or a worker<br />process in a cluster. A process <code>isMaster</code> if <code>process.env.NODE_WORKER_ID</code><br />is undefined.</p>
-
-<h3>Event: 'death'</h3>
-
-<p>When any of the workers die the cluster module will emit the 'death' event.<br />This can be used to restart the worker by calling <code>fork()</code> again.</p>
+<h4>Example</h4>
 
 <pre><code>cluster.on('death', function(worker) {
   console.log('worker ' + worker.pid + ' died. restart...');
@@ -179,7 +175,19 @@ if (cluster.isMaster) {
 });
 </code></pre>
 
-<p>Different techniques can be used to restart the worker depending on the<br />application.<br /></div></p></div>
+<p>Different techniques can be used to restart the worker, depending on the application.</p>
+
+<h3>Methods</h3>
+
+<p><h4 class="methodHeader"> <code>cluster.fork()</code></h4></p>
+
+<p>Spawn a new worker process. This can only be called from the master process.</p>
+
+<h3>Properties</h3>
+
+<p><h4 class="propertyHeader"> <code>cluster.isMaster</code> /<code>cluster.isWorker</code></h4></p>
+
+<p>Boolean flags to determine if the current process is a master or a worker process in a cluster. A process <code>isMaster</code> if <code>process.env.NODE_WORKER_ID</code> is undefined.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

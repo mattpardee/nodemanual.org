@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -96,7 +96,7 @@
 
 <p>Use <code>require('tty')</code> to access this module.</p>
 
-<p>Example:</p>
+<p>Here's an example:</p>
 
 <pre><code>var tty = require('tty');
 process.stdin.resume();
@@ -109,23 +109,23 @@ process.stdin.on('keypress', function(char, key) {
 });
 </code></pre>
 
-<h3>tty.isatty(fd)</h3>
+<h3>Methods</h3>
 
-<p>Returns <code>true</code> or <code>false</code> depending on if the <code>fd</code> is associated with a<br />terminal.</p>
+<p><h4 class="methodHeader"> <code>tty.getWindowSize(fd)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor to check</ul></p>
 
-<h3>tty.setRawMode(mode)</h3>
+<p>Returns an array of <code>[row, col]</code> for the TTY associated with the file descriptor.</p>
 
-<p><code>mode</code> should be <code>true</code> or <code>false</code>. This sets the properties of the current<br />process's stdin fd to act either as a raw device or default.</p>
+<p><h4 class="methodHeader"> <code>tty.isatty(fd)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor to check</ul></p>
 
-<h3>tty.setWindowSize(fd, row, col)</h3>
+<p>Returns <code>true</code> or <code>false</code> depending on if the <code>fd</code> is associated with a terminal.</p>
 
-<p><code>ioctl</code>s the window size settings to the file descriptor.</p>
+<p><h4 class="methodHeader"> <code>tty.setRawMode(mode)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>mode</code>: A boolean value indicating how to set the rawness</ul></p>
 
-<h3>tty.getWindowSize(fd)</h3>
+<p>This sets the properties of the current process's stdin fd to act either as a raw device (<code>true</code>) or default (<code>false</code>).</p>
 
-<p>Returns <code>[row, col]</code> for the TTY associated with the file descriptor.</p>
+<p><h4 class="methodHeader"> <code>tty.setWindowSize(fd, row, col)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>fd</code>: The file descriptor to use<li> <code>row</code>: The number of rows</li><li> <code>col</code>: The number of columns</li></ul></p>
 
-<p></div></p></div>
+<p>Defines the window size settings to the file descriptor.<br /></div></p></div>
 </div>
 <footer>
     <p>&nbsp;</p>

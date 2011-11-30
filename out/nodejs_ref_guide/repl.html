@@ -66,9 +66,9 @@
 <li><a class="upper" href="streams.html">Streams</a></li>
 <li><a class="upper" href="crypto.html">Cryptography and OpenSSL</a></li>
 <li><a class="upper" href="tls.html">Implementing TLS & SSL</a></li>
-<li><a class="upper" href="fs.html">File System</a></li>
+<li><a class="upper" href="fs.html">Working with the File System</a></li>
 <li><a class="upper" href="net.html">net</a></li>
-<li><a class="upper" href="dgram.html">UDP / Datagram Sockets</a></li>
+<li><a class="upper" href="dgram.html">UDP and Datagram Sockets</a></li>
 <li><a class="upper" href="dns.html">DNS</a></li>
 <li><a class="upper" href="http.html">HTTP</a></li>
 <li><a class="upper" href="https.html">HTTPS</a></li>
@@ -80,11 +80,11 @@
 <li><a class="upper" href="child_processes.html">Child Processes</a></li>
 <li><a class="upper" href="assert.html">Assert</a></li>
 <li><a class="upper" href="tty.html">TTY</a></li>
-<li><a class="upper" href="zlib.html">Zlib</a></li>
-<li><a class="upper" href="os.html">os Module</a></li>
-<li><a class="upper" href="debugger.html">Debugger</a></li>
-<li><a class="upper" href="cluster.html">Cluster</a></li>
-<li><a class="upper" href="appendix_1.html">Appendix 1 - Third Party Modules</a></li>
+<li><a class="upper" href="zlib.html">Zipping with zlib</a></li>
+<li><a class="upper" href="os.html">Accessing the OS</a></li>
+<li><a class="upper" href="debugger.html">Debugging Node.js</a></li>
+<li><a class="upper" href="cluster.html">Clusters</a></li>
+<li><a class="upper" href="appendix_1.html">A1: Third Party Modules</a></li>
 </ul></div>
 </div>
 </div>
@@ -94,9 +94,9 @@
 
 <h2>REPL</h2>
 
-<p>A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily<br />includable in other programs.  REPL provides a way to interactively run<br />JavaScript and see the results.  It can be used for debugging, testing, or<br />just trying things out.</p>
+<p>A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily includable in other programs.  REPL provides a way to interactively run Javascript and see the results.  It can be used for debugging, testing, or just trying things out.</p>
 
-<p>By executing <code>node</code> without any arguments from the command-line you will be<br />dropped into the REPL. It has simplistic emacs line-editing.</p>
+<p>By executing <code>node</code> without any arguments from the command line, you'll be dropped into the REPL. It has a simplistic emacs line-editing:</p>
 
 <pre><code>mjr:~$ node
 Type '.help' for options.
@@ -110,31 +110,83 @@ Type '.help' for options.
 3
 </code></pre>
 
-<p>For advanced line-editors, start node with the environmental variable <code>NODE_NO_READLINE=1</code>.<br />This will start the REPL in canonical terminal settings which will allow you to use with <code>rlwrap</code>.</p>
+<p>For advanced line-editors, start <code>node</code> with the environmental variable <code>NODE_NO_READLINE=1</code>. This starts the REPL in canonical terminal settings which allow you to use with <code>rlwrap</code>.</p>
 
-<p>For example, you could add this to your bashrc file:</p>
+<p>For a quicker configuration, you could add this to your <code>.bashrc</code> file:</p>
 
 <pre><code>alias node="env NODE_NO_READLINE=1 rlwrap node"
 </code></pre>
 
-<h3>repl.start(prompt='> ', stream=process.stdin, eval=eval, useGlobal=false, ignoreUndefined=false)</h3>
+<h3>REPL Features</h3>
 
-<p>Starts a REPL with <code>prompt</code> as the prompt and <code>stream</code> for all I/O.  <code>prompt</code><br />is optional and defaults to <code>&gt;</code>.  <code>stream</code> is optional and defaults to<br /><code>process.stdin</code>. <code>eval</code> is optional too and defaults to async wrapper for <code>eval</code>.</p>
+<p>Inside the REPL, multi-line expressions can be input, and tab completion is supported for both global and local variables.</p>
 
-<p>If <code>useGlobal</code> is set to true, then the repl will use the global object,<br />instead of running scripts in a separate context.</p>
+<p>The special variable <code>_</code> contains the result of the last expression, like so:</p>
 
-<p>If <code>ignoreUndefined</code> is set to true, then the repl will not output return value<br />of command if it's <code>undefined</code>.</p>
+<pre><code>&gt; [ "a", "b", "c" ]
+[ 'a', 'b', 'c' ]
+&gt; _.length
+3
+&gt; _ += 1
+4
+</code></pre>
 
-<p>You can use your own <code>eval</code> function if it has following signature:</p>
+<p>The REPL provides access to any variables in the global scope. You can expose a variable to the REPL explicitly by assigning it to the <code>context</code> object associated with each <code>REPLServer</code>.  For example:</p>
+
+<pre><code>// repl_test.js
+var repl = require("repl"),
+    msg = "message";
+
+repl.start().context.m = msg;
+</code></pre>
+
+<p>Things in the <code>context</code> object appear as local within the REPL:</p>
+
+<pre><code>mjr:~$ node repl_test.js
+&gt; m
+'message'
+</code></pre>
+
+<h4>Special Commands</h4>
+
+<p>There are a few special REPL commands:</p>
+
+<ul>
+<li><code>.break</code>: while inputting a multi-line expression, sometimes you get lost or just don't care about completing it; this wipes it out so you can start over</li>
+<li><code>.clear</code>: resets the <code>context</code> object to an empty object and clears any multi-line expression.</li>
+<li><code>.exit</code>: closes the I/O stream, which causes the REPL to exit.</li>
+<li><code>.help</code>: shows this list of special commands</li>
+<li><code>.save</code>: save the current REPL session to a file, like so: <code>&gt;.save ./file/to/save.js</code></li>
+<li><code>.load</code>: loads a file into the current REPL session, like so: <code>&gt;.load ./file/to/load.js</code></li>
+</ul>
+
+<h4>Key Combinations</h4>
+
+<p>The following key combinations in the REPL have special effects:</p>
+
+<ul>
+<li><code>&lt;ctrl&gt;C</code> - Similar to the <code>.break</code> keyword, this terminates the current command.  Press twice on a blank line to forcibly exit the REPL.</li>
+<li><code>&lt;ctrl&gt;D</code> - Similar to the <code>.exit</code> keyword, it closes to stream and exits the REPL</li>
+</ul>
+
+<h3>Methods</h3>
+
+<p><h4 class="methodHeader"> <code>repl.start([prompt='&gt; '], [stream=process.stdin], [eval=eval], useGlobal=false, ignoreUndefined=false)</code></h4><div class="methodParam"><h5>Parameters</h5><ul><li><code>prompt</code>: The starting prompt<li> <code>stream</code>: The stream to read from</li><li> <code>eval</code>: An asynchronous wrapper function that executes after each line</li><li> <code>useGlobal</code>: If <code>true</code></li><li> then the REPL uses the global object</li><li> instead of scripts in a separate context</li><li> <code>ignoreUndefined</code>: If <code>true</code></li><li> the REPL won't output return valyes of a command if it's <code>undefined</code></li></ul></p>
+
+<p>Starts a REPL with <code>prompt</code> as the prompt and <code>stream</code> for all I/O. </p>
+
+<p>You can use your own <code>eval</code> function if it has the following signature:</p>
 
 <pre><code>function eval(cmd, callback) {
   callback(null, result);
 }
 </code></pre>
 
-<p>Multiple REPLs may be started against the same running instance of node.  Each<br />will share the same global object but will have unique I/O.</p>
+<p>Multiple REPLs can be started against the same running instance of node.  Each share the same global object but will have unique I/O.</p>
 
-<p>Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:</p>
+<h4>Example</h4>
+
+<p>Here's an example that starts a REPL on stdin, a Unix socket, and a TCP socket:</p>
 
 <pre><code>var net = require("net"),
     repl = require("repl");
@@ -154,61 +206,9 @@ net.createServer(function (socket) {
 }).listen(5001);
 </code></pre>
 
-<p>Running this program from the command line will start a REPL on stdin.  Other<br />REPL clients may connect through the Unix socket or TCP socket. <code>telnet</code> is useful<br />for connecting to TCP sockets, and <code>socat</code> can be used to connect to both Unix and<br />TCP sockets.</p>
+<p>Running this program from the command line starts a REPL on stdin.  Other REPL clients may connect through the Unix socket or TCP socket. <code>telnet</code> is useful for connecting to TCP sockets, and <code>socat</code> can be used to connect to both Unix and TCP sockets.</p>
 
-<p>By starting a REPL from a Unix socket-based server instead of stdin, you can<br />connect to a long-running node process without restarting it.</p>
-
-<h3>REPL Features</h3>
-
-<p>Inside the REPL, Control+D will exit.  Multi-line expressions can be input.<br />Tab completion is supported for both global and local variables.</p>
-
-<p>The special variable <code>_</code> (underscore) contains the result of the last expression.</p>
-
-<pre><code>&gt; [ "a", "b", "c" ]
-[ 'a', 'b', 'c' ]
-&gt; _.length
-3
-&gt; _ += 1
-4
-</code></pre>
-
-<p>The REPL provides access to any variables in the global scope. You can expose<br />a variable to the REPL explicitly by assigning it to the <code>context</code> object<br />associated with each <code>REPLServer</code>.  For example:</p>
-
-<pre><code>// repl_test.js
-var repl = require("repl"),
-    msg = "message";
-
-repl.start().context.m = msg;
-</code></pre>
-
-<p>Things in the <code>context</code> object appear as local within the REPL:</p>
-
-<pre><code>mjr:~$ node repl_test.js
-&gt; m
-'message'
-</code></pre>
-
-<p>There are a few special REPL commands:</p>
-
-<ul>
-<li><code>.break</code> - While inputting a multi-line expression, sometimes you get lost
-or just don't care about completing it. <code>.break</code> will start over.</li>
-<li><code>.clear</code> - Resets the <code>context</code> object to an empty object and clears any
-multi-line expression.</li>
-<li><code>.exit</code> - Close the I/O stream, which will cause the REPL to exit.</li>
-<li><code>.help</code> - Show this list of special commands.</li>
-<li><code>.save</code> - Save the current REPL session to a file
-
-
-<blockquote>
-  <p>.save ./file/to/save.js</li><br /><li><code>.load</code> - Load a file into the current REPL session.<br />.load ./file/to/load.js</li><br /></ul><br />The following key combinations in the REPL have these special effects:</p>
-</blockquote>
-
-<ul>
-<li><code>&lt;ctrl&gt;C</code> - Similar to the <code>.break</code> keyword.  Terminates the current
-command.  Press twice on a blank line to forcibly exit.</li>
-<li><code>&lt;ctrl&gt;D</code> - Similar to the <code>.exit</code> keyword.</li>
-</ul>
+<p>By starting a REPL from a Unix socket-based server instead of stdin, you can connect to a long-running node process without restarting it.</p>
 
 <p></div></p></div>
 </div>
