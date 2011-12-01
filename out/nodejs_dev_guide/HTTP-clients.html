@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="creating-an-http-server"></a></p>
+
+<h3>Creating an HTTP Server</h3>
+
+<p>Making a simple HTTP server in Node.js has become the de-facto 'hello world' for the platform. Node.js provides extremely easy-to-use HTTP APIs; in addition, a simple web server also serves as an excellent demonstration of Node's asynchronous strengths.</p>
+
+<p>Let's take a look at a very simple example:</p>
+
+<pre><code>var http = require('http');
+var requestListener = function (req, res) {
+    res.writeHead(200);
+    res.end('Hello, World!\n');
+}
+
+var server = http.createServer(requestListener);
+server.listen(8080);
+</code></pre>
+
+<p>Save this in a file called <code>server.js</code>, ande from the command line, run <code>node server.js</code>. Your program will hang there: it's waiting for connections to respond to, and you'll have to give it one if you want to see it do anything. Open up a browser, and type <code>localhost:8080</code> into the location bar. If everything has been set up correctly, you should see your server saying hello!</p>
+
+<p>Let's take a more in-depth look at what the above code is doing.  First, a function is defined called <code>requestListener</code> that takes a <code>request</code> object  (<code>req</code>) and a <code>response</code> object (<code>res</code>) as parameters. </p>
+
+<p>The <code>request</code> object contains things such as the requested URL, but in this example we ignore it and always return "Hello World!". </p>
+
+<p>The <code>response</code> object is how we send the headers and contents of the response back to the user making the request. Here, we return a 200 response code (signaling a successful response) with the body "Hello World!".  Other headers, such as <code>Content-type</code>, would also be set here.</p>
+
+<p>Next, the <code>http.createServer()</code> method creates a server that calls <code>requestListener</code> whenever a request comes in. The next line, <code>server.listen(8080)</code>, calls the <code>listen</code> method, which causes the server to wait for incoming requests on the specified port&mdash;8080, in this case. </div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="reading-post-data"></a></p>
+
+<h3>Reading POST Data</h3>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>Reading the data from a POST request (i.e. a form submission) can be a little bit of a pitfall in Node.js, so we're going to go through an example of how to do it properly.  </p>
+
+<p>The first step is to listen for incoming data. The trick is to wait for the data to finish, so that you can process all the form data without losing anything. </p>
+
+<p>Here is a quick script that shows you how to do exactly that:</p>
+
+<pre><code>var http = require('http');
+var postHTML = "&lt;html&gt;&lt;head&gt;&lt;title&gt;Post Example&lt;/title&gt;&lt;/head&gt;&lt;body&gt;" +
+'&lt;form method="post"&gt;' +
+  'Input 1: &lt;input name="input1"&gt;&lt;br&gt;' +
+    'Input 2: &lt;input name="input2"&gt;&lt;br&gt;' +
+    '&lt;input type="submit"&gt;' +
+    '&lt;/form&gt;' +
+    '&lt;/body&gt;&lt;/html&gt;';
+
+http.createServer(function (req, res) {
+  var body = "";
+  req.on('data', function (chunk) {
+    body += chunk;
+  });
+  req.on('end', function () {
+    console.log('POSTed: ' + body);
+    res.writeHead(200);
+    res.end(postHTML);
+  });
+}).listen(8080);
+</code></pre>
+
+<p>The variable <code>postHTML</code> is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can <code>POST</code> example data. This is <strong>not</strong> the right way to serve static HTML; to do that, see <a href="#how-to-serve-static-files">How to Serve Static Files</a> for a more proper example.</p>
+
+<p>With the HTML out of the way, we <a href="#how-do-i-create-a-http-server">create a server</a> to listen for requests. It is important to note, when listening for POST data, that the <code>req</code> object is also an <a href="#what-are-event-emitters">Event Emitter</a>.  <code>req</code>, therefore, will emit a <code>data</code> event whenever a chunk of incoming data is received; when there is no more incoming data, the <code>end</code> event is emitted. In our case, we listen for <code>data</code> events. Once all the data is recieved, we log the data to the console and send the response. </p>
+
+<p>Something important to note is that the event listeners are being added immediately after the request object is received. If you don't immediately set them, then there is a possibility of missing some of the events. If, for example, an event listener was attached from inside a callback, then the <code>data</code> and <code>end</code> events might be fired in the meantime with no listeners attached!</p>
+
+<p>You can save this script to <code>server.js</code> and run it with <code>node server.js</code>. Once you run it you will notice that occassionally you will see lines with no data:  <code>POSTed:</code>. This happens because regular <code>GET</code> requests go through the same codepath. In a more real-world application, it would be proper practice to check the type of request and handle the different request types differently.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

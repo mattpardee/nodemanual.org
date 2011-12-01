@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="using-the-path-module"></a></p>
+
+<h2>Using the path module</h2>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>The <code>path</code> module contains several helper functions to help make path manipulation easier.</p>
+
+<p>The first function worth mentioning is <code>path.normalize()</code>.  This function takes a path (in the form of a string) and strips it of duplicate slashes and normalizes directory abbreviations, like '.' for 'this directory' and '..' for 'one level up'. For example:</p>
+
+<pre><code>&gt; var path = require('path');
+&gt; path.normalize('/a/.///b/d/../c/')
+'/a/b/c/'
+</code></pre>
+
+<p>A closely related function to <code>normalize()</code> is <code>join()</code>.  This function takes a variable number of arguments, joins them together, and normalizes the path.</p>
+
+<pre><code>&gt; var path = require('path');
+&gt; path.join('/a/.', './//b/', 'd/../c/')
+'/a/b/c'
+</code></pre>
+
+<p>A possible use of <code>join</code> is to manipulate paths when serving urls:</p>
+
+<pre><code>&gt; var path = require('path');
+&gt; var url = '/index.html';
+&gt; path.join(process.cwd(), 'static', url);
+'/home/nico/static/index.html'
+</code></pre>
+
+<p>There are three functions which are used to extract the various parts of the path name: <code>basename</code>, <code>extname</code>, and <code>dirname</code>:</p>
+
+<ul>
+<li><code>basename()</code> returns the last portion of the path passed in</li>
+<li><code>extname()</code> returns the extension of the last portion. Generally for directories, <code>extname</code> just returns ''. </li>
+<li><code>dirname()</code> returns everything that <code>basename</code> does not return.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre><code>&gt; var path = require('path')
+&gt; var a = '/a/b/c.html'
+&gt; path.basename(a)
+'c.html'
+&gt; path.extname(a)
+'.html'
+&gt; path.dirname(a)
+'/a/b'
+</code></pre>
+
+<p><code>basename</code>() has an optional second parameter that will strip out the extension if you pass the correct extension:</p>
+
+<pre><code>&gt; var path = require('path')
+&gt; var a = '/a/b/c.html'
+&gt; path.basename(a, path.extname(a))
+'c'
+</code></pre>
+
+<p>In addition, the <code>path</code> module provides methods to check whether or not a given path exists: <code>exists()</code> and <code>existsSync()</code>. They both take the path of a file for the first parameter; however:</p>
+
+<ul>
+<li><code>exists</code> takes a callback function as its second parameter, to which is returned a boolean representing the existance of the file</li>
+<li><code>existsSync</code> checks the given path synchronously, returning the boolean directly. In Node.js, you will typically want to use the asynchronous functions for most file system I/O&mdash;the synchronous versions will block your entire process until they finish. </li>
+</ul>
+
+<p>Blocking isn't always a bad thing.  Checking the existence of a vital configuration file synchronously makes sense, for example&mdash;it doesn't matter much if your process is blocking for something it can't run without!  Conversely, though, in a busy HTTP server, any per-request file I/O <strong>MUST</strong> be asynchronous, or else you'll be responding to requests one by one. See the section on <a href="#how-to-write-asynchronous-code">asynchronous operations</a> for more details.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

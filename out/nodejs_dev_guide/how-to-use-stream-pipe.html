@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="using-the-stream-pipe"></a></p>
+
+<h3>Using the Stream Pipe</h3>
+
+<p><span class="cite">by Charlie McConnell (Last Updated: Aug 26 2011)</span></p>
+
+<p>If you've been using Node.js for a while, you've definitely run into streams. HTTP connections are streams,  open files are streams;  <code>stdin</code>, <code>stdout</code>, and <code>stderr</code> are all streams as well.  If you feel like you still need to understand them better, you can read more about them <a href="http://nodejs.org/docs/latest/api/streams.html">here</a>.</p>
+
+<p>Streams make for quite a handy abstraction, and there's a lot you can do with them. As an example, let's take a look at <code>pipe()</code>, the method used to take a readable stream and connect it to a writeable steam.  Suppose we wanted to spawn a child process and pipe our "parent" <code>stdout</code> and <code>stdin</code> to the corresponding <code>stdout</code> and <code>stdin</code>. We might do something like this:</p>
+
+<pre><code> #!/usr/bin/env node
+
+ var child = require('child_process');
+
+ // spawn the node REPL as a child process
+ var myREPL = child.spawn('node');
+
+ // pipe our stdin and stdout into the child stdin/stdout
+ myREPL.stdout.pipe(process.stdout, { end: false });
+ process.stdin.resume();
+ process.stdin.pipe(myREPL.stdin, { end: false });
+
+ myREPL.stdin.on('end', function() {
+   process.stdout.write('REPL stream ended.');
+ });
+
+ myREPL.on('exit', function (code) {
+   process.exit(code);
+ });
+</code></pre>
+
+<p>There it is. Make sure to listen for the child's <code>exit</code> event, or else your program will just hang there when the REPL exits.</p>
+
+<p>Another use for <code>pipe()</code> is for file streams.  In Node.js, <code>fs.createReadStream()</code> and <code>fs.createWriteStream()</code> are used to create a stream to an open file descriptor.  Let's look at how one might use <code>pipe()</code> to write to a file.  You'll probably recognize most of the code:</p>
+
+<pre><code> #!/usr/bin/env node
+
+ var child = require('child_process'),
+     fs = require('fs');
+
+ var myREPL = child.spawn('node'),
+     myFile = fs.createWriteStream('myOutput.txt');
+
+ myREPL.stdout.pipe(process.stdout, { end: false });
+ myREPL.stdout.pipe(myFile);
+
+ process.stdin.resume();
+
+ process.stdin.pipe(myREPL.stdin, { end: false });
+ process.stdin.pipe(myFile);
+
+ myREPL.stdin.on("end", function() {
+   process.stdout.write("REPL stream ended.");
+ });
+
+ myREPL.on('exit', function (code) {
+   process.exit(code);
+ });
+</code></pre>
+
+<p>With those small additions, your <code>stdin</code> and the <code>stdout</code> from your REPL will both be piped to the writeable file stream you opened to <code>myOutput.txt</code>.  It's that simple; you can pipe streams to as many places as you want.</p>
+
+<p>One very important use case for <code>pipe()</code> is with HTTP request and response objects.  Here we have the very simplest kind of proxy:</p>
+
+<pre><code> #!/usr/bin/env node
+
+ var http = require('http');
+
+ http.createServer(function(request, response) {
+   var proxy = http.createClient(9000, 'localhost')
+   var proxyRequest = proxy.request(request.method, request.url, request.headers);
+   proxyRequest.on('response', function (proxyResponse) {
+     proxyResponse.pipe(response);
+   });
+   request.pipe(proxyRequest);
+ }).listen(8080);
+
+ http.createServer(function (req, res) {
+   res.writeHead(200, { 'Content-Type': 'text/plain' });
+   res.write('request successfully proxied to port 9000!' + '\n' + JSON.stringify(req.headers, true, 2));
+   res.end();
+ }).listen(9000);
+</code></pre>
+
+<p>You could also use <code>pipe()</code> to send incoming requests to a file for logging, or to a child process, or any one of a number of other things.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

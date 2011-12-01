@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="node-package-manager"></a></p>
+
+<h2>Node Package Manager</h2>
+
+<p>The npm, short for Node Package Manager, is two things: first and foremost, it is an online repository for the publishing of open-source Node.js modules; second, it is a command-line utility for interacting with the online repository that aids in package installation, version control, and dependency management.  Most Node.js libraries and applications are published on npm, and there's already a plethora of third-party developed libraries to help your Node.js workflow move more easily. You can be search for these applications on <a href="http://search.npmjs.org">the npm registry</a>. </p>
+
+<p>Before working with the npm, you'll need to install the command line tool. You can follow the instructions on <a href="http://npmjs.org/">the official npm website</a> for more information. </p>
+
+<h4>Local Install</h4>
+
+<p>Once you have a third-party package you want to install, it can be installed with a single line command. Let's say you're hard at work one day, you come across a problem, and you decide that it's time to use that cool library you keep hearing about. npm is very simple to use: you only have to run <code>npm install cool_module</code> on the command line, and the specified module will be installed in the current directory under <code>./node_modules/</code>.  Once installed to your <code>node_modules</code> folder, you'll be able to <a href="#what-is-require">use <code>require()</code> on them</a>, just as if they were built-ins to Node.js.</p>
+
+<p>Local installs allow you to import Node.js modules specific to the project you're working on. If you move to another project, and need the same library, you'll have to call <code>npm</code> on the package once more.</p>
+
+<h4>Global Install</h4>
+
+<p>There's also the concept of a "global" install. Let's say we want to globally install the <a href="https://github.com/jashkenas/coffee-script">Coffescript Node.js package</a>. The npm command for a global install is simple: <code>npm install coffee-script -g</code>. This will install the program and put a symlink to it into your <code>/usr/local/bin/</code> directory (for Unix, anyway). Now, any project you create can depend on the coffee-script module, without the need for multiple local installs.</p>
+
+<p>Some modules also depend on the global install to add a command-line tool. In this case, running <code>coffee</code> allows you to use the coffee-script command line interface.</p>
+
+<h4>Managing Dependencies</h4>
+
+<p>Another important use for npm is dependency management.  When you have a Node.js project with a <a href="#what-is-the-file-package-json">package.json</a> file, you can run <code>npm install</code> from the project root; npm then installs all the dependencies listed in the package.json. This makes installing a Node.js project from a git repo much easier! For example, <code>vows</code>, one of Node's testing frameworks, can be installed from git, and its single dependency, <code>eyes</code>, can be automatically handled:</p>
+
+<pre><code>git clone <a href='https://github.com/cloudhead/vows.git'>https://github.com/cloudhead/vows.git</a>
+cd vows
+npm install
+</code></pre>
+
+<p>After running those commands, you will see a <code>node_modules</code> folder containing all of the project dependencies specified in the package.json.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

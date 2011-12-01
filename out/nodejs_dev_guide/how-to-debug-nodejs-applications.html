@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="debugging-nodejs-applications"></a></p>
+
+<h2>Debugging Node.js Applications</h2>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>Often times, not just in the Node.js community but in software at large, people debug simply with a liberal sprinkle of standard output statements. This allows you to track down where unexpected values are being generated. However, this method can be tedious, or worse, not robust enough to detect real problems.</p>
+
+<p>Thankfully, through the use of the <code>node-inspector</code> module, we can harness the power of webkit-debuggers to work with our Node.js code. The process itself is simple.</p>
+
+<h4>Setting up</h4>
+
+<p>First, ensure that node-inspector is installed:</p>
+
+<pre><code>npm -g install node-inspector
+</code></pre>
+
+<p>Here's a good example application to experiment with, copied from the <code>node-inspector</code> repo. It is a "hello world" server with a counter :</p>
+
+<pre><code>var http = require('http');
+var x = 0;
+
+http.createServer(function (req, res) {
+    x += 1;
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World ' + x);
+}).listen(8124);
+
+console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');
+</code></pre>
+
+<p>First, start the Node.js program with debugging enabled:</p>
+
+<pre><code>node --debug app.js
+</code></pre>
+
+<p>This should print something along the lines of <code>debugger listening on port 5858</code> to stderr. Take note of the port number: it is the port that the debugger is running on.</p>
+
+<p>Next, start up <code>node-inspector</code> in a separate command line window. By default, <code>node-inspector</code> uses port 8080, so you may want to pass it a custom port number with the <code>--web-port</code> option: If your program uses port 8080, then you may have to pass it a custom port.</p>
+
+<pre><code>node-inspector --web-port=1123
+</code></pre>
+
+<p>Finally, start a Webkit browser (like Chrome or Safari), and go to <code><a href='http://127.0.0.1:1123/debug?port=5858'>http://127.0.0.1:1123/debug?port=5858</a></code>. Here, 5858 represents the port the debugger is listening on, and 1123 represents your <code>node-inspector</code> webport. You may have to modify these values to match your environment.</p>
+
+<p>At this point, you will be met with a fairly empty screen with the Scripts, Profiles, and Cnsole tabs.</p>
+
+<h4>Scripts tab</h4>
+
+<p>This tab is just like most Webkit debuggers. It has a list of all the Javascript files (including Node.js core and third-party libraries). You can select each one and dive into them.</p>
+
+<p>To stop the interpreter on a specific line, set a breakpoint by clicking on the number of the desired line. When the execution is frozen, by a breakpoint or by manually pausing interpretation by pressing the pause button, you can check the callstack and examine all the local, closure, and global variables. You can also modify the code to try and fix the behavior. Note that when you modify the code through the Script tab, it does not get saved to the file, so you will need to transfer the modifications back by hand.</p>
+
+<h4>Profiles tab</h4>
+
+<p>To use the profile tab, you need a library called <code>v8-profiler</code>, which you can install with npm:</p>
+
+<pre><code>npm install v8-profiler
+</code></pre>
+
+<p>Next, you have to require it inside the file you are debugging:</p>
+
+<pre><code>var profiler = require('v8-profiler');
+</code></pre>
+
+<p>Now you can finally enable the <code>Profiles</code> tab. Unfortunately, all you can do from this screen is take a heap snapshot. From the code, you need to select where you want to start to CPU profiler. You can also select more precise location for heap snapshots.</p>
+
+<p>To take a heap snapshot, just insert this line in the desired location and optionally pass it a name.</p>
+
+<p>var snapshot = profiler.takeSnapshot(name);</p>
+
+<p>To take a CPU profile, just surround the code that you are profiling with the two lines shown below.  Optionally, a name can be included to indentify the cpu profile.</p>
+
+<pre><code>profiler.startProfiling(name);
+//..lots and lots of methods and code called..//
+var cpuProfile = profiler.stopProfiling([name]);
+</code></pre>
+
+<p>As an example how to use these, here is the code from above, modified to take a CPU profile on every request, and take a heap snapshot after the server is created.</p>
+
+<pre><code>var http = require('http');
+var profiler = require('v8-profiler');
+
+var x = 0;
+http.createServer(function (req, res) {
+    x += 1;
+    profiler.startProfiling('request '+x);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World ' + x);
+    profiler.stopProfiling('request '+x);
+}).listen(8124);
+
+profiler.takeSnapshot('Post-Server Snapshot');
+console.log('Server running at <a href='http://127.0.0.1:8124/'>http://127.0.0.1:8124/</a>');
+</code></pre>
+
+<p>Despite these APIs returning objects, it is much easier to sort through the data through the <code>node-inspector</code> interface. Hopefully, with these tools, you can make more informed decisions about memory leaks and bottlenecks.</p>
+
+<h4>Console tab</h4>
+
+<p>The console tab allows you to use Node's REPL in your program's global scope. This has a few caveats, since it means you can't access in local variables. Thus, the variables you <em>can</em> read or write are variables that were defined without a <code>var</code> statement. </p>
+
+<p>The other exception is that when you use <code>console.log</code>, it refers to Node's <code>console.log</code>, and not webkit's <code>console.log</code>. This means the output goes to stdout and not to your console tab. </p>
+
+<p>Other than these, it is a very straightforward Node.js REPL.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

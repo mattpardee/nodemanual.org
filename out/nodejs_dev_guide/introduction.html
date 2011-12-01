@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="introduction"></a></p>
+
+<h2>Introduction</h2>
+
+<p>Node.js is a server-side Javascript environment. It's event-driven, asynchronous, and allows you to write a web server in a relatively quick amount of time.</p>
+
+<p>The purpose of this document is to provide a resource for developers of all levels&mdash;beginning, intermediate, and advanced&mdash;with a consolidated set of Node.js tutorials and best practices. The origin of this document comes from <a href="http://docs.nodejitsu.com/">Nodejitsu</a>, the <a href="https://github.com/joyent/node/wiki">Node.js Wiki</a>, and various other Node.js community-driven documentation. Why this guide, then? Well, for starters, you can instantaneously import the code samples here into you <a href="http://c9.io">Cloud 9 IDE</a> account and run them live.</p>
+
+<p>In order to get Node.js, you can either download <a href="http://nodejs.org/#download">the latest stable release</a>, or clone the version submitted into the GitHub repo. Keep in mind that stable releases are even-numbered (0.2, 0.4, 0.6), while unstable releases are odd (0.3, 0.5).</p>
+
+<p>If you're new to Node.js or Javascript, you may want to review the article on <a href="#how-to-write-asynchronous-code">asynchronous programming</a>, <a href="#what-are-callbacks">designing callbacks</a>, and <a href="#what-are-event-emitters">defining event emitters</a>. Otherwise, you might want to review what Node.js offers in its constructs through the article on <a href="#javascript-conventions">Javascript conventions</a>.</div></p>
+
+<p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="a-brief-primer"></a></p>
+
+<h3>A Brief Primer</h3>
+
+<p><span class="cite">by Jann Horn (Last Updated: Sept 10 2011)</span></p>
+
+<h4>Poison Null Bytes</h4>
+
+<p>Poison null bytes are a way to trick your code into seeing another filename than the one that will actually be opened. In many cases, this can be used to circumvent directory traversal protections, to trick servers into delivering files with wrong file types and to circumvent restrictions on the file names that may be used. A more detailed description of this attack <a href="http://groups.google.com/group/nodejs/browse_thread/thread/51f66075e249d767/85f647474b564fde">can be found on the Node.js mailing list</a>.</p>
+
+<p>Always use code like this when accessing files with user-supplied names:</p>
+
+<pre><code>if (filename.indexOf('\0') !== -1) {
+  return respond('That was evil!');
+}
+</code></pre>
+
+<h4>Whitelisting</h4>
+
+<p>You won't always be able to use whitelisting, but if you are, do it&mdash;it's very easy to implement and hard to get wrong. For example, if you know that all filenames are lowercase alphanumeric strings, you can use this regular expression to block anything else:</p>
+
+<pre><code>if (!/^[a-z0-9]+$/.test(filename)) {
+  return respond('illegal character');
+}
+</code></pre>
+
+<p>However, note that whitelisting alone isn't sufficient anymore as soon as you allow dots and slashes. People can still enter filepaths like <code>../../etc/passwd</code> in order to get files from outside the allowed folder.</p>
+
+<h4>Preventing Directory Traversal</h4>
+
+<p>Directory traversal means that an attacker is trying to access files outside of the folder you want to allow him to access. You can prevent this by using Node's built-in <code>path</code> module. <strong>Do not reimplement the methods in the <code>path</code> module yourself</strong>. For example, when someone runs your code on a Windows server, not handling backslashes like slashes will allow attackers to do travese directories.</p>
+
+<p>This example assumes that you already checked the <code>userSuppliedFilename</code> variable as described in the "Poison Null Bytes" section above.</p>
+
+<pre><code>var rootDirectory = '/var/www/';
+</code></pre>
+
+<p>(Make sure that you have a slash at the end of the allowed folders name&mdash;you don't want people to be able to access <code>/var/www-secret/</code>, do you?)</p>
+
+<pre><code>var path = require('path');
+var filename = path.join(rootDirectory, userSuppliedFilename);
+</code></pre>
+
+<p>Now <code>filename</code> contains an absolute path and doesn't contain <code>..</code> sequences anymore&mdash;<code>path.join</code> takes care of that. However, it might be something like <code>/etc/passwd</code> now, so you have to check whether it starts with the <code>rootDirectory</code>:</p>
+
+<pre><code>if (filename.indexOf(rootDirectory) !== 0) {
+  return respond('trying to sneak out of the web root?');
+}
+</code></pre>
+
+<p>Now the <code>filename</code> variable should contain the name of a file or directory that's inside the allowed directory (unless it doesn't exist).</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

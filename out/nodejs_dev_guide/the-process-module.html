@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="the-process-module"></a></p>
+
+<h2>The Process Module</h2>
+
+<p><span class="cite">by Charlie McConnell (Last Updated: Aug 26 2011)</span></p>
+
+<p>Each Node.js process has a set of built-in functionality, accessible through the global <code>process</code> module.  The <code>process</code> module doesn't need to be required: it is somewhat literally a wrapper around the currently executing process, and many of the methods it exposes are actually wrappers around calls into some of Node's core C libraries.</p>
+
+<h4>Events</h4>
+
+<p>There are two built-in events worth noting in the <code>process</code> module: <code>exit</code> and <code>uncaughtException</code>.</p>
+
+<p>The <code>exit</code> event fires whenever the process is about to exit.</p>
+
+<pre><code>process.on('exit', function () {
+    fs.writeFileSync('/tmp/myfile', 'This MUST be saved on exit.', function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+    });
+});
+</code></pre>
+
+<p>Code like the above can occasionally be useful for saving some kind of final report before you exit.  Note the use of a synchronous file system call. This is to make sure the I/O finishes before the process actually exits.</p>
+
+<p>The <code>uncaughtException</code> event fires, as you might guess, whenever an exception has occurred that hasn't been caught or dealt with somewhere else in your program. It's not the ideal way to handle errors, but it can be very useful as a last line of defense if a program needs to stay running indefinitely. For example:</p>
+
+<pre><code> process.on('uncaughtException', function (err) {
+   console.error('An uncaught error occurred!');
+   console.error(err.stack);
+ });
+</code></pre>
+
+<p>The default behavior on <code>uncaughtException</code> is to print a stack trace and exit. Using the above as an example, your program displays the message provided and the stack trace, but will <strong>not</strong> exit.</p>
+
+<h4>Streams</h4>
+
+<p>The <code>process</code> object also provides wrappings for the three standard input and output streams: <code>stdout</code>,<code>stderr</code>, and <code>stdin</code>. Briefly:</p>
+
+<ul>
+<li><code>stdout</code> is a non-blocking (asynchronous) writeable stream</li>
+<li><code>stderr</code> is a blocking (synchronous) writeable stream.</li>
+<li><code>stdin</code> is a readable stream (where one would read input from the user)</li>
+</ul>
+
+<p>The simplest one to describe is <code>process.stdout</code>.  Technically, most output in Node.js is accomplished by using <code>process.stdout.write()</code>.  The following is from <code>console.js</code>:</p>
+
+<pre><code>  exports.log = function() {
+    process.stdout.write(format.apply(this, arguments) + '\n');
+  };
+</code></pre>
+
+<p>Since most people are used to the <code>console.log()</code> syntax from browser development, it was provided as a convenient wrapper for <code>process.stdout.write()</code>.</p>
+
+<p>Next is <code>process.stderr</code>, which is very similar to <code>process.stdout</code> with one key exception: your process blocks until the write is completed. Node.js provides a number of alias functions for output, most of which either end up using <code>stdout</code> or <code>stderr</code> under the hood.  Here's a quick reference list:</p>
+
+<ul>
+<li><p>STDOUT, or non-blocking functions: <code>console.log</code>, <code>console.info</code>, <code>util.puts</code>, <code>util.print</code></p></li>
+<li><p>STDERR, or blocking functions: <code>console.warn</code>, <code>console.error</code>, <code>util.debug</code></p></li>
+</ul>
+
+<p>Lastly, <code>process.stdin</code> is a readable stream for getting user input. For more information, see <a href="#how-to-prompt-for-command-line-input">the section on prompting for input</a>.</p>
+
+<p>For a complete list of properties and methods available to <code>process</code>, see <a href="http://nodejs.org/docs/latest/api/process.html">the official Node.js documentation</a>.</p>
+
+<h4>Additional Properties</h4>
+
+<p>The <code>process</code> module contains a variety of properties that allow you to access information about the running process.  Let's run through a few quick examples. First, type <code>node</code> in the command line. Then, type the following commands:</p>
+
+<pre><code>&gt; process.pid
+3290
+&gt; process.version
+'v0.6.1'
+&gt; process.platform
+'linux'
+&gt; process.title
+'node'
+</code></pre>
+
+<p>You values may be different. Here's what these properties mean:</p>
+
+<ul>
+<li><code>process.version</code> refers to your Node.js version</li>
+<li><code>process.pid</code> is the operating system process ID</li>
+<li><code>process.platform</code> is something general like 'linux' or 'darwin'</li>
+<li><code>process.title</code> is a little bit different. While set to <code>node</code> by default, it can be set to anything you want, and defines the name displayed when viewing a list of running processes.</li>
+</ul>
+
+<p>The <code>process</code> module also exposes <code>process.argv</code>, an array containing the command-line arguments to the current process, and <code>process.argc</code>, an integer representing the number of arguments passed in.  Here's more information on <a href="#how-to-parse-command-line-arguments">how to parse command line arguments</a>.</p>
+
+<h4>Additional Methods</h4>
+
+<p>There are also a variety of methods attached to the <code>process</code> object, many of which deal with quite advanced aspects of a program. Here's a look at a few of the more commonly useful ones.</p>
+
+<p><code>process.exit()</code> exits the process.  If you call an asynchronous function, and then call <code>process.exit()</code> immediately afterwards, you will be in a race condition&mdash;the asynchronous call may or may not complete before the process is exited.  <code>process.exit</code> accepts one optional argument, an integer exit code. <code>0</code>, by convention, is an exit with no errors.</p>
+
+<p><code>process.cwd</code> returns the current working directory of the process. This is often the directory from which the command to start the process was issued.</p>
+
+<p><code>process.chdir</code> is used to change the current working directory.  For example:</p>
+
+<pre><code>&gt; process.cwd()
+'/home/avian/dev'
+&gt; process.chdir('/home/avian')
+&gt; process.cwd()
+'/home/avian'
+</code></pre>
+
+<p>Finally, on a more advanced note, there's <code>process.nextTick()</code>. This method accepts one argument&mdash;a callback&mdash;and places it at the top of the next iteration of the event loop.  Some people do something like this:</p>
+
+<pre><code>setTimeout(function () {
+  // code here
+}, 0)
+</code></pre>
+
+<p>This, however, is not ideal.  In Node.js, this should be used instead:</p>
+
+<pre><code>process.nextTick(function () {
+    console.log('Next trip around the event loop, wheeee!');
+});
+</code></pre>
+
+<p>It is much more efficient, and much more accurate.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

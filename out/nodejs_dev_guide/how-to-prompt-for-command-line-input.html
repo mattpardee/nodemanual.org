@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="prompting-for-command-line-input"></a></p>
+
+<h3>Prompting for Command Line Input</h3>
+
+<p><span class="cite">by Charlie McConnell (Last Updated: Aug 26 2011)</span></p>
+
+<p>Say you've got a little CLI tool, but you want to be able to prompt a user for additional data after the script has started, rather than passing it in as a command line argument or putting it in a file.  To do this, you'll need to listen to STDIN ("standard input"), which Node.js exposes for you as <code>process.stdin</code>, a readable stream.</p>
+
+<p>Streams are Node's way of dealing with evented I/O. They're a big topic, and you can read more about them <a href="what-are-streams">here</a>.  For now, we're only going to deal with the stream methods relevant to working with <code>process.stdin</code>, to keep the examples easy.</p>
+
+<p>The first two Readable Stream methods you'll need to know about here are <code>pause()</code> and <code>resume()</code>.  Not every program needs to care whether or not you're pressing keys at a given moment, so <code>process.stdin</code> is paused by default. </p>
+
+<p>Here's a simple example.  Try to run the following in a new file:</p>
+
+<pre><code>  process.stdin.resume();
+  process.stdin.setEncoding('utf8');
+
+  process.stdin.on('data', function (text) {
+    console.log(text);
+    if (text === 'quit') {
+      done();
+    }
+  });
+
+  function done() {
+    console.log('Now that process.stdin is paused, there is nothing more to do.');
+    process.exit();
+  }
+</code></pre>
+
+<p>If all of this sounds complicated, or if you want a higher-level interface to this sort of thing, don't worry&mdash;as usual, the Node.js community has come to the rescue.  One particularly friendly module to use for this is Prompt, maintained by Nodejitsu.  It's available on <code>npm</code>:</p>
+
+<pre><code> npm install prompt
+</code></pre>
+
+<p>Prompt is built to be easy. If your eyes started to glaze over as soon as you saw <code>Readable Stream</code>, then this is the section for you.  Compare the following to the example above:</p>
+
+<pre><code>  var prompt = require('prompt');
+
+  prompt.start();
+
+  prompt.get(['username', 'email'], function (err, result) {
+    if (err) { return onErr(err); }
+    console.log('Command-line input received:');
+    console.log('  Username: ' + result.username);
+    console.log('  Email: ' + result.email);
+  });
+
+  function onErr(err) {
+    console.log(err);
+    return 1;
+  }
+</code></pre>
+
+<p>This short script also demonstrates proper error handling in Node.js. Errors are a callback's first argument, and <code>return</code> is used with the error handler so that the rest of the function doesn't execute when errors happen.</p>
+
+<p>Prompt also makes it trivial to handle a certain set of recurring properties that one might want to attach:</p>
+
+<pre><code>  var prompt = require('prompt');
+
+  var properties = [
+    {
+      name: 'username', 
+      validator: /^[a-zA-Z\s\-]+$/,
+      warning: 'Username must be only letters, spaces, or dashes'
+    },
+    {
+      name: 'password',
+      hidden: true
+    }
+  ];
+
+  prompt.start();
+
+  prompt.get(properties, function (err, result) {
+    if (err) { return onErr(err); }
+    console.log('Command-line input received:');
+    console.log('  Username: ' + result.username);
+    console.log('  Password: ' + result.password);
+  });
+
+  function onErr(err) {
+    console.log(err);
+    return 1;
+  }
+</code></pre>
+
+<p>For more information on Prompt, please see <a href="http://github.com/nodejitsu/node-prompt">the project's GitHub page</a>.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>

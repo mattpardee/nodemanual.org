@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js Developer's Guide</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sh.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="../js/toc.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        //$("#toc").accordion({ event: 'mouseover' }, { autoHeight: false });
+    });
+    </script>
+    <link href="../css/style_override.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#">Project name</a>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <p class="pull-right">Logged in as <a href="#">username</a></p>
+            </div>
+          </div>
+        </div>
+    -->
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div id="toc" class="well">
+        <h5>Overview</h5>
+<div>
+<ul>
+<li><a class="upper" href="introduction.html">Introduction</a></li>
+<li><a class="upper" href="npm.html">Node Package Manager</a></li>
+<li><a class="upper" href="how-to-use-nodejs-repl.html">Execute Node.js on the Command Line with REPL</a></li>
+<li><a class="upper" href="how-to-debug-nodejs-applications.html">Debugging Node.js Applications</a></li>
+<li><a class="upper" href="how-to-write-asynchronous-code.html">Writing Asynchronous Code</a></li>
+<li><a class="upper" href="what-are-callbacks.html">Understanding Callbacks</a></li>
+<li><a class="upper" href="what-are-event-emitters.html">Understanding Event Emitters</a></li>
+</ul>
+</div>
+<h5>Tutorial </h5>
+<div>
+<ul>
+<li><a class="upper" href="what-are-the-built-in-timer-functions.html">Using Timer Functions Correctly</a></li>
+<li><a class="upper" href="how-to-create-a-HTTP-server.html">Serving Files</a></li>
+<li><a class="upper" href="security.html">Security</a></li>
+<li><a class="upper" href="how-to-store-local-config-data.html">Storing Local Data</a></li>
+<li><a class="upper" href="how-to-use-the-path-module.html">Using the path module</a></li>
+<li><a class="upper" href="how-to-search-files-and-directories-in-nodejs.html">Searching for Files</a></li>
+<li><a class="upper" href="what-is-the-error-object.html">The Error Object</a></li>
+<li><a class="upper" href="what-is-try-catch.html">Understanding try/catch()</a></li>
+<li><a class="upper" href="what-are-the-error-conventions.html">Understanding the Error Conventions</a></li>
+<li><a class="upper" href="how-to-spawn-a-child-process.html">Spawning Child Processes</a></li>
+<li><a class="upper" href="buffers.html">Buffers</a></li>
+<li><a class="upper" href="what-are-streams.html">Streams</a></li>
+<li><a class="upper" href="how-to-create-a-custom-repl.html">Creating a Custom REPL</a></li>
+<li><a class="upper" href="cryptography.html">Cryptography</a></li>
+<li><a class="upper" href="globals-in-node-js.html">A (Brief) List of Globals in Node.js</a></li>
+</ul>
+</div>
+<h5>Reference </h5>
+<div>
+<ul>
+<li><a class="upper" href="the-process-module.html">The Process Module</a></li>
+<li><a class="upper" href="the-console-module.html">The Console Module</a></li>
+<li><a class="upper" href="what-is-json.html">About JSON</a></li>
+<li><a class="upper" href="what-are-truthy-and-falsy-values.html">Defining "Truthy" and "Falsy" values</a></li>
+</ul></div><li><a class="upper" href="using-ECMA5-in-nodejs.html">Using ECMA5 in Node.js</a></li>
+
+</div>
+</div>
+<div class="content"><p><div class="hero-unit"></p>
+
+<p><a class="hiddenLink" id="understanding-event-emitters"></a></p>
+
+<h2>Understanding Event Emitters</h2>
+
+<p><span class="cite">by Nico Reed (Last Updated: Aug 26 2011)</span></p>
+
+<p>In Node.js, an event can be described simply as a string with a corresponding callback. An event can be "emitted" (or in other words, have the corresponding callback be called) multiple times; or, you can choose to only listen for the first time it is emitted. </p>
+
+<p>Here's a very simple example:</p>
+
+<pre><code>var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Check the console for your results!\n');
+
+    var emitter = new (require('events').EventEmitter);
+
+    // establish two events, one for "test" and one for "print"
+    emitter.addListener("test", function () { console.log("test"); });
+    emitter.on("print", function (message) { console.log(message); });
+
+    var someString = "variable";
+
+    // try to launch the events
+    emitter.emit("test");
+    emitter.emit("print", "Here's a message, with " + someString);
+    emitter.emit("unhandled");
+}).listen("1337", "127.0.0.1");
+</code></pre>
+
+<p>This demonstates all the basic functionality of an event emitter. The <code>on()</code> or <code>addListener()</code> method (they're synonymous) allows you to choose the event to watch for and the callback to be called. The <code>emit()</code> method lets you to "emit" an event, which causes all callbacks registered to the event to be called.</p>
+
+<p>In the example, we first subscribe to both the <code>test</code> and <code>print</code> events. Then, we emit the <code>test</code>, <code>print</code>, and <code>unhandled</code> events. Since <code>unhandled</code> has no callback, it just returns <code>false</code>; the other two run all the attached callbacks and return <code>true</code>.</p>
+
+<p>In the <code>print</code> event, note that we pass an extra parameter. Any additional parameters passed to <code>emit()</code> get passed to the callback function as arguments.</p>
+
+<p>If you use the method <code>once()</code> instead of <code>on()</code>, after the callback is fired, it is removed from the list of callbacks. This is convinient if you want to detect only the first time an event has been emitted.</p>
+
+<p>If you want to remove a specific callback, you can use <code>removeListener()</code>. If you want to remove all callbacks to a specific event, you can use <code>removeAllListeners()</code>. For example:</p>
+
+<pre><code>var http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Check the console for your results!\n');
+
+    var EventEmitter = require('events').EventEmitter;
+    var ee = new EventEmitter();
+
+    var callback_once = function() {
+      console.log("Callback has been called!");
+    }
+
+    var callback_many = function() {
+      console.log("Let's keep calling me!");
+    }
+
+    ee.once("event", callback_once);
+    ee.emit("event");
+    ee.emit("event");
+
+    console.log ("Moving on...");
+
+    ee.on("event", callback_many);
+    ee.emit("event");
+    ee.emit("event");
+
+    console.log("Let's remove the multiple calls.");
+
+    ee.removeListener("event", callback_many);
+    ee.emit("event");
+
+    // In theory, callback_once should still emit--but since
+    // we defined it as emitting once(), we get nothing here
+
+}).listen("1337", "127.0.0.1");
+</code></pre>
+
+<p><strong>Note</strong>: if you want create more than 10 listeners on a single event, you will have to make a call to <code>setMaxListeners(n)</code>, where <code>n</code> is the max numbers of listeners (passing 0 allows for an unlimited number of listeners). The maximum limit is used to make sure you aren't accidently leaking event listeners.</p>
+
+<p>For more information, you can refer to <a href="http://nodejs.org/docs/latest/api/events.html">the official Node.js reference page on the <code>EventEmitter</code> object</a>.</div></p></div>
+</div>
+<footer>
+    <p>&nbsp;</p>
+</footer>
+        
+<script type="text/javascript" src="../js/sh_main.js"></script>
+<script type="text/javascript" src="../js/sh_javascript.min.js"></script>
+</div>
+    </div>
+
+  </body>
+</html>
