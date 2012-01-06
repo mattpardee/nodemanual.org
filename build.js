@@ -1,7 +1,7 @@
 require("colors");
 
 var argv = require("optimist").argv,
-    docs = require("../doc-build/docs");
+    docs = require("./build/doc-build/docs");
     
 var task = argv._[0],
     version = argv._[1];
@@ -28,7 +28,7 @@ case "b":
         version = latest;
     }
 
-    exec('node ../ndoc/bin/ndoc --path=./src/js-doc -o ./out -t "Whatever" --skin ./resources/nodejs_ref_guide/skins',
+    exec('node ./build/ndoc/bin/ndoc --path=./src/js-doc -o ./out -t "Whatever" --skin ./resources/nodejs_ref_guide/skins',
       function (error, stdout, stderr) {
         console.log(stdout);
         if (error !== null) {
@@ -45,7 +45,7 @@ case "b":
         }
     });
 
-    exec('node ../ndoc/bin/ndoc --path=./src/nodejs_ref_guide/v' + version + ' -o ./out -t "Whatever" --skin ./resources/nodejs_ref_guide/skins',
+    exec('node ./build/ndoc/bin/ndoc --path=./src/nodejs_ref_guide/v' + version + ' -o ./out -t "Whatever" --skin ./resources/nodejs_ref_guide/skins',
       function (error, stdout, stderr) {
         console.log(stdout);
         if (error !== null) {
