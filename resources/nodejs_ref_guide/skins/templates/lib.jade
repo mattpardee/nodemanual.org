@@ -1,0 +1,286 @@
+- var id = 0;
+- var methodSection = constructorSection = propertySection = eventSection = false;
+
+mixin argument(arg, reqOptObj)
+  td
+    p
+      #{arg.name}
+  if arg.types
+    td
+      p
+        for type, i in arg.types
+         - if (i == arg.types.length - 1)
+          mixin link(type)
+         - else
+          mixin link(type) |
+  td
+    p
+      if reqOptObj.length > 0
+        for argInfo in reqOptObj
+         - if (argInfo !== undefined && arg.name === argInfo.name && argInfo.optional)
+            span.optionalArg X
+            -argInfo.found = "true"
+            break
+  td
+    mixin markdown(arg.description)
+    
+        
+
+mixin article(obj, parents)
+  if typeof obj === 'string'
+    obj = list[obj]
+
+  title = obj.id + (obj.type ? ' (' + obj.type + ')' : '')
+  article.article(id=obj.path, data-title=title)
+
+    if obj.type === 'section' || obj.type === 'namespace' || obj.type === 'class' || obj.type === 'mixin'
+
+      if obj.description
+        .section.description
+          .memberContent
+            mixin markdown(obj.description)
+
+      collection = obj.children.filter(function(x){return x.type === 'namespace'});
+      if collection.length
+        .section.namespaces
+          // 
+            h3 Namespaces
+            .memberContent
+              mixin short_description_list(collection)
+
+      collection = obj.children.filter(function(x){return x.type === 'mixin'});
+      if collection.length
+        .section.mixins
+          // 
+            h3 Mixins
+            .memberContent
+              mixin short_description_list(collection)
+
+      if obj.type === 'class'
+
+        if obj.superclass
+          .section.superclass
+            // h3 
+              Superclass
+              .memberContent
+                mixin link(obj.superclass)
+
+        if obj.subclasses.length
+          .section.subclasses
+            // h3 
+              Subclasses
+              .memberContent
+                mixin links(obj.subclasses)
+
+      if obj.included_mixins
+        .section.mixins
+          // h3 
+            Includes
+            .memberContent
+              mixin links(obj.included_mixins)
+
+      collection = obj.children.filter(function(x){return x.type === 'utility'})
+      if collection.length
+        .section.utilities
+          // h3 
+            Utilities
+            .memberContent
+              mixin links(collection)
+    
+    else
+
+      -var reqOptObj = [];
+      .section.method
+        .memberContent
+          if obj.signatures
+            div.title
+              ul.signatures
+                -id++; // Store id number for clicking method
+                for sig in obj.signatures
+                  if sig.args
+                    for arg in sig.args
+                      -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig has "optional" information; store for later use
+                  li.signature
+                    ul
+                      li.signature-call!= signature(obj, sig, "", "member_" + id)
+                        if sig.returns
+                          li.signature-returns
+                            ul.argument-types
+                              for ret in sig.returns
+                                non_link = obj.type == 'constant' || ret.type == 'Void'
+                                //- N.B: type can be array. E.g. [ Element... ]
+                                //- N.B: type can be array. E.g. [ Element1, Element2 ]
+                                text = ''
+                                if (typeof ret.type !== 'string')
+                                  - text = ret.type.map(function(r){ return link(r || '?', true, ['link-short']);}).join(', ');
+                                else
+                                  if non_link
+                                    text = ret.type
+                                  else
+                                    text = link(ret.type || '?', true, ['link-short'], "ret")
+                                if ret.ellipsis
+                                  text = text + '...'
+                                if ret.array
+                                  text = '[ ' + text + ' ]'
+                                li.argument-type!= text
+                      li
+                        if obj.readonly
+                          span.read-only.label.warning Read-Only
+                        if obj.chainable
+                          span.chainable.label.notice Chainable
+                        if obj.internal
+                          span.internal.label Internal
+                        if obj.deprecated
+                          span.deprecated.label.important
+                            | Deprecated
+                            if obj.deprecated.since
+                              | &nbsp;since #{obj.deprecated.since}
+                              if obj.deprecated.off
+                                | &nbsp;and will be removed on #{obj.deprecated.off}
+                                  
+          div.sideToggler
+
+            if obj.ellipsis_description
+              div(id='ellipsis_#{id}', class='ellipsis_description')
+                mixin markdown(obj.ellipsis_description)
+
+            h3(id='#{id}', class='methodToggle methodClicker inactive')
+              &nbsp;&nbsp;&nbsp;
+            div.description
+
+              descArray = obj.description.split("\n#### ")
+              mixin markdown(descArray[0])
+
+              if obj.bound && ~obj.bound.indexOf('#')
+                p.note.methodized
+                  | This method can be called <em>either</em> as an 
+                  != link(obj.bound, 'instance method', ['link-short'])
+                  |  <em>or</em> as a generic method. If calling as generic, pass the instance in as the first argument.
+              else if obj.bound && !~obj.bound.indexOf('#')
+                p.note.functionalized
+                  | This method can be called <em>either</em> as an instance method <em>or</em> as a 
+                  != link(obj.bound, 'generic method', ['link-short'])
+                  |. If calling as generic, pass the instance in as the first argument.
+
+              if obj.aliases && obj.aliases.length
+                .alias.aliases.alert-message.block-message
+                  | Aliased as:
+                  ul
+                    for alias in obj.aliases
+                      li
+                        mixin link(alias)
+
+              if obj.alias_of
+                .alias.alias-of.alert-message.block-message
+                  | Alias of:
+                  ul
+                    li
+                      mixin link(obj.alias_of)
+
+              if obj.related_to
+                .related-to.alert-message.block-message
+                  | Related to:
+                  mixin link(obj.related_to)
+
+              if obj.arguments
+                h4 Arguments
+                table.argument-list.zebra-striped
+                  tbody
+                    thead
+                      tr
+                        th Name
+                        th Type
+                        th Optional?
+                        th Description
+                    -for (var a = 0; a < obj.arguments.length; a++)
+                      tr
+                        mixin argument(obj.arguments[a], reqOptObj)    
+
+              - var r; // Probably inefficient; we want the Returns section under the Arguments, no matter where in source it's defined
+              - for (var a = 1; a < descArray.length; a++)
+                if (descArray[a].indexOf("Returns") >= 0)
+                  mixin markdown("\n#### " + descArray[a])
+                  r = a
+                  break
+                
+              - for (var a = 1; a < descArray.length; a++)
+                if (a != r)
+                  mixin markdown("\n#### " + descArray[a])      
+
+  //- children
+  for child in obj.children.filter(function(x){return x.type === 'section'})
+    mixin article(child, parents.concat(obj))
+  for child in obj.children.filter(function(x){return x.type === 'utility'})
+    mixin article(child, parents.concat(obj))
+
+  for child in obj.children.filter(function(x){return x.type === 'constructor'})
+    - if (!constructorSection)
+      - constructorSection = true
+      h3.sectionHeader Constructors
+    mixin article(child, parents.concat(obj))
+
+  for child in obj.children.filter(function(x){return x.type === 'namespace' || x.type === 'class' || x.type === 'mixin'})
+    mixin article(child, parents.concat(obj))
+
+  for child in obj.children.filter(function(x){return x.type === 'event'})
+    - if (!eventSection)
+      - eventSection = true
+      h3.sectionHeader Events
+    mixin article(child, parents.concat(obj))
+
+  for child in obj.children.filter(function(x){return x.type === 'class method'})
+    - if (!methodSection)
+      - methodSection = true
+      h3.sectionHeader Methods
+    mixin article(child, parents.concat(obj))
+
+  for child in obj.children.filter(function(x){return x.type === 'class property'})
+    - if (!propertySection)
+      - propertySection = true
+      h3.sectionHeader Properties
+    mixin article(child, parents.concat(obj))
+
+  for child in obj.children.filter(function(x){return x.type === 'instance method'})
+    mixin article(child, parents.concat(obj))
+  for child in obj.children.filter(function(x){return x.type === 'instance property'})
+    mixin article(child, parents.concat(obj))
+  for child in obj.children.filter(function(x){return x.type === 'constant'})
+    mixin article(child, parents.concat(obj))
+
+
+
+mixin api()
+  for obj in tree.children
+    mixin article(obj, [])
+
+
+
+mixin short_description_list(collection)
+  ul.method-details-list
+    for obj in collection
+      if typeof obj === 'string'
+        obj = list[obj]
+      li.method-description
+        h4
+          mixin link(obj)
+        if obj.short_description
+          mixin markdown(obj.short_description)
+
+
+
+mixin link(obj, short, classes)
+  != link(obj, short, classes)
+
+
+
+mixin markdown(text, inline)
+  html = markdown(text, inline)
+  != html
+
+
+
+mixin links(collection)
+  ul.method-list
+    for obj in collection
+      li
+        mixin link(obj)

@@ -1,0 +1,276 @@
+        li {
+    color: black  !important;
+}
+
+code {
+    background-color: transparent;
+}
+
+a code {
+    color: #0069D6;
+}
+
+        #header {
+    position:absolute; top:0;  right:0;
+    height:75px;
+    left: 150px;
+        }
+
+        #content {
+    position:absolute; 
+    top:75px; 
+    bottom:20px; 
+    right:0; 
+    left: 175px;
+    overflow:auto;
+       height:400px;
+        width:450px;
+    width: 80%;
+        }
+
+        #footer {
+    position:absolute; bottom:0; left:0; right:0;
+    height:20px;
+    background-color: whiteSmoke;
+    color: gray;
+    text-align: right;
+        }
+
+#footer a {
+    text-decoration: underline;
+    color: gray;
+}
+
+#sidebar {
+position: absolute;
+top: 0px;
+bottom: 20px;
+right: 0;
+left: 0;
+overflow: auto;
+height: 400px;
+width: 150px;
+}
+
+ul.menu, ul.inner_menu {
+    list-style: none;
+    margin-left: 0;
+}
+
+.menu a {
+  padding: 3px 10px 3px 28px;
+  background-position: 6px 50%;
+  background-repeat: no-repeat;
+}
+.menu ul {
+  padding: 0;
+  list-style: none;
+}
+.menu ul a {
+  padding-left: 38px;
+  background-position: 16px 50%;
+}
+.menu ul ul a {
+  padding-left: 48px;
+  background-position: 26px 50%;
+}
+.menu ul ul ul a {
+  padding-left: 58px;
+  background-position: 36px 50%;
+}
+.menu ul ul ul ul a {
+  padding-left: 68px;
+  background-position: 46px 50%;
+}
+.menu-item a,
+.menu-item a:link {
+  color: #333;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.menu-item a.deprecated {
+  opacity: 0.5;
+}
+.menu-item a.current {
+  background-color: #ddd;
+}
+.menu-item a.current-parent {
+  background-color: #eee;
+}
+.menu-item a:hover {
+  background-color: #ccc;
+}
+.menu-item a.section {
+  background-color: #000;
+  background: -moz-linear-gradient(#000 70%, #444) repeat scroll 0 0 transparent;
+  background: -webkit-linear-gradient(#000 70%, #444) repeat scroll 0 0 transparent;
+  background: linear-gradient(#000 70%, #444) repeat scroll 0 0 transparent;
+  color: #aaa;
+  padding: 6px 10px 6px 28px;
+}
+.menu-item a.class {
+  background-image: url("../images/class.png");
+}
+.menu-item a.class-method {
+  background-image: url("../images/class_method.png");
+}
+.menu-item a.class-property {
+  background-image: url("../images/class_property.png");
+}
+.menu-item a.constant {
+  background-image: url("../images/constant.png");
+}
+.menu-item a.constructor {
+  background-image: url("../images/constructor.png");
+}
+.menu-item a.event {
+  background-image: url("../images/event.png");
+}
+.menu-item a.instance-method {
+  background-image: url("../images/instance_method.png");
+}
+.menu-item a.instance-property {
+  background-image: url("../images/instance_property.png");
+}
+.menu-item a.method {
+  background-image: url("../images/method.png");
+}
+.menu-item a.mixin {
+  background-image: url("../images/mixin.png");
+}
+.menu-item a.namespace {
+  background-image: url("../images/namespace.png");
+}
+.menu-item a.property {
+  background-image: url("../images/property.png");
+}
+.menu-item a.utility {
+  background-image: url("../images/utility.png");
+}
+
+ul.menuTwo, ul.menuThree {
+  margin-left: 0px;
+}
+.memberHeader {
+  float: left;
+  margin-bottom: 0px;
+  text-transform: capitalize;
+}
+
+.members {
+    position: fixed;
+    top: 0;
+    width: 80%;
+    z-index: 999;
+  height: 45px;
+  background-color: whiteSmoke;
+}
+
+ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
+  width:760px;
+  margin-bottom:20px;
+  overflow:hidden;
+  border-top:1px solid #ccc;
+}
+ul.tabs .double li, ul.tabs .triple li, ul.tabs .quad li{
+  line-height:1.5em;
+  border-bottom:1px solid #ccc;
+  float:left;
+  display:inline;
+}
+
+.double { width: 250px; max-width: 250px; }
+.triple { width: 300px; max-width: 300px; }
+.quad { width: 500px; max-width: 500px; }
+
+.double li  { width:50%;} /* 2 col */
+.triple li  { width:33.333%; } /* 3 col */
+.quad li    { width:25%; } /* 4 col */
+
+.read-only, .chainable, .internal, .deprecated {
+  margin-left: 10px;
+}
+
+ul.signatures ul {
+    list-style: none;
+    display: inline;
+}
+
+ li.signature {
+    list-style: none;
+}
+
+.signature ul {
+    padding: 0;
+    margin: 0;
+}
+
+.signature li {
+    display: inline;
+}
+
+.signature ul.argument-types::before {
+    content: '→';
+    margin: 0 5px;
+}
+
+.optionalArg {
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.sideToggler .methodClicker a {
+    color: #fff;
+    border-bottom: 0px;
+}
+
+h3.methodToggle {
+    height               : 13px; 
+    width                : 10px; 
+    background-position  : 0px 0px; 
+    position: relative;
+    top: -60px;
+    background-image     : url(../images/member-sprites.png); 
+    background-color     : transparent; 
+    background-repeat    : no-repeat; 
+}
+
+h3.active {
+    top: -32px;
+    height               : 13px; 
+    width                : 10px; 
+    background-position  : 0px -58px; 
+} 
+
+.mainContent {
+    margin-top: 75px;
+}
+
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.hiddenSpan {
+    display: none;
+}
+
+.member-name {
+    color: #083772;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+div.memberContent div.description {
+  position:relative;
+  top: -13px;
+}
+
+.alert-message a {
+    font-weight: bold;
+    color: #0069D6;
+}

@@ -1,18 +1,18 @@
 {
    "toc":[
       {
+         "outname":"index",
+         "content":[
+            "index.md"
+         ],
+         "metadata":"page.json"
+      },
+      {
          "name":"overview",
          "content":[
                   "content.md"
                ],
          "folder":[
-            {
-               "name":"introduction",
-               "content":[
-                  "content.md"
-               ],
-               "metadata":"page.json"
-            },
             {
                "name":"npm",
                "content":[

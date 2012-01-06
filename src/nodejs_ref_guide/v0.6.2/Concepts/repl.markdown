@@ -69,41 +69,48 @@ The following key combinations in the REPL have special effects:
 
 ### Methods
 
-@method `repl.start([prompt='> '], [stream=process.stdin], [eval=eval], useGlobal=false, ignoreUndefined=false)`
-@param `prompt`: The starting prompt, `stream`: The stream to read from, `eval`: An asynchronous wrapper function that executes after each line, `useGlobal`: If `true`, then the REPL uses the global object, instead of scripts in a separate context, `ignoreUndefined`: If `true`, the REPL won't output return valyes of a command if it's `undefined`
-
-Starts a REPL with `prompt` as the prompt and `stream` for all I/O. 
-
-You can use your own `eval` function if it has the following signature:
-
-    function eval(cmd, callback) {
-      callback(null, result);
-    }
-
-Multiple REPLs can be started against the same running instance of node.  Each share the same global object but will have unique I/O.
-
-#### Example
-
-Here's an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
-
-    var net = require("net"),
-        repl = require("repl");
-
-    connections = 0;
-
-    repl.start("node via stdin> ");
-
-    net.createServer(function (socket) {
-      connections += 1;
-      repl.start("node via Unix socket> ", socket);
-    }).listen("/tmp/node-repl-sock");
-
-    net.createServer(function (socket) {
-      connections += 1;
-      repl.start("node via TCP socket> ", socket);
-    }).listen(5001);
-
-Running this program from the command line starts a REPL on stdin.  Other REPL clients may connect through the Unix socket or TCP socket. `telnet` is useful for connecting to TCP sockets, and `socat` can be used to connect to both Unix and TCP sockets.
-
-By starting a REPL from a Unix socket-based server instead of stdin, you can connect to a long-running node process without restarting it.
-
+/**
+ *
+ * Starts a REPL with `prompt` as the prompt and `stream` for all I/O. 
+ * 
+ * You can use your own `eval` function if it has the following signature:
+ *  
+ *     function eval(cmd, callback) {
+ *       callback(null, result);
+ *     }
+ * 
+ * Multiple REPLs can be started against the same running instance of node.  Each share the same global object but will have unique I/O.
+ * 
+ * #### Example
+ * 
+ * Here's an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
+ * 
+ *     var net = require("net"),
+ *         repl = require("repl");
+ * 
+ *     connections = 0;
+ * 
+ *     repl.start("node via stdin> ");
+ * 
+ *     net.createServer(function (socket) {
+ *       connections += 1;
+ *       repl.start("node via Unix socket> ", socket);
+ *     }).listen("/tmp/node-repl-sock");
+ * 
+ *    net.createServer(function (socket) {
+ *       connections += 1;
+ *       repl.start("node via TCP socket> ", socket);
+ *     }).listen(5001);
+ * 
+ * Running this program from the command line starts a REPL on stdin.  Other REPL clients may connect through the Unix socket or TCP socket. `telnet` is useful for connecting to TCP sockets, and `socat` can be used to connect to both Unix and TCP sockets.
+ * 
+ * By starting a REPL from a Unix socket-based server instead of stdin, you can connect to a long-running node process without restarting it.
+ *
+ * @param `prompt`  The starting prompt
+ * @param `stream`  The stream to read from
+ * @param `eval`  An asynchronous wrapper function that executes after each line
+ * @param `useGlobal`  If `true`, then the REPL uses the global objectm instead of scripts in a separate context
+ * @param `ignoreUndefined`  If `true`, the REPL won't output return valyes of a command if it's `undefined`
+ * 
+**/
+repl.start = function([prompt='> '], [stream=process.stdin], [eval=eval], useGlobal=false, ignoreUndefined=false)
