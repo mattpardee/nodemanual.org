@@ -4,7 +4,7 @@
  * This object is created when making a request with `http.request()`. It is passed to the `'response'` event of the request object.
  * 
  * The response implements the `Readable Stream` interface.
-*/
+**/
 
 /**
  * http.ClientResponse@data(chunk)

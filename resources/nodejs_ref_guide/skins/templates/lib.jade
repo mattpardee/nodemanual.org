@@ -1,4 +1,3 @@
-- var id = 0;
 - var methodSection = constructorSection = propertySection = eventSection = false;
 
 mixin argument(arg, reqOptObj)
@@ -14,15 +13,13 @@ mixin argument(arg, reqOptObj)
          - else
           mixin link(type) |
   td
-    p
+    -var argStatus = "Required. "
       if reqOptObj.length > 0
         for argInfo in reqOptObj
          - if (argInfo !== undefined && arg.name === argInfo.name && argInfo.optional)
-            span.optionalArg X
-            -argInfo.found = "true"
+            -argStatus = "Optional. "
             break
-  td
-    mixin markdown(arg.description)
+      mixin markdown(argStatus + arg.description)
     
         
 
@@ -95,14 +92,13 @@ mixin article(obj, parents)
           if obj.signatures
             div.title
               ul.signatures
-                -id++; // Store id number for clicking method
                 for sig in obj.signatures
                   if sig.args
                     for arg in sig.args
                       -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig has "optional" information; store for later use
                   li.signature
                     ul
-                      li.signature-call!= signature(obj, sig, "", "member_" + id)
+                      li.signature-call!= signature(obj, sig, "", obj.id)
                         if sig.returns
                           li.signature-returns
                             ul.argument-types
@@ -141,10 +137,10 @@ mixin article(obj, parents)
           div.sideToggler
 
             if obj.ellipsis_description
-              div(id='ellipsis_#{id}', class='ellipsis_description')
+              div(id='ellipsis_#{obj.id}', class='ellipsis_description')
                 mixin markdown(obj.ellipsis_description)
 
-            h3(id='#{id}', class='methodToggle methodClicker inactive')
+            h3(id='#{obj.id}', class='methodToggle methodClicker inactive')
               &nbsp;&nbsp;&nbsp;
             div.description
 
@@ -190,7 +186,6 @@ mixin article(obj, parents)
                       tr
                         th Name
                         th Type
-                        th Optional?
                         th Description
                     -for (var a = 0; a < obj.arguments.length; a++)
                       tr

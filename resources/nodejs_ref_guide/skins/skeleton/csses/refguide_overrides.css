@@ -50,6 +50,7 @@ left: 0;
 overflow: auto;
 height: 400px;
 width: 150px;
+padding-top: 50px;
 }
 
 ul.menu, ul.inner_menu {

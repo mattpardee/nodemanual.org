@@ -28,7 +28,7 @@ case "b":
         version = latest;
     }
 
-    exec('node ./build/ndoc/bin/ndoc --path=./src/js-doc -o ./out -t "Whatever" --skin ./resources/nodejs_ref_guide/skins',
+    exec('node ./build/ndoc/bin/ndoc --path=./src/js-doc -o ./out -t "Javascript Reference" --skin ./resources/nodejs_ref_guide/skins',
       function (error, stdout, stderr) {
         console.log(stdout);
         if (error !== null) {
@@ -45,7 +45,7 @@ case "b":
         }
     });
 
-    exec('node ./build/ndoc/bin/ndoc --path=./src/nodejs_ref_guide/v' + version + ' -o ./out -t "Whatever" --skin ./resources/nodejs_ref_guide/skins',
+    exec('node ./build/ndoc/bin/ndoc --path=./src/nodejs_ref_guide/v' + version + ' -o ./out -t "Node.js Reference" --skin ./resources/nodejs_ref_guide/skins',
       function (error, stdout, stderr) {
         console.log(stdout);
         if (error !== null) {

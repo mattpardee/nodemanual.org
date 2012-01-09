@@ -23,17 +23,23 @@ $(function() {
   $('.member-name').click(function()  {
     var id = this.id.substring(this.id.indexOf("_") + 1);
 
-    $('#' + id).trigger('click');
+    $("h3[id='" + id + "']").trigger('click');
   });
+
+  /*$('.memberLink').click(function()  {
+    var id = this.id.substring(this.id.indexOf("_") + 1);
+
+    $("h3[data-id='" + id + "']").trigger('click');
+  }); */
 
   $('h3.methodClicker').click(function() {
     var ellipsisSpan = "ellipsis_" + this.id;
 
-    if ($('#' + ellipsisSpan).hasClass('hiddenSpan'))
-      $('#' + ellipsisSpan).removeClass('hiddenSpan');
+    if ($("div[id='" + ellipsisSpan + "']").hasClass('hiddenSpan'))
+      $("div[id='" + ellipsisSpan + "']").removeClass('hiddenSpan');
     else
-      $('#' + ellipsisSpan).addClass('hiddenSpan');
-  });
+      $("div[id='" + ellipsisSpan + "']").addClass('hiddenSpan');
+  }); 
 
   // by default, opened page should have TOC opened
 /*  if ($('#' + menuUl).hasClass('hidden'))
