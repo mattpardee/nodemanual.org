@@ -66,10 +66,10 @@
 **/ 
 
 
-/** deprecated: 0.3
+/** deprecated: 0.3.0
  * net.Socket.setSecure()
  *
- * This function was used to upgrade the connection to SSL/TLS. See the [[tls TLS section]] for the new API.
+ * This function was used to upgrade the connection to SSL/TLS. See the [[tls TLS]] section for the new API.
  * 
 **/
 
@@ -156,7 +156,7 @@
  * 
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1564219.git&file=net.server.address.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=net.server.address.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
 **/ 
 

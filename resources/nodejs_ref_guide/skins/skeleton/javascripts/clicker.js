@@ -1,5 +1,5 @@
 $(function() {
-  $(".memberContent").collapse();
+  $(".sideToggler").collapse();
 
   var documentURL = location.href;
   var lastSlashPos = documentURL.lastIndexOf("/") + 1;
@@ -9,7 +9,9 @@ $(function() {
 
   var menuUl = "menu_" + objName;
 
-   var h = $(window).height();
+  // resize the sidebar/content based on window height;
+  // this enables us to have "inner" scroll bars
+   /*var h = $(window).height();
    $("#sidebar").css('height', h - 80);
    $("#content").css('height', h - 100);
 
@@ -18,8 +20,10 @@ $(function() {
         var w = $(window).width();
         $("#sidebar").css('height', h - 80);
         $("#content").css('height', h - 100);
-    });
+    }); */
 
+  // clicking on the member title should launch open the 
+  // description
   $('.member-name').click(function()  {
     var id = this.id.substring(this.id.indexOf("_") + 1);
 
@@ -32,29 +36,31 @@ $(function() {
     $("h3[data-id='" + id + "']").trigger('click');
   }); */
 
+  // when hovering over arrow, add highlight (only if inactive)
+  $("h3.methodToggle").hover(function () {
+      if (!$("h3.methodToggle").hasClass('active'))
+        $(this).addClass("methodToggleHover");
+    },
+    function () {
+      $(this).removeClass("methodToggleHover");
+    }
+  );
+
+  // after expanding the hidden description, hide the ellipsis
   $('h3.methodClicker').click(function() {
     var ellipsisSpan = "ellipsis_" + this.id;
+    var shortSpan = "short_" + this.id;
 
     if ($("div[id='" + ellipsisSpan + "']").hasClass('hiddenSpan'))
+    {
       $("div[id='" + ellipsisSpan + "']").removeClass('hiddenSpan');
-    else
-      $("div[id='" + ellipsisSpan + "']").addClass('hiddenSpan');
-  }); 
-
-  // by default, opened page should have TOC opened
-/*  if ($('#' + menuUl).hasClass('hidden'))
-      $('#' + menuUl).removeClass('hidden');
-
-  $('a.clicker').click(function() {
-    var menuUl = "menu_" + this.id;
-
-    if ($('#' + menuUl).hasClass('hidden'))
-      $('#' + menuUl).removeClass('hidden');
+      $("div[id='" + shortSpan + "']").addClass('hiddenSpan');
+    }
     else
     {
-      $('#' + menuUl).addClass('hidden');
-      document.getElementById('#' + menuUl).style = ""; // fix: some jerk somewhere is adding style="display:block" to the ul
+      $("div[id='" + shortSpan + "']").removeClass('hiddenSpan');
+      $("div[id='" + ellipsisSpan + "']").addClass('hiddenSpan');
     }
-  });*/
+  }); 
 });
 

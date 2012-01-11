@@ -15,7 +15,7 @@
  * 
  * #### Example: Running ls in a child process
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child_process.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child_process.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -55,7 +55,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.pid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.pid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -90,16 +90,16 @@
  * 
  * #### Example: Running `ls -lh /usr`, capturing `stdout`, `stderr`, and the exit code
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.spawn_1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.spawn_1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * 
  * #### Example: A very elaborate way to run `'ps ax | grep ssh'`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.spawn_2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.spawn_2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * #### Example: Checking for a failed `exec`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.spawn_3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.spawn_3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -110,8 +110,8 @@
  * - options (Object):The options to pass to the command
  * - callback (Function): The function to run after the method completes
  * - error (Error): The standard `Error` object; `err.code` is the exit code of the child process and `err.signal` is set to the signal that terminated the process
- * - stdout (Stream): The standard output stream
- * - stderr (Stream): The standard error stream
+ * - stdout (Streams): The standard output stream
+ * - stderr (Streams): The standard error stream
  * 
  * Runs a Unix command in a shell and buffers the output.
  * 
@@ -137,7 +137,7 @@
  *
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.exec.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.exec.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * #### Returns
  *
@@ -152,8 +152,8 @@
  * - options (Object): The options to pass to the `exec` call
  * - callback (Function): The function to run after the method completes
  * - error (Error): The standard `Error` object, except `err.code` is the exit code of the child process, and `err.signal is set to the signal that terminated the process
- * - stdout (Stream): is the standard output stream
- * - stderr (Stream): is the standard error stream
+ * - stdout (Streams): is the standard output stream
+ * - stderr (Streams): is the standard error stream
  * 
  * A function similar to `child.exec()`, except instead of executing a subshell it executes the specified file directly. This makes it slightly leaner than `child.exec`. It has the same options and callback.
  *
@@ -176,11 +176,11 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.fork.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.fork.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * The child script, `'sub.js'`, might look like this:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=sub.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=sub.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * In the child, the `process` object has a `send()` method, and `process` emits objects each time it receives a message on its channel.
  * 
@@ -218,6 +218,6 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562677.git&file=child.kill.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.kill.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/

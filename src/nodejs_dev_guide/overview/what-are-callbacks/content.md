@@ -8,6 +8,7 @@ In a synchronous program, you could write a function that looks like this:
       return data;
     }
 
+
 This works just fine and is typical in other development environments. However, if `getData()` takes a long time to fetch the data (if, for example, it's streaming something from the Internet), then the entire program is blocked until the data is loaded. Node.js, being an asynchronous platform, doesn't wait around for things like file I/O to finish: Node.js uses callbacks.
 
 A callback is a function called at the completion of a given task. This system prevents any blocking, and allows other code to be run in the meantime.
@@ -44,4 +45,4 @@ The typical convention with asynchronous functions (which almost all of your fun
        //This code gets run after the async operation gets run
     });
 
-You will almost always want to follow the [error callback convention](#what-are-the-error-conventions), since most Node.js users will expect your project to follow them. The general idea is that the callback is the last parameter. The callback gets called after the function is done with all of its operations. Traditionally, the first parameter of the callback is the `error` value. If the function hits an error, then it typically calls the callback with the first parameter being an `Error` object. If the function cleanly exits, then it calls the callback with the first parameter being `null` and the rest being the return value(s).
+You will almost always want to follow the [error callback convention](what-are-the-error-conventions.html), since most Node.js users will expect your project to follow them. The general idea is that the callback is the last parameter. The callback gets called after the function is done with all of its operations. Traditionally, the first parameter of the callback is the `error` value. If the function hits an error, then it typically calls the callback with the first parameter being an `Error` object. If the function cleanly exits, then it calls the callback with the first parameter being `null` and the rest being the return value(s).

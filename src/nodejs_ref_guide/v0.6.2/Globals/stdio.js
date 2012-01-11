@@ -66,12 +66,8 @@
  *
  * #### Example
  *
- *		var iCount = 42;
- *		var sMessage = "Hello, my friend.";
- *
- *		console.log('Count: %d', iCount);
- *
- *		console.log('Message: %s', sMessage);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.log.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * 
 **/ 
 
 
@@ -83,12 +79,7 @@
  * 
  * #### Example
  * 
- *     console.time('elements');
- *     for (var i = 0; i < 1000000; i++) {
- *       ;
- *     }
- *     console.timeEnd('elements');
- *     // print 4ms
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.time.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -101,12 +92,7 @@
  * 
  * #### Example
  * 
- *     console.time('elements');
- *     for (var i = 0; i < 1000000; i++) {
- *       ;
- *     }
- *     console.timeEnd('elements');
- *     // prints: 4ms (or something similar)
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.time.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 

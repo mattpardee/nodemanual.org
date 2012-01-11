@@ -32,13 +32,13 @@ When only reading a file or two, or saving something quickly, the difference bet
 
 #### Callbacks
 
-Callbacks are essential in Javascript, and are a basic idiom in Node.js for asynchronous operations. Essentially, callbacks refer to functions that are passed as the final paramter to an asynchronous function. After the asynchronous funciton executes, the callback function is called with any return value or error message the asynchronous function produces. For more information, see [the section on callbacks](#what-are-callbacks).
+Callbacks are essential in Javascript, and are a basic idiom in Node.js for asynchronous operations. Essentially, callbacks refer to functions that are passed as the final paramter to an asynchronous function. After the asynchronous funciton executes, the callback function is called with any return value or error message the asynchronous function produces. For more information, see [the section on callbacks](what-are-callbacks.html).
 
 #### Event Emitters
 
 Event emitters are another basic concept in Node.js. A constructor for the object is provided in Node.js core: `require('events').EventEmitter`. 
 
-An event emitter is typically used when you know that there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see [the article on event emitters](#what-are-event-emitters).
+An event emitter is typically used when you know that there will be multiple parts to an asynchronous response. Since you typically want a callback function called once, you use an event emitter to control the number of times it's referenced. For more details, see [the article on event emitters](what-are-event-emitters.html).
 
 #### Caveats in Asynchronous Code
 

@@ -1,5 +1,5 @@
 - var methodSection = constructorSection = propertySection = eventSection = false;
-
+- var globalJSObjs = ["Array", "Boolean", "Date", "Error", "EvalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError", "Function", "Infinity", "JSON", "Math", "NaN", "Number", "Object", "RegExp", "String"]
 mixin argument(arg, reqOptObj)
   td
     p
@@ -98,7 +98,7 @@ mixin article(obj, parents)
                       -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig has "optional" information; store for later use
                   li.signature
                     ul
-                      li.signature-call!= signature(obj, sig, "", obj.id)
+                      li.signature-call!= validate_link(signature(obj, sig, "", obj.id))
                         if sig.returns
                           li.signature-returns
                             ul.argument-types
@@ -118,34 +118,71 @@ mixin article(obj, parents)
                                   text = text + '...'
                                 if ret.array
                                   text = '[ ' + text + ' ]'
-                                li.argument-type!= text
-                      li
+                                li.argument-type!= validate_link(text)
+                    ul.metaInfo
                         if obj.readonly
-                          span.read-only.label.warning Read-Only
+                          li
+                            span.label.read-only Read-Only
                         if obj.chainable
-                          span.chainable.label.notice Chainable
+                          li
+                            span.label.chainable Chainable
                         if obj.internal
-                          span.internal.label Internal
+                          li
+                            span.label.internal Internal
                         if obj.deprecated
-                          span.deprecated.label.important
-                            | Deprecated
-                            if obj.deprecated.since
-                              | &nbsp;since #{obj.deprecated.since}
-                              if obj.deprecated.off
-                                | &nbsp;and will be removed on #{obj.deprecated.off}
+                          li
+                            span.label.deprecated
+                              | Deprecated
+                              if obj.deprecated.from
+                                | &nbsp; (since #{obj.deprecated.from})
+                                if obj.deprecated.off
+                                  | &nbsp;and will be removed on #{obj.deprecated.off}
+                        if obj.aliases && obj.aliases.length
+                          li
+                            span.label.alias
+                              | Aliased as:
+                              ul.alias
+                                for alias in obj.aliases
+                                  li
+                                    mixin link(alias)
+
+                        if obj.related_to
+                          li
+                            span.label.related-to
+                              | Related to
+                              mixin link(obj.related_to)  
                                   
           div.sideToggler
 
             if obj.ellipsis_description
               div(id='ellipsis_#{obj.id}', class='ellipsis_description')
                 mixin markdown(obj.ellipsis_description)
+              div(id='short_#{obj.id}', class='short_description hiddenSpan')
+                mixin markdown(obj.short_description)
 
             h3(id='#{obj.id}', class='methodToggle methodClicker inactive')
               &nbsp;&nbsp;&nbsp;
             div.description
 
-              descArray = obj.description.split("\n#### ")
-              mixin markdown(descArray[0])
+              -description = obj.description.substring(obj.short_description.length) // cut the short_desc out
+              descArray = description.split("\n#### ")
+
+              if obj.arguments
+                h4 Arguments
+                table.argument-list.zebra-striped.bordered-table
+                  tbody
+                    thead
+                      tr
+                        th Name
+                        th Type
+                        th Description
+                    -for (var a = 0; a < obj.arguments.length; a++)
+                      tr
+                        mixin argument(obj.arguments[a], reqOptObj)  
+
+              if descArray[0].length && descArray[0] !== '' && descArray[0] !== '\n'
+                h4 Description
+                mixin markdown(descArray[0])
 
               if obj.bound && ~obj.bound.indexOf('#')
                 p.note.methodized
@@ -157,39 +194,6 @@ mixin article(obj, parents)
                   | This method can be called <em>either</em> as an instance method <em>or</em> as a 
                   != link(obj.bound, 'generic method', ['link-short'])
                   |. If calling as generic, pass the instance in as the first argument.
-
-              if obj.aliases && obj.aliases.length
-                .alias.aliases.alert-message.block-message
-                  | Aliased as:
-                  ul
-                    for alias in obj.aliases
-                      li
-                        mixin link(alias)
-
-              if obj.alias_of
-                .alias.alias-of.alert-message.block-message
-                  | Alias of:
-                  ul
-                    li
-                      mixin link(obj.alias_of)
-
-              if obj.related_to
-                .related-to.alert-message.block-message
-                  | Related to:
-                  mixin link(obj.related_to)
-
-              if obj.arguments
-                h4 Arguments
-                table.argument-list.zebra-striped
-                  tbody
-                    thead
-                      tr
-                        th Name
-                        th Type
-                        th Description
-                    -for (var a = 0; a < obj.arguments.length; a++)
-                      tr
-                        mixin argument(obj.arguments[a], reqOptObj)    
 
               - var r; // Probably inefficient; we want the Returns section under the Arguments, no matter where in source it's defined
               - for (var a = 1; a < descArray.length; a++)
@@ -264,7 +268,8 @@ mixin short_description_list(collection)
 
 
 mixin link(obj, short, classes)
-  != link(obj, short, classes)
+  l = link(obj, short, classes)
+  != validate_link(l)
 
 
 
@@ -279,3 +284,11 @@ mixin links(collection)
     for obj in collection
       li
         mixin link(obj)
+
+
+-function validate_link(l) // turn the js-doc links to point to js-doc. this is lousy code.
+  for js_obj in globalJSObjs
+    -var regex = new RegExp('href="' + js_obj, "i")
+    -if (l.match(regex))
+      -l = l.replace(js_obj, "../js-doc/" + js_obj)      
+  != l

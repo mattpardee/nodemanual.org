@@ -1,172 +1,145 @@
-        li {
-    color: black  !important;
+/*
+  Generic "affects everything" stuff
+*/
+body {
+  background-color: #ffffff;
+}
+
+li {
+    color: black;
 }
 
 code {
-    background-color: transparent;
+  background-color: #fce68c;
+}
+
+pre code {
+  background-color: transparent;
 }
 
 a code {
     color: #0069D6;
 }
 
-        #header {
-    position:absolute; top:0;  right:0;
-    height:75px;
-    left: 150px;
-        }
+/* 
+  Header and shoulders
+*/
 
-        #content {
-    position:absolute; 
-    top:75px; 
-    bottom:20px; 
-    right:0; 
-    left: 175px;
-    overflow:auto;
-       height:400px;
-        width:450px;
-    width: 80%;
-        }
-
-        #footer {
-    position:absolute; bottom:0; left:0; right:0;
-    height:20px;
-    background-color: whiteSmoke;
-    color: gray;
-    text-align: right;
-        }
-
-#footer a {
-    text-decoration: underline;
-    color: gray;
+#topSection {
+  width: 940px;
 }
 
-#sidebar {
-position: absolute;
-top: 0px;
-bottom: 20px;
-right: 0;
-left: 0;
-overflow: auto;
-height: 400px;
-width: 150px;
-padding-top: 50px;
-}
-
-ul.menu, ul.inner_menu {
-    list-style: none;
-    margin-left: 0;
-}
-
-.menu a {
-  padding: 3px 10px 3px 28px;
-  background-position: 6px 50%;
+.brand {
+  background: transparent url(../images/node-logo.png) top;
   background-repeat: no-repeat;
-}
-.menu ul {
-  padding: 0;
-  list-style: none;
-}
-.menu ul a {
-  padding-left: 38px;
-  background-position: 16px 50%;
-}
-.menu ul ul a {
-  padding-left: 48px;
-  background-position: 26px 50%;
-}
-.menu ul ul ul a {
-  padding-left: 58px;
-  background-position: 36px 50%;
-}
-.menu ul ul ul ul a {
-  padding-left: 68px;
-  background-position: 46px 50%;
-}
-.menu-item a,
-.menu-item a:link {
-  color: #333;
-  display: block;
-  text-align: left;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.menu-item a.deprecated {
-  opacity: 0.5;
-}
-.menu-item a.current {
-  background-color: #ddd;
-}
-.menu-item a.current-parent {
-  background-color: #eee;
-}
-.menu-item a:hover {
-  background-color: #ccc;
-}
-.menu-item a.section {
-  background-color: #000;
-  background: -moz-linear-gradient(#000 70%, #444) repeat scroll 0 0 transparent;
-  background: -webkit-linear-gradient(#000 70%, #444) repeat scroll 0 0 transparent;
-  background: linear-gradient(#000 70%, #444) repeat scroll 0 0 transparent;
-  color: #aaa;
-  padding: 6px 10px 6px 28px;
-}
-.menu-item a.class {
-  background-image: url("../images/class.png");
-}
-.menu-item a.class-method {
-  background-image: url("../images/class_method.png");
-}
-.menu-item a.class-property {
-  background-image: url("../images/class_property.png");
-}
-.menu-item a.constant {
-  background-image: url("../images/constant.png");
-}
-.menu-item a.constructor {
-  background-image: url("../images/constructor.png");
-}
-.menu-item a.event {
-  background-image: url("../images/event.png");
-}
-.menu-item a.instance-method {
-  background-image: url("../images/instance_method.png");
-}
-.menu-item a.instance-property {
-  background-image: url("../images/instance_property.png");
-}
-.menu-item a.method {
-  background-image: url("../images/method.png");
-}
-.menu-item a.mixin {
-  background-image: url("../images/mixin.png");
-}
-.menu-item a.namespace {
-  background-image: url("../images/namespace.png");
-}
-.menu-item a.property {
-  background-image: url("../images/property.png");
-}
-.menu-item a.utility {
-  background-image: url("../images/utility.png");
+  margin-top: 7px;
+  margin-right: 110px;
+  width: 110px;
 }
 
-ul.menuTwo, ul.menuThree {
-  margin-left: 0px;
+a.brand {
+  cursor: default;
 }
-.memberHeader {
-  float: left;
-  margin-bottom: 0px;
-  text-transform: capitalize;
+
+.masthead {
+  background-color: #7f9e2e;
+  background-repeat: repeat-x;
 }
+
+.jumbotron {
+  min-width: 940px;
+  padding-top: 40px;
+}
+
+.jumbotron .inner {
+  background: transparent url(../images/header-back.png) top center;
+  padding: 45px 0;
+  -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+  -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+}
+
+.jumbotron h1 {
+  font-size: 54px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+}
+
+.jumbotron h1, .jumbotron p {
+  margin-bottom: 9px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+
+/*
+  Menu venue
+*/
+
+.menu li {
+  color: #E1E1E1;
+}
+
+.menu li .menu-item a.menuLink, .menu li .menu-item span.menuLink {
+  color: #000000;
+  font-weight: bold;
+}
+
+.menuTwo li .menu-item a.menuLink {
+  color: #767676;
+  font-weight: bold;
+}
+
+/* need specificity to "beat" the above colors */
+.menu li .menu-item a.currentItem, .menuTwo li .menu-item  {
+  color: #618100;
+}
+
+/*
+  Members and the tabs that represent them
+*/
 
 .members {
-    position: fixed;
-    top: 0;
-    width: 80%;
-    z-index: 999;
-  height: 45px;
-  background-color: whiteSmoke;
+  width: 800px;  
+}
+
+.memberHeader {
+  float: left;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.tabs {
+  padding-top: 10px;
+  border-bottom: 1px solid black;
+}
+
+.topbar div > ul .menu-dropdown li a:hover,
+.nav .menu-dropdown li a:hover,
+.topbar div > ul .dropdown-menu li a:hover,
+.nav .dropdown-menu li a:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.open .menu, .dropdown.open .menu, .open .dropdown-toggle, .dropdown.open .dropdown-toggle  {
+  background: transparent;
+  color: #000000;
+  font-weight: bold;
+}
+
+.tabs > li > a:hover {
+  color: #000000;
+  text-decoration: none;
+  background-color: #ffffff;
+}
+.tabs .active > a, .tabs .active > a:hover {
+  color: #000000;
+  border: none;
+  cursor: default;
+}
+
+.dropdown-toggle {
+  color: #d4d4d4;
 }
 
 ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
@@ -182,16 +155,24 @@ ul.tabs .double li, ul.tabs .triple li, ul.tabs .quad li{
   display:inline;
 }
 
-.double { width: 250px; max-width: 250px; }
-.triple { width: 300px; max-width: 300px; }
-.quad { width: 500px; max-width: 500px; }
+/*
+  Center content (the "real stuff")
+ */
 
-.double li  { width:50%;} /* 2 col */
-.triple li  { width:33.333%; } /* 3 col */
-.quad li    { width:25%; } /* 4 col */
+.row {
+  background: url(../resources/images/sidebar_top.png) repeat-x;
+}
 
-.read-only, .chainable, .internal, .deprecated {
-  margin-left: 10px;
+.container {
+  width: 1420px;
+}
+
+/*
+  ALl about signatures
+ */
+
+.signatures {
+  width: 800px;
 }
 
 ul.signatures ul {
@@ -217,14 +198,59 @@ ul.signatures ul {
     margin: 0 5px;
 }
 
-.optionalArg {
-  padding-left: 20px;
-  font-weight: bold;
+.member-name {
+    color: #4397cd;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.sideToggler .methodClicker a {
+.signature-call a {
+  color: #859c59;
+}
+
+.metaInfo {
+  float: right;
+}
+
+.chainable {
+  background-color: #0072bc;
+  color: #ffffff;
+}
+
+.deprecated {
+  background-color: #f7941d;
+  color: #ffffff;
+}
+
+.alias {
+  background-color: #6c951e;
+  color: #ffffff;
+}
+
+.related-to {
+  background-color: #89289a;
+  color: #ffffff;
+}
+
+.alias a, .related-to a {
+  color: #ffffff;
+  text-decoration: underline;  
+}
+
+div.memberContent div.description {
+  position:relative;
+  top: -13px;
+}
+
+/*
+  Everyday I'm togglin'
+*/
+
+.methodToggle a {
     color: #fff;
     border-bottom: 0px;
+    text-decoration: none;
 }
 
 h3.methodToggle {
@@ -238,17 +264,16 @@ h3.methodToggle {
     background-repeat    : no-repeat; 
 }
 
+h3.methodToggleHover {
+    background-position  : 0px -28px; 
+}
+
 h3.active {
-    top: -32px;
+    top:                  -60px;
     height               : 13px; 
     width                : 10px; 
     background-position  : 0px -58px; 
 } 
-
-.mainContent {
-    margin-top: 75px;
-}
-
 
 .hidden {
   display: none;
@@ -259,19 +284,33 @@ h3.active {
     display: none;
 }
 
-.member-name {
-    color: #083772;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
+.ellipsis_description, .short_description {
+  width: 800px;
 }
 
-div.memberContent div.description {
-  position:relative;
-  top: -13px;
+/*
+  Footer? I hardly know her
+  */
+
+#footer {
+   /*position:fixed; */
+   left:0px;
+   bottom:0px;
+   height:65px;
+   width:100%;
+   background:#fefefe;
+   color: #c3c3c3;
 }
 
-.alert-message a {
-    font-weight: bold;
-    color: #0069D6;
+#footer a {
+  color: #c3c3c3;
+  text-decoration: underline;
 }
+
+ .logoText, .logoImg {
+   /*position: absolute;*/
+ }
+
+ .logoImg {
+   top: 40px;
+ }

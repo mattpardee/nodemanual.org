@@ -147,16 +147,7 @@
                "content":[
                   "content.md"
                ],
-               "metadata":"page.json",
-               "folder":[
-                  {
-                     "name":"introduction",
-                     "content":[
-                        "content.md"
-                     ],
-                     "metadata":"page.json"
-                  }
-               ]
+               "metadata":"page.json"
             },
             {
                "name":"HTTP-servers",
@@ -204,9 +195,6 @@
             },
             {
                "name":"HTTP-clients",
-               "content":[
-                  "content.md"
-               ],
                "metadata":"page.json",
                "folder":[
                   {
@@ -233,28 +221,19 @@
                "metadata":"page.json"
             },
             {
-               "name":"serving-files",
-               "content":[
-                  "content.md"
-               ],
-               "metadata":"page.json",
-               "folder":[
-                  {
-                     "name":"how-to-read-files-in-nodejs",
+              "name":"how-to-read-files-in-nodejs",
                      "content":[
                         "content.md"
                      ],
                      "metadata":"page.json"
-                  },
+            },
                   {
                      "name":"how-to-write-files-in-nodejs",
                      "content":[
                         "content.md"
                      ],
                      "metadata":"page.json"
-                  }
-               ]
-            },
+                  },
             {
                "name":"how-to-store-local-config-data",
                "content":[
@@ -327,13 +306,6 @@
                ],
                "metadata":"page.json",
                "folder":[
-                  {
-                     "name":"what-are-streams",
-                     "content":[
-                        "content.md"
-                     ],
-                     "metadata":"page.json"
-                  },
                   {
                      "name":"how-to-use-fs-create-read-stream",
                      "content":[

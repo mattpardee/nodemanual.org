@@ -48,9 +48,9 @@ Next is `process.stderr`, which is very similar to `process.stdout` with one key
 
 * STDERR, or blocking functions: `console.warn`, `console.error`, `util.debug`
 
-Lastly, `process.stdin` is a readable stream for getting user input. For more information, see [the section on prompting for input](#how-to-prompt-for-command-line-input).
+Lastly, `process.stdin` is a readable stream for getting user input. For more information, see [the section on prompting for input](how-to-prompt-for-command-line-input.html).
 
-For a complete list of properties and methods available to `process`, see [the official Node.js documentation](http://nodejs.org/docs/latest/api/process.html).
+For a complete list of properties and methods available to `process`, see [the Node.js documentation on `process`](../nodejs_ref_guide/process.html).
 
 #### Additional Properties
 
@@ -72,7 +72,7 @@ You values may be different. Here's what these properties mean:
 * `process.platform` is something general like 'linux' or 'darwin'
 * `process.title` is a little bit different. While set to `node` by default, it can be set to anything you want, and defines the name displayed when viewing a list of running processes.
 
-The `process` module also exposes `process.argv`, an array containing the command-line arguments to the current process, and `process.argc`, an integer representing the number of arguments passed in.  Here's more information on [how to parse command line arguments](#how-to-parse-command-line-arguments).
+The `process` module also exposes `process.argv`, an array containing the command-line arguments to the current process, and `process.argc`, an integer representing the number of arguments passed in.  Here's more information on [how to parse command line arguments](how-to-parse-command-line-arguments.html).
 
 #### Additional Methods
 

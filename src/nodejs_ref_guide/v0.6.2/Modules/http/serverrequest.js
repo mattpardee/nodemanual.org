@@ -59,11 +59,11 @@
  *
  * If you would like to parse the URL into its parts, you can use `require('url').parse(request.url)`. For example:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562874.git&file=http.serverrequest_1.url&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=http.serverrequest_1.url&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * If you would like to extract the params from the query string, you can use [[querystring.parse `require('querystring').parse()`]], or pass `true` as the second argument to `require('url').parse`.  For example:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgist.github.com%2F1562874.git&file=http.serverrequest_2.url&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=http.serverrequest_2.url&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
 */
 

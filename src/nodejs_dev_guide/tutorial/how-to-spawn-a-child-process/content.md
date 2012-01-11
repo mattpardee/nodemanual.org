@@ -21,7 +21,7 @@ The simplest way is the "fire, forget, and buffer" method using `child_process.e
        console.log('Child process exited with exit code '+code);
      });
 
-(`error.stack` is a stack trace to the point that the [Error object](#what-is-the-error-object) was created.)
+(`error.stack` is a stack trace to the point that the [Error object](what-is-the-error-object.html) was created.)
 
 It should be noted that the `stderr` of a given process is not exclusively reserved for error messages. Many programs use it as a channel for secondary data instead.  As such, when trying to work with a program that you have not previously spawned as a child process, it can be helpful to start out dumping both `stdout` and `stderr`, as shown above, to avoid any surprises.
 

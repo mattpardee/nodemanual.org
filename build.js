@@ -1,14 +1,16 @@
 require("colors");
 
 var argv = require("optimist").argv,
-    docs = require("./build/doc-build/docs");
+    docs = require("./build/doc-build/docs"),
+    fs = require('fs');
     
 var task = argv._[0],
     version = argv._[1];
 
 var type = "nodejs_dev_guide";
+var outDir = "out/nodejs_dev_guide";
 
-var latest = "0.6.6";
+var latest = "0.6.7";
 
 switch (task) {
 case "b":
@@ -16,8 +18,9 @@ case "b":
     
     docs.clean("tmp");
     docs.clean("out");
-    docs.copyassets(type);
-    docs.generate(process.cwd() + "/src/" + type, type);
+    docs.clean(outDir);
+    docs.copyassets(outDir, type);
+    docs.generate(outDir, process.cwd() + "/src/" + type, type);
 
     var util = require('util'),
         exec = require('child_process').exec,
@@ -28,17 +31,21 @@ case "b":
         version = latest;
     }
 
-    exec('node ./build/ndoc/bin/ndoc --path=./src/js-doc -o ./out -t "Javascript Reference" --skin ./resources/nodejs_ref_guide/skins',
+    exec('node ./build/ndoc/bin/ndoc --path=./src/js_doc -o ./out -t "Javascript Reference" --skin ./resources/nodejs_ref_guide/skins',
       function (error, stdout, stderr) {
         console.log(stdout);
+
         if (error !== null) {
-          console.log('exec error: ' + error);
+            var errMsg = 'exec error: ' + error;
+            console.log(errMsg.red);
+            process.exit(1);
         }
+
         if (!/[\d]\.[\d]\.[\d]/.test(version))
         {
             var versionError = "We're building the documentation for Node.js, but you didn't specify a version! You must either: \n" +
                 " * Add a parameter that matches x.y.z, where x, y, and z are all numerals; for example, 0.6.3\n" +
-                " * You can just pass in the word 'latest' for the latest version; currently, this is " + latest;
+                " * Pass in the word 'latest' for the latest version; currently, this is " + latest;
             console.log(versionError.red);
                 
             version = latest;
@@ -49,7 +56,9 @@ case "b":
       function (error, stdout, stderr) {
         console.log(stdout);
         if (error !== null) {
-          console.log('exec error: ' + error);
+            var errMsg = 'exec error: ' + error;
+            console.log(errMsg.red);
+            process.exit(1);
         }
     });
     break;

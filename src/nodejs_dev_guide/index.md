@@ -1,4 +1,4 @@
-# Node.js Developer's Guide
+## Node.js Manual
 
 Node.js is a server-side Javascript environment. It's event-driven, asynchronous, and allows you to write a web server in a relatively quick amount of time.
 
@@ -6,4 +6,4 @@ The purpose of this document is to provide a resource for developers of all leve
 
 In order to get Node.js, you can either download [the latest stable release](http://nodejs.org/#download), or clone the version submitted into the GitHub repo. Keep in mind that stable releases are even-numbered (0.2, 0.4, 0.6), while unstable releases are odd (0.3, 0.5).
 
-If you're new to Node.js or Javascript, you may want to review the article on [asynchronous programming](#how-to-write-asynchronous-code), [designing callbacks](#what-are-callbacks), and [defining event emitters](#what-are-event-emitters). Otherwise, you might want to review what Node.js offers in its constructs through the article on [Javascript conventions](#javascript-conventions).
+If you're new to Node.js or Javascript, you may want to review the article on [asynchronous programming](how-to-write-asynchronous-code.html), [designing callbacks](what-are-callbacks.html), and [defining event emitters](what-are-event-emitters.html). Otherwise, you might want to review what Node.js offers in its constructs through the article on [Javascript conventions](using-ECMA5-in-nodejs.html).

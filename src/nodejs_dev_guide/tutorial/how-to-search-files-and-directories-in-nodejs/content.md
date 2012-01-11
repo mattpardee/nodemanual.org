@@ -1,6 +1,6 @@
 ## Searching for Files
 
-Suppose you want to list all the files in the current directory.  One approach is to use the builtin `fs.readdir()` [method](#how-do-i-read-files-in-node-js). This will get you an array of all the files and directories on the specified path:
+Suppose you want to list all the files in the current directory.  One approach is to use the builtin `fs.readdir()` [method](how-do-i-read-files-in-node-js.html). This will get you an array of all the files and directories on the specified path:
 
     fs = require('fs');
 

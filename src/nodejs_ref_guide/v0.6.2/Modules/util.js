@@ -34,21 +34,7 @@
  *
  * #### Example
  *
- * If the placeholder does not have a corresponding argument, the placeholder is not replaced, as in this example:
- * 
- *	   var util = require("util");
- *     util.format('%s:%s', 'foo'); // 'foo:%s'
- * 
- * If there are more arguments than placeholders, the extra arguments are converted to strings with `util.inspect()` and these strings are concatenated, delimited by a space:
- * 
- *	   var util = require("util");
- *     util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
- * 
- * If the first argument is not a format string, then [[util.format `util.format()`]] returns a string that is the concatenation of all its arguments separated by spaces. Each argument is converted to a string with [[util.inspect `util.inspect()`]].
- * 
- *	   var util = require("util");
- *     util.format(1, 2, 3); // '1 2 3'
- * 
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.format.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 **/ 
 
 
@@ -66,8 +52,7 @@
  * 
  * Here's an example inspecting all the properties of the `util` object:
  * 
- *     var util = require('util');
- *     console.log(util.inspect(util, true, null));
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.inspect.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -80,14 +65,7 @@
  * 
  * #### Example
  * 
- *     var util = require('util');
- * 
- *     util.isArray([])
- *       // true
- *     util.isArray(new Array)
- *       // true
- *     util.isArray({})
- *       // false
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.isArray.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -100,15 +78,7 @@
  * 
  * #### Example
  * 
- *     var util = require('util');
- * 
- *     util.isDate(new Date())
- *       // true
- *     util.isDate(Date())
- *       // false (without 'new' returns a String)
- *     util.isDate({})
- *       // false
- * 
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.isDate.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -121,14 +91,7 @@
  * 
  * #### Example
  * 
- *     var util = require('util');
- * 
- *     util.isError(new Error())
- *       // true
- *     util.isError(new TypeError())
- *       // true
- *     util.isError({ name: 'Error', message: 'an error occurred' })
- *       // false
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.isError.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -141,15 +104,8 @@
  * 
  * #### Example
  * 
- *     var util = require('util');
- * 
- *     util.isRegExp(/some regexp/)
- *       // true
- *     util.isRegExp(new RegExp('another regexp'))
- *       // true
- *     util.isRegExp({})
- *       // false
- *       
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.isRegExp.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ *     
  * 
 **/ 
 
@@ -189,28 +145,8 @@
  * 
  * #### Example
  * 
- *     var util = require("util");
- *     var events = require("events");
- * 
- *     function MyStream() {
- *         events.EventEmitter.call(this);
- *     }
- * 
- *     util.inherits(MyStream, events.EventEmitter);
- * 
- *     MyStream.prototype.write(data) {
- *         this.emit("data", data);
- *     }
- * 
- *     var stream = new MyStream();
- * 
- *     console.log(stream instanceof events.EventEmitter); // true
- *     console.log(MyStream.super_ === events.EventEmitter); // true
- * 
- *     stream.on("data", function(data) {
- *         console.log('Received data: "' + data + '"');
- *     })
- *     stream.write("It works!"); // Received data: "It works!"
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=url.inherits.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ *
  * 
 **/ 
 
