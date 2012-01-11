@@ -40,7 +40,7 @@
  * 
  * `vm.runInNewContext()` compiles `code` to run in `sandbox` as if it were loaded from `filename`, then runs it and returns the result. Running code does not have access to local scope and the object `sandbox` will be used as the global object for `code`.
  * 
- * <span class="label success">Note</span> Running untrusted code is a tricky business requiring great care.  To prevent accidental global variable leakage, `vm.runInNewContext()` is quite useful, but safely running untrusted code requires a separate process.
+ * <Warning>Running untrusted code is a tricky business requiring great care.  To prevent accidental global variable leakage, `vm.runInNewContext()` is quite useful, but safely running untrusted code requires a separate process.</Warning>
  * 
  * In case of syntax error in `code`, `vm.runInNewContext()` emits the syntax error to stderr and throws an exception.
  * 

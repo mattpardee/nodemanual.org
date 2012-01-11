@@ -16,13 +16,16 @@ $(function () {
   else
     window.attachEvent('load', loadCallback, true);
 
+  // changes the topbar highlighter
   if (pathName.indexOf("nodejs_ref_guide") >= 0)
     $('li#node_js_ref').addClass("active");
   else if (pathName.indexOf("nodejs_dev_guide") >= 0)
     $('li#nodejs_dev_guide').addClass("active");
   else if (pathName.indexOf("js_doc") >= 0)
     $('li#js_doc').addClass("active");
-            
+           
+  
+  // asks google to search these docs
   function loadCallback(evt){
     var form = document.getElementById("searchbox");
     var input = form.query;
@@ -38,6 +41,7 @@ $(function () {
     };
   }
 
+  // are we currently on a page? highlight it in the menu, please
   var fileNameRE = new RegExp(fileName, "i");
 
   $('a.menuLink').each(function(index) {
@@ -48,6 +52,34 @@ $(function () {
     }
   });
 
+
+  // are there bogus <Note> tags? turn them into real divs, please
+  $('note').each(function () {
+      var $note = $(this);
+
+      var newElem = $('<div></div>');
+
+      newElem.html($note.html());
+
+      newElem.attr("class", "alert-message block-message warning");
+
+      // replace Note with Bootstrap-styled div
+      $note.before(newElem).remove(); 
+    });
+
+  // are there bogus <Warning> tags? turn them into real divs, please
+  $('warning').each(function () {
+      var $note = $(this);
+
+      var newElem = $('<div></div>');
+
+      newElem.html($note.html());
+
+      newElem.attr("class", "alert-message block-message error");
+
+      // replace Note with Bootstrap-styled div
+      $note.before(newElem).remove(); 
+    });
 
   function getTitle($article) {
     var title = [baseTitle];
