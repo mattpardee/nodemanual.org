@@ -38,13 +38,13 @@
 
 
 /**
- * Function.caller -> Function | null
+ * Function.caller -> Function
  *
  * Returns the function that invoked the specified function.
  *
  * This property is not part of ECMA-262, Edition 3 standard. 
  *
- * If the function `f` was invoked by the top level code, the value of `f.caller` is `null`, otherwise it's the function that called `f`
+ * If the function `f` was invoked by the top level code, the value of `caller()` is `null`, otherwise it's the function that called `f`
  *
  * This property replaces deprecated `arguments.caller`.
  *

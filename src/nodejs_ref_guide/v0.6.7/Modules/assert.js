@@ -122,7 +122,7 @@
 /**
  * assert.throws(block, [error], [message]) -> Void
  * - block (Function): A block of code to check against
- * - error (Constructor | RegExp | Function): The expected error that's thrown; this can be a constructor, regexp, or validation function
+ * - error (Function | RegExp | Function): The expected error that's thrown; this can be a constructor, regexp, or validation function
  * - message (String): The message to send to the console if the comparisson fails
  * 
  * If `block`throws an error, then the assertion passes.

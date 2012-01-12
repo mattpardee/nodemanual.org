@@ -240,7 +240,7 @@
  * - path (String): The path to the file
  * - callback (Function):   An optional callback to execute once the function completes
  * - err (Error): The possible exception
- * - stats (Stats):  An [[fs.Stats `fs.Stats`] object.
+ * - stats (fs.Stats):  An [[fs.Stats `fs.Stats`] object.
  * 
  * An asynchronous [stat(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html). 
  * 
@@ -252,7 +252,7 @@
  * - path (String): The path to the file
  * - callback (Function):   An optional callback to execute once the function completes
  * - err (Error): The possible exception
- * - stats (Stats):  An [[fs.Stats `fs.Stats`] object.
+ * - stats (fs.Stats):  An [[fs.Stats `fs.Stats`] object.
  * 
  * An asynchronous [lstat(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html). 
  * 
@@ -265,7 +265,7 @@
  * - fd (Number): The file descriptor
  * - callback (Function):   An optional callback to execute once the function completes
  * - err (Error): The possible exception
- * - stats (Stats):  An [[fs.Stats `fs.Stats`]] object.
+ * - stats (fs.Stats):  An [[fs.Stats `fs.Stats`]] object.
  * 
  * An asynchronous [fstat(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html). 
  * 
@@ -561,7 +561,7 @@
  * - path (String): The path to the file
  * - atime (Number): The new access time
  * - mtime (Number): The new modification time
- * - callback (Funciton): An optional callback to execute once the function completes
+ * - callback (Function): An optional callback to execute once the function completes
  *
  * An asynchronous [utime(2)](http://kernel.org/doc/man-pages/online/pages/man2/utime.2.html). Changes the timestamps of the file referenced by the supplied path.
  * 

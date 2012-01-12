@@ -35,7 +35,7 @@
 * 
 * ### `console`
 * 
-* Used to print to stdout and stderr. See the [stdio](stdio.html) section for more information.
+* Used to print to stdout and stderr. See the [stdio](console.html) section for more information.
 * 
 * ### `exports`
 * 

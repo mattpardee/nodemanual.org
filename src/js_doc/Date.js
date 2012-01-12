@@ -720,7 +720,7 @@
 
 /**
  * 	Date.setMilliseconds(millisecondsValue) -> Void
- * - millisecondsValue (A): number between 0 and 999, representing the milliseconds.
+ * - millisecondsValue (Number): An Integer between 0 and 999, representing the milliseconds
  * 
  * Sets the milliseconds for a specified date according to local time.
  *
@@ -776,7 +776,7 @@
 
 /**
  * Date.setMonth(monthValue[, dayValue]) -> Void
- * - monthValue (Intger): Value between 0 and 11 (representing the months January through December).
+ * - monthValue (Number): Value between 0 and 11 (representing the months January through December).
  * - dayValue (Number): Value from 1 to 31, representing the day of the month.
  *
  * 	Set the month for a specified date according to local time.
@@ -813,7 +813,7 @@
 
 /**
  * 	Date.setTime(timeValue) -> Void
- * - timeValue (An): integer representing the number of milliseconds since 1 January 1970, 00:00:00 UTC.
+ * - timeValue (Number): An integer representing the number of milliseconds since 1 January 1970, 00:00:00 UTC.
  * 	
  * Sets the `Date` object to the time represented by a number of milliseconds since January 1, 1970, 00:00:0, UTC.
  *
@@ -859,7 +859,7 @@
 
 /** 	
  * 	Date.setUTCMilliseconds(millisecondsValue) -> Void
- * - millisecondsValue (Number): Value between 0 and 999, representing the milliseconds.
+ * - millisecondsValue (Number): Value between 0 and 999, representing the milliseconds
  *
  * Sets the milliseconds for a specified date according to universal time.
  *
@@ -901,8 +901,8 @@
 
 /** 	
  * 	Date.setUTCMonth(monthValue[, dayValue]) -> Void
- * - monthValue (An): integer between 0 and 11, representing the months January through December. 
- * - dayValue  (An): integer from 1 to 31, representing the day of the month.
+ * - monthValue (Number): An integer between 0 and 11, representing the months January through December. 
+ * - dayValue  (Number): An iinteger from 1 to 31, representing the day of the month.
  *
  * Sets the month for a specified date according to universal time.
  *

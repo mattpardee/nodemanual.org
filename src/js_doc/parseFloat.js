@@ -9,7 +9,7 @@
  *
  * If the first character cannot be converted to a number, parseFloat returns [[NaN `NaN`]].
  *
- * For arithmetic purposes, the NaN value is not a number in any radix. You can call the [[isNaN `isNaN()`]] function to determine if the result of parseFloat is `NaN`. If `NaN` is passed on to arithmetic operations, the operation results will also be `NaN`.
+ * For arithmetic purposes, the NaN value is not a number in any radix. You can call the [[NaN `isNaN()`]] function to determine if the result of parseFloat is `NaN`. If `NaN` is passed on to arithmetic operations, the operation results will also be `NaN`.
  *
  * #### Example: `parseFloat` returning a number
  *

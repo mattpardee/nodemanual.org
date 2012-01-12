@@ -7,6 +7,7 @@
  * 
  * All of the constants defined in zlib.h are also defined on `require('zlib')`.  They are described in more detail in the [zlib documentation](http://zlib.net/manual.html#Constants).
  *
+ * <a id="zlib.options"></a>
  * #### Options
  * 
  * Each class takes an options object.  All options are optional.  (The convenience methods use the default settings for all options.)
@@ -140,7 +141,7 @@
 
 /**
  * zlib.createGzip([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [Gzip](#zlib.Gzip) object.
 **/ 
@@ -148,7 +149,7 @@
 
 /**
  * zlib.createGunzip([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [Gunzip](#zlib.Gunzip)  object.
  *
@@ -157,7 +158,7 @@
 
 /**
  * zlib.createDeflate([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [Deflate](#zlib.Deflate) object.
  * 
@@ -166,7 +167,7 @@
 
 /**
  * zlib.createInflate([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [[Inflate](#zlib.Inflate)  object.
  * 
@@ -175,7 +176,7 @@
 
 /**
  * zlib.createDeflateRaw([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [DeflateRaw](#zlib.DeflateRaw) object.
  * 
@@ -184,7 +185,7 @@
 
 /**
  * zlib.createInflateRaw([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [InflateRaw](#zlib.InflateRaw) object.
  * 
@@ -192,7 +193,7 @@
 
 /**
  * zlib.createUnzip([options])
- * - options (Object): The standard [[options `options`](#options) object available to all the methods.
+ * - options (Object): The standard [[zlib.options `options`]] object available to all the methods.
  *
  * Returns a new [Unzip](#zlib.Unzip)  object.
  * 

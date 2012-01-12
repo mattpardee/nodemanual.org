@@ -42,7 +42,7 @@
  *
  * #### Distinction between string primitives and String objects
  *
- * Note that Javascript distinguishes between String objects and primitive string values. (The same is true of [[Boolean booleans]] and [[Numbers numbers]].)
+ * Note that Javascript distinguishes between String objects and primitive string values. (The same is true of [[Boolean booleans]] and [[Number numbers]].)
  *
  * String literals (denoted by double or single quotes) and strings returned from String calls in a non-constructor context (i.e., without using the `new` keyword) are primitive strings. Javascript automatically converts primitives and String objects, so that it's possible to use String object methods for primitive strings. In contexts where a method is to be invoked on a primitive string or a property lookup occurs, Javascript will automatically wrap the string primitive and call the method or perform the property lookup.
  *

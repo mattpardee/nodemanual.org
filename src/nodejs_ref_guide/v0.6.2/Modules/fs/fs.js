@@ -559,7 +559,7 @@
  * - path (String): The path to the file
  * - atime (Number): The new access time
  * - mtime (Number): The new modification time
- * - callback (Funciton): An optional callback to execute once the function completes
+ * - callback (Function): An optional callback to execute once the function completes
  *
  * An asynchronous [utime(2)](http://kernel.org/doc/man-pages/online/pages/man2/utime.2.html). Changes the timestamps of the file referenced by the supplied path.
  * 

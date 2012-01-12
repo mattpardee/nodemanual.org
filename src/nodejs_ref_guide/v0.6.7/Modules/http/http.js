@@ -55,7 +55,7 @@
 **/ 
 
 /**
- * http.globalAgent -> Agent
+ * http.globalAgent -> http.Agent
  *
  * This is the global instance of [[http.Agent `http.Agent`]] which is used as the default for all HTTP client requests.
  * 

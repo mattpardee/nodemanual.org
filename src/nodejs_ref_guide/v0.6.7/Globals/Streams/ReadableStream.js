@@ -39,7 +39,7 @@
 
 /**
  * streams.ReadableStream@pipe(src)
- * - src (stream.streams.ReadableStream): The readable stream
+ * - src (streams.ReadableStream): The readable stream
  *
  * Emitted when the stream is passed to a readable stream's pipe method.
  *
@@ -54,7 +54,7 @@
 
 
 /**
- * streams.ReadableStream.destroySoon()-> Voi
+ * streams.ReadableStream.destroySoon()-> Void
  *
  * After the write queue is drained, close the file descriptor.
  * 
@@ -62,7 +62,7 @@
 
 
 /**
- * streams.ReadableStream.pause()-> Voi
+ * streams.ReadableStream.pause()-> Void
  *
  * Pause any incoming `'data'` events.
  * 

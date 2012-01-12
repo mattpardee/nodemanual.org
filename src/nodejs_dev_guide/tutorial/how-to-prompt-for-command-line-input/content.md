@@ -2,7 +2,7 @@
 
 Say you've got a little CLI tool, but you want to be able to prompt a user for additional data after the script has started, rather than passing it in as a command line argument or putting it in a file.  To do this, you'll need to listen to STDIN ("standard input"), which Node.js exposes for you as `process.stdin`, a readable stream.
 
-Streams are Node's way of dealing with evented I/O. They're a big topic, and you can read more about them [here](what-are-streams).  For now, we're only going to deal with the stream methods relevant to working with `process.stdin`, to keep the examples easy.
+Streams are Node's way of dealing with evented I/O. They're a big topic, and you can read more about them [here](streams.html).  For now, we're only going to deal with the stream methods relevant to working with `process.stdin`, to keep the examples easy.
 
 The first two Readable Stream methods you'll need to know about here are `pause()` and `resume()`.  Not every program needs to care whether or not you're pressing keys at a given moment, so `process.stdin` is paused by default. 
 

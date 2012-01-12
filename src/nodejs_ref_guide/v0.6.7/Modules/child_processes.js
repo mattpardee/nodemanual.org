@@ -33,18 +33,18 @@
 **/ 
 
 /**
- *  child_process.stdin -> WritableStream
+ *  child_process.stdin -> streams.WritableStream
  * 
- * A [[WritableStream `Writable Stream`]] that represents the child process's `stdin`. Closing this stream via [[child_process.end `end()`]] often causes the child process to terminate.
+ * A [[streams.WritableStream `Writable Stream`]] that represents the child process's `stdin`. Closing this stream via [[child_process.end `end()`]] often causes the child process to terminate.
  * 
 **/ 
 
 
 /**
- * child_process.stdout -> ReadableStream
+ * child_process.stdout -> streams.ReadableStream
  *
  *  
- * A [[ReadableStream `Readable Stream`]] that represents the child process's `stdout`.
+ * A [[streams.ReadableStream `Readable Stream`]] that represents the child process's `stdout`.
  * 
 **/ 
 

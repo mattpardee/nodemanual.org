@@ -103,7 +103,7 @@ mixin article(obj, parents)
                           li.signature-returns
                             ul.argument-types
                               for ret in sig.returns
-                                non_link = obj.type == 'constant' || ret.type == 'Void'
+                                non_link = obj.type == 'constant' || ret.type == 'Void' || ret.type == 'null'
                                 //- N.B: type can be array. E.g. [ Element... ]
                                 //- N.B: type can be array. E.g. [ Element1, Element2 ]
                                 text = ''
@@ -288,7 +288,7 @@ mixin links(collection)
 
 -function validate_link(l) // turn the js-doc links to point to js-doc. this is lousy code.
   for js_obj in globalJSObjs
-    -var regex = new RegExp('href="' + js_obj, "i")
+    -var regex = new RegExp('href="' + js_obj, "ig")
     -if (l.match(regex))
-      -l = l.replace(js_obj, "../js-doc/" + js_obj)      
+      -l = l.replace(regex, 'href="../js_doc/' + js_obj)
   != l

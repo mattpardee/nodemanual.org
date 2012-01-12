@@ -54,7 +54,7 @@
 
 
 /**
- * ReadableStream.destroySoon()-> Voi
+ * ReadableStream.destroySoon()-> Void
  *
  * After the write queue is drained, close the file descriptor.
  * 
@@ -62,7 +62,7 @@
 
 
 /**
- * ReadableStream.pause()-> Voi
+ * ReadableStream.pause()-> Void
  *
  * Pause any incoming `'data'` events.
  * 

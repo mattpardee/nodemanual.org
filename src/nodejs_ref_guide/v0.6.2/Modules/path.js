@@ -133,7 +133,7 @@
 /**
  * path.exists(p [, callback(exists)]) -> String
  * - p (String):  A path to check
- * - callback (Funciton): A callback to execute once the method completes
+ * - callback (Function): A callback to execute once the method completes
  * - exists (Boolean):  This is `true` if the path actually exists
  *
  * Tests whether or not the given path exists by checking with the file system.

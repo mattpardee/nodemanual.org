@@ -118,7 +118,7 @@
 
 
 /**
- * tls@createSecurePair([credentials] [, isServer] [, requestCert] [, rejectUnauthorized]) -> SecurePair
+ * tls@createSecurePair([credentials] [, isServer] [, requestCert] [, rejectUnauthorized]) -> tls.SecurePair
  * - credentials (Object):  An optional credentials object from [[crypto.createCredentials `crypto.createCredentials()`]]
  * - isServer (Boolean):  An optional boolean indicating whether this TLS connection should be opened as a server (`true`) or a client (`false`)
  * - requestCert (Boolean): A boolean indicating whether a server should request a certificate from a connecting client; only applies to server connections
