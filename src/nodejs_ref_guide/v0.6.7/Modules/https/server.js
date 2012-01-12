@@ -6,7 +6,7 @@
 **/
 
 /* 
- * httpsServer@request(request, response)
+ * https.Server@request(request, response)
  * - request (http.ServerRequest):  An instance of [[http.ServerRequest]]
  * - response (http.ServerResponse):  An instance of [[http.ServerResponse]]
  * 
@@ -16,7 +16,7 @@
 
 
 /**
- * httpsServer@connection(socket)
+ * https.Server@connection(socket)
  * - socket (net.Socket): An object of type [[net.Socket `net.Socket`]]
  * 
  * Emitted when a new TCP stream is established. Usually users won't want to access this event. The `socket` can also be accessed at [[http.ServerRequest.connection]].
@@ -24,14 +24,14 @@
 **/ 
 
 /**
- * httpsServer@close(socket)
+ * https.Server@close(socket)
  *- socket (net.Socket): An object of type [[net.Socket `net.Socket`]]
  * 
  * Emitted when the server closes.
 **/ 
 
 /**
- * httpsServer@checkContinue(request, response)
+ * https.Server@checkContinue(request, response)
  * - request  (HTTP.ServerRequest): An instance of `http.ServerRequest`
  * - response (HTTP.ServerResponse): An instance of `http.ServerResponse`
  * 
@@ -44,7 +44,7 @@
 **/ 
 
 /**
- * httpsServer@upgrade(request, socket, head)
+ * https.Server@upgrade(request, socket, head)
  * - request (http.ServerRequest): The arguments for the http request, as it is in the request event
  * - socket (Number): The network socket between the server and client
  * - head (Buffer):  The first packet of the upgraded stream; this can be empty
