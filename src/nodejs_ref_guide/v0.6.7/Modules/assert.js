@@ -145,7 +145,7 @@
 /**
  * assert.doesNotThrow(block, [error], [message]) -> Void
  * - block  (Function): A block of code to check against
- * - error  (Constructor | RegExp | Function): The expected error that's thrown; this can be a constructor, regexp, or validation function
+ * - error  (RegExp | Function): The expected error that's thrown; this can be a constructor, regexp, or validation function
  * - message  (String): The message to send to the console if the comparisson fails
  *
  * Expects `block` not to throw an error; for more details, see `assert.throws()`.

@@ -46,9 +46,11 @@
  * 
 **/ 
 
-/**
- * http.createServer(requestListener()) 
+/** chainable
+ * http.createServer(requestListener(options, requestListener)) -> http.Server
  * - requestListener (Function): A function that is automatically added to the `'request'` event
+ * - options (Object):  Any options you want to pass to the server
+ * - requestListener (Function): An optional listener
  *
  * Returns a new web server object.
  *

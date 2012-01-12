@@ -90,6 +90,6 @@
 * ### `setInterval(cb, ms)`
 * ### `clearInterval(t)`
 * 
-* These timer functions are all global variables. See the [timers](timers.html) section for more information.
+* These timer functions are all global variables. See the [timer](timer.html) section for more information.
 * 
 **/

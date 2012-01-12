@@ -11,15 +11,10 @@
  * 
  **/
 
-/** section: HTTPS
- * class https.Server
- * 
- * This class is a subclass of [[tls.Server `tls.Server`]] and emits the same events as [[http.Server `http.Server`]].
- * 
-**/ 
+ 
 
-/** related to: tls.createServer
- * https.createServer(options [, requestListener]) -> https
+/** related to: tls.createServer, chainable
+ * https.createServer(options [, requestListener]) -> https.Server
  * - options (Object):  Any options you want to pass to the server
  * - requestListener (Function): An optional listener
  * 
@@ -50,7 +45,7 @@
 
 
 /**
- * https.request(options, callback())
+ * https.request(options, callback()) -> Void
  * - options (Object): Any options you want to pass to the server
  * - callback (Function):  The callback to execute
  * 
@@ -122,12 +117,14 @@
 
 
 /**
- * https.get(options, callback())
+ * https.get(options, callback()) -> Void
  * - options (Object): Options to pass to the request
- * -  callback (Function): The callback to execute once the method finishes 
+ * - callback (Function): The callback to execute once the method finishes 
  *
  * Exactly like [[http.get `http.get()`]] but for HTTPS.
  * 
+ * Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [[http.request `http.request()`]] is that it sets the method to GET and calls `req.end()` automatically.
+ *
  * #### Example
  *
  * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=https.get.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>

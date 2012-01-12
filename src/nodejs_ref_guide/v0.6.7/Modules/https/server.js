@@ -1,12 +1,12 @@
-
-/** section: http_Module
- * class http.Server
+/** section: HTTPS
+ * class https.Server
  * 
- * A representation of the server within the `http` module. This object is also an [[EventEMitter `EventEmitter`]].
-**/ 
+ * This class is a subclass of [[tls.Server `tls.Server`]] and emits the same events as [[http.Server `http.Server`]].
+ * 
+**/
 
 /* 
- * http.Server@request(request, response)
+ * httpsServer@request(request, response)
  * - request (http.ServerRequest):  An instance of [[http.ServerRequest]]
  * - response (http.ServerResponse):  An instance of [[http.ServerResponse]]
  * 
@@ -16,7 +16,7 @@
 
 
 /**
- * http.Server@connection(socket)
+ * httpsServer@connection(socket)
  * - socket (net.Socket): An object of type [[net.Socket `net.Socket`]]
  * 
  * Emitted when a new TCP stream is established. Usually users won't want to access this event. The `socket` can also be accessed at [[http.ServerRequest.connection]].
@@ -24,14 +24,14 @@
 **/ 
 
 /**
- * http.Server@close(socket)
+ * httpsServer@close(socket)
  *- socket (net.Socket): An object of type [[net.Socket `net.Socket`]]
  * 
  * Emitted when the server closes.
 **/ 
 
 /**
- * http.Server@checkContinue(request, response)
+ * httpsServer@checkContinue(request, response)
  * - request  (HTTP.ServerRequest): An instance of `http.ServerRequest`
  * - response (HTTP.ServerResponse): An instance of `http.ServerResponse`
  * 
@@ -44,7 +44,7 @@
 **/ 
 
 /**
- * http.Server@upgrade(request, socket, head)
+ * httpsServer@upgrade(request, socket, head)
  * - request (http.ServerRequest): The arguments for the http request, as it is in the request event
  * - socket (Number): The network socket between the server and client
  * - head (Buffer):  The first packet of the upgraded stream; this can be empty
@@ -56,7 +56,7 @@
 **/ 
 
 /**
- * http.Server@clientError(exception)
+ * https.Server@clientError(exception)
  * - exception (Error): The exception being thrown
  *
  * If a client connection emits an `'error'` event, it's forwarded here.
@@ -66,21 +66,24 @@
 
 
 
-/**
- * http.Server.listen(port [, hostname] [, callback()])  -> Void
- * http.Server.listen(port [, callback()])  -> Void
+/** related to: net.Server.listen
+ * https.Server.listen(port [, hostname] [, callback()])  -> Void
+ * https.Server.listen(port [, callback()])  -> Void
  * - port (Number): The port to listen to
  * - hostname (String):  The hostname to listen to
  * - callback (Function):  The function to execute once the server has been bound to the port
  *  
- * Begin accepting connections on the specified port and hostname. If the hostname is omitted, the server accepts connections directed to any IPv4 address (`INADDR_ANY`).
+ * Begin accepting connections on the specified port and hostname. If the hostname is omitted, the server accepts connections directed to any IPv4 address (`INADDR_ANY`). To listen to a Unix socket, supply a filename instead of port and hostname.
+ *
+ * This function is asynchronous. The `callback()` is added as a listener for the <a href="net.html#event_listening_">'listening'</a> event.
+ *
+ *
  *
 **/ 
  
 
-/**
- * http.Server.close() -> Void
+/** related to: net.Server.close
+ * https.Server.close() -> Void
  *
  * Stops the server from accepting new connections.
 **/ 
-

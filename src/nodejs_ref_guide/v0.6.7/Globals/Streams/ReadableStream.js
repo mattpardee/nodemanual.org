@@ -70,7 +70,7 @@
 
 
 /**
- * streams.ReadableStream.pipe(destination [, options]) -> stream
+ * streams.ReadableStream.pipe(destination [, options]) -> streams
  * - destination (streams.WritableStream):  The WriteStream to connect to
  * - options (Object):  Any optional commands to send
  * 

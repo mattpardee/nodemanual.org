@@ -562,7 +562,7 @@
 
 
 /**
- * buffer.index -> Octet
+ * buffer.index -> Number
  *
  * Gets and sets the octet at `index` in an array format. The values refer to individual bytes, so the legal range is between `0x00` and `0xFF` hex or `0` and `255`.
  * 

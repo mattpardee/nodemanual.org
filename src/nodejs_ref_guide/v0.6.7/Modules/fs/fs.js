@@ -740,7 +740,7 @@
  * fs.writeFile(filename, data, [encoding='utf8'], [callback()]) -> Void
  * - filename (String): The name of the file to write to
  * - data (String | buffer): The data to write (this can be a string or a buffer)
- * - encoding (String | null): The encoding to use (this is ignored if `data` is a buffer)
+ * - encoding (String): The encoding to use (this is ignored if `data` is a buffer)
  * - callback (Function):  An optional callback to execute once the function completes
  * 
  * Asynchronously writes data to a file, replacing the file if it already exists.
@@ -756,7 +756,7 @@
  * fs.writeFileSync(filename, data, [encoding='utf8']) -> Void
  * - filename (String): The name of the file to write to
  * - data (String | buffer): The data to write (this can be a string or a buffer)
- * - encoding (String | null): The encoding to use (this is ignored if `data` is a buffer)
+ * - encoding (String): The encoding to use (this is ignored if `data` is a buffer)
  * 
  *
  * The synchronous version of [[fs.writeFile `fs.writeFile()`]].
