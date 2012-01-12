@@ -21,6 +21,10 @@ a code {
     color: #0069D6;
 }
 
+code.prettyprint {
+  padding: 0;
+}
+
 /* 
   Header and shoulders
 */

@@ -1,7 +1,3 @@
-/**
- * == Crypto ==
- *
- **/
 
 /** section: crypto
  * class crypto
