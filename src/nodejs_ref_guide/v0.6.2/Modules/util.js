@@ -121,8 +121,8 @@
 
 /**
  * util.pump(readableStream, writableStream, [callback()]) -> Void
- * - readableStream (stream.ReadableStream): The stream to read from
- * - writableStream (stream.WritableStream): The stream to write to
+ * - readableStream (streams.ReadableStream): The stream to read from
+ * - writableStream (streams.WritableStream): The stream to write to
  * - callback (Function):  An optional callback function once the pump is through
  * 
  * Reads the data from `readableStream` and sends it to the `writableStream`.

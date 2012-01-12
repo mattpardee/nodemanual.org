@@ -1,7 +1,7 @@
 /**
  * class fs.WriteStream
  *
- * This is a [[stream.WritableStream WritableStream]].
+ * This is a [[streams.WritableStream WritableStream]].
  * 
 **/ 
 
@@ -22,11 +22,11 @@
 
 
 /**
- * fs.WriteStream.createWriteStream(path, [options]) -> stream.WriteStream
+ * fs.WriteStream.createWriteStream(path, [options]) -> streams.WritableStream
  * - path (String): The path to read from
  * - options (Object):  Any optional arguments indicating how to write the stream
  * 
- * Returns a new [[stream.WriteStream WriteStream]] object.
+ * Returns a new [[streams.WriteStream WriteStream]] object.
  * 
  * `options` is an object with the following defaults:
  * 

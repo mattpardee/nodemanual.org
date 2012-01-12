@@ -39,7 +39,7 @@
 
 /**
  * ReadableStream@pipe(src)
- * - src (stream.ReadableStream): The readable stream
+ * - src (streams.ReadableStream): The readable stream
  *
  * Emitted when the stream is passed to a readable stream's pipe method.
  *
@@ -71,7 +71,7 @@
 
 /**
  * ReadableStream.pipe(destination [, options]) -> stream
- * - destination (stream.WritableStream):  The WriteStream to connect to
+ * - destination (streams.WritableStream):  The WriteStream to connect to
  * - options (Object):  Any optional commands to send
  * 
  * This is the `Stream.prototype()` method available on all `Stream` objects. It connects this read stream to a `destination`. Incoming data on this stream is then written to `destination`. The destination and source streams are kept in sync by Node.js pausing and resuming as necessary.

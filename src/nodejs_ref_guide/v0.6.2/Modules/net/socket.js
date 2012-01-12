@@ -223,7 +223,7 @@
  *
  * Emitted when data is received. The encoding of `data` is set by `socket.setEncoding()`.
  * 
- * For more information, see the [[stream.ReadableStream Readable Stream]] section.
+ * For more information, see the [[streams.ReadableStream Readable Stream]] section.
  *
 **/ 
 

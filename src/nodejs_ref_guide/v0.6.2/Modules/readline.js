@@ -57,8 +57,8 @@
   
 /**
  * readline.createInterface(input[, output], completer()) -> Void | String
- * - input (stream.ReadableStream):  The readable stream
- * - output (stream.WritableStream):  The writeable stream
+ * - input (streams.ReadableStream):  The readable stream
+ * - output (streams.WritableStream):  The writeable stream
  * - completer (Function):  A function to use for autocompletion
  * 
  * Takes two streams and creates a readline interface. 

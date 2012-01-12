@@ -1,19 +1,19 @@
 
 /** section: Streams
-  * class WritableStream
+  * class streams.WritableStream
   *
   *
  **/ 
 
 /**
- * WritableStream.writable -> Boolean
+ * streams.WritableStream.writable -> Boolean
  *
  * A boolean that is `true` by default, but turns `false` after an `error` event occurs, the stream comes to an `'end'`, or if `destroy()` was called.
  *
 **/
 
 /**
- * WritableStream@close()
+ * streams.WritableStream@close()
  *
  * 
  * Emitted when the underlying file descriptor has been closed.
@@ -23,7 +23,7 @@
 
 
 /**
- * WritableStream@drain()
+ * streams.WritableStream@drain()
  *
  * After a `write()` method returns `false`, this event is emitted to indicate that it is safe to write again.
  * 
@@ -31,7 +31,7 @@
 
 
 /**
- * WritableStream@error(exception)
+ * streams.WritableStream@error(exception)
  * - exception (Error): The exception that was received
  * 
  * Emitted when there's an error with the exception `exception`.
@@ -40,7 +40,7 @@
 
 
 /**
- * WritableStream.destroy() -> Void
+ * streams.WritableStream.destroy() -> Void
  *
  * Closes the underlying file descriptor. The stream doesn't emit any more events. Any queued write data is not sent.
  *
@@ -48,7 +48,7 @@
 
 
 /**
- * WritableStream.destroySoon() -> Void
+ * streams.WritableStream.destroySoon() -> Void
  *
  * After the write queue is drained, this closes the file descriptor. `destroySoon()` can still destroy straight away, as long as there is no data left in the queue for writes.
  *
@@ -56,25 +56,25 @@
 **/ 
 
 /**
- * WritableStream.end() -> Void
- * WritableStream.end(string, encoding) -> Void
- * WritableStream.end(buffer) -> Void
+ * streams.WritableStream.end() -> Void
+ * streams.WritableStream.end(string, encoding) -> Void
+ * streams.WritableStream.end(buffer) -> Void
  * - string (String): The message to send
  * - encoding (String): The encoding to use
  * - buffer (buffer):  The buffer to send
  *
  * Terminates the stream with EOF or FIN. This call send queued write data before closing the stream.
  *
- * For `WritableStream.end(string, encoding)`, a `string` with the given `encoding` is sent. This is useful to reduce the number of packets sent.
+ * For `streams.WritableStream.end(string, encoding)`, a `string` with the given `encoding` is sent. This is useful to reduce the number of packets sent.
  *
- * For `WritableStream.end(buffer)`, a `buffer` is sent.
+ * For `streams.WritableStream.end(buffer)`, a `buffer` is sent.
  *
 **/
 
 
 /**
- * WritableStream.write(string, encoding='utf8' [, fd]) -> Void
- * WritableStream.write(buffer) -> Void
+ * streams.WritableStream.write(string, encoding='utf8' [, fd]) -> Void
+ * streams.WritableStream.write(buffer) -> Void
  * - string (String):  The string to write
  * - encoding (String):  The encoding to use; defaults to `utf8`
  * - fd (Number):  An optional file descriptor to pass

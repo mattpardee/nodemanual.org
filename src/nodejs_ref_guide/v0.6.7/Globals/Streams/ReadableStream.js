@@ -1,12 +1,12 @@
 
 /** section: Streams
-  * class ReadableStream
+  * class streams.ReadableStream
   *
   *
  **/
 
 /**
- * ReadableStream@close()
+ * streams.ReadableStream@close()
  * 
  * Emitted when the underlying file descriptor has been closed. Not all streams emit this.  For example, an incoming HTTP request don't emit `close`.
  * 
@@ -14,7 +14,7 @@
 
 
 /**
- * ReadableStream@data(data)
+ * streams.ReadableStream@data(data)
  * - data (buffer | String):  The data being emitted
  * 
  * The `data` event emits either a `Buffer` (by default) or a string if `setEncoding()` was previously used on the stream.
@@ -23,7 +23,7 @@
 
 
 /**
- * ReadableStream@end()
+ * streams.ReadableStream@end()
  *
  * Emitted when the stream has received an EOF (FIN in TCP terminology). Indicates that no more `data` events will happen. If the stream is also writable, it may be possible to continue writing.
  * 
@@ -31,15 +31,15 @@
 
 
 /**
- * ReadableStream@error()
+ * streams.ReadableStream@error()
  *
  * Emitted if there was an error receiving data.
 **/ 
 
 
 /**
- * ReadableStream@pipe(src)
- * - src (stream.ReadableStream): The readable stream
+ * streams.ReadableStream@pipe(src)
+ * - src (stream.streams.ReadableStream): The readable stream
  *
  * Emitted when the stream is passed to a readable stream's pipe method.
  *
@@ -47,14 +47,14 @@
 
 
 /**
- * ReadableStream.destroy() -> Void
+ * streams.ReadableStream.destroy() -> Void
  *
  * Closes the underlying file descriptor. The stream will not emit any more events.
 **/ 
 
 
 /**
- * ReadableStream.destroySoon()-> Voi
+ * streams.ReadableStream.destroySoon()-> Voi
  *
  * After the write queue is drained, close the file descriptor.
  * 
@@ -62,7 +62,7 @@
 
 
 /**
- * ReadableStream.pause()-> Voi
+ * streams.ReadableStream.pause()-> Voi
  *
  * Pause any incoming `'data'` events.
  * 
@@ -70,8 +70,8 @@
 
 
 /**
- * ReadableStream.pipe(destination [, options]) -> stream
- * - destination (stream.WritableStream):  The WriteStream to connect to
+ * streams.ReadableStream.pipe(destination [, options]) -> stream
+ * - destination (streams.WritableStream):  The WriteStream to connect to
  * - options (Object):  Any optional commands to send
  * 
  * This is the `Stream.prototype()` method available on all `Stream` objects. It connects this read stream to a `destination`. Incoming data on this stream is then written to `destination`. The destination and source streams are kept in sync by Node.js pausing and resuming as necessary.
@@ -100,8 +100,8 @@
  *  
 **/ 
 
-/** related to: ReadableStream.data
- * ReadableStream.setEncoding(encoding)
+/** related to: streams.ReadableStream.data
+ * streams.ReadableStream.setEncoding(encoding)
  * - encoding (String): The encoding to use; this can be `'utf8'`, `'ascii'`, or `'base64'`.
  * 
  * Makes the `data` event emit a string instead of a `Buffer`.
@@ -110,7 +110,7 @@
 
 
 /**
- * ReadableStream.resume() -> Void
+ * streams.ReadableStream.resume() -> Void
  *
  * Resumes the incoming `'data'` events after a `pause()`. 
  *
