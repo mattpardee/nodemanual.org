@@ -1,11 +1,11 @@
 /**
  * class https
  * 
- * HTTPS is the HTTP protocol over TLS/SSL. In Node.js, this is implemented as a separate module.
- * 
- * To use this module, include `require('https')` in your code.
+ * HTTPS is the HTTP protocol over TLS/SSL. In Node.js, this is implemented as a separate module. To use this module, include `require('https')` in your code.
  *
- *  # Examples
+ * Creating HTTPS servers is somewhat complicated and requires generating certificates. For more information, read [this article on how to create HTTPS servers](../nodejs_dev_guide/how-to-create-a-HTTPS-server.html).
+ *
+ *  #### Examples
  * 
  * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=https.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
@@ -13,7 +13,7 @@
 
  
 
-/** related to: tls.createServer, chainable
+/** related to: tls.createServer
  * https.createServer(options [, requestListener]) -> https.Server
  * - options (Object):  Any options you want to pass to the server
  * - requestListener (Function): An optional listener
@@ -136,7 +136,7 @@
 /**
  *  https.globalAgent -> https.Agent
  *
- * A global instance of the [[https.Agent]], which is used as the default for all HTTPS client requests.
+ * A global instance of the [`https.Agent`](https.Agent.html), which is used as the default for all HTTPS client requests.
  *
 **/
 

@@ -24,6 +24,8 @@
  *
  * In most cases, the default of `'utf8'` is used.
  *
+ *
+ * For more information, see [this article on using buffers](../nodejs_dev_guide/how-to-use-buffers.html).
 **/
 
 /** 

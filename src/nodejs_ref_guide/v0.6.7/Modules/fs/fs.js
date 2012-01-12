@@ -829,4 +829,57 @@
  * 
 **/ 
 
+/**
+ * fs.createReadStream(path, [options]) -> fs.ReadStream
+ * - path (String): The path to read from
+ * - options (Object): Any optional arguments indicating how to read the stream
+ * 
+ *
+ * Returns a new [ReadStream](#readstream) object.
+ * 
+ * `options` is an object with the following defaults:
+ * 
+ *     { 
+ *	     flags: 'r',
+ *       encoding: null,
+ *       fd: null,
+ *       mode: 0666,
+ *       bufferSize: 64 * 1024
+ *     }
+ * 
+ * `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file.  Both `start` and `end` are inclusive and start at 0.
+ * 
+ * #### Example
+ * 
+ * Here's an example to read the last 10 bytes of a file which is 100 bytes long:
+ * 
+ *     fs.createReadStream('sample.txt', {start: 90, end: 99});
+ * 
+ * #### See Also
+ *
+ * * [This article on how to use the `createReadStream()` function properly](../nodejs_dev_guide/how-to-use-fs-create-read-stream.html).
+ *
+**/ 
 
+/**
+ * fs.createWriteStream(path, [options]) -> fs.WriteStream
+ * - path (String): The path to read from
+ * - options (Object):  Any optional arguments indicating how to write the stream
+ * 
+ * Returns a new [[streams.WriteStream WriteStream]] object.
+ * 
+ * `options` is an object with the following defaults:
+ * 
+ *     { flags: 'w',
+ *       encoding: null,
+ *       mode: 0666 }
+ * 
+ * `options` may also include a `start` option to allow writing data at some position past the beginning of the file.  
+ * 
+ * Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`.
+ * 
+ * #### See Also
+ *
+ * *  * [This article on how to use the `createWriteStream()` function properly](../nodejs_dev_guide/how-to-use-fs-create-write-stream.html).
+ *
+**/

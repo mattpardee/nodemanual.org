@@ -19,6 +19,7 @@
  * 
  * (Documentation on creating a CA are pending; for now, interested users should just look at [`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/fixtures/keys/Makefile) in the Node.js source code.)
  * 
+ * For more information, see [this article on using the `tls` module](../nodejs_dev_guide/how-to-use-the-tls-module.html).
  * #### Using NPN and SNI
  * 
  * NPN (Next Protocol Negotiation) and SNI (Server Name Indication) are TLS handshake extensions provided with this module.
@@ -26,8 +27,8 @@
  * NPN is to use one TLS server for multiple protocols (HTTP, SPDY).
  * 
  * SNI is to use one TLS server for multiple hostnames with different SSL certificates.
- *
  * 
+ *
  * #### Example: Using STARTTLS
  * 
  * As of the v0.4 Node.js branch, no function exists for starting a TLS session on an already existing TCP connection.  This is possible, but it requires a bit of work. 

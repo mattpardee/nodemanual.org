@@ -1,7 +1,7 @@
 /**
  * class fs.FSWatcher
  *
- * Objects returned from [[fs.watch `fs.watch()`]] are of this type.
+ * Objects returned from [[fs.watch `fs.watch()`]] are of this type. You can monitor any changes that occur on a watched file by listening for the events in this object.
  *
  *
 **/  
@@ -9,7 +9,7 @@
 /**
  * fs.FSWatcher.close() -> Void
  * 
- * Stop watching for changes on the given `fs.FSWatcher`.
+ * Stop watching for changes on the given `FSWatcher`.
 **/ 
 
 

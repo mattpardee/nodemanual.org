@@ -3,7 +3,7 @@
  * class https.Agent
  *
  * 
- * An `Agent` object for HTTPS, similar to [[http.Agent `http.Agent`]].
+ * An `Agent` object for HTTPS, similar to [[http.Agent `http.Agent`]]. For more information, see [[https.request `https.request()`]].
  * 
  * 
 **/ 

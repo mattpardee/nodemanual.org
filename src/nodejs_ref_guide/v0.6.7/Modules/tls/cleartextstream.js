@@ -2,7 +2,7 @@
 /**
  * class tls.CleartextStream
  * 
- * This is a stream on top of the `Encrypted` stream that makes it possible to read/write an encrypted data as a cleartext data.
+ * This is a stream on top of the encrypted stream that makes it possible to read/write an encrypted data as a cleartext data.
  * 
  * This instance implements the duplex [[streams `Stream`]] interfaces. It has all the common stream methods and events.
 **/ 

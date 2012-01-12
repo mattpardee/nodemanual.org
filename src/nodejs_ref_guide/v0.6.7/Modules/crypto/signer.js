@@ -1,7 +1,21 @@
 /** section: Crypto
   * class signer
   *
+  * This class is used to sign certificates for OpenSSL. It can be created as a returned value from [[crypto.createSigner `crypto.createSigner()`]].
   *
+  * For more information, you may want to read [this chapter on using the `crypto` module](../nodejs_dev_guide/cryptography.html).
+  *
+ * #### Example
+ * 
+ *    var s1 = crypto.createSign('RSA-SHA1')
+ *              .update('Test123')
+ *              .sign(keyPem, 'base64');
+ *    var verified = crypto.createVerify('RSA-SHA1')
+ *                    .update('Test')
+ *                    .update('123')
+ *                    .verify(certPem, s1, 'base64');
+ *    assert.strictEqual(verified, true, 'sign and verify (base 64)');
+ *
  **/
 
 /**
@@ -15,7 +29,7 @@
  *
  * #### Returns
  *
- *  The signature in a format defined by `output_format`, which .
+ *  The signature in a format defined by `output_format`.
 **/ 
 
 

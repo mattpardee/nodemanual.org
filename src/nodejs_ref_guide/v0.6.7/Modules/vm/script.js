@@ -1,6 +1,9 @@
 /**
  * class vm.Script
  *
+ * This object is created as a result of the [[vm.createScript `vm.createScript()`]] method. It represents some compiled code than can be run at a later moment.
+ *
+ *
 **/
 
 /**

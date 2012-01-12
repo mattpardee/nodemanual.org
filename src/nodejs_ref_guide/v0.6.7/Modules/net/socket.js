@@ -26,7 +26,7 @@
  * 
  * * `fd` allows you to specify the existing file descriptor of socket. 
  * * `type` specifies the underlying protocol. It can be `'tcp4'`, `'tcp6'`, or `'unix'`.
- * * `allowHalfOpen` is a boolean indicating how the socket should end. For more information, see to [[net.Socket.createServer `createServer()`]] and the [[net.Socket@end `'end'`]] event.
+ * * `allowHalfOpen` is a boolean indicating how the socket should end. For more information, see the [[net.Socket.createServer `createServer()`]] method and the [[net.Socket@end `'end'`]] event.
  * 
 **/ 
 
@@ -212,7 +212,7 @@
  * net.Socket@connect()
  *
  * 
- * Emitted when a socket connection is successfully established. For more information, see [[net.Server.connect `connect()`]].
+ * Emitted when a socket connection is successfully established. For more information, see [[net.socket.connect `connect()`]].
  * 
 **/ 
 

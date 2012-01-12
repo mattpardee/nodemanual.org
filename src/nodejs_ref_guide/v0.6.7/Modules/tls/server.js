@@ -1,7 +1,7 @@
 /**
  * class tls.Server
  *
- * This class is a subclass of [[net.Server `net.Server`]] and has the same methods on it. Instead of accepting just raw TCP connections, it also accepts encrypted connections using TLS or SSL.
+ * This class is a subclass of [[net.Server `net.Server`]] and has the same methods as it. However, instead of accepting just raw TCP connections, it also accepts encrypted connections using TLS or SSL.
  *
 **/
 
@@ -58,6 +58,13 @@
  *
 **/ 
 
+/**
+ * tls.Server.pause(msecs=1000) -> Void
+ * - msecs (Number): The number of milliseconds to pause for
+ *
+ * Stop accepting connections for the given number of milliseconds. This could be useful for throttling new connections against DoS attacks or other oversubscriptions.
+ * 
+**/ 
 
 /**
  * tls.Server.connections -> Number

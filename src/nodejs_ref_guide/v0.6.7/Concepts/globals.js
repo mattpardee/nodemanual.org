@@ -26,7 +26,7 @@
 * </dd>
 * 
 * <dt>Buffer</dt>
-* <dd>Used to handle binary data. See the [buffers](buffers.html) section for more information.</dd>
+* <dd>Used to handle binary data. See the [buffers](buffer.html) section for more information.</dd>
 * 
 * <dt>`console`</dt>
 * <dd>Used to print to stdout and stderr. See the [stdio](console.html) section for more information.</dd>

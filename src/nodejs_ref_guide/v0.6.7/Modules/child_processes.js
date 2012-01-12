@@ -13,6 +13,8 @@
  * * `child.stdout`, the standard output stream
  * * `child.stderr`, the standard error stream
  * 
+ * For more information, see [this article on how to spawn child processes](../nodejs_dev_guide/how-to-spawn-a-child-process.html).
+ *
  * #### Example: Running ls in a child process
  *
  * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child_process.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>

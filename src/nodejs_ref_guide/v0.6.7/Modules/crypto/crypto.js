@@ -6,11 +6,11 @@
  *
  *  The module also offers a set of wrappers for OpenSSL's methods, which actually contains these objects:
  * 
- * * [[diffieHellman Diffie-Hellman]]
- * * [[hash Hash]]
- * * [[HMAC HMAC]]
  * * [[cipher Cipher]]
  * * [[decipher Decipher]]
+ * * [[diffieHellman Diffie-Hellman]]
+ * * [[hash Hash]]
+ * * [[HMAC HMAC]] 
  * * [[signer Signer]]
  * * [[verifier Verifier]]
  * 
@@ -18,6 +18,9 @@
  * 
  * <Note>All `algorithm` parameter implementations below are dependent on the OpenSSL version installed on the platform. Some common examples of these algoritihms are `'sha1'`, `'md5'`, `'sha256'`, and `'sha512'`. On recent Node.js releases, `openssl list-message-digest-algorithms` displays the available digest algorithms. </Note>
  * 
+ *
+ * For more information, you may want to read [this chapter on using the `crypto` module](../nodejs_dev_guide/cryptography.html).
+ *
  * #### Example
  * 
  * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
@@ -128,7 +131,7 @@
  *
  * Testing an MD5 Hash:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.createHash.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * This program takes the sha1 sum of a file:
  * 
@@ -152,7 +155,7 @@
 
 
 /**
- * crypto.createSign(algorithm) -> String
+ * crypto.createSign(algorithm) -> Signer
  * - algorithm (String) : The algorithm to use
  *
  * Creates and returns a signing object string, with the given `algorithm`.
@@ -162,7 +165,7 @@
 
 
 /**
- * crypto.createHmac(algorithm, key)
+ * crypto.createHmac(algorithm, key) -> hmac
  * - algorithm (String): The algorithm to use
  * - key (String): The HMAC key to be used
  *
@@ -209,3 +212,12 @@
  * 
 **/ 
 
+/**
+ * crypto.createVerify(algorithim) -> verifier
+ * - algorithm (String) : The algorithm to use
+ *
+ * Creates and returns a verification object, with the given algorithm.
+ *
+ * This is the mirror of the [[signer `signer`]] object.
+ * 
+**/ 

@@ -2,7 +2,14 @@
 /** section: http_Module
  * class http.Server
  * 
- * A representation of the server within the `http` module. This object is also an [[EventEMitter `EventEmitter`]].
+ * A representation of the server within the `http` module. To create an HTTP server, you'll need to first call [[http.createServer `http.createServer()`]], with something like this:
+ *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=http.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ *
+ * This object is also an [[EventEmitter `EventEmitter`]].
+ *
+ * For more information, read [this article on how to create HTTP servers](../nodejs_dev_guide/HTTP-servers.html).
+ *
 **/ 
 
 /* 

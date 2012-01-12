@@ -1,7 +1,20 @@
 /** section: Crypto
   * class verifier
   *
+  * This class is used to verify signed certificates for OpenSSL. It can be created as a returned value from [[crypto.createVerifier `crypto.createVerifier()`]].
   *
+  * For more information, you may want to read [this chapter on using the `crypto` module](../nodejs_dev_guide/cryptography.html).
+  *
+ * #### Example
+ * 
+ *    var s1 = crypto.createSign('RSA-SHA1')
+ *              .update('Test123')
+ *              .sign(keyPem, 'base64');
+ *    var verified = crypto.createVerify('RSA-SHA1')
+ *                    .update('Test')
+ *                    .update('123')
+ *                    .verify(certPem, s1, 'base64');
+ *    assert.strictEqual(verified, true, 'sign and verify (base 64)');
  **/
 
 /**

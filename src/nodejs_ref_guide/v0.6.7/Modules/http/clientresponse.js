@@ -1,9 +1,9 @@
 /**
  * class http.ClientResponse
  * 
- * This object is created when making a request with `http.request()`. It is passed to the `'response'` event of the request object.
+ * This object is created when making a request with [[http.request `http.request()`]]. It is passed to the `'response'` event of the request object.
  * 
- * The response implements the `Readable Stream` interface.
+ * The response implements the [[streams.readablestream `Readable Stream`]] interface.
 **/
 
 /**

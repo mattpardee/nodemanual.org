@@ -2,7 +2,7 @@
 /**
  * class http.ServerResponse
  * 
- * This object is created internally by a HTTP server&mdash;not by the user. It is passed as the second parameter to the `'request'` event. It is a `Writable Stream`.
+ * This object is created internally by a HTTP server&mdash;not by the user. It is passed as the second parameter to the `'request'` event. It is a [[streams.WritableStream `Writable Stream`]].
  * 
 **/ 
 

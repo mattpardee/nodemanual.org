@@ -4,6 +4,11 @@
  * class net.Server
  *
  * This class is used to create a TCP or UNIX server. A server is a `net.Socket` that can listen for new incoming connections.
+ *
+ * #### Example
+ *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=net.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ *
 **/
 
 
