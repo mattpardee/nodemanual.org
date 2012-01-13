@@ -4,43 +4,13 @@ Storing your Node.js application's configuration data is quite simple. Every obj
 
 Let's take a look at a very simple (and contrived) example.  First, to save some very simple data:
 
-    // always require('fs') when using the file system  
-    var fs = require('fs');
-
-    var myOptions = {
-        name: 'Avian',
-        dessert: 'cake'
-        flavor: 'chocolate',
-        beverage: 'coffee'
-    };
-
-    var data = JSON.stringify(myOptions);
-
-    fs.writeFile('./config.json', data, function (err) {
-        if (err) {
-          console.log('There has been an error saving your configuration data.');
-          console.log(err.message);
-          return;
-        }
-        console.log('Configuration saved successfully.')
-  });
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=storing.local.data.1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 It's really that simple: just `JSON.stringify()`, and then save it however you'd like.
 
 Now, let's load some configuration data, by reading from the file:
 
-    var fs = require('fs');
-
-    var data = fs.readFileSync('./config.json'),
-        myObj;
-
-    try {
-        myObj = JSON.parse(data);
-        console.dir(myObj);
-      } catch (err) {
-        console.log('There was an error parsing your JSON.')
-        console.log(err);
-    }
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=storing.local.data.2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 Even if you don't like using `try/catch`, this is a place to use it.  `JSON.parse()` is a very strict JSON parser, and errors are common&mdash;most importantly, though, `JSON.parse()` uses the `throw` statement rather than giving a callback, so `try/catch` is the only way to guard against the error. In addition, since we're again loading conifiguration data, we need to rely on the synchronous `fs.readFileSync()`.
 

@@ -18,7 +18,7 @@ There are a few ways to create new buffers. For example, this buffer is uninitia
 
     var buffer = new Buffer(8);
 
-This next example is a also an 8-bute bugger, loaded with some content:
+This next example is a also an 8-byte bugger, loaded with some content:
 
     var buffer = new Buffer([ 8, 6, 7, 5, 3, 0, 9]);
 

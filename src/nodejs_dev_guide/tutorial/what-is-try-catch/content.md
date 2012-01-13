@@ -2,23 +2,7 @@
 
 Javascript's `try-catch-finally` statement works very similarly to the `try-catch-finally` encountered in C++ and Java.  It's best to describe this concept with an example:
 
-    console.log("entering try-catch statement");
-
-    try {
-      console.log("entering try block");
-      throw "thrown message";
-      console.log("this message is never seen");
-    }
-    catch (e) {
-      console.log("entering catch block");
-      console.log(e);
-      console.log("leaving catch block");
-    }
-    finally {
-      console.log("entering and leaving the finally block");
-    }
-
-    console.log("leaving try-catch statement");
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=using.try.catch.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 The results of this code block are:
 

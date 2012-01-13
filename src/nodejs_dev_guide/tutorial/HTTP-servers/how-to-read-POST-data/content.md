@@ -6,26 +6,7 @@ The first step is to listen for incoming data. The trick is to wait for the data
 
 Here is a quick script that shows you how to do exactly that:
 
-    var http = require('http');
-    var postHTML = "<html><head><title>Post Example</title></head><body>" +
-    '<form method="post">' +
-      'Input 1: <input name="input1"><br>' +
-        'Input 2: <input name="input2"><br>' +
-        '<input type="submit">' +
-        '</form>' +
-        '</body></html>';
-
-    http.createServer(function (req, res) {
-      var body = "";
-      req.on('data', function (chunk) {
-        body += chunk;
-      });
-      req.on('end', function () {
-        console.log('POSTed: ' + body);
-        res.writeHead(200);
-        res.end(postHTML);
-      });
-    }).listen(8080);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=reading.post.data.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 The variable `postHTML` is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can `POST` example data. This is **not** the right way to serve static HTML; to do that, see [How to Serve Static Files](how-to-serve-static-files.html) for a more proper example.
 

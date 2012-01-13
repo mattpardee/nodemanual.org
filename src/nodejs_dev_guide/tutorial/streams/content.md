@@ -10,28 +10,7 @@ The biggest advantage that streams give you over their non-stream versions is th
 
 Create a new file called `cp.js`, and copy-paste the following code:
 
-    var fs = require('fs');
-    console.log(process.argv[2], '->', process.argv[3]);
-
-    var readStream = fs.createReadStream(process.argv[2]);
-    var writeStream = fs.createWriteStream(process.argv[3]);
-
-    readStream.on('data', function (chunk) {
-      writeStream.write(chunk);
-    });
-
-    readStream.on('end', function () {
-      writeStream.end();
-    });
-
-    //Some basic error handling
-    readStream.on('error', function (err) {
-      console.log("ERROR", err);
-    });
-
-    writeStream.on('error', function (err) {
-      console.log("ERROR", err);
-    });
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=understanding.streams.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 Run this script with arguments like `node cp.js src.txt dest.txt`. This would mean, in the code above, that `process.argv[2]` is `src.txt` and `process.argv[3]` is `desc.txt`. Obviously, you'll need some dummy text files before you can run the script.
 

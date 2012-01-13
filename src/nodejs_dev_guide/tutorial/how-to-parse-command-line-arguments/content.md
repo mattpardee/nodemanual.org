@@ -52,7 +52,7 @@ Fortunately, there's a third party module that makes all of this trivial. It's c
 
      npm install optimist
      
-Once you have it, give it a try&mdash;it can really be a life-saver.:
+Once you have it, give it a try&mdash;it can really be a life-saver:
 
      var myArgs = require('optimist').argv,
          help = 'Ceci n\'est pas une mandoc';

@@ -2,10 +2,10 @@
 
 Node.js provides a utility function, for debugging purposes, that returns a string representation of an object.  It's called `util.inspect()`, and it can be very useful when working with properties of large, complex objects. 
 
-`util.inspect()` can be used on any object. As a demonstration, we'll use one of Node's built-in objects. Type `node` in your command prompt, and then enter the following line:
+`util.inspect()` can be used on any object. As a demonstration, we'll use one of Node's built-in objects. Type `node` in your command prompt, and then enter the following lines:
 
      var util = require('util')
-     util.inspect(console)
+     util.inspect(console);
      
 The output should be:
 

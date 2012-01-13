@@ -9,17 +9,7 @@ In the first example, the `>` operator expected two binary values, so Javascript
 
 Type conversion also applys when values are used in unary boolean operations, most notably `if` statements. If a value converts to the boolean `true`, then it is said to be "truthy." If it converts to `false`, it is "falsy." For example:
 
-    var myval = "value";
-    if(myval) 
-    {
-        console.log("This value is truthy");
-    }
-    
-    myval = 0;
-    if(!myval) 
-    {
-        console.log("This value is falsy");
-    }
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=truthy.falsy.example1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 Since most values in Javascript are truthy, like objects, arrays, most numbers and strings, it's easier to just list all of the falsy values. These are:
 
@@ -30,28 +20,9 @@ Since most values in Javascript are truthy, like objects, arrays, most numbers a
     undefined
     NaN
     
-**Note**: all objects and arrays are truthy, even empty ones.
+<Note>All objects and arrays are truthy, even empty ones.</Note>
 
 Truthiness and falsiness also come into play with logical operators. When using the logical AND/OR operators, the values are converted based on truthiness or falsiness, and normal short circuit rules applu. The logical expression resolves to the last truthy value in the sequence. Here's an extended example demonstrating this:
 
-    var first = "truthy"
-      , second = "also truthy";
-
-    var myvalue = first && second;
-    console.log(myvalue); // "also truthy"
-
-    first = null;
-    second = "truthy";
-
-    myvalue = first || second;
-    console.log(myvalue); // "truthy"
-
-    myvalue2 = second || first;
-    console.log(myvalue2); // "truthy"
-
-    var truthy = "truthy"
-      , falsy = 0;
-
-    myvalue = truthy ? true : false;
-    myvalue = falsy ? true : false;
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=truthy.falsy.example2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
     

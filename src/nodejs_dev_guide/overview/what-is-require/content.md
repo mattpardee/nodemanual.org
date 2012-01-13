@@ -50,6 +50,10 @@ It is worth noting that each time you subsequently `require()` a previously requ
 
 As you can see from the above, `example.js` is evaluated the first time, but all subsequent calls to `require()` only invoke the module cache, rather than reading the file again.  As seen above, this can occasionally produce side effects.
 
-The rules of where `require()` finds the files can be a little complex, but a simple rule of thumb is that if the file doesn't start with "./" or "/", then it is either considered a core module (and the local Node.js path is checked), or a dependency in your directory's `node_modules` folder. If the file starts with "./" it is considered a relative file to the file that called `require()`. If the file starts with "/", it is considered an absolute path. **Note**: you can omit ".js" and `require()` will automatically append it if needed. For more detailed information, see [documentation on modules](../nodejs_ref_guide/modules.html) for more information.
+The rules of where `require()` finds the files can be a little complex, but a simple rule of thumb is that if the file doesn't start with "./" or "/", then it is either considered a core module (and the local Node.js path is checked), or a dependency in your directory's `node_modules` folder. If the file starts with "./" it is considered a relative file to the file that called `require()`. If the file starts with "/", it is considered an absolute path. 
+
+<Note>You can omit ".js" and `require()` will automatically append it if needed.</Note>
+
+For more detailed information, see [documentation on modules](../nodejs_ref_guide/modules.html) for more information.
 
 If the filename passed to `require()` is actually a directory, it will first look for `package.json` in the directory and load the file referenced in the `main` property. Otherwise, it will look for an `index.js` file.

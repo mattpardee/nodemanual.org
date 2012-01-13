@@ -12,17 +12,9 @@ This example just prints the provided string to `stdout`.  It can also be used t
 
 #### Styling the Output
 
-`console.log()` accepts three format characters: `%s`, `%d`, and `%j`. These format characters can be used to insert string, integer, or JSON data into your output. The order of format characters must match the order of arguments.
+`console.log()` accepts three format characters: `%s`, `%d`, and `%j`. These format characters can be used to insert string, integer, or JSON data into your output. The order of format characters must match the order of arguments. For example:
 
-For example:
-
-    var name = 'Harry',
-        number = 17,
-        myObj = {
-            propOne: 'stuff',
-            propTwo: 'more stuff'
-        };
-    console.log('My name is %s, my number is %d, my object is %j', name, number, myObj);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=styling.output.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 A caveat with `console.log`, and all functions that depend on it, is that it buffers the output. If your process ends suddenly, whether it be from an exception or from `process.exit()`, it is entirely possible that the buffered output will never reach the screen. This can cause a great deal of frustration, so watch out for this unfortunate situation.
 
@@ -34,14 +26,7 @@ A caveat with `console.log`, and all functions that depend on it, is that it buf
 
 That covers the basic `console` module functionality, but there are a few other methods worth mentioning as well. First, the `console` module allows for the marking of time via `console.time()` and `console.timeEnd()`.  Here is an example:
 
-    console.time('myTimer');
-    var string = '';
-    for (var i = 0; i < 300; i++) {
-    (function (i) {
-        string += 'aaaa' + i.toString();
-    })(i);
-    }
-    console.timeEnd('myTimer');
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.time.example.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 This would determine the amount of time taken to perform the actions in between the `console.time` and `console.timeEnd` calls.
 

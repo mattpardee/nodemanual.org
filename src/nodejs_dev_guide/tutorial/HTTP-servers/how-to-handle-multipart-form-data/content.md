@@ -2,7 +2,7 @@
 
 Handling form data and file uploads properly is an important and complex problem in HTTP servers.  Doing it by hand would involve parsing streaming binary data, writing it to the file system, parsing out additional form data, and several other complex concerns. Luckily, only a very few people will need to worry about it on that deep level. 
 
-Felix Geisendorfer, one of the Node.js core committers, wrote a library called `node-formidable` that handles all the hard parts for you. With its friendly API, you can be parsing forms and receiving file uploads in no time.
+Felix Geisendorfer, one of the Node.js core committers, wrote a library called [`node-formidable`](https://github.com/felixge/node-formidable) that handles all the hard parts for you. With its friendly API, you can be parsing forms and receiving file uploads in no time.
 
 This example is taken directly from the `node-formidable` GitHub page, with some additional explanation added.
 

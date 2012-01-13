@@ -16,49 +16,15 @@ Javascript provides two methods for encoding data structures to JSON and encodin
 
 `JSON.stringify()` takes a Javascript object or array and returns a serialized string in the JSON format. For example:
 
-    var data = {
-      name: "John Doe",
-      age: 32,
-      title: "VP of JavaScript"
-    }
-
-    var jsonStr = JSON.stringify(data);
-
-    console.log(jsonStr);
-    // prints '{"name":"John Doe", "age":32, "title":"VP of JavaScript"}'
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=json.stringify.1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 The full method declaration of `JSON.stringify()` is actually `JSON.stringify(obj [, replacer [, space]])`. You can pass in an optional function to replace elements in the JSON object, or define how much whitespace to present before an element. For example:
 
-    console.log(JSON.stringify([1, 2, 3])); // returns [1, 2, 3]
-
-    console.log(JSON.stringify([1, 2, 3], function replacer(key, value) {
-      if (!Array.isArray(value)) {
-        return value;
-      }
-      var len = value.length;
-      var result = { length: len };
-      
-      for (var i = 0; i < len; ++i) {
-        result[i] = value[i];
-      }
-      return result;
-    }));
-
-    // inserts two spaces
-    console.log(JSON.stringify({ a: 1, b: 2}, null, 2));
-    // insertes four spaces
-    console.log(JSON.stringify({ a: 1, b: 2}, null, 4));
-    //inserts a tab character
-    console.log(JSON.stringify({ a: 1, b: 2}, null, '\t'));
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=json.stringify.2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 `JSON.parse()` does the reverse, taking a JSON string and decoding it to a Javascript data structure:
 
-    var jsonStr = '{"name":"John Doe","age":32,"title":"VP of JavaScript"}';
-
-    var data = JSON.parse(jsonStr);
-
-    console.log(data.title);
-    // prints 'VP of JavaScript'
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=json.parse.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 #### Defining Valid JSON
 

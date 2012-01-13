@@ -4,14 +4,7 @@ Making a simple HTTP server in Node.js has become the de-facto 'hello world' for
 
 Let's take a look at a very simple example:
 
-    var http = require('http');
-    var requestListener = function (req, res) {
-        res.writeHead(200);
-        res.end('Hello, World!\n');
-    }
-
-    var server = http.createServer(requestListener);
-    server.listen(8080);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=http.server.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 Save this in a file called `server.js`, and from the command line, run `node server.js`. Your program will hang there: it's waiting for connections to respond to, and you'll have to give it one if you want to see it do anything. Open up a browser, and type `localhost:8080` into the location bar. If everything has been set up correctly, you should see your server saying hello!
 
