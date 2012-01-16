@@ -77,7 +77,7 @@ body(onload="styleCode()")
                         methods = obj.children.filter(function(x){return x.type === selector[0]})
                           li(class="dropdown", data-dropdown="dropdown")
                             if methods.length
-                              a(href="\#", class="dropdown-toggle") #{title} (#{methods.length})
+                              a(href="\#", class="dropdown-toggle")!= renameMemberTitle(title, methods.length)
                               if (methods.length >= 20 && methods.length < 30)
                                 ul.dropdown-menu.double
                                   for m in methods

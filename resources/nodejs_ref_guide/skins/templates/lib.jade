@@ -21,7 +21,11 @@ mixin argument(arg, reqOptObj)
             break
       mixin markdown(argStatus + arg.description)
     
-        
+-function renameMemberTitle(title, count)
+  if title.indexOf("ethods") >= 0
+    return Functions #{count})
+  else if (title.indexOf("ropert"))
+    return Properties (#{count})    
 
 mixin article(obj, parents)
   if typeof obj === 'string'
