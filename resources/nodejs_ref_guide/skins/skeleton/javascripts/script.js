@@ -205,30 +205,16 @@ $(function () {
   
     //set the height of the sidebar
     var sidebarHeight = $('#sidebar').height(),
-        contentHeight = $('.container .content .span11').height();
+        content       = $('.container .content .span11').height();
 
-    if(contentHeight > sidebarHeight)
-        $('#sidebar').height(contentHeight);
-    else
-        $('#sidebar').height(sidebarHeight + 10);
-    
-//    function isScrolledIntoView(elem) {
-//        var docViewTop = $(window).scrollTop();
-//        var docViewBottom = docViewTop + $(window).height();
-//
-//        var elemTop = $(elem).offset().top;
-//        var elemBottom = elemTop + $(elem).height() -60;
-//
-//        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-//    }
-//    
-//    $('#sidebar').height($(window).height() - $('#overview').outerHeight() - 25 + ($('html').scrollTop() <= 85 ? $('html').scrollTop() : 85 ))
-    
+    if(content > sidebarHeight)
+        $('#sidebar').height(content);
+  
     $(window)
     .scroll(function(){//auto kanei to header na metakinhtai kai na einai panta visible;
-        
+        return;
         var $sidebar       = $('#sidebar'),
-        $pagination    = $('.members:eq(0)'),
+        //$pagination    = $('.members:eq(0)'),
         header_offset  = $('#overview').outerHeight(),
         s;
 
@@ -243,33 +229,25 @@ $(function () {
             s = document.body.scrollTop;
         }
         if (s > header_offset - 30) {
-//            $sidebar.css({
-//                'position': 'fixed',
-//                'top': 41,
-//                'padding':0
-//            });
-            $pagination.css({
+            $sidebar.css({
                 'position': 'fixed',
-                'z-index': 2,
-                'top': 40
-//                'background-color': 'white'
-//                'opacity': 0.8
-            }).addClass('srolled');
+                'top': 20
+            });
+        //            $pagination.css({
+        //                'position': 'fixed',
+        //                'z-index': 2,
+        //                'top': 40
+        //            });
         }
         else {
-//            $sidebar.css({
-//                'position': 'relative',
-//                'top': 0,
-//                'padding-top':25
-//            });
-            $pagination.css({
+            $sidebar.css({
                 'position': 'relative',
                 'top': 0
-//                'background-color': 'transparent'
-//                'opacity': 1
-            }).removeClass('srolled');
+            });
+        //            $pagination.css({
+        //                'position': 'relative',
+        //                'top': 0
+        //            });
         }
-        
-//        $('#sidebar').height($(window).height() - $('#overview').outerHeight() - 25 + ($('html').scrollTop() <= 85 ? $('html').scrollTop() : 85 ) + (isScrolledIntoView($('#footer')[0]) ? 10 : 0))
     });
 });

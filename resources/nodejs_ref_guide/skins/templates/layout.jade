@@ -37,7 +37,12 @@ body(onload="styleCode()")
   div.topbar
     div.fill
       div.container#topSection
-        a(class='brand', href='#')
+        ul.nav
+            li(class="dropdown", data-dropdown="dropdown")
+                a(class='dropdown-toggle brand', href='#')
+                ul(class="dropdown-menu")
+                li
+                    a(href='http://nodebits.org/') Nodebits
         ul.nav
           li#node_js_ref
             a(href='#{dirPrefix}nodejs_ref_guide/latest/index.html') Node JS Reference
