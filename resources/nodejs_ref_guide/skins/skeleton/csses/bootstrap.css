@@ -297,7 +297,7 @@ a:hover {
   width: 580px;
 }
 .span11 {
-  width: 680px;
+  width: 695px;
 }
 .span12 {
   width: 700px;
@@ -1533,6 +1533,7 @@ li.menu, .dropdown {
 }
 a.menu:after, .dropdown-toggle:after {
   width: 0;
+  outline: none;
   height: 0;
   display: inline-block;
   content: "&darr;";

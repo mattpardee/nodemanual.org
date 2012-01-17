@@ -36,7 +36,7 @@ body(onload="styleCode()")
       div.container#topSection
         ul.nav
             li(class="dropdown", data-dropdown="dropdown")
-                a(class='dropdown-toggle brand', href='#')
+                a(class="dropdown-toggle brand", href="#")
                 ul(class="dropdown-menu")
                 li
                     a(href='http://nodebits.org/') Nodebits
@@ -51,6 +51,7 @@ body(onload="styleCode()")
           input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
 
   header.jumbotron.masthead#overview
+    a(class="c9-sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
     div.inner
       div.container
         h1 Node.js Manual
@@ -68,13 +69,12 @@ body(onload="styleCode()")
 
     footer#footer
       .container
-        .row
-          .span5.offset4
-            .logoText
-              span.logo-text Brought to you by the good people at
-            .logoImg
-              img(src='../resources/images/cloud9-logo.png')
-          .span11.offset10 This documentation was originally found and written by Nodejitsu. All other content &copy; <a href="http://www.c9.io">Cloud 9 IDE, Inc.</a> (unless otherwise stated)
+        .footer-text Thanks to these content providors | &#169; 2012:
+        .sponsors
+            a(class="c9-logo", href="http://c9.io/", title="cloud9 ide", target="_blank")
+            a(class="joyent-logo", href="http://www.joyent.com/", title="joyent", target="_blank")
+            a(class="mozilla-logo", href="http://www.mozilla.org/", title="mozilla", target="_blank")
+            a(class="nodejitsu-logo", href="http://nodejitsu.com/", title="nodejitsu", target="_blank")
 
   // scripts concatenated and minified via ant build script
   <script defer src="../resources/javascripts/plugins.js"></script>
