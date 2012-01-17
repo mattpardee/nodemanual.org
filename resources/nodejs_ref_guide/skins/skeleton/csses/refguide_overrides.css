@@ -436,6 +436,9 @@ table td, .bordered-table th + th, .bordered-table td + td, .bordered-table th +
 .zebra-striped tbody tr:nth-child(2n+1) td, .zebra-striped tbody tr:nth-child(2n+1) th {
     background-color: #f3f3f3;
 }
+.zebra-striped tbody tr:hover td, .zebra-striped tbody tr:hover th {
+    background-color: #FEFBF3;
+}
 /*
   Everyday I'm togglin'
 */

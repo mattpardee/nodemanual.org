@@ -26,7 +26,6 @@ mixin argument(arg, reqOptObj)
         for argInfo in reqOptObj
          - if (argInfo !== undefined && arg.name === argInfo.name && argInfo.optional)
             -argStatus = "Optional. "
-            break
       mixin markdown(argStatus + arg.description)
     
 -function renameMemberTitle(title, count)
@@ -106,10 +105,11 @@ mixin article(obj, parents)
           if obj.signatures
             div.title
               ul.signatures
+                -var loops = 0;
                 for sig in obj.signatures
                   if sig.args
                     for arg in sig.args
-                      -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig has "optional" information; store for later use
+                      -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig object has "optional" information; store for later use
                   li.signature
                     ul
                       li.signature-call!= validate_link(signature(obj, sig, "", obj.id))
@@ -133,38 +133,40 @@ mixin article(obj, parents)
                                 if ret.array
                                   text = '[ ' + text + ' ]'
                                 li.argument-type!= validate_link(text)
-                    ul.metaInfo
-                        if obj.readonly
-                          li
-                            span.label.read-only Read-Only
-                        if obj.chainable
-                          li
-                            span.label.chainable Chainable
-                        if obj.internal
-                          li
-                            span.label.internal Internal
-                        if obj.deprecated
-                          li
-                            span.label.deprecated
-                              | Deprecated
-                              if obj.deprecated.from
-                                | &nbsp; (since #{obj.deprecated.from})
-                                if obj.deprecated.off
-                                  | &nbsp;and will be removed on #{obj.deprecated.off}
-                        if obj.aliases && obj.aliases.length
-                          li
-                            span.label.alias
-                              | Aliased as:
-                              ul.alias
-                                for alias in obj.aliases
-                                  li
-                                    mixin link(alias)
+                    -if (loops == 0)
+                      -loops = 1 // ensure that we only print ONE meta info UL per signature (some methods have multiple forms)
+                      ul.metaInfo
+                          if obj.readonly
+                            li
+                              span.label.read-only Read-Only
+                          if obj.chainable
+                            li
+                              span.label.chainable Chainable
+                          if obj.internal
+                            li
+                              span.label.internal Internal
+                          if obj.deprecated
+                            li
+                              span.label.deprecated
+                                | Deprecated
+                                if obj.deprecated.from
+                                  | &nbsp; (since #{obj.deprecated.from})
+                                  if obj.deprecated.off
+                                    | &nbsp;and will be removed on #{obj.deprecated.off}
+                          if obj.aliases && obj.aliases.length
+                            li
+                              span.label.alias
+                                | Aliased as:
+                                ul.alias
+                                  for alias in obj.aliases
+                                    li
+                                      mixin link(alias)
 
-                        if obj.related_to
-                          li
-                            span.label.related-to
-                              | Related to
-                              mixin link(obj.related_to)  
+                          if obj.related_to
+                            li
+                              span.label.related-to
+                                | Related to
+                                mixin link(obj.related_to)  
                                   
           div.sideToggler
 
@@ -214,7 +216,6 @@ mixin article(obj, parents)
                 if (descArray[a].indexOf("Returns") >= 0)
                   mixin markdown("\n#### " + descArray[a])
                   r = a
-                  break
                 
               - for (var a = 1; a < descArray.length; a++)
                 if (a != r)

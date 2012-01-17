@@ -1,29 +1,24 @@
 # Introduction
 
-This is build system for the Cloud 9 IDE Node.js docs. It relies on the [doc-build]() as a submodule.
+This is the build system for the Node Manual documentation, include Node.js and Javascript Reference Guides. It relies on two repos as submodules:
+
+* The [doc-build](https://github.com/c9/doc-build) system converts Markdown to HTML, and is used for the Node Manual documentation
+* C9's fork of [ndoc](https://github.com/c9/ndoc), which takes Javascript source files and generates HTML documentation from the comments
 
 # Running a Build
 
 To run the build, open your command prompt and type:
 
-    node build.js b [nodejs_version]
+    node build.js
     
-This opens up _src/nodejs_dev_guide/toc.json_, and begins to assemble the subdirectory markdown files. These markdown files are "glued" together into the `tmp` directory. From there, they are converted into a single HTML file, and placed into `out`.
+This first launches doc-build, which reads _src/nodejs_dev_guide/toc.json_ and begins to assemble the subdirectory markdown files. These markdown files are modified, and placed into a `tmp` directory. From there, they are converted into HTML files, and placed into _out_.
 
-After that, a forked version of [ndoc]() runs across the Javascript files in _src/nodejs_ref_guide_. In order to accomplish this, you'll need to pass in a `[nodejs_version]` argument. This takes one of two forms:
+After that, ndoc runs across the Javascript files in _src/js_doc and _src/nodejs_ref_guide_ and proceeds to convert them into HTML files placed into the _out_ directory. By default, this build system builds every version of documentation listed under _src/nodejs_ref_guide_. You could also pass in one of two values for an `[optional_nodejs_version]`:
 
-* A string like x.y.z, where x, y, and z are all numerals. For example:
+* The word "latest," which automatically builds the latest version.
 
-    node build/build.js b nodejs_ref_guide 0.6.3
+* A string like `x.y.z`, where x, y, and z are all numerals. For example:
 
-* The word "latest" to automatically build the latest version.
+    node build.js 0.6.3
 
-Build dependencies&mdash;such as Javascript and CSS files&mdash;are located in the `build/resources` folder.
-
-# Serving the Files
-
-To serve the files, type:
-
-    node build/build.js s
-
-Note that the port is set to the Cloud 9 IDE standard of `process.env.PORT`.
+This builds only the 0.6.3 directory. 
