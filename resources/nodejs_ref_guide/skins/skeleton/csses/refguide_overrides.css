@@ -50,7 +50,7 @@ p {
 .brand {
     background: transparent url(../images/node-logo.png) no-repeat 13px 5px;
 /*    margin-top: 7px;*/
-    margin-right: 165px;
+    margin-right: 170px;
 /*    height: 30px;*/
     width: 105px;
     outline: none;
@@ -80,7 +80,7 @@ a.brand {
 }
 .masthead .container {
     width: 680px;
-    padding-left: 280px;
+    padding-left: 285px;
     margin: 0 auto;
 }
 .jumbotron {
@@ -191,6 +191,13 @@ a.brand {
 .members .tabs .dropdown-toggle:after {
     margin-right: 0;
     margin-left: 2px;
+}
+.memberLink a {
+    margin-left: 0 !important;
+}
+.menu-dropdown, .dropdown-menu {
+    max-height: 350px;
+    overflow: auto;
 }
 .topbar div > ul .menu-dropdown li a:hover,
 .nav .menu-dropdown li a:hover,

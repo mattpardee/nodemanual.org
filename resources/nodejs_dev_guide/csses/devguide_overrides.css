@@ -1,0 +1,8 @@
+#content > h3 {
+    font-size: 30px;
+    line-height: 36px;
+    border-bottom: 1px solid #848484;
+    margin-bottom: 15px;
+    margin-top: 0;
+    padding-bottom: 5px;
+}
