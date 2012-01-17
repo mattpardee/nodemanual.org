@@ -16,9 +16,6 @@ This first launches doc-build, which reads _src/nodejs_dev_guide/toc.json_ and b
 After that, ndoc runs across the Javascript files in _src/js_doc and _src/nodejs_ref_guide_ and proceeds to convert them into HTML files placed into the _out_ directory. By default, this build system builds every version of documentation listed under _src/nodejs_ref_guide_. You could also pass in one of two values for an `[optional_nodejs_version]`:
 
 * The word "latest," which automatically builds the latest version.
+* A string like `x.y.z`, where x, y, and z are all numerals, to build a specific version. For example, to build the 0.6.3 branch, type:
 
-* A string like `x.y.z`, where x, y, and z are all numerals. For example:
-
-    node build.js 0.6.3
-
-This builds only the 0.6.3 directory. 
+<pre>node build.js 0.6.3</pre>
