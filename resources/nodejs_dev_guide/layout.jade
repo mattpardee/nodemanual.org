@@ -38,8 +38,8 @@ body(onload="styleCode()")
             li(class="dropdown", data-dropdown="dropdown")
                 a(class="dropdown-toggle brand", href="#")
                 ul(class="dropdown-menu")
-                li
-                    a(href='http://nodebits.org/') Nodebits
+                    li
+                        a(href="http://nodebits.org/") Nodebits
         ul.nav
           li#node_js_ref
             a(href='../nodejs_ref_guide/latest/index.html') Node JS Reference
@@ -64,7 +64,7 @@ body(onload="styleCode()")
           #sidebar
             include nodejs_dev_guide_menu.jade
         .span11
-          #content!= markdown(data)
+          .dev_guide#content!= markdown(data)
           div#disqus_thread
 
     footer#footer
