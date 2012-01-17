@@ -44,12 +44,14 @@
   var d = 'a.menu, .dropdown-toggle'
 
   function clearMenus() {
-    $(d).parent('li').removeClass('open')
+    $(d).parent('li').each(function(){
+        $(this).removeClass('open')
+    });
   }
 
   $(function () {
     $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
+    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' );
   })
 
 }( window.jQuery || window.ender );

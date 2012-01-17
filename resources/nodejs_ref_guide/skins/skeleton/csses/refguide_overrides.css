@@ -2,7 +2,8 @@
   Generic "affects everything" stuff
 */
 body {
-  background-color: #ffffff;
+    background: #ffffff url(../images/main-bg.png) 0 0 repeat;
+    color: #2d2d2d;
 }
 
 li {
@@ -10,69 +11,93 @@ li {
 }
 
 code {
-  background-color: #fce68c;
+/*    background-color: #fce68c;*/
+    
+    font-size: 11px;
+    line-height: 19px;
+    font-family: 'Ubuntu Mono',Monaco,Consolas,monospace !important;
+    background-color: #F9F9F9;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 2px #888888;
+    display: inline-block;
+    padding: 0 4px;
+    margin: 0 1px;
 }
 
 pre code {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 a code {
     color: #0069D6;
 }
 
-code.prettyprint {
-  padding: 0;
+h2 {
+    font-size: 26px;
 }
-
+p {
+    font-size: 12px;
+}
 /* 
   Header and shoulders
 */
 
 #topSection {
-  width: 940px;
+    margin: 0 auto;
+    width: 1000px;
 }
 
 .brand {
-  background: transparent url(../images/node-logo.png) top;
-  background-repeat: no-repeat;
-  margin-top: 7px;
-  margin-right: 110px;
-  width: 110px;
+    background: transparent url(../images/node-logo.png) no-repeat 4px 8px;
+/*    margin-top: 7px;*/
+    margin-right: 210px;
+/*    height: 30px;*/
+    width: 110px;
+    outline: none;
+    height: 30px;
+}
+
+.open .brand,
+.brand:hover{
+  background: rgba(255, 255, 255, 0.05) url(../images/node-logo.png) no-repeat 4px 8px !important;
 }
 
 a.brand {
-  cursor: default;
+    cursor: default;
 }
 
 .masthead {
-  background-color: #7f9e2e;
-  background-repeat: repeat-x;
+    background-color: #7f9e2e;
+    background-repeat: repeat-x;
 }
-
+.masthead .container {
+    width: 680px;
+    padding-left: 320px;
+    margin: 0 auto;
+}
 .jumbotron {
-  min-width: 940px;
-  padding-top: 40px;
+    min-width: 940px;
+    padding-top: 40px;
 }
 
 .jumbotron .inner {
-  background: transparent url(../images/header-back.png) top center;
-  padding: 45px 0;
-  -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-  -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+    background: transparent url(../images/header-back.png) top center;
+    padding: 45px 0;
+    -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+    -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
 }
 
 .jumbotron h1 {
-  font-size: 54px;
-  line-height: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+    font-size: 54px;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
 }
 
 .jumbotron h1, .jumbotron p {
-  margin-bottom: 9px;
-  color: white;
-  text-align: center;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+    margin-bottom: 9px;
+    color: white;
+/*    text-align: center;*/
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 }
 
 /*
@@ -80,22 +105,26 @@ a.brand {
 */
 
 .menu li {
-  color: #E1E1E1;
+    color: #E1E1E1;
+     margin-bottom: 5px;
 }
 
 .menu li .menu-item a.menuLink, .menu li .menu-item span.menuLink {
-  color: #000000;
-  font-weight: bold;
+    color: #000000;
+    font-weight: bold;
 }
-
+.menuTwo {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
 .menuTwo li .menu-item a.menuLink {
-  color: #767676;
-  font-weight: bold;
+    color: #767676;
+    font-weight: bold;
 }
 
 /* need specificity to "beat" the above colors */
 .menu li .menu-item a.currentItem, .menuTwo li .menu-item  {
-  color: #618100;
+    color: #618100;
 }
 
 /*
@@ -103,88 +132,166 @@ a.brand {
 */
 
 .members {
-  width: 800px;  
+/*    width: 800px;  */
+    width: 680px;
+/*    margin: 0 10px;*/
 }
-
+.members.srolled {
+/*    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35); */
+    background-image: url(../images/scrolled-heading-shadow.png);
+    background-repeat: repeat-x;
+    background-position: 0 bottom;
+    padding-bottom: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px; 
+}
 .memberHeader {
-  float: left;
-  padding-top: 10px;
-  padding-right: 5px;
+    float: left;
+    padding-right: 5px;
+    margin-bottom: 5px;
+/*    margin-left: 10px;*/
 }
 
 .tabs {
-  padding-top: 10px;
-  border-bottom: 1px solid black;
+    padding-top: 10px;
+    border-bottom: 1px solid #848484;
 }
-
+.tabs, .pills {
+    margin-bottom: 0;
+/*    margin-left: 10px;
+    margin-right: 10px;*/
+}
+.members.srolled .tabs {
+    background-color: white;
+}
 .topbar div > ul .menu-dropdown li a:hover,
 .nav .menu-dropdown li a:hover,
 .topbar div > ul .dropdown-menu li a:hover,
 .nav .dropdown-menu li a:hover {
-  background-color: #ffffff;
-  color: #000000;
+    background-color: #ffffff;
+    color: #000000;
 }
-
+.dropdown-menu {
+    border-top: none;
+}
+.tabs a.menu:after, .tabs .dropdown-toggle:after {
+    margin-top: 13px;
+    line-height: 28px;
+}
 .open .menu, .dropdown.open .menu, .open .dropdown-toggle, .dropdown.open .dropdown-toggle  {
-  background: transparent;
-  color: #000000;
-  font-weight: bold;
+    background: transparent;
+    color: #000000;
+/*    font-weight: bold;*/
 }
-
+.tabs > li > a {
+    border: none;
+    outline: none;
+    line-height: 28px;
+}
 .tabs > li > a:hover {
-  color: #000000;
-  text-decoration: none;
-  background-color: #ffffff;
-}
-.tabs .active > a, .tabs .active > a:hover {
-  color: #000000;
-  border: none;
-  cursor: default;
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
 }
 
+.tabs .active > a, .tabs .active > a:hover {
+    color: #000000;
+    border: none;
+    cursor: default;
+}
+.tabs .menu-dropdown, .tabs .dropdown-menu {
+    border-radius: 0 0 6px 6px;
+    top: 32px;
+}
 .dropdown-toggle {
-  color: #d4d4d4;
+    color: #8a8a8a;
 }
 
 ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
-  width:760px;
-  margin-bottom:20px;
-  overflow:hidden;
-  border-top:1px solid #ccc;
+    width:760px;
+    margin-bottom:20px;
+    overflow:hidden;
+    border-top:1px solid #ccc;
 }
 ul.tabs .double li, ul.tabs .triple li, ul.tabs .quad li{
-  line-height:1.5em;
-  border-bottom:1px solid #ccc;
-  float:left;
-  display:inline;
+    line-height:1.5em;
+    border-bottom:1px solid #ccc;
+    float:left;
+    display:inline;
 }
 
 /*
   Center content (the "real stuff")
- */
-
-.row {
-  background: url(../resources/images/sidebar_top.png) repeat-x;
-}
+*/
 
 .container {
-  width: 1420px;
+    
+}
+.content {
+    background: url(../images/content-top-bg.png) repeat-x 0 0;
+    border-top: 1px solid #fffffe;
+}
+.content .row {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container .content .span11 {
+    padding-top: 25px;
+    float: right;
+}
+.content .span5 {
+    margin-right: 40px;
+}
+#sidebar {
+    padding-top: 25px;
+    background: url(../images/sidebar-border.png) repeat-y right 0;
+    width: 280px;
+/*    overflow: auto;*/
 }
 
+#content {
+    padding-bottom: 10px;
+}
+
+#content article.article {
+/*    border-bottom: 1px solid #e9e9e9;*/
+    border-top: 1px solid #e9e9e9;
+    padding: 16px 10px 10px;
+}
+#content article:last-child {
+    border-bottom: 1px solid #e9e9e9;
+}
+#content article.article.methodToggleOpen {
+    background: url(../images/method-bg.png) repeat 0 0;
+}
+#content article:first-child {
+    border:none;
+}
 /*
   ALl about signatures
- */
+*/
 
 .signatures {
-  width: 800px;
+/*    width: 800px;*/
+    margin-left: 20px;
+    margin-bottom: 5px;
 }
-
+.sideToggler {
+    padding-left: 20px;
+    position: relative;
+}
 ul.signatures ul {
     list-style: none;
     display: inline;
 }
 
- li.signature {
+li.signature {
     list-style: none;
 }
 
@@ -207,50 +314,86 @@ ul.signatures ul {
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+    padding-right: 3px;
 }
 
 .signature-call a {
-  color: #859c59;
+    color: #859c59;
 }
 
 .metaInfo {
-  float: right;
+    float: right;
 }
 
 .chainable {
-  background-color: #0072bc;
-  color: #ffffff;
+    background-color: #0072bc;
+    color: #ffffff;
 }
 
 .deprecated {
-  background-color: #f7941d;
-  color: #ffffff;
+    background-color: #f7941d;
+    color: #ffffff;
 }
 
 .alias {
-  background-color: #6c951e;
-  color: #ffffff;
+    background-color: #6c951e;
+    color: #ffffff;
 }
 
 .related-to {
-  background-color: #89289a;
-  color: #ffffff;
+    background-color: #89289a;
+    color: #ffffff;
 }
 
 .alias a, .related-to a {
-  color: #ffffff;
-  text-decoration: underline;  
+    color: #ffffff;
+    text-decoration: underline;  
 }
-
+.memberContent {
+    
+}
 div.memberContent div.description {
-  position:relative;
-  top: -13px;
+    position:relative;
+    top: -13px;
 }
-
+.snip-container .actions .toggle-plaintext label {
+    margin-top: 1px;
+    padding-top: 0;
+    text-align: left;
+}
+.snip-container .actions .toggle-plaintext input {
+    margin-top: 4px !important;
+}
+.snip-container label {
+    color: #ffffff;
+}
+.description h4 {
+    font-size: 18px;
+    margin: 15px 0 5px;
+}
+.bordered-table {
+    margin-bottom: 0;
+    background-color: white;
+}
+.actions .run-in-c9 img {
+    padding-top: 3px;
+}
+table td, .bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
+    border-top: none;
+}
+.zebra-striped tbody tr:nth-child(2n+1) td, .zebra-striped tbody tr:nth-child(2n+1) th {
+    background-color: #f3f3f3;
+}
 /*
   Everyday I'm togglin'
 */
-
+#content h3 {
+    font-size: 24px;
+/*    margin: 10px 0;*/
+}
+#content h3.methodToggle {
+    margin: 0;
+}
 .methodToggle a {
     color: #fff;
     border-bottom: 0px;
@@ -259,29 +402,31 @@ div.memberContent div.description {
 
 h3.methodToggle {
     height               : 13px; 
-    width                : 10px; 
+    width                : 8px; 
     background-position  : 0px 0px; 
-    position: relative;
-    top: -60px;
+    position: absolute;
+    top: -20px;
     background-image     : url(../images/member-sprites.png); 
     background-color     : transparent; 
     background-repeat    : no-repeat; 
+    overflow: hidden;
+    left: 0px;
 }
 
 h3.methodToggleHover {
     background-position  : 0px -28px; 
 }
 
-h3.active {
-    top:                  -60px;
+h3.methodToggle.active {
+    top:                  -18px;
     height               : 13px; 
-    width                : 10px; 
+    width                : 8px; 
     background-position  : 0px -58px; 
 } 
 
 .hidden {
-  display: none;
-  visibility: hidden;
+    display: none;
+    visibility: hidden;
 }
 
 .hiddenSpan {
@@ -289,32 +434,63 @@ h3.active {
 }
 
 .ellipsis_description, .short_description {
-  width: 800px;
+/*    width: 800px;*/
 }
-
+.description td p {
+    margin: 0;
+}
 /*
   Footer? I hardly know her
-  */
+*/
 
 #footer {
-   /*position:fixed; */
-   left:0px;
-   bottom:0px;
-   height:65px;
-   width:100%;
-   background:#fefefe;
-   color: #c3c3c3;
+    /*position:fixed; */
+    left:0px;
+    bottom:0px;
+    height:65px;
+    width:100%;
+    background:#fefefe;
+    color: #c3c3c3;
+    border-top: 2px solid #E4E4E4;
+    padding-top: 10px;
+    font-size: 12px;
+    margin-top: 0;
 }
-
+#footer .container {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
 #footer a {
-  color: #c3c3c3;
-  text-decoration: underline;
+    color: #c3c3c3;
+    text-decoration: underline;
 }
 
- .logoText, .logoImg {
-   /*position: absolute;*/
- }
+#footer .span11 {
+    margin-left: 0;
+}
 
- .logoImg {
-   top: 40px;
- }
+.logoText, .logoImg {
+    /*position: absolute;*/
+    margin-bottom: 5px;
+}
+
+.logoImg {
+    top: 40px;
+}
+.topbar div > ul .menu-dropdown li a:hover,
+.nav .menu-dropdown li a:hover,
+.topbar div > ul .dropdown-menu li a:hover,
+.nav .dropdown-menu li a:hover {
+  background-color: #191919;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#292929), to(#191919));
+  background-image: -moz-linear-gradient(top, #292929, #191919);
+  background-image: -ms-linear-gradient(top, #292929, #191919);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #292929), color-stop(100%, #191919));
+  background-image: -webkit-linear-gradient(top, #292929, #191919);
+  background-image: -o-linear-gradient(top, #292929, #191919);
+  background-image: linear-gradient(top, #292929, #191919);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#191919', GradientType=0);
+  color: #ffffff;
+}

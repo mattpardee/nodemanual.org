@@ -1,3 +1,11 @@
+-var dirPrefix = "../";
+-var nodejsRef = 'false'
+
+mixin identifyBuild
+  if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
+      -nodejsRef = 'true'
+      -dirPrefix = dirPrefix + dirPrefix
+
 - var methodSection = constructorSection = propertySection = eventSection = false;
 - var globalJSObjs = ["Array", "Boolean", "Date", "Error", "EvalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError", "Function", "Infinity", "JSON", "Math", "NaN", "Number", "Object", "RegExp", "String"]
 mixin argument(arg, reqOptObj)
@@ -23,9 +31,11 @@ mixin argument(arg, reqOptObj)
     
 -function renameMemberTitle(title, count)
   if title.indexOf("ethods") >= 0
-    return Functions #{count})
-  else if (title.indexOf("ropert"))
-    return Properties (#{count})    
+    return Functions (#{count})
+  else if title.indexOf("ropert") >= 0
+    return Properties (#{count})   
+  else
+    return #{title} (#{count})
 
 mixin article(obj, parents)
   if typeof obj === 'string'
@@ -294,5 +304,5 @@ mixin links(collection)
   for js_obj in globalJSObjs
     -var regex = new RegExp('href="' + js_obj, "ig")
     -if (l.match(regex))
-      -l = l.replace(regex, 'href="../js_doc/' + js_obj)
+      -l = l.replace(regex, 'href="' + dirPrefix + 'js_doc/' + js_obj)
   != l

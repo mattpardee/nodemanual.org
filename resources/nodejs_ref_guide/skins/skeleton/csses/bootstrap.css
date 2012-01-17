@@ -190,9 +190,9 @@ body {
   color: #404040;
 }
 .container {
-  width: 940px;
+/*  width: 940px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto;*/
   zoom: 1;
 }
 .container:before, .container:after {
@@ -251,7 +251,7 @@ a:hover {
 }
 .row {
   zoom: 1;
-  margin-left: -20px;
+/*  margin-left: -20px;*/
 }
 .row:before, .row:after {
   display: table;
@@ -264,7 +264,7 @@ a:hover {
 .row > [class*="span"] {
   display: inline;
   float: left;
-  margin-left: 20px;
+/*  margin-left: 20px;*/
 }
 .span1 {
   width: 40px;
@@ -297,7 +297,7 @@ a:hover {
   width: 580px;
 }
 .span11 {
-  width: 640px;
+  width: 680px;
 }
 .span12 {
   width: 700px;
@@ -348,7 +348,7 @@ a:hover {
   margin-left: 200px;
 }
 .row > .offset4 {
-  margin-left: 260px;
+/*  margin-left: 260px;*/
 }
 .row > .offset5 {
   margin-left: 320px;
@@ -1325,8 +1325,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .topbar h3 a, .topbar .brand {
   float: left;
   display: block;
-  padding: 8px 20px 12px;
-  margin-left: -20px;
+/*  padding: 8px 20px 12px;
+  margin-left: -20px;*/
   color: #ffffff;
   font-size: 20px;
   font-weight: 200;

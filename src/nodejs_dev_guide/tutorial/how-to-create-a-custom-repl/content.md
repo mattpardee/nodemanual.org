@@ -1,6 +1,6 @@
 ## Creating a Custom REPL
 
-Node.js allows users to create their own REPLs with the [repl module](../nodejs_ref_guide/repl.html). Its basic use looks like this:
+Node.js allows users to create their own REPLs with the [repl module](../nodejs_ref_guide/latest/repl.html). Its basic use looks like this:
 
     repl.start(prompt, stream);
 

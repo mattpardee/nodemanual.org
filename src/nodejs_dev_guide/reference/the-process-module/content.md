@@ -50,7 +50,7 @@ Next is `process.stderr`, which is very similar to `process.stdout` with one key
 
 Lastly, `process.stdin` is a readable stream for getting user input. For more information, see [the section on prompting for input](how-to-prompt-for-command-line-input.html).
 
-For a complete list of properties and methods available to `process`, see [the Node.js documentation on `process`](../nodejs_ref_guide/process.html).
+For a complete list of properties and methods available to `process`, see [the Node.js documentation on `process`](../nodejs_ref_guide/latest/process.html).
 
 #### Additional Properties
 

@@ -55,11 +55,14 @@ $(function() {
     {
       $("div[id='" + ellipsisSpan + "']").removeClass('hiddenSpan');
       $("div[id='" + shortSpan + "']").addClass('hiddenSpan');
+      $("div[id='" + shortSpan + "']").addClass('hiddenSpan');
+      $(this).closest('.article').removeClass('methodToggleOpen');
     }
     else
     {
       $("div[id='" + shortSpan + "']").removeClass('hiddenSpan');
       $("div[id='" + ellipsisSpan + "']").addClass('hiddenSpan');
+      $(this).closest('.article').addClass('methodToggleOpen');
     }
   }); 
 });

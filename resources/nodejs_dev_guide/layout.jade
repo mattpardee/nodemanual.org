@@ -23,7 +23,6 @@ head
   link(rel="stylesheet", href="../resources/csses/devguide_overrides.css")  
   // end CSS
 
-  script(src="../resources/javascripts/modernizr-2.0.6.min.js")
   script(src="../resources/javascripts/jquery.js")
   script(src="../resources/javascripts/clicker.js")
   script(src="../resources/javascripts/jquery.collapse.js")
@@ -38,7 +37,7 @@ body(onload="styleCode()")
         a(class='brand', href='#')
         ul.nav
           li#node_js_ref
-            a(href='../nodejs_ref_guide/index.html') Node JS Reference
+            a(href='../nodejs_ref_guide/latest/index.html') Node JS Reference
           li#nodejs_dev_guide
             a(href='../nodejs_dev_guide/index.html') Node JS Manual
           li#js_doc
@@ -60,6 +59,7 @@ body(onload="styleCode()")
             include nodejs_dev_guide_menu.jade
         .span11
           #content!= markdown(data)
+          div#disqus_thread
 
     footer#footer
       .container
@@ -76,7 +76,7 @@ body(onload="styleCode()")
   <script defer src="../resources/javascripts/prettify.js"></script>
   <script defer src="../resources/javascripts/prettify-extension.js"></script>
   <script defer src="../resources/javascripts/script.js"></script>
-  script(src="../resources/javascripts/bootstrap-extends.js")
+  <script defer src="../resources/javascripts/disqus-ext.js"></script>
   //-<script defer src="tree.js"></script>
   // end scripts
 

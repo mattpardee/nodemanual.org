@@ -18,18 +18,19 @@ head
 
   meta(name="viewport", content="width=device-width,initial-scale=1")
 
+  mixin identifyBuild
+
   // CSS
-  link(rel="stylesheet", href="../resources/csses/bootstrap.css")
-  link(rel="stylesheet", href="../resources/csses/prettify.css")
-  link(rel="stylesheet", href="../resources/csses/refguide_overrides.css")
+  link(rel="stylesheet", href="#{dirPrefix}resources/csses/bootstrap.css")
+  link(rel="stylesheet", href="#{dirPrefix}resources/csses/prettify.css")
+  link(rel="stylesheet", href="#{dirPrefix}resources/csses/refguide_overrides.css")
   // end CSS
 
-  script(src="../resources/javascripts/modernizr-2.0.6.min.js")
-  script(src="../resources/javascripts/jquery.js")
-  script(src="../resources/javascripts/clicker.js")
-  script(src="../resources/javascripts/jquery.collapse.js")
-  script(src="../resources/javascripts/jquery.cookie.js")
-  script(src="../resources/javascripts/bootstrap-dropdown.js")
+  script(src="#{dirPrefix}resources/javascripts/jquery.js")
+  script(src="#{dirPrefix}resources/javascripts/clicker.js")
+  script(src="#{dirPrefix}resources/javascripts/jquery.collapse.js")
+  script(src="#{dirPrefix}resources/javascripts/jquery.cookie.js")
+  script(src="#{dirPrefix}resources/javascripts/bootstrap-dropdown.js")
 
 body(onload="styleCode()")
 
@@ -39,18 +40,18 @@ body(onload="styleCode()")
         a(class='brand', href='#')
         ul.nav
           li#node_js_ref
-            a(href='../nodejs_ref_guide/index.html') Node JS Reference
+            a(href='#{dirPrefix}nodejs_ref_guide/latest/index.html') Node JS Reference
           li#nodejs_dev_guide
-            a(href='../nodejs_dev_guide/index.html') Node JS Manual
+            a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node JS Manual
           li#js_doc
-            a(href='../js_doc/index.html') Javascript Reference
+            a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
         form(id='searchbox', action='', class='pull-right')  
           input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
 
   header.jumbotron.masthead#overview
     div.inner
       div.container
-        if tree.children[0].parentDir == 'nodejs_ref_guide'
+        if nodejsRef == 'true'
           h1 Node.js Reference
         else
           h1 Javascript Reference
@@ -61,7 +62,7 @@ body(onload="styleCode()")
       .row.container
         .span5.offset4.sidebarContainer
           #sidebar
-            if tree.children[0].parentDir == 'nodejs_ref_guide'
+            if nodejsRef == 'true'
               include nodejs_ref_menu.jade
             else
               include js_doc_menu.jade
@@ -103,6 +104,7 @@ body(onload="styleCode()")
                     -console.log("I did not create a menu for: " + obj.id + "_" + obj.name + "~~~" + obj.type)
           #content
              mixin api()
+             div(id="disqus_thread")
 
     footer#footer
       .container
@@ -111,23 +113,22 @@ body(onload="styleCode()")
             .logoText
               span.logo-text Brought to you by the good people at
             .logoImg
-              img(src='../resources/images/cloud9-logo.png')
+              img(src='#{dirPrefix}resources/images/cloud9-logo.png')
           .span11.offset10 
-            if tree.children[0].parentDir == 'nodejs_ref_guide'
+            if nodejsRef == 'true'
               p Forked from the original nodejs.org documentation.
             else
               p Forked from the Mozilla Developer Network.
             p All other content &copy; <a href="http://www.c9.io">Cloud 9 IDE, Inc.</a> (unless otherwise stated)
 
   // scripts concatenated and minified via ant build script
-  <script defer src="../resources/javascripts/plugins.js"></script>
-  <script defer src="../resources/javascripts/prettify.js"></script>
-  <script defer src="../resources/javascripts/prettify-extension.js"></script>
-  <script defer src="../resources/javascripts/script.js"></script>
-  script(src="../resources/javascripts/bootstrap-extends.js")
+  <script defer src="#{dirPrefix}resources/javascripts/plugins.js"></script>
+  <script defer src="#{dirPrefix}resources/javascripts/prettify.js"></script>
+  <script defer src="#{dirPrefix}resources/javascripts/prettify-extension.js"></script>
+  <script defer src="#{dirPrefix}resources/javascripts/script.js"></script>
+  <script defer src="#{dirPrefix}resources/javascripts/disqus-ext.js"></script>
   //-<script defer src="tree.js"></script>
   // end scripts
-
 
   //if lt IE 7
     script(src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js")

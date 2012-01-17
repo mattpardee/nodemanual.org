@@ -32,4 +32,4 @@ This would determine the amount of time taken to perform the actions in between 
 
 One last function worth mentioning is `console.trace()`, which prints a stack trace to its location in your code without throwing an error.  This can occasionally be useful if you'd like to figure out where a particular failing function was called from.
 
-For a complete list of properties and methods available to `console`, see [the Node.js documentation on STDIO](../nodejs_ref_guide/console.html).
+For a complete list of properties and methods available to `console`, see [the Node.js documentation on STDIO](../nodejs_ref_guide/latest/console.html).
