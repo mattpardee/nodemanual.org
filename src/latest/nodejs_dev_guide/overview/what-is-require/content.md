@@ -54,6 +54,6 @@ The rules of where `require()` finds the files can be a little complex, but a si
 
 <Note>You can omit ".js" and `require()` will automatically append it if needed.</Note>
 
-For more detailed information, see [documentation on modules](../nodejs_ref_guide/modules.html) for more information.
+For more detailed information, see [the Node.js reference documentation on modules](../nodejs_ref_guide/modules.html).
 
 If the filename passed to `require()` is actually a directory, it will first look for `package.json` in the directory and load the file referenced in the `main` property. Otherwise, it will look for an `index.js` file.

@@ -2,6 +2,8 @@
 
 [Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) is the successor to Secure Sockets Layer (SSL). It, along with SSL, are the de-facto standard cryptographic protocols for secure communications over the web. TSL encrypts communications on top of a network transport layer (typically TCP), and uses public-key cryptography to encrypt messages.
 
+<Note>For more detailed information, see [the Node.js reference documentation on the `tls` module](../nodejs_ref_guide/tls.html).</Note>
+
 #### Public-Key Cryptography
 
 In public-key cryptography, each peer has two keys: a public key, and a private key. The public key is shared with everyone, and the private key is kept secret. In order to encrypt a message, a computer requires its private key and the recipient's public key. Then, in order to decrypt the message, the recipient requires its _own_ private key and the _sender_'s public key.
@@ -12,11 +14,12 @@ TLS support in Node.js is relatively new. The first stable version of Node.js to
 
 #### Creating a TLS Server
 
-In most ways, the TLS module's server API is similar to that of the net module. Besides the fact that it's for encrypted connections, the major difference is that the options object passed to `tls.connect()` or `tls.createServer()` needs to include information on both the private key and the certificate, in [pem format](http://en.wikipedia.org/wiki/X.509#Certificate_filename_extensions). Here's an example of a TLS server:
+In most ways, the TLS module's server API is similar to that of the net module. Besides the fact that it's for encrypted connections, the major difference is that the options object passed to `tls.connect()` or `tls.createServer()` needs to include information on both the private key and the certificate, in [pem format](http://en.wikipedia.org/wiki/X.509#Certificate_filename_extensions). 
+
+Here's an example of a TLS server:
 
     var tls = require('tls'),
         fs = require('fs'),
-        colors = require('colors'),
         msg = [
                 ".-..-..-.  .-.   .-. .--. .---. .-.   .---. .-.",
                 ": :; :: :  : :.-.: :: ,. :: .; :: :   : .  :: :",

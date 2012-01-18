@@ -12,7 +12,7 @@ li {
 
 code {
 /*    background-color: #fce68c;*/
-    
+    background-color: #F9F9F9;
     font-size: 11px;
     line-height: 16px;
     font-family: 'Ubuntu Mono',Monaco,Consolas,monospace !important;
@@ -74,6 +74,17 @@ a.brand {
     cursor: pointer;
 }
 
+.arrow-down {
+    width: 0;
+    height: 0px;
+    position: relative;
+    left: 115px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #999;
+    top: 33px;
+}
+
 .masthead {
     background: #7f9e2e url(../images/header-back.png) 0 40px;
 }
@@ -132,7 +143,6 @@ ul.menu {
 
 .menu li .menu-item a.menuLink, .menu li .menu-item span.menuLink {
     color: #262626;
-    font-weight: bold;
 }
 .menuTwo {
     margin-bottom: 5px;
@@ -140,7 +150,6 @@ ul.menu {
 }
 .menuTwo li .menu-item a.menuLink {
     color: #262626;
-    font-weight: bold;
 }
 
 /* need specificity to "beat" the above colors */
@@ -161,15 +170,9 @@ ul.menu {
 /*    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35); */
-    background-image: url(../images/scrolled-heading-shadow.png);
-    background-repeat: repeat-x;
-    background-position: 0 bottom;
     padding-bottom: 13px;
-    -moz-border-radius-bottomright: 10px;
-    -moz-border-radius-bottomleft: 10px;
-    -webkit-border-radius: 0px 0px 10px 10px;
-    border-radius: 0px 0px 10px 10px; 
 }
+
 .memberHeader {
     float: left;
     padding-right: 10px;
@@ -181,11 +184,27 @@ ul.menu {
     padding-top: 10px;
     border-bottom: 1px solid #848484;
 }
+.tabsSansBorder {
+    border: 0;
+}
 .tabs, .pills {
     margin-bottom: 0;
 /*    margin-left: 10px;
     margin-right: 10px;*/
 }
+.membersBackground {
+    background-color: white;
+    position: fixed;
+    z-index: 2;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 44px;
+    display: none;
+    box-shadow: rgba(0, 0, 0, 0.398438) 1px 4px 6px;
+}
+
 .members.srolled .tabs {
     background-color: white;
 }
@@ -235,7 +254,7 @@ ul.menu {
     border: none;
     outline: none;
     line-height: 28px;
-    font-size: 12px;
+    font-size: 11px;
     padding: 0 5px;
 }
 .tabs > li > a:hover {
@@ -509,6 +528,10 @@ h3.methodToggle.active {
 .description td p {
     margin: 0;
 }
+
+#dsq-pagination, .dsq-trackback-url {
+    display: none;
+}
 /*
   Footer? I hardly know her
 */
@@ -526,7 +549,7 @@ h3.methodToggle.active {
     margin-top: 0;
 }
 #footer .container {
-    width: 690px;
+    width: 700px;
     padding-left: 310px;
     font-size: 11px;
     margin-left: auto;
@@ -543,6 +566,10 @@ h3.methodToggle.active {
 #footer .sponsors {
     display: inline-block;
     margin-top: 18px;
+}
+
+#footer .sponsors .sponsor {
+    padding-right: 10px;
 }
 #footer .container
 #footer a {

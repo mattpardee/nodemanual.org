@@ -21,4 +21,4 @@ If you want to remove a specific callback, you can use `removeListener()`. If yo
 
 <Note>If you want create more than 10 listeners on a single event, you will have to make a call to `setMaxListeners(n)`, where `n` is the max numbers of listeners (passing 0 allows for an unlimited number of listeners). The maximum limit is used to make sure you aren't accidently leaking event listeners.</Note>
 
-For more information, you can refer to [the reference page on the `EventEmitter` object](../nodejs_ref_guide/EventEmitter.html).
+For more information, you can refer to [the Node.js reference documentation on the `EventEmitter` object](../nodejs_ref_guide/EventEmitter.html).

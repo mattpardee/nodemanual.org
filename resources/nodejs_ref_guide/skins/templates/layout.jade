@@ -40,6 +40,7 @@ body(onload="styleCode()")
         ul.nav
             li(class="dropdown", data-dropdown="dropdown")
                 a(class="dropdown-toggle brand", href="#")
+                  //div(class="arrow-down")
                 ul(class="dropdown-menu")
                     li
                         a(href="http://nodebits.org/") Nodebits
@@ -54,7 +55,7 @@ body(onload="styleCode()")
           input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
 
   header.jumbotron.masthead#overview
-    a(class="c9-sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
+    //- a(class="c9-sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
     div.inner
       div.container
         if nodejsRef == 'true'
@@ -74,6 +75,7 @@ body(onload="styleCode()")
               include js_doc_menu.jade
         .span11
           for obj in tree.children
+            .membersBackground
             .members
               .membersContent
                   h1.memberHeader
@@ -111,16 +113,17 @@ body(onload="styleCode()")
                     -console.log("I did not create a menu for: " + obj.id + "_" + obj.name + "~~~" + obj.type)
           #content
              mixin api()
+
              div(id="disqus_thread")
 
     footer#footer
       .container
-        .footer-text Thanks to these content providors | &#169; 2012:
+        .footer-text Thanks to these content providers | &#169; 2012:
         .sponsors
-            a(class="c9-logo", href="http://c9.io/", title="cloud9 ide", target="_blank")
-            a(class="joyent-logo", href="http://www.joyent.com/", title="joyent", target="_blank")
-            a(class="mozilla-logo", href="http://www.mozilla.org/", title="mozilla", target="_blank")
-            a(class="nodejitsu-logo", href="http://nodejitsu.com/", title="nodejitsu", target="_blank")
+            a(class="c9-logo sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
+            a(class="joyent-logo sponsor", href="http://www.joyent.com/", title="joyent", target="_blank")
+            a(class="mozilla-logo sponsor", href="http://www.mozilla.org/", title="mozilla", target="_blank")
+            a(class="nodejitsu-logo sponsor", href="http://nodejitsu.com/", title="nodejitsu", target="_blank")
 
   // scripts concatenated and minified via ant build script
   <script defer src="#{dirPrefix}resources/javascripts/plugins.js"></script>

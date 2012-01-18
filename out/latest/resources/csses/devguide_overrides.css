@@ -1,3 +1,4 @@
+
 #content > h3 {
     font-size: 30px;
     line-height: 36px;
@@ -12,6 +13,9 @@ div.title {
 }
 
 .cite {
-	color: #D3D3D3;
+	color: #657383;
 }
 
+.dev_guide {
+	font-size: 12px;
+}

@@ -4,29 +4,7 @@ In Node.js, it is considered standard practice to handle errors in asynchronous 
 
 It's simpler than it sounds; here's a demonstration.
 
-    var isTrue = function(value, callback) {
-      if (value === true) {
-        callback(null, "Value was true.");
-      }
-      else {
-        callback(new Error("Value is not true!"));
-      }
-    }
-
-    var callback = function (error, retval) {
-      if (error) {
-        console.log(error);
-        return;
-      }
-      console.log(retval);
-    }
-
-    // Note: when calling the same asynchronous function twice like this, 
-    // you are in a race condition. You have no way of knowing for certain 
-    // which callback will be called first when calling the functions in this manner.
-
-    isTrue(false, callback); // outputs 'Value is not true!'
-    isTrue(true,  callback); // output 'Value was true'
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.conventions.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 As you can see from the example, the callback is called with `null` as its first argument if there is no error. However, if there is an error, you create an `Error` object, which then becomes the callback's only parameter. 
 

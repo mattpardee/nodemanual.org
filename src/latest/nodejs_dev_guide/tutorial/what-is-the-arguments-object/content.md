@@ -4,17 +4,7 @@ The `arguments` object is a special construct available inside all function call
 
 The `arguments` object is an array-like object. It has a `length` property that corresponds to the number of arguments passed into the function. You can access these values by indexing into the array, _i.e._ `arguments[0]` is the first argument. Here's an example that illustrates the properties of `arguments`:
 
-    var myfunc = function(one) 
-    {
-        if (arguments[0] === one)
-            console.log("First argument is 1");   
-        if (arguments[1] === 2)
-            console.log("Second argument is 2");   
-        if (arguments.length === 3)
-            console.log("Third argument is 3");
-    }
-
-    myfunc(1, 2, 3);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=arguments.example.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 This construct is very useful and gives Javascript functions a lot of flexibility. But there's an important caveat: although the `arguments` object behaves like an array, but it is _not_ an actual array. It doesn't have the `Array` object in its prototype chain, and it doesn't respond to any other array methods, such as `arguments.sort()`. This raises a `TypeError`. Instead, you need to copy the values into a true array before performin such operations. This is pretty easy to do with a `for` loop:
 

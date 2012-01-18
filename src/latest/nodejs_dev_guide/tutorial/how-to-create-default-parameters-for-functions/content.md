@@ -1,5 +1,4 @@
-
-### Creating Default Parameters for Funtions
+## Creating Default Parameters for Functions
 
 As you know, functions can take a set number of parameters, and require that all of them be present before it can be executed successfully. However, you might sometimes run into situations where you want to provide a default value for a parameter or take a variable number of parameters. Unfortunately, Javascript does not have a built-in way to do that. However, people have developed idioms to compensate.
 
@@ -15,16 +14,6 @@ If the optional value is in the middle of the argument list, it can cause some u
 
 <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=default.function.parameters.2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
-More complicated cases require more code and can obscure the meaning of what you are trying to do. It then becomes a good idea to use helper functions. For example, suppose we wanted to take a variable amount of parameters and pass them all to the callback. You could try to accomplish this by manipulating the `arguments` variable. However, it is just easier to use the [vargs](https://github.com/cloudhead/vargs) module. As you can see by this code, it makes the whole process a little simpler:
+More complicated cases require more code and can obscure the meaning of what you are trying to do. It then becomes a good idea to use helper functions. For example, suppose we wanted to take a variable amount of parameters and pass them all to the callback. You could try to accomplish this by manipulating the `arguments` variable. However, it is just easier to install and use the [vargs](https://github.com/cloudhead/vargs) module. As you can see by this code, it makes the whole process a little simpler:
 
-	var Args = require("vargs").Constructor;
-
-	example = function () {
-    var args = new Args(arguments);
-    args.callback.apply({},args.all);
-	}
-
-	example("The first parameter", console.log);
-	example("The first parameter", "and second parameter", console.log);
-	example("The first parameter", "and second parameter", "and third parameter", console.log);
-	example("The first parameter", "and second parameter", "and third parameter", "etc", console.log);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=default.function.parameters.3.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>

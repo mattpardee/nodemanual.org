@@ -8,19 +8,7 @@ First, install it:
 
 Now open up a little test script for yourself, and try something like this:
 
-     var colors = require('colors'),
-         stringOne = 'This is a plain string.',
-         stringTwo = 'This string is red.'.red,
-         stringThree = 'This string is blue.'.blue;
-     
-     console.log(stringOne.green);
-     console.log(stringOne.yellow);
-
-     console.log(stringTwo);
-     console.log(stringThree);
-
-     console.log(stringTwo.magenta);
-     console.log(stringThree.grey.bold);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=colors.example.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 There are several things to take note of here . First, the string object has been prototyped, so any color may be added simply by adding the property to the string!  It works both on string literals and on variables, as shown at the top of the example above.
 

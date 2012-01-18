@@ -2,7 +2,7 @@
 
 The error object is a built-in object that provides a standard set of useful information when an error occurs, such as a stack trace and the error message. For example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.object.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.object.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 The result of this code is:
 
@@ -23,8 +23,6 @@ The result of this code is:
 
 If you want to add more information to the Error object, you can always add properities, just as with any other Javascript object: 
 
-    var error = new Error("The error message");
-    error.http_code = 404;
-    console.log(error);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.object.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 For more details how to use the Error object, check out the [article on error conventions](what-are-the-error-conventions.html).

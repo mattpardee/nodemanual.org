@@ -2,8 +2,7 @@
 
 Javascript is weakly typed language. That means different types can be used in operations and the language will try to convert the types until the operation makes sense. For example, look at the following code:
 
-    console.log("1" > 0); // true, "1" converted to number
-    console.log(1 + "1"); // 11, 1 converted to string
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=truthy.falsy.example3.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 In the first example, the `>` operator expected two binary values, so Javascript converts the string numeral `"1"` into a `Number`. Similarly, in the second example, the numeral 1 is converted into a string, so that the concatenation with the `+` operator makes sense.
 

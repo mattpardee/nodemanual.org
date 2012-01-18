@@ -54,27 +54,7 @@ Fortunately, there's a third party module that makes all of this trivial. It's c
      
 Once you have it, give it a try&mdash;it can really be a life-saver:
 
-     var myArgs = require('optimist').argv,
-         help = 'Ceci n\'est pas une mandoc';
-     
-     if ((myArgs.h)||(myArgs.help)) {
-       console.log(help);
-       process.exit(0);
-     }
-     
-     switch (myArgs._[0]) {
-       case 'insult':
-         console.log(myArgs.n || myArgs.name, 'smells quite badly.');
-         break;
-       case 'compliment':
-         console.log(myArgs.n || myArgs.name, 'is really cool.');
-         break;
-       default:
-         console.log(help);
-         break;
-     }
-     
-     console.log('myArgs: ', myArgs);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=optimist.example.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
      
 The last line was included to let you see how Optimist handles your arguments.  Here's a quick reference:
 

@@ -4,9 +4,7 @@ Anyone familiar with browser-side development has probably used `console.log` fo
 
 Because of this browser parallel, the `console` module has become home to quite a bit of Node's standard output functionality. The simplest is `console.log()`.
 
-    console.log('Hi, everybody!');
-    console.log('This script is:', __filename);
-    console.log(__filename, process.title, process.argv);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.basics.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 This example just prints the provided string to `stdout`.  It can also be used to output the contents of variables, as evidenced in by the second line. Furthermore, `console.dir()` is called on any objects passed in as arguments, enumerating their properties.
 
@@ -32,4 +30,4 @@ This would determine the amount of time taken to perform the actions in between 
 
 One last function worth mentioning is `console.trace()`, which prints a stack trace to its location in your code without throwing an error.  This can occasionally be useful if you'd like to figure out where a particular failing function was called from.
 
-For a complete list of properties and methods available to `console`, see [the Node.js documentation on STDIO](../nodejs_ref_guide/console.html).
+For a complete list of properties and methods available to `console`, see [the Node.js reference documentation on STDIO](../nodejs_ref_guide/console.html).

@@ -6,6 +6,8 @@ One way to handle this problem is to just use strings _anyway_, which is exactly
 
 Don't use binary strings; use buffers instead!
 
+<Note>For more detailed information, see [the Node.js reference documentation on buffers](../nodejs_ref_guide/buffers.html).</Note>
+
 #### Using Buffers
 
 Buffers are instances of the `Buffer` class in Node.js, which is designed to handle raw binary data. Each buffer corresponds to some raw memory allocated outside the V8 engine. Buffers act somewhat like arrays of integers, but aren't resizable and have a whole bunch of methods specifically for binary data. In addition, the "integers" in a buffer each represent a byte, and so are limited to values from 0 to 255 (2^8 - 1), inclusive.
@@ -83,53 +85,24 @@ In this example, the remaining bytes are set manually, such that they represent 
 
 * `Buffer.byteLength(string, encoding)`: With this function, you can check the number of bytes required to encode a string with a given encoding (which defaults to UTF-8). This length is not the same as string length, since many characters require more bytes to encode. For example:
 
-<pre>
-    > var snowman = "☃";
-    > snowman.length
-    1
-    > Buffer.byteLength(snowman)
-    3
-</pre>
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.snowman.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 The unicode snowman is only one character, but takes 3 entire bytes to encode!
 
 * `Buffer.length()`: This is the length of your buffer, and represents how much memory is allocated. It is not the same as the size of the buffer's contents, since a buffer may be half-filled. For example:
 
-<pre>
-    > var buffer = new Buffer(16)
-    > buffer.write(snowman)
-    3
-    > buffer.length
-    16
-</pre>
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.snowman.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 In this example, the contents written to the buffer only consist of three groups (since they represent the single-character snowman), but the buffer's length is still 16, as it was initialized.
 
 * `Buffer.copy(target, targetStart=0, sourceStart=0, sourceEnd=buffer.length)`: This function allows one to copy the contents of one buffer into another. The first argument is the target buffer on which to copy the contents of `buffer`, and the rest of the arguments allow for copying only a subsection of the source buffer to somewhere in the middle of the target buffer. For example:
 
-<pre>
-    > var frosty = new Buffer(24)
-    > var snowman = new Buffer("☃", "utf-8")
-    > frosty.write("Happy birthday! ", "utf-8")
-    16
-    > snowman.copy(frosty, 16)
-    3
-    > frosty.toString("utf-8", 0, 19)
-    'Happy birthday! ☃'
-</pre>
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.snowman.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 In this example, the `snowman` buffer, which contains a 3 byte long character, is copied to to the `frosty` buffer, which has the first 16 bytes written to it. Because the snowman character is 3 bytes long, the result takes up 19 bytes of the buffer.
 
 * `Buffer.slice(start, end=buffer.length)`: This function is generally the same as that of `Array.prototype.slice()`, but with one very import difference: the slice is **not** a new buffer and merely references a subset of the memory space. In other words: **modifying the slice will also modify the original buffer**! For example:
 
-<pre>
-    > var puddle = frosty.slice(16, 19)
-    > puddle.toString()
-    '☃'
-    > puddle.write("___")
-    3
-    > frosty.toString("utf-8", 0, 19)
-    'Happy birthday! ___'
-</pre>
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.snowman.4.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 Now Frosty has melted into a puddle of underscores. Bummer.

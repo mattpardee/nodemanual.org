@@ -44,11 +44,7 @@ An event emitter is typically used when you know that there will be multiple par
 
 A common mistake in asynchronous code with Javascript is to write code with a loop that does something like this:
 
-     for (var i = 0; i < 5; i++) {
-       setTimeout(function () {
-         console.log(i);
-       }, i);
-     }
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timers.wrong.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
 
 Here, we're trying to print sequentially the numbers one through five. The undesired (and unexpected) output is:
 
@@ -60,14 +56,7 @@ Here, we're trying to print sequentially the numbers one through five. The undes
 
 This occurs because every time `i` is incremented, a new timeout is created. When the callback is called at the end of the loop, it receives for the value of `i`, which is 5. The solution is to create a [closure](http://stackoverflow.com/questions/1801957/what-exactly-does-closure-refer-to-in-javascript) so that the current value of `i` is stored. For example:
 
-     for (var i = 0; i < 5; i++) {
-       (
-           function(i) {
-               setTimeout(function () {
-                   console.log(i);
-                }, i);
-            }
-        )(i)};
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timers.right.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
 
 This gives the proper output:
 

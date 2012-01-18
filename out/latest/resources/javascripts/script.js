@@ -49,6 +49,34 @@ $(function () {
     });
 
 
+  // are there bogus <Note> tags? turn them into real divs, please
+  $('note').each(function () {
+      var $note = $(this);
+
+      var newElem = $('<div></div>');
+
+      newElem.html($note.html());
+
+      newElem.attr("class", "alert-message block-message warning");
+
+      // replace Note with Bootstrap-styled div
+      $note.before(newElem).remove(); 
+    });
+
+  // are there bogus <Warning> tags? turn them into real divs, please
+  $('warning').each(function () {
+      var $note = $(this);
+
+      var newElem = $('<div></div>');
+
+      newElem.html($note.html());
+
+      newElem.attr("class", "alert-message block-message error");
+
+      // replace Note with Bootstrap-styled div
+      $note.before(newElem).remove(); 
+    });
+    
     function getTitle($article) {
         var title = [baseTitle];
 
@@ -228,7 +256,10 @@ $(function () {
     .scroll(function(){//auto kanei to header na metakinhtai kai na einai panta visible;
         
         var $sidebar       = $('#sidebar'),
-        $pagination    = $('.members:eq(0)'),
+        $pagination    = $('.members'),
+        $paginationBackground = $('.membersBackground'),
+        $paginationContent = $('.membersContent'),
+        $tabs = $('.tabs'),
         header_offset  = $('#overview').outerHeight(),
         s;
 
@@ -242,7 +273,7 @@ $(function () {
         else if (document.body) {
             s = document.body.scrollTop;
         }
-        if (s > header_offset - 27) {
+        if (s > header_offset - 28) {
 //            $sidebar.css({
 //                'position': 'fixed',
 //                'top': 41,
@@ -252,14 +283,13 @@ $(function () {
             $pagination.css({
                 'position': 'fixed',
                 'z-index': 2,
-                'top': 40,
-                'left': 0px;
-                'right': 0px;
-                'width': 100%;
+                'top': 43
 //                'background-color': 'white'
 //                'opacity': 0.8
             }).addClass('srolled')
             .next().css({'padding-top': $pagination.height()});
+            $tabs.addClass('tabsSansBorder');
+            $paginationBackground.show();
         }
         else {
 //            $sidebar.css({
@@ -274,6 +304,8 @@ $(function () {
 //                'opacity': 1
             }).removeClass('srolled')
             .next().css({'padding-top': 0});
+            $tabs.removeClass('tabsSansBorder');
+            $paginationBackground.hide();
         }
         
 //        $('#sidebar').height($(window).height() - $('#overview').outerHeight() - 25 + ($('html').scrollTop() <= 85 ? $('html').scrollTop() : 85 ) + (isScrolledIntoView($('#footer')[0]) ? 10 : 0))

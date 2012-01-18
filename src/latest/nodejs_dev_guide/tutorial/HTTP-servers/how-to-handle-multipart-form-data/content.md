@@ -6,48 +6,6 @@ Felix Geisendorfer, one of the Node.js core committers, wrote a library called [
 
 This example is taken directly from the `node-formidable` GitHub page, with some additional explanation added.
 
-    var formidable = require('formidable'),
-    http = require('http'),
-    util = require('util');
-
-    http.createServer(function(req, res) {
-      
-      // This if statement is here to catch form submissions, 
-      // and initiate multipart form data parsing.     
-      if (req.url == '/upload' && req.method.toLowerCase() == 'post') {
-      
-        // Instantiate a new formidable form for processing.
-        var form = new formidable.IncomingForm();
-        
-        // form.parse() analyzes the incoming stream data, 
-        // picking apart the different fields and files for you.
-        form.parse(req, function(err, fields, files) {
-          if (err) {
-            // Check for and handle any errors here.
-            console.error(err.message);
-            return;
-          }
-
-          res.writeHead(200, {'content-type': 'text/plain'});
-          res.write('received upload:\n\n');
-                    
-          // This last line responds to the form submission 
-          // with a list of the parsed data and files.
-          res.end(util.inspect({fields: fields, files: files}));
-        });
-
-        return;
-      }
-
-      // If this is a regular request, and not a form submission, then send the form
-      res.writeHead(200, {'content-type': 'text/html'});
-      res.end(
-        '<form action="/upload" enctype="multipart/form-data" method="post">'+
-        '<input type="text" name="title"><br>'+
-        '<input type="file" name="upload" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+
-        '</form>'
-      );
-    }).listen(8080);
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=formidable.example.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
 Using `node-formidable` is definitely the simplest solution, and it is a battle-hardened, production-ready library. Let userland solve problems like this for you, so that you can get back to writing the rest of your code!

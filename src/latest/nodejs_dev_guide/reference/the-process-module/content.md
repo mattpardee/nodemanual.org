@@ -54,18 +54,11 @@ For a complete list of properties and methods available to `process`, see [the N
 
 #### Additional Properties
 
-The `process` module contains a variety of properties that allow you to access information about the running process.  Let's run through a few quick examples. First, type `node` in the command line. Then, type the following commands:
+The `process` module contains a variety of properties that allow you to access information about the running process.  Let's run through a few quick examples. Create the following file called _process.examples.js_, and run it on the command line:
 
-    > process.pid
-    3290
-    > process.version
-    'v0.6.1'
-    > process.platform
-    'linux'
-    > process.title
-    'node'
+<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.examples.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 
-You values may be different. Here's what these properties mean:
+Here's what these properties mean:
 
 * `process.version` refers to your Node.js version
 * `process.pid` is the operating system process ID
@@ -96,7 +89,7 @@ Finally, on a more advanced note, there's `process.nextTick()`. This method acce
       // code here
     }, 0)
 
-This, however, is not ideal.  In Node.js, this should be used instead:
+This, however, is not ideal. In Node.js, this should be used instead:
 
     process.nextTick(function () {
         console.log('Next trip around the event loop, wheeee!');

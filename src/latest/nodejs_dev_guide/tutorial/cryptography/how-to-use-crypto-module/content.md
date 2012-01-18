@@ -4,7 +4,7 @@
 
 A hash is a fixed-length string of bits that is procedurally and deterministially generated from some arbitrary block of source data. Some important properties of these hashes (the type useful for cryptography) include:
 
-* A fixed length: This means that, no matter what the input, the length of the hash is the same. For example, md5 hashes are always 128 bits long whether the input data is a few bits or a few gigabytes.
+* A fixed length: this means that, no matter what the input, the length of the hash is the same. For example, md5 hashes are always 128 bits long whether the input data is a few bits or a few gigabytes.
 
 * Deterministic: For the same input, you should expect to be able to calculate exactly the same hash. This makes hashes useful for checksums.
 
@@ -18,7 +18,7 @@ The hashes that work with crypto are dependent on what your version of OpenSSL s
 
 #### How To Calculate Hashes with Crypto
 
-The `Crypto` module has a method called `createHash` which allows you to calculate a hash. Its only argument is a string representing the hash.
+[The `crypto` module](../nodejs_ref_guide/crypto.html) has a method called `createHash` which allows you to calculate a hash. Its only argument is a string representing the hash.
 
 This example finds the md5 hash for the string, "Man oh man do I love node!":
 
@@ -31,7 +31,7 @@ The `update()` method is used to push data to later be turned into a hash with t
 
 #### HMAC
 
-HMAC stands for Hash-based Message Authentication Code, and is a process for applying a hash algorithm to both data and a secret key that results in a single final hash. Its use is similar to that of a vanilla hash, but also allows to check the _authenticity_ of data as well as the integrity of data (as you can using md5 checksums).
+[HMAC](../nodejs_ref_guide/hmac.html) stands for Hash-based Message Authentication Code, and is a process for applying a hash algorithm to both data and a secret key that results in a single final hash. Its use is similar to that of a vanilla hash, but also allows to check the _authenticity_ of data as well as the integrity of data (as you can using md5 checksums).
 
 The API for hmacs is very similar to that of `createHash()`, except that the method is called `createHmac()` and it takes a key as a second argument:
 
@@ -43,7 +43,7 @@ The resulting md5 hash is unique to both the input data and the key.
 
 #### Ciphers
 
-Ciphers allow you to encode and decode messages given a password.
+[Ciphers](../nodejs_ref_guide/cipher.html) allow you to encode and decode messages given a password.
 
 Like crypto's hash algorithms, the cyphers that work with `Crypto` are dependent on what your version of OpenSSL supports. You can get a list of hash types your OpenSSL supports by typing `openssl list-cipher-commands` into the command line for older versions, or `openssl list-cipher-algorithms` for newer versions of OpenSSL. OpenSSL supports many ciphers. A good and popular one is [AES192](http://en.wikipedia.org/wiki/Aes192).
 
@@ -91,16 +91,16 @@ Using this script to encode a message looks like this:
     $ ./secretmsg.js -e --password="popcorn" "My treasure is buried behind Carl's Jr. on Telegraph."
     6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
 
-Now, if I gave somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:
+Now, if we give somebody the same script, my encoded message and the password, they can decode the message and find out where I buried my treasure:
 
     $ ./secretmsg.js -d --password="popcorn" 6df66752b24f0886f8a6c55e56977788c2090bb657ff3bd645097f8abe110999
     My treasure is buried behind Carl's Jr. on Telegraph.
 
-You should know that what I buried behind Carl's Jr was just a cigarette butt, and that this script is obviously not for serious use.
+You should know that what we buried behind Carl's Jr. was just a cigarette butt, and that this script is obviously not for serious use.
 
 #### Signing and Verification
 
-`Crypto` has other methods used for dealing with certificates and credentials, as used for TLS:
+`Crypto` has other methods used for dealing with certificates and credentials, used for TLS:
 
 * `Crypto.createCredentials`
 * `Crypto.createSign`

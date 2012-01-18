@@ -7,14 +7,15 @@
   *
  * #### Example
  * 
- *    var s1 = crypto.createSign('RSA-SHA1')
+ *
+ * 	var s1 = crypto.createSign('RSA-SHA1')
  *              .update('Test123')
  *              .sign(keyPem, 'base64');
- *    var verified = crypto.createVerify('RSA-SHA1')
+ * 	var verified = crypto.createVerify('RSA-SHA1')
  *                    .update('Test')
  *                    .update('123')
  *                    .verify(certPem, s1, 'base64');
- *    assert.strictEqual(verified, true, 'sign and verify (base 64)');
+ * 	assert.strictEqual(verified, true, 'sign and verify (base 64)');
  **/
 
 /**
