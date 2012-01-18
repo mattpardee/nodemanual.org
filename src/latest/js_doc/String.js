@@ -22,21 +22,7 @@
  *
  * C developers have the `strcmp()` function for comparing strings. In Javascript, you just use the `<` and `>` operators:
  *
- * 	var a = "a";
- *
- * 	var b = "b";
- *
- * 	if (a < b) // true
- *
- *  	console.log(a + " is less than " + b);
- *
- * 	else if (a > b)
- *
- * 		console.log(a + " is greater than " + b);
- *
- * 	else
- *
- * 		console.log(a + " and " + b + " are equal.");
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * A similar result can be achieved using the [[String.localeCompare `localeCompare()`]] method inherited by String instances.
  *
@@ -46,15 +32,9 @@
  *
  * String literals (denoted by double or single quotes) and strings returned from String calls in a non-constructor context (i.e., without using the `new` keyword) are primitive strings. Javascript automatically converts primitives and String objects, so that it's possible to use String object methods for primitive strings. In contexts where a method is to be invoked on a primitive string or a property lookup occurs, Javascript will automatically wrap the string primitive and call the method or perform the property lookup.
  *
- * 	var s_prim = "foo";
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
- * 	var s_obj = new String(s_prim);
- *
- * 	console.log(typeof s_prim); // Logs "string"
- *
- * 	console.log(typeof s_obj);  // Logs "object"
- *
- * Example:
+ * Some more examples:
  *
  * 	s1 = "2 + 2";               // creates a string primitive
  *
@@ -124,50 +104,35 @@
  *
  * The following example will set `newString `to `"XXzzzz - XX , zzzz"`:
  *
- * 	function replacer(str, p1, p2, offset, s)
- * 	{
- * 		return str + " - " + p1 + " , " + p2;
- * 	}
- *
- * 	var newString = "XXzzzz".replace(/(X*)(z*)/, replacer);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * #### Example: Using `global` and `ignore` with `replace`
  *
  * In the following example, the regular expression includes the global and ignore case flags which permits `replace` to replace each occurrence of 'apples' in the string with 'oranges'.
  *     
- *     var re = /apples/gi;
- *     var str = "Apples are round, and apples are juicy.";
- *     var newstr = str.replace(re, "oranges");
- *     console.log(newstr);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * In this version, a string is used as the first parameter and the global and ignore case flags are specified in the `flags` parameter.
  *     
- * 	var str = "Apples are round, and apples are juicy.";
- *     var newstr = str.replace("apples", "oranges", "gi");
- *     console.log(newstr);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
- *     Both of these examples print "oranges are round, and oranges are juicy."
+ * Both of these examples print "oranges are round, and oranges are juicy."
  *
  * #### Example: Defining the regular expression in `replace`
  *
  * In the following example, the regular expression is defined in `replace` and includes the ignore case flag.
  *     
- *     	var str = "Twas the night before Xmas...";
- *     var newstr = str.replace(/xmas/i, "Christmas");
- *     console.log(newstr);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.4.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
- *     This prints "Twas the night before Christmas..."
+ * This prints "Twas the night before Christmas..."
  *    
  * #### Example: Switching words in a string
  *
  * The following script switches the words in the string. For the replacement text, the script uses the `$1\. and `$2\. replacement patterns.
  *     
- *     var re = /(\w+)\s(\w+)/;
- *     var str = "John Smith";
- *     var newstr = str.replace(re, "$2\. $1");
- *     console.log(newstr);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.5.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
- *     This prints "Smith, John".
+ * This prints "Smith, John".
  *     
  * #### Example: Using an inline function that modifies the matched characters
  *
@@ -175,15 +140,8 @@
  *
  * The replacement function accepts the matched snippet as its parameter, and uses it to transform the case and concatenate the hyphen before returning.
  *     
- *     	function styleHyphenFormat(propertyName)
- *     {
- *       function upperToHyphenLower(match)
- *       {
- *         return '-' + match.toLowerCase();
- *       }
- *       return propertyName.replace(/[A-Z]/, upperToHyphenLower);
- *     }
- *             
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.6.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ *
  * Given `styleHyphenFormat('borderTop')`, this returns 'border-top'.
  *
  * Because we want to further transform the _result_ of the match before the final substitution is made, we must use a function. This forces the evaluation of the match prior to the `toLowerCase()` method. If we had tried to do this using the match without a function, the toLowerCase() would have no effect.
@@ -198,16 +156,7 @@
  *
  * The regular expression `test` checks for any number that ends with F. The number of Fahrenheit degree is accessible to the function through its second parameter, `p1`. The function sets the Celsius number based on the Fahrenheit degree passed in a string to the `f2c` function. `f2c` then returns the Celsius number. This function approximates Perl's s///e flag.
  *     
- *     	function f2c(x)
- *     {
- *       function convert(str, p1\. offset, s)
- *       {
- *         return ((p1-32\. * 5/9\. + "C";
- *       }
- *       var s = String(x);
- *       var test = /(\d+(?:\.\d*)?)F\b/g;
- *       return s.replace(test, convert);
- *     }
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.replace.7.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  **/
 
@@ -218,16 +167,16 @@
  * 
  * This property returns the number of code units in the string. 
  *
- * [UTF-16](http://en.wikipedia.org/wiki/UTF-16), the string format used byJavascript, uses a single 16-bit code unit to represent the most common characters, but needs to use two code units for less commonly-used characters, so it's possible for the value returned by `length` to not match the actual number of characters in the string.
+ * [UTF-16](http://en.wikipedia.org/wiki/UTF-16), the string format used by Javascript, uses a single 16-bit code unit to represent the most common characters, but needs to use two code units for less commonly-used characters, so it's possible for the value returned by `length` to not match the actual number of characters in the string.
  *
  * For an empty string, `length` is 0.
  *
  * #### Examples
  * 
- * 	var x = "Netscape";
+ * 	var x = "Cloud9";
  * 	var empty = "";
  * 
- * 	console.log("Netspace is " + x.length + " code units long");
+ * 	console.log("Cloud9 is " + x.length + " code units long"); // 6
  * 	console.log("The empty string is has a length of " + empty.length); /* should be 0 */
  *
  * #### See also
@@ -236,7 +185,7 @@
  **/
 
 /**
- * String.substring(indexA[, indexB])
+ * String.substring(indexA[, indexB]) -> String
  * - indexA (Number): Value between 0 and one less than the length of the string.
  * - indexB (Number): Value between 0 and the length of the string.
  *
@@ -244,10 +193,10 @@
  *
  * `substring()` extracts characters from `indexA` up to but not including `indexB`. In particular:
  *
- * * If `indexA` equals `indexB`, `substring` returns an empty string.
- * * If `indexB` is omitted, `substring` extracts characters to the end of the string.
- * * If either argument is less than 0 or is [[NaN `NaN`]], it is treated as if it were 0.
- * * If either argument is greater than `stringName.length`, it is treated as if it were `stringName.length`.</li>
+ * * If `indexA` equals `indexB`, `substring` returns an empty string
+ * * If `indexB` is omitted, `substring` extracts characters to the end of the string
+ * * If either argument is less than 0 or is [[NaN `NaN`]], it is treated as if it were 0
+ * * If either argument is greater than `stringName.length`, it is treated as if it were `stringName.length`
  *
  *
  * If `indexA` is larger than `indexB`, then the effect of `substring` is as if the two arguments were swapped; for example, `str.substring(1, 0) == str.substring(0, 1)`.
@@ -256,39 +205,14 @@
  *
  *  The following example uses `substring` to display characters from the string "`Mozilla`":
  *
- *     var anyString = "Mozilla";
- *     
- *     // Displays "Moz"
- *     console.log(anyString.substring(0,3));
- *     console.log(anyString.substring(3,0));
- *     
- *     // Displays "lla"
- *     console.log(anyString.substring(4,7));
- *     console.log(anyString.substring(7,4));
- *     
- *     // Displays "Mozill"
- *     console.log(anyString.substring(0,6));
- *     
- *     // Displays "Mozilla"
- *     console.log(anyString.substring(0,7));
- *     console.log(anyString.substring(0,10));
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.substring.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *     
  *    
  * #### Example: Replacing a substring within a string
  *
  * The following example replaces a substring within a string. It will replace both individual characters and substrings. The function call at the end of the example changes the string "`Brave New World`" into "`Brave New Web`".
  *
- *     function replaceString(oldS, newS, fullS) {
- *     // Replaces oldS with newS in the string fullS
- *        for (var i = 0\. i < fullS.length; i++) {
- *           if (fullS.substring(i, i + oldS.length) == oldS) {
- *              fullS = fullS.substring(0\. i) + newS + fullS.substring(i + oldS.length, fullS.length);
- *           }
- *        }
- *        return fullS;
- *     }
- *     
- *     replaceString("World", "Web", "Brave New World");
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.substring.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * Note that this can result in an infinite loop if `oldS` is itself a substring of `newS` -- for example, if you attempted to replace "World" with "OtherWorld" here. A better method for replacing strings is as follows:
  *     
@@ -297,6 +221,7 @@
  * 	}
  * 
  * #### See also
+ *
  * * [[String.substr `substr()`]]
  * * [[String.slice `slice()`]] 
  *
@@ -319,17 +244,13 @@
  *
  *
  * #### Example: Using `substr`
- *     Consider the following script:
- *     // assumes a print function is defined
- *     var str = "abcdefghij";
- *     console.log("(1,2): "    + str.substr(1,2));
- *     console.log("(-3,2): "   + str.substr(-3,2));
- *     console.log("(-3): "     + str.substr(-3));
- *     console.log("(1): "      + str.substr(1));
- *     console.log("(-20\. 2): " + str.substr(-20,2));
- *     console.log("(20\. 2): "  + str.substr(20,2));
+ *
+ * Consider the following script:
+ *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.substr.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *     
- *     This script displays:
+ * This script displays:
+ *
  *     (1,2): bc
  *     (-3,2): hi
  *     (-3): hij
@@ -339,6 +260,7 @@
  *     
  * 
  * #### See also
+ *
  * * [[String.slice `slice()`]]
  * * [[String.substring `substring()`]] 
  *
@@ -350,19 +272,13 @@
  *
  * Returns the specified character from a string.
  *
- * Characters in a string are indexed from left to right. The index of the first character is 0\. and the index of the last character in a string called `stringName` is `stringName.length - 1`. If the `index` you supply is out of range, JavaScript returns an empty string.
+ * Characters in a string are indexed from left to right. The index of the first character is 0\. and the index of the last character in a string called `stringName` is `stringName.length - 1`. If the `index` you supply is out of range, Javascript returns an empty string.
  *
  * #### Example: Displaying characters at different locations in a string
+ *
  * The following example displays characters at different locations in the string "`Brave new world`":
  *     
- * 	var anyString="Brave new world";
- *     
- *     console.logln("The character at index 0 is '" + anyString.charAt(0) + "'");
- *     console.logln("The character at index 1 is '" + anyString.charAt(1) + "'");
- *     console.logln("The character at index 2 is '" + anyString.charAt(2) + "'");
- *     console.logln("The character at index 3 is '" + anyString.charAt(3) + "'");
- *     console.logln("The character at index 4 is '" + anyString.charAt(4) + "'");
- *     console.logln("The character at index 999 is '" + anyString.charAt(999) + "'");
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.charat.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * These lines display the following:
  *
@@ -375,115 +291,17 @@
  *     
  *
  * #### Example: Getting whole characters
+ *
  * The following provides a means of ensuring that going through a string loop always provides a whole character, even if the string contains characters that are not in the Basic Multi-lingual Plane.
  * 
- * 	var str = 'A\uD87E\uDC04Z'; // We could also use a non-BMP character directly
- * 	for (var i=0, chr; i < str.length; i++) {
- *  	if ((chr = getWholeChar(str, i)) === false) {continue;} // Adapt this line at the top of each loop, passing in the whole string and the current iteration and returning a variable to represent the individual character
- * 		alert(chr);
- * 	}
- * 
- * 	function getWholeChar (str, i) {
- *     var code = str.charCodeAt(i);     
- *  
- *     if (isNaN(code)) {
- *         return ''; // Position not found
- *     }
- *     if (code < 0xD800 || code > 0xDFFF) {
- *         return str.charAt(i);
- *     }
- *     if (0xD800 <= code &amp;&amp; code <= 0xDBFF) { // High surrogate (could change last hex to 0xDB7F to treat high private surrogates as single characters)
- *         if (str.length <= (i+1))  {
- *             throw 'High surrogate without following low surrogate';
- *         }
- *         var next = str.charCodeAt(i+1);
- *         if (0xDC00 > next || next > 0xDFFF) {
- *             throw 'High surrogate without following low surrogate';
- *         }
- *         return str.charAt(i)+str.charAt(i+1);
- *     }
- *     // Low surrogate (0xDC00 <= code &amp;&amp; code <= 0xDFFF)
- *     if (i === 0) {
- *         throw 'Low surrogate without preceding high surrogate';
- *     }
- *     var prev = str.charCodeAt(i-1);
- *     if (0xD800 > prev || prev > 0xDBFF) { // (could change last hex to 0xDB7F to treat high private surrogates as single characters)
- *         throw 'Low surrogate without preceding high surrogate';
- *     }
- *     return false; // We can pass over low surrogates now as the second component in a pair which we have already processed
- * 	}
- *         
- *  
- * In an exclusive JavaScript 1.7+ environment (such as Firefox) which allows destructured assignment, the following is a more succinct and somewhat more flexible alternative in that it does incrementing for an incrementing variable automatically (if the character warrants it in being a surrogate pair).
- * 
- * 	var str = 'A\uD87E\uDC04Z'; // We could also use a non-BMP character directly
- * 	for (var i=0, chr; i < str.length; i++) {
- * 		[chr, i] = getWholeCharAndI(str, i); // Adapt this line at the top of each loop, passing in the whole string and the current iteration and returning an array with the individual character and 'i' value (only changed if a surrogate pair)
- * 		alert(chr);
- * 	}
- * 
- * 	function getWholeCharAndI (str, i) {
- *     var code = str.charCodeAt(i);
- *     if (isNaN(code)) {
- *         return ''; // Position not found
- *     }
- *     if (code < 0xD800 || code > 0xDFFF) {
- *         return [str.charAt(i), i]; // Normal character, keeping 'i' the same
- *     }
- *     if (0xD800 <= code &amp;&amp; code <= 0xDBFF) { // High surrogate (could change last hex to 0xDB7F to treat high private surrogates as single characters)
- *         if (str.length <= (i+1))  {
- *             throw 'High surrogate without following low surrogate';
- *         }
- *         var next = str.charCodeAt(i+1);
- *         if (0xDC00 > next || next > 0xDFFF) {
- *             throw 'High surrogate without following low surrogate';
- *         }
- *         return [str.charAt(i)+str.charAt(i+1), i+1];
- *     }
- *     // Low surrogate (0xDC00 <= code &amp;&amp; code <= 0xDFFF)
- *     if (i === 0) {
- *         throw 'Low surrogate without preceding high surrogate';
- *     }
- *     var prev = str.charCodeAt(i-1);
- *     if (0xD800 > prev || prev > 0xDBFF) { // (could change last hex to 0xDB7F to treat high private surrogates as single characters)
- *         throw 'Low surrogate without preceding high surrogate';
- *     }
- *     return [str.charAt(i+1), i+1]; // Return the next character instead (and increment)
- * 	}
- *         
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.charat.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>       
+ *          
  *  
  * #### Example: Fixing charAt to support non-Basic-Multilingual-Plane (BMP) characters
  *
  * While the previous example may be more frequently useful for those wishing to support non-BMP characters (since the above does not require the caller to know where any non-BMP character might appear), in the event that one _does_ wish, in choosing a character by index, to treat the surrogate pairs within a string as the single characters they represent, one can use the following:
  * 
- * 	function fixedCharAt (str, idx) {
- *     var ret = '';
- *     str += '';
- *     var end = str.length;
- * 
- *     var surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
- *     while ((surrogatePairs.exec(str)) != null) {
- *         var li = surrogatePairs.lastIndex;
- *         if (li - 2 < idx) {
- *             idx++;
- *         }
- *         else {
- *             break;
- *         }
- *     }
- * 
- *     if (idx >= end || idx < 0) {
- *         return '';
- *     }
- * 
- *     ret += str.charAt(idx);
- * 
- *     if (/[\uD800-\uDBFF]/.test(ret) &amp;&amp; /[\uDC00-\uDFFF]/.test(str.charAt(idx+1))) {
- *         ret += str.charAt(idx+1); // Go one further, since one of the "characters" is part of a surrogate pair
- *     }
- *     return ret;
- * 	}
- *         
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.charat.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>      
  * 
  * #### See Also
  * * [[String.indexOf `indexOf()`]]
@@ -501,12 +319,12 @@
  *
  * The `valueOf` method of `String` returns the primitive value of a String object as a string data type. This value is equivalent to String.toString.
  *
- * This method is usually called internally by JavaScript and not explicitly in code.
+ * This method is usually called internally by Javascript and not explicitly in code.
  *
  * #### Example: Using `valueOf`
  *
  *     x = new String("Hello world");
- *     alert(x.valueOf())          // Displays "Hello world"
+ *     console.log(x.valueOf()) // Displays "Hello world"
  *     
  * 
  * #### See Also
@@ -524,28 +342,14 @@
  *
  * Because `fromCharCode` is a static method of `String`, you always use it as `String.fromCharCode()`, rather than as a method of a `String` object you created.
  *
- * #### Getting it to work with higher values
+ * #### Getting `fromCharCode()` to work with higher values
  *
- * Although most common Unicode values can be represented in a fixed width system/with one number (as expected early on during JavaScript standardization) and `fromCharCode()` can be used to return a single character for the most common values (i.e., UCS-2 values which are the subset of UTF-16 with the most common characters), in order to deal with ALL legal Unicode values, `fromCharCode()` alone is inadequate. Since the higher code point characters use two (lower value) "surrogate" numbers to form a single character, `fromCharCode()` can be used to return such a pair and thus adequately represent these higher valued characters.
+ * Although most common Unicode values can be represented in a fixed width system/with one number (as expected early on during Javascript standardization) and `fromCharCode()` can be used to return a single character for the most common values (i.e., UCS-2 values which are the subset of UTF-16 with the most common characters), in order to deal with ALL legal Unicode values, `fromCharCode()` alone is inadequate. Since the higher code point characters use two (lower value) "surrogate" numbers to form a single character, `fromCharCode()` can be used to return such a pair and thus adequately represent these higher valued characters.
  *
  * Be aware, therefore, that the following utility function to grab the accurate character even for higher value code points, may be returning a value which is rendered as a single character, but which has a string count of two (though usually the count will be one).
  * 
- * 	// String.fromCharCode() alone cannot get the character at such a high code point
- * 	// The following, on the other hand, can return a 4-byte character as well as the 
- * 	//   usual 2-byte ones (i.e., it can return a single character which actually has 
- * 	//   a string length of 2 instead of 1!)
- * 	alert(fixedFromCharCode(0x2F804)); // or 194564 in decimal
- * 
- * 	function fixedFromCharCode (codePt) {
- *  	   if (codePt > 0xFFFF) {
- *  	       codePt -= 0x10000;
- *  	       return String.fromCharCode(0xD800 + (codePt >> 10), 0xDC00 +
- * 	(codePt &amp; 0x3FF));
- *  	   }
- *  	   else {
- *  	       return String.fromCharCode(codePt);
- *  	   }
- * 	}
+ *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.fromcharcode.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * #### Example: Using `fromCharCode`
  *
@@ -569,9 +373,7 @@
  *
  * The following example demonstrates the different potential results for a string occurring before, after, or at the same level as another:
  *     
- *     alert('a'.localeCompare('b')); // -1
- *     alert('b'.localeCompare('a')); // 1
- *     alert('b'.localeCompare('b')); // 0
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.localecompare.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  **/
 
@@ -614,7 +416,7 @@
  *     idx = idx || 0;
  *     var code = str.charCodeAt(idx);
  *     var hi, low;
- *     if (0xD800 <= code &amp;&amp; code <= 0xDBFF) { // High surrogate (could change last hex to 0xDB7F to treat high private surrogates as single characters)
+ *     if (0xD800 <= code && code <= 0xDBFF) { // High surrogate (could change last hex to 0xDB7F to treat high private surrogates as single characters)
  *         hi = code;
  *         low = str.charCodeAt(idx+1);
  *         if (isNaN(low)) {
@@ -622,7 +424,7 @@
  *         }
  *         return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
  *     }
- *     if (0xDC00 <= code &amp;&amp; code <= 0xDFFF) { // Low surrogate
+ *     if (0xDC00 <= code && code <= 0xDFFF) { // Low surrogate
  *         // We return false to allow loops to skip this iteration since should have already handled high surrogate above in the previous iteration
  *         return false;
  *         /* hi = str.charCodeAt(idx-1);
@@ -658,7 +460,7 @@
  *     code = str.charCodeAt(idx);
  * 
  *     var hi, low;
- *     if (0xD800 <= code &amp;&amp; code <= 0xDBFF) {
+ *     if (0xD800 <= code && code <= 0xDBFF) {
  *         hi = code;
  *         low = str.charCodeAt(idx+1); // Go one further, since one of the "characters" is part of a surrogate pair
  *         return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
@@ -680,10 +482,11 @@
  * This method combines the text from one or more strings and returns a new string. Changes to the text in one string do not affect the other string.
  *
  * #### Example: Using `concat`
+ *
  * The following example combines strings into a new string.
  *     
  * 	var hello = "Hello, ";
- *     console.log(hello.concat("Kevin", " have a nice day.")); /// Hello, Kevin have a nice day.
+ *  console.log(hello.concat("Kevin", " have a nice day.")); /// Hello, Kevin have a nice day.
  *    
  *
  **/
@@ -713,40 +516,19 @@
  * #### Example: Using `indexOf` and `lastIndexOf`
  * The following example uses `indexOf` and `lastIndexOf` to locate values in the string "`Brave new world`".
  *     
- * 	var anyString="Brave new world"
- *  
- * 	console.log("The index of the first w from the beginning is " +
- *        anyString.indexOf("w"))          // Displays 8
- *     
- * 	console.log("The index of the first w from the end is " +
- *        anyString.lastIndexOf("w"))      // Displays 10
- *     
- * 	console.log("The index of 'new' from the beginning is " +
- *        anyString.indexOf("new"))        // Displays 6
- *     
- * 	console.log("The index of 'new' from the end is " +
- *        anyString.lastIndexOf("new"))    // Displays 6
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.indexof.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * #### Example: `indexOf` and case-sensitivity
+ *
  * The following example defines two string variables. The variables contain the same string except that the second string contains uppercase letters. The first `writeln` method displays 19. But because the `indexOf` method is case sensitive, the string "`cheddar`" is not found in `myCapString`, so the second `writeln` method displays -1.
  *     
- * 	var myString = "brie, pepper jack, cheddar";
- * 	var myCapString = "Brie, Pepper Jack, Cheddar";
- * 	console.log('myString.indexOf("cheddar") is ' +
- *        myString.indexOf("cheddar"))
- * 	console.log('<P>myCapString.indexOf("cheddar") is ' +
- *        myCapString.indexOf("cheddar"))
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.indexof.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * #### Example: Using `indexOf` to count occurrences of a letter in a string
  *
  * The following example sets `count` to the number of occurrences of the letter `x` in the string `str`:
  *     
- * 	count = 0;
- *     pos = str.indexOf("x");
- *     while ( pos != -1 ) {
- *        count++;
- *        pos = str.indexOf("x",pos+1);
- *     }
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.indexof.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *    
  * #### See Also
  * * [[String.charAt `charAt()`]]
@@ -763,34 +545,17 @@
  *
  * Returns the index within the calling `String` object of the last occurrence of the specified value, or -1 if not found. The calling string is searched backward, starting at `fromIndex`.
  *
- *
  * Characters in a string are indexed from left to right. The index of the first character is 0\. and the index of the last character is `stringName.length - 1`.
- *
- *    
  *
  * The `lastIndexOf` method is case sensitive. For example, the following expression returns -1:
  *
  * 	"Blue Whale, Killer Whale".lastIndexOf("blue") // returns -1
  *
- * 
- *
  * #### Example: Using `indexOf` and `lastIndexOf`
+ *
  * The following example uses `indexOf` and `lastIndexOf` to locate values in the string "`Brave new world`".
  *     
- * 	var anyString = "Brave new world"
- *     
- *     // Displays 8
- *     console.log("The index of the first w from the beginning is " +
- *        anyString.indexOf("w"))
- *     // Displays 10
- *     console.log("The index of the first w from the end is " +
- *        anyString.lastIndexOf("w"))
- *     // Displays 6
- *     console.log("The index of 'new' from the beginning is " +
- *        anyString.indexOf("new"))
- *     // Displays 6
- *     console.log("The index of 'new' from the end is " +
- *        anyString.lastIndexOf("new"))
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.lastIndexOf.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *     
  * #### See Also
  * * [[String.charAt `charAt()`]]
@@ -803,7 +568,7 @@
  * String.match(regexp) -> String | Array | null
  * -regexp (RegExp): A regular expression used to find a match. If a non-RegExp object is passed, it is implicitly converted to a RegExp by using `new RegExp(regexp)`.
  *
- *     Used to retrieve the matches when matching a`_string_` against a _regular expression_.
+ * Used to retrieve the matches when matching a`_string_` against a _regular expression_.
  *
  *
  * If the regular expression does not include the `g` flag, this returns the same result as [[RegExp.exec `RegExp.exec()`]].
@@ -823,10 +588,7 @@
  *
  * In the following example, `match` is used to find "`Chapter`" followed by 1 or more numeric characters followed by a decimal point and numeric character 0 or more times. The regular expression includes the `i` flag so that case will be ignored.
  *
- * 	var str = "For more information, see Chapter 3.4.5.1";
- * 	var re = /(chapter \d+(\.\d)*)/i;
- * 	var found = str.match(re);
- * 	console.log(found);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.match.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *     
  * This returns the array containing Chapter 3.4.5.1,Chapter 3.4.5.1,.1.
  *
@@ -838,12 +600,7 @@
  *
  * The following example demonstrates the use of the global and ignore case flags with `match`. All letters A through E and a through e are returned, each its own element in the array
  *
- * 	var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
- * 	var regexp = /[A-E]/gi;
- * 	var matches_array = str.match(regexp);
- * 	console.log(matches_array);
- *     
- * `matches_array` now equals `['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']`
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.match.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -871,16 +628,8 @@
  * #### Example: Using `search`
  *
  * The following example prints a message which depends on the success of the test.
- *     
- * 	function testinput(re, str){
- *        if (str.search(re) != -1){
- *           midstring = " contains ";
- *        }
- *        else{
- *           midstring = " does not contain ";
- *        }
- *        console.log (str + midstring + re);
- *     }
+ * 
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.search.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  **/
 
@@ -890,7 +639,6 @@
  * - endSlice  (Number): The zero-based index at which to end extraction. If omitted, slice extracts to the end of the string.
  *
  * Extracts a section of a string and returns a new string.
- *
  *
  * `slice` extracts the text from one string and returns a new string. Changes to the text in one string do not affect the other string.
  *
@@ -904,9 +652,10 @@
  * 	// assumes a print function is defined
  *     var str1 = "The morning is upon us.";
  *     var str2 = str1.slice(4, -2);
- *     print(str2);
+ *     console.log(str2);
  *             
  * This writes:
+ *
  *     morning is upon u
  *     
  **/
@@ -924,30 +673,13 @@
  *
  * 
  * #### Example: Using `split`
+ *
  * The following example defines a function that splits a string into an array of strings using the specified separator. After splitting the string, the function displays messages indicating the original string (before the split), the separator used, the number of elements in the array, and the individual array elements.
  *     
- * 	function splitString(stringToSplit,separator)
- *     {
- *       var arrayOfStrings = stringToSplit.split(separator);
- *       print('The original string is: "' + stringToSplit + '"');
- *       print('The separator is: "' + separator + '"');
- *       print("The array has " + arrayOfStrings.length + " elements: ");
- *     
- *       for (var i=0; i < arrayOfStrings.length; i++)
- *         print(arrayOfStrings[i] + " / ");
- *     }
- *     
- *     var tempestString = "Oh brave new world that has such people in it.";
- *     var monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
- *     
- *     var space = " ";
- *     var comma = ",";
- *     
- *     splitString(tempestString, space);
- *     splitString(tempestString);
- *     splitString(monthString, comma);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.split.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * This example produces the following output:
+ *
  * 	The original string is: "Oh brave new world that has such people in it."
  *     The separator is: " "
  *     The array has 10 elements: Oh / brave / new / world / that / has / such / people / in / it. /
@@ -961,37 +693,35 @@
  *     The array has 12 elements: Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec /
  *     
  * #### Example: Removing spaces from a string
+ *
  * In the following example, `split` looks for 0 or more spaces followed by a semicolon followed by 0 or more spaces and, when found, removes the spaces from the string. `nameList` is the array returned as a result of `split`.
  *     
- * 	var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand ";
- *     print(names);
- *     var re = /\s*;\s*/;
- *     var nameList = names.split(re);
- *     print(nameList);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.split.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
- * This prints two lines; the first line prints the original string, and the second line prints the resulting array.
+ * This prints two lines; the first line prints the original string, and the second line prints the resulting array:
+ *
  * 	Harry Trump;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand
  *     Harry Trump,Fred Barney,Helen Rigby,Bill Abel,Chris Hand
  *     
  * #### Example: Returning a limited number of splits
+ *
  * In the following example, `split` looks for 0 or more spaces in a string and returns the first 3 splits that it finds.
  *     
- * 	var myString = "Hello World. How are you doing?";
- *     var splits = myString.split(" ", 3);
- *     print(splits);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.split.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * This script displays the following:
-Hello,World.,How
+ * 	
+ * 	Hello,World.,How
  *     
  * #### Example: Capturing parentheses
+ *
  * If `separator` contains capturing parentheses, matched results are returned in the array.
  *     
- * 	var myString = "Hello 1 word. Sentence number 2.";
- *     var splits = myString.split(/(\d)/);
- *     print(splits);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=string.split.4.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * This script displays the following:
-Hello ,1, word. Sentence number ,2, .
+ *
+ * 	Hello ,1, word. Sentence number ,2, .
  *    
  * #### See Also
  * * [[String.charAt `charAt()`]] 
@@ -1004,12 +734,13 @@ Hello ,1, word. Sentence number ,2, .
 /**
  * String.toLocaleLowerCase() -> String
  *
- *     Returns the calling string value converted to lower case, according to any locale-specific case mappings.
+ * Returns the calling string value converted to lower case, according to any locale-specific case mappings.
  *
  *
  * The `toLocaleLowerCase` method returns the value of the string converted to lower case according to any locale-specific case mappings. `toLocaleLowerCase` does not affect the value of the string itself. In most cases, this will produce the same result as [[String.toLowerCase `toLowerCase()`]], but for some locales, such as Turkish, whose case mappings do not follow the default case mappings in Unicode, there may be a different result.
  *
  * #### Example: Using `toLocaleLowerCase`
+ *
  * The following example displays the string "alphabet":
  *     
  * 	var upperText="ALPHABET";
@@ -1020,7 +751,7 @@ Hello ,1, word. Sentence number ,2, .
 /**
  * String.toLowerCase() -> String
  *
- *   Returns the calling string value converted to lowercase.
+ * Returns the calling string value converted to lowercase.
  *
  *
  * The `toLowerCase` method returns the value of the string converted to lowercase. `toLowerCase` does not affect the value of the string itself.
@@ -1042,7 +773,6 @@ Hello ,1, word. Sentence number ,2, .
 /**
  * 	String.toUpperCase() -> String
  *
- *
  * The `toUpperCase` method returns the value of the string converted to uppercase. `toUpperCase` does not affect the value of the string itself.
  *
  * #### Example: Using `toUpperCase`
@@ -1061,12 +791,13 @@ Hello ,1, word. Sentence number ,2, .
 /**
  * String.toLocaleUpperCase()  -> String
  *
- *   Returns the calling string value converted to upper case, according to any locale-specific case mappings.
+ * Returns the calling string value converted to upper case, according to any locale-specific case mappings.
  *
  *
  * The `toLocaleUpperCase` method returns the value of the string converted to upper case according to any locale-specific case mappings. `toLocaleUpperCase` does not affect the value of the string itself. In most cases, this will produce the same result as [[String.toUpperCase `toUpperCase()`]], but for some locales, such as Turkish, whose case mappings do not follow the default case mappings in Unicode, there may be a different result.
  *
  * #### Example: Using `toLocaleUpperCase`
+ *
  * The following example displays the string "ALPHABET":
  *     
  * 	var lowerText="alphabet";
@@ -1088,7 +819,7 @@ Hello ,1, word. Sentence number ,2, .
  * The following example displays the string value of a String object:
  *
  *     var x = new String("Hello world");
- *     console.log(x.toString())      // Displays "Hello world"
+ *     console.log(x.toString());      // Displays "Hello world"
  *     
  * #### See Also
  * * [[Object.toString `Object.toString()`]]
@@ -1098,10 +829,10 @@ Hello ,1, word. Sentence number ,2, .
 /**
  * String.trim() -> String
  *
- *
  * This method returns the string stripped of whitespace from both ends. `trim` does not affect the value of the string itself.
  *
  * #### Example: Using `trim`
+ *
  * The following example displays the lowercase string "foo":
  *     
  * 	var orig = "   foo  ";
@@ -1123,8 +854,8 @@ Hello ,1, word. Sentence number ,2, .
  *
  * The following example displays the lowercase string "foo ":
  *
- * 	var orig="   foo  "
- * 	console.log(orig.trimLeft())
+ * 	var orig="   foo  ";
+ * 	console.log(orig.trimLeft()); // "foo  "
  *     
  * #### See Also
  * * [[String.trim `trim()`]]
@@ -1140,8 +871,8 @@ Hello ,1, word. Sentence number ,2, .
  * #### Example: Using `trimRight`
  * The following example displays the lowercase string "  foo":
  *
- *     var orig="   foo  "
- *     console.log(orig.trimRight())
+ *     var orig="   foo  ";
+ *     console.log(orig.trimRight()); // "   foo"
  *     
  * #### See Also
  * * [[String.trim `trim()`]]

@@ -174,7 +174,7 @@
  * 
  * By default the spawned Node.js process will have the `stdin`, `stdout`, `stderr` associated with the parent's.
  * 
- * These child nodes are still whole new instances of V8. Assume at least 30ms startup and 10mb memory for each new node. That is, you cannot create many thousands of them.
+ * These child nodes are still whole new instances of V8. Assume at least 30ms startup and 10mb memory for each new node. That is, you can't create many thousands of them.
  * 
  * #### Example
  * 

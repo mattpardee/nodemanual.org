@@ -451,7 +451,7 @@
  *
  * By default, an attempt to call a method that doesn't exist on an object results in a [[TypeError `TypeError`]] being thrown. This behavior can be circumvented by defining a function at that object's `noSuchMethod` member. The function takes two arguments, the first is the name of the method attempted and the second is an array of the arguments that were passed in the method call. The second argument is an actual array (that is, it inherits through the `Array` prototype chain) and not the array-like [arguments object](https://developer.mozilla.org/en/Javascript/Reference/Functions_and_function_scope/arguments).
  *
- * If this method cannot be called, either as if `undefined` by default, if deleted, or if manually set to a non-function, the Javascript engine will revert to throwing `TypeError`s.
+ * If this method can't be called, either as if `undefined` by default, if deleted, or if manually set to a non-function, the Javascript engine will revert to throwing `TypeError`s.
  *
  * #### Example
  *
@@ -629,7 +629,7 @@
  *
  * This method allows precise addition to or modification of a property on an object. Normal property addition through assignment creates properties which show up during property enumeration ([`for...in` loop](https://developer.mozilla.org/en/Javascript/Reference/Statements/for...in)), whose values may be changed, and which may be [deleted](https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/delete). This method allows these extra details to be changed from their defaults.
  *
- * Property descriptors present in objects come in two main flavors: data descriptors and accessor descriptors. A _data descriptor_ is a property that has a value, which may or may not be writable. An _accessor descriptor_ is a property described by a getter-setter pair of functions. A descriptor must be one of these two flavors; it cannot be both. All descriptors regardless of flavor include the **configurable** and **enumerable** fields.
+ * Property descriptors present in objects come in two main flavors: data descriptors and accessor descriptors. A _data descriptor_ is a property that has a value, which may or may not be writable. An _accessor descriptor_ is a property described by a getter-setter pair of functions. A descriptor must be one of these two flavors; it can't be both. All descriptors regardless of flavor include the **configurable** and **enumerable** fields.
  *
  * A property descriptor is an object with the following fields:
  *
@@ -787,7 +787,7 @@
  * 	o = new Constructor();
  * 	// is equivalent to:
  * 	o = Object.create(Constructor.prototype);
- * 	// Of course, if there is actual initialization code in the Constructor function, the Object.create cannot reflect it
+ * 	// Of course, if there is actual initialization code in the Constructor function, the Object.create can't reflect it
  * 	
  * 	
  * 	// create a new object whose prototype is a new, empty object

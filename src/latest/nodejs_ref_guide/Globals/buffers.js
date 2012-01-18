@@ -5,7 +5,7 @@
  * A `Buffer` is similar to an array of integers, but corresponds to a raw memory allocation outside the V8 heap.  While pure Javascript is Unicode friendly, it is not nice to binary data.  When dealing with TCP streams or the file system, it's necessary to handle octet streams. Node.js has several strategies for manipulating, creating, and consuming these octet streams (and raw data) within the `Buffer` object. 
  * 
  * Note that:
- * - A `Buffer` cannot be resized
+ * - A `Buffer` can't be resized
  * - The `Buffer` object is global (meaning, you don't need to `require()` anything)
  * 
  * Converting between Buffers and Javascript string objects requires an explicit encoding defined. Those string encodings are:

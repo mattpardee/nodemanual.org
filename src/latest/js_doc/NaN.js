@@ -10,7 +10,7 @@
  *
  * #### Testing against NaN
  *
- * Equality operator (`==` and `===`) cannot be used to test a value against NaN. Use `isNaN()` instead:
+ * Equality operator (`==` and `===`) can't be used to test a value against NaN. Use `isNaN()` instead:
  *
  * 	NaN === NaN;        // false
  * 	Number.NaN === NaN; // false

@@ -20,9 +20,7 @@
  * The following example converts the `Date` object to a numerical value using `Number` as a function:
  *     
  *     var d = new Date("December 17, 1999 03:24:00");
- *     print(Number(d));</pre>
- *             
- * This displays "819199440000".
+ *     console.log(Number(d)); // "819199440000"
  *
  * #### See Also
  *
@@ -38,7 +36,7 @@
  *
  * The primary uses for the Number object are:
  *
- * * If the argument cannot be converted into a number, it returns NaN.
+ * * If the argument can't be converted into a number, it returns NaN.
  * * In a non-constructor context (i.e., without the `new` operator), `Number` can be used to perform a type conversion.
  *
  **/
@@ -50,7 +48,7 @@
  *
  * #### Example: Using `MAX_VALUE`
  *
- * The following code multiplies two numeric values. If the result is less than or equal to `MAX_VALUE`, the `func1` function is called; otherwise, the `func2` function is called.
+ * The following code multiplies two numeric values. If the result is less than or equal to `MAX_VALUE`, `func1` is called; otherwise, `func2` is called.
  *     
  * 	if (num1 * num2 <= Number.MAX_VALUE)
  *        func1();
@@ -160,7 +158,7 @@
  * Number.toExponential([fractionDigits]) -> Function
  * - fractionDigits (Number): An integer specifying the number of digits after the decimal point. Defaults to as many digits as necessary to specify the number.
  *  
- * Returns a string representing a Number object in exponential notation with one digit before the decimal point, rounded to `fractionDigits` digits after the decimal point. If the `fractionDigits` argument is omitted, the number of digits after the decimal point defaults to the number of digits necessary to represent the value uniquely.
+ * Returns a string representing a `Number` object in exponential notation with one digit before the decimal point, rounded to `fractionDigits` digits after the decimal point. If the `fractionDigits` argument is omitted, the number of digits after the decimal point defaults to the number of digits necessary to represent the value uniquely.
  *
  * If you use the `toExponential` method for a numeric literal and the numeric literal has no exponent and no decimal point, leave a space before the dot that precedes the method call to prevent the dot from being interpreted as a decimal point.
  *
@@ -297,6 +295,7 @@
  * If toString is given a radix not between 2 and 36, an exception is thrown.
  *
  * #### Examples
+ *
  * 	var count = 10;
  * 	print(count.toString());   // displays "10"
  * 	print((17).toString());    // displays "17"

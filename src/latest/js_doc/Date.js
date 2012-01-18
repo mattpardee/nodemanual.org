@@ -10,12 +10,12 @@
  * The Javascript Date object supports a number of UTC (universal) methods, as well as local time methods. UTC, also known as Greenwich Mean Time (GMT), refers to the time as set by the World Time Standard. The local time is the time known to the computer where Javascript is executed.
  *
  * 
- * #### Example: Several ways to assign dates
+ * #### Example: Assigning dates
  *
  * The following examples show several ways to assign Javascript dates:
  * 
  * 	var today = new Date();
- * 	birthday = new Date("December 17, 199, 03:24:00");
+ * 	birthday = new Date("December 17, 1995, 03:24:00");
  * 	birthday = new Date(1995,11,17);
  * 	birthday = new Date(1995,11,17,3,24,0);
  * 	 	   
@@ -23,29 +23,7 @@
  * 
  * The following examples show how to determine the elapsed time between two Javascript dates:
  * 	
- * 	// using static methods
- * 	var start = Date.now();
- * 	// the event you'd like to time goes here:
- * 	doSomethingForALongTime();
- * 	var end = Date.now();
- * 	var elapsed = end - start; // time in milliseconds
- * 	 	   
- * 	// if you have Date objects
- * 	var start = new Date();
- * 	// the event you'd like to time goes here:
- * 	doSomethingForALongTime();
- * 	var end = new Date();
- * 	var elapsed = end.getTime() - start.getTime(); // time in milliseconds
- * 	
- * 	
- * 	// if you want to test a function and get back its return
- * 	function printElapsedTime (fTest) {
- * 	var nStartTime = Date.now(), vReturn = fTest(), nEndTime = Date.now();
- * 	alert("Elapsed time: " + String(nEndTime - nStartTime) + " milliseconds");
- * 	return vReturn;
- * 	}
- * 	
- * 	yourFunctionReturn = printElapsedTime(yourFunction);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	 	   
  * **/
 
@@ -119,8 +97,8 @@
  * 	 	   
  * #### See Also
  *
- *
  * * [[Date.UTC `Date.UTC`]]
+ *
  * **/
 
 /** 
@@ -160,12 +138,13 @@
  *
  * The following statement creates a `Date` object using GMT instead of local time:
  * 
- * 		var gmtDate = new Date(Date.UTC(96, 11, 1, 0, 0, 0));
+ * 	var gmtDate = new Date(Date.UTC(96, 11, 1, 0, 0, 0));
  * 
  *
  * ####  See also 
  *
  * * [[Date.parse `Date.parse()`]]
+ *
  * **/
 
 /**
@@ -181,15 +160,15 @@
  *
  * The following example assigns the four-digit value of the current year to the variable `yr`.
  * 
- * 		var today = new Date();
- * 		var yr = today.getFullYear(); 
+ * 	var today = new Date();
+ * 	var yr = today.getFullYear(); 
  * 	
  * ####  See Also 
  *
  * * [[Date.getYear `Date.getYear()`]]
  * * [[Date.getUTCFullYear `Date.getUTCFullYear()`]]
  * * [[Date.setFullYear `Date.setFullYear()`]]
- * **/
+ **/
 
 /** 	
  * Date.setFullYear(yearValue[, monthValue[, dayValue]]) -> Void
@@ -212,7 +191,8 @@
  *
  * * [[Date.getUTCFullYear `getUTCFullYear()`]]
  * * [[Date.setUTCFullYear `setUTCFullYear()`]]
- * * [[Date.setYear `setYear()`]] **/
+ * * [[Date.setYear `setYear()`]] 
+ **/
 
 /**
  * 	Date.getUTCFullYear() -> Number
@@ -225,17 +205,13 @@
  * 
  * The following example assigns the four-digit value of the current year to the variable `yr`.
  * 	
- * 	var yr;
- * 	var Today = new Date();
- * 	yr = Today.getUTCFullYear(); 
- * 	
- * 
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.getUTCFullYear.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * ####  See Also 
  *
  * * [[Date.getFullYear `getFullYear()`]]
  * * [[Date.setFullYear `setFullYear()`]]
- * **/
+ **/
 
  /**	
  * 	Date.setUTCFullYear(yearValue[, monthValue[, dayValue]]) -> Void
@@ -280,12 +256,11 @@
  * 
  * #### Example: Using `getDate()` 
  * 	
- * The second statement below assigns the value 2, to the variable `day`, based on the value of the `Date` object `Xmas95`.
+ * The second statement below assigns the value 25 to the variable `day`, based on the value of the `Date` object `Xmas95`.
  *
  * 	var Xmas95 = new Date("December 25, 1995, 23:15:00")
  * 	var day = Xmas95.getDate();
  * 	
- * 
  *
  * ####  See Also 
  *
@@ -302,12 +277,12 @@
  * The value returned by `getDay` is an integer corresponding to the day of the week: 0 for Sunday, 1 for Monday, 2 for Tuesday, and so on.
  * 
  * ####  Example: Using `getDay()` 
- * The second statement below assigns the value 1 to `weekday`, based on the value of the `Date` object `Xmas95`. December 25, 1995, is a Monday.
+ *
+ * The second statement below assigns the value 1 to `weekday`, based on the value of the `Date` object `Xmas95`. December 25, 1995 was a Monday.
  *	
  * 	var Xmas95 = new Date("December 25, 1995, 23:15:00");
  * 	var weekday = Xmas95.getDay();
  * 	
- * 
  *
  * #### See Also
  *
@@ -327,8 +302,8 @@
  *
  * 	The second statement below assigns the value 2, to the variable `hours`, based on the value of the `Date` object `Xmas95`.
  * 	
- * 		var Xmas95 = new Date("December 25, 1995, 23:15:00")
- * 		var hours = Xmas95.getHours() 
+ * 	var Xmas95 = new Date("December 25, 1995, 23:15:00")
+ * 	var hours = Xmas95.getHours() 
  * 
  * #### See Also
  *
@@ -362,7 +337,6 @@
  * 	
  * Returns the minutes in the specified date according to local time.
  *
- *
  * The value returned by `getMinutes` is an integer between 0 and 59.
  * 
  * ####  Example: Using `getMinutes()` 
@@ -389,8 +363,8 @@
  * 	
  * The second statement below assigns the value 1, to the variable `month`, based on the value of the `Date` object `Xmas95`.
  * 	
- * 		var Xmas95 = new Date("December 25, 1995, 23:15:00")
- * 		var month = Xmas95.getMonth() 
+ * 	var Xmas95 = new Date("December 25, 1995, 23:15:00")
+ * 	var month = Xmas95.getMonth() 
  * 	
  * #### See Also
  *
@@ -440,14 +414,7 @@
  *
  * Subtracting two subsequent getTime calls on newly generated Date objects, give the time span between these two calls. This can be used to calculate the executing time of some operations.
  * 
- * 	var end, start;
- * 
- * 	start = new Date();
- * 	for (var i = 0, i &lt; 1000, i++)
- *   	Math.sqrt(i);
- * 	end = new Date();
- * 
- * 	console.log("Operation took " + (end.getTime() - start.getTime()) + " msec");
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.getTime.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -480,7 +447,6 @@
  * 	var Today = new Date();
  * 	d = Today.getUTCDate(); 
  * 	
- * 
  * #### See Also
  *
  * * [[Date.getDate `getDate()`]]
@@ -521,9 +487,9 @@
  * 	
  * The following example assigns the hours portion of the current time to the variable `hrs`.
  * 	 	
- * 		var hrs;
- * 		Today = new Date();
- * 		hrs = Today.getUTCHours();
+ * 	var hrs;
+ * 	Today = new Date();
+ * 	hrs = Today.getUTCHours();
  * 	
  * 
  * #### See Also
@@ -543,9 +509,9 @@
  * 	
  * The following example assigns the milliseconds portion of the current time to the variable `ms`.
  * 	
- * 		var ms;
- * 		var Today = new Date();
- * 		ms = Today.getUTCMilliseconds();
+ * 	var ms;
+ * 	var Today = new Date();
+ * 	ms = Today.getUTCMilliseconds();
  * 	
  * #### See Also
  *
@@ -587,10 +553,10 @@
  * ####  Example: Using `getUTCMonth()` 
  * 
  * The following example assigns the month portion of the current date to the variable `mon`.
- * 		
- * 		var mon;
- * 		var Today = new Date();
- * 		mon = Today.getUTCMonth();
+ * 	
+ * 	var mon;
+ * 	var Today = new Date();
+ * 	mon = Today.getUTCMonth();
  * 	
  * 
  * #### See Also
@@ -610,9 +576,9 @@
  * ####  Example: Using `getUTCSeconds()` 
  * The following example assigns the seconds portion of the current time to the variable `sec`.
  *
- * 		var sec;
- * 		var Today = new Date();
- * 		sec = Today.getUTCSeconds();
+ * 	var sec;
+ * 	var Today = new Date();
+ * 	sec = Today.getUTCSeconds();
  * 
  * #### See Also
  *
@@ -638,29 +604,29 @@
  *
  * 	The second statement assigns the value 95 to the variable `year`.
  *
- * 		var Xmas = new Date("December 25, 1995, 23:15:00")
- * 		var year = Xmas.getYear() // returns 95
+ * 	var Xmas = new Date("December 25, 1995, 23:15:00")
+ * 	var year = Xmas.getYear() // returns 95
  * 	
  * #### Example: Years above 1999
  *
  * 	The second statement assigns the value 100 to the variable `year`.
  * 	
- * 		var Xmas = new Date("December 25, 2000 23:15:00")
- * 		var year = Xmas.getYear() // returns 100
+ * 	var Xmas = new Date("December 25, 2000 23:15:00")
+ * 	var year = Xmas.getYear() // returns 100
  * 	
  * ####  Example: Years below 1900
  * 	The second statement assigns the value -100 to the variable `year`.
  * 	 	
- * 		var Xmas = new Date("December 25, 1800 23:15:00")
- * 		var year = Xmas.getYear() // returns -100
+ * 	var Xmas = new Date("December 25, 1800 23:15:00")
+ * 	var year = Xmas.getYear() // returns -100
  * 	
  * ####  Example: Setting and getting a year between 1900 and 1999
  * 
  * 	The second statement assigns the value 95 to the variable `year`, representing the year 1995.
  * 	
- * 		var Xmas = new Date();	
- * 		Xmas.setYear(95)
- * 		var year = Xmas.getYear() // returns 9, 
+ * 	var Xmas = new Date();	
+ * 	Xmas.setYear(95)
+ * 	var year = Xmas.getYear() // returns 9, 
  * 
  * #### See Also
  *
@@ -682,8 +648,8 @@
  *
  * 	The second statement below changes the day for `theBigDay` to July 2, from its original value.
  * 	
- * 		var theBigDay = new Date("July 27, 196, 23:30:00")
- * 		theBigDay.setDate(24, 
+ * 	var theBigDay = new Date("July 27, 196, 23:30:00")
+ * 	theBigDay.setDate(24, 
  * 	
  * 
  * #### See Also
@@ -708,8 +674,8 @@
  *
  * ####  Example: Using `setHours()` 
  * 	
- * 		var theBigDay = new Date();
- * 		theBigDay.setHours(7)
+ * 	var theBigDay = new Date();
+ * 	theBigDay.setHours(7)
  * 	
  * 
  * #### See Also
@@ -867,8 +833,8 @@
  * 
  * ####  Example: Using `setUTCMilliseconds()` 
  * 
- * 		var theBigDay = new Date();
- * 		theBigDay.setUTCMilliseconds(500);
+ * 	var theBigDay = new Date();
+ * 	theBigDay.setUTCMilliseconds(500);
  * 
  * #### See Also
  *
@@ -946,7 +912,7 @@
  **/
 
 /** deprecated
- * Date.setYear(yearValue)
+ * Date.setYear(yearValue) -> Void
  * - yearValue (Number): Specifies the numeric value of the year, for example, 1995. 
  *
  * 	Sets the year for a specified date according to local time.
@@ -960,10 +926,10 @@
  * ####  Example: Using `setYear()` 
  *
  * 	The first two lines set the year to 1996, The third sets the year to 2000.
- * 		
- * 		theBigDay.setYear(96)
- * 		theBigDay.setYear(1996)
- * 		theBigDay.setYear(2000)
+ * 	
+ * 	theBigDay.setYear(96)
+ * 	theBigDay.setYear(1996)
+ * 	theBigDay.setYear(2000)
  * 		
  * #### See Also
  *
@@ -1004,8 +970,8 @@
  * 
  * #### Example
  * 
- * 		var today = new Date("0, October 201, 14:4, UTC");
- * 		alert(today.toISOString()); // Returns 2011-10-10T14:48:00.000z
+ * 	var today = new Date("0, October 201, 14:4, UTC");
+ * 	alert(today.toISOString()); // Returns 2011-10-10T14:48:00.000z
  * 
  * #### See Also
  *
@@ -1051,9 +1017,7 @@
  *
  * #### Example: Using `toUTCString()`
  *
- * 		var today = new Date();
- * 		var UTCstring = today.toUTCString();
- * 		// Mon, 0, Jul 2000 21:44:3, GMT
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.toutcstring.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * #### See Also
  *
@@ -1127,8 +1091,8 @@
  *
  * #### Example: Using `toLocaleFormat()`
  *
- * 		var today = new Date();
- * 		var date = today.toLocaleFormat("%A,%B %e, %Y"); // Bad example
+ * 	var today = new Date();
+ * 	var date = today.toLocaleFormat("%A,%B %e, %Y"); // Bad example for localization
  * 	
  * 
  * #### See Also
@@ -1147,15 +1111,15 @@
  * 
  * You shouldn't use this method in contexts where you rely on a particular format or locale.
  *
- * 		"Last visit: " + someDate.toLocaleString(); // Good example
- * 		"Last visit was at " + someDate.toLocaleString(); // Bad example
+ * 	"Last visit: " + someDate.toLocaleString(); // Good example
+ * 	"Last visit was at " + someDate.toLocaleString(); // Bad example
  * 
  * #### Example: Using `toLocaleString()`
  *
  * In the following example, `today` is a `Date` object:
  * 	
- * 		var today = new Date(95,11,18,17,28,35); //months are represented by 0 to 11
- * 		today.toLocaleString();
+ * 	var today = new Date(95,11,18,17,28,35); //months are represented by 0 to 11
+ * 	var localDay = today.toLocaleString();
  * 
  * In this example, `toLocaleString` returns a string value that is similar to the following form: 12/18/99, 17:28:35. The exact format depends on the platform, locale and user's settings.
  * 
@@ -1173,9 +1137,9 @@
  * 
  * * For the built-in `Date` object, `toSource` returns the following string indicating that the source code is not available:
  *
- * 		function Date() {
- *    		[native code]
- * 		}
+ * 	function Date() {
+ *    	[native code]
+ * 	}
  * 
  * * For instances of `Date`, `toSource` returns a string representing the source code.
  * 
@@ -1247,8 +1211,9 @@
  * This method is usually called internally by Javascript and not explicitly in code.
  * 
  * ####  Example: Using `valueOf()` 
+ *
  * 	var d = new Date(56, 6, 17);
- * 	myVar = d.valueOf(); // assigns -424713600000 to myVar
+ * 	var myVar = d.valueOf(); // assigns -424713600000 to myVar
  * 		
  * #### Returns
  *
@@ -1257,6 +1222,5 @@
  * ####  See also 
  * 
  * * [[Object.valueOf `Object.valueOf()`]]
- * * [[Date.getTime `getTime()`]]
  **/
 

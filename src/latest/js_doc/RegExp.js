@@ -23,44 +23,28 @@ bug 378738</a>
  * The constructor of the regular expression object, for example, new RegExp("ab+c"), provides runtime compilation of the regular expression. Use the constructor function when you know the regular expression pattern will be changing, or you don't know the pattern and are getting it from another source, such as user input.
  *
  * #### Example: Using a regular expression to change data format
+ *
  * The following script uses the [replace](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/String/replace "en/Javascript/Reference/Global_Objects/String/replace") method inherited by the [String](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/String "en/Javascript/Reference/Global_Objects/String") instance to match a name in the format _first last_ and output it in the format _last_, _first_. In the replacement text, the script uses `$1\. and `$2\. to indicate the results of the corresponding matching parentheses in the regular expression pattern.
  *     
- *     var re = /(\w+)\s(\w+)/;
- *     var str = "John Smith";
- *     var newstr = str.replace(re, "$2\. $1");
- *     print(newstr);
- *             
- *     This displays "Smith, John".
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *   
- *
  * #### Example: Using a regular expression with the "sticky" flag
+ *
  * This example demonstrates how one could use the sticky flag on regular expressions to match individual lines of multiline input.
  *     
- * 	var text = "First line\nsecond line";
- *     var regex = /(\S+) line\n?/y;
- *     
- *     var match = regex.exec(text);
- *     print(match[1]);  // prints "First"
- *     print(regex.lastIndex); // prints 11
- *     
- *     var match2 = regex.exec(text);
- *     print(match2[1]); // prints "Second"
- *     print(regex.lastIndex); // prints "22"
- *     
- *     var match3 = regex.exec(text);
- *     print(match3 === null); // prints "true"
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * One can test at run-time whether the sticky flag is supported, using `try{...} catch{...}`. For this, either an `eval(...)` expression or the `RegExp(regex-string,flags-string)` syntax must be used (since the `/regex/flags` notation is processed at compile-time, so throws an exception before the `catch` block is encountered). For example:
  *     
  *     var supports_sticky;
  *     try { RegExp('','y'); supports_sticky = true; }
  *     catch(e) { supports_sticky = false; }
- *     alert(supports_sticky); // alerts "false" in Firefox 2\. "true" in Firefox 3+
+ *     console.log(supports_sticky);
  *              
  *
  * #### See also
  *
- * * [Regular Expressions](https://developer.mozilla.org/en/Javascript/Guide/Regular_Expressions "en/Core_Javascript_1.5_Guide/Regular_Expressions") chapter in the [Javascript Guide](https://developer.mozilla.org/en/Javascript/Guide "en/Core_Javascript_1.5_Guide")</li>
+ * * [Regular Expressions](https://developer.mozilla.org/en/Javascript/Guide/Regular_Expressions) chapter in the [Javascript Guide](https://developer.mozilla.org/en/Javascript/Guide)
  *
  * </ul>
  *
@@ -96,19 +80,6 @@ bug 378738</a>
  *
  **/
 
-NaN * <div id = "section_2"><span id = "Description"></span>
-
-###  Description 
- *
- * <p>See [Object.constructor](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/Object/constructor "en/Javascript/Reference/Global_Objects/Object/constructor")
- *
-undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class = "editable"> Summary </h3>
-* <p>Returns a reference to the <a title = "en/Javascript/Reference/Global_Objects/RegExp" rel = "internal" href = "https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/RegExp">RegExp</a> function that created the instance's prototype. Note that the value of this property is a reference to the function itself, not a string containing the function's name.
-* </p>
-* <table class = "standard-table"> <thead> <tr> <th class = "header" colspan = "2">Property of <a rel = "internal" href = "https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/RegExp" title = "en/Javascript/Reference/Global_Objects/RegExp">RegExp</a></th> </tr> </thead> <tbody> <tr> <td>Implemented in</td> <td>Javascript 1.1</td> </tr> <tr> <td>ECMAScript Edition</td> <td>ECMAScript 1st Edition</td> </tr> </tbody>
-
- **/
-
 /** read-only
  * RegExp.global -> Boolean
  *
@@ -116,7 +87,7 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  *
  * The value of `global` is true if the "`g`" flag was used; otherwise, `false`. The "`g`" flag indicates that the regular expression should be tested against all possible matches in a string.
  *
- * You cannot change this property directly.
+ * You can't change this property directly.
  *
  **/
 
@@ -127,7 +98,7 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  *
  * The value of `ignoreCase` is true if the "`i`" flag was used; otherwise, false. The "`i`" flag indicates that case should be ignored while attempting a match in a string.
  *
- * You cannot change this property directly.
+ * You can't change this property directly.
  *
  **/
 
@@ -138,7 +109,7 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  *
  * The value of `multiline` is true if the "`m`" flag was used; otherwise, false. The "`m`" flag indicates that a multiline input string should be treated as multiple lines. For example, if "`m`" is used, "`^`" and "`$`" change from matching at only the start or end of the entire string to the start or end of any line within the string.
  *
- * You cannot change this property directly.
+ * You can't change this property directly.
  *
  **/
 
@@ -169,7 +140,7 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  *
  * This property contains the text of the pattern, excluding the forward slashes.
  *
- * You cannot change this property directly.
+ * You can't change this property directly.
  *
  **/
 
@@ -182,18 +153,11 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  * When you want to know whether a pattern is found in a string use the `test` method (similar to the [[String.search `String.search()`]]; for more information (but slower execution) use the [[RegExp.exec `exec()`]] method (similar to the [[String.match `String.match()`]] method). As with `exec()` (or in combination with it), `test` called multiple times on the same global regular expression instance will advance past the previous match.
  *
  * 
- * #### Example: Using test</h4>
+ * #### Example: Using `test()`
+ *
  * The following example prints a message which depends on the success of the test:
  *     
- * 	function testinput(re, str){
- *        if (re.test(str)) {
- *           midstring = " contains ";
- *        } else {
- *           midstring = " does not contain ";
- *        }
- *        document.write (str + midstring + re.source);
- * 	}
- *      
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.test.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>  
  *
  **/
 
@@ -226,22 +190,11 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  *
  * <table class = \"fullwidth-table\"> <tbody> <tr> <td class = \"header\">Object</td> <td class = \"header\">Property/Index</td> <td class = \"header\">Description</td> <td class = \"header\">Example</td> </tr> <tr> <td rowspan = \"5\"><code>result</code></td> <td><code>&nbsp;</code></td> <td>The content of <code>myArray</code>.</td> <td><code>[&quot;dbBd&quot;, &quot;bB&quot;, &quot;d&quot;]</code></td> </tr> <tr> <td><code>index</code></td> <td>The 0-based index of the match in the string.</td> <td><code>1</code></td> </tr> <tr> <td><code>input</code></td> <td>The original string.</td> <td><code>cdbBdbsbz</code></td> </tr> <tr> <td><code>[0]</code></td> <td>The last matched characters</td> <td><code>dbBd</code></td> </tr> <tr> <td><code>[1], ...[<em>n</em>]</code></td> <td>The parenthesized substring matches, if any. The number of possible parenthesized substrings is unlimited.</td> <td><code>[1] = bB<br/> [2] = d</code></td> </tr> <tr> <td rowspan = \"5\"><code>re</code></td> <td><code>lastIndex</code></td> <td>The index at which to start the next match.</td> <td><code>5</code></td> </tr> <tr> <td><code>ignoreCase</code></td> <td>Indicates if the &quot;<code>i</code>&quot; flag was used to ignore case.</td> <td><code>true</code></td> </tr> <tr> <td><code>global</code></td> <td>Indicates if the &quot;<code>g</code>&quot; flag was used for a global match.</td> <td><code>true</code></td> </tr> <tr> <td><code>multiline</code></td> <td>Indicates if the &quot;<code>m</code>&quot; flag was used to search in strings across multiple line.</td> <td><code>false</code></td> </tr> <tr> <td><code>source</code></td> <td>The text of the pattern.</td> <td><code>d(b+)(d)</code></td> </tr> </tbody></table>
  *
- *
- *
+ * #### Example: Exec with the "global" flag
+ * 
  * If your regular expression uses the "`g`" flag, you can use the `exec` method multiple times to find successive matches in the same string. When you do so, the search starts at the substring of `str` specified by the regular expression's `lastIndex` property ([[RegExp.test `test()`]] will also advance the `lastIndex` property). For example, assume you have this script:
  *
- * 	var myRe = /ab*/g;
- * 	var str = "abbcdefabh";
- * 	var myArray;
- *
- * 	while ((myArray = myRe.exec(str)) != null)
- *
- * 	{
- * 		var msg = "Found " + myArray[0\. + ".  ";
- * 		msg += "Next match starts at " + myRe.lastIndex;
- * 		print(msg);
- * 	}
- *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.exec.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *         
  *
  * This script displays the following text:
@@ -251,9 +204,7 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  *
  * You can also use `exec()` without creating a RegExp object:
  *
- * 	var matches = /(hello \S+)/.exec('This is a hello world!');
- * 	alert(matches[1]);
- *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.exec.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  * This will display an alert containing 'hello world!'.
  *
@@ -265,11 +216,11 @@ undefinedundefined* <div id = "section_1"><span id = "Summary"></span><h3 class 
  * The `RegExp` object overrides the `toString` method of the `[Object]` object; it does not inherit [[Object.toString `Object.toString()`]]. For `RegExp` objects, the `toString` method returns a string representation of the regular expression.
  *
  * 
- * #### Example: Using toString </h4>
+ * #### Example: Using toString
  *  The following example displays the string value of a RegExp object:
  *     
  * 	var myExp = new RegExp("a+b+c");
- * 	alert(myExp.toString()); // displays "/a+b+c/"
+ * 	console.log(myExp.toString()); // displays "/a+b+c/"
  *     
  *
  **/

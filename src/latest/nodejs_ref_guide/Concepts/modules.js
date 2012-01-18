@@ -157,7 +157,7 @@
 *     });
 * 
 * 
-* Note that the assignment to `module.exports` must be done immediately. It cannot be done in any callbacks. For example, this does not work:
+* Note that the assignment to `module.exports` must be done immediately. It can't be done in any callbacks. For example, this does not work:
 * 
 * In a file called `x.js`:
 * 
@@ -201,8 +201,8 @@
 * <dt>To `LOAD_AS_FILE(X)`:</dt>
 * <dd>
 *     <pre>
-*     1. If X is a file, load X as JavaScript text.  STOP
-*     2. If X.js is a file, load X.js as JavaScript text.  STOP
+*     1. If X is a file, load X as Javascript text.  STOP
+*     2. If X.js is a file, load X.js as Javascript text.  STOP
 *     3. If X.node is a file, load X.node as binary addon.  STOP
 *     </pre>
 * <dd>
@@ -213,7 +213,7 @@
 *        a. Parse X/package.json, and look for "main" field.
 *        b. let M = X + (json main field)
 *        c. LOAD_AS_FILE(M)
-*     2. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
+*     2. If X/index.js is a file, load X/index.js as Javascript text.  STOP
 *     3. If X/index.node is a file, load X/index.node as binary addon.  STOP
 *     </pre>
 * </dd>

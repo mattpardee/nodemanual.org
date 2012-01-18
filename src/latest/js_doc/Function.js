@@ -3,9 +3,7 @@
 /** section: Javascript_Reference
  * class Function
  *
- * Every function in Javascript is actually a `Function` object. Yes, it's true.
- *
- *
+ * Every function in Javascript is actually a `Function` object. Yes, it's true. Thus, all the following methods can be called on any function.
  *
  **/
 
@@ -22,16 +20,10 @@
  * Invoking the Function constructor as a function (without using the new operator) has the same effect as invoking it as a constructor.
  *
  * #### Example: Specifying arguments with the `Function` constructor
+ *
  *  The following code creates a `Function` object that takes two arguments.
  *     
- * 	// Example can be run directly in your Javascript console
- *     
- *     // Create a function that takes two arguments and returns the sum of those arguments
- *     var adder = new Function("a", "b", "return a + b");
- *     
- *     // Call the function
- *     adder(2, 6);
- *     // > 8
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=function.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *             
  * The arguments "`a`" and "`b`" are formal argument names that are used in the function body, "`return a + b`".
  **/
@@ -42,20 +34,19 @@
  *
  * Returns the function that invoked the specified function.
  *
- * This property is not part of ECMA-262, Edition 3 standard. 
- *
  * If the function `f` was invoked by the top level code, the value of `caller()` is `null`, otherwise it's the function that called `f`
  *
- * This property replaces deprecated `arguments.caller`.
+ * This property replaces the deprecated `arguments.caller`.
  *
  * #### Notes
+ *
  *  In case of recursion, you can't reconstruct the call stack using this property. Consider:
  *  
  *  	function f(n) { g(n-1) }
  *  	function g(n) { if(n>0) f(n); else stop() }
  *  	f(2)
  * 
- *  At the moment `stop()` is called the call stack will be:
+ *  At the moment `stop()` is called, the call stack is:
  *  	
  *  	f(2) -> g(1) -> f(1) -> g(0) -> stop()
  *  
@@ -72,13 +63,11 @@
  *    	f = f.caller;
  *  	}
  * 
- *  The loop would never stop.
+ *  This loop would never stop.
  * 
  *  The special property `__caller__`, which returned the activation object of the caller thus allowing to reconstruct the stack, was removed for security reasons.
  * 
  * #### Example: Checking the value of a function's `caller` property
- *
- * The following code checks the value a function's `caller` property.
  *
  *     function myFunc() {
  *        if (myFunc.caller == null) {
@@ -103,19 +92,15 @@
  *   
  * `length` is a property of a function object, and indicates how many arguments the function expects, i.e. the number of formal parameters. By contrast, [`arguments.length`](https://developer.mozilla.org/en/Javascript/Reference/Functions_and_function_scope/arguments/length) is local to a function and provides the number of arguments actually passed to the function.
  *
- * Example
+ * #### Example
  *  
- * 	console.log((function () {}).length);  /* 0 */
- * 	console.log((function (a) {}).length); /* 1 */
- * 	console.log((function (a, b) {}).length); /* 2 etc. */
- *          
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=function.length.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>          
  *  
  **/
 
 /** read-only
  * Function.name -> String
  * 
- *
  * The `name` property returns the name of a function, or an empty string for anonymous functions:
  *
  * 	function doSomething() {}
@@ -153,6 +138,7 @@
  *
  * 
  * #### Example
+ *
  *  You can use `obj.constructor.name` to check the "class" of an object:
  *
  *  	function a()
@@ -183,6 +169,7 @@
  *
  * 
  * #### Example: Using `apply` to chain constructors
+ *
  *  You can use `apply` to chain constructors for an object, similar to Java. In the following example, the constructor for the `Product` object is defined with two parameters, `name` and `value`. Two other functions `Food` and `Toy` invoke `Product` passing `this` and `arguments`. Product initializes the properties name and price, both specialized functions define the category. In this example, the `arguments` object is fully passed to the product constructor and corresponds to the two defined parameters.
  *  
  * 	function Product(name, price) {
@@ -215,14 +202,14 @@
  *
  *  Clever usage of `apply` allows you to use built-ins functions for some tasks that otherwise probably would have been written by looping over the array values. As an example here we are going to use Math.max/Math.min to find out the maximum/minimum value in an array.
  *  
- * 	/* min/max number in an array */
+ * 	// min/max number in an array
  * 	var numbers = [5, 6, 2, 3, 7];
  *  
- * 	/* using Math.min/Math.max apply */
- * 	var max = Math.max.apply(null, numbers); /* This about equal to Math.max(numbers[0], ...) or Math.max(5, 6, ..) */
+ * 	// using Math.min/Math.max apply
+ * 	var max = Math.max.apply(null, numbers); // Equivalent to Math.max(numbers[0], ...) or Math.max(5, 6, ..)
  * 	var min = Math.min.apply(null, numbers);
  *  
- * 	/* vs. simple loop based algorithm */
+ * 	// versus a simple loop based algorithm:
  * 	max = -Infinity, min = +Infinity;
  *  
  * 	for (var i = 0; i < numbers.length; i++) {
@@ -232,7 +219,7 @@
  * 			min = numbers[i];
  * 	}
  *          
- *  But beware: in using `apply` this way, you run the risk of exceeding the Javascript engine's argument length limit. The consequences of applying a function with too many arguments (think more than tens of thousands of arguments) vary across engines, because the limit (indeed even the nature of any excessively-large-stack behavior) is unspecified. Some engines will throw an exception. More perniciously, others will arbitrarily limit the number of arguments actually passed to the applied function. (To illustrate this latter case: if such an engine had a limit of four arguments [actual limits are of course significantly higher], it would be as if the arguments `5, 6, 2, 3` had been passed to `apply` in the examples above, rather than the full array.) If your value array might grow into the tens of thousands, use a hybrid strategy: apply your function to chunks of the array at a time:
+ *  But beware: in using `apply` this way, as you run the risk of exceeding the Javascript engine's argument length limit. The consequences of applying a function with too many arguments (think more than tens of thousands of arguments) vary across engines, because the limit (indeed even the nature of any excessively-large-stack behavior) is unspecified. Some engines will throw an exception. More perniciously, others will arbitrarily limit the number of arguments actually passed to the applied function. (To illustrate this latter case: if such an engine had a limit of four arguments [actual limits are of course significantly higher], it would be as if the arguments `5, 6, 2, 3` had been passed to `apply` in the examples above, rather than the full array.) If your value array might grow into the tens of thousands, use a hybrid strategy: apply your function to chunks of the array at a time:
  *  
  * 	function minOfArray(arr)
  * 	{
@@ -249,6 +236,7 @@
  * 	var min = minOfArray([5, 6, 2, 3, 7]);
  *          
  * #### See Also 
+ *
  * * [[Function.call `call()`]]
  * * [[Function.bind `bind()`]]
  *
@@ -295,6 +283,7 @@
  * 	 var fun = new Toy('robot', 40);
  *          
  *  #### Example: Using `call` to invoke an anonymous function 
+ *
  *  In this purely constructed example, we create anonymous function and use `call` to invoke it on every object in an array. The main purpose of the anonymous function here is to add a print function to every object, which is able to print the right index of the object in the array. Passing the object as `this` value was not strictly necessary, but is done for explanatory purpose.
  *  
  * 	var animals = [
@@ -354,7 +343,8 @@
  *  
  * In the case of recursion, i.e. if the function appears several times on the call stack, the value of `f.arguments` represents the arguments corresponding to the most recent invocation of the function.
  *  
- *  #### Example  
+ * #### Example  
+ *
  * 	function f(n) { g(n-1) }
  * 	function g(n) {
  * 		print("before: " + g.arguments[0]);
@@ -386,7 +376,7 @@
  * - thisArg (Object): The value to be passed as the this parameter to the target function when the bound function is called. The value is ignored if the bound function is constructed using the new operator.
  * - argN (Object): Arguments to prepend to arguments provided to the bound function when invoking the target function.
  *
- * The `bind` function creates a new function (a _bound function_) with the same function body (internal [Call](https://developer.mozilla.org/Call "Call") attribute in ECMAScript 5 terms) as the function it is being called on (the bound function's _target function_) with the `this` value bound to the first argument of `bind`, which cannot be overridden. `bind` also accepts leading default arguments to provide to the target function when the bound function is called. A bound function may also be constructed using the `new` operator: doing so acts as though the target function had instead been constructed.  The provided `this` value is ignored, while prepended arguments are provided to the emulated function.
+ * The `bind` function creates a new function (a _bound function_) with the same function body (internal [Call](https://developer.mozilla.org/Call "Call") attribute in ECMAScript 5 terms) as the function it is being called on (the bound function's _target function_) with the `this` value bound to the first argument of `bind`, which can't be overridden. `bind` also accepts leading default arguments to provide to the target function when the bound function is called. A bound function may also be constructed using the `new` operator: doing so acts as though the target function had instead been constructed.  The provided `this` value is ignored, while prepended arguments are provided to the emulated function.
  *          
  *  Some of the many differences (there may well be others, as this list does not seriously attempt to be exhaustive) between this algorithm and the specified algorithm are:
  * * The partial implementation relies [[Array.slice `Array.slice()`]], [[Array.concat `Array.concat()`]], [[Function.call `call()`]], and [[Function.apply `apply()`]], built-in methods to have their original values.
@@ -396,7 +386,8 @@
  *
  *  If you choose to use this partial implementation, *you must not rely on those cases where behavior deviates from ECMA-262, 5th edition!* With some care, however (and perhaps with additional modification to suit specific needs), this partial implementation may be a reasonable bridge to the time when `bind` is widely implemented according to the specification.
  *  
- * #Example: Creating a bound function 
+ * #### Example: Creating a bound function 
+ *
  *  The simplest use of `bind` is to make a function that, no matter how it is called, is called with a particular `this` value. A common mistake for new Javascript programmers is to extract a method from an object, then to later call that function and expect it to use the original object as its `this` (e.g. by using that method in callback-based code).  Without special care, however, the original object is usually lost.  Creating a bound function from the function, using the original object, neatly solves this problem:
  *  
  * 		var x = 9; 
@@ -535,30 +526,5 @@
  * #### See Also
  * * [[Function.apply `apply()`]]
  * * [[Function.call `call()`]]
- *
- **/
-
-
-/**
- * Function.isGenerator() -> Boolean
- *   
- * Determines whether or not a function is a [generator](https://developer.mozilla.org/en/JavaScript/Guide/Iterators_and_Generators#Generators.3a_a_better_way_to_build_Iterators).
- *
- * #### Examples
- *  
- * 	function f() {}
- * 	function g() {
- * 		yield 42;
- * 	}
- * 	console.log("f.isGenerator() = " + f.isGenerator());
- * 	console.log("g.isGenerator() = " + g.isGenerator());
- *          
- *  The output from this code is:
- *
- * 	f.isGenerator()= false
- * 	g.isGenerator() = true 
- *  
- *  #### See Also
- *  * [Iterators and generators](https://developer.mozilla.org/en/Javascript/Guide/Iterators_and_Generators)
  *
  **/

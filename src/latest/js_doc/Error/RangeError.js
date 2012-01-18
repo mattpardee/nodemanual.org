@@ -11,6 +11,6 @@
  * - fileName (String): The name of the file containing the code that caused the exception (Non-standard)
  * - lineNumber (Number): The line number of the code that caused the exception (Non-standard)
  *
- * Creates an error object.
+ * Creates an new RangeError object.
  *
  **/

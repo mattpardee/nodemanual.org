@@ -15,7 +15,7 @@ For a more complete package.json, we can study the `underscore` module:
 
     {
       "name" : "underscore",
-      "description" : "JavaScript's functional programming helper library.",
+      "description" : "Javascript's functional programming helper library.",
       "homepage" : "http://documentcloud.github.com/underscore/",
       "keywords" : ["util", "functional", "server", "client", "browser"],
       "author" : "Jeremy Ashkenas <jeremy@documentcloud.org>",

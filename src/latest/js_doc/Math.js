@@ -4,7 +4,7 @@
  *
  * A built-in object that has properties and methods for mathematical constants and functions.
  *
- * Unlike the other global objects, `Math` is not a constructor. All properties and methods of `Math` are static. You refer to the constant pi as `Math.PI` and you call the sine function as `Math.sin(x)`, where x is the method's argument. Constants are defined with the full precision of real numbers in JavaScript.
+ * Unlike the other global objects, `Math` is not a constructor. All properties and methods of `Math` are static. You refer to the constant pi as `Math.PI` and you call the sine function as `Math.sin(x)`, where x is the method's argument. Constants are defined with the full precision of real numbers in Javascript.
  **/
 
 /**
@@ -13,6 +13,7 @@
  * The natural logarithm of 2.
  *
  * #### Example: Using `Math.LN2`
+ *
  * The following function returns the natural log of 2:
  * 
  * 	function getNatLog2() {
@@ -27,6 +28,7 @@
  * The base of natural logarithms, e.
  *
  *  #### Example: Using `Math.E`
+ *
  *  The following function returns e:
  *     function getNapier() {
  *        return Math.E
@@ -125,7 +127,7 @@
  **/
 
  /**
- * Math.abs() -> Number
+ * Math.abs(x) -> Number
  * - x (Number): A positive or negative integer
  *
  * Returns the absolute value of a number.
@@ -143,7 +145,7 @@
  **/
 
  /**
- * Math.acos() -> Number
+ * Math.acos(x) -> Number
  * - x (Number): A number
  *
  * This method returns a numeric value between 0 and pi radians for x between -1 and 1\. If the value of `number` is outside this range, it returns `NaN`.
@@ -187,6 +189,7 @@
  * If you pass `getAsin` the value 1, it returns 1.570796326794897 (pi/2); if you pass it the value 2, it returns `NaN` because 2 is out of range.
  *
  * #### See Also
+ *
  * * [[Math.acos `acos()`]] 
  * * [[Math.atan `atan()`]] 
  * * [[Math.atan2 `atan2()`]] 
@@ -223,7 +226,7 @@
  **/
 
 /**
- * Math.atan2(y, x) -> Number
+ * Math.atan2(x, y) -> Number
  * - x (Number): A number
  * - y (Number): A number	
  *
@@ -390,15 +393,16 @@ Because `log` is a static method of `Math`, you always use it as `Math.log()`, r
  *
  * If no arguments are given, the results is [[Infinity `-Infinity`]]
  *
- * If at least one of arguments cannot be converted to a number, the result is [[NaN `NaN`]].
+ * If at least one of arguments can't be converted to a number, the result is [[NaN `NaN`]].
  *
  * #### Example: Using `Math.max`
  *
  * `Math.max(10, 20)` returns 20. `Math.max(-10, -20)` returns -10. `Math.max(-10, 20)` returns 20.
  *
- *     function getMaxOfArray(numArray) {
- *       return Math.max.apply(null, numArray);
- *     }
+ *
+ * #### Example: Using `Math.max` with an array
+ *
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=math.max.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  * This function uses [[Function.apply `Function.apply()`]] to find the maximum element in a numeric array. `getMaxOfArray([1,2,3])` is equivalent to `Math.max(1, 2, 3)`, but you can use `getMaxOfArray` on programmatically constructed arrays of any size.
  *
@@ -409,16 +413,13 @@ Because `log` is a static method of `Math`, you always use it as `Math.log()`, r
  * - base (Number): The base number.
  * - exponents (Number): The exponent to which to raise base.
  * 	
- * Returns `base` to the `exponent` power, that is, `base<^exponent`.
+ * Returns `base` to the `exponent` power, that is, `base^exponent`.
  * 	
  *
  * #### Example: Using `Math.pow`
  *
- * 	function raisePower(x,y) {
- * 		return Math.pow(x,y)
- * 	}
+ * 	Math.pow(7, 2); // returns 49 == 7 to the power of 2
  *
- * If `x` is 7 and `y` is 2, raisePower returns 49 (7 to the power of 2).
  * 
  * #### See Also
  * * [[Math.exp `exp()`]] 
@@ -434,14 +435,14 @@ Because `log` is a static method of `Math`, you always use it as `Math.log()`, r
  *
  * If no arguments are given, the result is [[Infinity `Infinity`]].
  *
- * If at least one of arguments cannot be converted to a number, the result is [[NaN `NaN`]].
+ * If at least one of arguments can't be converted to a number, the result is [[NaN `NaN`]].
  *
  * #### Example: Using `Math.min`
  *
  * This finds the min of x and y and assigns it to z:
  *
  * 	var x = "10", y = -20;
- * 	var z = Math.min(x, y);
+ * 	var z = Math.min(x, y); // z == -20
  *
  * #### Example: Clipping a value with `Math.min`
  *
@@ -454,8 +455,7 @@ Because `log` is a static method of `Math`, you always use it as `Math.log()`, r
  * may be written as this:
  *
  * 	var x = Math.min(f(foo), boundary);
- *
- *     
+ *    
  **/
 
 /**
@@ -468,30 +468,9 @@ Because `log` is a static method of `Math`, you always use it as `Math.log()`, r
  *  
  * #### Example: Using `Math.random`
  *
- * Note that as numbers in JavaScript are IEEE 754 floating point numbers with round-to-nearest-even behavior, these ranges, excluding the one for `Math.random()` itself, aren't exact, and depending on the bounds it's possible in extremely rare cases (on the order of 1 in 2<sup>62</sup>) to calculate the usually-excluded upper bound.
+ * Note that as numbers in Javascript are IEEE 754 floating point numbers with round-to-nearest-even behavior, these ranges, excluding the one for `Math.random()` itself, aren't exact, and depending on the bounds it's possible in extremely rare cases (on the order of 1 in 2<sup>62</sup>) to calculate the usually-excluded upper bound.
  *     
- * 	// Returns a random number between 0 (inclusive) and 1 (exclusive)
- *     function getRandom()
- *     {
- *       return Math.random();
- *     }
- *             
- *     
- * 	// Returns a random number between min and max
- *     function getRandomArbitary(min, max)
- *     {
- *       return Math.random() * (max - min) + min;
- *     }
- *             
- *     
- * 	// Returns a random integer between min and max
- *     // Using Math.round() will give you a non-uniform distribution!
- *     function getRandomInt(min, max)
- *     {
- *       return Math.floor(Math.random() * (max - min + 1)) + min;
- *     }
- *             
- * 
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=math.random.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -535,16 +514,16 @@ Because `log` is a static method of `Math`, you always use it as `Math.log()`, r
  * #### Example: Using `Math.round`
  *
  *     //Returns the value 20
- *     x=Math.round(20.49)
+ *     var x = Math.round(20.49)
  *     
  *     //Returns the value 21
- *     x=Math.round(20.5)
+ *     x = Math.round(20.5)
  *     
  *     //Returns the value -20
- *     x=Math.round(-20.5)
+ *     x = Math.round(-20.5)
  *     
  *     //Returns the value -21
- *     x=Math.round(-20.51)
+ *     x = Math.round(-20.51)
  *
  * #### See Also
  * * [[Math.ceil `Math.ceil()`]]

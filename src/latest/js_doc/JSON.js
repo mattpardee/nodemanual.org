@@ -6,7 +6,7 @@
  *
  * #### JSON Notation
  *
- * [JSON](www.json.org) is a syntax for serializing objects, arrays, numbers, strings, booleans, and null.  It is based upon JavaScript syntax but is distinct from it: some JavaScript is not JSON, and some JSON is not JavaScript.
+ * [JSON](www.json.org) is a syntax for serializing objects, arrays, numbers, strings, booleans, and null.  It is based upon Javascript syntax but is distinct from it: some Javascript is not JSON, and some JSON is not Javascript.
  *
  * The main differences between standard object and array literal notation and JSON notation are that all property names in a JSON object must be double-quoted strings and that trailing commas in objects and arrays are forbidden.  The main differences between standard number notation and JSON number notation are that in JSON leading zeroes are prohibited and the decimal point in a number must be followed by at least one digit.  The main differences between standard string notation and JSON string notation are that in JSON only a limited set of characters may be escaped in strings, certain control characters are prohibited in strings, the Unicode line separator (U+2028) and paragraph separator (U+2029) characters are permitted, and that strings must be double-quoted.  
  * 
@@ -104,21 +104,22 @@
  *
  * Properties of non-array objects are not guaranteed to be stringified in any particular order. Do not rely on ordering of properties within the same object within the stringification.
  *
- * Boolean, Number, and String objects are converted to the corresponding primitive values during stringification, in accord with the traditional conversion semantics.
+ * [[Boolean `Boolean`]], [[Number `Number`]], and [[String `String`]] objects are converted to the corresponding primitive values during stringification, in accord with the traditional conversion semantics.
  *
  * If `undefined`, a function, or an XML value is encountered during conversion it is either omitted (when it is found in an object) or censored to `null` (when it is found in an array).
  *       
  * 
  * #### The `replacer` parameter
+ *
  * The replacer parameter can be either a function or an array. As a function, it takes two parameters, the key and the value being stringified. Initially it gets called with an empty key representing the object being stringified, and it then gets called for each property on the object or array being stringified. It should return the value that should be added to the JSON string, as follows:
  *
- * * If you return a `[Number]`, the string corresponding to that number is used as the value for the property when added to the JSON string.
- * * If you return a `[String]`, that string is used as the property's value when adding it to the JSON string.
- * * If you return a `[Boolean]`, "true" or "false" is used as the property's value, as appropriate, when adding it to the JSON string.
+ * * If you return a [[Number `Number`]], the string corresponding to that number is used as the value for the property when added to the JSON string.
+ * * If you return a [[String `String`]], that string is used as the property's value when adding it to the JSON string.
+ * * If you return a [[Boolean `Boolean]], `true` or `false` is used as the property's value, as appropriate, when adding it to the JSON string.
  * * If you return any other object, the object is recursively stringified into the JSON string, calling the replacer function on each property, unless the object is a function, in which case nothing is added to the JSON string.
  * * If you return `undefined`, the property is not included in the output JSON string. 
  *
- * <Note>You cannot use the replacer function to remove values from an array. If you return undefined or a function then null is used instead.</Note>
+ * <Note>You can't use the replacer function to remove values from an array. If you return undefined or a function then null is used instead.</Note>
  *
  * #### `space` argument
  *

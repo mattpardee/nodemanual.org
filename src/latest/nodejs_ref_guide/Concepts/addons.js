@@ -3,7 +3,7 @@
 * 
 * Addons are dynamically linked shared objects. They can provide glue to C and C++ libraries. The API (at the moment) is rather complex, involving knowledge of several libraries:
 * 
-*  - V8 JavaScript, a C++ library. Used for interfacing with JavaScript: creating objects, calling functions, etc. These are documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree).
+*  - V8 Javascript, a C++ library. Used for interfacing with Javascript: creating objects, calling functions, etc. These are documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree).
 * 
 *  - [libuv](https://github.com/joyent/libuv), a C event loop library. Anytime one needs to wait for a file descriptor to become readable, wait for a timer, or wait for a signal to received one needs to interface with libuv. That is, if you perform any I/O, libuv needs to be used.
 * 

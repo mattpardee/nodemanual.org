@@ -8,18 +8,15 @@
  *
  * #### Accessing array elements
  *
- * Javascript arrays are zero-indexed; the first element of an array is actually at index 0, and the last element is at the index one less than the value of the array's [[Array.length `length`]] property.
+ * Javascript arrays are zero-indexed; the first element of an array is actually at index 0, and the last element is at the index one less than the value of the array's [[Array.length `length`]] property:
  * 
- * 	var arr = ["this is the first element", "this is the second element"];
- * 	console.log(arr[0]); // prints "this is the first element"
- * 	console.log(arr[1]); // prints "this is the second element"
- * 	console.log(arr[arr.length - 1]); // prints "this is the second element"
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.examples.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
  *	 	
  * Array elements are just object properties, in the way that [[Array.toString `toString()`]] is a property. However, note that trying to access the first element of an array as follows will throw a syntax error:
  * 
  * 	console.log(arr.0);
  *	 	
- * There is nothing unique about Javascript arrays and their properties that causes this. Javascript properties that begin with a digit cannot be referenced with the dot notation. They must be accessed using bracket notation. For example, if you had an object with a property `3d`, it would not be possible to access it using dot notation, either. It, too, would have to be referenced using bracket notation. This similarity is exhibited in the following two code samples:
+ * There is nothing unique about Javascript arrays and their properties that causes this. Javascript properties that begin with a digit can't be referenced with the dot notation. They must be accessed using bracket notation. For example, if you had an object with a property `3d`, it would not be possible to access it using dot notation, either. It, too, would have to be referenced using bracket notation. This similarity is exhibited in the following two code samples:
  * 
  *	var years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
  * 	try {
@@ -83,27 +80,13 @@
  *
  * The following example creates an array, msgArray, with a length of 0, then assigns values to msgArray[0] and msgArray[99], changing the length of the array to 100.
  * 	
- * 	var msgArray = new Array();
- * 	msgArray[0] = "Hello";
- * 	msgArray[99] = "world";
- * 	
- * 	if (msgArray.length == 100)
- * 		print("The length is 100.");
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.examples.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
  *
  * #### Example: Creating a Two-dimensional Array
  *
  * The following creates chess board as a two dimensional array of strings. The first move is made by copying the 'P' in 6,4 to 4,4. The position 4,4 is left blank.
  * 	
- * 	var board = 
- * 	[ ['R','N','B','Q','K','B','N','R'],
- * 	  ['P','P','P','P','P','P','P','P'],
- * 	  [' ',' ',' ',' ',' ',' ',' ',' '],
- * 	  [' ',' ',' ',' ',' ',' ',' ',' '],
- * 	  [' ',' ',' ',' ',' ',' ',' ',' '],
- * 	  [' ',' ',' ',' ',' ',' ',' ',' '],
- * 	  ['p','p','p','p','p','p','p','p'],
- * 	  ['r','n','b','q','k','b','n','r']];
- * 	print(board.join('\n') + '\n\n');
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.examples.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	
  * 	// Move King's Pawn forward 2
  * 	board[4][4] = board[6][4];
@@ -161,11 +144,7 @@
  *
  * In the following example the array numbers is iterated through by looking at the length property to see how many elements it has. Each value is then doubled.
  * 	 
- * 	var numbers = [1,2,3,4,5];
- * 	for (var i = 0; i < numbers.length; i++) {
- * 	  numbers[i] *= 2;
- * 	}
- * 	// numbers is now [2,4,6,8,10];
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.length.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	
  * #### Example: Shortening an array 
  *   
@@ -218,25 +197,7 @@
  *
  *  In the following example, `slice()` creates a new array, `newCar`, from `myCar`. Both include a reference to the object `myHonda`. When the color of `myHonda` is changed to purple, both arrays reflect the change.
  * 	
- * 	// Using slice, create newCar from myCar.
- * 	var myHonda = { color: "red", wheels: 4, engine: { cylinders: 4, size: 2.2 } };
- * 	var myCar = [myHonda, 2, "cherry condition", "purchased 1997"];
- * 	var newCar = myCar.slice(0, 2);
- * 	
- * 	// Print the values of myCar, newCar, and the color of myHonda
- * 	//  referenced from both arrays.
- * 	print("myCar = " + myCar.toSource());
- * 	print("newCar = " + newCar.toSource());
- * 	print("myCar[0].color = " + myCar[0].color);
- * 	print("newCar[0].color = " + newCar[0].color);
- * 	
- * 	// Change the color of myHonda.
- * 	myHonda.color = "purple";
- * 	print("The new color of my Honda is " + myHonda.color);
- * 	
- * 	// Print the color of myHonda referenced from both arrays.
- * 	print("myCar[0].color = " + myCar[0].color);
- * 	print("newCar[0].color = " + newCar[0].color);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.slice.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	
  * This script writes:
  * 	
@@ -263,22 +224,13 @@
  * 	
  * The following example uses indexOf to locate values in an array.
  * 	
- * 	var array = [2, 5, 9];
- * 	var index = array.indexOf(2);
- * 	// index is 0
- * 	index = array.indexOf(7);
- * 	// index is -1
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.indexof.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *		 	
  * #### Example: Finding all the occurrences of an element
  *
  * The following example uses indexOf to find all the indices of an element in a given array, using push to add them to another array as they are found.
  * 	 
- * 	var indices = [];
- * 	var idx = array.indexOf(element);
- * 	while (idx != -1) {
- *	 	indices.push(idx);
- *	 	idx = array.indexOf(element, idx + 1);
- * 	}
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.indexof.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *		 	
  * #### See also
  * 
@@ -291,7 +243,7 @@
  * 	
  * Mutates an array by appending the given elements to the end of an array and returning its new length.
  *  
- * `push()` is intentionally generic. This method can be called or applied to objects resembling arrays. The `push()` method relies on a `length` property to determine where to start inserting the given values. If the `length` property cannot be converted into a number, the index used is 0. This includes the possibility of length being nonexistent, in which case length will also be created.
+ * `push()` is intentionally generic. This method can be called or applied to objects resembling arrays. The `push()` method relies on a `length` property to determine where to start inserting the given values. If the `length` property can't be converted into a number, the index used is 0. This includes the possibility of length being nonexistent, in which case length will also be created.
  * The only native, array-like objects are strings, although they are not suitable in applications of this method, as strings are immutable.
  *
  * #### Example: Adding elements to an array
@@ -306,6 +258,7 @@
  * The new length property of the object upon which the method was called.
  *   
  * #### See Also
+ *
  * * [[Array.pop `pop()`]] 
  * * [[Array.shift `shift()`]]
  * * [[Array.unshift `unshift()`]]
@@ -328,37 +281,7 @@
  *
  * The following script illustrate the use of splice:
  * 	
- * 	// assumes a print function is defined
- * 	var myFish = ["angel", "clown", "mandarin", "surgeon"];
- * 	print("myFish: " + myFish);
- * 	
- * 	var removed = myFish.splice(2, 0, "drum");
- * 	print("After adding 1, " + myFish);
- * 	print("removed is: " + removed);
- * 	
- * 	removed = myFish.splice(3, 1);
- * 	print("After removing 1, " + myFish);
- * 	print("removed is: " + removed);
- * 	
- * 	removed = myFish.splice(2, 1, "trumpet");
- * 	print("After replacing 1, " + myFish);
- * 	print("removed is: " + removed);
- * 	
- * 	removed = myFish.splice(0, 2, "parrot", "anemone", "blue");
- * 	print("After replacing 2, " + myFish);
- * 	print("removed is: " + removed);
- *		 	
- * This script displays:
- *
- * 	myFish: angel,clown,mandarin,surgeon
- * 	After adding 1, angel,clown,drum,mandarin,surgeon
- * 	removed is: 
- * 	After removing 1, angel,clown,drum,surgeon
- * 	removed is: mandarin
- * 	After replacing 1, angel,clown,trumpet,surgeon
- * 	removed is: drum
- * 	After replacing 2, parrot,anemone,blue,trumpet,surgeon
- * 	removed is: angel,clown
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.splice.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	
  * #### Returns
  *
@@ -405,6 +328,7 @@
 undefined
  *
  * #### Example: Removing the last element of an array
+ *
  *  The following code creates the myFish array containing four elements, then removes its last element.
  * 	
  * 	myFish = ["angel", "clown", "mandarin", "surgeon"];
@@ -454,12 +378,7 @@ undefined
  * #### Example: Removing an element from an array
  * The following code displays the `myFish` array before and after removing its first element. It also displays the removed element:
  * 	
- * 	// assumes a println function is defined
- * 	var myFish = ["angel", "clown", "mandarin", "surgeon"];
- * 	println("myFish before: " + myFish);
- * 	var shifted = myFish.shift();
- * 	println("myFish after: " + myFish);
- * 	println("Removed this element: " + shifted);
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.shift.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	
  * This example displays the following:
  * 	
@@ -521,79 +440,8 @@ undefined
  *
  * The following example creates four arrays and displays the original array, then the sorted arrays. The numeric arrays are sorted without, then with, a compare function.
  * 	
- * 	var stringArray = ["Blue", "Humpback", "Beluga"];
- * 	var numericStringArray = ["80", "9", "700"];
- * 	var numberArray = [40, 1, 5, 200];
- * 	var mixedNumericArray = ["80", "9", "700", 40, 1, 5, 200];
- * 	
- * 	function compareNumbers(a, b)
- * 	{
- * 	  return a - b;
- * 	}
- * 	
- * 	// again, assumes a print function is defined
- * 	print("stringArray: " + stringArray.join() +"\n");
- * 	print("Sorted: " + stringArray.sort() +"\n\n");
- * 	
- * 	print("numberArray: " + numberArray.join() +"\n");
- * 	print("Sorted without a compare function: " + numberArray.sort() +"\n");
- * 	print("Sorted with compareNumbers: " + numberArray.sort(compareNumbers) +"\n\n");
- * 	
- * 	print("numericStringArray: " + numericStringArray.join() +"\n");
- * 	print("Sorted without a compare function: " + numericStringArray.sort() +"\n");
- * 	print("Sorted with compareNumbers: " + numericStringArray.sort(compareNumbers) +"\n\n");
- * 	
- * 	print("mixedNumericArray: " + mixedNumericArray.join() +"\n");
- * 	print("Sorted without a compare function: " + mixedNumericArray.sort() +"\n");
- * 	print("Sorted with compareNumbers: " + mixedNumericArray.sort(compareNumbers) +"\n\n");
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.sort.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *		 	
- * This example produces the following output. As the output shows, when a compare function is used, numbers sort correctly whether they are numbers or numeric strings.
- * 	
- * 	stringArray: Blue,Humpback,Beluga
- * 	Sorted: Beluga,Blue,Humpback
- * 	
- * 	numberArray: 40,1,5,200
- * 	Sorted without a compare function: 1,200,40,5
- * 	Sorted with compareNumbers: 1,5,40,200
- * 	
- * 	numericStringArray: 80,9,700
- * 	Sorted without a compare function: 700,80,9
- * 	Sorted with compareNumbers: 9,80,700
- * 	
- * 	mixedNumericArray: 80,9,700,40,1,5,200
- * 	Sorted without a compare function: 1,200,40,5,700,80,9
- * 	Sorted with compareNumbers: 1,5,9,40,80,200,700
- * 	
- * #### Example: Creating, displaying, and sorting an array
- *
- * The following example creates four arrays and displays the original array, then the sorted arrays. The numeric arrays are sorted without, then with, a compare function.
- *  
- * 	var stringArray = ["Blue", "Humpback", "Beluga"];
- * 	var numericStringArray = ["80", "9", "700"];
- * 	var numberArray = [40, 1, 5, 200];
- * 	var mixedNumericArray = ["80", "9", "700", 40, 1, 5, 200];
- *  
- * 	function compareNumbers(a, b)
- * 	{
- *		return a - b;
- * 	}
- *  
- * 	// again, assumes a print function is defined
- * 	print("stringArray: " + stringArray.join() +"\n");
- * 	print("Sorted: " + stringArray.sort() +"\n\n");
- * 	
- * 	print("numberArray: " + numberArray.join() +"\n");
- * 	print("Sorted without a compare function: " + numberArray.sort() +"\n");
- * 	print("Sorted with compareNumbers: " + numberArray.sort(compareNumbers) +"\n\n");
- * 	
- * 	print("numericStringArray: " + numericStringArray.join() +"\n");
- * 	print("Sorted without a compare function: " + numericStringArray.sort() +"\n");
- * 	print("Sorted with compareNumbers: " + numericStringArray.sort(compareNumbers) +"\n\n");
- * 	
- * 	print("mixedNumericArray: " + mixedNumericArray.join() +"\n");
- * 	print("Sorted without a compare function: " + mixedNumericArray.sort() +"\n");
- * 	print("Sorted with compareNumbers: " + mixedNumericArray.sort(compareNumbers) +"\n\n");
- *	 	 
  * This example produces the following output. As the output shows, when a compare function is used, numbers sort correctly whether they are numbers or numeric strings.
  * 	
  * 	stringArray: Blue,Humpback,Beluga
@@ -640,7 +488,8 @@ undefined
  * 	var alpha = ["a", "b", "c"];
  * 	var numeric = [1, 2, 3];
  * 	
- * 	// creates array ["a", "b", "c", 1, 2, 3]; alpha and numeric are unchanged
+ * 	// creates array ["a", "b", "c", 1, 2, 3]; 
+ * 	// alpha and numeric are unchanged
  * 	var alphaNumeric = alpha.concat(numeric);
  *		 	
  * 	
@@ -652,7 +501,8 @@ undefined
  * 	var num2 = [4, 5, 6];
  * 	var num3 = [7, 8, 9];
  * 	
- *	// creates array [1, 2, 3, 4, 5, 6, 7, 8, 9]; num1, num2, num3 are unchanged
+ *	// creates array [1, 2, 3, 4, 5, 6, 7, 8, 9]; 
+ * 	// num1, num2, num3 are unchanged
  *	var nums = num1.concat(num2, num3);
  *		 	
  *	
@@ -678,13 +528,8 @@ undefined
  *
  * 	The following code displays the `myFish` array before and after adding elements to it.
  * 	
- * 	// assumes a println function exists
- * 	myFish = ["angel", "clown"];
- * 	println("myFish before: " + myFish);
- * 	unshifted = myFish.unshift("drum", "lion");
- * 	println("myFish after: " + myFish);
- * 	println("New length: " + unshifted);
- * 	
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.unshift.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ *
  * 	This example displays the following:
  * 	
  * 	myFish before: ["angel", "clown"]
@@ -750,7 +595,7 @@ undefined
  * 		while (idx!= -1)
  * 		{
  * 	 	 indices.push(idx);
- * 	 	 idx = (idx > 0&nbsp;? array.lastIndexOf(element, idx - 1)&nbsp;: -1);
+ * 	 	 idx = (idx > 0 ? array.lastIndexOf(element, idx - 1) : -1);
  * 		}
  * 	
  * 	Note that we have to handle the case `idx == 0, separately here because the element will always be found regardless of the `fromIndex` parameter if it is the first element of the array. This is different from the [[Array.indexOf `Array.indexOf()`]] method.
@@ -779,13 +624,10 @@ undefined
  * The range of elements processed by `filter` is set before the first invocation of `callback`. Elements which are appended to the array after the call to `filter` begins will not be visited by `callback`. If existing elements of the array are changed, or deleted, their value as passed to `callback` will be the value at the time `filter` visits them; elements that are deleted are not visited.
  *
  * #### Example: Filtering out all small values
+ *
  * The following example uses `filter` to create a filtered array that has all elements with values less than 1, removed.
  * 	
- * 	function isBigEnough(element, index, array) {
- * 	  return (element >= 10);
- * 	}
- * 	var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
- * 	// filtered is [12, 130, 44]
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.filter.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *		
  **/
 
@@ -806,16 +648,10 @@ undefined
  * The range of elements processed by `forEach` is set before the first invocation of `callback`. Elements which are appended to the array after the call to `forEach` begins will not be visited by `callback`. If existing elements of the array are changed, or deleted, their value as passed to `callback` will be the value at the time `forEach` visits them; elements that are deleted are not visited.
  *
  * #### Example: Printing the contents of an array
+ *
  *  The following code logs a line for each element in an array:
  *  
- * 		function logArrayElements(element, index, array) {
- * 	 		console.log("a[" + index + "] = " + element);
- * 		}
- * 		[2, 5, 9].forEach(logArrayElements);
- * 		// logs:
- * 		// a[0, = 2
- * 		// a[1, = 5
- * 		// a[2, = 9
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.foreach.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *	
  * #### Example: An object copy function
  *
@@ -891,18 +727,11 @@ undefined
  * #### Example: Pluralizing the words (strings) in an array
  *
  * 	The following code creates an array of "plural" forms of nouns from an array of their singular forms.
- * 	
- * 		function fuzzyPlural(single) {
- * 	 	 return single.replace(/o/g, 'e');
- * 		}
- * 	
- * 		var words = ["foot", "goose", "moose"];
- * 		console.log(words.map(fuzzyPlural));
- * 	
- * 		// ["feet", "geese", "meese"]
- *			 	
+ * 
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.map.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>			 	
  * 	
  * #### Example: Mapping an array of numbers to an array of square roots
+ *
  * 	The following code takes an array of numbers and creates a new array containing the square roots of the numbers in the first array.
  * 	
  * 		var numbers = [1, 4, 9];
@@ -918,7 +747,8 @@ undefined
  * 		// a now equals [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
  *		 	
  * #### Tricky use case
- *  This section is inspired by [this blog post](http://www.wirfs-brock.com/allen/posts/16, "http://www.wirfs-brock.com/allen/posts/166").
+ *
+ *  This section is inspired by [this blog post](http://www.wirfs-brock.com/allen/posts/166).
  *
  *  It is common to use the callback with one argument (the element being traversed). Some functions are also commonly used with one argument. These habits may lead to confusing behaviors.
  *  
@@ -930,7 +760,6 @@ undefined
  *  	// parseInt is often used with one argument, but takes two. The second being the radix
  *  	// To the callback function, Array.prototype.map passes 3 arguments: the element, the index, the array
  *  	// The third argument is ignored by parseInt, but not the second one, hence the possible confusion.
- *  	// See the blog post for more details
  *	 	
  **/
 
@@ -1036,20 +865,15 @@ undefined
  *	 
  * #### Example: Sum up all values within an array
  * 		
- * 		var total = [0, 1, 2, 3].reduceRight(function(a, b) {
- *	 	return a + b;
- * 		});
- * 		// total == 6
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.reduceright.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *		 	
  * 	
  * #### Example: Flatten an array of arrays
  * 	
- * 		var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
- *	 		return a.concat(b);
- * 		}, []);
- * 		// flattened is [4, 5, 2, 3, 0, 1]
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.reduceright.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *	
  * #### See Also
+ *
  *  * [[Array.reduce `reduce()`]]
  * 
  **/
@@ -1089,22 +913,17 @@ undefined
 </table>
  *
  * The value returned by `reduce` this time would be, of course, `20`.
+ *
  * #### Example: Sum up all values within an array
  * 	
- * 	var total = [0, 1, 2, 3].reduce(function(a, b) {
- *	 	return a + b;
- * 	});
- * 	// total == 6
- *		 	
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.reduce.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 	
  * #### Example: Flatten an array of arrays
  * 	
- * 	var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
- *	 	return a.concat(b);
- * 	});
- * 	// flattened is [0, 1, 2, 3, 4, 5]
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=array.reduce.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  *		
  * #### See Also
+ *
  * * [[Array.reduceRight `reduceRight()`]]
  *  
  **/

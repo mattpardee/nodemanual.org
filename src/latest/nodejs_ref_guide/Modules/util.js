@@ -143,7 +143,7 @@
  * 
  * As an additional convenience, `superConstructor` is accessible through the `constructor.super_` property.
  *
- * For more information, see the MDN [`constructor`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor) documentation.
+ * For more information, see the MDN [`constructor`](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/Object/constructor) documentation.
  * 
  * #### Example
  * 

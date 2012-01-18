@@ -9,13 +9,13 @@
  *
  * If `parseInt()` encounters a character that is not a numeral in the specified radix, it ignores it and all succeeding characters and returns the integer value parsed up to that point. parseInt truncates numbers to integer values. Leading and trailing spaces are allowed.
  *
- * If radix is undefined or 0, JavaScript assumes the following:
+ * If radix is undefined or 0, Javascript assumes the following:
  *
  * * If the input string begins with "0x" or "0X", radix is 16 (hexadecimal)
  * * If the input string begins with "0", radix is eight (octal). This feature is non-standard, and some implementations deliberately do not support it (instead using the radix 10). For this reason always specify a radix when using parseInt.
  * * If the input string begins with any other value, the radix is 10 (decimal).
  *
- * If the first character cannot be converted to a number, parseInt returns `NaN`.
+ * If the first character can't be converted to a number, parseInt returns `NaN`.
  *
  * For arithmetic purposes, the NaN value is not a number in any radix. You can call the [[NaN `isNaN()`]] function to determine if the result of parseFloat is `NaN`. If `NaN` is passed on to arithmetic operations, the operation results will also be `NaN`.
  *

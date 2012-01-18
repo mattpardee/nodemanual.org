@@ -40,7 +40,7 @@ There are a few rules to remember when dealing with data in the JSON format:
 
 These are all examples of valid JSON.
 
-    {"name":"John Doe","age":32,"title":"Vice President of JavaScript"}
+    {"name":"John Doe","age":32,"title":"Vice President of Javascript"}
 
     ["one", "two", "three"]
 

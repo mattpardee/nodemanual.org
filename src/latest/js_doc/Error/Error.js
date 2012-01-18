@@ -57,27 +57,7 @@
  *
  * The Error object can be extended to create Error Types for your project.
  * 
- * 	// Create a new object, that prototypally inherits from the Error constructor.
- * 	function MyError(message) {
- *     this.name = "MyError";
- *     this.message = message || "Default Message";
- * 	}
- * 	MyError.prototype = new Error();
- * 	MyError.prototype.constructor = MyError;
- * 
- * 	try {
- *     throw new MyError();
- * 	} catch (e) {
- *     console.log(e.name);     // "MyError"
- *     console.log(e.message);  // "Default Message"
- * 	}
- * 
- * 	try {
- *     throw new MyError("custom message");
- * 	} catch (e) {
- *     console.log(e.name);     // "MyError"
- *     console.log(e.message);  // "custom message"
- * 	}
+ * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
  * 
  **/
 
@@ -119,9 +99,10 @@
  *
  * Each step will be separated by a newline, with the first part of the line being the function name (if not a call from the global scope), followed by the argument values converted to string in parentheses, then by an at (@) sign, the file location (except when the function is the error constructor as the error is being thrown), a colon, and, if there is a file location, the line number. (Note the Error object also possesses the fileName and lineNumber properties for retrieving these from the error thrown (but only the error, and not its trace).)
  *
- * While an object (or array, etc.) will appear in the converted form "[object Object]", and as such cannot be evaluated back into the actual objects, scalar values can be retrieved (though it may be easier to use arguments.callee.caller.arguments, as could the function name be retrieved by arguments.callee.caller.name). "undefined" is listed as "(void 0)". Note that if string arguments are passed in with values such as "@", "(", ")" (or if in file names), you cannot easily rely on these for breaking the line into its component parts.
+ * While an object (or array, etc.) will appear in the converted form "[object Object]", and as such can't be evaluated back into the actual objects, scalar values can be retrieved (though it may be easier to use arguments.callee.caller.arguments, as could the function name be retrieved by arguments.callee.caller.name). "undefined" is listed as "(void 0)". Note that if string arguments are passed in with values such as "@", "(", ")" (or if in file names), you can't easily rely on these for breaking the line into its component parts.
  *
  * #### Example
+ *
  * The following HTML markup demonstrates the use of `stack` property.
  * 
  * 	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -170,7 +151,7 @@
  *
  * Note that when creating a string representation of the `name` and `message` properties, this method does not invoke those properties' `toString` methods. If the value in either of these properties is not already a string, this method will behave as if that property contained an empty string.
  *
- * #Example
+ * #### Example
  * 
  * 	var e = new Error("fatal error");
  * 	e.toString(); // returns "Error: fatal error"
