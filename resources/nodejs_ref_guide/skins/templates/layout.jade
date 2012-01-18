@@ -45,7 +45,7 @@ body(onload="styleCode()")
                         a(href="http://nodebits.org/") Nodebits
         ul.nav
           li#node_js_ref
-            a(href='#{dirPrefix}nodejs_ref_guide/latest/index.html') Node JS Reference
+            a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node JS Reference
           li#nodejs_dev_guide
             a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node JS Manual
           li#js_doc
@@ -75,6 +75,7 @@ body(onload="styleCode()")
         .span11
           for obj in tree.children
             .members
+              .membersContent
                   h1.memberHeader
                     -var heading = obj.path.replace(/_/g," ")
                     span.name #{heading}

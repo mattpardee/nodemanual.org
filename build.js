@@ -5,40 +5,20 @@ var argv = require("optimist").argv,
     fs = require('fs');
     
 var version = argv._[0];
-
-var type = "nodejs_dev_guide";
-var outDir = "out/nodejs_dev_guide";
-
+var versions = [];
 var latest = "0.6.7";
 
-var versionError;
+//var outDir = "out/nodejs_dev_guide";
+
 
     console.log("GENERATING DOCUMENTATION".green);
-    
-    docs.clean("tmp");
-    docs.clean("out");
-    docs.clean(outDir);
-    docs.copyassets(outDir, type);
-    docs.generate(outDir, process.cwd() + "/src/" + type, type);
 
     var util = require('util'),
         exec = require('child_process').exec,
         child;
 
-    exec('node ./build/ndoc/bin/ndoc --path=./src/js_doc -o ./out/js_doc -t "Javascript Reference" --skin ./resources/nodejs_ref_guide/skins',
-      function (error, stdout, stderr) {
-        console.log(stdout);
-
-        if (error !== null) {
-            var errMsg = 'exec error: ' + error;
-            console.log(errMsg.red);
-            process.exit(1);
-        }
-    });
-
-    ls = exec('ls ./src/nodejs_ref_guide');
+    ls = exec('ls ./src/');
     ls.stdout.on('data', function (data) {
-        var versions = [];
         if ("latest" == version)
         {
             versions.push("latest");
@@ -53,9 +33,50 @@ var versionError;
             versions.pop(); // remove bogus "." dir
         }  
 
+        makeManualDocs(versions);
+        makeJSRefDocs(versions);
+        makeNodeJSRefDocs(versions);
+      
+    });
+
+function makeManualDocs(versions)
+{
         versions.forEach(function (element, index, array)
         {
-            exec('node ./build/ndoc/bin/ndoc --path=./src/nodejs_ref_guide/' + array[index] + ' -o ./out/nodejs_ref_guide/' + array[index] + ' -t "Node.js Reference" --skin ./resources/nodejs_ref_guide/skins',
+            var outDir = "out/" + element;
+
+            docs.clean("tmp");
+            docs.clean(outDir + "/nodejs_dev_guide");
+
+            docs.copyassets(outDir, "nodejs_dev_guide");
+            docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + element + "/nodejs_dev_guide/", "nodejs_dev_guide");
+
+        });    
+}
+
+function makeJSRefDocs(versions)
+{
+        versions.forEach(function (element, index, array)
+        {
+            exec('node ./build/ndoc/bin/ndoc --path=./src/' + element + '/js_doc -o ./out/' + element + '/js_doc/' + ' -t "Node.js Reference" --skin ./resources/nodejs_ref_guide/skins',
+                function (error, stdout, stderr) {
+                
+                console.log(stdout);
+                
+                if (error !== null) {
+                    var errMsg = 'exec error: ' + error;
+                    console.log(errMsg.red);
+                    process.exit(1);
+                }
+            });
+        });   
+}
+
+function makeNodeJSRefDocs(versions)
+{
+        versions.forEach(function (element, index, array)
+        {
+            exec('node ./build/ndoc/bin/ndoc --path=./src/' + element + '/nodejs_ref_guide -o ./out/' + element + '/nodejs_ref_guide/' + ' -t "Node.js Reference" --skin ./resources/nodejs_ref_guide/skins',
                 function (error, stdout, stderr) {
                 
                 console.log(stdout);
@@ -69,5 +90,5 @@ var versionError;
                 if (index == array.length - 1)
                     console.log("All Done!".green);
             });
-        });      
-    });
+        }); 
+}

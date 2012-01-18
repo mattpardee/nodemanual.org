@@ -1,0 +1,817 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Node.js Reference</title><meta name="generator" content="ndoc"><meta name="description" content=""><meta name="author" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><!-- CSS--><link rel="stylesheet" href="../resources/csses/bootstrap.css"><link rel="stylesheet" href="../resources/csses/prettify.css"><link rel="stylesheet" href="../resources/csses/refguide_overrides.css"><!-- end CSS--><script src="../resources/javascripts/jquery.js"></script><script src="../resources/javascripts/clicker.js"></script><script src="../resources/javascripts/jquery.collapse.js"></script><script src="../resources/javascripts/jquery.cookie.js"></script><script src="../resources/javascripts/bootstrap-dropdown.js"></script></head><body onload="styleCode()"><div class="topbar"><div class="fill"><div id="topSection" class="container"><ul class="nav"><li data-dropdown="dropdown" class="dropdown"><a href="#" class="dropdown-toggle brand"></a><ul class="dropdown-menu"><li><a href="http://nodebits.org/">Nodebits</a></li></ul></li></ul><ul class="nav"><li id="node_js_ref"><a href="../nodejs_ref_guide/index.html">Node JS Reference</a></li><li id="nodejs_dev_guide"><a href="../nodejs_dev_guide/index.html">Node JS Manual</a></li><li id="js_doc"><a href="../js_doc/index.html">Javascript Reference</a></li></ul><form id="searchbox" action="" class="pull-right"><input name="query" type="text" placeholder="Search Documentation" title="Search across all the documentation types" class="span3"></form></div></div></div><header id="overview" class="jumbotron masthead"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-sponsor"></a><div class="inner"><div class="container"><h1>Javascript Reference</h1><p class="lead"></p></div></div></header><div class="container"><div class="content"><div class="row container"><div class="span5 offset4 sidebarContainer"><div id="sidebar"><div id="well"><h2>Javascript Reference</h2><h3>Modules</h3><ul class="menu"><li><div class="menu-item"><a href="Array.html" class="menuLink namespace">Array</a></div></li><li><div class="menu-item"><a href="Boolean.html" class="menuLink namespace">Boolean</a></div></li><li><div class="menu-item"><a href="Date.html" class="menuLink namespace">Date    </a></div></li><li><div class="menu-item"><a href="Error.html" class="menuLink namespace">Error</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="EvalError.html" class="menuLink class">EvalError</a></div></li><li><div class="menu-item"><a href="RangeError.html" class="menuLink class">RangeError   </a></div></li><li><div class="menu-item"><a href="ReferenceError.html" class="menuLink class">ReferenceError</a></div></li><li><div class="menu-item"><a href="SyntaxError.html" class="menuLink class">SyntaxError    </a></div></li><li><div class="menu-item"><a href="TypeError.html" class="menuLink class">TypeError</a></div></li><li><div class="menu-item"><a href="URIError.html" class="menuLink class">URIError                                                          </a></div></li></ul></li><li><div class="menu-item"><a href="Function.html" class="menuLink namespace">Function</a></div></li><li><div class="menu-item"><a href="Infinity.html" class="menuLink namespace">Infinity</a></div></li><li><div class="menu-item"><a href="JSON.html" class="menuLink namespace">JSON</a></div></li><li><div class="menu-item"><a href="Math.html" class="menuLink namespace">Math                        </a></div></li><li><div class="menu-item"><a href="NaN.html" class="menuLink namespace">NaN               </a></div></li><li><div class="menu-item"><a href="Number.html" class="menuLink namespace">Number          </a></div></li><li><div class="menu-item"><a href="Object.html" class="menuLink namespace">Object           </a></div></li><li><div class="menu-item"><a href="parseFloat.html" class="menuLink namespace">parseFloat</a></div></li><li><div class="menu-item"><a href="parseInt.html" class="menuLink namespace">parseInt</a></div></li><li><div class="menu-item"><a href="RegExp.html" class="menuLink namespace">RegExp</a></div></li><li><div class="menu-item"><a href="String.html" class="menuLink namespace">String</a></div></li></ul></div></div></div><div class="span11"><div class="members"><div class="membersContent"><h1 class="memberHeader"><span class="name">Object</span></h1><ul data-tabs="tabs" class="tabs"><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"><a href="#" class="dropdown-toggle"><span>Constructors (1)</span></a><ul class="dropdown-menu"><li data-id="new Object" class="memberLink"><a href="../js_doc/Object.html#Object.new" class="" title="new Object (constructor)" data-id="new Object">new</a>                                
+</li></ul></li><li data-dropdown="dropdown" class="dropdown"><a href="#" class="dropdown-toggle"><span>Functions (24)</span></a><ul class="dropdown-menu double"><li data-id="Object.__defineGetter__" class="memberLink"><a href="../js_doc/Object.html#Object.__defineGetter__" class="" title="Object.__defineGetter__ (class method)" data-id="Object.__defineGetter__">__defineGetter__</a>                            
+</li><li data-id="Object.__defineSetter__" class="memberLink"><a href="../js_doc/Object.html#Object.__defineSetter__" class="" title="Object.__defineSetter__ (class method)" data-id="Object.__defineSetter__">__defineSetter__</a>                            
+</li><li data-id="Object.__lookupGetter__" class="memberLink"><a href="../js_doc/Object.html#Object.__lookupGetter__" class="" title="Object.__lookupGetter__ (class method)" data-id="Object.__lookupGetter__">__lookupGetter__</a>                            
+</li><li data-id="Object.__lookupSetter__" class="memberLink"><a href="../js_doc/Object.html#Object.__lookupSetter__" class="" title="Object.__lookupSetter__ (class method)" data-id="Object.__lookupSetter__">__lookupSetter__</a>                            
+</li><li data-id="Object.create" class="memberLink"><a href="../js_doc/Object.html#Object.create" class="" title="Object.create (class method)" data-id="Object.create">create</a>                            
+</li><li data-id="Object.defineProperties" class="memberLink"><a href="../js_doc/Object.html#Object.defineProperties" class="" title="Object.defineProperties (class method)" data-id="Object.defineProperties">defineProperties</a>                            
+</li><li data-id="Object.defineProperty" class="memberLink"><a href="../js_doc/Object.html#Object.defineProperty" class="" title="Object.defineProperty (class method)" data-id="Object.defineProperty">defineProperty</a>                            
+</li><li data-id="Object.freeze" class="memberLink"><a href="../js_doc/Object.html#Object.freeze" class="" title="Object.freeze (class method)" data-id="Object.freeze">freeze</a>                            
+</li><li data-id="Object.getOwnPropertyDescriptor" class="memberLink"><a href="../js_doc/Object.html#Object.getOwnPropertyDescriptor" class="" title="Object.getOwnPropertyDescriptor (class method)" data-id="Object.getOwnPropertyDescriptor">getOwnPropertyDescriptor</a>                            
+</li><li data-id="Object.getOwnPropertyNames" class="memberLink"><a href="../js_doc/Object.html#Object.getOwnPropertyNames" class="" title="Object.getOwnPropertyNames (class method)" data-id="Object.getOwnPropertyNames">getOwnPropertyNames</a>                            
+</li><li data-id="Object.getPrototypeOf" class="memberLink"><a href="../js_doc/Object.html#Object.getPrototypeOf" class="" title="Object.getPrototypeOf (class method)" data-id="Object.getPrototypeOf">getPrototypeOf</a>                            
+</li><li data-id="Object.hasOwnProperty" class="memberLink"><a href="../js_doc/Object.html#Object.hasOwnProperty" class="" title="Object.hasOwnProperty (class method)" data-id="Object.hasOwnProperty">hasOwnProperty</a>                            
+</li><li data-id="Object.isExtensible" class="memberLink"><a href="../js_doc/Object.html#Object.isExtensible" class="" title="Object.isExtensible (class method)" data-id="Object.isExtensible">isExtensible</a>                            
+</li><li data-id="Object.isFrozen" class="memberLink"><a href="../js_doc/Object.html#Object.isFrozen" class="" title="Object.isFrozen (class method)" data-id="Object.isFrozen">isFrozen</a>                            
+</li><li data-id="Object.isPrototypeOf" class="memberLink"><a href="../js_doc/Object.html#Object.isPrototypeOf" class="" title="Object.isPrototypeOf (class method)" data-id="Object.isPrototypeOf">isPrototypeOf</a>                            
+</li><li data-id="Object.isSealed" class="memberLink"><a href="../js_doc/Object.html#Object.isSealed" class="" title="Object.isSealed (class method)" data-id="Object.isSealed">isSealed</a>                            
+</li><li data-id="Object.keys" class="memberLink"><a href="../js_doc/Object.html#Object.keys" class="" title="Object.keys (class method)" data-id="Object.keys">keys</a>                            
+</li><li data-id="Object.preventExtensions" class="memberLink"><a href="../js_doc/Object.html#Object.preventExtensions" class="" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions">preventExtensions</a>                            
+</li><li data-id="Object.propertyIsEnumerable" class="memberLink"><a href="../js_doc/Object.html#Object.propertyIsEnumerable" class="" title="Object.propertyIsEnumerable (class method)" data-id="Object.propertyIsEnumerable">propertyIsEnumerable</a>                            
+</li><li data-id="Object.seal" class="memberLink"><a href="../js_doc/Object.html#Object.seal" class="" title="Object.seal (class method)" data-id="Object.seal">seal</a>                            
+</li><li data-id="Object.toLocaleString" class="memberLink"><a href="../js_doc/Object.html#Object.toLocaleString" class="" title="Object.toLocaleString (class method)" data-id="Object.toLocaleString">toLocaleString</a>                            
+</li><li data-id="Object.toSource" class="memberLink"><a href="../js_doc/Object.html#Object.toSource" class="" title="Object.toSource (class method)" data-id="Object.toSource">toSource</a>                            
+</li><li data-id="Object.toString" class="memberLink"><a href="../js_doc/Object.html#Object.toString" class="" title="Object.toString (class method)" data-id="Object.toString">toString</a>                            
+</li><li data-id="Object.valueOf" class="memberLink"><a href="../js_doc/Object.html#Object.valueOf" class="" title="Object.valueOf (class method)" data-id="Object.valueOf">valueOf</a>                            
+</li></ul></li><li data-dropdown="dropdown" class="dropdown"><a href="#" class="dropdown-toggle"><span>Properties (3)   </span></a><ul class="dropdown-menu"><li data-id="Object.__noSuchMethod__" class="memberLink"><a href="../js_doc/Object.html#Object.__noSuchMethod__" class="" title="Object.__noSuchMethod__ (class property)" data-id="Object.__noSuchMethod__">__noSuchMethod__</a>                                
+</li><li data-id="Object.constructor" class="memberLink"><a href="../js_doc/Object.html#Object.constructor" class="" title="Object.constructor (class property)" data-id="Object.constructor">constructor</a>                                
+</li><li data-id="Object.proto" class="memberLink"><a href="../js_doc/Object.html#Object.proto" class="" title="Object.proto (class property)" data-id="Object.proto">proto</a>                                
+</li></ul></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li></ul></div></div><div id="content"><article id="Object" data-title="Object (class)" class="article"><div class="section description"><div class="memberContent"><p>All objects in Javascript are descended from <code>Object</code>; all objects inherit methods and properties from <code>Object.prototype</code>, although they may be overridden. For example, other constructors&apos; prototypes override the constructor property and provide their own <code>toString()</code> methods. Changes to the Object prototype object are propagated to all objects unless the properties and methods subject to those changes are overridden further along the prototype chain.</p></div></div></article><h3 class="sectionHeader">Constructors</h3><article id="Object.new" data-title="new Object (constructor)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call">new <span id="new Object" class="member-name methodClicker">Object</span>([<a href="../js_doc/Object.html">Object</a> value])</li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_new Object" class="ellipsis_description"><p>Creates an object wrapper.
+ ...</p></div><div id="short_new Object" class="short_description hiddenSpan"><p>Creates an object wrapper.</p></div><h3 id="new Object" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>value
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Optional. Any value</p></td>  
+</tr></tbody></table><h4>Description</h4><p>The Object constructor creates an object wrapper for the given value. If the value is <code>null</code> or <code>undefined</code>, it will create and return an empty object, otherwise, it will return an object of a type that corresponds to the given value.</p>  <p>When called in a non-constructor context, Object behaves identically.</p><h4>Example: Using <code>Object</code> given <code>undefined</code> and <code>null</code> types</h4> <p>The following examples store an empty <code>Object</code> object in <code>o</code>:</p>  <pre><code>var o = new Object();
+var o = new Object(undefined);
+var o = new Object(null);
+</code></pre>      
+<h4>Example: Using <code>Object</code> to create <code>Boolean</code> objects</h4> <p>The following examples store <a href="Boolean.html"><code>Boolean</code></a> objects in <code>o</code>:</p>  <pre><code>// equivalent to o = new Boolean(true);
+var o = new Object(true);
+
+// equivalent to o = new Boolean(false);
+var o = new Object(Boolean());</code></pre>      
+</div></div></div></div></article><h3 class="sectionHeader">Methods</h3><article id="Object.__defineGetter__" data-title="Object.__defineGetter__ (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.__defineGetter__" class="member-name methodClicker">__defineGetter__</span>(<a href="../js_doc/String.html">String</a> sprop, <a href="../js_doc/Function.html">Function</a> fun)</li></ul><ul class="metaInfo"><li><span class="label deprecated">Deprecated
+</span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.__defineGetter__" class="ellipsis_description"><p>Binds an object&apos;s property to a function to be called when that property is looked up.
+ ...</p></div><div id="short_Object.__defineGetter__" class="short_description hiddenSpan"><p>Binds an object&apos;s property to a function to be called when that property is looked up.</p></div><h3 id="Object.__defineGetter__" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>sprop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Contains the name of the property to bind to the given function</p></td>  
+</tr><tr><td><p>fun
+</p></td><td><p><a href="../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. A Function to be bound to a lookup of the specified property</p></td>  
+</tr></tbody></table><h4>Description</h4> <p>The <code>__defineGetter__</code> allows a <a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/get" title="en/Core_Javascript_1.5_Reference/Operators/Special_Operators/get_Operator">getter</a> to be defined on a pre-existing object.</p> <h4>See Also</h4> <ul><li><a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/get"><code>get</code></a></li><li><code>Object.__lookupGetter__</code></li><li><a href="https://developer.mozilla.org/en/Javascript/Guide/Obsolete_Pages/Creating_New_Objects/Defining_Getters_and_Setters">JS Guide:Defining Getters and Setters</a></li></ul>      
+</div></div></div></div></article><article id="Object.__defineSetter__" data-title="Object.__defineSetter__ (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.__defineSetter__" class="member-name methodClicker">__defineSetter__</span>(<a href="../js_doc/String.html">String</a> sprop, <a href="../js_doc/Function.html">Function</a> fun)</li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.__defineSetter__" class="ellipsis_description"><p>Binds an object&apos;s property to a function to be called when an attempt is made to set that property.
+ ...</p></div><div id="short_Object.__defineSetter__" class="short_description hiddenSpan"><p>Binds an object&apos;s property to a function to be called when an attempt is made to set that property.</p></div><h3 id="Object.__defineSetter__" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>sprop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Contains the name of the property to bind to the given function</p></td>  
+</tr><tr><td><p>fun
+</p></td><td><p><a href="../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. A Function to be bound to a lookup of the specified property</p></td>  
+</tr></tbody></table><h4>Description</h4> <p>The <code>__defineSetter__</code> method allows a <a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/set">setter</a> to be defined on a pre-existing object.</p><h4>See Also</h4> <ul><li><a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/set"><code>set</code></a></li><li><code>Object.__lookupSetter__</code></li><li><a href="https://developer.mozilla.org/en/Javascript/Guide/Obsolete_Pages/Creating_New_Objects/Defining_Getters_and_Setters">JS Guide:Defining Getters and Setters</a></li></ul>      
+</div></div></div></div></article><article id="Object.__lookupGetter__" data-title="Object.__lookupGetter__ (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.__lookupGetter__" class="member-name methodClicker">__lookupGetter__</span>(<a href="../js_doc/String.html">String</a> sprop)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Function.html"" class="link-short" title="Function">Function</a></li></ul></li></li></ul><ul class="metaInfo"><li><span class="label deprecated">Deprecated
+</span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.__lookupGetter__" class="ellipsis_description"><p>Return the function bound as a getter to the specified property.
+ ...</p></div><div id="short_Object.__lookupGetter__" class="short_description hiddenSpan"><p>Return the function bound as a getter to the specified property.</p></div><h3 id="Object.__lookupGetter__" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>sprop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Contains the name of the property whose getter should be returned</p></td>  
+</tr></tbody></table><h4>Description</h4> <p>If a getter has been defined for an object&apos;s property, it&apos;s not possible to reference the getter function through that property, because that property refers to the return value of that function. <code>__lookupGetter__</code> can be used to obtain a reference to the getter function.</p><h4>See Also</h4> <ul><li><a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/get"><code>get</code></a></li><li><code>Object.__defineGetter__</code></li><li><code>Object.__defineSetter__</code></li><li><a href="https://developer.mozilla.org/en/Javascript/Guide/Obsolete_Pages/Creating_New_Objects/Defining_Getters_and_Setters">JS Guide:Defining Getters and Setters</a></li></ul>      
+</div></div></div></div></article><article id="Object.__lookupSetter__" data-title="Object.__lookupSetter__ (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.__lookupSetter__" class="member-name methodClicker">__lookupSetter__</span>(<a href="../js_doc/String.html">String</a> sprop)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Function.html"" class="link-short" title="Function">Function</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.__lookupSetter__" class="ellipsis_description"><p>Return the function bound as a setter to the specified property.
+ ...</p></div><div id="short_Object.__lookupSetter__" class="short_description hiddenSpan"><p>Return the function bound as a setter to the specified property.</p></div><h3 id="Object.__lookupSetter__" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>sprop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Contains the name of the property whose getter should be returned</p></td>  
+</tr></tbody></table><h4>Description</h4><p>If a setter has been defined for an object&apos;s property, it&apos;s not possible to reference the setter function through that property, because that property refers to the return value of that function. <code>__lookupSetter__</code> can be used to obtain a reference to the setter function.</p><h4>See Also</h4> <ul><li><a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/set"><code>set</code></a></li><li><code>Object.__defineSetter__</code></li><li><a href="https://developer.mozilla.org/en/Javascript/Guide/Obsolete_Pages/Creating_New_Objects/Defining_Getters_and_Setters">JS Guide:Defining Getters and Setters</a></li></ul>      
+</div></div></div></div></article><article id="Object.create" data-title="Object.create (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.create" class="member-name methodClicker">create</span>(<a href="../js_doc/Object.html">Object</a> proto[, <a href="../js_doc/Object.html">Object</a> propertiesObject])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li><li class="argument-type"><a href="../js_doc/TypeError.html"" class="link-short" title="TypeError">TypeError</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.create" class="ellipsis_description"><p>Creates a new object with the specified prototype object and properties. Throws a <code>TypeError</code> exception if the proto...</p></div><div id="short_Object.create" class="short_description hiddenSpan"><p>Creates a new object with the specified prototype object and properties. Throws a <code>TypeError</code> exception if the proto parameter isn&apos;t <code>null</code> or an object.</p></div><h3 id="Object.create" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>proto
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object which should be the prototype of the newly-created object.</p></td>  
+</tr><tr><td><p>propertiesObject
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Optional. If specified and not undefined, an object whose enumerable own properties (that is, those properties defined upon itself and not enumerable properties along its prototype chain) specify property descriptors to be added to the newly-created object, with the corresponding property names.</p></td>  
+</tr></tbody></table><h4>Examples</h4> <pre><code>var o;
+
+// create an object with null as prototype
+o = Object.create(null);
+
+o = {};
+// is equivalent to:
+o = Object.create(Object.prototype);
+
+
+function Constructor(){}
+o = new Constructor();
+// is equivalent to:
+o = Object.create(Constructor.prototype);
+// Of course, if there is actual initialization code in the Constructor function, the Object.create cannot reflect it
+
+
+// create a new object whose prototype is a new, empty object
+// and a adding single property &apos;p&apos;, with value 42
+o = Object.create({}, { p: { value: 42 } })
+
+// by default properties ARE NOT writable, enumerable or configurable:
+o.p = 24
+o.p
+//42
+
+o.q = 12
+for (var prop in o) {
+   console.log(prop)
+}
+//&quot;q&quot;
+
+delete o.p
+//false
+
+//to specify an ES3 property
+o2 = Object.create({}, { p: { value: 42, writable: true, enumerable: true, configurable: true } });
+</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.defineProperty" class="link-short" title="Object.defineProperty (class method)" data-id="Object.defineProperty"><code>defineProperty()</code></a></li><li><a href="Object.html#Object.defineProperties" class="link-short" title="Object.defineProperties (class method)" data-id="Object.defineProperties"><code>defineProperties</code></a></li><li><a href="Object.html#Object.isPrototypeOf" class="link-short" title="Object.isPrototypeOf (class method)" data-id="Object.isPrototypeOf"><code>isPrototypeOf()</code></a></li><li>John Resig&apos;s post on <a href="http://ejohn.org/blog/objectgetprototypeof/">getPrototypeOf</a></li></ul>      
+</div></div></div></div></article><article id="Object.defineProperties" data-title="Object.defineProperties (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.defineProperties" class="member-name methodClicker">defineProperties</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.defineProperties" class="ellipsis_description"><p>Defines new or modifies existing properties directly on an object, returning the object.
+ ...</p></div><div id="short_Object.defineProperties" class="short_description hiddenSpan"><p>Defines new or modifies existing properties directly on an object, returning the object.</p></div><h3 id="Object.defineProperties" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object on which to define or modify properties.</p></td>  
+</tr><tr><td><p>props
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. An object whose own enumerable properties constitute descriptors for the properties to be defined or modified.</p></td>  
+</tr></tbody></table><h4>Description</h4><p><code>defineProperties()</code>, in essence, defines all properties corresponding to the enumerable own properties of props on the object <code>objrops</code> object.</p>  <p>Assuming a pristine execution environment with all names and properties referring to their initial values, <code>defineProperties()</code> is almost completely equivalent (note the comment in <code>isCallable</code>) to the following reimplementation in Javascript:</p> <pre><code>function defineProperties(obj, properties)
+{
+  function convertToDescriptor(desc)
+  {
+    function hasProperty(obj, prop)
+    {
+      return Object.prototype.hasOwnProperty.call(obj, prop);
+    }
+
+    function isCallable(v)
+    {
+      // NB: modify as necessary if other values than functions are callable.
+      return typeof v === &quot;function&quot;;
+    }
+
+    if (typeof desc !== &quot;object&quot; || desc === null)
+      throw new TypeError(&quot;bad desc&quot;);
+
+    var d = {};
+    if (hasProperty(desc, &quot;enumerable&quot;))
+      d.enumerable = !!obj.enumerable;
+    if (hasProperty(desc, &quot;configurable&quot;))
+      d.configurable = !!obj.configurable;
+    if (hasProperty(desc, &quot;value&quot;))
+      d.value = obj.value;
+    if (hasProperty(desc, &quot;writable&quot;))
+      d.writable = !!desc.writable;
+    if (hasProperty(desc, &quot;get&quot;))
+    {
+      var g = desc.get;
+      if (!isCallable(g) &amp;&amp; g !== &quot;undefined&quot;)
+        throw new TypeError(&quot;bad get&quot;);
+      d.get = g;
+    }
+    if (hasProperty(desc, &quot;set&quot;))
+    {
+      var s = desc.set;
+      if (!isCallable(s) &amp;&amp; s !== &quot;undefined&quot;)
+        throw new TypeError(&quot;bad set&quot;);
+      d.set = s;
+    }
+
+    if ((&quot;get&quot; in d || &quot;set&quot; in d) &amp;&amp; (&quot;value&quot; in d || &quot;writable&quot; in d))
+      throw new TypeError(&quot;identity-confused descriptor&quot;);
+
+    return d;
+  }
+
+  if (typeof obj !== &quot;object&quot; || obj === null)
+    throw new TypeError(&quot;bad obj&quot;);
+
+  properties = Object(properties);
+  var keys = Object.keys(properties);
+  var descs = [];
+  for (var i = 0; i &lt; keys.length; i++)
+    descs.push([keys[i], convertToDescriptor(properties[keys[i]])]);
+  for (var i = 0; i &lt; descs.length; i++)
+    Object.defineProperty(obj, descs[i][0], descs[i][1]);
+
+  return obj;
+}</code></pre><h4>See Also</h4> <ul><li><a href="Object.html#Object.defineProperty" class="link-short" title="Object.defineProperty (class method)" data-id="Object.defineProperty"><code>defineProperty()</code></a></li><li><a href="Object.html#Object.keys" class="link-short" title="Object.keys (class method)" data-id="Object.keys"><code>keys()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.defineProperty" data-title="Object.defineProperty (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.defineProperty" class="member-name methodClicker">defineProperty</span>(<a href="../js_doc/Object.html">Object</a> obj, <a href="../js_doc/String.html">String</a> prop, <a href="../js_doc/String.html">String</a> descriptor)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.defineProperty" class="ellipsis_description"><p>Defines a new property directly on an object, or modifies an existing property on an object, and returns the object.
+ ...</p></div><div id="short_Object.defineProperty" class="short_description hiddenSpan"><p>Defines a new property directly on an object, or modifies an existing property on an object, and returns the object.</p></div><h3 id="Object.defineProperty" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object on which to define the property.</p></td>  
+</tr><tr><td><p>prop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The name of the property to be defined or modified.</p></td>  
+</tr><tr><td><p>descriptor
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The descriptor for the property being defined or modified.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>This method allows precise addition to or modification of a property on an object. Normal property addition through assignment creates properties which show up during property enumeration (<a href="https://developer.mozilla.org/en/Javascript/Reference/Statements/for...in"><code>for...in</code> loop</a>), whose values may be changed, and which may be <a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/delete">deleted</a>. This method allows these extra details to be changed from their defaults.</p>  <p>Property descriptors present in objects come in two main flavors: data descriptors and accessor descriptors. A <em>data descriptor</em> is a property that has a value, which may or may not be writable. An <em>accessor descriptor</em> is a property described by a getter-setter pair of functions. A descriptor must be one of these two flavors; it cannot be both. All descriptors regardless of flavor include the <strong>configurable</strong> and <strong>enumerable</strong> fields.</p>  <p>A property descriptor is an object with the following fields:</p>  <ul><li><code>value</code>: The value associated with the property; data descriptors only. Defaults to <code>undefined</code>.</li><li><code>writable</code>: <code>true</code> if and only if the value associated with the property may be changed; data descriptors only. Defaults to <code>false</code>.</li><li><code>get</code>: A function which serves as a getter for the property, or <code>undefined</code> if there is no getter; accessor descriptors only. Defaults to <code>undefined</code>.</li><li><code>set</code>: A function which serves as a setter for the property, or <code>undefined</code> if there is no setter; accessor descriptors only. Defaults to <code>undefined</code>.</li><li><code>configurable</code>: <code>true</code> if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object. Defaults to <code>false</code>.</li><li><code>enumerable</code>: <code>true</code> if and only if this property shows up during enumeration of the properties on the corresponding object. Defaults to <code>false</code>. </li></ul> <h5>Creating a property</h5> <p>When the property specified doesn&apos;t exist in the object, <code>defineProperty()</code> creates a new property as described. Fields may be omitted from the descriptor, and default values for those fields are imputed. All of the boolean-valued fields default to <code>false</code>. The <code>value</code>, <code>get</code>, and <code>set</code> fields default to <code>undefined</code>.</p>  <h5>Modifying a property</h5> <p>When the property already exists, <code>defineProperty()</code> attempts to modify the property according to the values in the descriptor and the object current configuration. If the old descriptor had its <strong>configurable</strong> attribute set to <code>false</code> (the property is said &quot;non-configurable&quot;), then no attribute besides <strong>writable</strong> can be changed. In that case, it is also not possible to switch back and forth from data/accessor properties type (a property which would have been defined without <code>get</code>/<code>set</code>/<code>value</code>/<code>writable</code> is called &quot;generic&quot; and is &quot;typed&quot; as a data descriptor).</p>  <p>A <a href="TypeError.html"><code>TypeError</code></a> is thrown when non-configurable property attributes are changed unless it&apos;s the <code>writable</code> attribute or if the current and new values are equal.</p>  <h5>Code considerations</h5> <p>If you have to define many properties through the <code>defineProperty()</code> method, you can utilise the same descriptor object for each property, redefining it from time to time through binary flags.</p><h4>Example</h4> <pre><code>var oDesc = {};
+function setProp (nMask, oObj, sKey, vVal_fGet, fSet) {
+    if (nMask &amp; 12) {
+        if (arguments.length &gt; 3) { oDesc.value = vVal_fGet; } else { delete oDesc.value; }
+        oDesc.writable = Boolean(nMask &amp; 8);
+        delete oDesc.get;
+        delete oDesc.set;
+    } else {
+        if (vVal_fGet) { oDesc.get = vVal_fGet; } else { delete oDesc.get; }
+        if (fSet) { oDesc.set = fSet; } else { delete oDesc.set; }
+        delete oDesc.value;
+        delete oDesc.writable;
+    }
+    oDesc.enumerable = Boolean(nMask &amp; 1);
+    oDesc.configurable = Boolean(nMask &amp; 2);
+    Object.defineProperty(oObj, sKey, oDesc);
+}
+
+/**
+*    :: function setProp ::
+*
+*    vVal_fGet is the value to assign to a data descriptor or the getter function to assign to an accessor descriptor;
+*
+*    nMask is a bitmask:
+*
+*    flag 0x1: property is enumerable,
+*    flag 0x2: property is configurable,
+*    flag 0x4: property is data descriptor,
+*    flag 0x8: property is writable.
+*    Note: If flag 0x8 is setted to &quot;writable&quot;, the propery will be considered a data descriptor even if the flag 0x4 is setted to &quot;accessor descriptor&quot;!
+*
+*    Values:
+*
+*    0  : accessor descriptor - not configurable, not enumerable (0000).
+*    1  : accessor descriptor - not configurable, enumerable (0001).
+*    2  : accessor descriptor - configurable, not enumerable (0010).
+*    3  : accessor descriptor - configurable, enumerable (0011).
+*    4  : readonly data descriptor - not configurable, not enumerable (0100).
+*    5  : readonly data descriptor - not configurable, enumerable (0101).
+*    6  : readonly data descriptor - configurable, not enumerable (0110).
+*    7  : readonly data descriptor - configurable, enumerable (0111).
+*    8  : writable data descriptor - not configurable, not enumerable (1000).
+*    9  : writable data descriptor - not configurable, enumerable (1001).
+*    10 : writable data descriptor - configurable, not enumerable (1010).
+*    11 : writable data descriptor - configurable, enumerable (1011).
+*/
+
+// creating a new empty object
+var myObj = {};
+
+// adding a writable data descriptor - not configurable, not enumerable
+setProp(8, myObj, &quot;myNumber&quot;, 25);
+
+// adding a readonly data descriptor - not configurable, enumerable
+setProp(5, myObj, &quot;myString&quot;, &quot;Hello world!&quot;);
+
+// adding an accessor descriptor - not configurable, enumerable
+setProp(1, myObj, &quot;myArray&quot;, function() {
+    for (var iBit = 0, iFlag = 1, aBoolArr = [false]; iFlag &lt; this.myNumber + 1 || (this.myNumber &amp; iFlag); iFlag = iFlag &lt;&lt; 1) { aBoolArr[iBit++] = Boolean(this.myNumber &amp; iFlag); }
+    return aBoolArr;
+}, function(aNewMask) {
+    for (var nNew = 0, iBit = 0; iBit &lt; aNewMask.length; iBit++) { nNew |= Boolean(aNewMask[iBit]) &lt;&lt; iBit; }
+    this.myNumber = nNew;
+});
+
+// adding a writable data descriptor (undefined value) - configurable, enumerable
+setProp(11, myObj, &quot;myUndefined&quot;);
+
+// adding an accessor descriptor (only getter) - not configurable, enumerable
+setProp(1, myObj, &quot;myDate&quot;, function() { return new Date(); });
+
+// adding an accessor descriptor (only setter) - not configurable, not enumerable
+setProp(0, myObj, &quot;myAlert&quot;, null, function(sTxt) { alert(sTxt); });
+
+myObj.myAlert = myObj.myDate.toLocaleString() + &quot;\n\n&quot; + myObj.myString + &quot;\nThe number &quot; + myObj.myNumber + &quot; represents the following bitmask: &quot; + myObj.myArray.join(&quot;, &quot;) + &quot;.&quot;;</code></pre> <p>You can do the same thing with an anonymous descriptor object.</p>  <pre><code>new (function() {
+    function buildProp (nMask, oObj, sKey, vVal_fGet, fSet) {
+        if (nMask &amp; 12) {
+            if (arguments.length &gt; 3) { this.value = vVal_fGet; } else { delete this.value; }
+            this.writable = Boolean(nMask &amp; 8);
+            delete this.get;
+            delete this.set;
+        } else {
+            if (vVal_fGet) { this.get = vVal_fGet; } else { delete this.get; }
+            if (fSet) { this.set = fSet; } else { delete this.set; }
+            delete this.value;
+            delete this.writable;
+        }
+        this.enumerable = Boolean(nMask &amp; 1);
+        this.configurable = Boolean(nMask &amp; 2);
+        Object.defineProperty(oObj, sKey, this);
+    };
+buildProp(5, window, &quot;setProp&quot;, buildProp);
+})();
+
+// creating a new empty object
+var myObj = {};
+
+// adding a writable data descriptor - not configurable, not enumerable
+setProp(8, myObj, &quot;myNumber&quot;, 25);
+
+// adding a readonly data descriptor - not configurable, enumerable
+setProp(5, myObj, &quot;myString&quot;, &quot;Hello world!&quot;);
+// etc. etc.</code></pre>      
+</div></div></div></div></article><article id="Object.freeze" data-title="Object.freeze (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.freeze" class="member-name methodClicker">freeze</span>(<a href="../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.freeze" class="ellipsis_description"><p>Freezes an object: that is, prevents new properties from being added to it; prevents existing properties from being ...</p></div><div id="short_Object.freeze" class="short_description hiddenSpan"><p>Freezes an object: that is, prevents new properties from being added to it; prevents existing properties from being removed; and prevents existing properties, or their enumerability, configurability, or writability, from being changed.In essence the object is made effectively immutable. The method returns the object being frozen.</p></div><h3 id="Object.freeze" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object which should be frozen.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>Any attempt to add or remove from the property set of a frozen object throws a <a href="TypeError.html"><code>TypeError</code></a> exception (most commonly, but not exclusively, when in <a href="https://developer.mozilla.org/en/Javascript/Strict_mode">strict mode</a>).</p><h4>Example</h4> <pre><code>var obj = {
+  prop: function (){},
+  foo: &quot;bar&quot;
+};
+
+// New properties may be added, existing properties may be changed or removed
+obj.foo = &quot;baz&quot;;
+obj.lumpy = &quot;woof&quot;;
+delete obj.prop;
+
+var o = Object.freeze(obj);
+
+assert(Object.isFrozen(obj) === true);
+
+// Now any changes will fail
+obj.foo = &quot;quux&quot;; // silently does nothing
+obj.quaxxor = &quot;the friendly duck&quot;; // silently doesn&apos;t add the property
+
+// ...and in strict mode such attempts will throw TypeErrors
+function fail(){
+  &quot;use strict&quot;;
+  obj.foo = &quot;sparky&quot;; // throws a TypeError
+  delete obj.quaxxor; // throws a TypeError
+  obj.sparky = &quot;arf&quot;; // throws a TypeError
+}
+fail();
+
+// Attempted changes through Object.defineProperty will also throw
+Object.defineProperty(obj, &quot;ohai&quot;, { value: 17 }); // throws a TypeError
+Object.defineProperty(obj, &quot;foo&quot;, { value: &quot;eit&quot; }); // throws a TypeError</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.isFrozen" class="link-short" title="Object.isFrozen (class method)" data-id="Object.isFrozen"><code>isFrozen()</code></a></li><li><a href="Object.html#Object.preventExtensions" class="link-short" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions"><code>preventExtensions()</code></a></li><li><a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible"><code>isExtensible()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.isSealed" class="link-short" title="Object.isSealed (class method)" data-id="Object.isSealed"><code>isSealed()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.getOwnPropertyDescriptor" data-title="Object.getOwnPropertyDescriptor (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.getOwnPropertyDescriptor" class="member-name methodClicker">getOwnPropertyDescriptor</span>(<a href="../js_doc/Object.html">Object</a> obj, <a href="../js_doc/String.html">String</a> prop)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.getOwnPropertyDescriptor" class="ellipsis_description"><p>This method permits examination of the precise description of a property. A property in Javascript consists of a str...</p></div><div id="short_Object.getOwnPropertyDescriptor" class="short_description hiddenSpan"><p>This method permits examination of the precise description of a property. A property in Javascript consists of a string-valued name and a property descriptor. A property descriptor&lt; is a record with some of the following attributes:</p></div><h3 id="Object.getOwnPropertyDescriptor" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object in which to look for the property</p></td>  
+</tr><tr><td><p>prop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The name of the property whose description is to be retrieved</p></td>  
+</tr></tbody></table><h4>Description</h4><ul><li><code>value</code>: The value associated with the property; data descriptors only. Defaults to <code>undefined</code>.</li><li><code>writable</code>: <code>true</code> if and only if the value associated with the property may be changed; data descriptors only. Defaults to <code>false</code>.</li><li><code>get</code>: A function which serves as a getter for the property, or <code>undefined</code> if there is no getter; accessor descriptors only. Defaults to <code>undefined</code>.</li><li><code>set</code>: A function which serves as a setter for the property, or <code>undefined</code> if there is no setter; accessor descriptors only. Defaults to <code>undefined</code>.</li><li><code>configurable</code>: <code>true</code> if and only if the type of this property descriptor may be changed and if the property may be deleted from the corresponding object. Defaults to <code>false</code>.</li><li><code>enumerable</code>: <code>true</code> if and only if this property shows up during enumeration of the properties on the corresponding object. Defaults to <code>false</code>. </li></ul><h4>Returns</h4> <p>Returns a property descriptor for an own property (that is, one directly present on an object, not present by dint of being along an object&apos;s prototype chain) of a given object.</p><h4>Example</h4> <pre><code>var o, d;
+
+o = { get foo() { return 17; } };
+d = Object.getOwnPropertyDescriptor(o, &quot;foo&quot;);
+// d is { configurable: true, enumerable: true, get: /*the getter function*/, set: undefined }
+
+o = { bar: 42 };
+d = Object.getOwnPropertyDescriptor(o, &quot;bar&quot;);
+// d is { configurable: true, enumerable: true, value: 42, writable: true }
+
+o = {};
+Object.defineProperty(o, &quot;baz&quot;, { value: 8675309, writable: false, enumerable: false });
+d = Object.getOwnPropertyDescriptor(o, &quot;baz&quot;);
+// d is { value: 8675309, writable: false, enumerable: false, configurable: false }</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.defineProperty" class="link-short" title="Object.defineProperty (class method)" data-id="Object.defineProperty"><code>defineProperty()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.getOwnPropertyNames" data-title="Object.getOwnPropertyNames (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.getOwnPropertyNames" class="member-name methodClicker">getOwnPropertyNames</span>(<a href="../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Array.html"" class="link-short" title="Array">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.getOwnPropertyNames" class="ellipsis_description"><p>Returns an array  whose elements are strings corresponding to the enumerable <em>and non-enumerable</em> properties found d...</p></div><div id="short_Object.getOwnPropertyNames" class="short_description hiddenSpan"><p>Returns an array  whose elements are strings corresponding to the enumerable <em>and non-enumerable</em> properties found directly upon <code>obj</code>. The ordering of the enumerable properties in the array is consistent with the ordering exposed by looping over the properties of the object manually (such as by using <code>for...in</code>).  The ordering of the non-enumerable properties in the array, and among the enumerable properties, is not defined.</p></div><h3 id="Object.getOwnPropertyNames" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object whose enumerable and non-enumerable own properties are to be returned.</p></td>  
+</tr></tbody></table><h4>Description</h4><p> If you want only the enumerable properties, see <a href="Object.html#Object.keys" class="link-short" title="Object.keys (class method)" data-id="Object.keys"><code>keys()</code></a>.</p>  <h4>Example</h4> <pre><code> var arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+ print(Object.getOwnPropertyNames(arr).sort()); // prints &quot;0,1,2,length&quot;
+
+ // array-like object
+ var obj = { 0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot;};
+ print(Object.getOwnPropertyNames(obj).sort()); // prints &quot;0,1,2&quot;
+
+ // non-enumerable property
+ var my_obj = Object.create({}, { getFoo: { value: function() { return this.foo; }, enumerable: false } });
+ my_obj.foo = 1;
+
+ print(Object.getOwnPropertyNames(my_obj).sort()); // prints &quot;foo, getFoo&quot;
+</code></pre> <h4>See Also</h4> <ul><li><a href="Object.html#Object.propertyIsEnumerable" class="link-short" title="Object.propertyIsEnumerable (class method)" data-id="Object.propertyIsEnumerable"><code>propertyIsEnumerable()</code></a></li><li><a href="Object.html#Object.create" class="link-short" title="Object.create (class method)" data-id="Object.create"><code>create()</code></a></li><li><a href="Object.html#Object.keys" class="link-short" title="Object.keys (class method)" data-id="Object.keys"><code>keys()</code></a></li></ul></div></div></div></div></article><article id="Object.getPrototypeOf" data-title="Object.getPrototypeOf (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.getPrototypeOf" class="member-name methodClicker">getPrototypeOf</span>(<a href="../js_doc/Object.html">Object</a> object)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.getPrototypeOf" class="ellipsis_description"><p>Returns the prototype of the specified object. Throws a <a href="TypeError.html"><code>TypeError</code></a> exception if the object parameter ...</p></div><div id="short_Object.getPrototypeOf" class="short_description hiddenSpan"><p>Returns the prototype of the specified object. Throws a <a href="TypeError.html"><code>TypeError</code></a> exception if the object parameter isn&apos;t an <code>Object</code>.</p></div><h3 id="Object.getPrototypeOf" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>object
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object whose prototype is to be returned.</p></td>  
+</tr></tbody></table><h4>See Also</h4> <ul><li><a href="Object.html#Object.isPrototypeOf" class="link-short" title="Object.isPrototypeOf (class method)" data-id="Object.isPrototypeOf"><code>isPrototypeOf()</code></a></li><li>John Resig&apos;s post on <a href="http://ejohn.org/blog/objectgetprototypeof">getPrototypeOf</a></li></ul>      
+</div></div></div></div></article><article id="Object.hasOwnProperty" data-title="Object.hasOwnProperty (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.hasOwnProperty" class="member-name methodClicker">hasOwnProperty</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.hasOwnProperty" class="ellipsis_description"><p>Returns a boolean indicating whether the object has the specified property.
+ ...</p></div><div id="short_Object.hasOwnProperty" class="short_description hiddenSpan"><p>Returns a boolean indicating whether the object has the specified property.</p></div><h3 id="Object.hasOwnProperty" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>prop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The name of the property to test.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>Every object descended from <code>Object</code> inherits the <code>hasOwnProperty</code> method. This method can be used to determine whether an object has the specified property as a direct property of that object; unlike the <a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/Special/in" title="en/Core_Javascript_1.5_Reference/Operators/Special_Operators/in_Operator"><code>in</code></a> operator, this method does not check down the object&apos;s prototype chain.</p><h4>Example: Using <code>hasOwnProperty()</code> to test for a property&apos;s existence</h4> <p>The following example determines whether the <code>o</code> object contains a property named <code>prop</code>:</p>  <pre><code>o = new Object();
+o.prop = &apos;exists&apos;;
+
+function changeO() {
+  o.newprop = o.prop;
+  delete o.prop;
+}
+
+o.hasOwnProperty(&apos;prop&apos;);   //returns true
+changeO();
+o.hasOwnProperty(&apos;prop&apos;);   //returns false</code></pre>      
+<h4>Example: Direct versus inherited properties</h4> <p>The following example differentiates between direct properties and properties inherited through the prototype chain:</p>  <pre><code>o = new Object();
+o.prop = &apos;exists&apos;;
+o.hasOwnProperty(&apos;prop&apos;);             // returns true
+o.hasOwnProperty(&apos;toString&apos;);         // returns false
+o.hasOwnProperty(&apos;hasOwnProperty&apos;);   // returns false</code></pre>      
+<h4>Example: Iterating over the properties of an object</h4> <p>The following example shows how to iterate over the properties of an object without executing on inherit properties.</p>  <pre><code>var buz = {
+    fog: &apos;stack&apos;
+};
+
+for (var name in buz) {
+    if (buz.hasOwnProperty(name)) {
+        alert(&quot;this is fog (&quot; + name + &quot;) for sure. Value: &quot; + buz[name]);
+    }
+    else {
+        alert(name); // toString or something else
+    }
+}</code></pre>      
+</div></div></div></div></article><article id="Object.isExtensible" data-title="Object.isExtensible (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.isExtensible" class="member-name methodClicker">isExtensible</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.isExtensible" class="ellipsis_description"><p>Determines if an object is extensible (whether it can have new properties added to it).
+ ...</p></div><div id="short_Object.isExtensible" class="short_description hiddenSpan"><p>Determines if an object is extensible (whether it can have new properties added to it).</p></div><h3 id="Object.isExtensible" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4><p>Objects are extensible by default: they can have new properties added to them. An object can be marked as non-extensible using <a href="Object.html#Object.preventExtensions" class="link-short" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions"><code>preventExtensions()</code></a>, <a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a>, or <a href="Object.html#Object.freeze" class="link-short" title="Object.freeze (class method)" data-id="Object.freeze"><code>freeze()</code></a>.</p><h4>Examples</h4> <pre><code>    // New objects are extensible.
+    var empty = {};
+    assert(Object.isExtensible(empty) === true);
+
+    // ...but that can be changed.
+    Object.preventExtensions(empty);
+    assert(Object.isExtensible(empty) === false);
+
+// Sealed objects are by definition non-extensible.
+    var sealed = Object.seal({});
+    assert(Object.isExtensible(sealed) === false);
+
+    // Frozen objects are also by definition non-extensible.
+    var frozen = Object.freeze({});
+    assert(Object.isExtensible(frozen) === false);</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.preventExtensions" class="link-short" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions"><code>preventExtensions()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.isSealed" class="link-short" title="Object.isSealed (class method)" data-id="Object.isSealed"><code>isSealed()</code></a></li><li><a href="Object.html#Object.freeze" class="link-short" title="Object.freeze (class method)" data-id="Object.freeze"><code>freeze()</code></a></li><li><a href="Object.html#Object.isFrozen" class="link-short" title="Object.isFrozen (class method)" data-id="Object.isFrozen"><code>isFrozen()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.isFrozen" data-title="Object.isFrozen (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.isFrozen" class="member-name methodClicker">isFrozen</span>(<a href="../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.isFrozen" class="ellipsis_description"><p>Determine if an object is frozen.
+ ...</p></div><div id="short_Object.isFrozen" class="short_description hiddenSpan"><p>Determine if an object is frozen.</p></div><h3 id="Object.isFrozen" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object which should be checked.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>An object is frozen if and only if it is not <a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible">extensible</a>, all its properties arenon-configurable, and all its data properties (that is, properties which are not accessor properties with getter or setter components) are non-writable.</p><h4>See Also</h4> <ul><li><a href="Object.html#Object.freeze" class="link-short" title="Object.freeze (class method)" data-id="Object.freeze"><code>freeze()</code></a></li><li><a href="Object.html#Object.preventExtensions" class="link-short" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions"><code>preventExtensions()</code></a></li><li><a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible"><code>isExtensible()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.isSealed" class="link-short" title="Object.isSealed (class method)" data-id="Object.isSealed"><code>isSealed()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.isPrototypeOf" data-title="Object.isPrototypeOf (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.isPrototypeOf" class="member-name methodClicker">isPrototypeOf</span>(<a href="../js_doc/Object.html">Object</a> object)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.isPrototypeOf" class="ellipsis_description"><p>Tests for an object in another object&apos;s prototype chain.
+ ...</p></div><div id="short_Object.isPrototypeOf" class="short_description hiddenSpan"><p>Tests for an object in another object&apos;s prototype chain.</p></div><h3 id="Object.isPrototypeOf" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>object
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object whose prototype chain will be searched</p></td>  
+</tr></tbody></table><h4>Description</h4> <p><code>isPrototypeOf</code> allows you to check whether or not an object exists within another object&apos;s prototype chain.</p>  <p>For example, consider the following prototype chain:</p>  <pre><code>function Fee() {
+    // . . .
+}
+
+function Fi() {
+ // . . .
+}
+
+Fi.prototype = new Fee();
+
+function Fo() {
+    // . . .
+}
+
+Fo.prototype = new Fi();
+
+function Fum() {
+    // . . .
+}
+
+Fum.prototype = new Fo();
+</code></pre> <p>Later on down the road, if you instantiate <code>Fum</code> and need to check if <code>Fi</code>&apos;s prototype exists within the <code>Fum</code> prototype chain, you could do this:</p>  <pre><code>var fum = new Fum();
+
+. . .
+
+if (Fi.prototype.isPrototypeOf(fum)) {
+
+    // do something safe
+
+}</code></pre> <p>This, along with the <code>instanceof</code> operator particularly comes in handy if you have code that can only function when dealing with objects descended from a specific prototype chain, e.g., to guarantee that certain methods or properties will be present on that object.</p><h4>See Also</h4> <ul><li><a href="https://developer.mozilla.org/en/Javascript/Reference/Operators/instanceof"><code>instanceof</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.isSealed" data-title="Object.isSealed (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.isSealed" class="member-name methodClicker">isSealed</span>(<a href="../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.isSealed" class="ellipsis_description"><p>Returns true if the object is sealed, otherwise false. An object is sealed if it is [[Object.isExtensible non-extens...</p></div><div id="short_Object.isSealed" class="short_description hiddenSpan"><p>Returns true if the object is sealed, otherwise false. An object is sealed if it is <a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible">non-extensible</a> and if all its properties are non-configurable and therefore not removable (but not necessarily non-writable).</p></div><h3 id="Object.isSealed" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object which should be checked.</p></td>  
+</tr></tbody></table><h4>Examples</h4> <pre><code>// Objects aren&apos;t sealed by default.
+var empty = {};
+assert(Object.isSealed(empty) === false);
+
+// If you make an empty object non-extensible, it is vacuously sealed.
+Object.preventExtensions(empty);
+assert(Object.isSealed(empty) === true);
+
+// The same is not true of a non-empty object, unless its properties are all non-configurable.
+var hasProp = { fee: &quot;fie foe fum&quot; };
+Object.preventExtensions(hasProp);
+assert(Object.isSealed(hasProp) === false);
+
+// But make them all non-configurable and the object becomes sealed.
+Object.defineProperty(hasProp, &quot;fee&quot;, { configurable: false });
+assert(Object.isSealed(hasProp) === true);
+
+// The easiest way to seal an object, of course, is Object.seal.
+var sealed = {};
+Object.seal(sealed);
+assert(Object.isSealed(sealed) === true);
+
+// A sealed object is, by definition, non-extensible.
+assert(Object.isExtensible(sealed) === false);
+
+// A sealed object might be frozen, but it doesn&apos;t have to be.
+assert(Object.isFrozen(sealed) === true); // all properties also non-writable
+
+var s2 = Object.seal({ p: 3 });
+assert(Object.isFrozen(s2) === false); // &quot;p&quot; is still writable
+
+var s3 = Object.seal({ get p() { return 0; } });
+assert(Object.isFrozen(s3) === true); // only configurability matters for accessor properties</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.preventExtensions" class="link-short" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions"><code>preventExtensions()</code></a></li><li><a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible"><code>isExtensible()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a></li><li><a href="Object.html#Object.freeze" class="link-short" title="Object.freeze (class method)" data-id="Object.freeze"><code>freeze()</code></a></li><li><a href="Object.html#Object.isFrozen" class="link-short" title="Object.isFrozen (class method)" data-id="Object.isFrozen"><code>isFrozen()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.keys" data-title="Object.keys (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.keys" class="member-name methodClicker">keys</span>(<a href="../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Array.html"" class="link-short" title="Array">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.keys" class="ellipsis_description"><p>Returns an array of all own enumerable properties found upon a given object, in the same order as that given by loop...</p></div><div id="short_Object.keys" class="short_description hiddenSpan"><p>Returns an array of all own enumerable properties found upon a given object, in the same order as that given by looping over the properties of the object manually (such as by using <code>for...in</code>).</p></div><h3 id="Object.keys" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object whose enumerable own properties are to be returned.</p></td>  
+</tr></tbody></table><h4>Examples</h4> <pre><code>var arr = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]; alert(Object.keys(arr)); // will alert &quot;0,1,2&quot;
+
+// array like object
+var obj = { 0 : &quot;a&quot;, 1 : &quot;b&quot;, 2 : &quot;c&quot;};
+alert(Object.keys(obj)); // will alert &quot;0,1,2&quot;
+
+// getFoo is property which isn&apos;t enumerable
+var my_obj = Object.create({}, { getFoo : { value : function () { return this.foo } } });
+my_obj.foo = 1;
+
+alert(Object.keys(my_obj)); // will alert only foo</code></pre> <p>If you want all properties, even the not enumerable, see <a href="Object.html#Object.getOwnPropertyNames" class="link-short" title="Object.getOwnPropertyNames (class method)" data-id="Object.getOwnPropertyNames"><code>getOwnPropertyNames</code></a>.</p>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.propertyIsEnumerable" class="link-short" title="Object.propertyIsEnumerable (class method)" data-id="Object.propertyIsEnumerable"><code>propertyIsEnumerable()</code></a></li><li><a href="Object.html#Object.create" class="link-short" title="Object.create (class method)" data-id="Object.create"><code>create()</code></a></li><li><a href="Object.html#Object.getOwnPropertyNames" class="link-short" title="Object.getOwnPropertyNames (class method)" data-id="Object.getOwnPropertyNames"><code>getOwnPropertyNames()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.preventExtensions" data-title="Object.preventExtensions (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.preventExtensions" class="member-name methodClicker">preventExtensions</span>(<a href="../js_doc/Object.html">Object</a> object)<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.preventExtensions" class="ellipsis_description"><p>Prevents new properties from ever being added to an object (i.e. prevents future extensions to the object).
+ ...</p></div><div id="short_Object.preventExtensions" class="short_description hiddenSpan"><p>Prevents new properties from ever being added to an object (i.e. prevents future extensions to the object).</p></div><h3 id="Object.preventExtensions" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>object
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object which should be made non-extensible.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>An object is extensible if new properties can be added to it. This method marks an object as no longer extensible, so that it will never have properties beyond the ones it had at the time it was marked as non-extensible.  Note that the properties of a non-extensible object, in general, may still be <em>deleted</em>. Attempting to add new properties to a non-extensible object will fail, either silently or by throwing a <a href="TypeError.html"><code>TypeError</code></a> (most commonly, but not exclusively, when in <a href="https://developer.mozilla.org/en/Javascript/Strict_mode">strict mode</a>).</p><h4>Examples</h4> <pre><code>// Object.preventExtensions returns the object being made non-extensible.
+var obj = {};
+var obj2 = Object.preventExtensions(obj);
+assert(obj === obj2);
+
+// Objects are extensible by default.
+var empty = {};
+assert(Object.isExtensible(empty) === true);
+
+// ...but that can be changed.
+Object.preventExtensions(empty);
+assert(Object.isExtensible(empty) === false);
+
+// Object.defineProperty throws when adding a new property to a non-extensible object.
+var nonExtensible = { removable: true };
+Object.preventExtensions(nonExtensible);
+Object.defineProperty(nonExtensible, &quot;new&quot;, { value: 8675309 }); // throws a TypeError
+
+// In strict mode, attempting to add new properties to a non-extensible object throws a TypeError.
+function fail()
+{
+  &quot;use strict&quot;;
+  nonExtensible.newProperty = &quot;FAIL&quot;; // throws a TypeError
+}
+fail();
+</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible"><code>isExtensible()</code></a></li><li><a href="Object.html#Object.seal" class="link-short" title="Object.seal (class method)" data-id="Object.seal"><code>seal()</code></a>]</li><li><a href="Object.html#Object.isSealed" class="link-short" title="Object.isSealed (class method)" data-id="Object.isSealed"><code>isSealed()</code></a></li><li><a href="Object.html#Object.freeze" class="link-short" title="Object.freeze (class method)" data-id="Object.freeze"><code>freeze()</code></a></li><li><a href="Object.html#Object.isFrozen" class="link-short" title="Object.isFrozen (class method)" data-id="Object.isFrozen"><code>isFrozen()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.propertyIsEnumerable" data-title="Object.propertyIsEnumerable (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.propertyIsEnumerable" class="member-name methodClicker">propertyIsEnumerable</span>(<a href="../js_doc/String.html">String</a> prop)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.propertyIsEnumerable" class="ellipsis_description"><p>Returns a Boolean indicating whether the specified property is enumerable.
+ ...</p></div><div id="short_Object.propertyIsEnumerable" class="short_description hiddenSpan"><p>Returns a Boolean indicating whether the specified property is enumerable.</p></div><h3 id="Object.propertyIsEnumerable" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>prop
+</p></td><td><p><a href="../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The name of the property to test.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>Every object has a <code>propertyIsEnumerable</code> method. This method can determine whether the specified property in an object can be enumerated by a <a href="https://developer.mozilla.org/en/Core_Javascript_1.5_Reference/Statements/for...in" title="en/Core_Javascript_1.5_Reference/Statements/for...in"><code>for...in</code></a> loop, with the exception of properties inherited through the prototype chain. If the object does not have the specified property, this method returns false.</p>  <Note>Starting in Javascript 1.8.1, <code>propertyIsEnumerable(&quot;prototype&quot;)</code> returns <code>false</code> instead of <code>true</code>; this makes the result compliant with ECMAScript 5.</Note>
+<h4>Example: A basic use of <code>propertyIsEnumerable</code></h4> <p>The following example shows the use of <code>propertyIsEnumerable</code> on objects and arrays:</p>  <pre><code>var o = {};
+var a = [];
+o.prop = &apos;is enumerable&apos;;
+a[0] = &apos;is enumerable&apos;;
+
+o.propertyIsEnumerable(&apos;prop&apos;);   // returns true
+a.propertyIsEnumerable(0);        // returns true</code></pre>      
+<h4>Example: User-defined versus built-in objects</h4> <p>The following example demonstrates the enumerability of user-defined versus built-in properties:</p>  <pre><code>var a = [&apos;is enumerable&apos;];
+
+a.propertyIsEnumerable(0);          // returns true
+a.propertyIsEnumerable(&apos;length&apos;);   // returns false
+
+Math.propertyIsEnumerable(&apos;random&apos;);   // returns false
+this.propertyIsEnumerable(&apos;Math&apos;);     // returns false</code></pre>      
+<h4>Example: Direct versus inherited properties</h4> <pre><code>var a = [];
+a.propertyIsEnumerable(&apos;constructor&apos;);         // returns false
+
+function firstConstructor()
+{
+  this.property = &apos;is not enumerable&apos;;
+}
+firstConstructor.prototype.firstMethod = function () {};
+
+function secondConstructor()
+{
+  this.method = function method() { return &apos;is enumerable&apos;; };
+}
+
+secondConstructor.prototype = new firstConstructor;
+secondConstructor.prototype.constructor = secondConstructor;
+
+var o = new secondConstructor();
+o.arbitraryProperty = &apos;is enumerable&apos;;
+
+o.propertyIsEnumerable(&apos;arbitraryProperty&apos;);   // returns true
+o.propertyIsEnumerable(&apos;method&apos;);              // returns true
+o.propertyIsEnumerable(&apos;property&apos;);            // returns false
+
+o.property = &apos;is enumerable&apos;;
+
+o.propertyIsEnumerable(&apos;property&apos;);            // returns true
+
+// These return false as they are on the prototype which
+// propertyIsEnumerable does not consider (even though the last two
+// are iteratable with for-in)
+o.propertyIsEnumerable(&apos;prototype&apos;); // returns false (as of JS 1.8.1/FF3.6)
+o.propertyIsEnumerable(&apos;constructor&apos;); // returns false
+o.propertyIsEnumerable(&apos;firstMethod&apos;); // returns false</code></pre>      
+</div></div></div></div></article><article id="Object.seal" data-title="Object.seal (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.seal" class="member-name methodClicker">seal</span>(<a href="../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.seal" class="ellipsis_description"><p>By default objects are <a href="Object.html#Object.extensible">extensible</a> (meaning, new properties can be added to them). Sealing an o...</p></div><div id="short_Object.seal" class="short_description hiddenSpan"><p>By default objects are <a href="Object.html#Object.extensible">extensible</a> (meaning, new properties can be added to them). Sealing an object prevents new properties from being added and marks all existing properties as non-configurable. This has the effect of making the set of properties on the object fixed and immutable.</p></div><h3 id="Object.seal" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="../js_doc/Object.html" id="Object" class=" clicker" title="Object (class)" data-id="Object">Object</a></p></td><td><p>Required. The object which should be sealed.</p></td>  
+</tr></tbody></table><h4>Description</h4><p>Making all properties non-configurable also prevents them from being converted from data properties to accessor properties and vice versa, but it does not prevent the values of data properties from being changed. Attempting to delete or add properties to a sealed object, or to convert a data property to accessor or vice versa, will fail, either silently or by throwing a <a href="TypeError.html"><code>TypeError</code></a> (most commonly, although not exclusively, when in <a href="https://developer.mozilla.org/en/Javascript/Strict_mode">strict mode</a> code).</p><h4>Examples</h4> <pre><code>var obj = {
+    prop: function () {},
+    foo: &quot;bar&quot;
+  };
+
+// New properties may be added, existing properties may be changed or removed
+obj.foo = &quot;baz&quot;;
+obj.lumpy = &quot;woof&quot;;
+delete obj.prop;
+
+var o = Object.seal(obj);
+assert(o === obj);
+assert(Object.isSealed(obj) === true);
+
+// Changing property values on a sealed object still works.
+obj.foo = &quot;quux&quot;;
+
+// But you can&apos;t convert data properties to accessors, or vice versa.
+Object.defineProperty(obj, &quot;foo&quot;, { get: function() { return &quot;g&quot;; } }); // throws a TypeError
+
+// Now any changes, other than to property values, will fail.
+obj.quaxxor = &quot;the friendly duck&quot;; // silently doesn&apos;t add the property
+delete obj.foo; // silently doesn&apos;t delete the property
+
+// ...and in strict mode such attempts will throw TypeErrors
+function fail() {
+  &quot;use strict&quot;;
+  delete obj.foo; // throws a TypeError
+  obj.sparky = &quot;arf&quot;; // throws a TypeError
+}
+fail();
+
+// Attempted additions through Object.defineProperty will also throw
+Object.defineProperty(obj, &quot;ohai&quot;, { value: 17 }); // throws a TypeError
+Object.defineProperty(obj, &quot;foo&quot;, { value: &quot;eit&quot; }); // throws a TypeError</code></pre>      
+<h4>See Also</h4> <ul><li><a href="Object.html#Object.isSealed" class="link-short" title="Object.isSealed (class method)" data-id="Object.isSealed"><code>isSealed()</code></a></li><li><a href="Object.html#Object.preventExtensions" class="link-short" title="Object.preventExtensions (class method)" data-id="Object.preventExtensions"><code>preventExtensions()</code></a></li><li><a href="Object.html#Object.isExtensible" class="link-short" title="Object.isExtensible (class method)" data-id="Object.isExtensible"><code>isExtensible()</code></a></li><li><a href="Object.html#Object.isSealed" class="link-short" title="Object.isSealed (class method)" data-id="Object.isSealed"><code>isSealed()</code></a></li><li><a href="Object.html#Object.freeze" class="link-short" title="Object.freeze (class method)" data-id="Object.freeze"><code>freeze()</code></a></li><li><a href="Object.html#Object.isFrozen" class="link-short" title="Object.isFrozen (class method)" data-id="Object.isFrozen"><code>isFrozen()</code></a></li></ul>      
+</div></div></div></div></article><article id="Object.toLocaleString" data-title="Object.toLocaleString (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.toLocaleString" class="member-name methodClicker">toLocaleString</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/String.html"" class="link-short" title="String">String</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.toLocaleString" class="ellipsis_description"><p>Returns a string representing the object. This method is meant to be overriden by derived objects for locale-specifi...</p></div><div id="short_Object.toLocaleString" class="short_description hiddenSpan"><p>Returns a string representing the object. This method is meant to be overriden by derived objects for locale-specific purposes.</p></div><h3 id="Object.toLocaleString" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4><p>This function is provided to give objects a generic <code>toLocaleString()</code> method, even though not all may use it. Currently, only <a href="Array.html"><code>Array</code></a>, <a href="Number.html"><code>Number</code></a>, and [[Date <code>Date]]</code> override <code>toLocaleString()</code>.</p></div></div></div></div></article><article id="Object.toSource" data-title="Object.toSource (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.toSource" class="member-name methodClicker">toSource</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/String.html"" class="link-short" title="String">String</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.toSource" class="ellipsis_description"><p>Returns a string representing the source code of the object.
+ ...</p></div><div id="short_Object.toSource" class="short_description hiddenSpan"><p>Returns a string representing the source code of the object.</p></div><h3 id="Object.toSource" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4><p>The <code>toSource</code> method returns the following values:</p>  <ul><li>For the built-in <code>Object</code> object, <code>toSource</code> returns the following string indicating that the source code is not available: </li></ul> <pre><code>function Object() {
+    [native code]
+    }
+</code></pre> <ul><li>For instances of <code>Object</code>, <code>toSource</code> returns a string representing the source code. </li></ul> <p>You can call <code>toSource</code> while debugging to examine the contents of an object.</p>  <p>It is safe for objects to override the <code>toSource</code> method. For example:</p>  <pre><code>function Person(name) {
+
+this.name = name;
+
+}
+
+Person.prototype.toSource = function Person_toSource() {
+
+    return &quot;new Person(&quot; + uneval(this.name) + &quot;)&quot;;
+
+};
+
+alert(new Person(&quot;Joe&quot;).toSource());    // ---&gt; new Person(&quot;Joe&quot;)
+</code></pre> <p><div id = "section_5"><span id = "Built-in_toString_methods"></span><span id = "Built-in_toSource_methods"></span></p><h4>Example: Using <code>toSource</code></h4> <pre><code>The following code defines the `Dog` object type and creates `theDog`, an object of type `Dog`:
+
+function Dog(name, breed, color, sex) {
+    this.name=name;
+    this.breed=breed;
+    this.color=color;
+    this.sex=sex;
+}
+
+theDog = new Dog(&quot;Gabby&quot;, &quot;Lab&quot;, &quot;chocolate&quot;, &quot;girl&quot;);
+</code></pre> <p>Calling the <code>toSource</code> method of <code>theDog</code> displays the Javascript source that defines the object:</p>  <pre><code>theDog.toSource();
+</code></pre> <p>returns</p>  <pre><code>({name:&quot;Gabby&quot;, breed:&quot;Lab&quot;, color:&quot;chocolate&quot;, sex:&quot;girl&quot;})</code></pre>      
+</div></div></div></div></article><article id="Object.toString" data-title="Object.toString (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.toString" class="member-name methodClicker">toString</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/String.html"" class="link-short" title="String">String</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.toString" class="ellipsis_description"><p>Returns a string representing the object.
+ ...</p></div><div id="short_Object.toString" class="short_description hiddenSpan"><p>Returns a string representing the object.</p></div><h3 id="Object.toString" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4> <p> Every object has a <code>toString()</code> method that is automatically called when the object is to be represented as a text value or when an object is referred to in a manner in which a string is expected. By default, the <code>toString()</code> method is inherited by every object descended from <code>Object</code>. If this method is not overridden in a custom object, <code>toString()</code> returns &quot;[object <em>type</em>]&quot;, where <em>type</em> is the object type. The following code illustrates this:</p>  <pre><code> var o = new Object();
+ o.toString();           // returns [object Object]
+</code></pre>  <Note>Starting in Javascript 1.8.5 <code>toString()</code> called on <code>null</code> returns <code>null</code>, and <code>undefined</code> returns <code>undefined</code>, as defined in the 5th Edition of ECMAScript and a subsequent Errata. See <a href="https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/Object/toString#Using_toString_to_detect_object_type">Using toString to detect object type</a>.</Note>
+
+ <h4>Example: Overriding the default <code>toString</code> method</h4> <p>You can create a function to be called in place of the default <code>toString()</code> method. The <code>toString()</code> method takes no arguments and should return a string. The <code>toString()</code> method you create can be any value you want, but it will be most useful if it carries information about the object.</p>  <p> The following code defines the <code>Dog</code> object type and creates <code>theDog</code>, an object of type <code>Dog</code>:</p>  <pre><code> function Dog(name,breed,color,sex) {
+     this.name=name;
+     this.breed=breed;
+     this.color=color;
+     this.sex=sex;
+ }
+
+ theDog = new Dog(&quot;Gabby&quot;,&quot;Lab&quot;,&quot;chocolate&quot;,&quot;female&quot;);</code></pre> <p> If you call the <code>toString()</code> method on this custom object, it returns the default value inherited from <code>Object</code>:</p>  <pre><code> theDog.toString(); //returns [object Object]</code></pre> <p> The following code creates and assigns <code>dogToString()</code> to override the default <code>toString()</code> method. This function generates a string containing the name, breed, color, and sex of the object, in the form &quot;<code>property = value;</code>&quot;.</p>  <pre><code> Dog.prototype.toString = function dogToString() {
+     var ret = &quot;Dog &quot; + this.name + &quot; is a &quot; + this.sex + &quot; &quot; + this.color + &quot; &quot; + this.breed;
+     return ret;
+ }</code></pre> <p> With the preceding code in place, any time <code>theDog</code> is used in a string context, Javascript automatically calls the <code>dogToString()</code> function, which returns the following string:</p>  <pre><code> Dog Gabby is a female chocolate Lab</code></pre> <h4>Example: Using toString() to detect object class</h4> <p> <code>toString()</code> can be used with every object and allows you to get its class. To use the <code>Object.prototype.toString()</code> with every object, you need to call <a href="Function.html#Function.call"><code>Function.call()</code></a> or <a href="Function.html#Function.apply"><code>Function.apply()</code></a> on it, passing the object you want to inspect as the first parameter called <code>thisArg</code>.</p>  <pre><code> var toString = Object.prototype.toString;
+
+ toString.call(new Date); // [object Date]
+ toString.call(new String); // [object String]
+ toString.call(Math); // [object Math]
+
+ //Since Javascript 1.8.5
+ toString.call(undefined); // [object Undefined]
+ toString.call(null); // [object Null]</code></pre> <h4>Example: Overriding the default <code>toString</code> method</h4> <p> You can create a function to be called in place of the default <code>toString()</code> method. The <code>toString()</code> method takes no arguments and should return a string. The <code>toString()</code> method you create can be any value you want, but it will be most useful if it carries information about the object.</p>  <p> The following code defines the <code>Dog</code> object type and creates <code>theDog</code>, an object of type <code>Dog</code>:</p>  <pre><code> function Dog(name,breed,color,sex) {
+     this.name=name;
+     this.breed=breed;
+     this.color=color;
+     this.sex=sex;
+ }
+
+ theDog = new Dog(&quot;Gabby&quot;,&quot;Lab&quot;,&quot;chocolate&quot;,&quot;female&quot;);</code></pre> <p> If you call the <code>toString()</code> method on this custom object, it returns the default value inherited from <code>Object</code>:</p>  <pre><code> theDog.toString(); //returns [object Object]</code></pre> <p> The following code creates and assigns <code>dogToString()</code> to override the default <code>toString()</code> method. This function generates a string containing the name, breed, color, and sex of the object, in the form &quot;<code>property = value;</code>&quot;.</p>  <pre><code> Dog.prototype.toString = function dogToString() {
+     var ret = &quot;Dog &quot; + this.name + &quot; is a &quot; + this.sex + &quot; &quot; + this.color + &quot; &quot; + this.breed;
+     return ret;
+ }</code></pre> <p> With the preceding code in place, any time <code>theDog</code> is used in a string context, Javascript automatically calls the <code>dogToString()</code> function, which returns the following string:</p>  <pre><code> Dog Gabby is a female chocolate Lab
+</code></pre> <h4>See Also</h4> <ul><li><a href="Object.html#Object.toSource" class="link-short" title="Object.toSource (class method)" data-id="Object.toSource"><code>toSource()</code></a>]</li><li><a href="Object.html#Object.valueOf" class="link-short" title="Object.valueOf (class method)" data-id="Object.valueOf"><code>valueOf()</code></a></li></ul></div></div></div></div></article><article id="Object.valueOf" data-title="Object.valueOf (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.valueOf" class="member-name methodClicker">valueOf</span>()<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.valueOf" class="ellipsis_description"><p>Returns the primitive value of the specified object
+ ...</p></div><div id="short_Object.valueOf" class="short_description hiddenSpan"><p>Returns the primitive value of the specified object</p></div><h3 id="Object.valueOf" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4><p>Javascript calls the <code>valueOf</code> method to convert an object to a primitive value. You rarely need to invoke the <code>valueOf</code> method yourself; Javascript automatically invokes it when encountering an object where a primitive value is expected.</p>  <p>By default, the <code>valueOf</code> method is inherited by every object descended from <code>Object</code>. Every built-in core object overrides this method to return an appropriate value. If an object has no primitive value, <code>valueOf</code> returns the object itself, which is displayed as:</p>  <pre><code>[object Object]</code></pre> <p>You can use <code>valueOf</code> within your own code to convert a built-in object into a primitive value. When you create a custom object, you can override <code>Object.valueOf</code> to call a custom method instead of the default <code>Object</code> method.</p><h4>Note</h4> <p>Objects in string contexts convert via the <a href="Object.html#Object.toString" class="link-short" title="Object.toString (class method)" data-id="Object.toString"><code>toString()</code></a> method, which is different from <a href="String.html"><code>String</code></a> objects converting to string primitives using <code>valueOf</code>. All objects have a string conversion, if only &quot;<code>[object _type_]</code>&quot;. But many objects do not convert to number, boolean, or function.</p>      
+<h4>Example: Overriding <code>valueOf</code> for custom objects</h4> <p>You can create a function to be called in place of the default <code>valueOf</code> method. Your function must take no arguments.</p>  <p>Suppose you have an object type <code>myNumberType</code> and you want to create a <code>valueOf</code> method for it. The following code assigns a user-defined function to the object&apos;s <code>valueOf</code> method:</p>  <pre><code>myNumberType.prototype.valueOf = new Function(functionText);</code></pre> <p>With the preceding code in place, any time an object of type <code>myNumberType</code> is used in a context where it is to be represented as a primitive value, Javascript automatically calls the function defined in the preceding code.</p>  <p>An object&apos;s <code>valueOf</code> method is usually invoked by Javascript, but you can invoke it yourself as follows:</p>  <pre><code>myNumber.valueOf()
+</code></pre>      
+<h4>See Also</h4> <ul><li><a href="parseInt.html"><code>parseInt()</code></a></li><li><a href="Object.html#Object.toString" class="link-short" title="Object.toString (class method)" data-id="Object.toString"><code>toString()</code></a></li></ul>      
+</div></div></div></div></article><h3 class="sectionHeader">Properties</h3><article id="Object.__noSuchMethod__" data-title="Object.__noSuchMethod__ (class property)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.__noSuchMethod__" class="member-name methodClicker">__noSuchMethod__</span><li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Function.html"" class="link-short" title="Function">Function</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.__noSuchMethod__" class="ellipsis_description"><p>Executes a function when a non-existent method is called on an object. It takes the form of:
+ ...</p></div><div id="short_Object.__noSuchMethod__" class="short_description hiddenSpan"><p>Executes a function when a non-existent method is called on an object. It takes the form of:</p></div><h3 id="Object.__noSuchMethod__" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4><pre><code>obj.__noSuchMethod__ = function (id, args) { . . . }</code></pre> <p>where:</p>  <ul><li><code>id</code>: the name of the non-existent method that was called</li><li><code>args</code>: an array of the arguments passed to the method </li></ul> <p>By default, an attempt to call a method that doesn&apos;t exist on an object results in a <a href="TypeError.html"><code>TypeError</code></a> being thrown. This behavior can be circumvented by defining a function at that object&apos;s <code>noSuchMethod</code> member. The function takes two arguments, the first is the name of the method attempted and the second is an array of the arguments that were passed in the method call. The second argument is an actual array (that is, it inherits through the <code>Array</code> prototype chain) and not the array-like <a href="https://developer.mozilla.org/en/Javascript/Reference/Functions_and_function_scope/arguments">arguments object</a>.</p>  <p>If this method cannot be called, either as if <code>undefined</code> by default, if deleted, or if manually set to a non-function, the Javascript engine will revert to throwing <code>TypeError</code>s.</p><h4>Example</h4> <p><code>__noSuchMethod__</code> can be used to simulate multiple inheritance. An example of code that implements a primitive form of multiple inheritance is shown below.</p>  <pre><code>// Doesn&apos;t work with multiple inheritance objects as parents
+ function noMethod(name, args) {
+   var parents=this.__parents_;
+
+   // Go through all parents
+
+   for (var i=0;i&lt;parents.length;i++) {
+     // If we find a function on the parent, we call it
+     if (typeof parents[i][name] ==&quot;function&quot;) {
+       return parents[i][name].apply(this, args);
+     }
+   }
+
+   // If we get here, the method hasn&apos;t been found
+
+   throw new TypeError;
+ }
+
+ // Used to add a parent for multiple inheritance
+
+ function addParent(obj, parent) {
+   // If the object isn&apos;t initialized, initialize it
+
+   if (!obj.__parents_) {
+     obj.__parents_=[];
+     obj.__noSuchMethod__ = noMethod;
+   }
+
+   // Add the parent
+
+   obj.__parents_.push(parent);
+ }</code></pre> <p>An example of using this idea is shown below.</p>  <pre><code>    // Example base class 1
+
+ function NamedThing(name){
+   this.name=name;
+ }
+
+ NamedThing.prototype = {
+   getName: function() {return this.name;},
+   setName: function(newName) {this.name=newName;}
+ }
+
+ //Example base class 2
+
+ function AgedThing(age){
+   this.age=age;
+ }
+
+ AgedThing.prototype = {
+   getAge: function(){return this.age;},
+   setAge: function(age){this.age=age;}
+ }
+
+ // Child class. inherits from NamedThing and AgedThing as well as defining address
+
+ function Person(name, age, address){
+   addParent(this, NamedThing.prototype);
+   NamedThing.call(this, name);
+   addParent(this, AgedThing.prototype);
+   AgedThing.call(this, age);
+   this.address=address;
+ }
+
+ Person.prototype = {
+   getAddr: function() {return this.address;},
+   setAddr: function(addr) {this.address=addr;}
+ }
+
+ var bob=new Person(&quot;bob&quot;, 25, &quot;New York&quot;);
+
+ console.log(&quot;getAge is &quot;+((&quot;getAge&quot; in bob)?&quot;in&quot;:&quot;not in&quot;)+&quot; bob&quot;);
+ console.log(&quot;bob&apos;s age is: &quot;+bob.getAge());
+ console.log(&quot;getName is &quot;+((&quot;getName&quot; in bob)?&quot;in&quot;:&quot;not in&quot;)+&quot; bob&quot;);
+ console.log(&quot;bob&apos;s name is: &quot;+bob.getName());
+ console.log(&quot;getAddr is &quot;+((&quot;getAddr&quot; in bob)?&quot;in&quot;:&quot;not in&quot;)+&quot; bob&quot;);
+ console.log(&quot;bob&apos;s address is: &quot;+bob.getAddr());</code></pre>      
+</div></div></div></div></article><article id="Object.constructor" data-title="Object.constructor (class property)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.constructor" class="member-name methodClicker">constructor</span><li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Function.html"" class="link-short" title="Function">Function</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.constructor" class="ellipsis_description"><p>Returns a reference to the <code>Object</code> function that created the instance&apos;s prototype. Note that the value of this prop...</p></div><div id="short_Object.constructor" class="short_description hiddenSpan"><p>Returns a reference to the <code>Object</code> function that created the instance&apos;s prototype. Note that the value of this property is a reference to the function itself, not a string containing the function&apos;s name, but it isn&apos;t read only (except for primitive <a href="Boolean.html"><code>Boolean</code></a>, <a href="Number.html"><code>Number</code></a>, or <a href="String.html"><code>String</code></a> values of: 1, true, &quot;read-only&quot;).</p></div><h3 id="Object.constructor" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Example: Displaying the constructor of an object</h4> <p>The following example creates a prototype, <code>Tree</code>, and an object of that type, <code>theTree</code>. The example then displays the <code>constructor</code> property for the object <code>theTree</code>.</p>  <pre><code>function Tree(name) {
+   this.name = name;
+}
+theTree = new Tree(&quot;Redwood&quot;);
+console.log(&quot;theTree.constructor is &quot; + theTree.constructor);
+</code></pre> <p>This example displays the following output:</p>  <pre><code>theTree.constructor is function Tree(name) {
+    this.name = name;
+}</code></pre>      
+<h4>Example: Changing the constructor of an object</h4> <p>The following example shows how to modify constructor value of generic objects. Only true, 1 and &quot;test&quot; variable constructors will not be changed. This example explains that is not always so safe to believe in constructor function.</p>  <pre><code>function Type(){};
+var    types = [
+    new Array,    [],
+    new Boolean,    true,
+    new Date,
+    new Error,
+    new Function,    function(){},
+    Math,
+    new Number,    1,
+    new Object,    {},
+    new RegExp,    /(?:)/,
+    new String,    &quot;test&quot;
+];
+for(var i = 0; i &lt; types.length; i++){
+    types[i].constructor = Type;
+    types[i] = [types[i].constructor, types[i] instanceof Type, types[i].toString()];
+};
+alert(types.join(&quot;\n&quot;));</code></pre>      
+</div></div></div></div></article><article id="Object.proto" data-title="Object.proto (class property)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Object.proto" class="member-name methodClicker">proto</span><li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="../js_doc/Object.html"" class="link-short" title="Object (class)">Object</a></li></ul></li></li></ul><ul class="metaInfo"><li><span class="label deprecated">Deprecated
+</span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Object.proto" class="ellipsis_description"><p>Refers to the prototype of the object, which may be an object or <code>null</code> (which usually means the object is `Object.p...</p></div><div id="short_Object.proto" class="short_description hiddenSpan"><p>Refers to the prototype of the object, which may be an object or <code>null</code> (which usually means the object is <code>Object.prototype</code>, which has no prototype).  It is sometimes used to implement prototype-inheritance based property lookup.</p></div><h3 id="Object.proto" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
+</h3><div class="description"><h4>Description</h4><p>This property is deprecated and should not be used in new code: use <a href="Object.html#Object.getPrototypeOf" class="link-short" title="Object.getPrototypeOf (class method)" data-id="Object.getPrototypeOf"><code>getPrototypeOf()</code></a> instead.</p></div></div></div></div></article><div id="disqus_thread"></div></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providors | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo"></a><a href="http://nodejitsu.com/" title="nodejitsu" target="_blank" class="nodejitsu-logo"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="../resources/javascripts/plugins.js"></script>
+<script defer src="../resources/javascripts/prettify.js"></script>
+<script defer src="../resources/javascripts/prettify-extension.js"></script>
+<script defer src="../resources/javascripts/script.js"></script>
+<script defer src="../resources/javascripts/disqus-ext.js"></script>
+<!-- end scripts--><!--[if lt IE 7]><script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script><script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+
+</script><![endif]--></body></html>

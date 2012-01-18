@@ -1,9 +1,16 @@
 # Introduction
 
-This is the build system for the Node Manual documentation, include Node.js and Javascript Reference Guides. It relies on two repos as submodules:
+This is the build system for the Node Manual documentation, including the Node.js and Javascript Reference Guides. It relies on two repos as submodules:
 
 * The [doc-build](https://github.com/c9/doc-build) system converts Markdown to HTML, and is used for the Node Manual documentation
 * C9's fork of [ndoc](https://github.com/c9/ndoc), which takes Javascript source files and generates HTML documentation from the comments
+
+Remember! After you clone this repo, call 
+
+<pre>
+git submodule init
+git submodule update
+</pre>
 
 # Running a Build
 
