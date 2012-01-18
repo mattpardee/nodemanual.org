@@ -88,7 +88,10 @@ function makeNodeJSRefDocs(versions)
                 }
 
                 if (index == array.length - 1)
+                {
                     console.log("All Done!".green);
+                    process.exit(0);
+                }
             });
         }); 
 }

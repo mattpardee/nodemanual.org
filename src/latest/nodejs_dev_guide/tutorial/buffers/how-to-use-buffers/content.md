@@ -6,7 +6,7 @@ One way to handle this problem is to just use strings _anyway_, which is exactly
 
 Don't use binary strings; use buffers instead!
 
-<Note>For more detailed information, see [the Node.js reference documentation on buffers](../nodejs_ref_guide/buffers.html).</Note>
+<Note>For more detailed information, see [the Node.js reference documentation on buffers](../nodejs_ref_guide/buffer.html).</Note>
 
 #### Using Buffers
 

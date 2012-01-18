@@ -33,7 +33,9 @@
  * new buffer(size)
  * new buffer(str, encoding='utf8')
  * 
- * Allocates a new buffer, either:
+ * Allocates a new buffer object.
+ *
+ * You can use either:
  *
  * - using an `array` of octects
  * - allocating with a specific `size`
@@ -41,7 +43,8 @@
  *  
  * #### Example
  *
- *    var bBuffer = new Buffer("This is a buffer.", "utf8");
+ *     var bBuffer = new Buffer("This is a buffer.", "utf8");
+ *
 **/ 
 
 

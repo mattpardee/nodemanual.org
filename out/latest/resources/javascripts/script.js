@@ -49,34 +49,6 @@ $(function () {
     });
 
 
-  // are there bogus <Note> tags? turn them into real divs, please
-  $('note').each(function () {
-      var $note = $(this);
-
-      var newElem = $('<div></div>');
-
-      newElem.html($note.html());
-
-      newElem.attr("class", "alert-message block-message warning");
-
-      // replace Note with Bootstrap-styled div
-      $note.before(newElem).remove(); 
-    });
-
-  // are there bogus <Warning> tags? turn them into real divs, please
-  $('warning').each(function () {
-      var $note = $(this);
-
-      var newElem = $('<div></div>');
-
-      newElem.html($note.html());
-
-      newElem.attr("class", "alert-message block-message error");
-
-      // replace Note with Bootstrap-styled div
-      $note.before(newElem).remove(); 
-    });
-    
     function getTitle($article) {
         var title = [baseTitle];
 
@@ -251,18 +223,17 @@ $(function () {
 //    }
 //    
 //    $('#sidebar').height($(window).height() - $('#overview').outerHeight() - 25 + ($('html').scrollTop() <= 85 ? $('html').scrollTop() : 85 ))
-    
-    $(window)
-    .scroll(function(){//auto kanei to header na metakinhtai kai na einai panta visible;
-        
-        var $sidebar       = $('#sidebar'),
+    var bgHeightSet = false,
+        $sidebar       = $('#sidebar'),
         $pagination    = $('.members'),
         $paginationBackground = $('.membersBackground'),
         $paginationContent = $('.membersContent'),
-        $tabs = $('.tabs'),
-        header_offset  = $('#overview').outerHeight(),
-        s;
-
+        $tabs = $('.tabs');
+        
+    function handleScroll() {
+        var header_offset  = $('#overview').outerHeight(),
+            s;
+        
         // scrolling offset calculation via www.quirksmode.org
         if (window.pageYOffset) {
             s = window.pageYOffset;
@@ -279,17 +250,21 @@ $(function () {
 //                'top': 41,
 //                'padding':0
 //            });
-
+            var pgLeft = $paginationContent.offset().left;
+            $paginationContent.css('left', pgLeft);
             $pagination.css({
                 'position': 'fixed',
                 'z-index': 2,
-                'top': 43
+                'top': 40
 //                'background-color': 'white'
 //                'opacity': 0.8
             }).addClass('srolled')
             .next().css({'padding-top': $pagination.height()});
             $tabs.addClass('tabsSansBorder');
-            $paginationBackground.show();
+            if(!bgHeightSet) {
+                bgHeightSet = true;
+//                $paginationBackground.css('display', 'block')//.stop().animate({'height': 44, 'opacity':1}, 'normal', 'linear');
+            }
         }
         else {
 //            $sidebar.css({
@@ -297,6 +272,7 @@ $(function () {
 //                'top': 0,
 //                'padding-top':25
 //            });
+            $paginationContent.css('left', 0);
             $pagination.css({
                 'position': 'relative',
                 'top': 0
@@ -305,9 +281,14 @@ $(function () {
             }).removeClass('srolled')
             .next().css({'padding-top': 0});
             $tabs.removeClass('tabsSansBorder');
-            $paginationBackground.hide();
-        }
-        
-//        $('#sidebar').height($(window).height() - $('#overview').outerHeight() - 25 + ($('html').scrollTop() <= 85 ? $('html').scrollTop() : 85 ) + (isScrolledIntoView($('#footer')[0]) ? 10 : 0))
+            bgHeightSet = false;
+//            $paginationBackground.stop().css({'display': 'none'});
+        }        
+    }
+    
+    $(window)
+    .scroll(function(){//auto kanei to header na metakinhtai kai na einai panta visible;
+        handleScroll();
     });
+    handleScroll();
 });
