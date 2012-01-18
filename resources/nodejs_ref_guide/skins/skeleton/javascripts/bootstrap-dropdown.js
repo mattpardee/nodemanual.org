@@ -27,16 +27,19 @@
 
   $.fn.dropdown = function ( selector ) {
     return this.each(function () {
-      $(this).delegate(selector || d, 'click', function (e) {
-        var li = $(this).parent('li')
-          , isActive = li.hasClass('open')
+      $(this).delegate(selector || d, 'click', function (e) {  
+        if(!$(this).hasClass('brand')){
+            var li = $(this).parent('li'), 
+                isActive = li.hasClass('open');
 
-        clearMenus()
-        !isActive && li.toggleClass('open')
-        return false
-      })
+            clearMenus();
+            !isActive && li.toggleClass('open');
+            return false;
+        }
+      });
+      
     })
-  }
+  };
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
@@ -55,3 +58,19 @@
   })
 
 }( window.jQuery || window.ender );
+
+$(document).ready(function(){
+  var d = 'a.menu, .dropdown-toggle'
+    function clearMenus() {
+        $(d).parent('li').each(function(){
+            $(this).removeClass('open')
+        });
+    }
+    $('.brand').parent('.dropdown').hover(
+        function(){
+            $(this).addClass('open');
+        }, 
+        function(){
+            clearMenus();
+        });
+})
