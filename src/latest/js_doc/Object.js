@@ -232,7 +232,7 @@
  *
  * #### Note
  *
- * Objects in string contexts convert via the [[Object.toString `toString()`]] method, which is different from [[String `String`]] objects converting to string primitives using `valueOf`. All objects have a string conversion, if only "`[object _type_]`". But many objects do not convert to number, boolean, or function.
+ * Objects in string contexts convert via the [[Object.toString `toString()`]] method, which is different from [[String `String`]] objects converting to string primitives using `valueOf`. All objects have a string conversion, if only "`[object _type_]`". But many objects don't convert to number, boolean, or function.
  *
  * #### Example: Overriding `valueOf` for custom objects 
  *

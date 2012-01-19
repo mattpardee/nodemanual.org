@@ -55,6 +55,9 @@ $(function () {
         if ($article.data('title')) {
             title.push($article.data('title'));
         }
+        else {
+            title.push($('div.title h1'));
+        }
 
         return title.join(' | ');
     }

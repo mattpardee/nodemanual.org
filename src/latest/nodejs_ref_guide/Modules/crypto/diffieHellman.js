@@ -12,7 +12,7 @@
  **/
 
 /**
- * diffieHellman.computeSecret(other_public_key, [input_encoding='binary'], [output_encoding=input_encodin]) -> String
+ * diffieHellman.computeSecret(other_public_key, [input_encoding='binary'], [output_encoding='input_encoding']) -> String
  * - other_public_key (String): The other party's public key
  * - input_encoding (String): The encoding used to interprate the public key; can be `'binary'`, `'base64'`, or `'hex'`. 
  * - output_encoding (String): The encoding of the returned computation; defaults to the `input_encoding`

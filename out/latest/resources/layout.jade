@@ -1,3 +1,5 @@
+include ../nodejs_ref_guide/skins/templates/lib
+
 !!! 5
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
@@ -9,11 +11,11 @@ head
   //- N.B. http://blog.yjl.im/2011/01/bad-value-x-ua-compatible-for-attribute.html
   meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
 
-  title #{title}
+  title Node.js Manual | #{title}
 
-  meta(name="generator", content="ndoc")
-  meta(name="description", content="")
-  meta(name="author", content="")
+  meta(name="generator", content="c9-doc-build")
+  meta(name="description", content="A collection of Node.js tutorials")
+  meta(name="author", content="Garen J. Torikian")
 
   meta(name="viewport", content="width=device-width,initial-scale=1")
 
@@ -68,7 +70,8 @@ body(onload="styleCode()")
         .span11
           span.editInC9 
             a(href='#') Edit in Cloud9 IDE
-          .dev_guide#content!= markdown(data)
+          .dev_guide#content
+            mixin markdown(data)
 
           div#disqus_thread
 
@@ -96,7 +99,3 @@ body(onload="styleCode()")
       window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
 
 </html>
-
-mixin markdown(data)
-  html = markdown(data)
-  != html

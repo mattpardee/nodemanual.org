@@ -1,4 +1,4 @@
-### Understanding `require()`
+# Importing Modules with `require()`
 
  Node.js follows the [CommonJS module system](http://wiki.commonjs.org/wiki/Modules/1.1), and the built-in `require()` function is the easiest way to include modules that exist in separate files. The basic functionality of `require()` is that it reads a Javascript file, executes the file, and then proceeds to return the `exports` object. 
 

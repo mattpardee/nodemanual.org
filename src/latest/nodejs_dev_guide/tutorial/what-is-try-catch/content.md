@@ -1,4 +1,4 @@
-## Understanding try/catch()
+# Understanding `try/catch`
 
 Javascript's `try-catch-finally` statement works very similarly to the `try-catch-finally` encountered in C++ and Java.  It's best to describe this concept with an example:
 

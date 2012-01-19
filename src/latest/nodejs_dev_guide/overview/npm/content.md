@@ -1,4 +1,4 @@
-## Node Package Manager
+# The Node Package Manager
 
 The npm, short for Node Package Manager, is two things: first and foremost, it is an online repository for the publishing of open-source Node.js modules; second, it is a command-line utility for interacting with the online repository that aids in package installation, version control, and dependency management.  Most Node.js libraries and applications are published on npm, and there's already a plethora of third-party developed libraries to help your Node.js workflow move more easily. You can be search for these applications on [the npm registry](http://search.npmjs.org). 
 

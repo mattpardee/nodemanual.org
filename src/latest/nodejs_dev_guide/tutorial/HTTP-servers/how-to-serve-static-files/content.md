@@ -1,4 +1,4 @@
-### Serving Static Files
+# Serving Static Files
 
 A basic necessity for most [HTTP servers](how-to-create-a-HTTPS-server.html) is tbeing able to serve static files. This is not that hard to do in Node.js. First you read the file, and then you serve the file.  Here is an example of a script that will serve the files in the current directory:
 

@@ -1,4 +1,4 @@
-### Writing files in Node.js
+# Writing to Files
 
 Writing to a file is another of the basic programming tasks that one usually needs to know about. This task is very simple in Node.js.  We can use the handy `writeFile()` method inside the standard library's `fs` module, which can save all sorts of time and trouble.
 

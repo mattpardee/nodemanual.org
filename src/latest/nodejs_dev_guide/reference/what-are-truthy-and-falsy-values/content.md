@@ -1,4 +1,4 @@
-## Defining "Truthy" and "Falsy" values
+# Defining "Truthy" and "Falsy" values
 
 Javascript is weakly typed language. That means different types can be used in operations and the language will try to convert the types until the operation makes sense. For example, look at the following code:
 

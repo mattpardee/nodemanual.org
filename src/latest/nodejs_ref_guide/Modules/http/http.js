@@ -69,7 +69,7 @@
 /**
  * http.globalAgent.requests -> Object
  *
- * An object which contains queues of requests that have not yet been assigned to  sockets. **Do not modify this!**
+ * An object which contains queues of requests that have not yet been assigned to  sockets. **Don't modify this!**
  * 
 **/
 

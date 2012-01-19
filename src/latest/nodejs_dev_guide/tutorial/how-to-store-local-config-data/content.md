@@ -1,4 +1,4 @@
-## Storing Local Data
+# Storing Local Configuration Data
 
 Storing your Node.js application's configuration data is quite simple. Every object in Javascript can be easily rendered as [JSON](what-is-json.html), which in turn is just string data that can be sent or saved any way you'd like. The simplest way to do this involves the built-in `JSON.parse()` and `JSON.stringify()` methods.
 

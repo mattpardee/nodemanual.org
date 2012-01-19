@@ -1,4 +1,4 @@
-### Creating HTTP GET and POST Requests
+# Creating HTTP GET and POST Requests
 
 Another extremely common programming task is making an HTTP request to a web server.  Node.js provides an extremely simple API for this functionality in the form of `http.request`.
 

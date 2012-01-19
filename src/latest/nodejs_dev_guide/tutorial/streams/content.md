@@ -1,4 +1,4 @@
-### Understanding Streams
+# Understanding Streams
 
 Streams are another basic construct in Node.js that encourages asynchronous coding. A 'stream' is Node's I/O abstraction. Streams allow you to process the data as it is generated or retrieved. Streams can be readable, writeable, or both.
 
@@ -14,4 +14,4 @@ Create a new file called `cp.js`, and copy-paste the following code:
 
 Run this script with arguments like `node cp.js src.txt dest.txt`. This would mean, in the code above, that `process.argv[2]` is `src.txt` and `process.argv[3]` is `desc.txt`. Obviously, you'll need some dummy text files before you can run the script.
 
-The code sets up a readable stream from the source file and a writable stream to the destination file. Whenever the readable stream gets data, it is written to the writeable stream. After it's done, it closes the writable stream when the readable stream is finished. **Note**: it would have been better to use [pipe](how-to-use-stream-pipe.html) like `readStream.pipe(writeStream);`. However, to show how streams work, we have done things the long way.
+The code sets up a readable stream from the source file and a writable stream to the destination file. Whenever the readable stream gets data, it is written to the writeable stream. After it's done, it closes the writable stream when the readable stream is finished. <Note>In the code above, it would have been more efficient to use [pipe](how-to-use-stream-pipe.html) via `readStream.pipe(writeStream);`. However, to show how streams work, we have done things the long way.</Note>

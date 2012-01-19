@@ -1,4 +1,4 @@
-## Using the path module
+# Manipulating Paths with the path Module
 
 The `path` module contains several helper functions to help make path manipulation easier.
 
@@ -38,7 +38,7 @@ For example:
     > path.dirname(a)
     '/a/b'
 
-`basename`() has an optional second parameter that will strip out the extension if you pass the correct extension:
+`basename()` has an optional second parameter that will strip out the extension if you pass the correct extension:
 
     > var path = require('path')
     > var a = '/a/b/c.html'

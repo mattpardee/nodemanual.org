@@ -1,8 +1,8 @@
-## Security
+# Securing Your Code
 
-Sometimes, you might want to let users read or write files on your server. For example, maybe you want to write a forum software without using an actual database. The problem is that you do not want your users to be able to modify or to read arbitrary files on your server, and there are sometimes ways to get around restrictions that should prevent it. Read on to see how you can secure your code against evil attackers trying to mess with your files.
+Sometimes, you might want to let users read or write files on your server. For example, maybe you want to write a forum software without using an actual database. The problem is that you don't want your users to be able to modify or to read arbitrary files on your server, and there are sometimes ways to get around restrictions that should prevent it. 
 
-### A Brief Primer
+Below are some common attack patterns, and some potential ways to protect yourself.
 
 #### Poison Null Bytes
 
@@ -26,7 +26,7 @@ However, note that whitelisting alone isn't sufficient anymore as soon as you al
 
 #### Preventing Directory Traversal
 
-Directory traversal means that an attacker is trying to access files outside of the folder you want to allow him to access. You can prevent this by using Node's built-in `path` module. **Do not reimplement the methods in the `path` module yourself**. For example, when someone runs your code on a Windows server, not handling backslashes like slashes will allow attackers to do travese directories.
+Directory traversal means that an attacker is trying to access files outside of the folder you want to allow him to access. You can prevent this by using Node's built-in `path` module. **Don't reimplement the methods in the `path` module yourself**. For example, when someone runs your code on a Windows server, not handling backslashes like slashes will allow attackers to do travese directories.
 
 This example assumes that you already checked the `userSuppliedFilename` variable as described in the "Poison Null Bytes" section above.
 

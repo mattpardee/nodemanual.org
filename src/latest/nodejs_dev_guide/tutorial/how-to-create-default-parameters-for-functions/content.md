@@ -1,4 +1,4 @@
-## Creating Default Parameters for Functions
+# Creating Default Parameters for Functions
 
 As you know, functions can take a set number of parameters, and require that all of them be present before it can be executed successfully. However, you might sometimes run into situations where you want to provide a default value for a parameter or take a variable number of parameters. Unfortunately, Javascript does not have a built-in way to do that. However, people have developed idioms to compensate.
 

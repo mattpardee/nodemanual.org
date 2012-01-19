@@ -1,4 +1,4 @@
-### Using TLS
+# Using the `tls` Module
 
 [Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) is the successor to Secure Sockets Layer (SSL). It, along with SSL, are the de-facto standard cryptographic protocols for secure communications over the web. TSL encrypts communications on top of a network transport layer (typically TCP), and uses public-key cryptography to encrypt messages.
 

@@ -1,4 +1,4 @@
-### Using fs.createWriteStream()
+# Writing to Streams   
 
 The function `fs.createWriteStream()` creates a writable stream in a very simple manner. After a call to `fs.createWriteStream(filepath)`, you have a writeable stream to work with directly to your `filepath`. 
 

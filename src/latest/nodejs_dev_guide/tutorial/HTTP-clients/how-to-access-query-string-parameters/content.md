@@ -1,4 +1,4 @@
-### Accessing Query String Parameters
+# Accessing Query String Parameters
 
 In Node.js, functionality to aid in the accessing of URL query string parameters is built into the standard library. The `url.parse()` method takes care of most of the heavy lifting.  Here is an example script using this handy function and an explanation on how it works:
 

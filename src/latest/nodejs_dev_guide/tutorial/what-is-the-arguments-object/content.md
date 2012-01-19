@@ -1,4 +1,4 @@
-### The Arguments Object
+# The Arguments Object
 
 The `arguments` object is a special construct available inside all function calls. It represents the list of arguments that were passed in when invoking the function. Since Javascript allows functions to be called with any number of arguments, we need a way to dynamically discover and access them.
 

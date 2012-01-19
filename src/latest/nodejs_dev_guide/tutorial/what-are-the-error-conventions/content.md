@@ -1,8 +1,8 @@
-## Understanding the Error Conventions
+# Error Conventions
 
 In Node.js, it is considered standard practice to handle errors in asynchronous functions by returning them as the first argument to the current function's callback.  If there is an error, the first parameter is passed an `Error` object with all the details. Otherwise, the first parameter is `null`. 
 
-It's simpler than it sounds; here's a demonstration.
+It's simpler than it sounds; here's a demonstration:
 
 <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.conventions.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
 

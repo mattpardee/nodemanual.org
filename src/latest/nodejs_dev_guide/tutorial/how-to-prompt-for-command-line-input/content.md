@@ -1,4 +1,4 @@
-### Prompting for Command Line Input
+# Prompting for Command Line Input
 
 Say you've got a little CLI tool, but you want to be able to prompt a user for additional data after the script has started, rather than passing it in as a command line argument or putting it in a file.  To do this, you'll need to listen to STDIN ("standard input"), which Node.js exposes for you as `process.stdin`, a readable stream.
 

@@ -58,19 +58,3 @@
   })
 
 }( window.jQuery || window.ender );
-
-$(document).ready(function(){
-  var d = 'a.menu, .dropdown-toggle'
-    function clearMenus() {
-        $(d).parent('li').each(function(){
-            $(this).removeClass('open')
-        });
-    }
-    $('.brand').parent('.dropdown').hover(
-        function(){
-            $(this).addClass('open');
-        }, 
-        function(){
-            clearMenus();
-        });
-})

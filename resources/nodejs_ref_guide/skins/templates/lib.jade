@@ -293,9 +293,25 @@ mixin link(obj, short, classes)
 
 mixin markdown(text, inline)
   html = markdown(text, inline)
+  != restoreNotes(html)
+
+-function restoreNotes(html)
+  -var noteORegex = new RegExp('<note>', "ig")
+  -var noteCRegex = new RegExp('</note>', "ig")
+  -var warningORegex = new RegExp('<warning>', "ig")
+  -var warningCRegex = new RegExp('</warning>', "ig")
+
+  if (html.match(noteORegex))
+    -html = html.replace(noteORegex, "<div class='alert-message block-message warning'>")
+  if (html.match(warningORegex))
+    -html = html.replace(warningORegex, "<div class='alert-message block-message error'>")
+
+  if (html.match(noteCRegex))
+    -html = html.replace(noteCRegex, "</div>")
+    if (html.match(warningCRegex))
+    -html = html.replace(warningCRegex, "</div>")
+
   != html
-
-
 
 mixin links(collection)
   ul.method-list

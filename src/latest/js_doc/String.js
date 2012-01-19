@@ -479,7 +479,7 @@
  * String.concat(string1..., stringN) -> String
  * - stringN (String): Strings to concatenate to this string.
  *
- * This method combines the text from one or more strings and returns a new string. Changes to the text in one string do not affect the other string.
+ * This method combines the text from one or more strings and returns a new string. Changes to the text in one string don't affect the other string.
  *
  * #### Example: Using `concat`
  *
@@ -640,7 +640,7 @@
  *
  * Extracts a section of a string and returns a new string.
  *
- * `slice` extracts the text from one string and returns a new string. Changes to the text in one string do not affect the other string.
+ * `slice` extracts the text from one string and returns a new string. Changes to the text in one string don't affect the other string.
  *
  * `slice` extracts up to but not including `endSlice`. `string.slice(1,4)` extracts the second character through the fourth character (characters indexed 1\. 2\. and 3).
  *
@@ -727,7 +727,7 @@
  * * [[String.charAt `charAt()`]] 
  * * [[String.indexOf `indexOf()`]]
  * * [[String.lastIndexOf `lastIndexOf()`]] 
- * * [[Array.join `Array.join`()`]]
+ * * [[Array.join `Array.join()`]]
  * 
  **/
 
@@ -737,7 +737,7 @@
  * Returns the calling string value converted to lower case, according to any locale-specific case mappings.
  *
  *
- * The `toLocaleLowerCase` method returns the value of the string converted to lower case according to any locale-specific case mappings. `toLocaleLowerCase` does not affect the value of the string itself. In most cases, this will produce the same result as [[String.toLowerCase `toLowerCase()`]], but for some locales, such as Turkish, whose case mappings do not follow the default case mappings in Unicode, there may be a different result.
+ * The `toLocaleLowerCase` method returns the value of the string converted to lower case according to any locale-specific case mappings. `toLocaleLowerCase` does not affect the value of the string itself. In most cases, this will produce the same result as [[String.toLowerCase `toLowerCase()`]], but for some locales, such as Turkish, whose case mappings don't follow the default case mappings in Unicode, there may be a different result.
  *
  * #### Example: Using `toLocaleLowerCase`
  *
@@ -794,7 +794,7 @@
  * Returns the calling string value converted to upper case, according to any locale-specific case mappings.
  *
  *
- * The `toLocaleUpperCase` method returns the value of the string converted to upper case according to any locale-specific case mappings. `toLocaleUpperCase` does not affect the value of the string itself. In most cases, this will produce the same result as [[String.toUpperCase `toUpperCase()`]], but for some locales, such as Turkish, whose case mappings do not follow the default case mappings in Unicode, there may be a different result.
+ * The `toLocaleUpperCase` method returns the value of the string converted to upper case according to any locale-specific case mappings. `toLocaleUpperCase` does not affect the value of the string itself. In most cases, this will produce the same result as [[String.toUpperCase `toUpperCase()`]], but for some locales, such as Turkish, whose case mappings don't follow the default case mappings in Unicode, there may be a different result.
  *
  * #### Example: Using `toLocaleUpperCase`
  *

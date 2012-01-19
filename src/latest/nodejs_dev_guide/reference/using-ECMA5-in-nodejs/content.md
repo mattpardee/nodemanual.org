@@ -1,4 +1,4 @@
-## Using ECMA5 in Node.js
+# Using ECMA5 in Node.js
 
 When developing for a browser, there are many built-in Javascript functions that we can't use because certain browsers don't implement them.  As a result, most developers never use them.  In Node.js, however, we can assume that everyone has the same Javascript implementation (since it's always running on [the V8 engine](http://code.google.com/p/v8/)). As such, we can use these wonderful functions and not implement them over and over in our own libraries.
 

@@ -1,4 +1,4 @@
-## Accessing Module Package Info
+# Accessing Module Package Info
 
 There are many situations in the world of software development where using the wrong version of a dependency or submodule can cause all sorts of pain and anguish. Node.js has a module available called `pkginfo` that can help keep these sorts of troubles at bay.
 

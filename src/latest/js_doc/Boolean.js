@@ -4,7 +4,7 @@
  * 
  * The `Boolean` object is an object wrapper for a boolean value.
  *
- * Do not confuse the primitive Boolean values `true` and `false` with the `true` and `false` values of the Boolean object.
+ * Don't confuse the primitive Boolean values `true` and `false` with the `true` and `false` values of the Boolean object.
  *
  * Any object whose value is not undefined or null, including a Boolean object whose value is false, evaluates to true when passed to a conditional statement. For example, the condition in the following if statement evaluates to true:
  * 
@@ -20,7 +20,7 @@
  * 		// . . . this code is not executed
  * 	}
  *         
- * Do not use a Boolean object to convert a non-boolean value to a boolean value. Instead, use Boolean as a function to perform this task:
+ * Don't use a Boolean object to convert a non-boolean value to a boolean value. Instead, use Boolean as a function to perform this task:
  * 
  * 	x = Boolean(expression);     // preferred
  * 	x = new Boolean(expression); // don't use
@@ -32,7 +32,7 @@
  * 	myString = new String("Hello"); // string object
  * 	s = new Boolean(myString);      // initial value of true
  *         
- * Do not use a Boolean object in place of a Boolean primitive.
+ * Don't use a Boolean object in place of a Boolean primitive.
  *
  **/
 

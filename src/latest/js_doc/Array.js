@@ -324,7 +324,7 @@
  *   
  * The `pop()` method removes the last element from an array and returns that value to the caller.
  *
- * `pop` is intentionally generic; this method can be [[Function.call called]] or [[Function.apply applied]] to objects resembling arrays. Objects which do not contain a `length` property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.
+ * `pop` is intentionally generic; this method can be [[Function.call called]] or [[Function.apply applied]] to objects resembling arrays. Objects which don't contain a `length` property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.
 undefined
  *
  * #### Example: Removing the last element of an array
@@ -373,7 +373,7 @@ undefined
  *  
  * Removes the first element from an array and returns that element. This method changes the length of the array.
  *
- * `shift` is intentionally generic; this method can be can be [[Function.call called]] or [[Function.apply applied]] to objects resembling arrays. Objects which do not contain a `length` property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.
+ * `shift` is intentionally generic; this method can be can be [[Function.call called]] or [[Function.apply applied]] to objects resembling arrays. Objects which don't contain a `length` property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.
  *
  * #### Example: Removing an element from an array
  * The following code displays the `myFish` array before and after removing its first element. It also displays the removed element:
@@ -522,7 +522,7 @@ undefined
  *
  * Adds one or more elements to the beginning of an array and returns the new length of the array.
  *	
- * `unshift` is intentionally generic; this method can be [[Function.call called]] or [[Function.apply applied]] to objects resembling arrays. Objects which do not contain a `length` property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner. 
+ * `unshift` is intentionally generic; this method can be [[Function.call called]] or [[Function.apply applied]] to objects resembling arrays. Objects which don't contain a `length` property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner. 
  *
  * #### Example: Adding elements to an array
  *
@@ -615,7 +615,7 @@ undefined
  *
  * Creates a new array with all elements that pass the test implemented by the provided function.
  * 	
- * `filter` calls a provided `callback` function once for each element in an array, and constructs a new array of all the values for which `callback` returns a true value. `callback` is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values. Array elements which do not pass the `callback` test are simply skipped, and are not included in the new array.
+ * `filter` calls a provided `callback` function once for each element in an array, and constructs a new array of all the values for which `callback` returns a true value. `callback` is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values. Array elements which don't pass the `callback` test are simply skipped, and are not included in the new array.
  *
  * If a `thisObject` parameter is provided to `filter`, it will be used as the `this` for each invocation of the `callback`. If it is not provided, or is `null`, the global object associated with `callback` is used instead.
  *

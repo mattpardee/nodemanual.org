@@ -1,4 +1,4 @@
-## Writing Asynchronous Code
+# Writing Asynchronous Code
 
 At its core, Node.js promotes an asynchronous coding style, which is in contrast to many other web frameworks. There are a number of important things to be aware of when learning to write asynchronous code&mdash;otherwise, you will often find your code executing in extremely unexpected ways.
 

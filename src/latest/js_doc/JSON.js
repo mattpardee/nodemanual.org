@@ -102,7 +102,7 @@
  *
  * Convert a value to JSON, optionally replacing values if a replacer function is specified, or optionally including only the specified properties if a replacer array is specified.
  *
- * Properties of non-array objects are not guaranteed to be stringified in any particular order. Do not rely on ordering of properties within the same object within the stringification.
+ * Properties of non-array objects are not guaranteed to be stringified in any particular order. Don't rely on ordering of properties within the same object within the stringification.
  *
  * [[Boolean `Boolean`]], [[Number `Number`]], and [[String `String`]] objects are converted to the corresponding primitive values during stringification, in accord with the traditional conversion semantics.
  *

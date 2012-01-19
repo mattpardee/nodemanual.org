@@ -1,4 +1,4 @@
-## Cryptography
+# Implementing Cryptography
 
 The `crypto` module is a wrapper for OpenSSL cryptographic functions. It supports calculating hashes, authentication with HMAC, ciphers, and more!
 

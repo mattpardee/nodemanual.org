@@ -161,11 +161,11 @@
  *
  * `apply` is very similar to [[Function.call `call()`]], except for the type of arguments it supports. You can use an arguments array instead of a named set of parameters. With `apply`, you can use an array literal, for example, `_fun_.apply(this, ['eat', 'bananas'])`, or an `Array` object, for example, `_fun_.apply(this, new Array('eat', 'bananas'))`.
  *
- * You can also use [`arguments`](https://developer.mozilla.org/en/Javascript/Reference/Functions_and_function_scope/arguments "En/Core_Javascript_1.5_Reference/Functions_and_function_scope/arguments") for the `argsArray` parameter. `arguments` is a local variable of a function. It can be used for all unspecified arguments of the called object. Thus, you do not have to know the arguments of the called object when you use the `apply` method. You can use `arguments` to pass all the arguments to the called object. The called object is then responsible for handling the arguments.
+ * You can also use [`arguments`](https://developer.mozilla.org/en/Javascript/Reference/Functions_and_function_scope/arguments "En/Core_Javascript_1.5_Reference/Functions_and_function_scope/arguments") for the `argsArray` parameter. `arguments` is a local variable of a function. It can be used for all unspecified arguments of the called object. Thus, you don't have to know the arguments of the called object when you use the `apply` method. You can use `arguments` to pass all the arguments to the called object. The called object is then responsible for handling the arguments.
  *
  * Since ECMAScript 5th Edition you can also use any kind of object which is array like, so in practice this means it's going to have a property `length` and integer properties in the range `[0...length)`. As an example you can now use a [`NodeList`](https://developer.mozilla.org/En/DOM/NodeList "en/DOM/NodeList") or a own custom object like `{'length': 2, '0': 'eat', '1':'bananas'}`.
  *
- * <Note>Most browsers, including Chrome 14 and Internet Explorer 9, still do not accept array like objects and will throw an exception.</Note>
+ * <Note>Most browsers, including Chrome 14 and Internet Explorer 9, still don't accept array like objects and will throw an exception.</Note>
  *
  * 
  * #### Example: Using `apply` to chain constructors
@@ -380,7 +380,7 @@
  *          
  *  Some of the many differences (there may well be others, as this list does not seriously attempt to be exhaustive) between this algorithm and the specified algorithm are:
  * * The partial implementation relies [[Array.slice `Array.slice()`]], [[Array.concat `Array.concat()`]], [[Function.call `call()`]], and [[Function.apply `apply()`]], built-in methods to have their original values.
- * * The partial implementation creates functions that do not have immutable "poison pill" `caller` and `arguments` properties that throw a `TypeError` upon get, set, or deletion. (This could be added if the implementation supports [[Object.defineProperty `Object.defineProperty()`]], or partially implemented (without throw-on-delete behavior) if the implementation supports the `Object.__defineGetter__` and `Object.__defineSetter__` extensions.)
+ * * The partial implementation creates functions that don't have immutable "poison pill" `caller` and `arguments` properties that throw a `TypeError` upon get, set, or deletion. (This could be added if the implementation supports [[Object.defineProperty `Object.defineProperty()`]], or partially implemented (without throw-on-delete behavior) if the implementation supports the `Object.__defineGetter__` and `Object.__defineSetter__` extensions.)
  * * The partial implementation creates functions that have a `prototype` property. (Proper bound functions have none.)
  * * The partial implementation creates bound functions whose `length` property does not agree with that mandated by ECMA-262: it creates functions with length 0, while a full implementation, depending on the length of the target function and the number of pre-specified arguments, may return a non-zero length.
  *
@@ -448,7 +448,7 @@
  * 		axisPoint instanceof YAxisPoint; // true
  * 		new Point(17, 42) instanceof YAxisPoint; // false with native bind // true, when using the above polyfill
  *          
- *  Note that you need do nothing special to create a bound function for use with `new`. The corollary is that you need do nothing special to create a bound function to be called plainly, even if you would rather require the bound function to only be called using `new`. If you wish to support use of a bound function only using `new`, or only by calling it, the target function must enforce that restriction.
+ *  Note that you need don'thing special to create a bound function for use with `new`. The corollary is that you need don'thing special to create a bound function to be called plainly, even if you would rather require the bound function to only be called using `new`. If you wish to support use of a bound function only using `new`, or only by calling it, the target function must enforce that restriction.
  *  
  * 		// Example can be run directly in your Javascript console
  * 		// ...continuing from above

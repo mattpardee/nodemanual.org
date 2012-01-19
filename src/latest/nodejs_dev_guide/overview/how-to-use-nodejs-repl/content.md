@@ -1,4 +1,4 @@
-## Execute Node.js on the Command Line with REPL
+# Executing Command Line Node.js via REPL
 
 Node.js ships with a REPL, which is short for Read-Eval-Print Loop.  It is the Node.js shell; any valid Javascript which can be written in a script can be passed to the REPL. It can be extremely useful for experimenting with Node.js, debugging code, and figuring out some of Javascript's more eccentric behaviors.
 

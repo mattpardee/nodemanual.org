@@ -1,4 +1,4 @@
-### Debugging with Util.Inspect()
+# Debugging with `util.inspect()`
 
 Node.js provides a utility function, for debugging purposes, that returns a string representation of an object.  It's called `util.inspect()`, and it can be very useful when working with properties of large, complex objects. 
 

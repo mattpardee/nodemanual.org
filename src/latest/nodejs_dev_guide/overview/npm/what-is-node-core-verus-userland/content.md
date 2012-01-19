@@ -1,4 +1,4 @@
-### The Difference Between Core Libraries and User-Submitted Modules
+# Core Libraries versus User-Submitted Modules
 
 Occasionally, in the discussions in the Node.js mailing lists and IRC channels, you may hear things referred to as "node-core" and "userland".
 

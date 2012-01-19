@@ -1,4 +1,4 @@
-## Using Timer Functions Correctly
+# Using Timer Functions Correctly
 
 There are two built-in timer functions: `setTimeout()` and `setInterval()`. They can be used to call a function at a later time. For example:
 

@@ -1,4 +1,4 @@
-### Creating an HTTPS Server
+# Creating an HTTPS Server
 
 To create an HTTPS server, you need two things: an SSL certificate, and Node's built-in `https` module.
 

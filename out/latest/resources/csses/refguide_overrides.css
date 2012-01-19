@@ -44,6 +44,10 @@ a code {
     color: #0069D6;
 }
 
+.menu-item a code {
+    color: #262626;
+}
+
 h2 {
     font-size: 26px;
 }

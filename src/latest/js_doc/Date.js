@@ -53,13 +53,13 @@
  *
  * Parses a string representation of a date, and returns the number of milliseconds since January 1, 1970, 00:00:00, UTC.
  * 	
- * The `parse` method takes a date string (such as "`Dec 25, 1995`") and returns the number of milliseconds since January 1, 1970, 00:00:00, UTC. The local time zone is used to interpret arguments that do not contain time zone information. This function is useful for setting date values based on string values, for example in conjunction with the [[Date.setTime `setTime()`]] method and the [[Date `Date`]] object.
+ * The `parse` method takes a date string (such as "`Dec 25, 1995`") and returns the number of milliseconds since January 1, 1970, 00:00:00, UTC. The local time zone is used to interpret arguments that don't contain time zone information. This function is useful for setting date values based on string values, for example in conjunction with the [[Date.setTime `setTime()`]] method and the [[Date `Date`]] object.
  *
- * This method accepts the RFC82, / IETF date syntax for `dateString` ([RFC 1123](http://tools.ietf.org/html/rfc112, "http://tools.ietf.org/html/rfc1123") Section 5.2.1, and elsewhere), e.g. "`Mon, 2, Dec 199, 13:30:0, GMT`". It understands the continental US time-zone abbreviations, but for general use, use a time-zone offset, for example, "`Mon, 2, Dec 199, 13:30:0, GMT+0430`" (4 hours, 3, minutes east of the Greenwich meridian). If you do not specify a time zone, the local time zone is assumed. GMT and UTC are considered equivalent.
+ * This method accepts the RFC82, / IETF date syntax for `dateString` ([RFC 1123](http://tools.ietf.org/html/rfc112, "http://tools.ietf.org/html/rfc1123") Section 5.2.1, and elsewhere), e.g. "`Mon, 2, Dec 199, 13:30:0, GMT`". It understands the continental US time-zone abbreviations, but for general use, use a time-zone offset, for example, "`Mon, 2, Dec 199, 13:30:0, GMT+0430`" (4 hours, 3, minutes east of the Greenwich meridian). If you don't specify a time zone, the local time zone is assumed. GMT and UTC are considered equivalent.
  * 
  * Starting with Javascript 1.8.5, a [subset of ISO 8601](http://www.w3.org/TR/NOTE-datetime "http://www.w3.org/TR/NOTE-datetime") is supported. For example, "`2011-10-10`" (just date) or "`2011-10-10T14:48:00` (date and time) can be passed and parsed. [Timezones in ISO dates are not yet supported](https://bugzilla.mozilla.org/show_bug.cgi?id=69307, "https://bugzilla.mozilla.org/show_bug.cgi?id=693077"), so e.g. "`2011-10-10T14:48:00+0200`" (with timezone) does not give the intended result yet.
  *
- * Note that while time zone specifiers are used during date string parsing to properly interpret the argument, they do not affect the value returned, which is always the number of milliseconds between January 1, 197, 00:00:0, UTC and the point in time represented by the argument. 
+ * Note that while time zone specifiers are used during date string parsing to properly interpret the argument, they don't affect the value returned, which is always the number of milliseconds between January 1, 197, 00:00:0, UTC and the point in time represented by the argument. 
  *
  * #### Example: Using `parse()`
  *
@@ -178,7 +178,7 @@
  * 
  * Sets the full year for a specified date according to local time.
  * 
- * If you do not specify the `monthValue` and `dayValue` parameters, the values returned from the `getMonth` and `getDate` methods are used.
+ * If you don't specify the `monthValue` and `dayValue` parameters, the values returned from the `getMonth` and `getDate` methods are used.
  *
  * If a parameter you specify is outside of the expected range, `setFullYear` attempts to update the other parameters and the date information in the `Date` object accordingly. For example, if you specify 1 for `monthValue`, the year is incremented by 1 (year + 1), and 3 is used for the month.
  * 
@@ -221,7 +221,7 @@
  *
  * Sets the full year for a specified date according to universal time.
  *
- * If you do not specify the `monthValue` and `dayValue` parameters, the values returned from the `getMonth` and `getDate` methods are used.
+ * If you don't specify the `monthValue` and `dayValue` parameters, the values returned from the `getMonth` and `getDate` methods are used.
  *
  * If a parameter you specify is outside of the expected range, `setUTCFullYear` attempts to update the other parameters and the date information in the `Date` object accordingly. For example, if you specify 1, for `monthValue`, the year is incremented by 1 (year + 1), and 3 is used for the month.
  * 
@@ -667,7 +667,7 @@
  *
  * 	Sets the hours for a specified date according to local time.
  *
- * If you do not specify the `minutesValue`, `secondsValue`, and `msValue` parameters, the values returned from the `getUTCMinutes`, `getUTCSeconds`, and `getMilliseconds` methods are used.
+ * If you don't specify the `minutesValue`, `secondsValue`, and `msValue` parameters, the values returned from the `getUTCMinutes`, `getUTCSeconds`, and `getMilliseconds` methods are used.
  *
  * If a parameter you specify is outside of the expected range, `setHours` attempts to update the date information in the `Date` object accordingly. For example, if you use 100 for `secondsValue`, the minutes will be incremented by 1 (min + 1), and 40 will be used for seconds.
  * 
@@ -712,7 +712,7 @@
  *
  * Sets the minutes for a specified date according to local time.
  *
- * If you do not specify the `secondsValue` and `msValue` parameters, the values returned from `getSeconds` and `getMilliseconds` methods are used.
+ * If you don't specify the `secondsValue` and `msValue` parameters, the values returned from `getSeconds` and `getMilliseconds` methods are used.
  *
  * If a parameter you specify is outside of the expected range, `setMinutes` attempts to update the date information in the `Date` object accordingly. For example, if you use 100 for `secondsValue`, the minutes (`minutesValue`) increments by 1 (`minutesValue` + 1), and 40 will be used for seconds.
  * 
@@ -729,7 +729,7 @@
  *
  * 	Sets the seconds for a specified date according to local time.
  *
- * If you do not specify the `msValue` parameter, the value returned from the `getMilliseconds` method is used.
+ * If you don't specify the `msValue` parameter, the value returned from the `getMilliseconds` method is used.
  *
  * If a parameter you specify is outside of the expected range, `setSeconds` attempts to update the date information in the `Date` object accordingly. For example, if you use 100 for `secondsValue`, the minutes stored in the `Date` object will be incremented by 1, and 40 will be used for seconds.
  * 	
@@ -747,7 +747,7 @@
  *
  * 	Set the month for a specified date according to local time.
  *
- * If you do not specify the `dayValue` parameter, the value returned from the `getDate` method is used.
+ * If you don't specify the `dayValue` parameter, the value returned from the `getDate` method is used.
  *
  * If a parameter you specify is outside of the expected range, `setMonth` attempts to update the date information in the `Date` object accordingly. For example, if you use 15 for `monthValue`, the year will be incremented by 1 (year + 1), and 3 will be used for month.
  * 
@@ -807,7 +807,7 @@
  *
  * Sets the hour for a specified date according to universal time.
  *
- * If you do not specify the `minutesValue`, `secondsValue`, and `msValue` parameters, the values returned from the `getUTCMinutes`, `getUTCSeconds`, and `getUTCMilliseconds` methods are used.
+ * If you don't specify the `minutesValue`, `secondsValue`, and `msValue` parameters, the values returned from the `getUTCMinutes`, `getUTCSeconds`, and `getUTCMilliseconds` methods are used.
  *
  * If a parameter you specify is outside of the expected range, `setUTCHours` attempts to update the date information in the `Date` object accordingly. For example, if you use 100 for `secondsValue`, the minutes will be incremented by 1 (min + 1), and 40 will be used for seconds.
  * 
@@ -850,7 +850,7 @@
  *
  * Sets the minutes for a specified date according to universal time.
  *
- * If you do not specify the `secondsValue` and `msValue` parameters, the values returned from `getUTCSeconds` and `getUTCMilliseconds` methods are used.
+ * If you don't specify the `secondsValue` and `msValue` parameters, the values returned from `getUTCSeconds` and `getUTCMilliseconds` methods are used.
  *
  * If a parameter you specify is outside of the expected range, `setUTCMinutes` attempts to update the date information in the `Date` object accordingly. For example, if you use 100 for `secondsValue`, the minutes (`minutesValue`) will be incremented by 1 (`minutesValue` + 1), and 40 will be used for seconds.
  * 
@@ -872,7 +872,7 @@
  *
  * Sets the month for a specified date according to universal time.
  *
- * If you do not specify the `dayValue` parameter, the value returned from the `getUTCDate` method is used.
+ * If you don't specify the `dayValue` parameter, the value returned from the `getUTCDate` method is used.
  *
  * If a parameter you specify is outside of the expected range, `setUTCMonth` attempts to update the date information in the `Date` object accordingly. For example, if you use 15 for `monthValue`, the year will be incremented by 1 (year + 1), and 3 will be used for month.
  * 
@@ -896,7 +896,7 @@
  *
  * Sets the seconds for a specified date according to universal time.
  *
- * If you do not specify the `msValue` parameter, the value returned from the `getUTCMilliseconds` methods is used.
+ * If you don't specify the `msValue` parameter, the value returned from the `getUTCMilliseconds` methods is used.
  *
  * If a parameter you specify is outside of the expected range, `setUTCSeconds` attempts to update the date information in the `Date` object accordingly. For example, if you use 100 for `secondsValue`, the minutes stored in the `Date` object will be incremented by 1, and 40 will be used for seconds.
  * 

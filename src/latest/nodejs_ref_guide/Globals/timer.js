@@ -1,7 +1,7 @@
 /**
  * class timer
  *
- * The timer functions are useful for scheduling functions to run after a defined amount of time. All of the objects in this class are global; the method calls do not need to be prepended with an object name.
+ * The timer functions are useful for scheduling functions to run after a defined amount of time. All of the objects in this class are global; the method calls don't need to be prepended with an object name.
  * 
  * It's important to note that your callback probably *won't* be called in exactly `delay` milliseconds. Node.js makes no guarantees about the exact timing of when the callback is fired, nor of the ordering things will fire in. The callback is called as close as possible to the time specified.
  * 

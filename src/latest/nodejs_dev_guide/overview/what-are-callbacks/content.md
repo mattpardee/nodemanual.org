@@ -1,4 +1,4 @@
-## Understanding Callbacks
+# Working with Callbacks
 
 In a synchronous program, you could write a function that looks like this:
 

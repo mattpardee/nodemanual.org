@@ -1,4 +1,4 @@
-### Logging
+# Implementing Logging Messages
 
 Many processes, including most servers, write logs in one form or another. Some reasons for logging include debugging, keeping track of users and resource usage, and reporting application state.
 

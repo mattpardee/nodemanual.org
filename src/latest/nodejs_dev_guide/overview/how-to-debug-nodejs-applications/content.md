@@ -1,4 +1,4 @@
-## Debugging Node.js Applications
+# Debugging Node.js Applications
 
 Often times, not just in the Node.js community but in software at large, people debug simply with a liberal sprinkle of standard output statements. This allows you to track down where unexpected values are being generated. However, this method can be tedious, or worse, not robust enough to detect real problems.
 

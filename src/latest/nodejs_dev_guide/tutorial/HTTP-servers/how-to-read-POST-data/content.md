@@ -1,4 +1,4 @@
-### Reading POST Data
+# Reading POST Data
 
 Reading the data from a POST request (i.e. a form submission) can be a little bit of a pitfall in Node.js, so we're going to go through an example of how to do it properly.  
 

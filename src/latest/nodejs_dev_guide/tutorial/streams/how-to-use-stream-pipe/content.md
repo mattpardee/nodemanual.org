@@ -1,6 +1,6 @@
-### Using the Stream Pipe
+# Piping Streams
 
-If you've been using Node.js for a while, you've definitely run into streams. HTTP connections are streams,  open files are streams;  `stdin`, `stdout`, and `stderr` are all streams as well.  If you feel like you still need to understand them better, you can read more about them on [the Node.js reference documentation for streams](../nodejs_ref_guide/streams.html).
+If you've been using Node.js for a while, you've definitely run into streams. HTTP connections are streams, open files are streams;  `stdin`, `stdout`, and `stderr` are all streams as well.  If you feel like you still need to understand them better, you can read more about them on [the Node.js reference documentation for streams](../nodejs_ref_guide/streams.html).
 
 Streams make for quite a handy abstraction, and there's a lot you can do with them. As an example, let's take a look at `pipe()`, the method used to take a readable stream and connect it to a writeable steam.  Suppose we wanted to spawn a child process and pipe our "parent" `stdout` and `stdin` to the corresponding `stdout` and `stdin`. We might do something like this:
 

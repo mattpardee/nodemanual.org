@@ -99,7 +99,7 @@
 * * `/home/node_modules/bar.js`
 * * `/node_modules/bar.js`
 * 
-* This allows programs to localize their dependencies, so that they do not clash.
+* This allows programs to localize their dependencies, so that they don't clash.
 * 
 * #### Folders as Modules
 * 

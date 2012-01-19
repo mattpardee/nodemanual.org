@@ -1,4 +1,4 @@
-## About JSON
+# About JSON
 
 Javascript Object Notation, or JSON, is a lightweight data format that has become the de-facto standard for the web, toppling the long and unweildy curse of XML. JSON can be represented as either a list of values, like an Array, or as a hash of properties and values, like an Object:
 

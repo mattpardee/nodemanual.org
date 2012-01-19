@@ -1,4 +1,4 @@
-### Using fs.createReadStream()
+# Reading Streams
 
 The function `fs.createReadStream(filepath)` allows you to open up a readable stream in a very simple manner. All you have to do is pass the path of the file to start streaming in. 
 

@@ -1,4 +1,4 @@
-## The Error Object
+# The Global `Error` Object
 
 The error object is a built-in object that provides a standard set of useful information when an error occurs, such as a stack trace and the error message. For example:
 
