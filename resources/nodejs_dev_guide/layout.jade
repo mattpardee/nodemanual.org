@@ -41,7 +41,7 @@ body(onload="styleCode()")
                   //div(class="arrow-down")
                 ul(class="dropdown-menu")
                     li
-                        a(href="http://nodebits.org/") Nodebits
+                        a(href="http://www.nodebits.org/") Nodebits
         ul.nav
           li#node_js_ref
             a(href='../nodejs_ref_guide/index.html') Node JS Reference
@@ -66,6 +66,8 @@ body(onload="styleCode()")
           #sidebar
             include nodejs_dev_guide_menu.jade
         .span11
+          span.editInC9 
+            a(href='#') Edit in Cloud9 IDE
           .dev_guide#content!= markdown(data)
 
           div#disqus_thread

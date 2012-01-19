@@ -84,7 +84,7 @@
  * 
  *   - `servername`: The server name for the SNI (Server Name Indication) TLS extension.
  * 
- * `secureConnectionListener` automatically sets a listener for the [[tls@secureConnection `'secureConnection'`]] event.
+ * `secureConnectionListener` automatically sets a listener for the [`secureConnection`](#tls.event.secureConnection) event.
  * 
  * 
  * #### Example: Connecting to an echo server:
@@ -119,7 +119,7 @@
 
 
 /**
- * tls@createSecurePair([credentials] [, isServer] [, requestCert] [, rejectUnauthorized]) -> tls.SecurePair
+ * tls.createSecurePair([credentials] [, isServer] [, requestCert] [, rejectUnauthorized]) -> tls.SecurePair
  * - credentials (Object):  An optional credentials object from [[crypto.createCredentials `crypto.createCredentials()`]]
  * - isServer (Boolean):  An optional boolean indicating whether this TLS connection should be opened as a server (`true`) or a client (`false`)
  * - requestCert (Boolean): A boolean indicating whether a server should request a certificate from a connecting client; only applies to server connections
@@ -133,7 +133,7 @@
 
 
 /**
- * tls@createServer(options [, secureConnectionListener]) -> Void
+ * tls.createServer(options [, secureConnectionListener]) -> Void
  * - options (Object):  Any options you want to pass to the server
  * - secureConnectionListener (Function): An optional listener
  *
@@ -162,7 +162,7 @@
  * 
  *   - `SNICallback`: A function that is called if the client supports the SNI TLS extension. Only one argument will be passed to it: `servername`. `SNICallback` should return a SecureContext instance. You can use `crypto.createCredentials(...).context` to get a proper SecureContext. If `SNICallback` wasn't provided, a default callback within the high-level API is used (for more information, see below).
  * 
- * `secureConnectionListener` automatically sets a listener for the [secureConnection](#event_secureConnection_) event.
+ * `secureConnectionListener` automatically sets a listener for the [`secureConnection`](#tls.event.secureConnection) event.
  * 
  * #### Example
  * 

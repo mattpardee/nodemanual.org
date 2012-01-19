@@ -3,7 +3,7 @@
 /**
  * class http.ClientRequest
  * 
- * This object is created internally and returned from [[http.request `http.request()`]].  It represents an _in-progress_ request whose header has already been queued.  The header is still mutable using the `setHeader(name, value)`, `getHeader(name)`, and `removeHeader(name)` methods.  The actual header will be sent along with the first data chunk or when closing the connection. This is both a [[streams.WritableStream `Writable Stream`]] and an [[EventEmitter `EventEmitter`]].
+ * This object is created internally and returned from [[http.request `http.request()`]].  It represents an _in-progress_ request whose header has already been queued.  The header is still mutable using the `setHeader(name, value)`, `getHeader(name)`, and `removeHeader(name)` methods.  The actual header will be sent along with the first data chunk or when closing the connection. This is both a [[streams.WritableStream `Writable Stream`]] and an [[eventemitter `EventEmitter`]].
  * 
  * To get the response, add a listener for `'response'` to the request object. `'response'` will be emitted from the request object when the response headers have been received.  The `'response'` event is executed with one argument which is an instance of `http.ClientResponse`.
  * 

@@ -91,7 +91,7 @@
  * * `NEGATIVE_INFINITY`, divided by either `NEGATIVE_INFINITY` or `POSITIVE_INFINITY`, is `NaN`.
  * * Any number divided by `NEGATIVE_INFINITY` is Zero.
  *
- * Several Javascript methods (such as the `Number` constructor, [[parseFloat `parseFloat()`]], and [[parseInt `parseInt()`]]) return `NaN` if the value specified in the parameter is significantly lower than `Number.MIN_VALUE`.
+ * Several Javascript methods (such as the `Number` constructor, `parseFloat()`, and `parseInt()`) return `NaN` if the value specified in the parameter is significantly lower than `Number.MIN_VALUE`.
  *
  * You might use the `Number.NEGATIVE_INFINITY` property to indicate an error condition that returns a finite number in case of success. Note, however, that `isFinite()` would be more appropriate in such a case.
  *
@@ -134,7 +134,7 @@
  * * `POSITIVE_INFINITY`, divided by either `NEGATIVE_INFINITY` or `POSITIVE_INFINITY`, is `NaN`.
  * * Any number divided by `POSITIVE_INFINITY` is Zero.
  *
- * Several Javascript methods (such as the `Number` constructor, [[parseFloat `parseFloat()`]], and [[parseInt `parseInt()`]]) return `NaN` if the value specified in the parameter is significantly higher than `Number.MAX_VALUE`.
+ * Several Javascript methods (such as the `Number` constructor, `parseFloat()`, and `parseInt()`) return `NaN` if the value specified in the parameter is significantly higher than `Number.MAX_VALUE`.
  *
  * You might use the `Number.POSITIVE_INFINITY` property to indicate an error condition that returns a finite number in case of success. Note, however, that `isFinite()` would be more appropriate in such a case.
  *

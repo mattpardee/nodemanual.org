@@ -37,7 +37,7 @@
 /**
  *  child_process.stdin -> streams.WritableStream
  * 
- * A [[streams.WritableStream `Writable Stream`]] that represents the child process's `stdin`. Closing this stream via [[child_process.end `end()`]] often causes the child process to terminate.
+ * A [[streams.WritableStream `Writable Stream`]] that represents the child process's `stdin`. Closing this stream via [[child.process.end `end()`]] often causes the child process to terminate.
  * 
 **/ 
 
@@ -62,7 +62,7 @@
 **/ 
 
 
-/** related to: child.exec
+/** related to: child_process.exec
  * child_process.spawn(command, [args=[]] [, options]) -> Void
  * - command (String): The Unix command to spawn
  * - args (String | Array): The command line arguments to pass
@@ -106,7 +106,7 @@
 **/ 
 
 
-/** related to: child.spawn
+/** related to: child_process.spawn
  * child_process.exec(command[, options], callback(error, stdout, stderr)) -> Object
  * - command (String): The Unix command to run
  * - options (Object):The options to pass to the command
@@ -147,7 +147,7 @@
  *
 **/ 
 
-/** related to: child.exec
+/** related to: child_process.exec
  * child_process.execFile(file, args, options, callback(error, stdout, stderr)) -> Void
  * - file (String): The file location with the commands to run
  * - args (String): The command line arguments to pass
@@ -164,7 +164,7 @@
 **/ 
 
 
-/** related to: child.spawn
+/** related to: child_process.spawn
  * child_process.fork(modulePath, arguments, options) -> Object
  * - modulePath (String): The location of the module
  * - arguments (String): Any starting arguments to use

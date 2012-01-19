@@ -1,7 +1,7 @@
 /**
  * class streams
  *
- * A stream is an abstract interface implemented by various objects in Node.js. For example, a request to an HTTP server is a stream, as is stdout. Streams can be readable, writable, or both. All streams are instances of [[EventEmitter `EventEmitter`]].
+ * A stream is an abstract interface implemented by various objects in Node.js. For example, a request to an HTTP server is a stream, as is stdout. Streams can be readable, writable, or both. All streams are instances of [[eventemitter `EventEmitter`]].
  *
  * For more information, see [this article on understanding streams](../nodejs_dev_guide/streams.html).
  *

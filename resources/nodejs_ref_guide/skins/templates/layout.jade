@@ -43,7 +43,7 @@ body(onload="styleCode()")
                   //div(class="arrow-down")
                 ul(class="dropdown-menu")
                     li
-                        a(href="http://nodebits.org/") Nodebits
+                        a(href="http://www.nodebits.org/") Nodebits
         ul.nav
           li#node_js_ref
             a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node JS Reference
@@ -81,6 +81,11 @@ body(onload="styleCode()")
                   h1.memberHeader
                     -var heading = obj.path.replace(/_/g," ")
                     span.name #{heading}
+                  span.editInC9 
+                      a(href='#') Edit in Cloud9 IDE
+                  if nodejsRef != 'true'
+                    span.backToMDN 
+                      a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') View original on MDN
                   if obj.type == 'class' || obj.type == 'namespace' || obj.type == 'section'
                     ul(class='tabs', data-tabs='tabs')
                       for selector, title in {'Events': ['event', 'events'], 'Constructors': ['constructor', 'constructors'], 'Class methods': ['class method', 'class_methods'], 'Class properties': ['class property', 'class_properties'], 'Instance methods': ['instance method', 'instance_methods'], 'Instance properties': ['instance property', 'instance_properties'], 'Constants': ['constant', 'constants']}
@@ -88,29 +93,13 @@ body(onload="styleCode()")
                           li(class="dropdown", data-dropdown="dropdown")
                             if methods.length
                               a(href="\#", class="dropdown-toggle")!= renameMemberTitle(title, methods.length)
-                              if (methods.length >= 20 && methods.length < 30)
-                                ul.dropdown-menu.double
-                                  for m in methods
-                                    li(data-id='#{m.id}', class='memberLink')
-                                      mixin link(m, true)                            
-                              else if (methods.length >= 30 && methods.length < 40)
-                                ul.dropdown-menu.triple
-                                  for m in methods
-                                    li(data-id='#{obj.id}', class='memberLink')
-                                      mixin link(m, true)
-                              else if (methods.length >= 40)
-                                ul.dropdown-menu.quad
-                                  for m in methods
-                                    li(data-id='#{obj.id}', class='memberLink')
-                                      mixin link(m, true)                          
-                              else
-                                ul.dropdown-menu
-                                  for m in methods
-                                    li(data-id='#{m.id}', class='memberLink')
-                                      mixin link(m, true)                                
+                              ul.dropdown-menu
+                                for m in methods
+                                  li(data-id='#{m.id}', class='memberLink')
+                                    mixin link(m, true)                                 
                   else
                     ul(class='tabs', data-tabs='tabs')
-                    -console.log("I did not create a menu for: " + obj.id + "_" + obj.name + "~~~" + obj.type)
+                    -console.log("I did not create a menu for: { obj.id: " + obj.id + ", obj.name: " + obj.name + " }, which is a " + obj.type)
           #content
              mixin api()
 

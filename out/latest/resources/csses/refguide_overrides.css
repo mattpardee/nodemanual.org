@@ -27,8 +27,6 @@ code {
     line-height: 16px;
     font-family: 'Ubuntu Mono',Monaco,Consolas,monospace !important;
     background-color: #F9F9F9;
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 0 2px #888888;
     display: inline-block;
     padding: 0 4px;
     margin: 2px 1px;
@@ -254,6 +252,22 @@ ul.menu {
 /*    margin-left: 10px;*/
 }
 
+.backToMDN, .editInC9 {
+    position: absolute;
+    right: -137px;
+    font-size: 11px;
+    top: -8px;
+    color: #657383;
+}
+
+.backToMDN {
+    top: 8px;
+}
+
+.backToMDN a, .editInC9 a {
+    color: #657383;
+}
+
 .tabs {
     padding-top: 10px;
     border-bottom: 1px solid #848484;
@@ -446,6 +460,16 @@ li.signature {
     margin: 0 5px;
 }
 
+.signature li.argument-type::after {
+    content: '|';
+    padding: 0 5px 0 5px;
+}
+
+.signature li.argument-type:last-child:after {
+    content: '';
+    padding: 0 5px 0 5px;
+}
+
 .member-name {
     color: #4397cd;
     font-weight: bold;
@@ -588,6 +612,11 @@ h3.methodToggle.active {
 }
 .description td p {
     margin: 0;
+}
+
+
+#dsq-pagination, .dsq-trackback-url {
+    display: none;
 }
 /*
   Footer? I hardly know her

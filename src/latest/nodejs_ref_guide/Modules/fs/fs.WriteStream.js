@@ -1,7 +1,7 @@
 /**
  * class fs.WriteStream
  *
- * This is a [Writable Stream](streams.writablestream.html), created from the function [[fs.createWriteStream `fs.createWriteStream()`]].
+ * This is a [Writable Stream](streams.WritableStream.html), created from the function [[fs.createWriteStream `fs.createWriteStream()`]].
  * 
  * For more information, see [this article on how to use the `createWriteStream()` function properly](../nodejs_dev_guide/how-to-use-fs-create-write-stream.html).
  *

@@ -1,5 +1,5 @@
 /**
- * class EventEmitter
+ * class eventemitter
  * 
  * Many objects in Node.js emit events. Some examples include:
  * 
@@ -25,7 +25,7 @@
  **/
 
 /**
- * EventEmitter@newListener(event, listener)
+ * eventemitter@newListener(event, listener)
  * - event (String): The event to emit
  * - listener (Function): The attaching listener
  *
@@ -34,8 +34,8 @@
 **/ 
 
 
-/** alias of: EventEmitter.on
- * EventEmitter.addListener(event, callback())
+/** alias of: eventemitter.on
+ * eventemitter.addListener(event, callback()) -> Void
  * - event (String):  The event to listen for
  * - callback (Function):  The listener callback to execute
  *
@@ -49,7 +49,7 @@
 
 
 /**
- * EventEmitter.emit(event [, arg...]) -> Void
+ * eventemitter.emit(event [, arg...]) -> Void
  * - event (String): The event to listen for
  * - arg (Object):  Any optional arguments for the listeners
  * 
@@ -59,7 +59,7 @@
 
 
 /**
- * EventEmitter.listeners(event) -> Void
+ * eventemitter.listeners(event) -> Void
  * - event (String): The event type to listen for
  * 
  * Returns an array of listeners for the specified event. This array can be manipulated, e.g. to remove listeners.
@@ -72,7 +72,7 @@
 
 
 /**
- * EventEmitter.once(event, listener) -> Void
+ * eventemitter.once(event, listener) -> Void
  * - event (String):  The event to listen for
  * - callback (Function):  The listener callback to execute
  * 
@@ -88,7 +88,7 @@
 
 
 /**
- * EventEmitter.removeAllListeners([event]) -> Void
+ * eventemitter.removeAllListeners([event]) -> Void
  * - event (String): An optional event type to remove
  * 
  * Removes all listeners, or those of the specified event.
@@ -97,7 +97,7 @@
 
 
 /**
- * EventEmitter.removeListener(event, listener) -> Void
+ * eventemitter.removeListener(event, listener) -> Void
  * - event (String):  The event to listen for
  * - callback (Function):  The listener callback to execute
  * 
@@ -118,7 +118,7 @@
 
 
 /**
- * EventEmitter.setMaxListeners(n) -> Void
+ * eventemitter.setMaxListeners(n) -> Void
  * - n (Number): The maximum number of listeners
  * 
  * By default, EventEmitters print a warning if more than 10 listeners are added for a particular event. This is a useful default which helps finding memory leaks.

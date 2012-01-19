@@ -2,6 +2,7 @@
 /** section: Javascript_Reference
  * class Error
  * 
+ *
  * Runtime errors result in new `Error` objects being created and thrown.
  *
  * #### Error types

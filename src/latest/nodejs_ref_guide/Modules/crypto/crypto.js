@@ -10,7 +10,7 @@
  * * [[decipher Decipher]]
  * * [[diffieHellman Diffie-Hellman]]
  * * [[hash Hash]]
- * * [[HMAC HMAC]] 
+ * * [[hmac HMAC]] 
  * * [[signer Signer]]
  * * [[verifier Verifier]]
  * 
@@ -155,7 +155,7 @@
 
 
 /**
- * crypto.createSign(algorithm) -> Signer
+ * crypto.createSign(algorithm) -> signer
  * - algorithm (String) : The algorithm to use
  *
  * Creates and returns a signing object string, with the given `algorithm`.

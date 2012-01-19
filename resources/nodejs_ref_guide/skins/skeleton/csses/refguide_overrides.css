@@ -252,6 +252,22 @@ ul.menu {
 /*    margin-left: 10px;*/
 }
 
+.backToMDN, .editInC9 {
+    position: absolute;
+    right: -137px;
+    font-size: 11px;
+    top: -8px;
+    color: #657383;
+}
+
+.backToMDN {
+    top: 8px;
+}
+
+.backToMDN a, .editInC9 a {
+    color: #657383;
+}
+
 .tabs {
     padding-top: 10px;
     border-bottom: 1px solid #848484;
@@ -442,6 +458,16 @@ li.signature {
 .signature ul.argument-types::before {
     content: '→';
     margin: 0 5px;
+}
+
+.signature li.argument-type::after {
+    content: '|';
+    padding: 0 5px 0 5px;
+}
+
+.signature li.argument-type:last-child:after {
+    content: '';
+    padding: 0 5px 0 5px;
 }
 
 .member-name {

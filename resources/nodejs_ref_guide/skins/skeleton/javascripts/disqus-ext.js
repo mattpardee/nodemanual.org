@@ -1,20 +1,11 @@
 var disqus_shortname = 'nodemanual';
-var disqus_identifier;
+
 var pathName = window.location.pathname;
 var fileName = pathName.substring(window.location.pathname.lastIndexOf("/") + 1);
-var versionPos = pathName.indexOf("/v");
 
-var disqus_developer = pathName.indexOf("Users") >= 0 ? 1 : 0;
+var disqus_developer = pathName.indexOf("http") >= 0 ? 0 : 1;
 
-if (versionPos >= 0)
-{
-  var version = pathName.substring(versionPos, pathName.indexOf("/", versionPos + 1));
-  var majorIdentifier = version.substring(1, version.lastIndexOf("."));
-  disqus_identifier = fileName + "_" + majorIdentifier;
-}
-else {
-  disqus_identifier = pathName;  
-}
+var disqus_identifier = fileName;
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

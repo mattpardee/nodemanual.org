@@ -1,7 +1,7 @@
 /**
  * class process
  *
- * The `process` object is a global object, and can be accessed from anywhere. It is an instance of [[EventEmitter `EventEmitter`]].
+ * The `process` object is a global object, and can be accessed from anywhere. It is an instance of [[eventemitter `EventEmitter`]].
  *
  *
  * #### Example: Handling Signal Events

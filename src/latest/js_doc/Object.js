@@ -251,7 +251,6 @@
  *
  * #### See Also
  *
- * * [[parseInt `parseInt()`]]
  * * [[Object.toString `toString()`]]
  *
  **/

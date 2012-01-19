@@ -732,7 +732,7 @@
  * 
  * #### Returns
  *
- * The contents of the `filename`. If `encoding` is specified, then this function returns a string. Otherwise it returns a [[Buffer buffer]].
+ * The contents of the `filename`. If `encoding` is specified, then this function returns a string. Otherwise it returns a [[buffer buffer]].
 **/ 
 
 

@@ -212,7 +212,7 @@
  * net.Socket@connect()
  *
  * 
- * Emitted when a socket connection is successfully established. For more information, see [[net.socket.connect `connect()`]].
+ * Emitted when a socket connection is successfully established. For more information, see [[net.Socket.connect `connect()`]].
  * 
 **/ 
 
