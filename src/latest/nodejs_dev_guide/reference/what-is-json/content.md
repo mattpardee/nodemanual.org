@@ -16,15 +16,15 @@ Javascript provides two methods for encoding data structures to JSON and encodin
 
 `JSON.stringify()` takes a Javascript object or array and returns a serialized string in the JSON format. For example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=json.stringify.1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/about_json/json.stringify.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 The full method declaration of `JSON.stringify()` is actually `JSON.stringify(obj [, replacer [, space]])`. You can pass in an optional function to replace elements in the JSON object, or define how much whitespace to present before an element. For example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=json.stringify.2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/about_json/json.stringify.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 `JSON.parse()` does the reverse, taking a JSON string and decoding it to a Javascript data structure:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=json.parse.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/about_json/json.parse.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 #### Defining Valid JSON
 

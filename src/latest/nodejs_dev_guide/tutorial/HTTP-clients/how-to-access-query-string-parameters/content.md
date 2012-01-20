@@ -2,7 +2,7 @@
 
 In Node.js, functionality to aid in the accessing of URL query string parameters is built into the standard library. The `url.parse()` method takes care of most of the heavy lifting.  Here is an example script using this handy function and an explanation on how it works:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=querystring.ex.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/query_string_params/querystring.ex.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 The key part of this whole script is this line:
 

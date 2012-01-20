@@ -1,5 +1,5 @@
 {
-    "title":"The built-in globals in Node.js",
+    "name":"globals-in-node-js",
     "date" : "",
     "tags": ["core", "globals"],
     "author": "Charlie McConnell",

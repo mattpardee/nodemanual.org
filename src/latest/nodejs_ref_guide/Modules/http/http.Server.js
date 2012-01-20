@@ -4,7 +4,7 @@
  * 
  * A representation of the server within the `http` module. To create an HTTP server, you'll need to first call [[http.createServer `http.createServer()`]], with something like this:
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=http.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  * This object is also an [[eventemitter `EventEmitter`]].
  *

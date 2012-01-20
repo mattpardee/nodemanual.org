@@ -56,7 +56,7 @@ For a complete list of properties and methods available to `process`, see [the N
 
 The `process` module contains a variety of properties that allow you to access information about the running process.  Let's run through a few quick examples. Create the following file called _process.examples.js_, and run it on the command line:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.examples.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/process_module/process.examples.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 Here's what these properties mean:
 

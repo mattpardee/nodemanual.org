@@ -35,8 +35,7 @@ var latest = "0.6.7";
 
         makeManualDocs(versions);
         makeJSRefDocs(versions);
-        makeNodeJSRefDocs(versions);
-      
+        makeNodeJSRefDocs(versions);        
     });
 
 function makeManualDocs(versions)
@@ -50,6 +49,9 @@ function makeManualDocs(versions)
 
             docs.copyassets(outDir, "nodejs_dev_guide");
             docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + element + "/nodejs_dev_guide/", "nodejs_dev_guide");
+
+            // don't forget the index! 
+            //docs.generate(outDir, process.cwd() + "/src/" + element + "/index.md", "nodejs_dev_guide");
 
         });    
 }

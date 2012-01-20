@@ -1,4 +1,3 @@
-
 #content > h3 {
     font-size: 30px;
     line-height: 36px;
@@ -14,9 +13,6 @@ div.title {
 
 .cite {
 	color: #657383;
-    position: relative;
-    top: -16px;
-    left: 2px;
 }
 
 .editInC9 {
@@ -26,14 +22,4 @@ div.title {
 
 .dev_guide {
 	font-size: 12px;
-}
-
-li .menuHeader {
-    color: #262626;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-h1 code {
-    font-size: 26px;
 }

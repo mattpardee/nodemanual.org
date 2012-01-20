@@ -4,7 +4,7 @@ In Node.js, it is considered standard practice to handle errors in asynchronous 
 
 It's simpler than it sounds; here's a demonstration:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=error.conventions.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/error_conventions/error.conventions.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 As you can see from the example, the callback is called with `null` as its first argument if there is no error. However, if there is an error, you create an `Error` object, which then becomes the callback's only parameter. 
 

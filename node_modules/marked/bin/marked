@@ -1,0 +1,122 @@
+#!/usr/bin/env node
+
+/**
+ * Marked CLI
+ * Copyright (c) 2011, Christopher Jeffrey (MIT License)
+ */
+
+var fs = require('fs')
+  , util = require('util')
+  , marked = require('../');
+
+var usage = function() {
+  console.log('marked - a markdown parser');
+  console.log('');
+  console.log('Usage:');
+  console.log('  marked [-oih] [input]');
+  console.log('');
+  console.log('Options:');
+  console.log('  -o, --output: Specify output file. If none is');
+  console.log('                specified, write to stdout.');
+  console.log('  -i, --input:  Specify input file, otherwise use last');
+  console.log('                argument as input file. If no input');
+  console.log('                file is specified, read from stdin.');
+  console.log('  -t, --tokens: Output a token stream instead of html.');
+  console.log('  -h, --help:   Display this message.');
+  console.log('');
+  console.log('Examples:');
+  console.log('  cat in.md | marked > out.html');
+  console.log('  echo "hello *world*" | marked');
+  console.log('  marked -o out.html in.md');
+  console.log('  marked --output="hello world.html" -i in.md');
+  console.log('');
+  console.log('  $ marked');
+  console.log('  > hello __world__\\n^D');
+  console.log('  <p>hello <strong>world</strong></p>');
+  console.log('');
+  process.exit(0);
+};
+
+var main = function(argv) {
+  var files = []
+    , input
+    , output
+    , arg
+    , data
+    , tokens;
+
+  var getarg = function() {
+    var arg = argv.shift();
+    arg = arg.split('=');
+    if (arg.length > 1) {
+      argv.unshift(arg.sice(1).join('='));
+    }
+    return arg[0];
+  };
+
+  while (argv.length) {
+    arg = getarg();
+    switch (arg) {
+      case '-o':
+      case '--output':
+        output = argv.shift();
+        break;
+      case '-i':
+      case '--input':
+        input = argv.shift();
+        break;
+      case '-t':
+      case '--tokens':
+        tokens = true;
+        break;
+      case '-h':
+      case '--help':
+        usage();
+        break;
+      default:
+        files.push(arg);
+        break;
+    }
+  }
+
+  if (!input && files.length !== 2) {
+    input = files.pop();
+  }
+
+  if (!input && files.length === 2) {
+    var stdin = process.openStdin()
+      , buff = [];
+
+    stdin.setEncoding('utf8');
+    stdin.on('data', function(data) {
+      buff.push(data);
+    });
+
+    stdin.on('end', function() {
+      data = buff.join('');
+      write();
+    });
+  } else {
+    data = fs.readFileSync(input, 'utf8');
+    write();
+  }
+
+  function write() {
+    data = tokens
+      ? JSON.stringify(marked.lexer(data), null, 2)
+      : marked(data);
+
+    if (!output) {
+      process.stdout.write(data + '\n');
+    } else {
+      fs.writeFileSync(output, data);
+    }
+  }
+};
+
+if (!module.parent) {
+  process.title = 'marked';
+  main(process.argv.slice());
+} else {
+  module.exports = main;
+}

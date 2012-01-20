@@ -7,7 +7,7 @@
  *
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=net.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/
 
@@ -102,7 +102,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=net.server.address.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.server.address.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 

@@ -23,7 +23,7 @@
  * 
  * The following examples show how to determine the elapsed time between two Javascript dates:
  * 	
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Date/date.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 	 	   
  * **/
 
@@ -205,7 +205,7 @@
  * 
  * The following example assigns the four-digit value of the current year to the variable `yr`.
  * 	
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.getUTCFullYear.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Date/date.getUTCFullYear.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  * ####  See Also 
  *
@@ -414,7 +414,7 @@
  *
  * Subtracting two subsequent getTime calls on newly generated Date objects, give the time span between these two calls. This can be used to calculate the executing time of some operations.
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.getTime.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Date/date.getTime.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -1017,7 +1017,7 @@
  *
  * #### Example: Using `toUTCString()`
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=date.toutcstring.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Date/date.toutcstring.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * #### See Also
  *

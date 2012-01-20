@@ -13,19 +13,11 @@
  * 
  * #### Example: An asynchronous file delete:
  * 
- *     var fs = require('fs');
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+ *
+ * #### Example: A synchronous file delete:
  * 
- *     fs.unlink('/tmp/hello', function (err) {
- *       if (err) throw err;
- *       console.log('successfully deleted /tmp/hello');
- *     });
- * 
- * #### Example: A aynchronous file delete:
- * 
- *     var fs = require('fs');
- * 
- *     fs.unlinkSync('/tmp/hello')
- *     console.log('successfully deleted /tmp/hello');
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * #### Example: Handling timing issues with callback
  * 
@@ -747,7 +739,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=fs.writefile.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.writefile.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 

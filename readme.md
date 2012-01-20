@@ -35,8 +35,9 @@ After that, ndoc runs across the Javascript files in _src/js\_doc_ and _src/node
 
 # Copyright
 
-All content copyright [Cloud9 IDE](http://www.c9.io), except where otherwise stated. Infinite thanks to:
+Content providers include:
 
-* [Joyent](http://www.joyent.com/)
-* [Mozilla](http://www.mozilla.org/)
-* [Nodejitsu](http://nodejitsu.com/)
+* [Cloud9 IDE](http://www.c9.io)
+* [Joyent](http://www.joyent.com/) (Node.js Reference)
+* [Nodejitsu](http://nodejitsu.com/) (Node.js Articles)
+* [Mozilla Foundation](http://www.mozilla.org/) (Javascript Reference)

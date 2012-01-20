@@ -17,7 +17,7 @@
  * 
  * Using `script.runInThisContext()` to compile code once and run it multiple times:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=vm.Script.runInThisContext.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * #### Returns
  *
@@ -40,7 +40,7 @@
  * 
  * Compiling code that increments a global variable and sets one, then execute the code multiple times:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=vm.Script.runInNewContext.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * #### Returns
  *

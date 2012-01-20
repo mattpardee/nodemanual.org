@@ -2,9 +2,22 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Node.js Reference</title><meta name="generator" content="ndoc"><meta name="description" content="Node.js Reference for its API"><meta name="author" content="Garen J. Torikian"><meta name="viewport" content="width=device-width,initial-scale=1"><!-- CSS--><link rel="stylesheet" href="../resources/csses/bootstrap.css"><link rel="stylesheet" href="../resources/csses/prettify.css"><link rel="stylesheet" href="../resources/csses/refguide_overrides.css"><!-- end CSS--><script src="../resources/javascripts/jquery.js"></script><script src="../resources/javascripts/clicker.js"></script><script src="../resources/javascripts/jquery.collapse.js"></script><script src="../resources/javascripts/jquery.cookie.js"></script><script src="../resources/javascripts/bootstrap-dropdown.js"></script></head><body onload="styleCode()"><div class="topbar"><div class="fill"><div id="topSection" class="container"><ul class="nav"><li data-dropdown="dropdown" class="dropdown"><a href="/" class="dropdown-toggle brand"><!--div(class="arrow-down")--></a><ul class="dropdown-menu"><li><a href="http://www.nodebits.org/">Nodebits</a></li></ul></li></ul><ul class="nav"><li id="node_js_ref"><a href="../nodejs_ref_guide/index.html">Node JS Reference</a></li><li id="nodejs_dev_guide"><a href="../nodejs_dev_guide/index.html">Node JS Manual</a></li><li id="js_doc"><a href="../js_doc/index.html">Javascript Reference</a></li></ul><form id="searchbox" action="" class="pull-right"><input name="query" type="text" placeholder="Search Documentation" title="Search across all the documentation types" class="span3"></form></div></div></div><header id="overview" class="jumbotron masthead"><div class="inner"><div class="container"><h1>Node.js Reference</h1><p class="lead"></p></div></div></header><div class="container"><div class="content"><div class="row container"><div class="span5 offset4 sidebarContainer"><div id="sidebar"><div id="well"><h2>Node.js Reference</h2><h3>Modules</h3><ul class="menu"><li><div class="menu-item"><a href="assert.html" class="menuLink namespace">assert</a></div></li><li><div class="menu-item"><a href="child.process.html" class="menuLink namespace">child_process</a></div></li><li><div class="menu-item"><a href="cluster.html" class="menuLink namespace">cluster    </a></div></li><li><div class="menu-item"><a href="crypto.html" class="menuLink namespace">crypto</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="cipher.html" class="menuLink class">Cipher</a></div></li><li><div class="menu-item"><a href="decipher.html" class="menuLink class">Decipher   </a></div></li><li><div class="menu-item"><a href="diffieHellman.html" class="menuLink class">Diffie-Hellman</a></div></li><li><div class="menu-item"><a href="hash.html" class="menuLink class">Hash    </a></div></li><li><div class="menu-item"><a href="hmac.html" class="menuLink class">HMAC</a></div></li><li><div class="menu-item"><a href="signer.html" class="menuLink class">Signer  </a></div></li><li><div class="menu-item"><a href="verifier.html" class="menuLink class">Verifier                                                          </a></div></li></ul></li><li><div class="menu-item"><a href="dgram.html" class="menuLink namespace">dgram</a></div></li><li><div class="menu-item"><a href="dns.html" class="menuLink namespace">dns</a></div></li><li><div class="menu-item"><a href="eventemitter.html" class="menuLink namespace">EventEmitter</a></div></li><li><div class="menu-item"><a href="fs.html" class="menuLink namespace">fs</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="fs.FSWatcher.html" class="menuLink class">FSWatcher   </a></div></li><li><div class="menu-item"><a href="fs.ReadStream.html" class="menuLink class">Readstream                          </a></div></li><li><div class="menu-item"><a href="fs.Stats.html" class="menuLink class">Stats  </a></div></li><li><div class="menu-item"><a href="fs.WriteStream.html" class="menuLink class">Writestream                            </a></div></li></ul></li><li><div class="menu-item"><a href="http.html" class="menuLink namespace">http</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="http.Agent.html" class="menuLink class">Agent   </a></div></li><li><div class="menu-item"><a href="http.ClientRequest.html" class="menuLink class">ClientRequest   </a></div></li><li><div class="menu-item"><a href="http.ClientResponse.html" class="menuLink class">ClientResponse        </a></div></li><li><div class="menu-item"><a href="http.Server.html" class="menuLink class">Server</a></div></li><li><div class="menu-item"><a href="http.ServerRequest.html" class="menuLink class">ServerRequest</a></div></li><li><div class="menu-item"><a href="http.ServerResponse.html" class="menuLink class">ServerResponse   </a></div></li></ul></li><li><div class="menu-item"><a href="https.html" class="menuLink namespace">https</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="https.Agent.html" class="menuLink class">Agent    </a></div></li><li><div class="menu-item"><a href="https.Server.html" class="menuLink class">Server                             </a></div></li></ul></li><li><div class="menu-item"><a href="net.html" class="menuLink namespace">net</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="net.Server.html" class="menuLink class">Server   </a></div></li><li><div class="menu-item"><a href="net.Socket.html" class="menuLink class">Socket              </a></div></li></ul></li><li><div class="menu-item"><a href="os.html" class="menuLink namespace">os</a></div></li><li><div class="menu-item"><a href="path.html" class="menuLink namespace">path</a></div></li><li><div class="menu-item"><a href="querystring.html" class="menuLink namespace">querystring</a></div></li><li><div class="menu-item"><a href="readline.html" class="menuLink namespace">readline</a></div></li><li><div class="menu-item"><a href="tls.html" class="menuLink namespace">tls</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="tls.Server.html" class="menuLink class">Server   </a></div></li><li><div class="menu-item"><a href="tls.CleartextStream.html" class="menuLink class">CleartextStream              </a></div></li></ul></li><li><div class="menu-item"><a href="tty.html" class="menuLink namespace">tty</a></div></li><li><div class="menu-item"><a href="url.html" class="menuLink namespace">url</a></div></li><li><div class="menu-item"><a href="util.html" class="menuLink namespace">util</a></div></li><li><div class="menu-item"><a href="vm.html" class="menuLink namespace">vm</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="vm.Script.html" class="menuLink class">Script      </a></div></li></ul></li><li><div class="menu-item"><a href="zlib.html" class="menuLink namespace">zlib                                                                       </a></div></li></ul><h3>Globals</h3><ul class="menu"><li><div class="menu-item"><a href="buffer.html" class="menuLink class">Buffers</a></div></li><li><div class="menu-item"><a href="process.html" class="menuLink class">Process</a></div></li><li><div class="menu-item"><a href="console.html" class="menuLink class">STDIO</a></div></li><li><div class="menu-item"><a href="streams.html" class="menuLink class">Streams</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="streams.ReadableStream.html" class="menuLink class">Readable Streams</a></div></li><li><div class="menu-item"><a href="streams.WritableStream.html" class="menuLink class">Writable Streams</a></div></li></ul></li><li><div class="menu-item"><a href="timer.html" class="menuLink class">Timers</a></div></li></ul><h3>Concepts</h3><ul class="menu"><li><div class="menu-item"><a href="addons.html" class="menuLink namespace">Addons</a></div></li><li><div class="menu-item"><a href="debugging.node.js.html" class="menuLink namespace">Debugging Node.js</a></div></li><li><div class="menu-item"><a href="global.objects.html" class="menuLink namespace">Global Objects    </a></div></li><li><div class="menu-item"><a href="modules.html" class="menuLink namespace">Modules</a></div></li><li><div class="menu-item"><a href="repl.html" class="menuLink namespace">REPL    </a></div></li></ul></div></div></div><div class="span11"><div class="membersBackground"></div><div class="members"><div class="membersContent"><h1 class="memberHeader"><span class="name">Modules</span></h1><span class="editInC9"><a href="#">Edit in Cloud9 IDE</a></span><ul data-tabs="tabs" class="tabs"><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li></ul></div></div><div id="content"><article id="Modules" data-title="Modules (namespace)" class="article"><div class="section description"><div class="memberContent"><p>Node.js has a simple module loading system. In Node.js, files and modules are in one-to-one correspondence.</p>  <p>For example, imagine a scenario where <code>foo.js</code> loads the module <code>circle.js</code> in the same directory.</p>  <p>The contents of <code>foo.js</code> are:</p>  <pre><code>var circle = require(&apos;./circle.js&apos;);
+<head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Node.js Reference</title><meta name="generator" content="ndoc"><meta name="description" content="Node.js Reference for its API"><meta name="author" content="Garen J. Torikian"><meta name="viewport" content="width=device-width,initial-scale=1"><!-- CSS--><link rel="stylesheet" href="./../resources/csses/bootstrap.css"><link rel="stylesheet" href="./../resources/csses/prettify.css"><link rel="stylesheet" href="./../resources/csses/refguide_overrides.css"><!-- end CSS--><script src="./../resources/javascripts/jquery.js"></script><script src="./../resources/javascripts/clicker.js"></script><script src="./../resources/javascripts/jquery.collapse.js"></script><script src="./../resources/javascripts/jquery.cookie.js"></script><script src="./../resources/javascripts/bootstrap-dropdown.js"></script></head><body onload="styleCode()"><div class="topbar"><div class="fill"><div id="topSection" class="container"><ul class="nav"><li data-dropdown="dropdown" class="dropdown"><a href="/" class="dropdown-toggle brand"><!--div(class="arrow-down")--></a><ul class="dropdown-menu"><li><a href="http://www.nodebits.org/">Nodebits</a></li></ul></li></ul><ul class="nav"><li id="node_js_ref"><a href="./../nodejs_ref_guide/index.html">Node.js Reference</a></li><li id="nodejs_dev_guide"><a href="./../nodejs_dev_guide/index.html">Node.js Manual</a></li><li id="js_doc"><a href="./../js_doc/index.html">Javascript Reference</a></li></ul><form id="searchbox" action="" class="pull-right"><input name="query" type="text" placeholder="Search Documentation" title="Search across all the documentation types" class="span3"></form></div></div></div><header id="overview" class="jumbotron masthead"><div class="inner"><div class="container"><h1>Node.js Reference</h1><p class="lead"></p></div></div></header><div class="container"><div class="content"><div class="row container"><div class="span5 offset4 sidebarContainer"><div id="sidebar"><div id="well"><h2>Node.js Reference</h2><h3>Modules</h3><ul class="menu"><li><div class="menu-item"><a href="assert.html" class="menuLink namespace">assert</a></div></li><li><div class="menu-item"><a href="child.process.html" class="menuLink namespace">child_process</a></div></li><li><div class="menu-item"><a href="cluster.html" class="menuLink namespace">cluster    </a></div></li><li><div class="menu-item"><a href="crypto.html" class="menuLink namespace">crypto</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="cipher.html" class="menuLink class">Cipher</a></div></li><li><div class="menu-item"><a href="decipher.html" class="menuLink class">Decipher   </a></div></li><li><div class="menu-item"><a href="diffieHellman.html" class="menuLink class">Diffie-Hellman</a></div></li><li><div class="menu-item"><a href="hash.html" class="menuLink class">Hash    </a></div></li><li><div class="menu-item"><a href="hmac.html" class="menuLink class">HMAC</a></div></li><li><div class="menu-item"><a href="signer.html" class="menuLink class">Signer  </a></div></li><li><div class="menu-item"><a href="verifier.html" class="menuLink class">Verifier                                                          </a></div></li></ul></li><li><div class="menu-item"><a href="dgram.html" class="menuLink namespace">dgram</a></div></li><li><div class="menu-item"><a href="dns.html" class="menuLink namespace">dns</a></div></li><li><div class="menu-item"><a href="eventemitter.html" class="menuLink namespace">EventEmitter</a></div></li><li><div class="menu-item"><a href="fs.html" class="menuLink namespace">fs</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="fs.FSWatcher.html" class="menuLink class">FSWatcher   </a></div></li><li><div class="menu-item"><a href="fs.ReadStream.html" class="menuLink class">Readstream                          </a></div></li><li><div class="menu-item"><a href="fs.Stats.html" class="menuLink class">Stats  </a></div></li><li><div class="menu-item"><a href="fs.WriteStream.html" class="menuLink class">Writestream                            </a></div></li></ul></li><li><div class="menu-item"><a href="http.html" class="menuLink namespace">http</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="http.Agent.html" class="menuLink class">Agent   </a></div></li><li><div class="menu-item"><a href="http.ClientRequest.html" class="menuLink class">ClientRequest   </a></div></li><li><div class="menu-item"><a href="http.ClientResponse.html" class="menuLink class">ClientResponse        </a></div></li><li><div class="menu-item"><a href="http.Server.html" class="menuLink class">Server</a></div></li><li><div class="menu-item"><a href="http.ServerRequest.html" class="menuLink class">ServerRequest</a></div></li><li><div class="menu-item"><a href="http.ServerResponse.html" class="menuLink class">ServerResponse   </a></div></li></ul></li><li><div class="menu-item"><a href="https.html" class="menuLink namespace">https</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="https.Agent.html" class="menuLink class">Agent    </a></div></li><li><div class="menu-item"><a href="https.Server.html" class="menuLink class">Server                             </a></div></li></ul></li><li><div class="menu-item"><a href="net.html" class="menuLink namespace">net</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="net.Server.html" class="menuLink class">Server   </a></div></li><li><div class="menu-item"><a href="net.Socket.html" class="menuLink class">Socket              </a></div></li></ul></li><li><div class="menu-item"><a href="os.html" class="menuLink namespace">os</a></div></li><li><div class="menu-item"><a href="path.html" class="menuLink namespace">path</a></div></li><li><div class="menu-item"><a href="querystring.html" class="menuLink namespace">querystring</a></div></li><li><div class="menu-item"><a href="readline.html" class="menuLink namespace">readline</a></div></li><li><div class="menu-item"><a href="tls.html" class="menuLink namespace">tls</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="tls.Server.html" class="menuLink class">Server   </a></div></li><li><div class="menu-item"><a href="tls.CleartextStream.html" class="menuLink class">CleartextStream              </a></div></li></ul></li><li><div class="menu-item"><a href="tty.html" class="menuLink namespace">tty</a></div></li><li><div class="menu-item"><a href="url.html" class="menuLink namespace">url</a></div></li><li><div class="menu-item"><a href="util.html" class="menuLink namespace">util</a></div></li><li><div class="menu-item"><a href="vm.html" class="menuLink namespace">vm</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="vm.Script.html" class="menuLink class">Script      </a></div></li></ul></li><li><div class="menu-item"><a href="zlib.html" class="menuLink namespace">zlib                                                                       </a></div></li></ul><h3>Globals</h3><ul class="menu"><li><div class="menu-item"><a href="buffer.html" class="menuLink class">Buffers</a></div></li><li><div class="menu-item"><a href="process.html" class="menuLink class">Process</a></div></li><li><div class="menu-item"><a href="console.html" class="menuLink class">STDIO</a></div></li><li><div class="menu-item"><a href="streams.html" class="menuLink class">Streams</a></div><ul class="menuTwo"><li><div class="menu-item"><a href="streams.ReadableStream.html" class="menuLink class">Readable Streams</a></div></li><li><div class="menu-item"><a href="streams.WritableStream.html" class="menuLink class">Writable Streams</a></div></li></ul></li><li><div class="menu-item"><a href="timer.html" class="menuLink class">Timers</a></div></li></ul><h3>Concepts</h3><ul class="menu"><li><div class="menu-item"><a href="addons.html" class="menuLink namespace">Addons</a></div></li><li><div class="menu-item"><a href="debugging.node.js.html" class="menuLink namespace">Debugging Node.js</a></div></li><li><div class="menu-item"><a href="global.objects.html" class="menuLink namespace">Global Objects    </a></div></li><li><div class="menu-item"><a href="modules.html" class="menuLink namespace">Modules</a></div></li><li><div class="menu-item"><a href="repl.html" class="menuLink namespace">REPL    </a></div></li></ul></div></div></div><div class="span11"><div class="membersBackground"></div><div class="members"><div class="membersContent"><h1 class="memberHeader"><span class="name">Modules</span></h1><span class="editInC9"><a href="#" title="Edit in Cloud9 IDE">[edit]</a></span><ul data-tabs="tabs" class="tabs"><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li><li data-dropdown="dropdown" class="dropdown"></li></ul></div></div><div id="content"><article id="Modules" data-title="Modules (namespace)" class="article"><div class="section description"><div class="memberContent"><p>Node.js has a simple module loading system. In Node.js, files and modules are in one-to-one correspondence.
+
+</p>
+<p>For example, imagine a scenario where <code>foo.js</code> loads the module <code>circle.js</code> in the same directory.
+
+</p>
+<p>The contents of <code>foo.js</code> are:
+
+</p>
+<pre><code>var circle = require(&apos;./circle.js&apos;);
 console.log( &apos;The area of a circle of radius 4 is &apos;
-           + circle.area(4));</code></pre> <p>The contents of <code>circle.js</code> are:</p>  <pre><code>var PI = Math.PI;
+           + circle.area(4));</code></pre>
+<p>The contents of <code>circle.js</code> are:
+
+</p>
+<pre><code>var PI = Math.PI;
 
 exports.area = function (r) {
   return PI * r * r;
@@ -12,20 +25,49 @@ exports.area = function (r) {
 
 exports.circumference = function (r) {
   return 2 * PI * r;
-};</code></pre> <p>The module <code>circle.js</code> has exported the functions <code>area()</code> and <code>circumference()</code>.  To export an object, add to the special <a href="#module.exports"><code>exports</code></a> object.</p>  <p>Variables local to a module are private. In this example, the variable <code>PI</code> is private to <code>circle.js</code>.</p>  <h4>Cycles</h4> <p>Whenever there are circular <code>require()</code> calls, a module might not be done being executed when it is returned.</p>  <p>Consider this situation with the following files. In `a.js&apos;:</p>  <pre><code>console.log(&apos;a starting&apos;);
+};</code></pre>
+<p>The module <code>circle.js</code> has exported the functions <code>area()</code> and <code>circumference()</code>.  To export an object, add to the special <a href="#module.exports"><code>exports</code></a> object.
+
+</p>
+<p>Variables local to a module are private. In this example, the variable <code>PI</code> is private to <code>circle.js</code>.
+
+</p>
+<h4>Cycles</h4>
+<p>Whenever there are circular <code>require()</code> calls, a module might not be done being executed when it is returned.
+
+</p>
+<p>Consider this situation with the following files. In `a.js&apos;:
+
+</p>
+<pre><code>console.log(&apos;a starting&apos;);
 exports.done = false;
 var b = require(&apos;./b.js&apos;);
 console.log(&apos;in a, b.done = %j&apos;, b.done);
 exports.done = true;
-console.log(&apos;a done&apos;);</code></pre> <p>In <code>b.js</code>:</p>  <pre><code>console.log(&apos;b starting&apos;);
+console.log(&apos;a done&apos;);</code></pre>
+<p>In <code>b.js</code>:
+
+</p>
+<pre><code>console.log(&apos;b starting&apos;);
 exports.done = false;
 var a = require(&apos;./a.js&apos;);
 console.log(&apos;in b, a.done = %j&apos;, a.done);
 exports.done = true;
-console.log(&apos;b done&apos;);</code></pre> <p>And in <code>main.js</code>:</p>  <pre><code>console.log(&apos;main starting&apos;);
+console.log(&apos;b done&apos;);</code></pre>
+<p>And in <code>main.js</code>:
+
+</p>
+<pre><code>console.log(&apos;main starting&apos;);
 var a = require(&apos;./a.js&apos;);
 var b = require(&apos;./b.js&apos;);
-console.log(&apos;in main, a.done=%j, b.done=%j&apos;, a.done, b.done);</code></pre> <p>When <code>main.js</code> loads <code>a.js</code>, <code>a.js</code> loads <code>b.js</code>. At that point, <code>b.js</code> tries to load <code>a.js</code>.  In order to prevent an infinite loop an &quot;unfinished copy&quot; of the <code>a.js</code> exports object is returned to the <code>b.js</code> module.  <code>b.js</code> then finishes loading, and its exports object is provided to the <code>a.js</code> module.</p>  <p>By the time <code>main.js</code> finishes loading both modules, they&apos;ve both finished executing. The output of this program would thus be:</p>  <pre><code>$ node main.js
+console.log(&apos;in main, a.done=%j, b.done=%j&apos;, a.done, b.done);</code></pre>
+<p>When <code>main.js</code> loads <code>a.js</code>, <code>a.js</code> loads <code>b.js</code>. At that point, <code>b.js</code> tries to load <code>a.js</code>.  In order to prevent an infinite loop an &quot;unfinished copy&quot; of the <code>a.js</code> exports object is returned to the <code>b.js</code> module.  <code>b.js</code> then finishes loading, and its exports object is provided to the <code>a.js</code> module.
+
+</p>
+<p>By the time <code>main.js</code> finishes loading both modules, they&apos;ve both finished executing. The output of this program would thus be:
+
+</p>
+<pre><code>$ node main.js
 main starting
 a starting
 b starting
@@ -33,10 +75,89 @@ in b, a.done = false
 b done
 in a, b.done = true
 a done
-in main, a.done=true, b.done=true</code></pre> <p>If you have cyclic module dependencies in your program, make sure to plan accordingly.</p>  <h4>Core Modules</h4> <p>Node.js has several modules compiled into the binary. These modules are described in greater detail elsewhere in this documentation.</p>  <p>The core modules are defined in Node&apos;s source in the <code>lib/</code> folder.</p>  <p>Core modules are always preferentially loaded if their identifier is passed to <code>require()</code>.  For instance, <code>require(&apos;http&apos;)</code> always returns the built in HTTP module, even if there is a file by that name.</p>  <h4>File Modules</h4> <p>If the exact filename is not found, then Node.js attempts to load the required filename with the added extension of <code>.js</code>, <code>.json</code>, and then <code>.node</code>.</p>  <p><code>.js</code> files are interpreted as Javascript text files, and <code>.json</code> files are parsed as JSON text files. <code>.node</code> files are interpreted as compiled addon modules loaded with <code>dlopen</code>.</p>  <p>A module prefixed with <code>&apos;/&apos;</code> is an absolute path to the file.  For example, <code>require(&apos;/home/marco/foo.js&apos;)</code> loads the file at <code>/home/marco/foo.js</code>.</p>  <p>A module prefixed with <code>&apos;./&apos;</code> is relative to the file calling <code>require()</code>. That is, <code>circle.js</code> must be in the same directory as <code>foo.js</code> for <code>require(&apos;./circle&apos;)</code> to find it.</p>  <p>Without a leading <code>&apos;/&apos;</code> or <code>&apos;./&apos;</code> to indicate a file, the module is either a &quot;core module&quot; or is loaded from the <code>node_modules</code> folder.</p>  <p>For example, if the file at <code>&apos;/home/ry/projects/foo.js&apos;</code> is called by <code>require(&apos;bar.js&apos;)</code>, then Node.js looks for it in the following locations, in this order:</p>  <ul><li><code>/home/ry/projects/node_modules/bar.js</code></li><li><code>/home/ry/node_modules/bar.js</code></li><li><code>/home/node_modules/bar.js</code></li><li><code>/node_modules/bar.js</code> </li></ul> <p>This allows programs to localize their dependencies, so that they don&apos;t clash.</p>  <h4>Folders as Modules</h4> <p>It is convenient to organize programs and libraries into self-contained directories, and then provide a single entry point to that library.</p>  <p>There are three ways in which a folder may be passed to <code>require()</code> as an argument.</p>  <p>The first is to create a <code>package.json</code> file in the root of the folder, which specifies a <code>main</code> module.  An example <code>package.json</code> file might look like this:</p>  <pre><code>{ &quot;name&quot; : &quot;some-library&quot;,
-  &quot;main&quot; : &quot;./lib/some-library.js&quot; }</code></pre> <p>If this was in a folder at <code>./some-library</code>, then <code>require(&apos;./some-library&apos;)</code> would attempt to load <code>./some-library/lib/some-library.js</code>.</p>  <p>This is the extent of Node&apos;s awareness of <code>package.json</code> files.</p>  <p>If there is no <code>package.json</code> file present in the directory, then Node.js attempts to load an <code>index.js</code> or <code>index.node</code> file out of that directory.  For example, if there was no <code>package.json</code> file in the above example, then <code>require(&apos;./some-library&apos;)</code> would attempt to load:</p>  <ul><li><code>./some-library/index.js</code></li><li><code>./some-library/index.node</code> </li></ul> <h4>Caching</h4> <p>Modules are cached after the first time they are loaded.  This means (among other things) that every call to <code>require(&apos;foo&apos;)</code> gets exactly the same object returned, if it would resolve to the same file.</p>  <p>Multiple calls to <code>require(&apos;foo&apos;)</code> may not cause the module code to be executed multiple times.  This is an important feature.  With it, &quot;partially done&quot; objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.</p>  <p>If you want to have a module execute code multiple times, then export a function, and call that function.</p>  <h4>Module Caching Caveats</h4> <p>Modules are cached based on their resolved filename.  Since modules may resolve to a different filename based on the location of the calling module (loading from <code>node_modules</code> folders), it is not a guarantee that <code>require(&apos;foo&apos;)</code> always returns the exact same object, if it would resolve to different files.</p>  <a id="module.exports"></a>
+in main, a.done=true, b.done=true</code></pre>
+<p>If you have cyclic module dependencies in your program, make sure to plan accordingly.
 
- <p>The <code>exports</code> object is created by the Module system. Sometimes, this is not acceptable, as some developers want their module to be an instance of some class.</p>  <p>To do this assign the desired export object to <code>module.exports</code>. For example suppose we were making a module called <code>a.js</code></p>  <pre><code>var EventEmitter = require(&apos;events&apos;).EventEmitter;
+</p>
+<h4>Core Modules</h4>
+<p>Node.js has several modules compiled into the binary. These modules are described in greater detail elsewhere in this documentation.
+
+</p>
+<p>The core modules are defined in Node&apos;s source in the <code>lib/</code> folder.
+
+</p>
+<p>Core modules are always preferentially loaded if their identifier is passed to <code>require()</code>.  For instance, <code>require(&apos;http&apos;)</code> always returns the built in HTTP module, even if there is a file by that name.
+
+</p>
+<h4>File Modules</h4>
+<p>If the exact filename is not found, then Node.js attempts to load the required filename with the added extension of <code>.js</code>, <code>.json</code>, and then <code>.node</code>.
+
+</p>
+<p><code>.js</code> files are interpreted as Javascript text files, and <code>.json</code> files are parsed as JSON text files. <code>.node</code> files are interpreted as compiled addon modules loaded with <code>dlopen</code>.
+
+</p>
+<p>A module prefixed with <code>&apos;/&apos;</code> is an absolute path to the file.  For example, <code>require(&apos;/home/marco/foo.js&apos;)</code> loads the file at <code>/home/marco/foo.js</code>.
+
+</p>
+<p>A module prefixed with <code>&apos;./&apos;</code> is relative to the file calling <code>require()</code>. That is, <code>circle.js</code> must be in the same directory as <code>foo.js</code> for <code>require(&apos;./circle&apos;)</code> to find it.
+
+</p>
+<p>Without a leading <code>&apos;/&apos;</code> or <code>&apos;./&apos;</code> to indicate a file, the module is either a &quot;core module&quot; or is loaded from the <code>node_modules</code> folder.
+
+</p>
+<p>For example, if the file at <code>&apos;/home/ry/projects/foo.js&apos;</code> is called by <code>require(&apos;bar.js&apos;)</code>, then Node.js looks for it in the following locations, in this order:
+
+</p>
+<ul><li><code>/home/ry/projects/node_modules/bar.js</code></li><li><code>/home/ry/node_modules/bar.js</code></li><li><code>/home/node_modules/bar.js</code></li><li><code>/node_modules/bar.js</code> </li></ul>
+<p>This allows programs to localize their dependencies, so that they don&apos;t clash.
+
+</p>
+<h4>Folders as Modules</h4>
+<p>It is convenient to organize programs and libraries into self-contained directories, and then provide a single entry point to that library.
+
+</p>
+<p>There are three ways in which a folder may be passed to <code>require()</code> as an argument.
+
+</p>
+<p>The first is to create a <code>package.json</code> file in the root of the folder, which specifies a <code>main</code> module.  An example <code>package.json</code> file might look like this:
+
+</p>
+<pre><code>{ &quot;name&quot; : &quot;some-library&quot;,
+  &quot;main&quot; : &quot;./lib/some-library.js&quot; }</code></pre>
+<p>If this was in a folder at <code>./some-library</code>, then <code>require(&apos;./some-library&apos;)</code> would attempt to load <code>./some-library/lib/some-library.js</code>.
+
+</p>
+<p>This is the extent of Node&apos;s awareness of <code>package.json</code> files.
+
+</p>
+<p>If there is no <code>package.json</code> file present in the directory, then Node.js attempts to load an <code>index.js</code> or <code>index.node</code> file out of that directory.  For example, if there was no <code>package.json</code> file in the above example, then <code>require(&apos;./some-library&apos;)</code> would attempt to load:
+
+</p>
+<ul><li><code>./some-library/index.js</code></li><li><code>./some-library/index.node</code> </li></ul>
+<h4>Caching</h4>
+<p>Modules are cached after the first time they are loaded.  This means (among other things) that every call to <code>require(&apos;foo&apos;)</code> gets exactly the same object returned, if it would resolve to the same file.
+
+</p>
+<p>Multiple calls to <code>require(&apos;foo&apos;)</code> may not cause the module code to be executed multiple times.  This is an important feature.  With it, &quot;partially done&quot; objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
+
+</p>
+<p>If you want to have a module execute code multiple times, then export a function, and call that function.
+
+</p>
+<h4>Module Caching Caveats</h4>
+<p>Modules are cached based on their resolved filename.  Since modules may resolve to a different filename based on the location of the calling module (loading from <code>node_modules</code> folders), it is not a guarantee that <code>require(&apos;foo&apos;)</code> always returns the exact same object, if it would resolve to different files.
+
+</p>
+<p><a id="module.exports"></a>
+
+</p>
+<p>The <code>exports</code> object is created by the Module system. Sometimes, this is not acceptable, as some developers want their module to be an instance of some class.
+
+</p>
+<p>To do this assign the desired export object to <code>module.exports</code>. For example suppose we were making a module called <code>a.js</code>
+
+</p>
+<pre><code>var EventEmitter = require(&apos;events&apos;).EventEmitter;
 
 module.exports = new EventEmitter();
 
@@ -44,24 +165,56 @@ module.exports = new EventEmitter();
 // the &apos;ready&apos; event from the module itself.
 setTimeout(function() {
   module.exports.emit(&apos;ready&apos;);
-}, 1000);</code></pre> <p>Then, in another file we could do</p>  <pre><code>var a = require(&apos;./a&apos;);
+}, 1000);</code></pre>
+<p>Then, in another file we could do
+
+</p>
+<pre><code>var a = require(&apos;./a&apos;);
 a.on(&apos;ready&apos;, function() {
   console.log(&apos;module a is ready&apos;);
-});
-</code></pre> <p>Note that the assignment to <code>module.exports</code> must be done immediately. It can&apos;t be done in any callbacks. For example, this does not work:</p>  <p>In a file called <code>x.js</code>:</p>  <pre><code>setTimeout(function() {
+});</code></pre>
+<p>Note that the assignment to <code>module.exports</code> must be done immediately. It can&apos;t be done in any callbacks. For example, this does not work:
+
+</p>
+<p>In a file called <code>x.js</code>:
+
+</p>
+<pre><code>setTimeout(function() {
   module.exports = { a: &quot;hello&quot; };
-}, 0);</code></pre> <p>In a file called <code>y.js</code>:</p>  <pre><code>var x = require(&apos;./x&apos;);
-console.log(x.a);
-</code></pre> <h4><code>module.require</code></h4> <p>The <code>module.require</code> method provides a way to load a module as if <code>require()</code> was called from the original module.</p>  <p>Note that in order to do this, you must get a reference to the <code>module</code> object.  Since <code>require()</code> returns the <code>exports</code>, and the <code>module</code> is typically <em>only</em> available within a specific module&apos;s code, it must be explicitly exported in order to be used.</p>  <h4>All Together Now</h4> <p>To get the exact filename that will be loaded when <code>require()</code> is called, use the <code>require.resolve()</code> function.</p>  <p>Putting together all of the above, here is the high-level algorithm (in pseudocode) of what <code>require.resolve()</code> does:</p>  <p><dl>
-<dt>To <code>require(X)</code> from module at path Y:</dt></p> <dd>
+}, 0);</code></pre>
+<p>In a file called <code>y.js</code>:
+
+</p>
+<pre><code>var x = require(&apos;./x&apos;);
+console.log(x.a);</code></pre>
+<h4><code>module.require</code></h4>
+<p>The <code>module.require</code> method provides a way to load a module as if <code>require()</code> was called from the original module.
+
+</p>
+<p>Note that in order to do this, you must get a reference to the <code>module</code> object.  Since <code>require()</code> returns the <code>exports</code>, and the <code>module</code> is typically <em>only</em> available within a specific module&apos;s code, it must be explicitly exported in order to be used.
+
+
+</p>
+<h4>All Together Now</h4>
+<p>To get the exact filename that will be loaded when <code>require()</code> is called, use the <code>require.resolve()</code> function.
+
+</p>
+<p>Putting together all of the above, here is the high-level algorithm (in pseudocode) of what <code>require.resolve()</code> does:
+
+</p>
+<p><dl>
+</p>
+<p><dt>To <code>require(X)</code> from module at path Y:</dt>
+</p>
+<dd>
     <pre>
     1. If X is a core module,
         a. return the core module
         b. STOP
     2. If X begins with &apos;./&apos; or &apos;/&apos; or &apos;../&apos;
-        a. LOAD<em>AS</em>FILE(Y + X)
-        b. LOAD<em>AS</em>DIRECTORY(Y + X)
-    3. LOAD<em>NODE</em>MODULES(X, dirname(Y))
+        a. LOAD_AS_FILE(Y + X)
+        b. LOAD_AS_DIRECTORY(Y + X)
+    3. LOAD_NODE_MODULES(X, dirname(Y))
     4. THROW &quot;not found&quot;
     </pre>
 </dd>
@@ -79,7 +232,7 @@ console.log(x.a);
     1. If X/package.json is a file,
        a. Parse X/package.json, and look for &quot;main&quot; field.
        b. let M = X + (json main field)
-       c. LOAD<em>AS</em>FILE(M)
+       c. LOAD_AS_FILE(M)
     2. If X/index.js is a file, load X/index.js as Javascript text.  STOP
     3. If X/index.node is a file, load X/index.node as binary addon.  STOP
     </pre>
@@ -87,21 +240,21 @@ console.log(x.a);
 <dt>To <code>LOAD_NODE_MODULES(X, START)</code>: </dt>
 <dd>
     <pre>
-    1. let DIRS=NODE<em>MODULES</em>PATHS(START)
+    1. let DIRS=NODE_MODULES_PATHS(START)
     2. for each DIR in DIRS:
-       a. LOAD<em>AS</em>FILE(DIR/X)
-       b. LOAD<em>AS</em>DIRECTORY(DIR/X)
+       a. LOAD_AS_FILE(DIR/X)
+       b. LOAD_AS_DIRECTORY(DIR/X)
     </pre>
 </dd>
 <dt>To <code>NODE_MODULES_PATHS(START)</code>: </dt>
 <dd>
     <pre>
     1. let PARTS = path split(START)
-    2. let ROOT = index of first instance of &quot;node<em>modules&quot; in PARTS, or 0
+    2. let ROOT = index of first instance of &quot;node_modules&quot; in PARTS, or 0
     3. let I = count of PARTS - 1
     4. let DIRS = []
     5. while I &gt; ROOT,
-       a. if PARTS[I] = &quot;node</em>modules&quot; CONTINUE
+       a. if PARTS[I] = &quot;node_modules&quot; CONTINUE
        c. DIR = path join(PARTS[0 .. I] + &quot;node_modules&quot;)
        b. DIRS = DIRS + DIR
        c. let I = I - 1
@@ -109,11 +262,63 @@ console.log(x.a);
     </pre>
 </dd>
 
- <h4>Loading from the global folders</h4> <p>If the <code>NODE_PATH</code> environment variable is set to a colon-delimited list of absolute paths, then Node.js searches those paths for modules if they are not found elsewhere. (Note: On Windows, <code>NODE_PATH</code> is delimited by semicolons instead of colons.)</p>  <p>Additionally, Node.js searches in the following locations:</p>  <ul><li>1: <code>$HOME/.node_modules</code></li><li>2: <code>$HOME/.node_libraries</code></li><li>3: <code>$PREFIX/lib/node</code> </li></ul> <p>Where <code>$HOME</code> is the user&apos;s home directory, and <code>$PREFIX</code> is Node&apos;s configured <code>installPrefix</code>.</p>  <p>These are mostly for historic reasons. You are highly encouraged to place your dependencies locally in <code>node_modules</code> folders.  They will be loaded faster, and more reliably.</p>  <h4>Accessing the <code>main</code> module</h4> <p>When a file is run directly from Node.js, <code>require.main</code> is set to its <code>module</code>. That means that you can determine whether a file has been run directly by testing for the following:</p>  <pre><code>require.main === module</code></pre> <p>For a file <code>foo.js</code>, this is <code>true</code> if run via <code>node foo.js</code>, but <code>false</code> if run by <code>require(&apos;./foo&apos;)</code>.</p>  <p>Because <code>module</code> provides a <code>filename</code> property (normally equivalent to <code>__filename</code>), the entry point of the current application can be obtained by checking <code>require.main.filename</code>.</p>  <h4>Package Manager Tips</h4> <p>The semantics of Node&apos;s <code>require()</code> function were designed to be general enough to support a number of sane directory structures. Package manager programs such as <code>dpkg</code>, <code>rpm</code>, and <code>npm</code> will hopefully find it possible to build native packages from Node modules without modification.</p>  <p>Below we give a suggested directory structure that could work:</p>  <p>Let&apos;s say that we wanted to have the folder at <code>/usr/lib/node/&lt;some-package&gt;/&lt;some-version&gt;</code> hold the contents of a specific version of a package.</p>  <p>Packages can depend on one another. In order to install package <code>foo</code>, you may have to install a specific version of package <code>bar</code>.  The <code>bar</code> package may itself have dependencies, and in some cases, these dependencies may even collide or form cycles.</p>  <p>Since Node.js looks up the <code>realpath</code> of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the <code>node_modules</code> folders as described above, this situation is very simple to resolve with the following architecture:</p>  <ul><li><code>/usr/lib/node/foo/1.2.3/</code> - Contents of the <code>foo</code> package, version 1.2.3.</li><li><code>/usr/lib/node/bar/4.3.2/</code> - Contents of the <code>bar</code> package that <code>foo</code> depends on.</li><li><code>/usr/lib/node/foo/1.2.3/node_modules/bar</code> - Symbolic link to <code>/usr/lib/node/bar/4.3.2/</code>.</li><li><code>/usr/lib/node/bar/4.3.2/node_modules/*</code> - Symbolic links to the packages that <code>bar</code> depends on. </li></ul> <p>Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.</p>  <p>When the code in the <code>foo</code> package does <code>require(&apos;bar&apos;)</code>, it gets the version that is symlinked into <code>/usr/lib/node/foo/1.2.3/node_modules/bar</code>. Then, when the code in the <code>bar</code> package calls <code>require(&apos;quux&apos;)</code>, it gets the version that is symlinked into <code>/usr/lib/node/bar/4.3.2/node_modules/quux</code>.</p>  <p>Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in <code>/usr/lib/node</code>, we could put them in <code>/usr/lib/node_modules/&lt;name&gt;/&lt;version&gt;</code>.  Then Node.js doesn&apos;t bother looking for missing dependencies in <code>/usr/node_modules</code> or <code>/node_modules</code>.</p>  <p>In order to make modules available to the Node.js REPL, it might be useful to also add the <code>/usr/lib/node_modules</code> folder to the <code>$NODE_PATH</code> environment variable.  Since the module lookups using <code>node_modules</code> folders are all relative, and based on the real path of the files making the calls to <code>require()</code>, the packages themselves can be anywhere.</p></div></div></article><div id="disqus_thread"></div></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a><a href="http://nodejitsu.com/" title="nodejitsu" target="_blank" class="nodejitsu-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="../resources/javascripts/plugins.js"></script>
-<script defer src="../resources/javascripts/prettify.js"></script>
-<script defer src="../resources/javascripts/prettify-extension.js"></script>
-<script defer src="../resources/javascripts/script.js"></script>
-<script defer src="../resources/javascripts/disqus-ext.js"></script>
+
+<h4>Loading from the global folders</h4>
+<p>If the <code>NODE_PATH</code> environment variable is set to a colon-delimited list of absolute paths, then Node.js searches those paths for modules if they are not found elsewhere. (Note: On Windows, <code>NODE_PATH</code> is delimited by semicolons instead of colons.)
+
+</p>
+<p>Additionally, Node.js searches in the following locations:
+
+</p>
+<ul><li>1: <code>$HOME/.node_modules</code></li><li>2: <code>$HOME/.node_libraries</code></li><li>3: <code>$PREFIX/lib/node</code> </li></ul>
+<p>Where <code>$HOME</code> is the user&apos;s home directory, and <code>$PREFIX</code> is Node&apos;s configured <code>installPrefix</code>.
+
+</p>
+<p>These are mostly for historic reasons. You are highly encouraged to place your dependencies locally in <code>node_modules</code> folders.  They will be loaded faster, and more reliably.
+
+</p>
+<h4>Accessing the <code>main</code> module</h4>
+<p>When a file is run directly from Node.js, <code>require.main</code> is set to its <code>module</code>. That means that you can determine whether a file has been run directly by testing for the following:
+
+</p>
+<pre><code>require.main === module</code></pre>
+<p>For a file <code>foo.js</code>, this is <code>true</code> if run via <code>node foo.js</code>, but <code>false</code> if run by <code>require(&apos;./foo&apos;)</code>.
+
+</p>
+<p>Because <code>module</code> provides a <code>filename</code> property (normally equivalent to <code>__filename</code>), the entry point of the current application can be obtained by checking <code>require.main.filename</code>.
+
+</p>
+<h4>Package Manager Tips</h4>
+<p>The semantics of Node&apos;s <code>require()</code> function were designed to be general enough to support a number of sane directory structures. Package manager programs such as <code>dpkg</code>, <code>rpm</code>, and <code>npm</code> will hopefully find it possible to build native packages from Node modules without modification.
+
+</p>
+<p>Below we give a suggested directory structure that could work:
+
+</p>
+<p>Let&apos;s say that we wanted to have the folder at <code>/usr/lib/node/&lt;some-package&gt;/&lt;some-version&gt;</code> hold the contents of a specific version of a package.
+
+</p>
+<p>Packages can depend on one another. In order to install package <code>foo</code>, you may have to install a specific version of package <code>bar</code>.  The <code>bar</code> package may itself have dependencies, and in some cases, these dependencies may even collide or form cycles.
+
+</p>
+<p>Since Node.js looks up the <code>realpath</code> of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the <code>node_modules</code> folders as described above, this situation is very simple to resolve with the following architecture:
+
+</p>
+<ul><li><code>/usr/lib/node/foo/1.2.3/</code> - Contents of the <code>foo</code> package, version 1.2.3.</li><li><code>/usr/lib/node/bar/4.3.2/</code> - Contents of the <code>bar</code> package that <code>foo</code> depends on.</li><li><code>/usr/lib/node/foo/1.2.3/node_modules/bar</code> - Symbolic link to <code>/usr/lib/node/bar/4.3.2/</code>.</li><li><code>/usr/lib/node/bar/4.3.2/node_modules/*</code> - Symbolic links to the packages that <code>bar</code> depends on. </li></ul>
+<p>Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
+
+</p>
+<p>When the code in the <code>foo</code> package does <code>require(&apos;bar&apos;)</code>, it gets the version that is symlinked into <code>/usr/lib/node/foo/1.2.3/node_modules/bar</code>. Then, when the code in the <code>bar</code> package calls <code>require(&apos;quux&apos;)</code>, it gets the version that is symlinked into <code>/usr/lib/node/bar/4.3.2/node_modules/quux</code>.
+
+</p>
+<p>Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in <code>/usr/lib/node</code>, we could put them in <code>/usr/lib/node_modules/&lt;name&gt;/&lt;version&gt;</code>.  Then Node.js doesn&apos;t bother looking for missing dependencies in <code>/usr/node_modules</code> or <code>/node_modules</code>.
+
+</p>
+<p>In order to make modules available to the Node.js REPL, it might be useful to also add the <code>/usr/lib/node_modules</code> folder to the <code>$NODE_PATH</code> environment variable.  Since the module lookups using <code>node_modules</code> folders are all relative, and based on the real path of the files making the calls to <code>require()</code>, the packages themselves can be anywhere.</p></div></div></article><div id="disqus_thread"></div></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a><a href="http://nodejitsu.com/" title="nodejitsu" target="_blank" class="nodejitsu-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
+<script defer src="./../resources/javascripts/prettify.js"></script>
+<script defer src="./../resources/javascripts/prettify-extension.js"></script>
+<script defer src="./../resources/javascripts/script.js"></script>
+<script defer src="./../resources/javascripts/disqus-ext.js"></script>
 <!-- end scripts--><!--[if lt IE 7]><script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script><script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
 
 </script><![endif]--></body></html>

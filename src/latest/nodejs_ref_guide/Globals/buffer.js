@@ -57,7 +57,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.byteLength.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.byteLength.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *  
  * #### Returns
  *
@@ -75,7 +75,7 @@
  * 
  * #### Example: Building two buffers
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.copy.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.copy.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 
@@ -90,7 +90,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.fill.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.fill.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *     
 **/ 
 
@@ -115,7 +115,7 @@
  *  
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readDoubleBELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *  
 **/ 
 
@@ -130,7 +130,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readDoubleBELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *  
 **/ 
 
@@ -145,7 +145,7 @@
  *  
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readFloatBELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>    
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readFloatBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>    
  *  
 **/ 
 
@@ -160,7 +160,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readFloatBELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>      
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readFloatBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>      
  *  
 **/
 
@@ -243,7 +243,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readUInt8.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt8.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
  *
 **/ 
 
@@ -257,7 +257,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readUInt16BELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt16BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
  *
 **/ 
 
@@ -271,7 +271,7 @@
  *  
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readUInt16BELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt16BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
  * 
 **/ 
 
@@ -285,7 +285,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readUInt32BELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *    
 **/ 
 
@@ -300,7 +300,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readUInt32BELE.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>   
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>   
  *     
 **/ 
 
@@ -318,7 +318,7 @@
  * 
  * Building a `Buffer` with the ASCII alphabet, taking a slice, then modifying one byte from the original `Buffer`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.readUInt32LE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>   
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32LE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>   
  *     
 **/ 
 
@@ -349,7 +349,7 @@
  * 
  * Writing a utf8 string into a buffer, then printing it:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.write.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.write.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  *
  * #### Returns
  *
@@ -367,7 +367,7 @@
  *  
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeDoubleBELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -382,7 +382,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeDoubleBELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -397,7 +397,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeFloatBELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  *    
 **/ 
 
@@ -412,7 +412,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeFloatBELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -498,7 +498,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeUInt8.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt8.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -513,7 +513,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeUInt16BELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt16BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -528,7 +528,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeUInt16BELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt16BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
  * 
 **/ 
@@ -544,7 +544,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeUInt32BELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
  * 
 **/ 
@@ -560,7 +560,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.writeUInt32BELE.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  *  
  * 
 **/ 
@@ -573,7 +573,7 @@
  * 
  * #### Example: Copy an ASCII string into a buffer, one byte at a time
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.index.js&linestart=4&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.index.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/
 
@@ -591,7 +591,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=buffer.length.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *      
  *     
 **/ 

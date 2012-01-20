@@ -13,25 +13,13 @@ Here's what the parameters do:
 
 If we wanted to read `/etc/hosts` and print it to stdout (just like UNIX `cat`), we might try doing this:
 
-    fs = require('fs')
-    fs.readFile('/etc/hosts', 'utf8', function (err,data) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(data);
-    });
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/read.file.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 The contents of `/etc/hosts` should now be visible to you, provided you have permission to read the file in the first place.
 
-Let's now take a look at an example of what happens when you try to read an invalid fil&mdash;the easiest example is one that doesn't exist.
+Let's now take a look at an example of what happens when you try to read an invalid file&mdash;the easiest example is one that doesn't exist.
 
-    fs = require('fs');
-    fs.readFile('/doesnt/exist', 'utf8', function (err,data) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(data);
-    });
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/read.file.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 This is the output:
 

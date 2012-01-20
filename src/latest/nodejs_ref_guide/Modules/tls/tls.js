@@ -87,7 +87,7 @@
  * `secureConnectionListener` automatically sets a listener for the [`secureConnection`](#tls.event.secureConnection) event.
  * 
  * 
- * #### Example: Connecting to an echo server:
+ * #### Example: Connecting to an echo server on port 8000:
  * 
  *     var tls = require('tls');
  *     var fs = require('fs');

@@ -10,7 +10,7 @@ The biggest advantage that streams give you over their non-stream versions is th
 
 Create a new file called `cp.js`, and copy-paste the following code:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=understanding.streams.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_streams/understanding.streams.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 Run this script with arguments like `node cp.js src.txt dest.txt`. This would mean, in the code above, that `process.argv[2]` is `src.txt` and `process.argv[3]` is `desc.txt`. Obviously, you'll need some dummy text files before you can run the script.
 

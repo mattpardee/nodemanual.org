@@ -23,7 +23,7 @@
  *
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -67,18 +67,7 @@
  * 
  * #### Example
  *
- *     var crypto = require('crypto');
- *     var fs = require('fs');
- *    
- *     // Test Certificates
- *     var caPem = fs.readFileSync('./test_ca.pem', 'ascii');
- *     var certPem = fs.readFileSync('./test_cert.pem', 'ascii');
- *     var keyPem = fs.readFileSync('./test_key.pem', 'ascii');
- * 
- *     var credentials = crypto.createCredentials(
- *                                                {key: keyPem,
- *                                                cert: certPem,
- *                                                ca: caPem});
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createCredentials.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -116,7 +105,7 @@
  * 
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.createDiffieHellman.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 
@@ -131,7 +120,7 @@
  *
  * Testing an MD5 Hash:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.createHash.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  * This program takes the sha1 sum of a file:
  * 
@@ -173,7 +162,7 @@
  *
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.createHmac.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  **/ 
 
@@ -192,7 +181,7 @@
  *
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.pbkdf2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.pbkdf2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 
@@ -208,7 +197,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=crypto.randomBytes.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.randomBytes.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 

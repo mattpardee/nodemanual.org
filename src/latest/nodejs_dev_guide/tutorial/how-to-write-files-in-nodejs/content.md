@@ -17,24 +17,15 @@ Here's what the parameters mean:
 
 For example, if we wanted to write "Hello World" to `helloworld.txt`:
 
-    fs = require('fs');
-    fs.writeFile('helloworld.txt', 'Hello World!', function (err) {
-      if (err) return console.log(err);
-      console.log('Hello World > helloworld.txt');
-    });
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.write.file.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
-    [contents of helloworld.txt]:
+The contents of _helloworld.txt_ is:
+
     Hello World!
 
 If we purposely want to cause an error, we can try to write to a file that we don't have permission to access:
 
-    fs = require('fs')
-    fs.writeFile('/etc/doesntexist', 'abc', function (err,data) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(data);
-    });
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.write.file.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 The console then prints:
 

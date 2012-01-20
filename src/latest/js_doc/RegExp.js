@@ -26,13 +26,13 @@ bug 378738</a>
  *
  * The following script uses the [replace](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/String/replace "en/Javascript/Reference/Global_Objects/String/replace") method inherited by the [String](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/String "en/Javascript/Reference/Global_Objects/String") instance to match a name in the format _first last_ and output it in the format _last_, _first_. In the replacement text, the script uses `$1\. and `$2\. to indicate the results of the corresponding matching parentheses in the regular expression pattern.
  *     
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/RegExp/regexp.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *   
  * #### Example: Using a regular expression with the "sticky" flag
  *
  * This example demonstrates how one could use the sticky flag on regular expressions to match individual lines of multiline input.
  *     
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/RegExp/regexp.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *             
  * One can test at run-time whether the sticky flag is supported, using `try{...} catch{...}`. For this, either an `eval(...)` expression or the `RegExp(regex-string,flags-string)` syntax must be used (since the `/regex/flags` notation is processed at compile-time, so throws an exception before the `catch` block is encountered). For example:
  *     
@@ -157,7 +157,7 @@ bug 378738</a>
  *
  * The following example prints a message which depends on the success of the test:
  *     
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.test.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>  
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/RegExp/regexp.test.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>  
  *
  **/
 
@@ -194,7 +194,7 @@ bug 378738</a>
  * 
  * If your regular expression uses the "`g`" flag, you can use the `exec` method multiple times to find successive matches in the same string. When you do so, the search starts at the substring of `str` specified by the regular expression's `lastIndex` property ([[RegExp.test `test()`]] will also advance the `lastIndex` property). For example, assume you have this script:
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.exec.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/RegExp/regexp.exec.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *         
  *
  * This script displays the following text:
@@ -204,7 +204,7 @@ bug 378738</a>
  *
  * You can also use `exec()` without creating a RegExp object:
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=regexp.exec.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/RegExp/regexp.exec.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * This will display an alert containing 'hello world!'.
  *

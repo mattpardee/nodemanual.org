@@ -1,5 +1,5 @@
 {
-  "title":"How to use fs.createWriteStream?",
+  "name":"how-to-use-fs-create-write-stream",
   "date" : "",
   "tags": ["core", "streams", "fs"],
   "author": "Nico Reed",

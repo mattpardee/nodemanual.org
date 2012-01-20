@@ -17,7 +17,7 @@
  *
  * #### Example: Running ls in a child process
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child_process.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child_process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -57,7 +57,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.pid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.pid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -92,16 +92,16 @@
  * 
  * #### Example: Running `ls -lh /usr`, capturing `stdout`, `stderr`, and the exit code
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.spawn_1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.spawn_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * 
  * #### Example: A very elaborate way to run `'ps ax | grep ssh'`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.spawn_2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.spawn_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * #### Example: Checking for a failed `exec`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.spawn_3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.spawn_3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -139,7 +139,7 @@
  *
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.exec.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.exec.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  * #### Returns
  *
@@ -178,11 +178,11 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.fork.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.fork.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * The child script, `'sub.js'`, might look like this:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=sub.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/sub.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * In the child, the `process` object has a `send()` method, and `process` emits objects each time it receives a message on its channel.
  * 
@@ -220,6 +220,6 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=child.kill.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.kill.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/

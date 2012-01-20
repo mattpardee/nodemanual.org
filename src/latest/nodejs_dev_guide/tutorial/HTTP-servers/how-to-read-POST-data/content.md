@@ -6,7 +6,7 @@ The first step is to listen for incoming data. The trick is to wait for the data
 
 Here is a quick script that shows you how to do exactly that:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=reading.post.data.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/read_post_data/reading.post.data.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 The variable `postHTML` is a static string containing the HTML for two input boxes and a submit box . This HTML is provided so that you can `POST` example data. This is **not** the right way to serve static HTML; to do that, see [How to Serve Static Files](how-to-serve-static-files.html) for a more proper example.
 

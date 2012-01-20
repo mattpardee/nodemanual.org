@@ -22,19 +22,19 @@ This can cause problems, however, if your server is slow and it takes, say, thre
 
 A more common solution looks like this:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timer.example.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/timer_functions/timer.example.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This code makes a call to the `recursive()` function which, as it completes, makes a call to `setTimeout(recursive, 1000)` which makes it call `recursive()` again after one second. This has nearly the same effect as `setInterval()`, while being resilient to the unintended errors that can pile up.
 
 You can clear the timers you set using `clearTimeout()` and `clearInterval()`. Their usages are very simple:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timer.clear.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/timer_functions/timer.clear.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 If you keep track of the return values of the timers, you can easily unhook the timers. 
 
 The final trick for the timer objects is passing parameters to the callback. This is done by passing more parameters to `setTimeout()` and `setInterval()`, like this:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timer.diffs.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/timer_functions/timer.diffs.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 The output then becomes:
 

@@ -4,7 +4,7 @@ Node.js provides a utility function, for debugging purposes, that returns a stri
 
 `util.inspect()` can be used on any object. As a demonstration, we'll use one of Node's built-in objects. Type `node` in your command prompt, and then enter the following lines:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=util.inspect.1.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/using_util_inspect/util.inspect.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
      
 The output should be:
 
@@ -27,12 +27,12 @@ For example, `util.inspect(myObj, true, 7, true)` inspects `myObj`, showing all 
 
 The argument `showHidden` is a boolean that determines whether or not the "non-enumerable" properties of an object are displayed&mdash;it defaults to `false`, which tends to result in vastly more readable output. This isn't something a beginner needs to worry about most of the time, but it's worth demonstrating briefly. Try the following in the command prompt:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=util.inspect.2.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/using_util_inspect/util.inspect.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 The `depth` argument is the number of levels deep into a nested object to recurse&mdash;it defaults to 2.  Setting it to `null` causes it to recurse "all the way," showing every level.  Compare the (size of) the outputs of these two `util.inspect` statements in the command prompt:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=util.inspect.4.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/using_util_inspect/util.inspect.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 Finally, the optional argument `colorize` is a boolean that adds ANSI escape codes to the string output. When logged to a terminal window, it should be pretty printed with colors.
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=util.inspect.3.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/using_util_inspect/util.inspect.4.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 

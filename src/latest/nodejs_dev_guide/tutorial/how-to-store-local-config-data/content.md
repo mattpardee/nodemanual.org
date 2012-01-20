@@ -4,13 +4,13 @@ Storing your Node.js application's configuration data is quite simple. Every obj
 
 Let's take a look at a very simple (and contrived) example.  First, to save some very simple data:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=storing.local.data.1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/storing_local_data/storing.local.data.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 It's really that simple: just `JSON.stringify()`, and then save it however you'd like.
 
 Now, let's load some configuration data, by reading from the file:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=storing.local.data.2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/storing_local_data/storing.local.data.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 Even if you don't like using `try/catch`, this is a place to use it.  `JSON.parse()` is a very strict JSON parser, and errors are common&mdash;most importantly, though, `JSON.parse()` uses the `throw` statement rather than giving a callback, so `try/catch` is the only way to guard against the error. In addition, since we're again loading conifiguration data, we need to rely on the synchronous `fs.readFileSync()`.
 

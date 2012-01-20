@@ -17,7 +17,7 @@
  * 
  * #### Example
  * 		
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=dgram.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -85,7 +85,7 @@
  * 
  * #### Example: Sending a UDP packet to a random port on `localhost`;
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=dgram.send.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.send.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 
@@ -99,7 +99,7 @@
  * 
  * #### Example: A UDP server listening on port 41234:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=dgram.bind.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.bind.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 
@@ -175,7 +175,7 @@
  *
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=dgram.addMembership.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.addMembership.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 

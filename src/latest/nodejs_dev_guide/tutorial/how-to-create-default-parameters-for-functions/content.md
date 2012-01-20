@@ -6,14 +6,14 @@ The first idiom is giving a default value for the last parameter. This is done b
 
 Save the following code in a test file, and notice the differing behavior:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=default.function.parameters.1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/default_function_params/default.function.parameters.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 See the difference? 
 
 If the optional value is in the middle of the argument list, it can cause some undesired effects, since all the parameters are shifted over. The optional parameter is not the `undefined` value in this case&mdash;the last parameter is the `undefined` one. You have to check if the last parameter is `undefined` and then manually fix all the other parameters before continuing in the code. This example shows you how to do that:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=default.function.parameters.2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/default_function_params/default.function.parameters.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 More complicated cases require more code and can obscure the meaning of what you are trying to do. It then becomes a good idea to use helper functions. For example, suppose we wanted to take a variable amount of parameters and pass them all to the callback. You could try to accomplish this by manipulating the `arguments` variable. However, it is just easier to install and use the [vargs](https://github.com/cloudhead/vargs) module. As you can see by this code, it makes the whole process a little simpler:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=default.function.parameters.3.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/default_function_params/default.function.parameters.3.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>

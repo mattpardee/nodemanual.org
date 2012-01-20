@@ -6,7 +6,7 @@
  *
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=vm.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -21,7 +21,7 @@
  * 
  * #### Example: Using `vm.runInThisContext` and `eval` to run the same code:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=vm.runInThisContext.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * Since `vm.runInThisContext()` doesn't have access to the local scope, `localVar` is unchanged. `eval` does have access to the local scope, so `localVar` is changed.
  * 
@@ -48,7 +48,7 @@
  * 
  * Here's an example to ompile and execute code that increments a global variable and sets a new one. These globals are contained in the sandbox.
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=vm.runInNewContext.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -71,7 +71,7 @@
  * 
  * Compiling and executing code in an existing context.
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=vm.runInContext.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * #### Returns
  *

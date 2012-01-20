@@ -8,21 +8,7 @@ Many of the functions in Node.js have both asynchronous and synchronous versions
 
 Here's a quick example comparing the two styles using `fs.readFile()`:
 
-    fs = require('fs'); // Import the 'fs' module
-
-    // Asynchronous version
-    fs.readFile('example.file', 'utf8', function (err, data) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log(data);
-    });
-
-    //====================
-
-    // Synchronous version
-    var data = fs.readFileSync('example.file','utf8');
-    console.log(data);
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/writing_async_code/fs.diff.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 Just by looking at these two blocks of code, the synchronous version appears to be more concise. However, the asynchronous version is more complicated for a very good reason. In the synchronous version, the server is paused until the file is finished reading; your process will just sit there, waiting for the OS (which handles all file system tasks) to complete the task.
 
@@ -44,7 +30,7 @@ An event emitter is typically used when you know that there will be multiple par
 
 A common mistake in asynchronous code with Javascript is to write code with a loop that does something like this:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timers.wrong.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/timers/timers.wrong.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 Here, we're trying to print sequentially the numbers one through five. The undesired (and unexpected) output is:
 
@@ -56,7 +42,7 @@ Here, we're trying to print sequentially the numbers one through five. The undes
 
 This occurs because every time `i` is incremented, a new timeout is created. When the callback is called at the end of the loop, it receives for the value of `i`, which is 5. The solution is to create a [closure](http://stackoverflow.com/questions/1801957/what-exactly-does-closure-refer-to-in-javascript) so that the current value of `i` is stored. For example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=timers.right.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script> 
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/timers/timers.right.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 This gives the proper output:
 

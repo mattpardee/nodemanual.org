@@ -4,7 +4,7 @@ In Node.js, an event can be described simply as a string with a corresponding ca
 
 Here's a very simple example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=understanding.event.emitters1.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 
 This demonstates all the basic functionality of an event emitter. The `on()` or `addListener()` method (they're synonymous) allows you to choose the event to watch for and the callback to be called. The `emit()` method lets you to "emit" an event, which causes all callbacks registered to the event to be called.
@@ -17,7 +17,7 @@ If you use the method `once()` instead of `on()`, after the callback is fired, i
 
 If you want to remove a specific callback, you can use `removeListener()`. If you want to remove all callbacks to a specific event, you can use `removeAllListeners()`. For example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=understanding.event.emitters2.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 <Note>If you want create more than 10 listeners on a single event, you will have to make a call to `setMaxListeners(n)`, where `n` is the max numbers of listeners (passing 0 allows for an unlimited number of listeners). The maximum limit is used to make sure you aren't accidently leaking event listeners.</Note>
 

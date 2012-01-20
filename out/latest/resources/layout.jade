@@ -46,9 +46,9 @@ body(onload="styleCode()")
                         a(href="http://www.nodebits.org/") Nodebits
         ul.nav
           li#node_js_ref
-            a(href='../nodejs_ref_guide/index.html') Node JS Reference
+            a(href='../nodejs_ref_guide/index.html') Node.js Reference
           li#nodejs_dev_guide
-            a(href='../nodejs_dev_guide/index.html') Node JS Manual
+            a(href='../nodejs_dev_guide/index.html') Node.js Manual
           li#js_doc
             a(href='../js_doc/index.html') Javascript Reference
         form(id='searchbox', action='', class='pull-right')  
@@ -69,7 +69,7 @@ body(onload="styleCode()")
             include nodejs_dev_guide_menu.jade
         .span11
           span.editInC9 
-            a(href='#') Edit in Cloud9 IDE
+            a(href='#', title='Edit in Cloud9 IDE') [edit]
           .dev_guide#content
             mixin markdown(data)
 

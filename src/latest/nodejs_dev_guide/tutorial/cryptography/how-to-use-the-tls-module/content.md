@@ -18,25 +18,7 @@ In most ways, the TLS module's server API is similar to that of the net module. 
 
 Here's an example of a TLS server:
 
-    var tls = require('tls'),
-        fs = require('fs'),
-        msg = [
-                ".-..-..-.  .-.   .-. .--. .---. .-.   .---. .-.",
-                ": :; :: :  : :.-.: :: ,. :: .; :: :   : .  :: :",
-                ":    :: :  : :: :: :: :: ::   .': :   : :: :: :",
-                ": :: :: :  : `' `' ;: :; :: :.`.: :__ : :; ::_;",
-                ":_;:_;:_;   `.,`.,' `.__.':_;:_;:___.':___.':_;" 
-              ].join("\n").cyan;
-
-    var options = {
-      key: fs.readFileSync('private-key.pem'),
-      cert: fs.readFileSync('public-cert.pem')
-    };
-
-    tls.createServer(options, function (s) {
-      s.write(msg+"\n");
-      s.pipe(s);
-    }).listen(8000);
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/tls/tls.server.example.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 In this example, a "hello world" TLS server is created, listening on port 8000. The options object includes two properties: `key` and `cert`. The contents of these properties come directly from the private key and public certificate stored on the filesystem. In this case they are binary buffers, but the TLS module can also accept unicode strings.
@@ -97,7 +79,7 @@ You should see a bunch of output regarding the handshaking process, and then at 
 
 #### Connecting to a TLS Server
 
-The `tls` module also supplies tools for connecting to such a server:
+The `tls` module also supplies tools for connecting to such a server. Create a file called _client.js_ and paste in this code:
 
     var tls = require('tls'),
         fs = require('fs');

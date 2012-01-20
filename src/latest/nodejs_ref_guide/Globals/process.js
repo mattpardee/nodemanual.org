@@ -10,7 +10,7 @@
  * 
  * #### Example: Listening for `SIGINT`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -39,7 +39,7 @@
  * 
  * #### Example: Listening for an `'uncaughtException'`:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.uncaughtException.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.uncaughtException.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * <Note>An `uncaughtException` is a very crude mechanism for exception handling. Using `try / catch` in your program gives you more control over your program's flow.  Especially for server programs that are designed to stay running forever, `uncaughtException` can be a useful safety mechanism.</Note>
  * 
@@ -100,7 +100,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.getgid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  *
 **/
@@ -114,7 +114,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.getuid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -151,7 +151,7 @@
  *
  * #### Example
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.memoryusage.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.memoryusage.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  * This generates:
  *
@@ -172,7 +172,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.nexttick.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.nexttick.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -185,7 +185,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.setgid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *  
 **/ 
 
@@ -198,7 +198,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.setuid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -211,7 +211,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.umask.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.umask.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/ 
 
@@ -231,7 +231,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.arch.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.arch.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -245,7 +245,7 @@
  *
  * First, create a file called process.argv.js:
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.argv.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.argv.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  *
  * Then, using the Node.js REPL, type the following command:
  * 
@@ -269,7 +269,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.execpath.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.execpath.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  *     
 **/ 
 
@@ -281,7 +281,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.pid.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.pid.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  *     
 **/ 
 
@@ -293,7 +293,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.platform.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.platform.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  * 
 **/ 
 
@@ -314,7 +314,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.version.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.version.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  * 
 **/ 
 
@@ -328,7 +328,7 @@
  * 
  * The following code:
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.versions.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.versions.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  * 
  * outputs something similar to:
  *
@@ -347,7 +347,7 @@
  * 
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.installprefix.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.installprefix.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  *
 **/ 
 
@@ -379,7 +379,7 @@
  * 
  * Here's an example of opening standard input and listening for both events:
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=process.stdin.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=true' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.stdin.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  *
 **/
 

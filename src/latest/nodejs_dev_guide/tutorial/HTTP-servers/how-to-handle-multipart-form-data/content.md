@@ -6,6 +6,6 @@ Felix Geisendorfer, one of the Node.js core committers, wrote a library called [
 
 This example is taken directly from the `node-formidable` GitHub page, with some additional explanation added.
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=formidable.example.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/multi_part_forms/formidable.example.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Using `node-formidable` is definitely the simplest solution, and it is a battle-hardened, production-ready library. Let userland solve problems like this for you, so that you can get back to writing the rest of your code!

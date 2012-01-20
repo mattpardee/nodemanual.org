@@ -4,24 +4,4 @@ The function `fs.createReadStream(filepath)` allows you to open up a readable st
 
 Again, since the response and request objects are streams, we can create an HTTP server that streams the files to the client. Since the code is simple enough, it is pretty easy just to read through it and comment why each line is necessary:
 
-    var http = require('http');
-    var fs = require('fs');
-
-    http.createServer(function(req, res) {
-      // The filename is simple the local directory and tacks on the requested url
-      var filename = __dirname+req.url;
-
-      // This line opens the file as a readable stream
-      var readStream = fs.createReadStream(filename);
-
-      // This will wait until we know the readable stream is actually valid before piping
-      readStream.on('open', function () {
-        // This just pipes the read stream to the response object (which goes to the client)
-        readStream.pipe(res);
-      });
-
-      // This catches any errors that happen while creating the readable stream (usually invalid names)
-      readStream.on('error', function(err) {
-        res.end(err);
-      });
-    }).listen(8080);
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/serving_files/fs.serving.files.3.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>

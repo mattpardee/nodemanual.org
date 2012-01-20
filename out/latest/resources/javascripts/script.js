@@ -55,9 +55,6 @@ $(function () {
         if ($article.data('title')) {
             title.push($article.data('title'));
         }
-        else {
-            title.push($('div.title h1'));
-        }
 
         return title.join(' | ');
     }
@@ -247,27 +244,27 @@ $(function () {
         else if (document.body) {
             s = document.body.scrollTop;
         }
-        if (s > header_offset - 28) {
+        if (s > header_offset - 35) {
 //            $sidebar.css({
 //                'position': 'fixed',
 //                'top': 41,
 //                'padding':0
 //            });
-            var pgLeft = $paginationContent.offset().left;
-            $paginationContent.css('left', pgLeft);
-            $pagination.css({
-                'position': 'fixed',
-                'z-index': 2,
-                'top': 40
-//                'background-color': 'white'
-//                'opacity': 0.8
-            }).addClass('srolled')
-            .next().css({'padding-top': $pagination.height()});
-            $tabs.addClass('tabsSansBorder');
             if(!bgHeightSet) {
                 bgHeightSet = true;
 //                $paginationBackground.css('display', 'block')//.stop().animate({'height': 44, 'opacity':1}, 'normal', 'linear');
             }
+            
+            var leftPos = $paginationContent.outerWidth() + $paginationContent.position().left > $(window).width() 
+                            ? $(window).width()- $paginationContent.outerWidth() 
+                            : $paginationContent.offset().left - $('html').scrollLeft()
+
+            $paginationContent.css('left', leftPos);
+            $pagination
+            .stop().animate({'height': 31})
+//            .next().css({'padding-top': $pagination.outerHeight()})
+            .closest('.content').addClass('srolled');
+            $tabs.addClass('tabsSansBorder');
         }
         else {
 //            $sidebar.css({
@@ -276,22 +273,65 @@ $(function () {
 //                'padding-top':25
 //            });
             $paginationContent.css('left', 0);
-            $pagination.css({
-                'position': 'relative',
-                'top': 0
-//                'background-color': 'transparent'
-//                'opacity': 1
-            }).removeClass('srolled')
-            .next().css({'padding-top': 0});
+            $pagination
+            .stop().css({'height': 42})
+            .closest('.content').removeClass('srolled')
+//            .end().next().css({'padding-top': 0});
+            
             $tabs.removeClass('tabsSansBorder');
             bgHeightSet = false;
 //            $paginationBackground.stop().css({'display': 'none'});
-        }        
+        }
+    }
+    
+    function handleWinSize(){
+        if($(window).width() < 1000)
+            $('body').addClass('small_win');
+        else
+            $('body').removeClass('small_win');
     }
     
     $(window)
     .scroll(function(){//auto kanei to header na metakinhtai kai na einai panta visible;
         handleScroll();
+    }).resize(function(){
+       handleWinSize(); 
     });
     handleScroll();
+    handleWinSize();
+});
+
+$(document).ready(function(){
+    var d = 'a.menu, .dropdown-toggle'
+    function clearMenus() {
+        $(d).parent('li').each(function(){
+            $(this).removeClass('open')
+        });
+    }
+    $('.brand').parent('.dropdown').hover(
+        function(){
+            $(this).addClass('open');
+        }, 
+        function(){
+            clearMenus();
+        });
+    
+    function showMethodContent(){
+        if(!location.hash)
+            return;
+        
+        var $clickerEl = $('h3#' + location.hash.replace(/^#/,'').replace(/\./g, '\\.'));
+        if($clickerEl.length > 0 && $clickerEl.hasClass('methodClicker'))
+            $clickerEl.trigger('click');
+    }
+    
+    if(location.hash) {
+        showMethodContent();
+    }
+    
+    window.onhashchange = function(){
+        showMethodContent();
+    }
+    
+    $('#content article:last').css('padding-bottom', 50)
 });

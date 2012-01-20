@@ -1,5 +1,5 @@
 {
-    "title":"How to store local configuration data",
+    "name":"how-to-store-local-config-data",
     "date" : "",
     "tags": ["conventions", "filesystem"],
     "author": "Charlie McConnell",

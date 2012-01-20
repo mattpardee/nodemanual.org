@@ -4,7 +4,7 @@ Anyone familiar with browser-side development has probably used `console.log` fo
 
 Because of this browser parallel, the `console` module has become home to quite a bit of Node's standard output functionality. The simplest is `console.log()`.
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.basics.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/console_module/console.basics.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 This example just prints the provided string to `stdout`.  It can also be used to output the contents of variables, as evidenced in by the second line. Furthermore, `console.dir()` is called on any objects passed in as arguments, enumerating their properties.
 
@@ -12,7 +12,7 @@ This example just prints the provided string to `stdout`.  It can also be used t
 
 `console.log()` accepts three format characters: `%s`, `%d`, and `%j`. These format characters can be used to insert string, integer, or JSON data into your output. The order of format characters must match the order of arguments. For example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=styling.output.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/console_module/styling.output.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 A caveat with `console.log`, and all functions that depend on it, is that it buffers the output. If your process ends suddenly, whether it be from an exception or from `process.exit()`, it is entirely possible that the buffered output will never reach the screen. This can cause a great deal of frustration, so watch out for this unfortunate situation.
 
@@ -24,7 +24,7 @@ A caveat with `console.log`, and all functions that depend on it, is that it buf
 
 That covers the basic `console` module functionality, but there are a few other methods worth mentioning as well. First, the `console` module allows for the marking of time via `console.time()` and `console.timeEnd()`.  Here is an example:
 
-<script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=console.time.example.js&linestart=0&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/console_module/console.time.example.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 This would determine the amount of time taken to perform the actions in between the `console.time` and `console.timeEnd` calls.
 

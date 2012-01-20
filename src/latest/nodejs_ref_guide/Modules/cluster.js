@@ -9,7 +9,7 @@
  *
  * Create a file called _server.js_ and paste the following code:
  *
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=server.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/server.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
  * By launching _server.js_ with the Node.js REPL, you can see that the workers are sharing the HTTP port 8000:
  * 
@@ -19,7 +19,7 @@
  * 
  * #### Example: Message passing between clusters and the master process
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=cluster.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
  **/
 
@@ -33,7 +33,7 @@
  *
  * #### Example
  * 
- * <script src='http://64.30.143.68/serve?repo=git%3A%2F%2Fgithub.com%2Fc9%2Fnodedocs-examples.git&file=cluster.death.js&linestart=3&lineend=0&mode=javascript&theme=crimson_editor&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.death.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  * 
 **/ 
 
@@ -43,7 +43,7 @@
  *
  * Spawns a new worker process. This can only be called from the master process.
  *
- *  `cluster.fork` is actually implemented on top of [[child_process.fork `child_process.fork()`]]. The difference between `cluster.fork()` and `child_process.fork` is simply that `cluster` allows TCP servers to be shared between workers. The message passing API that is available on `child_process.fork` is available with `cluster` as well.
+ *  `cluster.fork` is actually implemented on top of [[child.process.fork `child_process.fork()`]]. The difference between `cluster.fork()` and `child_process.fork` is simply that `cluster` allows TCP servers to be shared between workers. The message passing API that is available on `child_process.fork` is available with `cluster` as well.
  * 
 **/
 

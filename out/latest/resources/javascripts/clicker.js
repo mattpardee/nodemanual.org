@@ -47,7 +47,7 @@ $(function() {
   );
 
   // after expanding the hidden description, hide the ellipsis
-  $('.methodClicker').click(function() {
+  $('.signature-call, .signature-returns', '.signature').click(function() {
       var $article = $(this).closest('.article'),
           $arrow   = $('h3.methodClicker', $article);
           
@@ -59,7 +59,11 @@ $(function() {
           $article.addClass('methodToggleOpen');
           $arrow.removeClass('inactive').addClass('active');
       }
-      return false;
+      
   }); 
+  
+  $('.related-to', '.metaInfo').click(function(){
+      location.hash = $(this).find('a').attr('href').split('#')[1];
+  });
 });
 
