@@ -30,6 +30,8 @@ code {
     line-height: 16px;
     font-family: 'Ubuntu Mono',Monaco,Consolas,monospace !important;
     background-color: #F9F9F9;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 2px #888888;
     display: inline-block;
     padding: 0 4px;
     margin: 2px 1px;
@@ -49,10 +51,6 @@ pre code {
 
 a code {
     color: #0069D6;
-}
-
-.menu-item a code {
-    color: #262626;
 }
 
 h2 {
@@ -160,7 +158,7 @@ ul.menu {
 
 .menu li {
     list-style-image: url(../images/menu_disc.png);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .menu li .menu-item a.menuLink, .menu li .menu-item span.menuLink {
@@ -287,6 +285,7 @@ ul.menu {
     float: left;
     padding-right: 10px;
     margin-bottom: 5px;
+    position: absolute;
     
 /*    line-height: inherit;
     margin-bottom: -37px;
@@ -311,31 +310,17 @@ ul.menu {
 }
 .backToMDN, .editInC9 {
     position: absolute;
-    right: -137px;
+    right: 0px;
     font-size: 11px;
-    top: -8px;
+    top: -20px;
     color: #657383;
-    display: none;
 }
-
+.editInC9 {
+    right: -22px;
+    top: 7px;
+}
 .backToMDN {
-    top: 8px;
-}
-
-.backToMDN a, .editInC9 a {
-    color: #657383;
-}
-
-.backToMDN, .editInC9 {
-    position: absolute;
-    right: -137px;
-    font-size: 11px;
-    top: -8px;
-    color: #657383;
-}
-
-.backToMDN {
-    top: 8px;
+    top: 0;
 }
 
 .backToMDN a, .editInC9 a {
@@ -474,6 +459,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 #sidebar {
     margin-top: 15px;
     background: url(../images/sidebar-border.png) repeat-y right 0;
+    margin-left: 12px;
 /*    width: 280px;*/
 /*    overflow: auto;*/
 }
@@ -489,7 +475,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
     border-top: 1px solid #e9e9e9;
     padding: 16px 10px 10px;
 }
-#content article:last-child {
+div#content article:last-child {
     border-bottom: 1px solid #e9e9e9;
     padding-bottom: 40px;
 }
@@ -553,6 +539,9 @@ li.signature {
     padding-right: 3px;
 }
 
+.signature-call {
+    cursor: pointer;
+}
 .signature-call a {
     color: #859c59;
 }
@@ -589,6 +578,13 @@ li.signature {
 .alias a, .related-to a {
     color: #ffffff;
     /* text-decoration: underline; */ 
+}
+.alias a:hover, .related-to a:hover {
+    text-decoration: none;
+}
+.alias:hover, .related-to:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 .memberContent {
   
@@ -698,11 +694,6 @@ h3.methodToggle.active {
 }
 .description td p {
     margin: 0;
-}
-
-
-#dsq-pagination, .dsq-trackback-url {
-    display: none;
 }
 /*
   Footer? I hardly know her

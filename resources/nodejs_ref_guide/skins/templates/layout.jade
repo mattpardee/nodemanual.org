@@ -46,9 +46,9 @@ body(onload="styleCode()")
                         a(href="http://www.nodebits.org/") Nodebits
         ul.nav
           li#node_js_ref
-            a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node JS Reference
+            a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node.js Reference
           li#nodejs_dev_guide
-            a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node JS Manual
+            a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node.js Manual
           li#js_doc
             a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
         form(id='searchbox', action='', class='pull-right')  
@@ -81,8 +81,9 @@ body(onload="styleCode()")
                   h1.memberHeader
                     -var heading = obj.path.replace(/_/g," ")
                     span.name #{heading}
-                  span.editInC9 
-                      a(href='#') Edit in Cloud9 IDE
+                    if nodejsRef == 'true'
+                      span.editInC9 
+                          a(href='#', title='Edit in Cloud9 IDE') [edit]
                   if nodejsRef != 'true'
                     span.backToMDN 
                       a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') View original on MDN
