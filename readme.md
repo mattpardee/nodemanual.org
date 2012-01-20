@@ -16,6 +16,7 @@ Remember! After you clone this repo, call
 <pre>
 git submodule init
 git submodule update
+npm install
 </pre>
 
 # Running a Build
