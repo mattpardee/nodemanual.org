@@ -1,6 +1,9 @@
 /*
   Generic "affects everything" stuff
 */
+html, body {
+    min-width: 1050px;
+}
 body {
     background: #ffffff url(../images/main-bg.png) 0 0 repeat;
     color: #2d2d2d;
@@ -34,10 +37,14 @@ code {
 
 pre.prettyprint {
     margin-top: 18px;
+    border-radius: none;
+    box-shadow: none;
 }
 
 pre code {
     background-color: transparent;
+    border-radius: none;
+    box-shadow: none;
 }
 
 a code {
@@ -67,6 +74,12 @@ p {
     margin-right: 170px;
 }
 
+.small_win #topSection {
+    width: 100%;
+}
+.small_win #topSection .dropdown {
+    margin-right: 40%;
+}
 .brand {
     background: transparent url(../images/node-logo.png) no-repeat 13px 5px;
 /*    margin-top: 7px;*/
@@ -95,7 +108,7 @@ a.brand {
 }
 
 .masthead {
-    background: #7f9e2e url(../images/header-back.png) 0 40px;
+    background: #55a500 url(../images/header-back.jpg) repeat-x 0 bottom;
 }
 .masthead .container {
     width: 680px;
@@ -103,7 +116,7 @@ a.brand {
     margin: 0 auto;
 }
 .jumbotron {
-    min-width: 940px;
+    min-width: 1000px;
     padding-top: 40px;
     position: relative;
 }
@@ -174,12 +187,12 @@ ul.menu {
 /*    width: 800px;  */
     width: 700px;
 /*    margin: 0 10px;*/
-    background: #FFF;
-  height: 4.0em;
+    
+  height: 42px;
   left: 0;
 /*  position: fixed;*/
   top: 0;
-  transition-duration: 300ms, 300ms;
+/*  transition-duration: 300ms, 300ms;
   transition-property: box-shadow, height;
   transition-timing-function: ease-out, ease-out;
   -moz-transition-duration: 300ms, 300ms;
@@ -190,32 +203,43 @@ ul.menu {
   -o-transition-timing-function: ease-out, ease-out;
   -webkit-transition-duration: 300ms, 300ms;
   -webkit-transition-property: -webkit-box-shadow, height;
-  -webkit-transition-timing-function: ease-out, ease-out;
+  -webkit-transition-timing-function: ease-out, ease-out;*/
 /*  width: 100%;*/
   z-index: 100;
+  
+  overflow: visible !important;
+  
+/*  background: #FFF;
+  width: 100%;
+  padding-bottom: 13px;
+  top: 40px;
+  position: fixed;*/
 }
-.members.srolled {
+.srolled .members {
     width: 100%;
 /*    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35); */
     padding-bottom: 13px;
-    
+    background: #FFF;
     box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
   -moz-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
   -o-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
   -webkit-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
-    height: 34px;
+/*    height: 31px;*/
+    background: #FFF;
+    top: 40px;
+    position: fixed;
 }
 .membersContent {
-  background: #FFF;
+  
 /*  border-bottom: 0.1em solid #FFF;*/
   height: 3em;
   padding-top: 3px;
-  line-height: 4.5;
-  margin-top: -0.1em;
+/*  line-height: 4;*/
+/*  margin-top: -0.1em;*/
   position: relative;
-  transition-property: border-color, line-height;
+/*  transition-property: border-color, line-height;
   transition-duration: 125ms, 250ms;
   transition-timing-function: ease-out, ease-out;
   -moz-transition-property: border-color, line-height;
@@ -226,9 +250,14 @@ ul.menu {
   -o-transition-timing-function: ease-out, ease-out;
   -webkit-transition-property: border-color, line-height;
   -webkit-transition-duration: 125ms, 250ms;
-  -webkit-transition-timing-function: ease-out, ease-out;
+  -webkit-transition-timing-function: ease-out, ease-out;*/
   z-index: 103;
   width: 700px;
+  
+  top: 0;
+}
+.srolledHeader .membersContent {
+    line-height: 3;
 }
 .membersBackground {
 /*    background-color: white;
@@ -243,17 +272,58 @@ ul.menu {
     display: none;
     box-shadow: rgba(0, 0, 0, 0.398438) 1px 4px 6px;*/
 
-    background: #FFF;
-    height: 4.5em;
-    width: inherit;
-    position: fixed;
-    display: none;
+    background-color: transparent;
+    height: 42px;
+    width: 700px;
+    position: absolute;
+}
+.srolled .membersBackground {
+    position: relative;
+}
+.srolledHeader .membersBackground {
+/*    display: block;*/
 }
 .memberHeader {
     float: left;
     padding-right: 10px;
     margin-bottom: 5px;
+    
+/*    line-height: inherit;
+    margin-bottom: -37px;
+    margin-top: -42px;*/
 /*    margin-left: 10px;*/
+}
+.srolledHeader .memberHeader {
+    
+/*    margin-bottom: -21px;
+    margin-top: -27px;*/
+}
+.membersContent .tabs, 
+.membersContent .tabs li,
+.membersContent .tabs li a {
+/*    line-height: inherit;*/
+}
+.membersContent .tabs li a {
+/*    display: inline;*/
+}
+.tabs a.menu:after, .tabs .dropdown-toggle:after {
+    margin-top: 22px;
+}
+.backToMDN, .editInC9 {
+    position: absolute;
+    right: -137px;
+    font-size: 11px;
+    top: -8px;
+    color: #657383;
+    display: none;
+}
+
+.backToMDN {
+    top: 8px;
+}
+
+.backToMDN a, .editInC9 a {
+    color: #657383;
 }
 
 .backToMDN, .editInC9 {
@@ -284,7 +354,7 @@ ul.menu {
 /*    margin-left: 10px;
     margin-right: 10px;*/
 }
-.members.srolled .tabs {
+.srolledHeader .members .tabs {
     background-color: white;
 }
 .members .tabs .dropdown a,
@@ -421,6 +491,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 }
 #content article:last-child {
     border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 40px;
 }
 #content article.article.methodToggleOpen {
     background: url(../images/method-bg.png) repeat 0 0;
@@ -525,7 +596,7 @@ li.signature {
 .memberContent .title {
     
 }
-div.memberContent div.description {
+.memberContent .description {
     position:relative;
     top: -13px;
     display: none;
@@ -559,7 +630,7 @@ table td, .bordered-table th + th, .bordered-table td + td, .bordered-table th +
     background-color: #f3f3f3;
 }
 .zebra-striped tbody tr:hover td, .zebra-striped tbody tr:hover th {
-    background-color: #FEFBF3;
+    background-color: transparent;
 }
 /*
   Everyday I'm togglin'
@@ -613,6 +684,17 @@ h3.methodToggle.active {
 
 .ellipsis_description, .short_description {
 /*    width: 800px;*/
+}
+.methodToggleOpen .ellipsis_description {
+    display: none;
+}
+.sideToggler .short_description,
+.sideToggler .description{
+    display: none;
+}
+.methodToggleOpen .short_description,
+.methodToggleOpen .description {
+    display: block;
 }
 .description td p {
     margin: 0;
