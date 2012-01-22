@@ -67,10 +67,10 @@ ArrayElements = JSON
 <p>Insignificant whitespace may be present anywhere except within a JSONNumber (numbers must contain no whitespace) or JSONString (where it is interpreted as the corresponding character in the string, or would cause an error). The tab character (U+0009), carriage return (U+000D), line feed (U+000A), and space (U+0020) characters are the only valid whitespace characters.</p></div></div></article><h3 class="sectionHeader">Methods</h3><article id="JSON.parse" data-title="JSON.parse (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="JSON.parse" class="member-name methodClicker">parse</span>(<a href="./../js_doc/String.html">String</a> text[, <a href="./../js_doc/String.html">String</a> reviver])</li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_JSON.parse" class="ellipsis_description"><p>Parse a string as JSON, optionally transforming the value produced by parsing.
  ...</p></div><div id="short_JSON.parse" class="short_description hiddenSpan"><p>Parse a string as JSON, optionally transforming the value produced by parsing.
 </p></div><h3 id="JSON.parse" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>text
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The string to parse as JSON. See the JSON object for a description of JSON syntax.</p></td>  
-</tr><tr><td><p><i>reviver
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. If a function, prescribes how the value originally produced by parsing is transformed, before being returned.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>text
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The string to parse as JSON. See the JSON object for a description of JSON syntax.</p></td>  
+</tr><tr><td><p>reviver
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. If a function, prescribes how the value originally produced by parsing is transformed, before being returned.</p></td>  
 </tr></tbody></table><h4>Description</h4><p>If a <code>reviver</code> is specified, the value computed by parsing is <em>transformed</em> before being returned. Specifically, the computed value, and all its properties (beginning with the most nested properties and proceeding to the original value itself), are individually run through the reviver, which is called with the object containing the property being processed as <code>this</code> and with the property name as a string and the property value as arguments. If the reviver function returns <code>undefined</code>(or returns no value, e.g. if execution falls off the end of the function), the property is deleted from the object. Otherwise the property is redefined to be the return value.
 
 </p>
@@ -92,13 +92,13 @@ JSON.parse(&apos;[1\. 5\.  &quot;false &quot;]&apos;); // [1\. 5\.  &quot;false 
 JSON.parse(&apos;null&apos;); // null&lt;/pre&gt;</code></pre>      
 </div></div></div></div></article><article id="JSON.stringify" data-title="JSON.stringify (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="JSON.stringify" class="member-name methodClicker">stringify</span>(<a href="./../js_doc/String.html">String</a> value[, <a href="./../js_doc/Function.html">Function</a> | <a href="./../js_doc/Array.html">Array</a> replacer][, <a href="./../js_doc/String.html">String</a> space])</li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_JSON.stringify" class="ellipsis_description"><p>Convert a value to JSON, optionally replacing values if a replacer function is specified, or optionally including on...</p></div><div id="short_JSON.stringify" class="short_description hiddenSpan"><p>Convert a value to JSON, optionally replacing values if a replacer function is specified, or optionally including only the specified properties if a replacer array is specified.
 </p></div><h3 id="JSON.stringify" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>value
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The value to convert to a JSON string.</p></td>  
-</tr><tr><td><p><i>replacer
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a> |
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>value
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The value to convert to a JSON string.</p></td>  
+</tr><tr><td><p>replacer
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a> |
 <a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Optional. If a function, transforms values and properties encountered while stringifying; if an array, specifies the set of properties included in objects in the final string.</p></td>  
-</tr><tr><td><p><i>space
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. Causes the resulting string to be pretty-printed.</p></td>  
+</tr><tr><td><p>space
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. Causes the resulting string to be pretty-printed.</p></td>  
 </tr></tbody></table><h4>Description</h4><p>Properties of non-array objects are not guaranteed to be stringified in any particular order. Don&apos;t rely on ordering of properties within the same object within the stringification.
 
 </p>

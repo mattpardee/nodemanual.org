@@ -25,27 +25,27 @@
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child_process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script></div></div></article><h3 class="sectionHeader">Events</h3><article id="child_process.event.exit" data-title="child_process.event.exit (event)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="child_process.event.exit" class="member-name methodClicker">exit</span>(<a href="./../js_doc/Number.html">Number</a> code, <a href="./../js_doc/String.html">String</a> signal)</li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_child_process.event.exit" class="ellipsis_description"><p>This event is emitted after the child process ends.
  ...</p></div><div id="short_child_process.event.exit" class="short_description hiddenSpan"><p>This event is emitted after the child process ends.
 </p></div><h3 id="child_process.event.exit" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>code
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The final exit code of the process (otherwise, <code>null</code>)</p></td>  
-</tr><tr><td><p><i>signal
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The string name of the signal (otherwise, <code>null</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>code
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The final exit code of the process (otherwise, <code>null</code>)</p></td>  
+</tr><tr><td><p>signal
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The string name of the signal (otherwise, <code>null</code>)</p></td>  
 </tr></tbody></table><h4>Description</h4><p>For more information, see <a href="http://www.kernel.org/doc/man-pages/online/pages/man2/wait.2.html">waitpid(2)</a>.</p></div></div></div></div></article><h3 class="sectionHeader">Methods</h3><article id="child_process.exec" data-title="child_process.exec (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="child_process.exec" class="member-name methodClicker">exec</span>(<a href="./../js_doc/String.html">String</a> command[, <a href="./../js_doc/Object.html">Object</a> options], <a href="./../js_doc/Function.html">Function</a> callback(error, stdout, stderr))<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Object.html"" class="link-short" title="Object">Object</a></li></ul></li></li></ul><ul class="metaInfo"><li><span class="label related-to">Related to
 <a href="child.process.html#child_process.spawn" class="" title="child_process.spawn (class method)" data-id="child_process.spawn">child_process.spawn</a>  
 </span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_child_process.exec" class="ellipsis_description"><p>Runs a Unix command in a shell and buffers the output.
  ...</p></div><div id="short_child_process.exec" class="short_description hiddenSpan"><p>Runs a Unix command in a shell and buffers the output.
 </p></div><h3 id="child_process.exec" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>command
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The Unix command to run</p></td>  
-</tr><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. The options to pass to the command</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to run after the method completes</p></td>  
-</tr><tr><td><p><i>error
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The standard <code>Error</code> object; <code>err.code</code> is the exit code of the child process and <code>err.signal</code> is set to the signal that terminated the process</p></td>  
-</tr><tr><td><p><i>stdout
-</i></p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. The standard output stream</p></td>  
-</tr><tr><td><p><i>stderr
-</i></p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. The standard error stream</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>command
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The Unix command to run</p></td>  
+</tr><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. The options to pass to the command</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to run after the method completes</p></td>  
+</tr><tr><td><p>error
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The standard <code>Error</code> object; <code>err.code</code> is the exit code of the child process and <code>err.signal</code> is set to the signal that terminated the process</p></td>  
+</tr><tr><td><p>stdout
+</p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. The standard output stream</p></td>  
+</tr><tr><td><p>stderr
+</p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. The standard error stream</p></td>  
 </tr></tbody></table><h4>Description</h4><p>There is a second optional argument to specify several options. The default options are:
 
 </p>
@@ -67,30 +67,30 @@
 </div></div></div></div></article><article id="child_process.execFile" data-title="child_process.execFile (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="child_process.execFile" class="member-name methodClicker">execFile</span>(<a href="./../js_doc/String.html">String</a> file, <a href="./../js_doc/String.html">String</a> args, <a href="./../js_doc/Object.html">Object</a> options, <a href="./../js_doc/Function.html">Function</a> callback(error, stdout, stderr))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"><li><span class="label related-to">Related to
 <a href="child.process.html#child_process.exec" class="" title="child_process.exec (class method)" data-id="child_process.exec">child_process.exec</a>  
 </span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_child_process.execFile" class="ellipsis_description"><p>A function similar to <code>child.exec()</code>, except instead of executing a subshell it executes the specified file directly...</p></div><div id="short_child_process.execFile" class="short_description hiddenSpan"><p>A function similar to <code>child.exec()</code>, except instead of executing a subshell it executes the specified file directly. This makes it slightly leaner than <code>child.exec</code>. It has the same options and callback.</p></div><h3 id="child_process.execFile" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>file
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The file location with the commands to run</p></td>  
-</tr><tr><td><p><i>args
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The command line arguments to pass</p></td>  
-</tr><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The options to pass to the <code>exec</code> call</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to run after the method completes</p></td>  
-</tr><tr><td><p><i>error
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The standard <code>Error</code> object, except <code>err.code</code> is the exit code of the child process, and `err.signal is set to the signal that terminated the process</p></td>  
-</tr><tr><td><p><i>stdout
-</i></p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. is the standard output stream</p></td>  
-</tr><tr><td><p><i>stderr
-</i></p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. is the standard error stream</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>file
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The file location with the commands to run</p></td>  
+</tr><tr><td><p>args
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The command line arguments to pass</p></td>  
+</tr><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The options to pass to the <code>exec</code> call</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to run after the method completes</p></td>  
+</tr><tr><td><p>error
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The standard <code>Error</code> object, except <code>err.code</code> is the exit code of the child process, and `err.signal is set to the signal that terminated the process</p></td>  
+</tr><tr><td><p>stdout
+</p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. is the standard output stream</p></td>  
+</tr><tr><td><p>stderr
+</p></td><td><p><a href="streams.html" id="Streams" class=" clicker" title="Streams" data-id="Streams">Streams</a></p></td><td><p>Required. is the standard error stream</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="child_process.fork" data-title="child_process.fork (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="child_process.fork" class="member-name methodClicker">fork</span>(<a href="./../js_doc/String.html">String</a> modulePath, <a href="./../js_doc/String.html">String</a> arguments, <a href="./../js_doc/Object.html">Object</a> options)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Object.html"" class="link-short" title="Object">Object</a></li></ul></li></li></ul><ul class="metaInfo"><li><span class="label related-to">Related to
 <a href="child.process.html#child_process.spawn" class="" title="child_process.spawn (class method)" data-id="child_process.spawn">child_process.spawn</a>  
 </span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_child_process.fork" class="ellipsis_description"><p>This is a special case of the <a href="child.process.html#child_process.spawn" class="link-short" title="child_process.spawn (class method)" data-id="child_process.spawn"><code>child_process.spawn()</code></a> functionality for spawning Node.js pr...</p></div><div id="short_child_process.fork" class="short_description hiddenSpan"><p>This is a special case of the <a href="child.process.html#child_process.spawn" class="link-short" title="child_process.spawn (class method)" data-id="child_process.spawn"><code>child_process.spawn()</code></a> functionality for spawning Node.js processes. In addition to having all the methods in a normal ChildProcess instance, the returned object has a communication channel built-in. The channel is written with <code>child.send(message, [sendHandle])</code>, and messages are recieved by a <code>&apos;message&apos;</code> event on the child.
 </p></div><h3 id="child_process.fork" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>modulePath
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The location of the module</p></td>  
-</tr><tr><td><p><i>arguments
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Any starting arguments to use</p></td>  
-</tr><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Any additional options to pass</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>modulePath
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The location of the module</p></td>  
+</tr><tr><td><p>arguments
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Any starting arguments to use</p></td>  
+</tr><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Any additional options to pass</p></td>  
 </tr></tbody></table><h4>Description</h4><p>By default the spawned Node.js process will have the <code>stdin</code>, <code>stdout</code>, <code>stderr</code> associated with the parent&apos;s.
 
 </p>
@@ -128,8 +128,8 @@ server.listen(1337, function() {
 });</code></pre>      
 </div></div></div></div></article><article id="child_process.kill" data-title="child_process.kill (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="child_process.kill" class="member-name methodClicker">kill</span>([<a href="./../js_doc/String.html">String</a> signal = "SIGTERM"])<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_child_process.kill" class="ellipsis_description"><p>Sends a signal to the child process. See [<code>signal(7)</code>](<a href="http://www.kernel.org/doc/man-pages/online/pages/man7/signal">http://www.kernel.org/doc/man-pages/online/pages/man7/signal</a>....</p></div><div id="short_child_process.kill" class="short_description hiddenSpan"><p>Sends a signal to the child process. See <a href="http://www.kernel.org/doc/man-pages/online/pages/man7/signal.7.html"><code>signal(7)</code></a> for a list of available signals.
 </p></div><h3 id="child_process.kill" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>signal
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. The kill signal to send</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>signal
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. The kill signal to send</p></td>  
 </tr></tbody></table><h4>Description</h4><p>Note that while the function is called <code>kill</code>, the signal delivered to the child process may not actually kill it. <code>kill</code> really just sends a signal to a process.
 
 </p>
@@ -140,13 +140,13 @@ server.listen(1337, function() {
 <a href="child.process.html#child_process.exec" class="" title="child_process.exec (class method)" data-id="child_process.exec">child_process.exec</a>  
 </span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_child_process.spawn" class="ellipsis_description"><p>Launches a new process for the given Unix <code>command</code>. You can pass command line arguments through <code>args</code>. <code>options</code> s...</p></div><div id="short_child_process.spawn" class="short_description hiddenSpan"><p>Launches a new process for the given Unix <code>command</code>. You can pass command line arguments through <code>args</code>. <code>options</code> specifies additional options, which default to:
 </p></div><h3 id="child_process.spawn" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>command
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The Unix command to spawn</p></td>  
-</tr><tr><td><p><i>args
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a> |
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>command
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The Unix command to spawn</p></td>  
+</tr><tr><td><p>args
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a> |
 <a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Optional. The command line arguments to pass</p></td>  
-</tr><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Any additional options you want to transfer</p></td>  
+</tr><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Any additional options you want to transfer</p></td>  
 </tr></tbody></table><h4>Description</h4><pre><code>{
         cwd: undefined,
       env: process.env,

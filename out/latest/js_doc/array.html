@@ -143,15 +143,15 @@ p,p,p,p, ,p,p,p
 r,n,b,q,k,b,n,r</code></pre>
 <h4>See Also</h4>
 <ul><li><a href="">Indexing Object Properties](<a href="https://developer.mozilla.org/en/Javascript/Guide/Working_with_Objects#Indexing_Object_Properties">https://developer.mozilla.org/en/Javascript/Guide/Working_with_Objects#Indexing_Object_Properties</a></a></li><li><a href="https://developer.mozilla.org/en/Javascript/New_in_Javascript/1.7#Array_comprehensions">New in Javascript 1.7: Array comprehensions</a></li><li><a href="https://developer.mozilla.org/en/Javascript/New_in_Javascript/1.6#Array_extras">New in Javascript 1.6: Array extras</a></li><li><a href="https://developer.mozilla.org/en/Javascript_typed_arrays">Typed Arrays</a></li></ul></div></div></article><h3 class="sectionHeader">Constructors</h3><article id="Array.new" data-title="new Array (constructor)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call">new <span id="new Array" class="member-name methodClicker">Array</span>(<a href="./../js_doc/Object.html">Object</a> element0, <a href="./../js_doc/Number.html">Number</a> element1..., elementN)</li></ul><ul class="metaInfo"></ul></li><li class="signature"><ul><li class="signature-call">new <span id="new Array" class="member-name methodClicker">Array</span>(<a href="./../js_doc/Object.html">Object</a> arrayLength)</li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_new Array" class="ellipsis_description"><p>Constructs a new array. Note that you can also just create a new array by defining a sequence of elements, like this...</p></div><div id="short_new Array" class="short_description hiddenSpan"><p>Constructs a new array. Note that you can also just create a new array by defining a sequence of elements, like this: <code>[element0, element1, ..., elementN]</code>.</p></div><h3 id="new Array" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>elementN
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. A Javascript array is initialized with the given elements, except in the case where a single argument is passed to theArray constructor and that argument is a number. Note that this special case only applies to Javascript arrays created with the <code>Array</code> constructor, not with array literals created with the bracket syntax.</p></td>  
-</tr><tr><td><p><i>arrayLength
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. If the first argument passed to the <code>Array</code> constructor is an integer between 0 and 232-1 (inclusive), a new Javascript array is created with that number of elements. If the argument is any other number, a <a href="RangeError.html"><code>RangeError</code></a> exception is thrown.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>elementN
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. A Javascript array is initialized with the given elements, except in the case where a single argument is passed to theArray constructor and that argument is a number. Note that this special case only applies to Javascript arrays created with the <code>Array</code> constructor, not with array literals created with the bracket syntax.</p></td>  
+</tr><tr><td><p>arrayLength
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. If the first argument passed to the <code>Array</code> constructor is an integer between 0 and 232-1 (inclusive), a new Javascript array is created with that number of elements. If the argument is any other number, a <a href="RangeError.html"><code>RangeError</code></a> exception is thrown.</p></td>  
 </tr></tbody></table></div></div></div></div></article><h3 class="sectionHeader">Methods</h3><article id="Array.concat" data-title="Array.concat (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.concat" class="member-name methodClicker">concat</span>(<a href="./../js_doc/Object.html">Object</a> | <a href="./../js_doc/Array.html">Array</a> value1, value2..., valueN)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.concat" class="ellipsis_description"><p>Returns a new array comprised of this array joined with other array(s) and/or value(s).
  ...</p></div><div id="short_Array.concat" class="short_description hiddenSpan"><p>Returns a new array comprised of this array joined with other array(s) and/or value(s).
 </p></div><h3 id="Array.concat" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>valueN
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a> |
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>valueN
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a> |
 <a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array (class)" data-id="Array">Array</a></p></td><td><p>Required. Objects and/or arrays to concatenate to the resulting array</p></td>  
 </tr></tbody></table><h4>Description</h4><p><code>concat</code> creates a new array consisting of the elements in the <code>this</code> object on which it is called, followed in order by, for each argument, the elements of that argument (if the argument is an array) or the argument itself (if the argument is not an array).
 
@@ -192,16 +192,16 @@ var alphaNumeric = alpha.concat(1, [2, 3]);</code></pre>
 </div></div></div></div></article><article id="Array.every" data-title="Array.every (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.every" class="member-name methodClicker">every</span>(<a href="./../js_doc/Function.html">Function</a> callback(element, index, array)[, <a href="./../js_doc/Object.html">Object</a> thisObject])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.every" class="ellipsis_description"><p>Tests whether all elements in the array pass the test implemented by the provided function.
  ...</p></div><div id="short_Array.every" class="short_description hiddenSpan"><p>Tests whether all elements in the array pass the test implemented by the provided function.
 </p></div><h3 id="Array.every" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
-</tr><tr><td><p><i>element
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
-</tr><tr><td><p><i>thisArg
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Used when executing callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
+</tr><tr><td><p>element
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
+</tr><tr><td><p>thisArg
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Used when executing callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p> <code>every</code> executes the provided <code>callback</code> function once for each element present in the array until it finds one where <code>callback</code> returns a false value. If such an element is found, the <code>every</code> method immediately returns <code>false</code>. Otherwise, if <code>callback</code> returned a true value for all elements, <code>every</code> will return <code>true</code>. <code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
 
 </p>
@@ -230,16 +230,16 @@ passed = [12, 54, 18, 130, 44].every(isBigEnough);
 // passed is true</code></pre></div></div></div></div></article><article id="Array.filter" data-title="Array.filter (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.filter" class="member-name methodClicker">filter</span>(<a href="./../js_doc/Function.html">Function</a> callback(element, index, array)[, <a href="./../js_doc/Object.html">Object</a> thisObject])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.filter" class="ellipsis_description"><p>Creates a new array with all elements that pass the test implemented by the provided function.
  ...</p></div><div id="short_Array.filter" class="short_description hiddenSpan"><p>Creates a new array with all elements that pass the test implemented by the provided function.
 </p></div><h3 id="Array.filter" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
-</tr><tr><td><p><i>element
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
-</tr><tr><td><p><i>thisObject
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used when executing callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
+</tr><tr><td><p>element
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
+</tr><tr><td><p>thisObject
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used when executing callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p><code>filter</code> calls a provided <code>callback</code> function once for each element in an array, and constructs a new array of all the values for which <code>callback</code> returns a true value. <code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values. Array elements which don&apos;t pass the <code>callback</code> test are simply skipped, and are not included in the new array.
 
 </p>
@@ -258,16 +258,16 @@ passed = [12, 54, 18, 130, 44].every(isBigEnough);
 </div></div></div></div></article><article id="Array.forEach" data-title="Array.forEach (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.forEach" class="member-name methodClicker">forEach</span>(<a href="./../js_doc/Function.html">Function</a> callback(element, index, array)[, <a href="./../js_doc/Object.html">Object</a> thisArg])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.forEach" class="ellipsis_description"><p>Executes a provided function once per array element.
  ...</p></div><div id="short_Array.forEach" class="short_description hiddenSpan"><p>Executes a provided function once per array element.
 </p></div><h3 id="Array.forEach" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
-</tr><tr><td><p><i>element
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
-</tr><tr><td><p><i>thisArg
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used when executing callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
+</tr><tr><td><p>element
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
+</tr><tr><td><p>thisArg
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used when executing callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p><code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
 
 </p>
@@ -300,10 +300,10 @@ return copy;
 </div></div></div></div></article><article id="Array.indexOf" data-title="Array.indexOf (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.indexOf" class="member-name methodClicker">indexOf</span>(<a href="./../js_doc/String.html">String</a> searchElement[, <a href="./../js_doc/Number.html">Number</a> fromIndex = 0])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Number.html"" class="link-short" title="Number">Number</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.indexOf" class="ellipsis_description"><p>Returns the first index at which a given element can be found in the array, or -1 if it is not present.
  ...</p></div><div id="short_Array.indexOf" class="short_description hiddenSpan"><p>Returns the first index at which a given element can be found in the array, or -1 if it is not present.
 </p></div><h3 id="Array.indexOf" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>searchElement
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Element to locate in the array.</p></td>  
-</tr><tr><td><p><i>fromIndex
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. The index at which to begin the search. Defaults to 0, i.e. the whole array will be searched. If the index is greater than or equal to the length of the array, -1 is returned, i.e. the array will not be searched. If negative, it is taken as the offset from the end of the array. Note that even when the index is negative, the array is still searched from front to back. If the calculated index is less than 0, the whole array will be searched.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>searchElement
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Element to locate in the array.</p></td>  
+</tr><tr><td><p>fromIndex
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. The index at which to begin the search. Defaults to 0, i.e. the whole array will be searched. If the index is greater than or equal to the length of the array, -1 is returned, i.e. the array will not be searched. If negative, it is taken as the offset from the end of the array. Note that even when the index is negative, the array is still searched from front to back. If the calculated index is less than 0, the whole array will be searched.</p></td>  
 </tr></tbody></table><h4>Description</h4><p> <code>indexOf()</code> compares <code>searchElement</code> to elements of the Array using strict equality (the same method used by the <code>===,</code> or triple-equals, operator).
 
 </p>
@@ -325,8 +325,8 @@ return copy;
 <ul><li><a href="Array.html#Array.lastIndexOf" class="link-short" title="Array.lastIndexOf (class method)" data-id="Array.lastIndexOf"><code>lastIndexOf()</code></a></li></ul></div></div></div></div></article><article id="Array.isArray" data-title="Array.isArray (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.isArray" class="member-name methodClicker">isArray</span>(<a href="./../js_doc/Object.html">Object</a> obj)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.isArray" class="ellipsis_description"><p>Returns <code>true</code> if an object is an array, <code>false</code> if it is not.
  ...</p></div><div id="short_Array.isArray" class="short_description hiddenSpan"><p>Returns <code>true</code> if an object is an array, <code>false</code> if it is not.
 </p></div><h3 id="Array.isArray" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>obj
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The object to be checked</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>obj
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The object to be checked</p></td>  
 </tr></tbody></table><h4>Description</h4><p>This function is part of the ECMAScript 5 standard. See the <a href="https://developer.mozilla.org/web-tech/2010/07/26/determining-with-absolute-accuracy-whether-or-not-a-javascript-object-is-an-array">Web Tech Blog</a> for more details.
 </p><h4>Examples</h4>
 <pre><code>// all following calls return true
@@ -347,8 +347,8 @@ Array.isArray(false);</code></pre>
 </div></div></div></div></article><article id="Array.join" data-title="Array.join (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.join" class="member-name methodClicker">join</span>(<a href="./../js_doc/String.html">String</a> separator = ",")<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/String.html"" class="link-short" title="String">String</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.join" class="ellipsis_description"><p>Joins all elements of an array into a string.
  ...</p></div><div id="short_Array.join" class="short_description hiddenSpan"><p>Joins all elements of an array into a string.
 </p></div><h3 id="Array.join" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>separator
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. A string to separate each element of the array. The separator is converted to a string if necessary.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>separator
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. A string to separate each element of the array. The separator is converted to a string if necessary.</p></td>  
 </tr></tbody></table><h4>Example: Joining an array three different ways</h4>
 <p>The following example creates an array, a, with three elements, then joins the array three times: using the default separator, then a comma and a space, and then a plus.
 
@@ -361,10 +361,10 @@ var myVar3 = a.join(&quot; + &quot;); // assigns &quot;Wind + Rain + Fire&quot; 
 <ul><li><a href="Array.html#Array.reverse" class="link-short" title="Array.reverse (class method)" data-id="Array.reverse"><code>reverse()</code></a></li><li><a href="String.html#String.split"><code>String.split()</code></a></li><li><a href="Array.html#Array.toString" class="link-short" title="Array.toString (class method)" data-id="Array.toString"><code>toString()</code></a></li></ul>      
 </div></div></div></div></article><article id="Array.lastIndexOf" data-title="Array.lastIndexOf (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.lastIndexOf" class="member-name methodClicker">lastIndexOf</span>(<a href="./../js_doc/Object.html">Object</a> searchElement[, <a href="./../js_doc/Number.html">Number</a> fromIndex])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Number.html"" class="link-short" title="Number">Number</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.lastIndexOf" class="ellipsis_description"><p>Returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is ...</p></div><div id="short_Array.lastIndexOf" class="short_description hiddenSpan"><p>Returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting at <code>fromIndex</code>.
 </p></div><h3 id="Array.lastIndexOf" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>searchElement
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Element to locate in the array.</p></td>  
-</tr><tr><td><p><i>fromIndex
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. The index at which to start searching backwards. Defaults to the array&apos;s length, i.e. the whole array will be searched. If the index is greater than or equal to the length of the array, the whole array will be searched. If negative, it is taken as the offset from the end of the array. Note that even when the index is negative, the array is still searched from back to front. If the calculated index is less than 0, -1 is returned, i.e. the array will not be searched.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>searchElement
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Element to locate in the array.</p></td>  
+</tr><tr><td><p>fromIndex
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. The index at which to start searching backwards. Defaults to the array&apos;s length, i.e. the whole array will be searched. If the index is greater than or equal to the length of the array, the whole array will be searched. If negative, it is taken as the offset from the end of the array. Note that even when the index is negative, the array is still searched from back to front. If the calculated index is less than 0, -1 is returned, i.e. the array will not be searched.</p></td>  
 </tr></tbody></table><h4>Description</h4><p> <code>lastIndexOf</code> compares <code>searchElement</code> to elements of the Array using strict equality (the same method used by the <code>===</code>, or triple-equals, operator).
 
 </p>
@@ -403,16 +403,16 @@ while (idx!= -1)
 <p>  <a href="Array.html#Array.indexOf" class="link-short" title="Array.indexOf (class method)" data-id="Array.indexOf"><code>indexOf()</code></a></p></div></div></div></div></article><article id="Array.map" data-title="Array.map (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.map" class="member-name methodClicker">map</span>(<a href="./../js_doc/Function.html">Function</a> callback(element, index, array)[, <a href="./../js_doc/Object.html">Object</a> thisArg])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.map" class="ellipsis_description"><p>Creates a new array with the results of calling a provided function on every element in this array.
  ...</p></div><div id="short_Array.map" class="short_description hiddenSpan"><p>Creates a new array with the results of calling a provided function on every element in this array.
 </p></div><h3 id="Array.map" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
-</tr><tr><td><p><i>element
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
-</tr><tr><td><p><i>thisArg
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used when executing callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
+</tr><tr><td><p>element
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
+</tr><tr><td><p>thisArg
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used when executing callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p> <code>map</code> calls a provided <code>callback</code> function once for each element in an array, in order, and constructs a new array from the results. <code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
 
 </p>
@@ -479,8 +479,8 @@ popped = myFish.pop();</code></pre>
 </div></div></div></div></article><article id="Array.push" data-title="Array.push (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.push" class="member-name methodClicker">push</span>(<a href="./../js_doc/Object.html">Object</a> element0, element1..., elementN)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Number.html"" class="link-short" title="Number">Number</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.push" class="ellipsis_description"><p>Mutates an array by appending the given elements to the end of an array and returning its new length.
  ...</p></div><div id="short_Array.push" class="short_description hiddenSpan"><p>Mutates an array by appending the given elements to the end of an array and returning its new length.
 </p></div><h3 id="Array.push" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>elementN
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The elements to add to the end of the array.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>elementN
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The elements to add to the end of the array.</p></td>  
 </tr></tbody></table><h4>Description</h4><p><code>push()</code> is intentionally generic. This method can be called or applied to objects resembling arrays. The <code>push()</code> method relies on a <code>length</code> property to determine where to start inserting the given values. If the <code>length</code> property can&apos;t be converted into a number, the index used is 0. This includes the possibility of length being nonexistent, in which case length will also be created.
 The only native, array-like objects are strings, although they are not suitable in applications of this method, as strings are immutable.
 </p><h4>Returns</h4>
@@ -496,18 +496,18 @@ sports.push(&quot;football&quot;, &quot;swimming&quot;);</code></pre>
 </div></div></div></div></article><article id="Array.reduce" data-title="Array.reduce (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.reduce" class="member-name methodClicker">reduce</span>(<a href="./../js_doc/Function.html">Function</a> callback(previousValue, currentValue, index, array)[, <a href="./../js_doc/Object.html">Object</a> initialValue])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Object.html"" class="link-short" title="Object">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.reduce" class="ellipsis_description"><p><code>reduce</code> executes the <code>callback</code> function once for each element present in the array, excluding holes in the array.
  ...</p></div><div id="short_Array.reduce" class="short_description hiddenSpan"><p><code>reduce</code> executes the <code>callback</code> function once for each element present in the array, excluding holes in the array.
 </p></div><h3 id="Array.reduce" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Function to execute on each value in the array, taking four arguments</p></td>  
-</tr><tr><td><p><i>previousValue
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value previously returned in the last invocation of the callback, or <code>initialValue</code>, if supplied.</p></td>  
-</tr><tr><td><p><i>currentValue
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The current element being processed in the array.</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the current element being processed in the array.</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array (class)" data-id="Array">Array</a></p></td><td><p>Required. The array reduce was called upon.</p></td>  
-</tr><tr><td><p><i>initialValue
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used as the first argument to the first call of the callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Function to execute on each value in the array, taking four arguments</p></td>  
+</tr><tr><td><p>previousValue
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value previously returned in the last invocation of the callback, or <code>initialValue</code>, if supplied.</p></td>  
+</tr><tr><td><p>currentValue
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The current element being processed in the array.</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the current element being processed in the array.</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array (class)" data-id="Array">Array</a></p></td><td><p>Required. The array reduce was called upon.</p></td>  
+</tr><tr><td><p>initialValue
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used as the first argument to the first call of the callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p>The first time the callback is called, <code>previousValue</code> and <code>currentValue</code> can be one of two values. If <code>initialValue</code> is provided in the call to <code>reduce</code>, then <code>previousValue</code> will be equal to <code>initialValue</code> and <code>currentValue</code> will be equal to the first value in the array. If no <code>initialValue</code> was provided, then <code>previousValue</code> will be equal to the first value in the array and <code>currentValue</code> will be equal to the second.
 
 </p>
@@ -548,18 +548,18 @@ sports.push(&quot;football&quot;, &quot;swimming&quot;);</code></pre>
 </div></div></div></div></article><article id="Array.reduceRight" data-title="Array.reduceRight (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.reduceRight" class="member-name methodClicker">reduceRight</span>(<a href="./../js_doc/Function.html">Function</a> callback(previousValue, currentValue, index, array)[, <a href="./../js_doc/Object.html">Object</a> initialValue])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Object.html"" class="link-short" title="Object">Object</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.reduceRight" class="ellipsis_description"><p>Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a single value.
  ...</p></div><div id="short_Array.reduceRight" class="short_description hiddenSpan"><p>Apply a function simultaneously against two values of the array (from right-to-left) as to reduce it to a single value.
 </p></div><h3 id="Array.reduceRight" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Function to execute on each value in the array, taking four arguments</p></td>  
-</tr><tr><td><p><i>previousValue
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value previously returned in the last invocation of the callback, or <code>initialValue</code>, if supplied.</p></td>  
-</tr><tr><td><p><i>currentValue
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The current element being processed in the array.</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the current element being processed in the array.</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array (class)" data-id="Array">Array</a></p></td><td><p>Required. The array reduce was called upon.</p></td>  
-</tr><tr><td><p><i>initialValue
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used as the first argument to the first call of the callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Function to execute on each value in the array, taking four arguments</p></td>  
+</tr><tr><td><p>previousValue
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value previously returned in the last invocation of the callback, or <code>initialValue</code>, if supplied.</p></td>  
+</tr><tr><td><p>currentValue
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The current element being processed in the array.</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the current element being processed in the array.</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array (class)" data-id="Array">Array</a></p></td><td><p>Required. The array reduce was called upon.</p></td>  
+</tr><tr><td><p>initialValue
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. Used as the first argument to the first call of the callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p> <code>reduceRight</code> executes the callback function once for each element present in the array, excluding holes in the array.
 
 </p>
@@ -667,10 +667,10 @@ Removed this element: angel</code></pre>
 </div></div></div></div></article><article id="Array.slice" data-title="Array.slice (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.slice" class="member-name methodClicker">slice</span>(<a href="./../js_doc/Number.html">Number</a> begin[, <a href="./../js_doc/Number.html">Number</a> end])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.slice" class="ellipsis_description"><p>Returns a one-level deep copy of a portion of an array.
  ...</p></div><div id="short_Array.slice" class="short_description hiddenSpan"><p>Returns a one-level deep copy of a portion of an array.
 </p></div><h3 id="Array.slice" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>begin
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. Zero-based index at which to begin extraction. As a negative index, start indicates an offset from the end of the sequence. slice(-2) extracts the second-to-last element and the last element in the sequence.</p></td>  
-</tr><tr><td><p><i>end
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Zero-based index at which to end extraction. slice extracts up to but not including end. slice(1,4) extracts the second element through the fourth element (elements indexed 1, 2, and 3). As a negative index, end indicates an offset from the end of the sequence. slice(2,-1) extracts the third element through the second-to-last element in the sequence. If end is omitted, slice extracts to the end of the sequence.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>begin
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. Zero-based index at which to begin extraction. As a negative index, start indicates an offset from the end of the sequence. slice(-2) extracts the second-to-last element and the last element in the sequence.</p></td>  
+</tr><tr><td><p>end
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Zero-based index at which to end extraction. slice extracts up to but not including end. slice(1,4) extracts the second element through the fourth element (elements indexed 1, 2, and 3). As a negative index, end indicates an offset from the end of the sequence. slice(2,-1) extracts the third element through the second-to-last element in the sequence. If end is omitted, slice extracts to the end of the sequence.</p></td>  
 </tr></tbody></table><h4>Description</h4><p>This method doesn&apos;t alter the original array, but returns a new &quot;one level deep&quot; copy that contains copies of the elements sliced from the original array. Elements of the original array are copied into the new array as follows:
 
 </p>
@@ -696,16 +696,16 @@ newCar[0].color = purple</code></pre>
 </div></div></div></div></article><article id="Array.some" data-title="Array.some (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.some" class="member-name methodClicker">some</span>(<a href="./../js_doc/Function.html">Function</a> callback(element, index, array)[, <a href="./../js_doc/Object.html">Object</a> thisObject])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Boolean.html"" class="link-short" title="Boolean">Boolean</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.some" class="ellipsis_description"><p>Tests whether some element in the array passes the test implemented by the provided function.
  ...</p></div><div id="short_Array.some" class="short_description hiddenSpan"><p>Tests whether some element in the array passes the test implemented by the provided function.
 </p></div><h3 id="Array.some" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
-</tr><tr><td><p><i>element
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
-</tr><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
-</tr><tr><td><p><i>array
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
-</tr><tr><td><p><i>thisArg
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Used when executing callback.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. Used to test each element of the array.</p></td>  
+</tr><tr><td><p>element
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The value of the current element</p></td>  
+</tr><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. The index of the element</p></td>  
+</tr><tr><td><p>array
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The array object being traversed</p></td>  
+</tr><tr><td><p>thisArg
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Used when executing callback.</p></td>  
 </tr></tbody></table><h4>Description</h4><p> <code>some</code> executes the <code>callback</code> function once for each element present in the array until it finds one where <code>callback</code> returns a true value. If such an element is found, <code>some</code> immediately returns <code>true</code>. Otherwise, <code>some</code> returns <code>false</code>. <code>callback</code> is invoked only for indexes of the array which have assigned values; it is not invoked for indexes which have been deleted or which have never been assigned values.
 
 </p>
@@ -731,8 +731,8 @@ newCar[0].color = purple</code></pre>
  // passed is true</code></pre></div></div></div></div></article><article id="Array.sort" data-title="Array.sort (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.sort" class="member-name methodClicker">sort</span>([<a href="./../js_doc/Function.html">Function</a> compareFunction])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.sort" class="ellipsis_description"><p>Sorts the elements of an array in place and returns the array.
  ...</p></div><div id="short_Array.sort" class="short_description hiddenSpan"><p>Sorts the elements of an array in place and returns the array.
 </p></div><h3 id="Array.sort" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>compareFunction
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Optional. Defines the sort order. If omitted, the array is sorted lexicographically according to the string conversion of each element.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>compareFunction
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Optional. Defines the sort order. If omitted, the array is sorted lexicographically according to the string conversion of each element.</p></td>  
 </tr></tbody></table><h4>Description</h4><p>If <code>compareFunction</code> is not supplied, elements are sorted by converting them to strings and comparing strings in lexicographic () order. For example, &quot;80&quot; comes before &quot;9&quot; in lexicographic order, but in a numeric sort 9 comes before 80.
 
 </p>
@@ -798,12 +798,12 @@ Sorted with compareNumbers: 1,5,9,40,80,200,700</code></pre>
 </div></div></div></div></article><article id="Array.splice" data-title="Array.splice (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.splice" class="member-name methodClicker">splice</span>(<a href="./../js_doc/Number.html">Number</a> index, <a href="./../js_doc/Number.html">Number</a> howMany[, <a href="./../js_doc/Object.html">Object</a> element1][, element2...][, elementN])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li><li class="signature"><ul><li class="signature-call"><span id="Array.splice" class="member-name methodClicker">splice</span>(<a href="./../js_doc/Number.html">Number</a> index[, <a href="./../js_doc/Number.html">Number</a> howMany][, <a href="./../js_doc/Object.html">Object</a> element1][, element2...][, elementN])<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Array.html"" class="link-short" title="Array (class)">Array</a></li></ul></li></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.splice" class="ellipsis_description"><p>Changes the content of an array, adding new elements while removing old elements.
  ...</p></div><div id="short_Array.splice" class="short_description hiddenSpan"><p>Changes the content of an array, adding new elements while removing old elements.
 </p></div><h3 id="Array.splice" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>index
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. Index at which to start changing the array. If negative, will begin that many elements from the end.</p></td>  
-</tr><tr><td><p><i>howMany
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Indicates the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed.</p></td>  
-</tr><tr><td><p><i>elementN
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. The elements to add to the array. If you don&apos;t specify any elements, splice simply removes elements from the array.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>index
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Required. Index at which to start changing the array. If negative, will begin that many elements from the end.</p></td>  
+</tr><tr><td><p>howMany
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Indicates the number of old array elements to remove. If howMany is 0, no elements are removed. In this case, you should specify at least one new element. If no howMany parameter is specified (second syntax above, which is a SpiderMonkey extension), all elements after index are removed.</p></td>  
+</tr><tr><td><p>elementN
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Optional. The elements to add to the array. If you don&apos;t specify any elements, splice simply removes elements from the array.</p></td>  
 </tr></tbody></table><h4>Description</h4><p>If you specify a different number of elements to insert than the number you&apos;re removing, the array will have a different length at the end of the call.
 </p><h4>Returns</h4>
 <p>An array containing the removed elements. If only one element is removed, an array of one element is returned.</p><h4>Example: Using <code>splice</code></h4>
@@ -823,8 +823,8 @@ var myVar = monthNames.toString(); // assigns &quot;Jan,Feb,Mar,Apr&quot; to myV
 <p> Javascript calls the <code>toString</code> method automatically when an array is to be represented as a text value or when an array is referred to in a string concatenation.</p></div></div></div></div></article><article id="Array.unshift" data-title="Array.unshift (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="Array.unshift" class="member-name methodClicker">unshift</span>(<a href="./../js_doc/Object.html">Object</a> element1, element2..., elementN)<li class="signature-returns"><ul class="argument-types"><li class="argument-type"><a href="./../js_doc/Number.html"" class="link-short" title="Number">Number</a></li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_Array.unshift" class="ellipsis_description"><p>Adds one or more elements to the beginning of an array and returns the new length of the array.
  ...</p></div><div id="short_Array.unshift" class="short_description hiddenSpan"><p>Adds one or more elements to the beginning of an array and returns the new length of the array.
 </p></div><h3 id="Array.unshift" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>elementN
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The elements to add to the front of the array.</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>elementN
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. The elements to add to the front of the array.</p></td>  
 </tr></tbody></table><h4>Description</h4><p><code>unshift</code> is intentionally generic; this method can be <a href="Function.html#Function.call">called</a> or <a href="Function.html#Function.apply">applied</a> to objects resembling arrays. Objects which don&apos;t contain a <code>length</code> property reflecting the last in a series of consecutive, zero-based numerical properties may not behave in any meaningful manner.
 </p><h4>Returns</h4>
 <p> The new <a href="Array.html#Array.length" class="link-short" title="Array.length (class property)" data-id="Array.length"><code>length</code></a> property of the object upon which the method was called.</p><h4>Example: Adding elements to an array</h4>

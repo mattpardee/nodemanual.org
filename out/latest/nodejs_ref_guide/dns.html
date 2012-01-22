@@ -22,112 +22,112 @@
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.js?linestart=3&lineend=0&showlines=false' defer='defer'></script></div></div></article><h3 class="sectionHeader">Methods</h3><article id="dns.lookup" data-title="dns.lookup (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.lookup" class="member-name methodClicker">lookup</span>(<a href="./../js_doc/String.html">String</a> domain[, <a href="./../js_doc/Number.html">Number</a> family = null], <a href="./../js_doc/Function.html">Function</a> callback(err, address, family))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.lookup" class="ellipsis_description"><p>Resolves a domain (e.g. <code>&apos;google.com&apos;</code>) into the first found A (IPv4) or AAAA (IPv6) record.
  ...</p></div><div id="short_dns.lookup" class="short_description hiddenSpan"><p>Resolves a domain (e.g. <code>&apos;google.com&apos;</code>) into the first found A (IPv4) or AAAA (IPv6) record.
 </p></div><h3 id="dns.lookup" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>family
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Indicates whether to use IPv4 (<code>4</code>) or IPv6 (<code>6</code>)</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The error object</p></td>  
-</tr><tr><td><p><i>address
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. A string representation of an IPv4 or IPv6 address</p></td>  
-</tr><tr><td><p><i>family
-</i></p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Either the integer <code>4</code> or <code>6</code>, and donates the address family (not necessarily the value initially passed to <code>lookup</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>family
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Indicates whether to use IPv4 (<code>4</code>) or IPv6 (<code>6</code>)</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The error object</p></td>  
+</tr><tr><td><p>address
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. A string representation of an IPv4 or IPv6 address</p></td>  
+</tr><tr><td><p>family
+</p></td><td><p><a href="./../js_doc/Number.html" id="Number" class=" clicker" title="Number" data-id="Number">Number</a></p></td><td><p>Optional. Either the integer <code>4</code> or <code>6</code>, and donates the address family (not necessarily the value initially passed to <code>lookup</code>)</p></td>  
 </tr></tbody></table><h4>Example</h4>
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.lookup.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>      
 </div></div></div></div></article><article id="dns.resolve" data-title="dns.resolve (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolve" class="member-name methodClicker">resolve</span>(<a href="./../js_doc/String.html">String</a> domain[, <a href="./../js_doc/String.html">String</a> rrtype = "A"], <a href="./../js_doc/Function.html">Function</a> callback(err, addresses))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolve" class="ellipsis_description"><p>Resolves a domain (e.g. <code>&apos;google.com&apos;</code>) into an array of the record types specified by <code>rrtype</code>. Valid rrtypes are:
  ...</p></div><div id="short_dns.resolve" class="short_description hiddenSpan"><p>Resolves a domain (e.g. <code>&apos;google.com&apos;</code>) into an array of the record types specified by <code>rrtype</code>. Valid rrtypes are:
 </p></div><h3 id="dns.resolve" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>rrtype
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. The record type to use</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Determined by the record type and described in each corresponding lookup method</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>rrtype
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Optional. The record type to use</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. Determined by the record type and described in each corresponding lookup method</p></td>  
 </tr></tbody></table><h4>Description</h4><ul><li><code>A</code> (IPV4 addresses)</li><li><code>AAAA</code> (IPV6 addresses)</li><li><code>MX</code> (mail exchange records)</li><li><code>TXT</code> (text records)</li><li><code>SRV</code> (SRV records)</li><li><code>PTR</code> (used for reverse IP lookups)</li><li><code>NS</code> (name server records)</li><li><code>CNAME</code> (canonical name records)</li></ul><h4>Example</h4>
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>      
 </div></div></div></div></article><article id="dns.resolve4" data-title="dns.resolve4 (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolve4" class="member-name methodClicker">resolve4</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, addresses))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolve4" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for IPv4 queries (<code>A</code> records). ...</p></div><div id="short_dns.resolve4" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for IPv4 queries (<code>A</code> records).</p></div><h3 id="dns.resolve4" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of IPv4 addresses (<em>e.g.</em> <code>[&apos;74.125.79.104&apos;, &apos;74.125.79.105&apos;, &apos;74.125.79.106&apos;]</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of IPv4 addresses (<em>e.g.</em> <code>[&apos;74.125.79.104&apos;, &apos;74.125.79.105&apos;, &apos;74.125.79.106&apos;]</code>)</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="dns.resolve6" data-title="dns.resolve6 (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolve6" class="member-name methodClicker">resolve6</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, addresses))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolve6" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve4" class="link-short" title="dns.resolve4 (class method)" data-id="dns.resolve4"><code>dns.resolve4()</code></a> except for IPv6 queries (an <code>AAAA</code> query). ...</p></div><div id="short_dns.resolve6" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve4" class="link-short" title="dns.resolve4 (class method)" data-id="dns.resolve4"><code>dns.resolve4()</code></a> except for IPv6 queries (an <code>AAAA</code> query).</p></div><h3 id="dns.resolve6" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of IPv6 addresses</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of IPv6 addresses</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="dns.resolveCname" data-title="dns.resolveCname (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolveCname" class="member-name methodClicker">resolveCname</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, domains))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolveCname" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for canonical name records (<code>CNAME</code> records).
  ...</p></div><div id="short_dns.resolveCname" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for canonical name records (<code>CNAME</code> records).
 </p></div><h3 id="dns.resolveCname" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of the canonical name records available for <code>domain</code> (e.g. <code>[&apos;bar.example.com&apos;]</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of the canonical name records available for <code>domain</code> (e.g. <code>[&apos;bar.example.com&apos;]</code>)</p></td>  
 </tr></tbody></table><h4>Description</h4><p>Each DNS query can return one of the following error codes:
 
 </p>
 <ul><li><code>dns.TEMPFAIL</code>: timeout, SERVFAIL or similar.</li><li><code>dns.PROTOCOL</code>: got garbled reply.</li><li><code>dns.NXDOMAIN</code>: domain does not exists.</li><li><code>dns.NODATA</code>: domain exists but no data of reqd type.</li><li><code>dns.NOMEM</code>: out of memory while processing.</li><li><code>dns.BADQUERY</code>: the query is malformed.</li></ul></div></div></div></div></article><article id="dns.resolveMx" data-title="dns.resolveMx (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolveMx" class="member-name methodClicker">resolveMx</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, addresses))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolveMx" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for mail exchange queries (<code>MX</code> records). ...</p></div><div id="short_dns.resolveMx" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for mail exchange queries (<code>MX</code> records).</p></div><h3 id="dns.resolveMx" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of MX records, each with a priority and an exchange attribute (<em>e.g.</em> <code>[{&apos;priority&apos; : 10, &apos;exchange&apos; : &apos;mx.example.com&apos;},{...}]</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of MX records, each with a priority and an exchange attribute (<em>e.g.</em> <code>[{&apos;priority&apos; : 10, &apos;exchange&apos; : &apos;mx.example.com&apos;},{...}]</code>)</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="dns.resolveNs" data-title="dns.resolveNs (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolveNs" class="member-name methodClicker">resolveNs</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, domains))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolveNs" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for name server records (<code>NS</code> records). ...</p></div><div id="short_dns.resolveNs" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for name server records (<code>NS</code> records).</p></div><h3 id="dns.resolveNs" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of the name server records available for <code>domain</code> (<em>e.g</em> <code>[&apos;ns1.example.com&apos;, &apos;ns2.example.com&apos;]</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of the name server records available for <code>domain</code> (<em>e.g</em> <code>[&apos;ns1.example.com&apos;, &apos;ns2.example.com&apos;]</code>)</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="dns.resolveSrv" data-title="dns.resolveSrv (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolveSrv" class="member-name methodClicker">resolveSrv</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, addresses))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolveSrv" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for service records (<code>SRV</code> records). ...</p></div><div id="short_dns.resolveSrv" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for service records (<code>SRV</code> records).</p></div><h3 id="dns.resolveSrv" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of the SRV records available for <code>domain</code>. Properties of SRV records are priority, weight, port, and name (<em>e.g.</em> <code>[{&apos;priority&apos; : 10, &apos;weight&apos; : 5, &apos;port&apos; : 21223, &apos;name&apos; : &apos;service.example.com&apos;}, {...}]</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of the SRV records available for <code>domain</code>. Properties of SRV records are priority, weight, port, and name (<em>e.g.</em> <code>[{&apos;priority&apos; : 10, &apos;weight&apos; : 5, &apos;port&apos; : 21223, &apos;name&apos; : &apos;service.example.com&apos;}, {...}]</code>)</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="dns.resolveTxt" data-title="dns.resolveTxt (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.resolveTxt" class="member-name methodClicker">resolveTxt</span>(<a href="./../js_doc/String.html">String</a> domain, <a href="./../js_doc/Function.html">Function</a> callback(err, addresses))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.resolveTxt" class="ellipsis_description"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for text queries (<code>TXT</code> records). ...</p></div><div id="short_dns.resolveTxt" class="short_description hiddenSpan"><p>The same as <a href="dns.html#dns.resolve" class="link-short" title="dns.resolve (class method)" data-id="dns.resolve"><code>dns.resolve()</code></a>, but only for text queries (<code>TXT</code> records).</p></div><h3 id="dns.resolveTxt" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>domain
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>addresses
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of text records available for <code>domain</code> (<em>e.g.</em> <code>[&apos;v=spf1 ip4 0.0.0.0 ~all&apos;]</code>)</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>domain
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The domain to resolve</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>addresses
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of text records available for <code>domain</code> (<em>e.g.</em> <code>[&apos;v=spf1 ip4 0.0.0.0 ~all&apos;]</code>)</p></td>  
 </tr></tbody></table></div></div></div></div></article><article id="dns.reverse" data-title="dns.reverse (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="dns.reverse" class="member-name methodClicker">reverse</span>(<a href="./../js_doc/String.html">String</a> ip, <a href="./../js_doc/Function.html">Function</a> callback(err, domains))<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_dns.reverse" class="ellipsis_description"><p>Reverse resolves an IP address to an array of domain names. ...</p></div><div id="short_dns.reverse" class="short_description hiddenSpan"><p>Reverse resolves an IP address to an array of domain names.</p></div><h3 id="dns.reverse" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>ip
-</i></p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The IP address to reverse</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
-</tr><tr><td><p><i>err
-</i></p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
-</tr><tr><td><p><i>domains
-</i></p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of possible domain names</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>ip
+</p></td><td><p><a href="./../js_doc/String.html" id="String" class=" clicker" title="String" data-id="String">String</a></p></td><td><p>Required. The IP address to reverse</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The function to execute once the method completes</p></td>  
+</tr><tr><td><p>err
+</p></td><td><p><a href="./../js_doc/Error.html" id="Error" class=" clicker" title="Error" data-id="Error">Error</a></p></td><td><p>Required. The <code>Error</code> object</p></td>  
+</tr><tr><td><p>domains
+</p></td><td><p><a href="./../js_doc/Array.html" id="Array" class=" clicker" title="Array" data-id="Array">Array</a></p></td><td><p>Required. An array of possible domain names</p></td>  
 </tr></tbody></table></div></div></div></div></article><div id="disqus_thread"></div></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
 <script defer src="./../resources/javascripts/prettify.js"></script>
 <script defer src="./../resources/javascripts/prettify-extension.js"></script>

@@ -18,10 +18,10 @@
 </span></li></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_https.createServer" class="ellipsis_description"><p>Returns a new HTTPS web server object.
  ...</p></div><div id="short_https.createServer" class="short_description hiddenSpan"><p>Returns a new HTTPS web server object.
 </p></div><h3 id="https.createServer" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Any options you want to pass to the server</p></td>  
-</tr><tr><td><p><i>requestListener
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Optional. An optional listener</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Any options you want to pass to the server</p></td>  
+</tr><tr><td><p>requestListener
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Optional. An optional listener</p></td>  
 </tr></tbody></table><h4>Description</h4><p>The <code>options</code> object has a mix of required and optional values:
 
 </p>
@@ -30,20 +30,20 @@
 Protocols should be ordered by their priority.</p></li><li><p><code>passphrase</code>: A string of a passphrase for the private key.</p></li><li><p><code>rejectUnauthorized</code>: If <code>true</code> the server rejects any connection that is not authorized with the list of supplied CAs. This option only has an effect if <code>requestCert</code> is <code>true</code>. This defaults to <code>false</code>.</p></li><li><p><code>requestCert</code>: If <code>true</code> the server requests a certificate from clients that connect and attempt to verify that certificate. This defaults to <code>false</code>.</p></li><li><p><code>sessionIdContext</code>: A string containing an opaque identifier for session resumption. If <code>requestCert</code> is <code>true</code>, the default is an MD5 hash value generated from the command line. Otherwise, the default is not provided.</p></li><li><p><code>SNICallback</code>: A function that is called if the client supports the SNI TLS extension. Only one argument will be passed to it: <code>servername</code>. <code>SNICallback</code> should return a SecureContext instance. You can use <code>crypto.createCredentials(...).context</code> to get a proper SecureContext. If <code>SNICallback</code> wasn&apos;t provided, a default callback within the high-level API is used (for more information, see below).</p></li></ul></div></div></div></div></article><article id="https.get" data-title="https.get (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="https.get" class="member-name methodClicker">get</span>(<a href="./../js_doc/Object.html">Object</a> options, <a href="./../js_doc/Function.html">Function</a> callback())<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_https.get" class="ellipsis_description"><p>Exactly like <a href="http.html#http.get"><code>http.get()</code></a> but for HTTPS.
  ...</p></div><div id="short_https.get" class="short_description hiddenSpan"><p>Exactly like <a href="http.html#http.get"><code>http.get()</code></a> but for HTTPS.
 </p></div><h3 id="https.get" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Options to pass to the request</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The callback to execute once the method finishes</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Options to pass to the request</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The callback to execute once the method finishes</p></td>  
 </tr></tbody></table><h4>Description</h4><p>Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and <a href="http.html#http.request"><code>http.request()</code></a> is that it sets the method to GET and calls <code>req.end()</code> automatically.
 </p><h4>Example</h4>
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.get.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>      
 </div></div></div></div></article><article id="https.request" data-title="https.request (class method)" class="article"><div class="section method"><div class="memberContent"><div class="title"><ul class="signatures"><li class="signature"><ul><li class="signature-call"><span id="https.request" class="member-name methodClicker">request</span>(<a href="./../js_doc/Object.html">Object</a> options, <a href="./../js_doc/Function.html">Function</a> callback())<li class="signature-returns"><ul class="argument-types"><li class="argument-type">Void</li></ul></li></li></ul><ul class="metaInfo"></ul></li></ul></div><div class="sideToggler"><div id="ellipsis_https.request" class="ellipsis_description"><p>Makes a request to a secure web server.
  ...</p></div><div id="short_https.request" class="short_description hiddenSpan"><p>Makes a request to a secure web server.
 </p></div><h3 id="https.request" class="methodToggle methodClicker inactive">&nbsp;&nbsp;&nbsp;
-</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><tr><td><p><i>options
-</i></p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Any options you want to pass to the server</p></td>  
-</tr><tr><td><p><i>callback
-</i></p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The callback to execute</p></td>  
+</h3><div class="description"><h4>Arguments</h4><table class="argument-list zebra-striped bordered-table"><tbody><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><td><p>options
+</p></td><td><p><a href="./../js_doc/Object.html" id="Object" class=" clicker" title="Object" data-id="Object">Object</a></p></td><td><p>Required. Any options you want to pass to the server</p></td>  
+</tr><tr><td><p>callback
+</p></td><td><p><a href="./../js_doc/Function.html" id="Function" class=" clicker" title="Function" data-id="Function">Function</a></p></td><td><p>Required. The callback to execute</p></td>  
 </tr></tbody></table><h4>Description</h4><p>All options from [http.request <code>httprequest()</code>]] are valid for <code>options</code>:
 
 </p>

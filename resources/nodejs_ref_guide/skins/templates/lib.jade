@@ -1,21 +1,26 @@
 -var dirPrefix = "./../";
 -var nodejsRef = 'false'
+-var jsDoc = 'false'
+-var nodejsDev = 'false'
 
 - var methodSection = constructorSection = propertySection = eventSection = false;
 - var globalJSObjs = ["Array", "Boolean", "Date", "Error", "EvalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError", "Function", "Infinity", "JSON", "Math", "NaN", "Number", "Object", "RegExp", "String"]
 
 - var specialObjs = ["Buffer", "Cluster", "EventEmitter", "Streams"]
 
-mixin identifyBuild
-  if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
-      -nodejsRef = 'true'
-      -dirPrefix = dirPrefix
+mixin identifyBuild(tree)
+  if tree
+    if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
+        -nodejsRef = 'true'
+    else if tree.children[0].parentDir.indexOf('js_doc') >= 0 
+        -jsDoc = 'true'
+  else
+      -nodejsDev = 'true'
 
 mixin argument(arg, reqOptObj)
   td
     p
-      i
-        #{arg.name}
+      #{arg.name}
   if arg.types
     td
       p
@@ -191,11 +196,11 @@ mixin article(obj, parents)
                 h4 Arguments
                 table.argument-list.zebra-striped.bordered-table
                   tbody
-                    //- thead
-                      //- tr
-                        //- th Name
-                        //- th Type
-                        //- th Description
+                    thead
+                      tr
+                        th Name
+                        th Type
+                        th Description
                     -for (var a = 0; a < obj.arguments.length; a++)
                       tr
                         mixin argument(obj.arguments[a], reqOptObj)  
@@ -320,15 +325,18 @@ mixin links(collection)
       li
         mixin link(obj)
 
-
--function validate_link(l) // turn the js-doc links to point to js-doc. this is lousy code.
+//- by default, links are assuming their own dir; instead, refer them out to
+//- the js_doc dir. this is probably lousy code
+-function validate_link(l)
   for js_obj in globalJSObjs
     -var regex = new RegExp('href="' + js_obj, "ig")
     -if (l.match(regex))
       -l = l.replace(regex, 'href="' + dirPrefix + 'js_doc/' + js_obj)
   != sanitize_link(l)
 
--function sanitize_link(l) // for one reason or another, these are not preserving caps
+//- we want to force these links to lowercase;
+//- our Linux server doesn't distinguish between case. TODO: fix that?
+-function sanitize_link(l) 
   for obj in specialObjs
     -var regex = new RegExp('href="' + obj, "ig")
     -if (l.match(regex))
