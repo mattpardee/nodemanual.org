@@ -18,7 +18,7 @@ li {
 }
 
 a, a:hover {
-    color : #4397cd;    
+    color : #00438a;    
 }
 
 code {
@@ -67,7 +67,7 @@ pre code {
 }
 
 a code {
-    color: #0069D6;
+    color: #00438a;
 }
 
 h2 {
@@ -190,6 +190,7 @@ ul.menu {
 .menu li {
     list-style-image: url(../images/menu_disc.png);
     margin-bottom: 3px;
+    font-weight : 700;
 }
 
 .menu li .menu-item a.menuLink, .menu li .menu-item span.menuLink {
@@ -243,11 +244,11 @@ ul.menu {
   -o-transition-duration: 300ms;
   -o-transition-property: -o-box-shadow;
   -o-transition-timing-function: ease-out;*/
-  -webkit-transition-duration: 400ms, 200ms;
+  -webkit-transition-duration: 400ms, 0ms;
   -webkit-transition-property: -webkit-box-shadow, background;
   -webkit-transition-timing-function: ease-out, ease-out;
   z-index: 100;
-  
+  padding-bottom : 5px;
   overflow: visible !important;
   
 /*  background: #FFF;
@@ -261,7 +262,7 @@ ul.menu {
 /*    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35); */
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 /*    height: 31px;*/
     top: 40px;
     position: fixed;
@@ -278,7 +279,7 @@ ul.menu {
   
 /*  border-bottom: 0.1em solid #FFF;*/
   height: 3em;
-  padding-top: 3px;
+  padding-top: 4px;
 /*  line-height: 4;*/
 /*  margin-top: -0.1em;*/
   position: relative;
@@ -326,7 +327,7 @@ ul.menu {
     box-shadow: rgba(0, 0, 0, 0.398438) 1px 4px 6px;*/
 
     background-color: transparent;
-    height: 42px;
+    height: 47px;
     /*width: 700px;*/
     position: absolute;
 }
@@ -387,8 +388,9 @@ ul.menu {
 
 .tabs {
     padding-top: 10px;
-    border-bottom: 1px solid #848484;
+    /*border-bottom: 1px solid #848484;*/
     min-height : 27px;
+    padding-bottom : 5px;
 }
 .tabsSansBorder {
     border: 0;
@@ -420,6 +422,7 @@ ul.menu {
     min-width : 105px;
     max-height: 350px;
     overflow: auto;
+    border-color : rgba(0, 0, 0, 0.1);
 }
 .topbar div > ul .menu-dropdown li a:hover,
 .nav .menu-dropdown li a:hover,
@@ -474,11 +477,11 @@ ul.menu {
 }
 .tabs .menu-dropdown, .tabs .dropdown-menu {
     border-radius: 0 0 6px 6px;
-    top: 27px;
+    top: 32px;
     right: 0px;
 }
 .srolled .tabs .menu-dropdown, .srolled .tabs .dropdown-menu {
-    top: 28px;
+    top: 32px;
 }
 .dropdown-toggle {
     color: #8a8a8a;
@@ -915,12 +918,13 @@ h3.methodToggle.active {
     display: inline-block;
     padding-right: 10px;
 }
-#footer .nodejitsu-logo {
-    width: 129px;
-    height: 23px;
-    background:  url(../images/nodejitsu.png) no-repeat 0 0;
+#footer .debuggable-logo {
+    width: 119px;
+    height: 25px;
+    background:  url(../images/debuggable-logo-footer.png) no-repeat 0 0;
     display: inline-block;
     padding-right: 0 !important;
+    margin-bottom : -3px;
 }
 #footer .span11 {
     margin-left: 0;
