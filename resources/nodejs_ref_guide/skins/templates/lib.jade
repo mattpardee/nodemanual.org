@@ -14,7 +14,8 @@ mixin identifyBuild
 mixin argument(arg, reqOptObj)
   td
     p
-      #{arg.name}
+      i
+        #{arg.name}
   if arg.types
     td
       p
@@ -190,11 +191,11 @@ mixin article(obj, parents)
                 h4 Arguments
                 table.argument-list.zebra-striped.bordered-table
                   tbody
-                    thead
-                      tr
-                        th Name
-                        th Type
-                        th Description
+                    //- thead
+                      //- tr
+                        //- th Name
+                        //- th Type
+                        //- th Description
                     -for (var a = 0; a < obj.arguments.length; a++)
                       tr
                         mixin argument(obj.arguments[a], reqOptObj)  

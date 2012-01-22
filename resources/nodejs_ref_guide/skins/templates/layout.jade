@@ -81,11 +81,12 @@ body(onload="styleCode()")
                   h1.memberHeader
                     -var heading = obj.path.replace(/_/g," ")
                     span.name #{heading}
+
+                    if nodejsRef == 'true'
+                      span.editInC9
+                        a(href='#', title='Edit this article in Cloud9 IDE') [edit]
                   
                   -if (obj.filename.indexOf("index") < 0)
-                    if nodejsRef == 'true'
-                      span.editInC9 
-                          a(href='#', title='Edit in Cloud9 IDE') [edit]
                     if nodejsRef != 'true'
                       span.backToMDN 
                         a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') View original on MDN
@@ -98,7 +99,7 @@ body(onload="styleCode()")
                                 a(href="\#", class="dropdown-toggle")!= renameMemberTitle(title, methods.length)
                                 ul.dropdown-menu
                                   for m in methods
-                                    li(data-id='#{m.id}', class='memberLink')
+                                    li(data-id='#{m.id}', class='memberLink', onclick="scrollTo(this);return false;")
                                       mixin link(m, true)                                 
                     else
                       ul(class='tabs', data-tabs='tabs')
@@ -115,7 +116,7 @@ body(onload="styleCode()")
             a(class="c9-logo sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
             a(class="joyent-logo sponsor", href="http://www.joyent.com/", title="joyent", target="_blank")
             a(class="mozilla-logo sponsor", href="http://www.mozilla.org/", title="mozilla", target="_blank")
-            a(class="nodejitsu-logo sponsor", href="http://nodejitsu.com/", title="nodejitsu", target="_blank")
+            //- a(class="nodejitsu-logo sponsor", href="http://nodejitsu.com/", title="nodejitsu", target="_blank")
 
   // scripts concatenated and minified via ant build script
   <script defer src="#{dirPrefix}resources/javascripts/plugins.js"></script>
