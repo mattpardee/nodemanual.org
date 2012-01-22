@@ -50,14 +50,17 @@ $(function() {
   $('.signature-call, .signature-returns', '.signature').click(function() {
       var $article = $(this).closest('.article'),
           $arrow   = $('h3.methodClicker', $article);
-          
-      if ($article.hasClass('methodToggleOpen')) {
-          $article.removeClass('methodToggleOpen');
-          $arrow.removeClass('active').addClass('inactive');
-      }
-      else {
+
+      if (!$article.hasClass('methodToggleOpen') || this.force) {
           $article.addClass('methodToggleOpen');
           $arrow.removeClass('inactive').addClass('active');
+          
+          var data = location.hash = $arrow[0].id.replace(/^js_/, "");
+          scrollTo(null, data);
+      }
+      else {
+          $article.removeClass('methodToggleOpen');
+          $arrow.removeClass('active').addClass('inactive');
       }
       
   }); 
