@@ -74,10 +74,11 @@
 **/
 
 /**
- * http.request(options, callback()) -> http.ClientRequest
+ * http.request(options, callback(response)) -> http.ClientRequest
  * - options (Object): Options to pass to the request
  * - callback (Function):  The callback to execute once the method finishes
- * 
+ * - response (http.ClientRequest): The server's response, including headers and status code
+ *
  * Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.  
  * 
  * The `options` align with the return value of [[url.parse `url.parse()`]]:

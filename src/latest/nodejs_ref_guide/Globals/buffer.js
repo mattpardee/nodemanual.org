@@ -318,7 +318,7 @@
  * 
  * Building a `Buffer` with the ASCII alphabet, taking a slice, then modifying one byte from the original `Buffer`:
  * 
- * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32LE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>   
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>   
  *     
 **/ 
 

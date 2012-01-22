@@ -146,7 +146,7 @@
  *
  * Because we want to further transform the _result_ of the match before the final substitution is made, we must use a function. This forces the evaluation of the match prior to the `toLowerCase()` method. If we had tried to do this using the match without a function, the toLowerCase() would have no effect.
  *     
- *     	var newString = propertyName.replace(/[A-Z]/, '-' + '$&'.toLowerCase());  // won't work
+ *     var newString = propertyName.replace(/[A-Z]/, '-' + '$&'.toLowerCase());  // won't work
  *             
  * This is because `'$&'.toLowerCase()` would be evaluated first as a string literal (resulting in the same `'$&'`) before using the characters as a pattern.
  *     
@@ -373,7 +373,7 @@
  *
  * The following example demonstrates the different potential results for a string occurring before, after, or at the same level as another:
  *     
- * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.localecompare.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.localecompare.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *             
  **/
 
@@ -555,7 +555,7 @@
  *
  * The following example uses `indexOf` and `lastIndexOf` to locate values in the string "`Brave new world`".
  *     
- * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.lastIndexOf.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.lastindexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *     
  * #### See Also
  * * [[String.charAt `charAt()`]]
@@ -568,7 +568,7 @@
  * String.match(regexp) -> String | Array | null
  * -regexp (RegExp): A regular expression used to find a match. If a non-RegExp object is passed, it is implicitly converted to a RegExp by using `new RegExp(regexp)`.
  *
- * Used to retrieve the matches when matching a`_string_` against a _regular expression_.
+ * Used to retrieve the matches when matching a string against a regular expression.
  *
  *
  * If the regular expression does not include the `g` flag, this returns the same result as [[RegExp.exec `RegExp.exec()`]].
