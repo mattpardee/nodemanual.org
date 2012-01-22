@@ -6,7 +6,7 @@ var argv = require("optimist").argv,
     
 var version = argv._[0];
 var versions = [];
-var latest = "0.6.7";
+var latest = "0.6.8";
 
 //var outDir = "out/nodejs_dev_guide";
 

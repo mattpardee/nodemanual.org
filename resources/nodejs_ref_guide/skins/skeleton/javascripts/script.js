@@ -378,6 +378,14 @@ $(document).ready(function(){
             clearMenus();
         });
     
+    $('.versions').hover(
+        function(){
+            $(this).addClass('open');
+        }, 
+        function(){
+            clearMenus();
+        });
+
     function showMethodContent(){
         if(!location.hash)
             return;

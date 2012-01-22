@@ -49,6 +49,13 @@ mixin topBar
               a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node.js Manual
             li#js_doc
               a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
+            li(class="dropdown versions")
+              a(class="dropdown-toggle versionToggler", href="/") Versions
+              ul(class="dropdown-menu")
+                li 
+                  a(href="http:www.nodemanual.org/", class="version") Latest (0.6.8)
+                li
+                  a(href="http:www.nodemanual.org/0.6.7", class="version") 0.6.7
           form(id='searchbox', action='', class='pull-right')  
             input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
 
