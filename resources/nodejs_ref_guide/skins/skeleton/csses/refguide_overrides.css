@@ -95,6 +95,10 @@ p {
     margin-right: 170px;
 }
 
+#topSection .versions {
+    margin-right: 0px;
+}
+
 .small_win #topSection {
     width: 100%;
 }
