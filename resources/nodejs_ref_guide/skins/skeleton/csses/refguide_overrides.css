@@ -380,6 +380,7 @@ ul.menu {
 .tabs {
     padding-top: 10px;
     border-bottom: 1px solid #848484;
+    min-height : 27px;
 }
 .tabsSansBorder {
     border: 0;
@@ -422,6 +423,7 @@ ul.menu {
 .dropdown-menu {
     border-top: none;
 }
+
 .tabs a.menu:after, .tabs .dropdown-toggle:after {
     margin-top: 13px;
     line-height: 28px;

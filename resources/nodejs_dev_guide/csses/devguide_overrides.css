@@ -7,12 +7,16 @@
     padding-bottom: 5px;
 }
 
-div.title {
-	padding-bottom: 10px;
+.title h1 {
+    margin-bottom : 0;
+}
+.title {
+    margin-top : 3px;
+    margin-bottom : 18px;
 }
 
 .cite {
-	color: #657383;
+	color: #666;
 }
 
 .editInC9 {
