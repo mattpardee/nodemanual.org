@@ -12,11 +12,11 @@ Everything else is "userland".  This includes: npm, express, request, coffee-scr
 
 The question of what is properly "node-core" and what belongs in "userland" is often debated.  In general, Node.js is based on the philosophy that it should **not** come with "batteries included."  It is easier to move things out of node-core than it is to move them in, which means that core modules must continually "pay rent" in terms of providing necessary functionality that nearly everyone finds valuable.
 
-#### This is a Good Thing.
+#### This is a good thing
 
 One goal of Node's minimal core library is to encourage people to implement things in creative ways, without forcing their ideas onto everyone. With a tiny core and a vibrant user space, we can all flourish and experiment without the onerous burden of having to always agree all the time.
 
-#### Userland Isn't Less
+#### Userland isn't less
 
 If anything, it's more. Building functionality in userland rather than in the node-core means:
 

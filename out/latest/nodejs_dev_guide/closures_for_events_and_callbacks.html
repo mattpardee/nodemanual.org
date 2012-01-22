@@ -17,7 +17,7 @@
 <p>The simplest example (which we just saw earlier) is <code>setTimeout()</code>.  This is a non-blocking function call.  The code in the passed in callback won&apos;t get called till after the timeout happens.  This will be on a completely new stack and the only way to get data into it is through lexical scope and a closure.
 
 </p>
-<p>Imagine this code snippet:
+<p>Take a look at this code, and try to run it:
 
 </p>
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
@@ -29,7 +29,7 @@
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
-<p>Using <code>this</code> is especially painful when dealing with setting callbacks. This is because specifying a method of an object as the callback function will cause the function by itself to be the callback, not the object associated with it.</p></div><div id="disqus_thread"></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a><a href="http://nodejitsu.com/" title="nodejitsu" target="_blank" class="nodejitsu-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
+<p>Using <code>this</code> is especially painful when dealing with setting callbacks. This is because specifying a method of an object as the callback function will cause the function by itself to be the callback, not the object associated with it.</p></div><div id="disqus_thread"></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
 <script defer src="./../resources/javascripts/prettify.js"></script>
 <script defer src="./../resources/javascripts/prettify-extension.js"></script>
 <script defer src="./../resources/javascripts/script.js"></script>

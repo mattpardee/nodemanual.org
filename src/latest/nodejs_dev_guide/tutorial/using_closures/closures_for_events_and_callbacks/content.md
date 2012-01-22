@@ -4,7 +4,7 @@ This is where closures are the most useful. In fact, this is the reason that Rya
 
 The simplest example (which we just saw earlier) is `setTimeout()`.  This is a non-blocking function call.  The code in the passed in callback won't get called till after the timeout happens.  This will be on a completely new stack and the only way to get data into it is through lexical scope and a closure.
 
-Imagine this code snippet:
+Take a look at this code, and try to run it:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 

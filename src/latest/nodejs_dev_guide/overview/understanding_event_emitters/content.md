@@ -2,7 +2,7 @@
 
 In order to facilitiate its asynchronisity, Node.js operates with an "event loop" in the background. This loops "listens" for actions that are "emitted," and executes functions as a result. Node.js runs in a single thread of execution, but as soon as a block of synchronous code is done, the event loop runs the next event in the queue. 
 
-Events are represented in Node.js by the [EventEmitter](../nodejs_ref_guide/eventemitter.html) object. Many objects in Node.js are instances of this object. Using `EventEmitter`'s is fairly straight-forward. You can listen to a specific event by `calling the `on()` function on your object, providing the name of the event, as well as a callback closure as the parameters. For example:
+Events are represented in Node.js by the [EventEmitter](../nodejs_ref_guide/eventemitter.html) object. Many objects in Node.js are instances of this object. Using `EventEmitter`'s is fairly straight-forward. You can listen to a specific event by calling the `on()` function on your object, providing the name of the event, as well as a callback closure as the parameters. For example:
 
     var totalData = '';
     request

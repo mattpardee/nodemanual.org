@@ -14,7 +14,7 @@
 <p>In order to facilitiate its asynchronisity, Node.js operates with an &quot;event loop&quot; in the background. This loops &quot;listens&quot; for actions that are &quot;emitted,&quot; and executes functions as a result. Node.js runs in a single thread of execution, but as soon as a block of synchronous code is done, the event loop runs the next event in the queue. 
 
 </p>
-<p>Events are represented in Node.js by the <a href="../nodejs_ref_guide/eventemitter.html">EventEmitter</a> object. Many objects in Node.js are instances of this object. Using <code>EventEmitter</code>&apos;s is fairly straight-forward. You can listen to a specific event by <code>calling the </code>on()` function on your object, providing the name of the event, as well as a callback closure as the parameters. For example:
+<p>Events are represented in Node.js by the <a href="../nodejs_ref_guide/eventemitter.html">EventEmitter</a> object. Many objects in Node.js are instances of this object. Using <code>EventEmitter</code>&apos;s is fairly straight-forward. You can listen to a specific event by calling the <code>on()</code> function on your object, providing the name of the event, as well as a callback closure as the parameters. For example:
 
 </p>
 <pre><code>var totalData = &apos;&apos;;
@@ -43,7 +43,7 @@ request
 <p>Here&apos;s a full example converying many of the methods discussed:
 
 </p>
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script></div><div id="disqus_thread"></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a><a href="http://nodejitsu.com/" title="nodejitsu" target="_blank" class="nodejitsu-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script></div><div id="disqus_thread"></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
 <script defer src="./../resources/javascripts/prettify.js"></script>
 <script defer src="./../resources/javascripts/prettify-extension.js"></script>
 <script defer src="./../resources/javascripts/script.js"></script>
