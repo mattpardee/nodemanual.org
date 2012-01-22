@@ -18,7 +18,7 @@
  *	 	
  * There is nothing unique about Javascript arrays and their properties that causes this. Javascript properties that begin with a digit can't be referenced with the dot notation. They must be accessed using bracket notation. For example, if you had an object with a property `3d`, it would not be possible to access it using dot notation, either. It, too, would have to be referenced using bracket notation. This similarity is exhibited in the following two code samples:
  * 
- *	var years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
+ * 	var years = [1950, 1960, 1970, 1980, 1990, 2000, 2010];
  * 	try {
  * 		console.log(years.0);
  * 	}
@@ -150,9 +150,9 @@
  *   
  * The following example shortens the array `statesUS` to a length of 50 if the current length is greater than 50.
  * 
- * 	if (statesUS.length > 50) {
- *		statesUS.length=50
- * 	}
+ *     if (statesUS.length > 50) {
+ *         statesUS.length=50
+ *     }
  * 	
  **/
 
@@ -507,7 +507,7 @@ undefined
  *		 	
  *	
  * #### Example: Concatenating values to an array
- * 	The following code concatenates three values to an array:
+ * The following code concatenates three values to an array:
  * 	
  * 	var alpha = ['a', 'b', 'c'];
  * 	
@@ -879,7 +879,7 @@ undefined
  **/
 
 /**
- * 	Array.reduce(callback(previousValue, currentValue, index, array)[, initialValue]) -> Object
+ * Array.reduce(callback(previousValue, currentValue, index, array)[, initialValue]) -> Object
  * - callback (Function): Function to execute on each value in the array, taking four arguments
  * - previousValue (Object): The value previously returned in the last invocation of the callback, or `initialValue`, if supplied.
  * - currentValue (Object): The current element being processed in the array.

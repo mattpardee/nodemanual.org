@@ -43,8 +43,9 @@ function makeManualDocs(versions)
         versions.forEach(function (element, index, array)
         {
             var outDir = "out/" + element;
+            var tmpDir = "tmp/" + element;
 
-            docs.clean("tmp");
+            docs.clean(tmpDir + "/nodejs_dev_guide");
             docs.clean(outDir + "/nodejs_dev_guide");
 
             docs.copyassets(outDir, "nodejs_dev_guide");

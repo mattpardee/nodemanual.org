@@ -119,13 +119,13 @@
  * There is a second optional argument to specify several options. The default options are:
  * 
  *     { 
- *	 	 encoding: 'utf8',
+ *       encoding: 'utf8',
  *       timeout: 0,
  *       maxBuffer: 200*1024,
  *       killSignal: 'SIGTERM',
  *       cwd: null,
  *       env: null 
- *	   }
+ *     }
  *
  * These refer to:
  *

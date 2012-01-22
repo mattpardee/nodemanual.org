@@ -355,7 +355,7 @@
 /**
  * Date.getMonth() -> Number
  * 	
- * 	Returns the month in the specified date according to local time.
+ * Returns the month in the specified date according to local time.
  *
  * The value returned by `getMonth()` is an integer between 0 and 11, 0 corresponds to January, 1 to February, and so on.
  * 
@@ -396,7 +396,7 @@
 /**
  * Date.getTime() -> Number
  * 	
- *	Returns the numeric value corresponding to the time for the specified date according to universal time.
+ * Returns the numeric value corresponding to the time for the specified date according to universal time.
  *
  * The value returned by the `getTime` method is the number of milliseconds since 1 January 197, 00:00:0, UTC. You can use this method to help assign a date and time to another `Date` object.
  *
