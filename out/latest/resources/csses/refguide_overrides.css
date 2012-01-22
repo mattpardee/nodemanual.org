@@ -10,7 +10,7 @@ body {
 }
 
 ul {
-    font-size: 12px;    
+    font-size: 13px;
 }
 
 li {
@@ -41,7 +41,7 @@ code {
     margin: 2px 1px;
 }
 
-pre.prettyprint {
+pre {
     margin-top: 10px;
     border-radius: none;
     box-shadow: none;
@@ -56,7 +56,7 @@ pre.prettyprint {
     padding: 5px;
 }
 
-.method pre.prettyprint, .event pre.prettyprint, .property pre.prettyprint  {
+.method pre, .event pre, .property pre  {
     background : white;
 }
 
@@ -75,9 +75,13 @@ h2 {
 }
 p {
     font-size: 13px;
-    line-height : 22px;
+    line-height : 20px;
     margin-bottom : 13px;
 }
+li p:last-child {
+    margin-bottom : 5px;
+}
+
 .alert-message{
     margin-bottom : 13px;
 }
@@ -498,7 +502,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
     padding-bottom : 50px;
 }
 .content {
-    background: url(../images/content-top-bg.png) repeat-x 0 0;
+    /*background: url(../images/content-top-bg.png) repeat-x 0 0;*/
     border-top: 1px solid #fffffe;
 }
 .content .row {
@@ -520,6 +524,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
     margin-left: 12px;
 /*    width: 280px;*/
 /*    overflow: auto;*/
+    padding-right : 10px;
 }
 
 #sidebar #well
@@ -549,7 +554,7 @@ div#content article:last-child {
     Edit in Cloud 9, sucka
 */
 
-.snippet pre.prettyprint {
+.snippet pre {
     margin-bottom: 0;
 }
 
@@ -581,7 +586,7 @@ div#content article:last-child {
     top : 0;
 }
 
-.snippet .filename .pln, .snippet .filename .pun{
+.snippet .filename span{
     color : #666;
 }
 

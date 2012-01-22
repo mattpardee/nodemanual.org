@@ -78,6 +78,10 @@ p {
     line-height : 20px;
     margin-bottom : 13px;
 }
+li p:last-child {
+    margin-bottom : 5px;
+}
+
 .alert-message{
     margin-bottom : 13px;
 }
@@ -498,7 +502,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
     padding-bottom : 50px;
 }
 .content {
-    background: url(../images/content-top-bg.png) repeat-x 0 0;
+    /*background: url(../images/content-top-bg.png) repeat-x 0 0;*/
     border-top: 1px solid #fffffe;
 }
 .content .row {
