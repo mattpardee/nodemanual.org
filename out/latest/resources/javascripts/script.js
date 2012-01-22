@@ -68,119 +68,119 @@ $(function () {
     }
 
     // activates item (used upon scrolling)
-    function activate($article, expandParents) {
-        var $item;
+//    function activate($article, expandParents) {
+//        var $item;
+//
+//        if ($active) {
+//            $item = $active.data('ndoc.item') || $empty;
+//            $item.removeClass('current');
+//            eachParent($item, function ($parent) {
+//                $parent.removeClass('current-parent');
+//            });
+//        }
+//
+//        // set new active article
+//        $active = $article;
+//
+//        // update title
+//        document.title = getTitle($article);
+//
+//        $item = $active.data('ndoc.item') || $empty;
+//        $item.addClass('current');
+//        eachParent($item, function ($parent) {
+//            $parent.addClass('current-parent');
+//            if (expandParents) {
+//                $parent.data('ndoc.childs')
+//                .data('ndoc.collapsed', false)
+//                .animate({
+//                    height: 'show',
+//                    opacity: 'show'
+//                });
+//            }
+//        });
+//    }
 
-        if ($active) {
-            $item = $active.data('ndoc.item') || $empty;
-            $item.removeClass('current');
-            eachParent($item, function ($parent) {
-                $parent.removeClass('current-parent');
-            });
-        }
 
-        // set new active article
-        $active = $article;
-
-        // update title
-        document.title = getTitle($article);
-
-        $item = $active.data('ndoc.item') || $empty;
-        $item.addClass('current');
-        eachParent($item, function ($parent) {
-            $parent.addClass('current-parent');
-            if (expandParents) {
-                $parent.data('ndoc.childs')
-                .data('ndoc.collapsed', false)
-                .animate({
-                    height: 'show',
-                    opacity: 'show'
-                });
-            }
-        });
-    }
-
-
-    function processScroll(evt, expandParents) {
-        var scrollTop = $window.scrollTop() + 10,
-        i = targets.length;
-    
-        while (i--) {
-            if ($active !== targets[i].article && scrollTop >= targets[i].offset
-                && (!targets[i + 1] || scrollTop <= targets[i + 1].offset)) {
-                activate(targets[i].article, expandParents)
-                return;
-            }
-        }
-    }
+//    function processScroll(evt, expandParents) {
+//        var scrollTop = $window.scrollTop() + 10,
+//        i = targets.length;
+//    
+//        while (i--) {
+//            if ($active !== targets[i].article && scrollTop >= targets[i].offset
+//                && (!targets[i + 1] || scrollTop <= targets[i + 1].offset)) {
+//                activate(targets[i].article, expandParents)
+//                return;
+//            }
+//        }
+//    }
 
     // init articles
-    $('article.article').each(function () {
-        var $article = $(this);
-
-        targets.push({
-            article: $article,
-            offset: $article.offset().top
-        });
-    });
+//    $('article.article').each(function () {
+//        var $article = $(this);
+//
+//        targets.push({
+//            article: $article,
+//            offset: $article.offset().top
+//        });
+//    });
 
     // init menu items
-    $items.each(function () {
-        var $item = $(this),
-        $childs = $item.parent().next(),
-        $parent = $item.parents('ul').eq(0).prev().children(),
-        $article = $('[id="' + $item.attr('href').slice(1) + '"]');
+//    $items.each(function () {
+//        var $item = $(this),
+//        $childs = $item.parent().next(),
+//        $parent = $item.parents('ul').eq(0).prev().children(),
+//        $article = $('[id="' + $item.attr('href').slice(1) + '"]');
+//
+//        // cross-refs
+//        $item.data('ndoc.parent', $parent);
+//        $item.data('ndoc.childs', $childs);
+//        $article.data('ndoc.item', $item);
+//
+//        // bind activator
+//        $item.on('click', function () {
+//            if ($item.hasClass('current') && !$childs.data('ndoc.collapsed')) {
+//                $childs.data('ndoc.collapsed', true).animate({
+//                    height: 'hide',
+//                    opacity: 'hide'
+//                });
+//                return false;
+//            }
+//
+//            activate($article);
+//
+//            $item.data('ndoc.childs').data('ndoc.collapsed', false).animate({
+//                height: 'show',
+//                opacity: 'show'
+//            });
+//        });
+//
+//        // collapse all 2nd levels
+//        if (0 != $parent.length) {
+//            $childs.data('ndoc.collapsed', true).hide();
+//        }
+//    });
 
-        // cross-refs
-        $item.data('ndoc.parent', $parent);
-        $item.data('ndoc.childs', $childs);
-        $article.data('ndoc.item', $item);
-
-        // bind activator
-        $item.on('click', function () {
-            if ($item.hasClass('current') && !$childs.data('ndoc.collapsed')) {
-                $childs.data('ndoc.collapsed', true).animate({
-                    height: 'hide',
-                    opacity: 'hide'
-                });
-                return false;
-            }
-
-            activate($article);
-
-            $item.data('ndoc.childs').data('ndoc.collapsed', false).animate({
-                height: 'show',
-                opacity: 'show'
-            });
-        });
-
-        // collapse all 2nd levels
-        if (0 != $parent.length) {
-            $childs.data('ndoc.collapsed', true).hide();
-        }
-    });
-
-    function updateSearchResults() {
-        $results.empty();
-
-        if ('' == this.value) {
-            $results.hide();
-            return;
-        }
-
-        $results.show();
-
-        $items.filter('[data-id*="' + this.value + '"]').each(function () {
-            var $item = $(this);
-            $('<div class="menu-item">').append(
-                $item.clone(false)
-                .text($item.data('id'))
-                .on('click', function () {
-                    $item.trigger('click');
-                })
-                ).appendTo($results);
-        });
-    }
+//    function updateSearchResults() {
+//        $results.empty();
+//
+//        if ('' == this.value) {
+//            $results.hide();
+//            return;
+//        }
+//
+//        $results.show();
+//
+//        $items.filter('[data-id*="' + this.value + '"]').each(function () {
+//            var $item = $(this);
+//            $('<div class="menu-item">').append(
+//                $item.clone(false)
+//                .text($item.data('id'))
+//                .on('click', function () {
+//                    $item.trigger('click');
+//                })
+//                ).appendTo($results);
+//        });
+//    }
 
     // init search
     $('#search')
@@ -189,15 +189,15 @@ $(function () {
         return false;
     })
     .find('input')
-    .on('keyup', $.throttle(250, updateSearchResults))
+    //.on('keyup', $.throttle(250, updateSearchResults))
     // click - cuz i don't know what event fied on input clear in Chrome
-    .on('change click', updateSearchResults);
+    //.on('change click', updateSearchResults);
 
     // init scrollspy
-    $window.on('scroll', $.throttle(250, processScroll));
+    //$window.on('scroll', $.throttle(250, processScroll));
 
     // initial jump (required for FF only - Chrome don't need it)
-    processScroll(null, true);
+    //processScroll(null, true);
 
     // init prettyprint
     $('pre > code').addClass('prettyprint');
@@ -207,10 +207,10 @@ $(function () {
     var sidebarHeight = $('#sidebar').height(),
         contentHeight = $('.container .content .span11').height();
 
-    if(contentHeight > sidebarHeight)
-        $('#sidebar').height(contentHeight);
-    else
-        $('#sidebar').height(sidebarHeight + 10);
+//    if(contentHeight > sidebarHeight)
+//        $('#sidebar').height(contentHeight);
+//    else
+//        $('#sidebar').height(sidebarHeight + 10);
     
 //    function isScrolledIntoView(elem) {
 //        var docViewTop = $(window).scrollTop();
@@ -228,77 +228,131 @@ $(function () {
         $pagination    = $('.members'),
         $paginationBackground = $('.membersBackground'),
         $paginationContent = $('.membersContent'),
-        $tabs = $('.tabs');
+        $tabs = $('.tabs'),
+        $topSection = $('#topSection');
         
     function handleScroll() {
         var header_offset  = $('#overview').outerHeight(),
-            s;
+            s, sx;
         
         // scrolling offset calculation via www.quirksmode.org
-        if (window.pageYOffset) {
+        if (window.pageYOffset || window.pageXOffset) {
             s = window.pageYOffset;
+            sx = window.pageXOffset;
         }
-        else if (document.documentElement && document.documentElement.scrollTop) {
+        else if (document.documentElement 
+          && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
             s = document.documentElement.scrollTop;
+            sx = document.documentElement.scrollLeft;
         }
         else if (document.body) {
             s = document.body.scrollTop;
+            sx = document.body.scrollLeft;
         }
-        if (s > header_offset - 35) {
+
+        if (document.documentElement.offsetWidth < 1010) {
+            if (sx <= 0) sx = 0;
+            else if (sx + document.documentElement.offsetWidth > 1010) 
+                sx = 1010 - document.documentElement.offsetWidth;
+        }
+        else
+            sx = 0;
+
+        $topSection.css({'left': -1 * sx});
+        
+        if (s > 163) { //header_offset - 35) {
+            $paginationContent.css('left', -1 * sx);
+            
+            if (bgHeightSet)
+                return;
+            
 //            $sidebar.css({
 //                'position': 'fixed',
 //                'top': 41,
 //                'padding':0
 //            });
-            if(!bgHeightSet) {
+//            if(!bgHeightSet) {
                 bgHeightSet = true;
 //                $paginationBackground.css('display', 'block')//.stop().animate({'height': 44, 'opacity':1}, 'normal', 'linear');
-            }
+//            }
             
-            var leftPos = $paginationContent.outerWidth() + $paginationContent.position().left > $(window).width() 
-                            ? $(window).width()- $paginationContent.outerWidth() 
-                            : $paginationContent.offset().left - $('html').scrollLeft()
+//            var leftPos = $paginationContent.outerWidth() + $paginationContent.position().left > $(window).width() 
+//                            ? $(window).width()- $paginationContent.outerWidth() 
+//                            : $paginationContent.offset().left - $('html').scrollLeft()
 
-            $paginationContent.css('left', leftPos);
+//            $paginationContent.css('left', leftPos);
+            $paginationContent.css('top', 0);
+            //$paginationContent.stop().animate({'top': 0}, 300);
+            
             $pagination
-            .stop().animate({'height': 31})
+//            .css({'background': 'white'})
+            .addClass('shadow')
+            .stop().css({height: 31})
+            /*animate({'height': 31}, {
+                duration : 300, 
+                complete : function(){
+//                    $pagination.css({'background': ''});
+                }
+            })*/
 //            .next().css({'padding-top': $pagination.outerHeight()})
-            .closest('.content').addClass('srolled');
+            .closest('.content').addClass('srolled')
+//            setTimeout(function(){
+//                    $pagination.css({'background': ''});
+//            }, 300);
             $tabs.addClass('tabsSansBorder');
         }
         else {
+            if (!bgHeightSet)
+                return;
+            
 //            $sidebar.css({
 //                'position': 'relative',
 //                'top': 0,
 //                'padding-top':25
 //            });
+
+            $paginationContent.stop().css({top:11});//animate({'top': 11}, 300);
+            $pagination.css({'position': 'absolute', 'top': 193});
+            $pagination.stop()
+              .removeClass('shadow')
+              .css({height: 42})
+              //.animate({'background': 'transparant'}, 300);
+              
             $paginationContent.css('left', 0);
-            $pagination
-            .stop().css({'height': 42})
-            .closest('.content').removeClass('srolled')
-//            .end().next().css({'padding-top': 0});
-            
-            $tabs.removeClass('tabsSansBorder');
+              
+              setTimeout(function(){
+              $pagination
+//              .animate({'height': 42}, {
+//                'complete' : function(){
+                    $paginationContent.css({'top': ''});
+                    $pagination.css({'position': '', 'top': ''});
+                    $paginationContent.css('left', 0);
+                    $pagination.closest('.content').removeClass('srolled')
+                    $tabs.removeClass('tabsSansBorder');
+//                }
+//              }, 300);
+            }, 300);
+
             bgHeightSet = false;
 //            $paginationBackground.stop().css({'display': 'none'});
         }
     }
     
-    function handleWinSize(){
-        if($(window).width() < 1000)
-            $('body').addClass('small_win');
-        else
-            $('body').removeClass('small_win');
-    }
+//    function handleWinSize(){
+//        if($(window).width() < 1000)
+//            $('body').addClass('small_win');
+//        else
+//            $('body').removeClass('small_win');
+//    }
     
     $(window)
     .scroll(function(){//auto kanei to header na metakinhtai kai na einai panta visible;
         handleScroll();
     }).resize(function(){
-       handleWinSize(); 
+       //handleWinSize(); 
     });
     handleScroll();
-    handleWinSize();
+    //handleWinSize();
 });
 
 $(document).ready(function(){
@@ -319,19 +373,29 @@ $(document).ready(function(){
     function showMethodContent(){
         if(!location.hash)
             return;
-        
-        var $clickerEl = $('h3#' + location.hash.replace(/^#/,'').replace(/\./g, '\\.'));
-        if($clickerEl.length > 0 && $clickerEl.hasClass('methodClicker'))
-            $clickerEl.trigger('click');
+
+        var $clickerEl = $('span#' + location.hash.replace(/^#/,'').replace(/\./g, '\\.'));
+        if( $clickerEl.length > 0 && $clickerEl.hasClass('methodClicker'))
+            $clickerEl.parent().trigger('click');
     }
     
-    if(location.hash) {
+    if (location.hash) {
         showMethodContent();
+        var data = location.hash;
+        setTimeout(function(){
+            document.body.scrollTop = $("span#" + data.substr(1).replace(".", "\\."))[0].offsetTop - 110;
+        }, 10);
     }
     
     window.onhashchange = function(){
         showMethodContent();
     }
     
-    $('#content article:last').css('padding-bottom', 50)
+    //$('#content article:last').css('padding-bottom', 50);
 });
+
+function scrollTo(el){
+    var data = el.getAttribute("data-id");
+    location.hash = data;
+    document.body.scrollTop = $("span#" + data.replace(".", "\\."))[0].offsetTop - 110;
+}

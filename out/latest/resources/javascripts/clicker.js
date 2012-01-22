@@ -51,7 +51,7 @@ $(function() {
       var $article = $(this).closest('.article'),
           $arrow   = $('h3.methodClicker', $article);
           
-      if($article.hasClass('methodToggleOpen')) {
+      if ($article.hasClass('methodToggleOpen')) {
           $article.removeClass('methodToggleOpen');
           $arrow.removeClass('active').addClass('inactive');
       }
