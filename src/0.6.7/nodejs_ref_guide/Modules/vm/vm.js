@@ -15,7 +15,7 @@
  * - code (String):  The code to run
  * - filename (String): A filename to emulate where the code is coming from 
  * 
- * `vm.runInThisContext()` compiles `code` as if it were loaded from `filename`, runs it, and returns the result. Running code does not have access to local scope. The `filename` is optional, and is only used in stack traces.
+ * `vm.runInThisContext()` compiles `code` as if it were loaded from `filename`, runs it, and returns the result. Running code does not have access to local scope.
  *
  * In case of syntax error in `code`, `vm.runInThisContext()` emits the syntax error to stderr and throws an exception.
  * 
@@ -38,8 +38,7 @@
  * - sandbox (Object): A global object with properties to pass into `code`
  * - filename (String):  A filename to emulate where the code is coming from
  * 
- * `vm.runInNewContext()` compiles `code` then runs it in `sandbox` and returns the result. Running code does not have access to local scope. The object `sandbox` is used as the global object for `code`.
-`sandbox` and `filename` are optional, and `filename` is only used in stack traces.
+ * `vm.runInNewContext()` compiles `code` to run in `sandbox` as if it were loaded from `filename`, then runs it and returns the result. Running code does not have access to local scope and the object `sandbox` will be used as the global object for `code`.
  * 
  * <Warning>Running untrusted code is a tricky business requiring great care.  To prevent accidental global variable leakage, `vm.runInNewContext()` is quite useful, but safely running untrusted code requires a separate process.</Warning>
  * 
@@ -60,9 +59,9 @@
  * - context (Object): The context to execute it in, coming from [[vm.createContext `vm.createContext()`]]
  * - filename (String): A filename to emulate where the code is coming from
  * 
- * `vm.runInContext()` compiles `code`, then runs it in `context` and returns the result.
+ * `vm.runInContext()` compiles `code` to run in `context` as if it were loaded from `filename`, then runs it and returns the result. 
  * 
- * A (V8) context comprises a global object, together with a set of built-in objects and functions. Running code does not have access to local scope and the global object held within `context` is used as the global object for `code`. The `filename` is optional, and is only used in stack traces.
+ * A (V8) context comprises a global object, together with a set of built-in objects and functions. Running code does not have access to local scope and the global object held within `context` will be used as the global object for `code`.
  * 
  * In case of syntax error in `code`, `vm.runInContext()` emits the syntax error to stderr and throws an exception.
  * 
@@ -101,6 +100,6 @@
  * This script can be run later many times using the other `vm` methods. In case of syntax error in `code`, `createScript` prints the syntax error to stderr and throws an exception.
  * 
  *
- * `createScript()` compiles `code` as if it were loaded from `filename`, but does not run it. Instead, it returns a `vm.Script` object representing this compiled code. The returned script is not bound to any global object. It is bound before each run, just for that run. The `filename` is optional, and is only used in stack traces.
+ * `createScript()` compiles `code` as if it were loaded from `filename`, but does not run it. Instead, it returns a `vm.Script` object representing this compiled code. The returned script is not bound to any global object. It is bound before each run, just for that run.
  *
 **/ 
