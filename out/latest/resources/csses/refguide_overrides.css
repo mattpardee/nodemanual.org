@@ -1,8 +1,8 @@
 /*
   Generic "affects everything" stuff
 */
-html, body {
-    min-width: 1050px;
+body {
+    min-width: 1010px;
 }
 body {
     background: #ffffff url(../images/main-bg.png) 0 0 repeat;
@@ -17,6 +17,10 @@ li {
     color: black;
 }
 
+a, a:hover {
+    color : #4397cd;    
+}
+
 code {
 /*    background-color: #fce68c;*/
     
@@ -26,7 +30,7 @@ code {
     padding: 0;
     
     */
-    font-size: 11px;
+    font-size: 12px;
     line-height: 16px;
     font-family: 'Ubuntu Mono',Monaco,Consolas,monospace !important;
     background-color: #F9F9F9;
@@ -38,9 +42,22 @@ code {
 }
 
 pre.prettyprint {
-    margin-top: 18px;
+    margin-top: 10px;
     border-radius: none;
     box-shadow: none;
+    background : white;
+    /*background : #f5f5f5;
+    border: 0;*/
+    
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    
+    padding: 5px;
+}
+
+.method pre.prettyprint, .event pre.prettyprint, .property pre.prettyprint  {
+    background : white;
 }
 
 pre code {
@@ -57,7 +74,12 @@ h2 {
     font-size: 26px;
 }
 p {
-    font-size: 12px;
+    font-size: 13px;
+    line-height : 22px;
+    margin-bottom : 13px;
+}
+.alert-message{
+    margin-bottom : 13px;
 }
 /* 
   Header and shoulders
@@ -66,6 +88,7 @@ p {
 #topSection {
     margin: 0 auto;
     width: 1000px;
+    position : relative;
 }
 
 #topSection .dropdown {
@@ -183,7 +206,7 @@ ul.menu {
 
 .members {
 /*    width: 800px;  */
-    width: 700px;
+    /*width: 700px;*/
 /*    margin: 0 10px;*/
     
   height: 42px;
@@ -203,6 +226,18 @@ ul.menu {
   -webkit-transition-property: -webkit-box-shadow, height;
   -webkit-transition-timing-function: ease-out, ease-out;*/
 /*  width: 100%;*/
+  /*transition-duration: 300ms;
+  transition-property: box-shadow;
+  transition-timing-function: ease-out;
+  -moz-transition-duration: 300ms, 300ms;
+  -moz-transition-property: -moz-box-shadow, height;
+  -moz-transition-timing-function: ease-out, ease-out;
+  -o-transition-duration: 300ms;
+  -o-transition-property: -o-box-shadow;
+  -o-transition-timing-function: ease-out;*/
+  -webkit-transition-duration: 400ms, 200ms;
+  -webkit-transition-property: -webkit-box-shadow, background;
+  -webkit-transition-timing-function: ease-out, ease-out;
   z-index: 100;
   
   overflow: visible !important;
@@ -218,17 +253,19 @@ ul.menu {
 /*    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35); */
-    padding-bottom: 13px;
-    background: #FFF;
-    box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
-  -moz-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
-  -o-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
-  -webkit-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
+    padding-bottom: 10px;
 /*    height: 31px;*/
-    background: #FFF;
     top: 40px;
     position: fixed;
 }
+.shadow.members{
+    background: #FFF;
+    box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
+    -moz-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
+    -o-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
+    -webkit-box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
+}
+
 .membersContent {
   
 /*  border-bottom: 0.1em solid #FFF;*/
@@ -249,13 +286,23 @@ ul.menu {
   -webkit-transition-property: border-color, line-height;
   -webkit-transition-duration: 125ms, 250ms;
   -webkit-transition-timing-function: ease-out, ease-out;*/
-  z-index: 103;
-  width: 700px;
   
-  top: 0;
+  /*transition-duration: 125ms;
+  transition-property: top;
+  transition-timing-function: ease-out;
+  
+  top : 11px;*/
+  z-index: 103;
+  /*width: 700px;*/
 }
 .srolledHeader .membersContent {
     line-height: 3;
+}
+.srolled .membersContent {
+    /*top : 0;*/
+    width : 695px;
+    padding-left : 305px;
+    margin : 0 auto 0 auto;
 }
 .membersBackground {
 /*    background-color: white;
@@ -272,7 +319,7 @@ ul.menu {
 
     background-color: transparent;
     height: 42px;
-    width: 700px;
+    /*width: 700px;*/
     position: absolute;
 }
 .srolled .membersBackground {
@@ -325,6 +372,9 @@ ul.menu {
 
 .backToMDN a, .editInC9 a {
     color: #657383;
+    font-weight: normal;
+    position : relative;
+    top : -2px;
 }
 
 .tabs {
@@ -347,6 +397,7 @@ ul.menu {
 .members .tabs .dropdown-toggle:after {
     margin-right: 0;
     margin-left: 6px;
+    font-weight : normal;
 }
 
 .members .tabs ul li {
@@ -357,6 +408,7 @@ ul.menu {
     margin-left: 0 !important;
 }
 .menu-dropdown, .dropdown-menu {
+    min-width : 105px;
     max-height: 350px;
     overflow: auto;
 }
@@ -401,9 +453,9 @@ ul.menu {
     float: right;
 }
 .topbar .dropdown-menu a, .dropdown-menu a {
-    font-size: 12px;
+    font-size: 11px;
 /*    padding: 2px 12px;*/
-    line-height: 16px;
+    line-height: 14px;
 }
 .tabs .active > a, .tabs .active > a:hover {
     color: #000000;
@@ -412,8 +464,11 @@ ul.menu {
 }
 .tabs .menu-dropdown, .tabs .dropdown-menu {
     border-radius: 0 0 6px 6px;
-    top: 32px;
+    top: 27px;
     right: 0px;
+}
+.srolled .tabs .menu-dropdown, .srolled .tabs .dropdown-menu {
+    top: 28px;
 }
 .dropdown-toggle {
     color: #8a8a8a;
@@ -436,8 +491,9 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
   Center content (the "real stuff")
 */
 
-.container {
-    
+.content .container {
+    background: url(../images/sidebar-border.png) repeat-y 95px 0;
+    padding-bottom : 50px;
 }
 .content {
     background: url(../images/content-top-bg.png) repeat-x 0 0;
@@ -449,7 +505,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
     margin-right: auto;
 }
 .container .content .span11 {
-    padding-top: 15px;
+    padding-top: 10px;
     float: right;
 }
 .content .span5 {
@@ -458,7 +514,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 }
 #sidebar {
     margin-top: 15px;
-    background: url(../images/sidebar-border.png) repeat-y right 0;
+    /*background: url(../images/sidebar-border.png) repeat-y right 0;*/
     margin-left: 12px;
 /*    width: 280px;*/
 /*    overflow: auto;*/
@@ -473,7 +529,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 #content article.article {
 /*    border-bottom: 1px solid #e9e9e9;*/
     border-top: 1px solid #e9e9e9;
-    padding: 16px 10px 10px;
+    padding: 16px 10px 2px;
 }
 div#content article:last-child {
     border-bottom: 1px solid #e9e9e9;
@@ -481,6 +537,7 @@ div#content article:last-child {
 }
 #content article.article.methodToggleOpen {
     background: url(../images/method-bg.png) repeat 0 0;
+    margin : 0 0 10px 0;
 }
 #content article:first-child {
     border:none;
@@ -490,36 +547,52 @@ div#content article:last-child {
     Edit in Cloud 9, sucka
 */
 
-div#content .snippet pre.prettyprint {
+.snippet pre.prettyprint {
     margin-bottom: 0;
 }
 
-div#content .snippet .toolbar {
-    border-radius: 0 0 4px 4px;
+.snippet .toolbar {
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    
     text-align: right;
     padding: 3px 10px;
+    margin-top : -1px;
 }
 
-div#content .snippet .filename, div#content .snippet .toolbar {
+.snippet .filename, .snippet .toolbar {
     font-family: Ubuntu, sans-serif;
     font-size: 12px;
     color: #EEE;
 }
 
-div#content .snippet .filename {
-    font-style:italic;
-    padding-bottom: 5px;
+.snippet .filename {
+    padding: 0 5px 2px 5px;
+    font-size: 10px;
+    background: rgba(230,230,230,0.5);
+    padding: 0 5px 2px 5px;
+    border-radius: 0 6px 0 6px;
+    margin : 1px;
+    position : absolute;
+    right : 0;
+    top : 0;
 }
 
-div#content .snippet .toolbar {
-    background-color: #777;
+.snippet .filename .pln, .snippet .filename .pun{
+    color : #666;
 }
 
-div#content div.snippet {
+.snippet .toolbar {
+    background-color: rgba(30,30,30,0.5);
+}
+
+div.snippet {
     margin-bottom: 18px;
+    position : relative;
 }
 
-div#content div.snippet a, article div.toolbar a {
+div.snippet a, div.toolbar a {
     color: #EEE;
 }
 
@@ -632,7 +705,7 @@ li.signature {
 }
 .memberContent .description {
     position:relative;
-    top: -13px;
+    /*top: -13px;*/
     display: none;
 }
 .snip-container .actions .toggle-plaintext label {
@@ -648,11 +721,30 @@ li.signature {
 }
 .description h4 {
     font-size: 18px;
-    margin: 15px 0 5px;
+    margin: 20px 0 10px;
+    line-height : 18px;
 }
-.bordered-table {
+.bordered-table{
     margin-bottom: 0;
     background-color: white;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.bordered-table thead tr:first-child th:first-child, .bordered-table tbody tr:first-child td:first-child{
+    -webkit-border-radius: 6px 0 0 0;
+    -moz-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+.bordered-table tbody tr:last-child td:last-child{
+    -webkit-border-radius: 0 0 6px 0;
+    -moz-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+.bordered-table thead tr:first-child th:last-child, .bordered-table tbody tr:first-child td:last-child{
+    -webkit-border-radius: 0 6px 0 0;
+    -moz-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
 }
 .actions .run-in-c9 img {
     padding-top: 3px;
@@ -660,11 +752,21 @@ li.signature {
 table td, .bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
     border-top: none;
 }
-.zebra-striped tbody tr:nth-child(2n+1) td, .zebra-striped tbody tr:nth-child(2n+1) th {
-    background-color: #f3f3f3;
+.zebra-striped tbody tr:nth-child(odd) td, .zebra-striped tbody tr:nth-child(odd) th {
+    background-color: transparent;
+}
+.zebra-striped tbody tr:nth-child(even) td, .zebra-striped tbody tr:nth-child(even) th {
+    background-color: #fbfbfb;
 }
 .zebra-striped tbody tr:hover td, .zebra-striped tbody tr:hover th {
-    background-color: transparent;
+}
+
+.argument-list{
+    margin-bottom : 13px;
+}
+
+table td{
+    padding: 8px 10px 8px 10px;
 }
 /*
   Everyday I'm togglin'
@@ -676,6 +778,10 @@ table td, .bordered-table th + th, .bordered-table td + td, .bordered-table th +
 }
 #content h3.methodToggle {
     margin: 0;
+}
+#content h3.sectionHeader {
+    margin: 10px 0 17px 0;
+    line-height : 24px;
 }
 .methodToggle a {
     color: #fff;
@@ -704,7 +810,7 @@ h3.methodToggle.active {
     top:                  -18px;
     height               : 13px; 
     width                : 8px; 
-    background-position  : 0px -58px; 
+    background-position  : 0px -59px; 
 } 
 
 .hidden {
@@ -756,7 +862,7 @@ h3.methodToggle.active {
     margin-left: auto;
     margin-right: auto;
     min-height: 60px;
-    background:  url(../images/arrow-footer.png) no-repeat 257px 0;
+    background:  url(../images/arrow-footer.png) no-repeat 261px 0;
 }
 #footer .footer-text {
     display: block;
@@ -832,4 +938,10 @@ h3.methodToggle.active {
   background-image: linear-gradient(top, #292929, #191919);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#191919', GradientType=0);
   color: #ffffff;
+}
+
+.alert-message.block-message {
+    background: #fefaca;
+    border-color : #fefaca;
+    padding : 8px 14px 8px 14px;
 }
