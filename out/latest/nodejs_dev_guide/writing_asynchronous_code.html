@@ -1,0 +1,61 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Node.js Manual | Writing Asynchronous Code</title><meta name="generator" content="c9-doc-build"><meta name="description" content="A collection of Node.js tutorials"><meta name="author" content="Garen J. Torikian"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="../resources/csses/bootstrap.css"><link rel="stylesheet" href="../resources/csses/prettify.css"><link rel="stylesheet" href="../resources/csses/refguide_overrides.css"><link rel="stylesheet" href="../resources/csses/devguide_overrides.css"><script src="../resources/javascripts/jquery.js"></script><script src="../resources/javascripts/clicker.js"></script><script src="../resources/javascripts/jquery.collapse.js"></script><script src="../resources/javascripts/jquery.cookie.js"></script><script src="../resources/javascripts/bootstrap-dropdown.js"></script><body onload="styleCode()"><div class="topbar"><div class="fill"><div id="topSection" class="container"><ul class="nav"><li data-dropdown="dropdown" class="dropdown"><a href="/" class="dropdown-toggle brand"><!--div(class="arrow-down")--></a><ul class="dropdown-menu"><li><a href="http://www.nodebits.org/">Nodebits</a></li></ul></li></ul><ul class="nav"><li id="node_js_ref"><a href="./../nodejs_ref_guide/index.html">Node.js Reference</a></li><li id="nodejs_dev_guide"><a href="./../nodejs_dev_guide/index.html">Node.js Manual</a></li><li id="js_doc"><a href="./../js_doc/index.html">Javascript Reference</a></li></ul><form id="searchbox" action="" class="pull-right"><input name="query" type="text" placeholder="Search Documentation" title="Search across all the documentation types" class="span3"></form></div></div></div><header id="overview" class="jumbotron masthead"><div class="inner"><div class="container"><h1>Node.js Manual</h1><p class="lead"></p></div></div></header><div class="container"><div class="content"><div class="row container"><div class="span5 offset4 sidebarContainer"><div id="sidebar"><div id="well"><h2>Node.js Manual</h2><h3>Basic Overview</h3><ul class="menu"><li><div class="menu-item"><a href="writing_asynchronous_code.html" class="menuLink">Writing Asynchronous Code   </a></div></li><li><div class="menu-item"><a href="working_with_callbacks.html" class="menuLink">Working with Callbacks</a></div></li><li><div class="menu-item"><a href="understanding_event_emitters.html" class="menuLink">Understanding Event Emitters</a></div></li><li><div class="menu-item"><span class="menuHeader"><a href="npm.html" class="menuLink">The Node Package Manager</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="core_libs_vs_user_libs.html" class="menuLink">Core Libraries versus User-Submitted Modules </a></div></li></ul></li></ul><h3>Tutorials</h3><ul class="menu"><li><div class="menu-item"><a href="implementing_logging.html" class="menuLink">Implementing Logging Messages</a></div></li><li><div class="menu-item"><span class="menuHeader"><a href="using_closures.html" class="menuLink">Using Closures</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="closures_for_events_and_callbacks.html" class="menuLink">Closures for Events and Callbacks</a></div></li></ul></li><li><div class="menu-item"><a href="reading_and_writing_files.html" class="menuLink">Reading and Writing to Files</a></div></li><li><div class="menu-item"><span class="menuHeader"><a href="http_servers_and_clients.html" class="menuLink">HTTP Servers and Clients</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="creating_an_http_server.html" class="menuLink">Creating an HTTP Server</a></div></li><li><div class="menu-item"><a href="serving_files.html" class="menuLink">Serving Files   </a></div></li><li><div class="menu-item"><a href="creating_http_requests.html" class="menuLink">Creating HTTP GET and POST Requests                                 </a></div></li><li><div class="menu-item"><a href="deciphering_query_strings.html" class="menuLink">Deciphering Query Strings</a></div></li></ul></li><li><div class="menu-item"><span class="menuHeader"><a href="buffers_and_streams.html" class="menuLink">Buffers and Streams</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="manipulating_buffers.html" class="menuLink">Manipulating Buffers   </a></div></li><li><div class="menu-item"><a href="understanding_streams.html" class="menuLink">Understanding Streams  </a></div></li></ul></li></ul><h3>Additional Reference</h3><ul class="menu"><li><div class="menu-item"><a href="ECMA5_in_nodejs.html" class="menuLink">Using ECMA5 Javascript in Node.js</a></div></li></ul></div></div></div><div class="span11"><span class="editInC9"><a href="#" title="Edit in Cloud9 IDE">[edit]</a></span><div id="content" class="dev_guide"><div class='title'>
+
+<h1 class='pageTitle'>Writing Asynchronous Code</h1>
+<span class="cite">by <a href="https://twitter.com/#!/creationix">Tim Caswell</a></span>
+
+</div>
+
+
+
+<p>Node.js is, as you might already know, an asynchronous framework.  One of the unique aspects of programming like this is the ability to decide between which function will run in serial (synchronous and blocking) and which will run in parallel (asynchronous and non-blocking). 
+
+</p>
+<p>Usually in an application, you&apos;ll have steps that can&apos;t run until the result from the previous step is known. In normal sequential programming, this is easy because every statement waits until the previous one finishes.
+
+</p>
+<p>This is the case in Node.js too, except for functions that would otherwise perform blocking I/O.  This includes things like scanning a directory, opening a file, reading from a file, querying a database, e.t.c. As a general rule, you should almost always try to work asynchronously.
+
+</p>
+<p>Here&apos;s a comparison of the two styles performing a very basic operation: reading a file.
+
+</p>
+<h4>The Blocking Way</h4>
+<p>In a synchronous programming language where I/O is blocking, this task is very straightforward and can be done in Node.js as long as you understand the consequences.  Node exposes <code>Sync</code> versions of many of it&apos;s I/O functions for the special cases where you don&apos;t care about performance and would rather have the much easier coding style (like server startup).
+
+</p>
+<p>For this example, we&apos;ll need a method from Node&apos;s <a href="../nodejs_ref_guide/fs.html"><code>fs</code></a> package. We&apos;ll be using <code>fs.readFileSync()</code> to read a file and print its contents to the console:
+
+</p>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/writing_asynchronous_code/fs.readFile.sync.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+<p>For reading a single file, this is fine. But imagine running a server that&apos;s reading several thousand files, or is handling many requests that require database access. Your program waits while waiting for the blocking <code>fs</code> operations to finish.  Since CPUs are very fast compared to other hardware (like hard drives), the CPU is wasted when it could be busy working on requests for another client if this was part of a hot running event loop.
+
+</p>
+<p>Obviously this is not optimal: nothing is done in parallel and many CPU cycles are wasted.
+
+</p>
+<h4>The Non-Blocking Way</h4>
+<p>An advantage to synchronous coding style is that it&apos;s very easy to read and write. But a large disadvantage is that it&apos;s very inefficient.  That&apos;s why most programming languages need threads to achieve any level of concurrency. Thankfully for us, Node.js is able to do quite a bit on a single threaded platform.
+
+</p>
+<p>Here&apos;s the same read file operation handled asynchronously:
+
+</p>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/writing_asynchronous_code/fs.readFile.async.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+<p>Good golly, it&apos;s nearly twice as many lines! In the end, however, this is a better option. <code>fs.readFile()</code> takes a filename and &quot;returns&quot; the contents of the file.  It doesn&apos;t actually return it, but passes it to the passed in callback function. You can learn more about callback functions in <a href="working_with_callbacks.html">this article</a>.
+
+</p>
+<p>While it <em>is</em> a tradeoff in code complexity versus performance, with a little thinking and some good libraries, we can make asynchronous programming manageable enough to be understandable, while taking full advantage of the parallel nature of non-blocking I/O in Node.js.</p></div><div id="disqus_thread"></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a><a href="http://nodejitsu.com/" title="nodejitsu" target="_blank" class="nodejitsu-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
+<script defer src="./../resources/javascripts/prettify.js"></script>
+<script defer src="./../resources/javascripts/prettify-extension.js"></script>
+<script defer src="./../resources/javascripts/script.js"></script>
+<script defer src="./../resources/javascripts/disqus-ext.js"></script>
+<!-- end scripts--><!--[if lt IE 7]><script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script><script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+</script><![endif]--></body></html>

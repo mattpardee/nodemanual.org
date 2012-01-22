@@ -8,7 +8,7 @@
  *
  * This object is also an [[eventemitter `EventEmitter`]].
  *
- * For more information, read [this article on how to create HTTP servers](../nodejs_dev_guide/HTTP-servers.html).
+ * For more information, read [this article on how to create HTTP servers](../nodejs_dev_guide/creating_an_http_server.html).
  *
 **/ 
 

@@ -35,7 +35,7 @@ var latest = "0.6.7";
 
         makeManualDocs(versions);
         makeJSRefDocs(versions);
-        makeNodeJSRefDocs(versions);        
+       makeNodeJSRefDocs(versions);        
     });
 
 function makeManualDocs(versions)

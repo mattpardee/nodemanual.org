@@ -19,7 +19,6 @@
  * <Note>All `algorithm` parameter implementations below are dependent on the OpenSSL version installed on the platform. Some common examples of these algoritihms are `'sha1'`, `'md5'`, `'sha256'`, and `'sha512'`. On recent Node.js releases, `openssl list-message-digest-algorithms` displays the available digest algorithms. </Note>
  * 
  *
- * For more information, you may want to read [this chapter on using the `crypto` module](../nodejs_dev_guide/cryptography.html).
  *
  * #### Example
  * 

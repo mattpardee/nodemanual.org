@@ -3,7 +3,7 @@
   *
   * This class is a representation of the [OpenSSL implementation of diffie-Hellman](http://www.openssl.org/docs/crypto/dh.html#). It can be created as a returned value from [[crypto.createDiffieHellman `crypto.createDiffieHellman()`]].
   *
-  * For more information, you may want to read [this chapter on using the `crypto` module](../nodejs_dev_guide/cryptography.html).
+  *
   *
  * #### Example
  * 

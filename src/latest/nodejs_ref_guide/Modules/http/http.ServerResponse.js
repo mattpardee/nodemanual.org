@@ -16,7 +16,7 @@
 /**
  * http.ServerResponse.writeContinue() -> Void
  *
- * Sends an `HTTP/1.1 100 Continue` message to the client, indicating that the request body should be sent. For more information, see the [checkContinue](#event_checkContinue_) event on `Server`.
+ * Sends an `HTTP/1.1 100 Continue` message to the client, indicating that the request body should be sent. For more information, see the [checkContinue](http.Server.html#http.Server.event.checkContinue) event on `Server`.
  * 
 **/
 

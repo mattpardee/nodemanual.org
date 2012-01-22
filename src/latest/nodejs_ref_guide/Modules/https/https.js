@@ -3,7 +3,7 @@
  * 
  * HTTPS is the HTTP protocol over TLS/SSL. In Node.js, this is implemented as a separate module. To use this module, include `require('https')` in your code.
  *
- * Creating HTTPS servers is somewhat complicated and requires generating certificates. For more information, read [this article on how to create HTTPS servers](../nodejs_dev_guide/how-to-create-a-HTTPS-server.html).
+ * Creating HTTPS servers is somewhat complicated and requires generating certificates.
  *
  *  #### Examples
  * 
@@ -61,8 +61,8 @@
  * - path: the request path. Defaults to `'/'`. This should include a query string (if any) For example, `'/index.html?page=12'`
  * - headers: an object containing request headers
  * - auth: used for basic authentication. For example, `'user:password'` computes an Authorization header.
- * - agent: this controls [Agent](#http.Agent) behavior. When an Agent is used, the request defaults to `Connection: keep-alive`. The possible values are:
- *  - `undefined`: uses [global Agent](#http.globalAgent) for this host
+ * - agent: this controls [[https.Agent `https.Agent`]] behavior. When an Agent is used, the request defaults to `Connection: keep-alive`. The possible values are:
+ *  - `undefined`: uses [[http.globalAgent globalAgent]] for this host
  *    and port (default).
  *  - `Agent` object: this explicitlys use the passed in `Agent`
  *  - `false`: this opts out of connection pooling with an Agent, and defaults the request to `Connection: close`.

@@ -490,36 +490,36 @@ div#content article:last-child {
     Edit in Cloud 9, sucka
 */
 
-article .snippet pre.prettyprint {
+div#content .snippet pre.prettyprint {
     margin-bottom: 0;
 }
 
-article .snippet .toolbar {
+div#content .snippet .toolbar {
     border-radius: 0 0 4px 4px;
     text-align: right;
     padding: 3px 10px;
 }
 
-article .snippet .filename, article .snippet .toolbar {
+div#content .snippet .filename, div#content .snippet .toolbar {
     font-family: Ubuntu, sans-serif;
     font-size: 12px;
     color: #EEE;
 }
 
-article .snippet .filename {
+div#content .snippet .filename {
     font-style:italic;
     padding-bottom: 5px;
 }
 
-article .snippet .toolbar {
+div#content .snippet .toolbar {
     background-color: #777;
 }
 
-article div.snippet {
+div#content div.snippet {
     margin-bottom: 18px;
 }
 
-article div.snippet a, article div.toolbar a {
+div#content div.snippet a, article div.toolbar a {
     color: #EEE;
 }
 
