@@ -1,27 +1,27 @@
-# The Node Package Manager
+# The Node Packagae Manager
 
-The npm, short for Node Package Manager, is two things: first and foremost, it is an online repository for the publishing of open-source Node.js modules; second, it is a command-line utility for interacting with the online repository that aids in package installation, version control, and dependency management.  Most Node.js libraries and applications are published on npm, and there's already a plethora of third-party developed libraries to help your Node.js workflow move more easily. You can be search for these applications on [the npm registry](http://search.npmjs.org). 
+"Modules" in Node.js are similar to libs in C or JAR files in Java. A module can be a single file (or a collection of files) that you include in your code for additional methods and functionality. Node.js is partially compatible with [the CommonJS securable module system](http://wiki.commonjs.org/wiki/Modules/1.1), so there's an entire set of specifications on how to create new modules. We won't get into that here.
 
-Before working with the npm, you'll need to install the command line tool. You can follow the instructions on [the official npm website](http://npmjs.org/) for more information. 
+Instead, here's how you can include a module into your project: 
 
-#### Local Install
+	var fooModule = require('foo');
+	
+	fooModule.someNewFunction();
+	
+That's it! You call the global `require()` function, and assign it to a variable. That variable then contains the exported members of the `foo` module. This paradigm is essential to developing in Node.js, since all the core libraries are considered modules, and must be assigned in this way.
 
-Once you have a third-party package you want to install, it can be installed with a single line command. Let's say you're hard at work one day, you come across a problem, and you decide that it's time to use that cool library you keep hearing about. npm is very simple to use: you only have to run `npm install cool_module` on the command line, and the specified module will be installed in the current directory under `./node_modules/`.  Once installed to your `node_modules` folder, you'll be able to [use `require()` on them](what-is-require.html), just as if they were built-ins to Node.js.
+You can also specify a certain directory to look for a module:
 
-Local installs allow you to import Node.js modules specific to the project you're working on. If you move to another project, and need the same library, you'll have to call `npm` on the package once more.
+	var farAway = require(../../../bar);
 
-#### Global Install
+Technically, you don't even need to specify the `..` directory change. Node.js always looks in the curent directory for a module. If it doesn't find it, it walks up the directory, checking each parent, looking for either a file matching your module's name (`bar.js`), or, a folder called `node_modules` that contains your file. If it can't find a file matching your module name by the time it hits the root directory (`'/'`), Node.js throws an exception.
 
-There's also the concept of a "global" install. Let's say we want to globally install the [Coffescript Node.js package](https://github.com/jashkenas/coffee-script). The npm command for a global install is simple: `npm install coffee-script -g`. This will install the program and put a symlink to it into your `/usr/local/bin/` directory (for Unix, anyway). Now, any project you create can depend on the coffee-script module, without the need for multiple local installs.
+Now, the fun part: there's an entire ecosystem of passionate third-party and open source developers creating their own modules for Node.js. The Node Package Manager, or `npm`, is designed to be both a source of finding modules to install, and a way to manage module dependencies within your own projects.
 
-Some modules also depend on the global install to add a command-line tool. In this case, running `coffee` allows you to use the coffee-script command line interface.
+Right after installing Node.js, you'll almost certainly want to install the [`npm`](http://npmjs.org/) command-line tool for managing packages. Once you've done that, you can start browsing the [npm registry](http://search.npmjs.org/) to find and install new packages.
 
-#### Managing Dependencies
+#### Local and global installs 
 
-Another important use for npm is dependency management.  When you have a Node.js project with a [package.json](what-is-the-file-package-json.html) file, you can run `npm install` from the project root; npm then installs all the dependencies listed in the package.json. This makes installing a Node.js project from a git repo much easier! For example, `vows`, one of Node's testing frameworks, can be installed from git, and its single dependency, `eyes`, can be automatically handled:
+There's a distinction worth pointing out when you first begin installing packages. By default, `npm` installs any modules you need in the current directory it's called at. Thus, if you're working on a project call `theLatestAndGreatest`, and you want to install [express](http://expressjs.com/), the package is only relative to your project. If you decide to work on a new project in a different directory called `thisIsIt`, you'll need to reinstall express again via npm.
 
-    git clone https://github.com/cloudhead/vows.git
-    cd vows
-    npm install
-
-After running those commands, you will see a `node_modules` folder containing all of the project dependencies specified in the package.json.
+To work around this, you could try installing Node.js packages globally. You can do this by specifying the `-g` switch on the command prompt. This installs the module in a special location that varies depending on your operating system. Any project you start can then safely `require()` modules.

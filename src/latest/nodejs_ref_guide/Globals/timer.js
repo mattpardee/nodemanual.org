@@ -7,7 +7,6 @@
  * 
  * The difference between ``setInterval()` and `setTimeout()` is simple: `setTimeout()` executes a function after a certain period of time, while `setInterval()` executes a function, then after a set period of time, executes the function again, then waits again, and executes again. This continues until `clearInterval()` is called.
  *
- * For more information, see [this article on how to use the timer functions correctly](../nodejs_dev_guide/what-are-the-built-in-timer-functions.html).
  *
  * #### Example: The Wrong Way to use Timers
  *

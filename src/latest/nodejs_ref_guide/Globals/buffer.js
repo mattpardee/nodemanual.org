@@ -1,6 +1,6 @@
 
 /** section: buffer_Module
- * class buffer
+ * class Buffer
  * 
  * A `Buffer` is similar to an array of integers, but corresponds to a raw memory allocation outside the V8 heap.  While pure Javascript is Unicode friendly, it is not nice to binary data.  When dealing with TCP streams or the file system, it's necessary to handle octet streams. Node.js has several strategies for manipulating, creating, and consuming these octet streams (and raw data) within the `Buffer` object. 
  * 
@@ -25,31 +25,31 @@
  * In most cases, the default of `'utf8'` is used.
  *
  *
- * For more information, see [this article on understanding buffers](../nodejs_dev_guide/how-to-use-buffers.html).
+ * For more information, see [this article on manipulating buffers](../nodejs_dev_guide/manipulating_buffers.html).
 **/
 
 /** 
- * new buffer(array)
- * new buffer(size)
- * new buffer(str, encoding='utf8')
+ * new Buffer(array)
+ * new Buffer(size)
+ * new Buffer(str, encoding='utf8')
  * 
  * Allocates a new buffer object.
  *
  * You can use either:
  *
- * - using an `array` of octects
+ * - an `array` of octects
  * - allocating with a specific `size`
  * - from a `string` with the specified `encoding`
  *  
  * #### Example
  *
- *     var bBuffer = new Buffer("This is a buffer.", "utf8");
+ *     var bBuffer = new Buffer("This is a Buffer.", "utf8");
  *
 **/ 
 
 
 /**
- * buffer.byteLength(string, encoding='utf8') -> Number
+ * Buffer.byteLength(string, encoding='utf8') -> Number
  * - string (String): The string to check
  * - encoding (String): The encoding that the string is in
  *
@@ -65,7 +65,7 @@
 **/ 
 
 /**
- * buffer.copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length) -> Void
+ * Buffer.copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length) -> Void
  * - targetBuffer (Buffer): The buffer to copy into
  * - targetStart (Number): The offset to start at for the buffer you're copying into
  * - sourceStart (Number): The offset to start at for the buffer you're copying from
@@ -81,7 +81,7 @@
 
 
 /**
- * buffer.fill(value, offset=0, end=buffer.length) -> Void
+ * Buffer.fill(value, offset=0, end=buffer.length) -> Void
  * - value (Object): The value to use to fill the buffer
  * - offset (Number): The position in the buffer to start filling at
  * - end (Number): The position in the buffer to stop filling at
@@ -96,7 +96,7 @@
 
 
 /**
- * buffer.isBuffer(obj) -> Boolean
+ * Buffer.isBuffer(obj) -> Boolean
  * - obj (Object): The object to check
  * 
  * Returns `true` if `obj` is a `Buffer`.
@@ -107,7 +107,7 @@
 
 
 /**
- * buffer.readDoubleBE(offset, noAssert=false) -> String
+ * Buffer.readDoubleBE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -121,7 +121,7 @@
 
 
 /**
- * buffer.readDoubleLE(offset, noAssert=false) -> String
+ * Buffer.readDoubleLE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -136,7 +136,7 @@
 
 
 /**
- * buffer.readFloatBE(offset, noAssert=false) -> String
+ * Buffer.readFloatBE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -151,7 +151,7 @@
 
 
 /**
- * buffer.readFloatLE(offset, noAssert=false) -> String
+ * Buffer.readFloatLE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -166,7 +166,7 @@
 
 
 /**
- * buffer.readInt8(offset, noAssert=false) -> String
+ * Buffer.readInt8(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  *
@@ -179,7 +179,7 @@
 
 
 /**
- * buffer.readInt16BE(offset, noAssert=false) -> String
+ * Buffer.readInt16BE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  *
@@ -193,7 +193,7 @@
 
 
 /**
- * buffer.readInt16LE(offset, noAssert=false) -> String
+ * Buffer.readInt16LE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -207,7 +207,7 @@
 
 
 /**
- * buffer.readInt32BE(offset, noAssert=false) -> String
+ * Buffer.readInt32BE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -220,7 +220,7 @@
 
 
 /**
- * buffer.readInt32LE(offset, noAssert=false) -> String
+ * Buffer.readInt32LE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -234,7 +234,7 @@
 
 
 /**
- * buffer.readUInt8(offset, noAssert=false) -> String
+ * Buffer.readUInt8(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -249,7 +249,7 @@
 
 
 /**
- * buffer.readUInt16BE(offset, noAssert=false) -> String
+ * Buffer.readUInt16BE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -263,7 +263,7 @@
 
 
 /**
- * buffer.readUInt16LE(offset, noAssert=false) -> String
+ * Buffer.readUInt16LE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -277,7 +277,7 @@
 
 
 /**
- * buffer.readUInt32BE(offset, noAssert=false) -> String
+ * Buffer.readUInt32BE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -291,7 +291,7 @@
 
 
 /**
- * buffer.readUInt32LE(offset, noAssert=false) -> String
+ * Buffer.readUInt32LE(offset, noAssert=false) -> String
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
  * 
@@ -306,7 +306,7 @@
 
 
 /**
- * buffer.slice(start, end=buffer.length) -> Buffer
+ * Buffer.slice(start, end=buffer.length) -> Buffer
  * - start (Number): The offset in the buffer to start from
  * - end (Number): The position of the last byte to slice. Defaults to the length of the buffer
  * 
@@ -324,7 +324,7 @@
 
 
 /** related to: buffer.write
- * buffer.toString(encoding="utf8", start=0, end=buffer.length) -> String
+ * Buffer.toString(encoding="utf8", start=0, end=buffer.length) -> String
  * - encoding (String): The encoding to use; defaults to `utf8`
  * - start (Number): The starting byte offset; defaults to `0`
  * - end (Number): The number of bytes to write; defaults to the length of the buffer
@@ -336,7 +336,7 @@
 
 
 /**
- * buffer.write(string, offset=0, length = startPos, encoding="utf8") -> Number
+ * Buffer.write(string, offset=0, length = startPos, encoding="utf8") -> Number
  * - string (String): The string to write
  * - offset (Number): The starting byte offset
  * - length (Number): The number of bytes to write; defaults to the length of the buffer minus any offset (`buffer.length` - `buffer.offset`)
@@ -358,7 +358,7 @@
 
 
 /**
- * buffer.writeDoubleBE(value, offset, noAssert=false) -> Void
+ * Buffer.writeDoubleBE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -373,7 +373,7 @@
 
 
 /**
- * buffer.writeDoubleLE(value, offset, noAssert=false) -> Void
+ * Buffer.writeDoubleLE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -388,7 +388,7 @@
 
 
 /**
- * buffer.writeFloatBE(value, offset, noAssert=false) -> Void
+ * Buffer.writeFloatBE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -403,7 +403,7 @@
 
 
 /**
- * buffer.writeFloatLE(value, offset, noAssert=false) -> Void
+ * Buffer.writeFloatLE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -418,7 +418,7 @@
 
 
 /**
- * buffer.writeInt8(value, offset, noAssert=false) -> Void
+ * Buffer.writeInt8(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -433,7 +433,7 @@
 
 
 /**
- * buffer.writeInt16BE(value, offset, noAssert=false) -> Void
+ * Buffer.writeInt16BE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -447,7 +447,7 @@
 
 
 /**
- * buffer.writeInt16LE(value, offset, noAssert=alse) -> Void
+ * Buffer.writeInt16LE(value, offset, noAssert=alse) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -461,7 +461,7 @@
 
 
 /**
- * buffer.writeInt32BE(value, offset, noAssert=false) -> Void
+ * Buffer.writeInt32BE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -475,7 +475,7 @@
 
 
 /**
- * buffer.writeInt32LE(value, offset, noAssert=false) -> Void
+ * Buffer.writeInt32LE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -489,7 +489,7 @@
 
 
 /**
- * buffer.writeUInt8(value, offset, noAssert=false) -> Void
+ * Buffer.writeUInt8(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -504,7 +504,7 @@
 
 
 /**
- * buffer.writeUInt16BE(value, offset, noAssert=false) -> Void
+ * Buffer.writeUInt16BE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -519,7 +519,7 @@
 
 
 /**
- * buffer.writeUInt16LE(value, offset, noAssert=false) -> Void
+ * Buffer.writeUInt16LE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean):  If `true`, skips the validation of the offset 
@@ -535,7 +535,7 @@
 
 
 /**
- * buffer.writeUInt32BE(value, offset, noAssert=false) -> Void
+ * Buffer.writeUInt32BE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean): If `true`, skips the validation of the offset. This means that `offset` may be beyond the end of the buffer, and is typically not recommended.
@@ -551,7 +551,7 @@
 
 
 /**
- * buffer.writeUInt32LE(value, offset, noAssert=false) -> Void
+ * Buffer.writeUInt32LE(value, offset, noAssert=false) -> Void
  * - value (String): The content to write
  * - offset (Number): The starting position
  * - noAssert (Boolean):  If `true`, skips the validation of the offset 
@@ -567,7 +567,7 @@
 
 
 /**
- * buffer.index -> Number
+ * Buffer.index -> Number
  *
  * Gets and sets the octet at `index` in an array format. The values refer to individual bytes, so the legal range is between `0x00` and `0xFF` hex or `0` and `255`.
  * 
@@ -578,13 +578,13 @@
 **/
 
 /** 
- * buffer._charsWritten -> Number
+ * Buffer._charsWritten -> Number
  *
  * The number of characters written by [[buffer.write `buffer.write()`]]. This value is overwritten each time `buffer.write()` is called.
 **/ 
 
 /**
- * buffer.length -> Number
+ * Buffer.length -> Number
  *
  * 
  * The size of the buffer in bytes.  Note that this is not necessarily the size of the contents. `length` refers to the amount of memory allocated for the buffer object.  It does not change when the contents of the buffer are changed.
@@ -598,7 +598,7 @@
 
 
 /**
- * buffer.INSPECT_MAX_BYTES = "50"
+ * Buffer.INSPECT_MAX_BYTES = "50"
  *
  *
  * The number of bytes returned when `buffer.inspect()` is called. This can be overridden by user modules.

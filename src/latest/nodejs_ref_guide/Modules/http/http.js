@@ -16,11 +16,11 @@
  * In order to support the full spectrum of possible HTTP applications, Node's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
  * 
  *
- * For more information, read [this article on how to create HTTP servers](../nodejs_dev_guide/HTTP-servers.html).
+ * For more information, read [this article on how to create HTTP servers](../nodejs_dev_guide/creating_an_http_server.html).
  *
  * #### Example: The famous hello world
  * 
- * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples?http.js&linestart=3&lineend=0&showlines=false' defer='defer'></script>
+ * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js&linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
 **/
 

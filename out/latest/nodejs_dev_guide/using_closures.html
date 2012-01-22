@@ -1,0 +1,72 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Node.js Manual | Simulating Object-Orientation with Closures</title><meta name="generator" content="c9-doc-build"><meta name="description" content="A collection of Node.js tutorials"><meta name="author" content="Garen J. Torikian"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="../resources/csses/bootstrap.css"><link rel="stylesheet" href="../resources/csses/prettify.css"><link rel="stylesheet" href="../resources/csses/refguide_overrides.css"><link rel="stylesheet" href="../resources/csses/devguide_overrides.css"><script src="../resources/javascripts/jquery.js"></script><script src="../resources/javascripts/clicker.js"></script><script src="../resources/javascripts/jquery.collapse.js"></script><script src="../resources/javascripts/jquery.cookie.js"></script><script src="../resources/javascripts/bootstrap-dropdown.js"></script><body onload="styleCode()"><div class="topbar"><div class="fill"><div id="topSection" class="container"><ul class="nav"><li data-dropdown="dropdown" class="dropdown"><a href="/" class="dropdown-toggle brand"><!--div(class="arrow-down")--></a><ul class="dropdown-menu"><li><a href="http://www.nodebits.org/">Nodebits</a></li></ul></li></ul><ul class="nav"><li id="node_js_ref"><a href="./../nodejs_ref_guide/index.html">Node.js Reference</a></li><li id="nodejs_dev_guide"><a href="./../nodejs_dev_guide/index.html">Node.js Manual</a></li><li id="js_doc"><a href="./../js_doc/index.html">Javascript Reference</a></li></ul><form id="searchbox" action="" class="pull-right"><input name="query" type="text" placeholder="Search Documentation" title="Search across all the documentation types" class="span3"></form></div></div></div><header id="overview" class="jumbotron masthead"><div class="inner"><div class="container"><h1>Node.js Manual</h1><p class="lead"></p></div></div></header><div class="container"><div class="content"><div class="row container"><div class="span5 offset4 sidebarContainer"><div id="sidebar"><div id="well"><h2>Node.js Manual</h2><h3>Basic Overview</h3><ul class="menu"><li><div class="menu-item"><a href="writing_asynchronous_code.html" class="menuLink">Writing Asynchronous Code   </a></div></li><li><div class="menu-item"><a href="working_with_callbacks.html" class="menuLink">Working with Callbacks</a></div></li><li><div class="menu-item"><a href="understanding_event_emitters.html" class="menuLink">Understanding Event Emitters</a></div></li><li><div class="menu-item"><span class="menuHeader"><a href="npm.html" class="menuLink">The Node Package Manager</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="core_libs_vs_user_libs.html" class="menuLink">Core Libraries versus User-Submitted Modules </a></div></li></ul></li></ul><h3>Tutorials</h3><ul class="menu"><li><div class="menu-item"><a href="implementing_logging.html" class="menuLink">Implementing Logging Messages</a></div></li><li><div class="menu-item"><span class="menuHeader"><a href="using_closures.html" class="menuLink">Using Closures</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="closures_for_events_and_callbacks.html" class="menuLink">Closures for Events and Callbacks</a></div></li></ul></li><li><div class="menu-item"><a href="reading_and_writing_files.html" class="menuLink">Reading and Writing to Files</a></div></li><li><div class="menu-item"><span class="menuHeader"><a href="http_servers_and_clients.html" class="menuLink">HTTP Servers and Clients</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="creating_an_http_server.html" class="menuLink">Creating an HTTP Server</a></div></li><li><div class="menu-item"><a href="serving_files.html" class="menuLink">Serving Files   </a></div></li><li><div class="menu-item"><a href="creating_http_requests.html" class="menuLink">Creating HTTP GET and POST Requests                                 </a></div></li><li><div class="menu-item"><a href="deciphering_query_strings.html" class="menuLink">Deciphering Query Strings</a></div></li></ul></li><li><div class="menu-item"><span class="menuHeader"><a href="buffers_and_streams.html" class="menuLink">Buffers and Streams</a></span></div><ul class="menuTwo"><li><div class="menu-item"><a href="manipulating_buffers.html" class="menuLink">Manipulating Buffers   </a></div></li><li><div class="menu-item"><a href="understanding_streams.html" class="menuLink">Understanding Streams  </a></div></li></ul></li></ul><h3>Additional Reference</h3><ul class="menu"><li><div class="menu-item"><a href="ECMA5_in_nodejs.html" class="menuLink">Using ECMA5 Javascript in Node.js</a></div></li></ul></div></div></div><div class="span11"><span class="editInC9"><a href="#" title="Edit in Cloud9 IDE">[edit]</a></span><div id="content" class="dev_guide"><div class='title'>
+
+<h1 class='pageTitle'>Simulating Object-Orientation with Closures</h1>
+<span class="cite">by <a href="https://twitter.com/#!/creationix">Tim Caswell</a></span>
+
+</div>
+
+
+
+<p>One of the greatest features of Javascript is the [closure][wikipedia-closure]. From Wikipedia, a closure is:
+
+</p>
+<blockquote><p> [A] first-class function with free variables that are bound in the lexical environment. Such a function is said to be &quot;closed over&quot; its free variables. A closure is defined within the scope of its free variables, and the extent of those variables is at least as long as the lifetime of the closure itself.
+
+</p></blockquote>
+<p>Or, to break it down:
+
+</p>
+<blockquote><p> A closure is a function defined within another scope that has access to all the variables within the outer scope.
+
+</p></blockquote>
+<p>Imagine this piece of code:
+
+</p>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/greet_plain.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+<p>We&apos;re manually passing the internal state around so that the other functions can get ahold of it. It works and is really simple, but assuming you never need the generated message string outside of the <code>greet()</code> function, there&apos;s no point making the user of the API handle internal data for you. Also, what if later on the <code>greet()</code> function needed some other data? You&apos;d have to change everything to pass along more variables.
+
+</p>
+<p>Clearly there must be a better way.
+
+</p>
+<p>One use of  a closure is to call a function that generates another function (or group of functions), but hides all the state in private variables within the closure:
+
+</p>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/greeter.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+<p>Note that the <code>greet()</code> function is nested within the <code>greeter()</code> function. This means it&apos;s within the lexical scope of <code>greeter()</code>, and thus, according to the rules of closure, has access to the local variables of <code>greeter</code> including <code>message</code>, <code>name</code>, and <code>age</code>.
+
+</p>
+<h4>Using closures instead of objects</h4>
+<p>Some people who come to Javascript are experienced programmers from other languages, where classes and instances are the common way to handle this kind of encapsulation. Javascript has something similar in the form of constructor functions and function prototypes.
+
+</p>
+<p>Consider the following class. It uses a classical constructor with function prototypes to work like a class from other languages:
+
+</p>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/personclass.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+<p>Since you&apos;re using the object itself as the place to store state, all references have to be prefixed with <code>this</code>.  It&apos;s impossible to hide any variables since everything that&apos;s accessible to your methods is also publicly readable, writable, and even deletable. Also, if you have a function nested inside of anything, then <code>this</code> changes on you, unless it&apos;s explicitly passed through or preserved with a closure. (see the <code>slowGreet</code> method).
+
+</p>
+<p>To illustrate these points, here&apos;s how you can use the class:
+
+</p>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/useclass.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+<p>Looks like object-oriented programming, right? The good thing is that you get to write your methods outside of the constructor instead of nested inside it.  This is a very comfortable pattern and is used by a lot of successful Javascript projects.</p></div><div id="disqus_thread"></div></div></div></div><footer id="footer"><div class="container"><div class="footer-text">Thanks to these content providers | &#169; 2012:</div><div class="sponsors"><a href="http://c9.io/" title="cloud9 ide" target="_blank" class="c9-logo sponsor"></a><a href="http://www.joyent.com/" title="joyent" target="_blank" class="joyent-logo sponsor"></a><a href="http://www.mozilla.org/" title="mozilla" target="_blank" class="mozilla-logo sponsor"></a></div></div></footer></div><!-- scripts concatenated and minified via ant build script--><script defer src="./../resources/javascripts/plugins.js"></script>
+<script defer src="./../resources/javascripts/prettify.js"></script>
+<script defer src="./../resources/javascripts/prettify-extension.js"></script>
+<script defer src="./../resources/javascripts/script.js"></script>
+<script defer src="./../resources/javascripts/disqus-ext.js"></script>
+<!-- end scripts--><!--[if lt IE 7]><script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script><script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+</script><![endif]--></body></html>

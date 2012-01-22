@@ -19,7 +19,7 @@
  * 
  * (Documentation on creating a CA are pending; for now, interested users should just look at [`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/fixtures/keys/Makefile) in the Node.js source code.)
  * 
- * For more information, see [this article on using the `tls` module](../nodejs_dev_guide/how-to-use-the-tls-module.html).
+ * 
  * #### Using NPN and SNI
  * 
  * NPN (Next Protocol Negotiation) and SNI (Server Name Indication) are TLS handshake extensions provided with this module.

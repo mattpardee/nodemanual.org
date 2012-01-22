@@ -10,7 +10,7 @@
  *
  * Javascript arrays are zero-indexed; the first element of an array is actually at index 0, and the last element is at the index one less than the value of the array's [[Array.length `length`]] property:
  * 
- * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.examples.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+ * <script src='snippets.c9.io/github.com/c9/nodemanual.org-examples/array.examples.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
  *	 	
  * Array elements are just object properties, in the way that [[Array.toString `toString()`]] is a property. However, note that trying to access the first element of an array as follows will throw a syntax error:
  * 

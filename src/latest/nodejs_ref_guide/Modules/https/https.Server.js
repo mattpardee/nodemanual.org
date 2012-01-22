@@ -3,7 +3,7 @@
  * 
  * This class is a subclass of [[tls.Server `tls.Server`]] and emits the same events as [[http.Server `http.Server`]].
  * 
- * Creating HTTPS servers is somewhat complicated and requires generating certificates. For more information, read [this article on how to create HTTPS servers](../nodejs_dev_guide/how-to-create-a-HTTPS-server.html).
+ * Creating HTTPS servers is somewhat complicated and requires generating certificates. 
  *
 **/
 

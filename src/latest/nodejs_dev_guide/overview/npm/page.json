@@ -1,7 +1,10 @@
 {
     "name":"npm",
-    "date": "",
-    "tags": ["npm"],
-    "author": "Nico Reed",
-    "difficulty": 1
+    "author": 
+    [ 
+        {
+         "name" : "Garen J. Torikian",
+          "url": "https://twitter.com/#!/gjtorikian"
+        }
+    ]
 }

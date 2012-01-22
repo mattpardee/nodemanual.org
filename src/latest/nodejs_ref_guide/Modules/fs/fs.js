@@ -827,7 +827,7 @@
  * - options (Object): Any optional arguments indicating how to read the stream
  * 
  *
- * Returns a new [ReadStream](#readstream) object.
+ * Returns a new [[fs.ReadStream `fs.ReadStream`]] object.
  * 
  * `options` is an object with the following defaults:
  * 
@@ -847,9 +847,6 @@
  * 
  *     fs.createReadStream('sample.txt', {start: 90, end: 99});
  * 
- * #### See Also
- *
- * * [This article on how to use the `createReadStream()` function properly](../nodejs_dev_guide/how-to-use-fs-create-read-stream.html).
  *
 **/ 
 
@@ -870,8 +867,5 @@
  * 
  * Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`.
  * 
- * #### See Also
- *
- * *  * [This article on how to use the `createWriteStream()` function properly](../nodejs_dev_guide/how-to-use-fs-create-write-stream.html).
  *
 **/

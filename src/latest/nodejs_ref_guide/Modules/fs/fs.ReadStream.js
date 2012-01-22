@@ -3,7 +3,7 @@
  *
  * This is a [Readable Stream](streams.ReadableStream.html), created from the function [[fs.createReadStream `fs.createReadStream()`]].
  * 
- * For more information, see [this article on how to use the `createReadStream()` function properly](../nodejs_dev_guide/how-to-use-fs-create-read-stream.html).
+ * For more information, see [the documentation on the `stream` object](streams.html).
  *
 **/ 
 

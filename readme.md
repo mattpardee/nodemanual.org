@@ -40,5 +40,4 @@ Content providers include:
 
 * [Cloud9 IDE](http://www.c9.io)
 * [Joyent](http://www.joyent.com/) (Node.js Reference)
-* [Nodejitsu](http://nodejitsu.com/) (Node.js Articles)
 * [Mozilla Foundation](http://www.mozilla.org/) (Javascript Reference)

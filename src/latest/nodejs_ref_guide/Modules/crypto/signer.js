@@ -3,7 +3,7 @@
   *
   * This class is used to sign certificates for OpenSSL. It can be created as a returned value from [[crypto.createSigner `crypto.createSigner()`]].
   *
-  * For more information, you may want to read [this chapter on using the `crypto` module](../nodejs_dev_guide/cryptography.html).
+  *
   *
  * #### Example
  * 
