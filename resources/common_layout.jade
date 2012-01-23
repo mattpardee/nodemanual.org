@@ -11,12 +11,12 @@ mixin doctype
   <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
   <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-mixin head(additionalCSS)
+mixin head(guideTitle, additionalCSS)
   meta(charset="utf-8")
   //- N.B. http://blog.yjl.im/2011/01/bad-value-x-ua-compatible-for-attribute.html
   meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
 
-  title Node.js Manual | #{title}
+  title #{guideTitle}
 
   meta(name="generator", content="c9-doc-build")
   meta(name="description", content="A collection of Node.js tutorials")

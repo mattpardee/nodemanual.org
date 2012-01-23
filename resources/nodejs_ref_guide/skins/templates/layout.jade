@@ -5,7 +5,10 @@ mixin identifyBuild(tree)
 
 mixin doctype
 
-mixin head
+if nodejsRef == 'true'
+  mixin head('Node.js Reference')
+else
+  mixin head('Javascript Reference')
 
 body(onload="styleCode()")
 
