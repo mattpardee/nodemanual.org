@@ -1,10 +1,11 @@
-# 
+<div style='margin-top:-12px'> </div>
 
 This website, Node.js Manual, offers a complete and community-driven resource for learning and developing Node.js applications. From the official [Node.js website](http://nodejs.org):
 
 > _Node.js is a platform built on [Chrome's JavaScript runtime](http://code.google.com/p/v8/) for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices._
 
 This site consists of three different sections:
+
 * The Node.js Reference helps you with the core Node.js modules and API
 * The Node.js Manual contains articles to help you get started with Node.js
 * The Javascript Reference helps you deal with the core Javascript API
