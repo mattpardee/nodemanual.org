@@ -13,14 +13,16 @@ This website is a community effort and is [available on GitHub](https://github.c
 
 #### Contributing
 
-You can help! After writing and updating articles, you can issue a pull request. Use the `[edit]` links near the article titles to edit them directly in the [Cloud9 IDE](http://www.c9.io).
+You can help! After writing and updating articles, you can issue a pull request. Use the `[edit]` links near the article titles to edit them online using the [Cloud9 IDE](http://www.c9.io).
 
 #### Get Started Learning Node.js
 
 Here are some tutorials we've selected to get you jump started on working with Node.js:
 
 * [Writing Asynchronous Code](nodejs_dev_guide/writing_asynchronous_code.html)
+
 * [Creating an HTTP Server](nodejs_dev_guide/creating_an_http_server.html)
+
 * [The Node Package Mangaer](nodejs_dev_guide/npm.html)
 
 #### About Node.js
