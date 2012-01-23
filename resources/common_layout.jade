@@ -40,17 +40,24 @@ mixin topBar
   div.topbar
       div.fill
         div.container#topSection
-          ul.nav
+          ul.nav(class="leftnav")
               li(class="dropdown", data-dropdown="dropdown")
                   a(class="dropdown-toggle brand", href="/")
                     //div(class="arrow-down")
                   ul(class="dropdown-menu")
                       li
-                          a(href="http://www.nodebits.org/") Nodebits
+                          a(href="http://nodebits.org/") Nodebits
                       li
-                          a(href="http://www.howtonode.org/") HowToNode
+                          a(href="http://howtonode.org/") HowToNode
                       li
                           a(href="http://training.c9.io/") Node.js Training
+              li(class="dropdown versions")
+                  a(class="dropdown-toggle versionToggler", href="/") Version 0.6.8
+                  ul(class="dropdown-menu")
+                    li
+                      a(href="http://www.nodemanual.org/latest", class="version") Latest (0.6.8)
+                    li
+                      a(href="http://www.nodemanual.org/0.6.7", class="version") 0.6.7
           ul.nav
             li#node_js_ref
               a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node.js Reference
@@ -58,11 +65,6 @@ mixin topBar
               a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node.js Manual
             li#js_doc
               a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
-            li(class="dropdown versions")
-              a(class="dropdown-toggle versionToggler", href="/") 0.6.8
-              ul(class="dropdown-menu")
-                li
-                  a(href="http:www.nodemanual.org/0.6.7", class="version") 0.6.7
           form(id='searchbox', action='', class='pull-right')  
             input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
 

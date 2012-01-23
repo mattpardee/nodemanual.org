@@ -95,12 +95,16 @@ li p:last-child {
     position : relative;
 }
 
+#topSection .leftnav{
+    width : 286px;
+}
+
 #topSection .dropdown {
-    margin-right: 170px;
+    margin-right: 0px;
 }
 
 #topSection .versions {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .small_win #topSection {
@@ -442,7 +446,7 @@ ul.menu {
 }
 .open .menu, .dropdown.open .menu, .open .dropdown-toggle, .dropdown.open .dropdown-toggle  {
     background: transparent;
-    color: #000000;
+    color: #bfbfbf;
 /*    font-weight: bold;*/
 }
 
@@ -527,7 +531,7 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
      
 }
 #sidebar {
-    margin-top: 15px;
+    margin-top: 9px;
     /*background: url(../images/sidebar-border.png) repeat-y right 0;*/
     margin-left: 12px;
 /*    width: 280px;*/
