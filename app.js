@@ -9,7 +9,14 @@ module.exports = Stack(
       res.writeHead(301, {Location: "/latest/index.html"});
       res.end();
     } else {
-      next();
+      var match = req.url.match(/^\/[^\/]+$/);
+      console.log(req.url, match);
+      if (match) {
+        res.writeHead(301, {Location: req.url + "/"});
+        res.end();
+      } else {
+        next();
+      }
     }
   },
   Creationix.static("/", Path.join(__dirname, "out/"), "index.html"),
