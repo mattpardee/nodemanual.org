@@ -636,7 +636,6 @@ div.snippet a, div.toolbar a {
 }
 .sideToggler {
     padding-left: 20px;
-    position: relative;
 }
 ul.signatures ul {
     list-style: none;
@@ -822,6 +821,11 @@ table td{
     margin: 10px 0 17px 0;
     line-height : 24px;
 }
+
+div.method {
+    position: relative;
+}
+
 .methodToggle a {
     color: #fff;
     border-bottom: 0px;
@@ -842,11 +846,15 @@ h3.methodToggle {
 }
 
 h3.methodToggleHover {
-    background-position  : 0px -28px; 
+    /* background-position  : 0px -28px; */
+}
+
+h3.methodToggle.inactive {
+    top: 4px;
 }
 
 h3.methodToggle.active {
-    top:                  -18px;
+    top:                  6px;
     height               : 13px; 
     width                : 8px; 
     background-position  : 0px -59px; 
