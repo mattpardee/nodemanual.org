@@ -2,7 +2,7 @@ var Stack = require('stack'),
     Creationix = require('creationix'),
     Path = require('path');
 
-var missingSlash = new RegExp("^/([a-z_0-9]+|[0-9]+\.[0-9]+\.[0-9]+)(/[a-z_0-9]+)*$");
+var missingSlash = new RegExp("^/([a-z_0-9-]+|[0-9]+\.[0-9]+\.[0-9]+)(/[a-z_0-9-]+)*$");
 
 module.exports = Stack(
   Creationix.postReceive("/post-receive", Path.join(__dirname, "/post-receive.sh")),
