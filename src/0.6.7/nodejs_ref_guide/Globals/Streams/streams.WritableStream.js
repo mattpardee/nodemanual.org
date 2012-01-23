@@ -58,27 +58,27 @@
 /**
  * streams.WritableStream.end() -> Void
  * streams.WritableStream.end(string, encoding) -> Void
- * streams.WritableStream.end(buffer) -> Void
+ * streams.WritableStream.end(Buffer) -> Void
  * - string (String): The message to send
  * - encoding (String): The encoding to use
- * - buffer (buffer):  The buffer to send
+ * - buffer (Buffer):  The buffer to send
  *
  * Terminates the stream with EOF or FIN. This call send queued write data before closing the stream.
  *
  * For `streams.WritableStream.end(string, encoding)`, a `string` with the given `encoding` is sent. This is useful to reduce the number of packets sent.
  *
- * For `streams.WritableStream.end(buffer)`, a `buffer` is sent.
+ * For `streams.WritableStream.end(Buffer)`, a `buffer` is sent.
  *
 **/
 
 
 /**
  * streams.WritableStream.write(string, encoding='utf8' [, fd]) -> Void
- * streams.WritableStream.write(buffer) -> Void
+ * streams.WritableStream.write(Buffer) -> Void
  * - string (String):  The string to write
  * - encoding (String):  The encoding to use; defaults to `utf8`
  * - fd (Number):  An optional file descriptor to pass
- * - buffer (buffer): The buffer to write to
+ * - buffer (Buffer): The buffer to write to
  *
  * Writes `string` with the given `encoding` to the stream, or write `buffer`.  Returns `true` if the string has been flushed to the kernel buffer.  Returns `false` to indicate that the kernel buffer is full, and the data will be sent out in the future. The `drain` event indicates when the kernel buffer is empty again.
  * 

@@ -23,7 +23,7 @@
 
 /**
  * dgram@message(msg, rinfo)
- * - msg (buffer): A `Buffer` of information
+ * - msg (Buffer): A `Buffer` of information
  * - rinfo (Object): An object with the sender's address information and the number of bytes in the datagram. 
  *
  * Emitted when a new datagram is available on a socket. 
@@ -68,7 +68,7 @@
 
 /**
  * dgram.send(buf, offset, length, port, address, [callback(err)]) -> Void
- * - buf (buffer): The data buffer to send
+ * - buf (Buffer): The data buffer to send
  * - offset (Number):  Indicates where in the buffer to start at
  * - length (Number):  Indicates how much of the buffer to use
  * - port (Number):  The port to send to

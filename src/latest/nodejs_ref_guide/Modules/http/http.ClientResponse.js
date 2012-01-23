@@ -8,7 +8,7 @@
 
 /**
  * http.ClientResponse@data(chunk)
- * - chunk (buffer): The data received
+ * - chunk (Buffer): The data received
  *
  * Emitted when a piece of the message body is received.
  *
@@ -16,7 +16,7 @@
 
 /**
  * http.ClientResponse@end()
- * - chunk (buffer): The data received
+ * - chunk (Buffer): The data received
  *
  * Emitted exactly once for each message. After it's emitted, no other events are emitted on the response.
  *

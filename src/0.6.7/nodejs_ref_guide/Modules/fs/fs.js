@@ -619,14 +619,14 @@
 /**
  * fs.write(fd, buffer, offset, length, position, [callback(err, written, buffer)]) -> Void
  * - fd (Number): The file descriptor
- * - buffer (buffer): The buffer to write
+ * - buffer (Buffer): The buffer to write
  * - offset (Number): Indicates where in the buffer to start at
  * - length (Number): Indicates how much of the buffer to use
  * - position (Number): The offset from the beginning of the file where this data should be written
  * - callback (Function):  An optional callback to execute once the function completes
  * - err (Error): The possible exception
  * - written (Number):Specifies how many bytes were written from `buffer`
- * - buffer (buffer): The remaining contents of the buffer 
+ * - buffer (Buffer): The remaining contents of the buffer 
  *
  * Writes `buffer` to the file specified by `fd`. Note that it's unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, [[fs.createWriteStream `fs.createWriteStream()`]] is strongly recommended.
  * 
@@ -639,7 +639,7 @@
  * fs.writeSync(fd, buffer, offset, length, position) -> Number
  * fs.writeSync(fd, str, position, [encoding='utf8']) -> Number
  * - fd (Number): The file descriptor
- * - buffer (buffer): The buffer to write
+ * - buffer (Buffer): The buffer to write
  * - offset (Number): Indicates where in the buffer to start at
  * - length (Number): Indicates how much of the buffer to use
  * - position (Number): The offset from the beginning of the file where this data should be written
@@ -659,14 +659,14 @@
 /**
  * fs.read(fd, buffer, offset, length, position, [callback()]) -> Void
  * - fd (Number): The file descriptor to read from
- * - buffer (buffer): The buffer to write to
+ * - buffer (Buffer): The buffer to write to
  * - offset (Number): Indicates where in the buffer to start writing at
  * - length (Number): Indicates the number of bytes to read
  * - position (Number): The offset from the beginning of the file where the reading should begin
  * - callback (Function): An optional callback to execute once the function completes
  * - err (Error): The possible exception
  * - bytesRead (Number): Specifies how many bytes were read from `buffer`
- * - buffer (buffer): The rest of the buffer
+ * - buffer (Buffer): The rest of the buffer
  *
  * Read data from the file specified by `fd` and writes it to `buffer`. If `position` is `null`, data will be read from the current file position.
  * 
@@ -677,7 +677,7 @@
  * fs.readSync(fd, buffer, offset, length, position) -> Number
  * fs.readSync(fd, length, position, encoding) -> Number
  * - fd (Number): The file descriptor to read from
- * - buffer (buffer): The buffer to write to
+ * - buffer (Buffer): The buffer to write to
  * - offset (Number): Indicates where in the buffer to start writing at
  * - length (Number): Indicates the number of bytes to read
  * - position (Number): The offset from the beginning of the file where the reading should begin
@@ -699,7 +699,7 @@
  * - encoding (String): The encoding to use
  * - callback (Function):  An optional callback to execute once the function completes
  * - err (Error): The possible exception
- * - data (buffer): The contents of the file
+ * - data (Buffer): The contents of the file
  * 
  *
  * Asynchronously reads the entire contents of a file. If no encoding is specified, then the raw buffer is returned.
