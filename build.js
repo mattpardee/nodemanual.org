@@ -31,8 +31,12 @@ var latest = "0.6.8";
         }
         else
         {
+            data = data.replace(/^\.$/, "").replace(/index\.md/, "");
+
             versions = data.split("\n");
-            versions.pop(); // remove bogus "." dir
+            versions = versions.filter(function (value) {
+                return (value === '') ? 0 : 1;
+            });
         }  
 
         makeManualDocs(versions);
@@ -62,7 +66,7 @@ function makeIndexes(version)
         var jadeTemplateFile = "resources/landing/layout.jade";
         var jadeTemplate = fs.readFileSync(jadeTemplateFile);
 
-        var readContentStream = fs.createReadStream("src/" + version + "/index.md", {encoding: 'utf8'});
+        var readContentStream = fs.createReadStream("src/index.md", {encoding: 'utf8'});
     
         readContentStream.on('data', function (data) {
             var fn = jade.compile(jadeTemplate, {filename: jadeTemplateFile, pretty: false});

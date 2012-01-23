@@ -3,6 +3,7 @@
 -var jsDoc = 'false'
 -var nodejsDev = 'false'
 -var landingPage = 'false'
+-var versions = []
 
 mixin doctype
   !!! 5
@@ -53,13 +54,11 @@ mixin topBar(fullPath)
                       li
                           a(href="http://training.c9.io/") Node.js Training
               li(class="dropdown versions")
-                  a(class="dropdown-toggle versionToggler", href="/") Version&nbsp;
+                  a(class="dropdown-toggle versionToggler", href="#") Version&nbsp;
                     mixin makeVersionLabel(fullPath)
                   ul(class="dropdown-menu")
-                    li
-                      a(href="http://www.nodemanual.org/latest/", class="version") Latest (0.6.8)
-                    li
-                      a(href="http://www.nodemanual.org/0.6.7/", class="version") 0.6.7
+                    include versionsList
+
           ul.nav
             li#node_js_ref
               a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node.js Reference
