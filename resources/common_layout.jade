@@ -149,12 +149,12 @@ mixin formatGHHref(url, type)
   
   if type == 'nodejs_ref_guide'
     url = url.substring(0, url.lastIndexOf("#"))
-    url = 'src/' + type + '/' + url
+    url = 'src/' + url
   else if type == 'nodejs_dev_guide'
-    url = 'src/' + type + '/' + url
+    url = 'src/' + url
 
-  -url = url.replace(/\/{2,}/g, "/");
-  <a href='http://c9.io/open/git/?url=#git%3A%2F%2Fgithub.com%2Fc9%2Fnodemanual.org.git&file=#{url}' title='Edit in Cloud9 IDE'>[edit]</a>
+  -url = url.replace(/\/{2,}/g, "/").replace(/\//g,"%2F")
+  <a href='http://c9.io/open/git/?url=git%3A%2F%2Fgithub.com%2Fc9%2Fnodemanual.org.git&file=#{url}' title='Edit in Cloud9 IDE'>[edit]</a>
 
 mixin makeVersionLabel(fullPath)
   -if (fullPath.indexOf("latest") >= 0)
