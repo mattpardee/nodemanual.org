@@ -31,7 +31,7 @@ body(onload="styleCode()")
             .members
               .membersContent
                   h1.memberHeader
-                    -var heading = obj.path.replace(/_/g," ")
+                    -var heading = obj.path
                     span.name #{heading}
                     if nodejsRef == 'true'
                       span.editInC9 
