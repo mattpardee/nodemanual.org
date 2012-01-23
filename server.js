@@ -1,8 +1,24 @@
-var Http = require('http');
-var Stack = require('stack');
-var Creationix = require('creationix');
-Http.createServer(Stack(
-  Creationix.log(),
-  require('./app')
-)).listen(4000);
-console.log("Serving files at http://localhost:4000/");
+var HTTP = require('http');
+var FS = require('fs');
+
+var handle = require('./app');
+
+// Detect if we're running as root or not
+var isRoot = !process.getuid();
+
+// Set some common variables
+var PORT = process.env.PORT || 8000;
+
+HTTP.createServer(handle).listen(PORT);
+process.title ="nodemanual.org";
+console.log("Server %s listening at http://localhost" + (PORT === 80 ? "" : ":" + PORT) + "/", process.title);
+
+if (isRoot) {
+  // Lets change to the owner of this file, whoever that may be
+  var stat = FS.statSync(__filename);
+  console.log("Changing gid to " + stat.gid);
+  process.setgid(stat.gid);
+  console.log("Changing uid to " + stat.uid);
+  process.setuid(stat.uid);
+}
+
