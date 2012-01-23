@@ -24,7 +24,7 @@ Here are some tutorials we've selected to get you jump started on working with N
 
 * [Creating an HTTP Server](nodejs_dev_guide/creating_an_http_server.html)
 
-* [The Node Package Mangaer](nodejs_dev_guide/npm.html)
+* [The Node Package Manager](nodejs_dev_guide/npm.html)
 
 #### About Node.js
 
