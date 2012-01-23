@@ -77,6 +77,7 @@ function makeIndexes(version)
             var data = dataArray.join("\n");
 
             var vars = extend({
+                guideTitle: "Node.js Manual",
                 title: title,
                 data: data,
                 whoAmI: version,
