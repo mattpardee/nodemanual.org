@@ -2,7 +2,9 @@ require("colors");
 
 var argv = require("optimist").argv,
     docs = require("./build/doc-build/docs"),
-    fs = require('fs');
+    fs = require('fs'),
+    md2html = require('marked'),
+    jade = require('jade');
     
 var version = argv._[0];
 var versions = [];
@@ -35,7 +37,7 @@ var latest = "0.6.8";
 
         makeManualDocs(versions);
         makeJSRefDocs(versions);
-       makeNodeJSRefDocs(versions);        
+        makeNodeJSRefDocs(versions);        
     });
 
 function makeManualDocs(versions)
@@ -51,10 +53,38 @@ function makeManualDocs(versions)
             docs.copyassets(outDir, "nodejs_dev_guide");
             docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + element + "/nodejs_dev_guide/", "nodejs_dev_guide");
 
-            // don't forget the index! 
-            //docs.generate(outDir, process.cwd() + "/src/" + element + "/index.md", "nodejs_dev_guide");
-
+            makeIndexes(element);
         });    
+}
+
+function makeIndexes(version)
+{
+        var jadeTemplateFile = "resources/landing/layout.jade";
+        var jadeTemplate = fs.readFileSync(jadeTemplateFile);
+
+        var readContentStream = fs.createReadStream("src/" + version + "/index.md", {encoding: 'utf8'});
+    
+        readContentStream.on('data', function (data) {
+            var fn = jade.compile(jadeTemplate, {filename: jadeTemplateFile, pretty: false});
+
+            var dataArray = data.split("\n");
+
+            var title = "";
+            var data = dataArray.join("\n");
+
+            var vars = extend({
+                title: title,
+                data: data,
+                whoAmI: version,
+                markdown: markdown
+            });
+
+            var r = fn(vars);
+            
+            var writeStream = fs.createWriteStream("out/" + version + "/index.html", {flags: "w"});
+                    
+            writeStream.write(r);
+            });    
 }
 
 function makeJSRefDocs(versions)
@@ -97,4 +127,26 @@ function makeNodeJSRefDocs(versions)
                 }
             });
         }); 
+}
+
+function markdown(text) {
+    return md2html(text);
+}
+
+function extend(o, plus) {
+  var r = {}, i;
+  for (i in o) {
+    if (o.hasOwnProperty(i)) {
+      r[i] = o[i];
+    }
+  }
+  if (plus) {
+    for (i in plus) {
+      if (plus.hasOwnProperty(i)) {
+        r[i] = plus[i];
+      }
+    }
+  }
+
+  return r;
 }

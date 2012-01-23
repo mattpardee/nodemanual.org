@@ -2,7 +2,7 @@
 
 Node.js is a server-side Javascript environment. It's event-driven, asynchronous, and allows you to write a web server in a relatively quick amount of time.
 
-The purpose of this document is to provide a resource for developers of all levels&mdash;beginning, intermediate, and advanced&mdash;with a consolidated set of Node.js tutorials and best practices. The origin of this document comes from several sources, but primarily around various Node.js community-driven documentation. Why this guide, then? Well, for starters, you can instantaneously import the code samples found here into you [Cloud9 IDE](http://c9.io) account and run them live. Obviously, we'll take pull requests for new articles.
+The purpose of this document is to provide a resource for developers of all levels&mdash;beginning, intermediate, and advanced&mdash;with a consolidated set of Node.js tutorials and best practices. The origin of this document comes from several sources, but primarily around various Node.js community-driven documentation. Why this guide, then? Well, for starters, you can instantaneously copy and run the code samples found here _live_ into your [Cloud9 IDE](http://c9.io) account by just clicking a button. Obviously, we'll also take pull requests for new articles.
 
 In order to get Node.js, you can either download [the latest stable release](http://nodejs.org/#download), or clone the version submitted into the GitHub repo. Keep in mind that stable releases are even-numbered (0.4, 0.6), while unstable releases are odd (0.3, 0.5).
 

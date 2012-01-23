@@ -17,7 +17,7 @@
  * `options` is an object with the following defaults:
  * 
  *     { 
- *	     fd: null
+ *       fd: null
  *       type: null
  *       allowHalfOpen: false
  *     }

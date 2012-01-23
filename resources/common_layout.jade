@@ -2,6 +2,7 @@
 -var nodejsRef = 'false'
 -var jsDoc = 'false'
 -var nodejsDev = 'false'
+-var landingPage = 'false'
 
 mixin doctype
   !!! 5
@@ -23,20 +24,20 @@ mixin head(additionalCSS)
 
   meta(name="viewport", content="width=device-width,initial-scale=1")
 
-  link(rel="stylesheet", href="../resources/csses/bootstrap.css")
-  link(rel="stylesheet", href="../resources/csses/prettify.css")
-  link(rel="stylesheet", href="../resources/csses/refguide_overrides.css")
+  link(rel="stylesheet", href="#{dirPrefix}resources/csses/bootstrap.css")
+  link(rel="stylesheet", href="#{dirPrefix}resources/csses/prettify.css")
+  link(rel="stylesheet", href="#{dirPrefix}resources/csses/refguide_overrides.css")
 
   if additionalCSS
     link(rel="stylesheet", href="#{additionalCSS}")
 
-  script(src="../resources/javascripts/jquery.js")
-  script(src="../resources/javascripts/clicker.js")
-  script(src="../resources/javascripts/jquery.collapse.js")
-  script(src="../resources/javascripts/jquery.cookie.js")
-  script(src="../resources/javascripts/bootstrap-dropdown.js")
+  script(src="#{dirPrefix}resources/javascripts/jquery.js")
+  script(src="#{dirPrefix}resources/javascripts/clicker.js")
+  script(src="#{dirPrefix}resources/javascripts/jquery.collapse.js")
+  script(src="#{dirPrefix}resources/javascripts/jquery.cookie.js")
+  script(src="#{dirPrefix}resources/javascripts/bootstrap-dropdown.js")
 
-mixin topBar
+mixin topBar(fullPath)
   div.topbar
       div.fill
         div.container#topSection
@@ -52,7 +53,8 @@ mixin topBar
                       li
                           a(href="http://training.c9.io/") Node.js Training
               li(class="dropdown versions")
-                  a(class="dropdown-toggle versionToggler", href="/") Version 0.6.8
+                  a(class="dropdown-toggle versionToggler", href="/") Version&nbsp;
+                    mixin makeVersionLabel(fullPath)
                   ul(class="dropdown-menu")
                     li
                       a(href="http://www.nodemanual.org/latest", class="version") Latest (0.6.8)
@@ -108,14 +110,17 @@ mixin endingScripts
       window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
 
 
-mixin identifyBuild(tree)
+mixin identifyBuild(tree, type)
   if tree
     if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
         -nodejsRef = 'true'
     else if tree.children[0].parentDir.indexOf('js_doc') >= 0 
         -jsDoc = 'true'
-  else
+  else if (type == 'nodejs_dev_guide')
       -nodejsDev = 'true'
+  else
+    landingPage = 'true'
+    -dirPrefix = './'
 
 mixin markdown(text, inline)
   html = markdown(text, inline)
@@ -150,3 +155,9 @@ mixin formatGHHref(url, type)
 
   -url = url.replace(/\/{2,}/g, "/");
   <a href='http://c9.io/open/git/?url=#git%3A%2F%2Fgithub.com%2Fc9%2Fnodemanual.org.git&file=#{url}' title='Edit in Cloud9 IDE'>[edit]</a>
+
+mixin makeVersionLabel(fullPath)
+  -if (fullPath.indexOf("latest") >= 0)
+    != '0.6.8'
+  -else
+    != fullPath.match(/\d\.\d\.\d/)

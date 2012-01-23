@@ -832,7 +832,7 @@
  * `options` is an object with the following defaults:
  * 
  *     { 
- *	     flags: 'r',
+ *       flags: 'r',
  *       encoding: null,
  *       fd: null,
  *       mode: 0666,
