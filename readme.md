@@ -17,6 +17,8 @@ Remember! After you clone this repo, call
     git submodule update
     npm install
 
+It's worth noting that there is a [git commit hook](http://book.git-scm.com/5_git_hooks.html) running on the NodeManual server. Any pushes or merges into the master branch of this repo automatically rebuilds all versions of the documentation on the website.
+
 # Running a Build
 
 To run the build, open your command prompt and type:
