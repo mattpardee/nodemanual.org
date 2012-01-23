@@ -28,11 +28,11 @@ body(onload="styleCode()")
             .members
               .membersContent
                   h1.memberHeader
+                    -var heading = obj.path.replace(/_/g," ")
+                    span.name #{heading}
                     if nodejsRef == 'true'
                       span.editInC9 
                         a(href='#', title='Edit in Cloud9 IDE') [edit]
-                    -var heading = obj.path.replace(/_/g," ")
-                    span.name #{heading}
                   
                   -if (obj.filename.indexOf("index") < 0)
                     if nodejsRef != 'true'

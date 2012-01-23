@@ -13,15 +13,11 @@
 .title {
     margin-top : 3px;
     margin-bottom : 18px;
+    border-bottom : 1px solid #ddd;
 }
 
 .cite {
 	color: #666;
-}
-
-.editInC9 {
-	top: 227px;
-	right: 15px;
 }
 
 .dev_guide {

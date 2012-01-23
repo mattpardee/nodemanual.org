@@ -364,16 +364,17 @@ ul.menu {
 .tabs a.menu:after, .tabs .dropdown-toggle:after {
     margin-top: 22px;
 }
-.backToMDN, .editInC9 {
+.backToMDN {
     position: absolute;
     right: 0px;
-    font-size: 11px;
     top: -20px;
+}
+.backToMDN, .editInC9 {
+    font-size: 11px;
     color: #657383;
 }
 .editInC9 {
-    right: -22px;
-    top: 7px;
+    margin : 0 0 0 5px;
 }
 .backToMDN {
     top: 0;
@@ -607,7 +608,7 @@ div.snippet {
 }
 
 div.snippet a, div.toolbar a {
-    color: #EEE;
+    color: #FFF;
 }
 
 /*
@@ -959,4 +960,34 @@ h3.methodToggle.active {
     background: #fefaca;
     border-color : #fefaca;
     padding : 8px 14px 8px 14px;
+}
+
+body .dsq-reply{
+    margin-top : 10px;
+}
+
+#disqus_thread{
+    border-top : 1px solid #ddd;
+    margin-top : 30px;
+}
+
+#disqus_thread h3, body #dsq-content h3 {
+    font-size : 12px;
+    margin : 0 0 20px 0;
+    line-height : 12px;
+}
+body #dsq-reply h3{
+    font-size : 18px;
+    line-height : 18px;
+    margin : 15px 0 20px 0;
+}
+
+#disqus_thread select{
+    font-size : 11px;
+    height : 20px;
+    color : #444;
+}
+
+#dsq-global-toolbar, #dsq-pagination, .dsq-trackback-url{
+    display : none;
 }
