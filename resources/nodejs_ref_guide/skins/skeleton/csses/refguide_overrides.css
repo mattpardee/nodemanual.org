@@ -364,21 +364,21 @@ ul.menu {
 .tabs a.menu:after, .tabs .dropdown-toggle:after {
     margin-top: 22px;
 }
-.backToMDN {
+/*.backToMDN {
     position: absolute;
     right: 0px;
     top: -20px;
-}
+}*/
 .backToMDN, .editInC9 {
     font-size: 11px;
     color: #657383;
-}
-.editInC9 {
     margin : 0 0 0 5px;
+}
+/*.editInC9 {
 }
 .backToMDN {
     top: 0;
-}
+}*/
 
 .backToMDN a, .editInC9 a {
     color: #657383;

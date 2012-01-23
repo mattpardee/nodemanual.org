@@ -33,11 +33,11 @@ body(onload="styleCode()")
                     if nodejsRef == 'true'
                       span.editInC9 
                         a(href='#', title='Edit in Cloud9 IDE') [edit]
-                  
-                  -if (obj.filename.indexOf("index") < 0)
                     if nodejsRef != 'true'
                       span.backToMDN 
-                        a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') View original on MDN
+                        a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') (View original on MDN)
+                  
+                  -if (obj.filename.indexOf("index") < 0)
                     if obj.type == 'class' || obj.type == 'namespace' || obj.type == 'section'
                       ul(class='tabs', data-tabs='tabs')
                         for selector, title in {'Events': ['event', 'events'], 'Constructors': ['constructor', 'constructors'], 'Class methods': ['class method', 'class_methods'], 'Class properties': ['class property', 'class_properties'], 'Instance methods': ['instance method', 'instance_methods'], 'Instance properties': ['instance property', 'instance_properties'], 'Constants': ['constant', 'constants']}
