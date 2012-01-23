@@ -82,6 +82,12 @@ li p:last-child {
     margin-bottom : 5px;
 }
 
+blockquote p{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 23px;
+}
+
 .alert-message{
     margin-bottom : 13px;
 }

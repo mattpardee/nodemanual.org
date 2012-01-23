@@ -1,13 +1,7 @@
 $(function () {
     'use strict';
 
-    var $empty = $(), // empty set used upon activtion
-    $window = $(window),
-    $items = $('div.menu-item > a'),
-    $results = $('#search-results'), // search results
-    targets = [], // items and corresponding article offset
-    $active = null, // active article
-    baseTitle = document.title, // base (general) part of title
+    var baseTitle = document.title, // base (general) part of title
     pathName = window.location.pathname,
     fileName = pathName.substring(window.location.pathname.lastIndexOf("/") + 1);
   
@@ -48,24 +42,23 @@ $(function () {
         }
     });
 
+//    function getTitle($article) {
+//        var title = [baseTitle];
+//
+//        if ($article.data('title')) {
+//            title.push($article.data('title'));
+//        }
+//
+//        return title.join(' | ');
+//    }
 
-    function getTitle($article) {
-        var title = [baseTitle];
-
-        if ($article.data('title')) {
-            title.push($article.data('title'));
-        }
-
-        return title.join(' | ');
-    }
-
-    function eachParent($item, callback) {
-        var $parent = $item.data('ndoc.parent');
-        if ($parent && $parent.length) {
-            eachParent($parent, callback);
-            callback($parent);
-        }
-    }
+//    function eachParent($item, callback) {
+//        var $parent = $item.data('ndoc.parent');
+//        if ($parent && $parent.length) {
+//            eachParent($parent, callback);
+//            callback($parent);
+//        }
+//    }
 
     // activates item (used upon scrolling)
 //    function activate($article, expandParents) {
@@ -204,8 +197,8 @@ $(function () {
     prettyPrint();
   
     //set the height of the sidebar
-    var sidebarHeight = $('#sidebar').height(),
-        contentHeight = $('.container .content .span11').height();
+//    var sidebarHeight = $('#sidebar').height(),
+//        contentHeight = $('.container .content .span11').height();
 
 //    if(contentHeight > sidebarHeight)
 //        $('#sidebar').height(contentHeight);
@@ -224,16 +217,15 @@ $(function () {
 //    
 //    $('#sidebar').height($(window).height() - $('#overview').outerHeight() - 25 + ($('html').scrollTop() <= 85 ? $('html').scrollTop() : 85 ))
     var bgHeightSet = false,
-        $sidebar       = $('#sidebar'),
+//        $sidebar       = $('#sidebar'),
         $pagination    = $('.members'),
-        $paginationBackground = $('.membersBackground'),
+//        $paginationBackground = $('.membersBackground'),
         $paginationContent = $('.membersContent'),
         $tabs = $('.tabs'),
         $topSection = $('#topSection');
         
     function handleScroll() {
-        var header_offset  = $('#overview').outerHeight(),
-            s, sx;
+        var s, sx;
         
         // scrolling offset calculation via www.quirksmode.org
         if (window.pageYOffset || window.pageXOffset) {
