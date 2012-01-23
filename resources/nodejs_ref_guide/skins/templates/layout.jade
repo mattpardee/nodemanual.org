@@ -32,7 +32,7 @@ body(onload="styleCode()")
                     span.name #{heading}
                     if nodejsRef == 'true'
                       span.editInC9 
-                        a(href='#', title='Edit in Cloud9 IDE') [edit]
+                        mixin formatGHHref(obj.href, 'nodejs_ref_guide')
                     if nodejsRef != 'true'
                       span.backToMDN 
                         a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') (View original on MDN)
