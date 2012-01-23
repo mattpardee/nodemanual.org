@@ -1,3 +1,8 @@
+-var dirPrefix = "./../";
+-var nodejsRef = 'false'
+-var jsDoc = 'false'
+-var nodejsDev = 'false'
+
 mixin doctype
   !!! 5
   <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -54,10 +59,8 @@ mixin topBar
             li#js_doc
               a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
             li(class="dropdown versions")
-              a(class="dropdown-toggle versionToggler", href="/") Versions
+              a(class="dropdown-toggle versionToggler", href="/") 0.6.8
               ul(class="dropdown-menu")
-                li 
-                  a(href="http:www.nodemanual.org/", class="version") Latest (0.6.8)
                 li
                   a(href="http:www.nodemanual.org/0.6.7", class="version") 0.6.7
           form(id='searchbox', action='', class='pull-right')  
@@ -101,3 +104,45 @@ mixin endingScripts
     script(src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js")
     script
       window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+
+
+mixin identifyBuild(tree)
+  if tree
+    if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
+        -nodejsRef = 'true'
+    else if tree.children[0].parentDir.indexOf('js_doc') >= 0 
+        -jsDoc = 'true'
+  else
+      -nodejsDev = 'true'
+
+mixin markdown(text, inline)
+  html = markdown(text, inline)
+  != restoreNotes(html)
+
+-function restoreNotes(html)
+  -var noteORegex = new RegExp('<note>', "ig")
+  -var noteCRegex = new RegExp('</note>', "ig")
+  -var warningORegex = new RegExp('<warning>', "ig")
+  -var warningCRegex = new RegExp('</warning>', "ig")
+
+  if (html.match(noteORegex))
+    -html = html.replace(noteORegex, "<div class='alert-message block-message warning'>")
+  if (html.match(warningORegex))
+    -html = html.replace(warningORegex, "<div class='alert-message block-message error'>")
+
+  if (html.match(noteCRegex))
+    -html = html.replace(noteCRegex, "</div>")
+    if (html.match(warningCRegex))
+    -html = html.replace(warningCRegex, "</div>")
+
+  != html
+
+mixin formatGHHref(url, type)
+  url = url.substring(url.indexOf("src/") + 4)
+  if type == 'nodejs_ref_guide'
+    url = url.substring(0, url.lastIndexOf("#"))
+    url = 'src/' + type + '/' + url
+  else if type == 'nodejs_dev_guide'
+    url = 'src/' + type + '/' + url
+  -url = url.replace(/\/{2,}/g, "/");
+  <a href='http://c9.io/open/git/?url=#git%3A%2F%2Fgithub.com%2Fc9%2Fnodemanual.org.git&file=#{url}' title='Edit in Cloud9 IDE'>[edit]</a>
