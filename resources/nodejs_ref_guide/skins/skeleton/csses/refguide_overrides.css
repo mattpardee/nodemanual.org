@@ -95,12 +95,16 @@ li p:last-child {
     position : relative;
 }
 
+#topSection .leftnav{
+    width : 286px;
+}
+
 #topSection .dropdown {
-    margin-right: 170px;
+    margin-right: 0px;
 }
 
 #topSection .versions {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .small_win #topSection {
@@ -442,7 +446,7 @@ ul.menu {
 }
 .open .menu, .dropdown.open .menu, .open .dropdown-toggle, .dropdown.open .dropdown-toggle  {
     background: transparent;
-    color: #000000;
+    color: #bfbfbf;
 /*    font-weight: bold;*/
 }
 
