@@ -10,7 +10,7 @@ module.exports = Stack.compose(
   }}),
   function (req, res, next) {
     if (req.url === "/") {
-      res.writeHead(301, {Location: "/latest/nodejs_ref_guide"});
+      res.writeHead(301, {Location: "/latest/nodejs_ref_guide/"});
       res.end();
     } else {
       next();
