@@ -30,7 +30,7 @@ body(onload="styleCode()")
                   h1.memberHeader
                     if nodejsRef == 'true'
                       span.editInC9 
-                        a(href='#', title='Edit in Cloud9 IDE') [edit]
+                        mixin formatGHHref(obj.href, 'nodejs_ref_guide')
                     -var heading = obj.path.replace(/_/g," ")
                     span.name #{heading}
                   

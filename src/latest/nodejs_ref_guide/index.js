@@ -6,7 +6,7 @@
  *
  * This section is the Node.js Reference API in its entirety. The origin of this content was from the original Nodejs.org documentation, with some heavy edits and improvements.
  * 
- * In addition, most samples can be run live and online by importing them into your [Cloud 9 IDE](http://c9.io) account.
+ * In addition, most samples can be run live and online by importing them into your [Cloud9 IDE](http://c9.io) account.
  *
  **/
 

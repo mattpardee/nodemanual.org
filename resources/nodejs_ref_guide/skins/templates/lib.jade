@@ -1,21 +1,7 @@
--var dirPrefix = "./../";
--var nodejsRef = 'false'
--var jsDoc = 'false'
--var nodejsDev = 'false'
-
 - var methodSection = constructorSection = propertySection = eventSection = false;
 - var globalJSObjs = ["Array", "Boolean", "Date", "Error", "EvalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError", "Function", "Infinity", "JSON", "Math", "NaN", "Number", "Object", "RegExp", "String"]
 
 - var specialObjs = ["Buffer", "Cluster", "EventEmitter", "Streams"]
-
-mixin identifyBuild(tree)
-  if tree
-    if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
-        -nodejsRef = 'true'
-    else if tree.children[0].parentDir.indexOf('js_doc') >= 0 
-        -jsDoc = 'true'
-  else
-      -nodejsDev = 'true'
 
 mixin argument(arg, reqOptObj)
   td
@@ -290,30 +276,6 @@ mixin short_description_list(collection)
 mixin link(obj, short, classes)
   l = link(obj, short, classes)
   != validate_link(l)
-
-
-
-mixin markdown(text, inline)
-  html = markdown(text, inline)
-  != restoreNotes(html)
-
--function restoreNotes(html)
-  -var noteORegex = new RegExp('<note>', "ig")
-  -var noteCRegex = new RegExp('</note>', "ig")
-  -var warningORegex = new RegExp('<warning>', "ig")
-  -var warningCRegex = new RegExp('</warning>', "ig")
-
-  if (html.match(noteORegex))
-    -html = html.replace(noteORegex, "<div class='alert-message block-message warning'>")
-  if (html.match(warningORegex))
-    -html = html.replace(warningORegex, "<div class='alert-message block-message error'>")
-
-  if (html.match(noteCRegex))
-    -html = html.replace(noteCRegex, "</div>")
-    if (html.match(warningCRegex))
-    -html = html.replace(warningCRegex, "</div>")
-
-  != html
 
 mixin links(collection)
   ul.method-list
