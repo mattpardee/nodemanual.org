@@ -37,7 +37,7 @@ body(onload="styleCode()")
                       span.backToMDN 
                         a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') (View original on MDN)
                   
-                  -if (obj.filename.indexOf("index") < 0)
+                  -if (true || obj.filename.indexOf("index") < 0)
                     if obj.type == 'class' || obj.type == 'namespace' || obj.type == 'section'
                       ul(class='tabs', data-tabs='tabs')
                         for selector, title in {'Events': ['event', 'events'], 'Constructors': ['constructor', 'constructors'], 'Class methods': ['class method', 'class_methods'], 'Class properties': ['class property', 'class_properties'], 'Instance methods': ['instance method', 'instance_methods'], 'Instance properties': ['instance property', 'instance_properties'], 'Constants': ['constant', 'constants']}
