@@ -359,7 +359,16 @@ $(document).ready(function(){
     
     $('span.methodClicker, article.article, h3.methodClicker').each(function(){
         var a = $(this);
-        a.attr("id", "js_" + a.attr("id"));
+        var constructorPos = a.attr("id").indexOf("new ");
+
+        var objName = a.attr("id");
+        if (constructorPos >= 0)
+        {
+            objName = objName.substring(constructorPos + 4);
+            objName += ".new";  
+        }
+       
+        a.attr("id", "js_" + objName);
     });
     
     $('.brand').parent('.dropdown').hover(
