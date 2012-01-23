@@ -2,6 +2,8 @@ var Stack = require('stack'),
     Creationix = require('creationix'),
     Path = require('path');
 
+var missingSlash = new RegExp("^/([a-z_0-9]+|[0-9]+\.[0-9]+\.[0-9]+)(/[a-z_0-9]+)*$");
+
 module.exports = Stack(
   Creationix.postReceive("/post-receive", Path.join(__dirname, "/post-receive.sh")),
   function (req, res, next) {
@@ -15,8 +17,7 @@ module.exports = Stack(
       res.end();
       return;
     }
-    var match = req.url.match(/^\/[^\/]+$/);
-    if (match) {
+    if (missingSlash.test(req.url)) {
       res.writeHead(301, {Location: req.url + "/"});
       res.end();
       return;
