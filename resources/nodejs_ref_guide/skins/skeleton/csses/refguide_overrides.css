@@ -446,8 +446,12 @@ ul.menu {
 }
 .open .menu, .dropdown.open .menu, .open .dropdown-toggle, .dropdown.open .dropdown-toggle  {
     background: transparent;
-    color: #bfbfbf;
+    color: black;
 /*    font-weight: bold;*/
+}
+#topSection .open .menu, #topSection .dropdown.open .menu, #topSection .open .dropdown-toggle, 
+#topSection .dropdown.open .dropdown-toggle  {
+    color: #bfbfbf;
 }
 
 .tabs > li {
