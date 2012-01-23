@@ -680,6 +680,16 @@ li.signature {
     color: #859c59;
 }
 
+.eventObjName {
+    font-style: italic;
+}
+.eventListenerStart, .eventFunctionOpen, .eventFunctionClose {
+    color: #999999;
+}
+.eventMember {
+    padding-right: 0px;
+}
+
 .metaInfo {
     float: right;
     z-index: 1;

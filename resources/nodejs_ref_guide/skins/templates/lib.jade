@@ -32,7 +32,7 @@ mixin argument(arg, reqOptObj)
   else
     span #{title} (#{count})
 
-mixin article(obj, parents)
+mixin article(obj, parents, memberType)
   if typeof obj === 'string'
     obj = list[obj]
 
@@ -108,7 +108,7 @@ mixin article(obj, parents)
                       -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig object has "optional" information; store for later use
                   li.signature
                     ul
-                      li.signature-call!= validate_link(signature(obj, sig, "", obj.id))
+                      li.signature-call!= validate_link(signature(obj, sig, memberType, obj.id))
                         if sig.returns
                           li.signature-returns
                             ul.argument-types
@@ -231,7 +231,7 @@ mixin article(obj, parents)
     - if (!eventSection)
       - eventSection = true
       h3.sectionHeader Events
-    mixin article(child, parents.concat(obj))
+    mixin article(child, parents.concat(obj), 'event')
 
   for child in obj.children.filter(function(x){return x.type === 'class method'})
     - if (!methodSection)

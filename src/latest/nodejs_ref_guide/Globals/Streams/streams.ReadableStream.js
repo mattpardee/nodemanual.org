@@ -15,7 +15,7 @@
 
 /**
  * streams.ReadableStream@data(data)
- * - data (buffer | String):  The data being emitted
+ * - data (Buffer | String):  The data being emitted
  * 
  * The `data` event emits either a `Buffer` (by default) or a string if `setEncoding()` was previously used on the stream.
  * 

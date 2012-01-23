@@ -219,7 +219,7 @@
 
 /**
  * net.Socket@data(data)
- * - data (buffer | String): A `Buffer` or `String`, depending on what it is
+ * - data (Buffer | String): A `Buffer` or `String`, depending on what it is
  *
  * Emitted when data is received. The encoding of `data` is set by `socket.setEncoding()`.
  * 
