@@ -2,15 +2,11 @@ var Stack = require('stack'),
     Creationix = require('creationix'),
     Path = require('path');
 
-module.exports = Stack.compose(
+module.exports = Stack(
   Creationix.postReceive("/post-receive", Path.join(__dirname, "/post-receive.sh")),
-  Creationix.vhost({"nodemanual.org": function (req, res) {
-    res.writeHead(200, {});  
-    res.end("Coming soon...");
-  }}),
   function (req, res, next) {
     if (req.url === "/") {
-      res.writeHead(301, {Location: "/latest/nodejs_ref_guide/"});
+      res.writeHead(301, {Location: "/latest/index.html"});
       res.end();
     } else {
       next();
