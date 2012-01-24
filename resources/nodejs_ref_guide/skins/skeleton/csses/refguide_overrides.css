@@ -147,26 +147,6 @@ a.brand {
     cursor: pointer;
 }
 
-.masthead {
-    background: #55a500 url(../images/header-back.jpg) repeat-x 0 bottom;
-}
-.masthead .container {
-    width: 680px;
-    padding-left: 285px;
-    margin: 0 auto;
-}
-.jumbotron {
-    min-width: 1000px;
-    padding-top: 40px;
-    position: relative;
-}
-
-.jumbotron .inner {
-/*    background: transparent url(../images/header-back.png) top center;*/
-    padding: 45px 0;
-/*    -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-    -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);*/
-}
 .c9-sponsor {
     background: url(../images/c9-sponsor.png) no-repeat 0 0;
     z-index: 1;
@@ -176,18 +156,6 @@ a.brand {
     top: 55px;
     right: 0;
     outline: none;
-}
-.jumbotron h1 {
-    font-size: 54px;
-    line-height: 1;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
-}
-
-.jumbotron h1, .jumbotron p {
-    margin-bottom: 9px;
-    color: white;
-/*    text-align: center;*/
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 }
 
 /*
@@ -519,6 +487,10 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 /*
   Center content (the "real stuff")
 */
+
+.shift {
+    margin-top: 40px;
+}
 
 .content .container {
     background: url(../images/sidebar-border.png) repeat-y 95px 0;
