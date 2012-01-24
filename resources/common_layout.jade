@@ -69,19 +69,6 @@ mixin topBar(fullPath)
           form(id='searchbox', action='', class='pull-right')  
             input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
 
-mixin header
-  header.jumbotron.masthead#overview
-    //- a(class="c9-sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
-    div.inner
-      div.container
-        if nodejsRef == 'true'
-          h1 Node.js API Reference
-        else if jsDoc == 'true'
-          h1 Javascript Reference
-        else
-          h1 Node.js Guide
-        p.lead
-
 mixin footer
   footer#footer
         .container
