@@ -12,7 +12,7 @@ That's it! You call the global `require()` function, and assign it to a variable
 
 You can also specify a certain directory to look for a module:
 
-	var farAway = require(../../../bar);
+	var farAway = require('../../../bar');
 
 Technically, you don't even need to specify the `..` directory change. Node.js always looks in the curent directory for a module. If it doesn't find it, it walks up the directory, checking each parent, looking for either a file matching your module's name (`bar.js`), or, a folder called `node_modules` that contains your file. If it can't find a file matching your module name by the time it hits the root directory (`'/'`), Node.js throws an exception.
 
