@@ -17,15 +17,16 @@ For example, take a look at the following pseudocode:
 Although many callbacks are inline, you could also choose to separate your code like this:
 
     // You call async functions like this.
-    someAsyncFunction(param1, param2, myCallback());
+    someAsyncFunction(param1, param2, myCallback);
 
-    function myCallback(err, result) 
-    if (err) {
-      		console.log("There's an error, and it reads: " + err);
+    function myCallback(err, result) {
+        if (err) {
+        	console.log("There's an error, and it reads: " + err);
     	}
     	else {
     		doSomething(result);
     	}
+    }
 
 If you're programming asynchronously, you should be passing callback functions as your final parameter. In fact, nearly all&mdash;if not every single one&mdash;of Node's official modules, expect callbacks as their last parameter.
 
