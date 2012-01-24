@@ -148,7 +148,7 @@ a.brand {
 }
 
 .masthead {
-    background: #55a500 url(../images/header-back.jpg) repeat-x 0 bottom;
+    background: #55a500 url(../images/header-back.png) repeat-x 0 bottom;
 }
 .masthead .container {
     width: 680px;
@@ -548,6 +548,11 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 /*    width: 280px;*/
 /*    overflow: auto;*/
     padding-right : 10px;
+}
+
+#sidebar h3 a,
+#sidebar h3 a:hover {
+    color: #404040;
 }
 
 #sidebar #well
