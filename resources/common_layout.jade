@@ -80,8 +80,10 @@ mixin header
           h1 Node.js API Reference
         else if jsDoc == 'true'
           h1 Javascript Reference
-        else
+        else if nodejsDev == 'true
           h1 Node.js Guide
+        else
+          h1 Node.js Manual
         p.lead
 
 mixin footer
