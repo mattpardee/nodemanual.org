@@ -20,7 +20,7 @@ mixin head(guideTitle, additionalCSS)
   title #{guideTitle}
 
   meta(name="generator", content="c9-doc-build")
-  meta(name="description", content="A collection of Node.js tutorials")
+  meta(name="description", content="A complete and community-driven resource for learning and developing Node.js applications.")
   meta(name="author", content="Garen J. Torikian")
 
   meta(name="viewport", content="width=device-width,initial-scale=1")
@@ -61,9 +61,9 @@ mixin topBar(fullPath)
 
           ul.nav
             li#node_js_ref
-              a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node.js Reference
+              a(href='#{dirPrefix}nodejs_ref_guide/index.html') Node.js API Reference
             li#nodejs_dev_guide
-              a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node.js Manual
+              a(href='#{dirPrefix}nodejs_dev_guide/index.html') Node.js Guide
             li#js_doc
               a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
           form(id='searchbox', action='', class='pull-right')  
@@ -75,11 +75,11 @@ mixin header
     div.inner
       div.container
         if nodejsRef == 'true'
-          h1 Node.js Reference
+          h1 Node.js API Reference
         else if jsDoc == 'true'
           h1 Javascript Reference
         else
-          h1 Node.js Manual
+          h1 Node.js Guide
         p.lead
 
 mixin footer

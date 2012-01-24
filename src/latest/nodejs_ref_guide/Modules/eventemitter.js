@@ -12,7 +12,7 @@
  * 
  * These functions can then be attached to objects, to be executed when an event is emitted. Such functions are called _listeners_.
  * 
- * To access the `EventEmitter` class, add `require('events').EventEmitter` to your code.
+ * To inherit from `EventEmitter`, add `require('events').EventEmitter` to your code.
  * 
  * When an `EventEmitter` instance experiences an error, the typical action is to emit an `'error'` event. Error events are treated as a special case in Node.js. If there is no listener for it, then the default action is to print a stack trace and exit the program.
  * 
