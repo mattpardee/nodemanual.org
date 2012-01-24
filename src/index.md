@@ -44,8 +44,8 @@ For additional resources with Node.js:
 
 * [NodeUp](http://nodeup.com/), a podcast covering the latest Node.js news in the community
 
-* [More Community-powered Node.js docs](http://docs.nodejitsu.com), community powered rocket fuel for Node.js.
+* [More Community-powered Node.js docs](http://docs.nodejitsu.com), community powered rocket fuel for Node.js
 
-* [Node Guide](http://nodeguide.com), opinionated and unofficial guide to help people getting started in Node.js.
+* [Node Guide](http://nodeguide.com), an opinionated and unofficial guide to help people getting started with Node.js
 
-There are more links if you hover over the Node.js logo in the toolbar.
+Find more links by hovering over the Node.js logo in the toolbar.
