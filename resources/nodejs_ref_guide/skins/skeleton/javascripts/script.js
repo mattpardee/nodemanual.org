@@ -25,7 +25,8 @@ $(function () {
             if (query) {
                 input.value = "";
                 input.blur();
-                var url = "https://www.google.com/search?q=" + encodeURIComponent("site:nodemanual.org " + query);
+                var currentVersion = $('#currentVersion').text();
+                var url = "https://www.google.com/search?q=" + encodeURIComponent("site:nodemanual.org/" + currentVersion + " " + query);
                 window.open(url);
             }
             return false;

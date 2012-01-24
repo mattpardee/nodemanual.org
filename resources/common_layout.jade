@@ -67,7 +67,9 @@ mixin topBar(fullPath)
             li#js_doc
               a(href='#{dirPrefix}js_doc/index.html') Javascript Reference
           form(id='searchbox', action='', class='pull-right')  
-            input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types") 
+            input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types")
+          span(id='currentVersion', style='display: none')
+            mixin makeVersionLabel(fullPath, true)
 
 mixin header
   header.jumbotron.masthead#overview
@@ -156,8 +158,11 @@ mixin formatGHHref(url, type)
   -url = url.replace(/\/{2,}/g, "/").replace(/\//g,"%2F")
   <a href='http://c9.io/open/git/?url=git%3A%2F%2Fgithub.com%2Fc9%2Fnodemanual.org.git&file=#{url}&line_start=3&line_end=0' title='Edit in Cloud9 IDE'>[edit]</a>
 
-mixin makeVersionLabel(fullPath)
+mixin makeVersionLabel(fullPath, showText)
   -if (fullPath.indexOf("latest") >= 0)
-    != '0.6.8'
+    -if (!showText)
+      != '0.6.8'
+    else
+      != 'latest'
   -else
     != fullPath.match(/\d\.\d\.\d/)
