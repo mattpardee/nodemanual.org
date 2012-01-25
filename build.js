@@ -83,11 +83,13 @@ function makeJSRefDocs(versions) {
                 console.error(err);
                 process.exit(-1);
             }
+
             if (index == array.length - 1)
             {
                 console.log("All Done!".green);
                 process.exit(0);
             }
+
         });
     });
 }
