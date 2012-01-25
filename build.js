@@ -78,13 +78,23 @@ function makeIndexes(version) {
 
 function makeJSRefDocs(versions) {
     versions.forEach(function (element, index, array) {
-        ndoc.main(["--path=./src/" + element + "/js_doc", "-o", "./out/" + element + "/js_doc/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"]);
+        ndoc.main(["--path=./src/" + element + "/js_doc", "-o", "./out/" + element + "/js_doc/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
+            if (err) {
+                console.error(err);
+                process.exit(-1);
+            }
+        });
     });
 }
 
 function makeNodeJSRefDocs(versions) {
     versions.forEach(function (element, index, array) {
-        ndoc.main(["--path=./src/" + element + "/nodejs_ref_guide", "-o", "./out/" + element + "/nodejs_ref_guide/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"]);
+        ndoc.main(["--path=./src/" + element + "/nodejs_ref_guide", "-o", "./out/" + element + "/nodejs_ref_guide/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
+            if (err) {
+                console.error(err);
+                process.exit(-1);
+            }
+        });
     });
 }
 
