@@ -1,10 +1,7 @@
 var disqus_shortname = 'nodemanual';
 
-var pathName = window.location.pathname;
-var fileName = pathName.substring(window.location.pathname.lastIndexOf("/") + 1);
-var versionPos = pathName.indexOf("/v");
-
-var disqus_developer = pathName.indexOf("http") >= 0 ? 0 : 1;
+var paths = window.location.pathname.split("/");
+var fileName = paths[paths.length - 2] + "/" + paths[paths.length - 1];
 
 var disqus_identifier = fileName;
 

@@ -33,10 +33,10 @@ $(function () {
         };
     }
 
-    var fileNameRE = new RegExp(fileName, "i");
+    var fileNameRE = new RegExp("^" + fileName, "i");
 
     $('a.menuLink').each(function(index) {
-        if ($(this).attr("href").toLowerCase().match(fileNameRE))
+        if ($(this).attr("href").match(fileNameRE))
         {
             $(this).addClass("currentItem");
             return false;
