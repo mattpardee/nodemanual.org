@@ -16,24 +16,17 @@ var jadeTemplate = fs.readFileSync(jadeTemplateFile);
 
 console.log("GENERATING DOCUMENTATION".green);
 
-var util = require('util'),
-    exec = require('child_process').exec,
-    child;
-
-ls = exec('ls ./src/');
-ls.stdout.on('data', function(data) {
+fs.readdir("./src", function(err, files) {
     if ("latest" == version) {
         versions.push("latest");
     }
-    else if (/[\d]\.[\d]\.[\d]/.test(version)) {
+    else if (/[\d]\.[\d]\.[\d]/.test(version)) {         
         versions.push("v" + version);
     }
     else {
-        data = data.replace(/^\.$/, "").replace(/index\.md/, "");
-
-        versions = data.split("\n");
-        versions = versions.filter(function(value) {
-            return (value === '') ? 0 : 1;
+        versions = files;
+        versions = versions.filter(function (value) {
+            return (value === '' || value == "index.md" || value.match(/^\./)) ? 0 : 1;
         });
     }
 
