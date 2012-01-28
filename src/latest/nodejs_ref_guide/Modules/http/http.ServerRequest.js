@@ -65,7 +65,7 @@
  * 
  * <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  *
-*/
+**/
 
 /** read-only
  * http.ServerRequest.headers -> Object

@@ -91,7 +91,7 @@
  *
  *		response.removeHeader("Content-Encoding");
  *
-*/
+**/
 
 /**
  * http.ServerResponse.write(chunk [, encoding='utf8']) -> Void
