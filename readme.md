@@ -27,7 +27,7 @@ To run the build, open your command prompt and type:
     
 This first launches doc-build, which reads _nodejs\_dev\_guide/_ and begins to assemble the subdirectory markdown files. These markdown files are modified, and placed into a `tmp` directory. From there, they are converted into HTML files, and placed into _out/_.
 
-After that, ndoc runs across the Javascript files in _src/js\_doc_ and _src/nodejs\_ref\_guide_, and proceeds to convert them into HTML files also placed into the _out/_ directory. 
+After that, ndoc runs across the files in _src/js\_doc_ and _src/nodejs\_ref\_guide_, and proceeds to convert them into HTML files also placed into the _out/_ directory. 
 
 By default, this system builds every version of documentation listed under _src/nodejs_ref_guide_. You could also pass in one more argument to specify the Node.js source version. This can be one of the following values:
 
@@ -40,27 +40,9 @@ By default, this system builds every version of documentation listed under _src/
 
 We'll very gladly take any pull requests for new documentation! This source material is intended to be open and sharable to all. 
 
-### License Agreement
-
-To protect the interests of our contributors and users we require contributors to sign a Contributors License Agreement (CLA) before we pull the changes into the main repository. Our CLA is the simplest of agreements, requiring that the contributions you make to are only those you're allowed to make. This helps us significantly reduce future legal risk for everyone involved. It is easy, helps everyone, takes ten minutes, and only needs to be completed once.  There are two versions of the agreement:
-
-1. [The Individual CLA](https://github.com/ajaxorg/cloud9/raw/master/doc/Contributor_License_Agreement-v2.pdf): use this version if you're working on documentation in your spare time, or can clearly claim ownership of copyright in what you'll be submitting.
-2. [The Corporate CLA](https://github.com/ajaxorg/cloud9/raw/master/doc/Corporate_Contributor_License_Agreement-v2.pdf): have your corporate lawyer review and submit this if your company is going to be contributing to the documentation
-
-Please print the CLA and fill it out and sign it. Then, either send it by snail mail, fax us, or send it back scanned (or as a photo) by e-mail.
-
-Email: info@ajax.org
-
-Fax: +31 (0) 206388953
-
-Address: Ajax.org B.V.
-  Keizersgracht 241
-  1016 EA, Amsterdam
-  the Netherlands
-  
 # Copyright
 
-Content providers include:
+Major content providers include:
 
 * [Cloud9 IDE](http://www.c9.io)
 * [Joyent](http://www.joyent.com/) (Node.js Reference)
