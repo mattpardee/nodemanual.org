@@ -86,18 +86,18 @@ function makeIndexes(element) {
 }
 
 function makeJSRefDocs(element) {
-    ndoc.main(["--path=./src/" + element + "/js_doc", "-o", "./out/" + element + "/js_doc/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
+    ndoc.main(["--path=./src/" + element + "/js_doc", "-e", "md", "-o", "./out/" + element + "/js_doc/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
         }
 
-        makeNodeJSRefDocs(element);
+       makeNodeJSRefDocs(element);
     });
 }
 
 function makeNodeJSRefDocs(element) {
-    ndoc.main(["--path=./src/" + element + "/nodejs_ref_guide", "-o", "./out/" + element + "/nodejs_ref_guide/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
+    ndoc.main(["--path=./src/" + element + "/nodejs_ref_guide", "-e", "md", "-o", "./out/" + element + "/nodejs_ref_guide/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
