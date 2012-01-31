@@ -12,6 +12,6 @@ At first glance, this might appear to be the same as [reading and writing from a
 
 In fact, performing this operation is rather common, and Node.js has several helper functions to assist this process, like [`streams.ReadableStream.pipe()`](../nodejs_ref_guide/streams.ReadableStream.html#streams.ReadableStream.pipe) and [`util.pump`](../nodejs_ref_guide/util.html#util.pump). To demonstrate this latter method, and to show how HTTP servers can use streams, too, take a look at this code:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_streams/streams.ex.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_streams/streams.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 When you navigate to the server URL, you should start to hear the MP3 playing. Notice that we don't need to worry ourselves about handling when events start or end. In fact, you should probably stick to using the helper methods, unless you need to do some additional work better suited within the event's callback (like printing messages via `console.log()`).
