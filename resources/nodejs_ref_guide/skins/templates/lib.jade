@@ -1,6 +1,4 @@
 - var methodSection = constructorSection = propertySection = eventSection = false;
-- var globalJSObjs = ["Array", "Boolean", "Date", "Error", "EvalError", "RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError", "Function", "Infinity", "JSON", "Math", "NaN", "Number", "Object", "RegExp", "String"]
-
 - var specialObjs = ["Buffer", "Cluster", "EventEmitter", "Streams"]
 
 mixin argument(arg, reqOptObj)
@@ -108,7 +106,7 @@ mixin article(obj, parents, memberType)
                       -reqOptObj.push({name: arg.name, optional: arg.optional}) // only sig object has "optional" information; store for later use
                   li.signature
                     ul
-                      li.signature-call!= validate_link(signature(obj, sig, memberType, obj.id))
+                      li.signature-call!= sanitize_link(signature(obj, sig, memberType, obj.id))
                         if sig.returns
                           li.signature-returns
                             ul.argument-types
@@ -128,7 +126,7 @@ mixin article(obj, parents, memberType)
                                   text = text + '...'
                                 if ret.array
                                   text = '[ ' + text + ' ]'
-                                li.argument-type!= validate_link(text)
+                                li.argument-type!= sanitize_link(text)
                     -if (loops == 0)
                       -loops = 1 // ensure that we only print ONE meta info UL per signature (some methods have multiple forms)
                       ul.metaInfo
@@ -275,22 +273,13 @@ mixin short_description_list(collection)
 
 mixin link(obj, short, classes)
   l = link(obj, short, classes)
-  != validate_link(l)
+  != sanitize_link(l)
 
 mixin links(collection)
   ul.method-list
     for obj in collection
       li
         mixin link(obj)
-
-//- by default, links are assuming their own dir; instead, refer them out to
-//- the js_doc dir. this is probably lousy code
--function validate_link(l)
-  for js_obj in globalJSObjs
-    -var regex = new RegExp('href="' + js_obj, "ig")
-    -if (l.match(regex))
-      -l = l.replace(regex, 'href="' + dirPrefix + 'js_doc/' + js_obj)
-  != sanitize_link(l)
 
 //- we want to force these links to lowercase;
 //- our Linux server doesn't distinguish between case. TODO: fix that?

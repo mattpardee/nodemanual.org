@@ -30,29 +30,24 @@ fs.readdir("./src", function(err, files) {
         });
     }
 
-    versions.forEach(function(element, index, array) {
-        makeManualDocs(element);
-        makeJSRefDocs(element);
+    versions.forEach(function(verj, index, array) {
+        makeManualDocs(verj);
     });
 });
 
-function makeManualDocs(element) {
+function makeManualDocs(verj) {
 
-    var outDir = "out/" + element;
-    var tmpDir = "tmp/" + element;
+    var outDir = "out/" + verj;
+    var tmpDir = "tmp/" + verj;
 
     docs.clean(tmpDir + "/nodejs_dev_guide");
     docs.clean(outDir + "/nodejs_dev_guide");
 
     docs.copyassets(outDir, "nodejs_dev_guide");
-    docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + element + "/nodejs_dev_guide/", "nodejs_dev_guide");
-
-    makeIndexes(element);
-
-    //makeJSRefDocs(versions);
+    docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + verj + "/nodejs_dev_guide/", "nodejs_dev_guide", makeIndexes(verj));
 }
 
-function makeIndexes(element) {
+function makeIndexes(verj) {
     var readContentStream = fs.createReadStream("src/index.md", {
         encoding: 'utf8'
     });
@@ -71,33 +66,37 @@ function makeIndexes(element) {
         var vars = extend({
             title: title,
             data: data,
-            whoAmI: element,
+            whoAmI: verj,
             markdown: markdown
         });
 
         var r = fn(vars);
 
-        var writeStream = fs.createWriteStream("out/" + element + "/index.html", {
+        var writeStream = fs.createWriteStream("out/" + verj + "/index.html", {
             flags: "w"
         });
 
         writeStream.write(r);
     });
+
+    readContentStream.on('close', function() {
+        makeJSRefDocs(verj);
+    });
 }
 
-function makeJSRefDocs(element) {
-    ndoc.main(["--path=./src/" + element + "/js_doc", "-e", "md", "-o", "./out/" + element + "/js_doc/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
+function makeJSRefDocs(verj) {
+    ndoc.main(["--path=./src/" + verj + "/js_doc", "-j", "http://www.nodemanual.org/" + verj + "/js_doc/%s.html", "-e", "md", "-o", "./out/" + verj + "/js_doc/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
         }
 
-       makeNodeJSRefDocs(element);
+       makeNodeJSRefDocs(verj);
     });
 }
 
-function makeNodeJSRefDocs(element) {
-    ndoc.main(["--path=./src/" + element + "/nodejs_ref_guide", "-e", "md", "-o", "./out/" + element + "/nodejs_ref_guide/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
+function makeNodeJSRefDocs(verj) {
+    ndoc.main(["--path=./src/" + verj + "/nodejs_ref_guide", "-j", "http://www.nodemanual.org/" + verj + "/js_doc/%s.html", "-e", "md", "-o", "./out/" + verj + "/nodejs_ref_guide/", "-t", "Node.js Reference", "--skin", "./resources/nodejs_ref_guide/skins"], function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
