@@ -34,7 +34,7 @@ For additional resources with Node.js:
 
 * The official [Node.js mailing list](http://groups.google.com/group/nodejs?pli=1)
 
-* The [Node.js IRC Channel](irc://irc.freenode.net/%26node.js). A log of the channel is available at [http://nodejs.debuggable.com/](http://nodejs.debuggable.com/)
+* The [Node.js IRC Channel](http://webchat.freenode.net/?channels=node.js&uio=d4), #node.js on freenode.net. A log of the channel is available at [http://nodejs.debuggable.com/](http://nodejs.debuggable.com/)
 
 * The official [Node.js Wiki](https://github.com/joyent/node/wiki)
 
