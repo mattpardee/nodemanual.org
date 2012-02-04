@@ -31,7 +31,8 @@ fs.readdir("./src", function(err, files) {
     }
 
     versions.forEach(function(verj, index, array) {
-        makeManualDocs(verj);
+        makeJSRefDocs(verj);
+        //makeManualDocs(verj);
     });
 });
 
@@ -79,9 +80,10 @@ function makeIndexes(verj) {
         writeStream.write(r);
     });
 
+    /*
     readContentStream.on('close', function() {
         makeJSRefDocs(verj);
-    });
+    }); */
 }
 
 function makeJSRefDocs(verj) {
@@ -101,6 +103,8 @@ function makeNodeJSRefDocs(verj) {
             console.error(err);
             process.exit(-1);
         }
+
+        makeManualDocs(verj);
     });
 }
 
