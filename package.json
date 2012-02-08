@@ -12,6 +12,7 @@
   "dependencies": {
     "colors": "~0.6.0",
     "marked": "~0.1.5",
+    "markdown_conrefs": "1.0.5",
     "wrench": "~1.3.5",
     "jade": "~0.20.0",
     "http-server": "~0.4.0",
