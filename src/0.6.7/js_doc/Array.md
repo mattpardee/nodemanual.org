@@ -123,8 +123,8 @@ Here is the output:
 **/
 
 /**
-	new Array(element0, element1..., elementN)
-	new Array(arrayLength) 
+new Array(element0, element1..., elementN)
+new Array(arrayLength) 
 - elementN (Object): A Javascript array is initialized with the given elements, except in the case where a single argument is passed to theArray constructor and that argument is a number. Note that this special case only applies to Javascript arrays created with the `Array` constructor, not with array literals created with the bracket syntax.
 - arrayLength (Number): If the first argument passed to the `Array` constructor is an integer between 0 and 232-1 (inclusive), a new Javascript array is created with that number of elements. If the argument is any other number, a [[RangeError `RangeError`]] exception is thrown.
 

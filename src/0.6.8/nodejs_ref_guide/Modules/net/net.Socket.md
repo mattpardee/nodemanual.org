@@ -32,7 +32,7 @@ where
 
 
 /**
-net.Socket.connect(port [, host=localhost] [, connectListener])
+net.Socket.connect(port [, host=localhost] [, connectionListener()])
 - port (Number): The port to connect to
 - host (String): The name of the host to connect to; it's entirely optional, as you can just use `(port, connectListener)` if you wish
 - connectionListener (Function): Automatically set as a listener for the [[net.Server@connection `'connection'`]] event

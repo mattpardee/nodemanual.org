@@ -23,21 +23,10 @@ You can use `nc` to connect to a UNIX domain socket server:
     nc -U /tmp/echo.sock
 **/
 
-/**
-net.createServer([options = {allowHalfOpen: false}] [, connectionListener]) -> Void
-- options (Object):  An object with any options you want to include
-- connectionListener (Function): Automatically set as a listener for the [[net.Server@connection `'connection'`]] event
-
-Creates a new TCP server. 
-
-If `allowHalfOpen` is `true`, then the socket won't automatically send FIN packet when the other end of the socket sends a FIN packet. The socket becomes non-readable, but still writable. You should call the `end()` method explicitly. See ['end'](#event_end_) event for more information.
-
-
-**/ 
 
 /** alias of: createConnection
-net.connect(port, [host='localhost'] [, connectListener]) -> Void
-net.connect(port, [,connectListener]) -> Void
+net.connect(port, [host='localhost'] [, connectionListener()]) -> Void
+net.connect(port [,connectionListener()]) -> Void
 - port (Number): The port to connect to
 - host (String): The name of the host to connect to
 - connectionListener (Function): Automatically set as a listener for the [[net.Server@connection `'connection'`]] event
@@ -49,8 +38,8 @@ The arguments for these methods change the type of connection. For example, if y
 **/ 
 
 /**
-net.createConnection(port, [host='localhost'] [, connectListener]) -> Void
-net.createConnection(port, [,connectListener]) -> Void
+net.createConnection(port, [host='localhost'] [, connectionListener()]) -> Void
+net.createConnection(port, [,connectionListener()]) -> Void
 - port (Number): The port to connect to
 - host (String): The name of the host to connect to
 - connectionListener (Function): Automatically set as a listener for the [[net.Server@connection `'connection'`]] event

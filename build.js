@@ -21,7 +21,7 @@ fs.readdir("./src", function(err, files) {
         versions.push("latest");
     }
     else if (/[\d]\.[\d]\.[\d]/.test(version)) {         
-        versions.push("v" + version);
+        versions.push(version);
     }
     else {
         versions = files;
@@ -42,9 +42,9 @@ function makeManualDocs(verj) {
     var tmpDir = "tmp/" + verj;
 
     docs.clean(tmpDir + "/nodejs_dev_guide");
-    docs.clean(outDir + "/nodejs_dev_guide");
+    //docs.clean(outDir + "/nodejs_dev_guide");
 
-    docs.copyassets(outDir, "nodejs_dev_guide");
+    //docs.copyassets(outDir, "nodejs_dev_guide");
     docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + verj + "/nodejs_dev_guide/", "nodejs_dev_guide", makeIndexes(verj));
 }
 
