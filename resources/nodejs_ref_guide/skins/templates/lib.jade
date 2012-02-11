@@ -128,7 +128,7 @@ mixin article(obj, parents, memberType)
                                   text = '[ ' + text + ' ]'
                                 li.argument-type!= sanitize_link(text)
                     -if (loops == 0)
-                      -loops = 1 // ensure that we only print ONE meta info UL per signature (some methods have multiple forms)
+                      -loops = 1 // ensure that we only print ONE meta info UL per signature (some methods have multiple signatures)
                       ul.metaInfo
                           if obj.readonly
                             li
@@ -147,9 +147,14 @@ mixin article(obj, parents, memberType)
                                   | &nbsp; (since #{obj.deprecated.from})
                                   if obj.deprecated.off
                                     | &nbsp;and will be removed on #{obj.deprecated.off}
-                          if obj.aliases && obj.aliases.length
+                          if obj.alias_of
                             li
-                              span.label.alias
+                              span.label.alias.single
+                                | Aliased as: 
+                                != link(obj.alias_of)
+                          else if obj.aliases.length
+                            li
+                              span.label.alias.multiple
                                 | Aliased as:
                                 ul.alias
                                   for alias in obj.aliases

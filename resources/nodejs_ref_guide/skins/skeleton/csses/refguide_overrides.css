@@ -720,6 +720,9 @@ li.signature {
 .alias {
     background-color: #6c951e;
     color: #ffffff;
+    font-size: 10px;
+    padding: 2px 5px 3px;
+    text-transform: capitalize;
 }
 
 .related-to {
@@ -741,6 +744,12 @@ li.signature {
     opacity: 0.8;
     cursor: pointer;
 }
+
+ul.alias li {
+    font-weight: bold;
+    font-size: 10px;
+}
+
 .memberContent {
   
 }
