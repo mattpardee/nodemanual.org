@@ -1,11 +1,9 @@
 
 /** section: Crypto
-  * class hash
-  *
-  * This class is a representation of the [OpenSSL implementation of hash](http://www.openssl.org/docs/crypto/crypto.html#item_AUTHENTICATION) algorithms. It can be created as a returned value from [[crypto.createHash `crypto.createHash()`]].
-  *
-  *
-  *
+class hash
+
+This class is a representation of the [OpenSSL implementation of hash](http://www.openssl.org/docs/crypto/crypto.html#item_AUTHENTICATION) algorithms. It can be created as a returned value from [[crypto.createHash `crypto.createHash()`]].
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>

@@ -1,10 +1,8 @@
 /** section: Crypto
-  * class hmac
-  *
-  * This class is a representation of the [OpenSSL implementation of hmac](http://www.openssl.org/docs/crypto/hmac.html#) algorithms. It can be created as a returned value from [[crypto.createHmac `crypto.createHmac()`]].
-  *
-  *
-  *
+class hmac
+
+This class is a representation of the [OpenSSL implementation of hmac](http://www.openssl.org/docs/crypto/hmac.html#) algorithms. It can be created as a returned value from [[crypto.createHmac `crypto.createHmac()`]].
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>

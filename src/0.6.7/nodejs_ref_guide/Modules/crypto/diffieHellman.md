@@ -1,10 +1,8 @@
 /** section: Crypto
-  * class diffieHellman
-  *
-  * This class is a representation of the [OpenSSL implementation of diffie-Hellman](http://www.openssl.org/docs/crypto/dh.html#). It can be created as a returned value from [[crypto.createDiffieHellman `crypto.createDiffieHellman()`]].
-  *
-  *
-  *
+class diffieHellman
+
+This class is a representation of the [OpenSSL implementation of diffie-Hellman](http://www.openssl.org/docs/crypto/dh.html#). It can be created as a returned value from [[crypto.createDiffieHellman `crypto.createDiffieHellman()`]].
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>

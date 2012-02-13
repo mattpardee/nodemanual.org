@@ -1,10 +1,8 @@
 /** section: Crypto
-  * class verifier
-  *
-  * This class is used to verify signed certificates for OpenSSL. It can be created as a returned value from [[crypto.createVerifier `crypto.createVerifier()`]].
-  *
-  *
-  *
+class verifier
+
+This class is used to verify signed certificates for OpenSSL. It can be created as a returned value from [[crypto.createVerifier `crypto.createVerifier()`]].
+
 #### Example
 
 

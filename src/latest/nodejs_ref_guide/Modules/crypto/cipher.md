@@ -1,9 +1,9 @@
 /** section: Crypto
-  * class cipher
-  *
-  * This class is a representation of the [OpenSSL implementation of cipher](http://www.openssl.org/docs/apps/ciphers.html). It can be created as a returned value from [[crypto.createCipher `crypto.createCipher()`]] or [[crypto.createCipheriv `crypto.createCipheriv()`]].
-  *
-  * 
+class cipher
+  
+  This class is a representation of the [OpenSSL implementation of cipher](http://www.openssl.org/docs/apps/ciphers.html). It can be created as a returned value from [[crypto.createCipher `crypto.createCipher()`]] or [[crypto.createCipheriv `crypto.createCipheriv()`]].
+  
+   
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>

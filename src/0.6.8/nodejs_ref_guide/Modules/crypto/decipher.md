@@ -1,10 +1,8 @@
 /** section: Crypto
-  * class decipher
-  *
-  * This class is used to decipher previously created [[cipher `cipher`]] objects. It can be created as a returned value from [[crypto.createDecipher `crypto.createDeipher()`]] or [[crypto.createDecipheriv `crypto.createDecipheriv()`]].
-  *
-  *
-  *
+class decipher
+
+ This class is used to decipher previously created [[cipher `cipher`]] objects. It can be created as a returned value from [[crypto.createDecipher `crypto.createDeipher()`]] or [[crypto.createDecipheriv `crypto.createDecipheriv()`]].
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
