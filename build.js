@@ -34,6 +34,9 @@ fs.readdir("./src", function(err, files) {
         makeJSRefDocs(verj);
         //makeManualDocs(verj);
     });
+
+    var robotFile = fs.createReadStream("resources/robots.txt");
+    robotFile.pipe(fs.createWriteStream("out/robots.txt"));
 });
 
 function makeManualDocs(verj) {

@@ -6,9 +6,9 @@ mixin identifyBuild(tree)
 mixin doctype
 
 if nodejsRef == 'true'
-  mixin head('Node.js API Reference')
+  mixin head('Node.js API Reference', '', outFile.substring(0, outFile.lastIndexOf('.')) + '.html')
 else
-  mixin head('Javascript Reference')
+  mixin head('Javascript Reference', '', outFile.substring(0, outFile.lastIndexOf('.')) + '.html')
 
 body(onload="styleCode()")
 

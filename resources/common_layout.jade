@@ -12,7 +12,7 @@ mixin doctype
   <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
   <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-mixin head(guideTitle, additionalCSS)
+mixin head(guideTitle, additionalCSS, filename)
   meta(charset="utf-8")
   //- N.B. http://blog.yjl.im/2011/01/bad-value-x-ua-compatible-for-attribute.html
   meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
@@ -30,6 +30,8 @@ mixin head(guideTitle, additionalCSS)
   link(rel="stylesheet", href="#{dirPrefix}resources/csses/refguide_overrides.css")
 
   link(href="#{dirPrefix}resources/images/favicon.ico", rel="icon", type="image/x-icon")
+  
+  link(rel="canonical", href="http://www.nodemanual.org/out/latest/" + filename)
 
   if additionalCSS
     link(rel="stylesheet", href="#{additionalCSS}")
