@@ -171,4 +171,4 @@ mixin makeVersionLabel(fullPath, showText)
     else
       != 'latest'
   -else
-    != fullPath.match(/\d\.\d\.\d/)
+    != fullPath.match(/\d\.\d\.\d+/)
