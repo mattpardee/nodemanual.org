@@ -1,11 +1,14 @@
 require("colors");
 
 var argv = require("optimist").argv,
-    docs = require("./build/doc-build/docs"),
     ndoc = require("./build/ndoc/bin/ndoc"),
     fs = require('fs'),
     md2html = require('marked'),
-    jade = require('jade');
+    jade = require('jade'),
+    panda = require("../panda-docs/bin/panda-docs"),
+    async = require('async'),
+    path  = require('path'), 
+    wrench = require('wrench');
 
 var version = argv._[0];
 var versions = [];
@@ -30,25 +33,31 @@ fs.readdir("./src", function(err, files) {
         });
     }
 
-    versions.forEach(function(verj, index, array) {
+    versions.forEach(function(verj) {
+        makeIndexes(verj);
         makeJSRefDocs(verj);
-        //makeManualDocs(verj);
+        makeNodeJSRefDocs(verj);
+        makeDevDocs(verj);
     });
 
     var robotFile = fs.createReadStream("resources/robots.txt");
     robotFile.pipe(fs.createWriteStream("out/robots.txt"));
 });
 
-function makeManualDocs(verj) {
+function makeDevDocs(verj) {
+    var outDir = "./out/" + verj + "/nodejs_dev_guide";
+    var manifestFile = "./src/" + verj + "/nodejs_dev_guide/manifest.json";
 
-    var outDir = "out/" + verj;
-    var tmpDir = "tmp/" + verj;
+    if (!path.existsSync(outDir)) {
+        wrench.mkdirSyncRecursive(outDir);
+    }
 
-    docs.clean(tmpDir + "/nodejs_dev_guide");
-    //docs.clean(outDir + "/nodejs_dev_guide");
-
-    //docs.copyassets(outDir, "nodejs_dev_guide");
-    docs.generate(outDir + "/nodejs_dev_guide", process.cwd() + "/src/" + verj + "/nodejs_dev_guide/", "nodejs_dev_guide", makeIndexes(verj));
+    panda.make([manifestFile, "--template", "./resources/nodejs_dev_guide/layout.jade", "--assets", "./resources/nodejs_dev_guide/csses", "-o", outDir], function(err) {
+        if (err) {
+            console.error(err);
+            process.exit(-1);
+        }
+    });
 }
 
 function makeIndexes(verj) {
@@ -82,11 +91,6 @@ function makeIndexes(verj) {
 
         writeStream.write(r);
     });
-
-    /*
-    readContentStream.on('close', function() {
-        makeJSRefDocs(verj);
-    }); */
 }
 
 function makeJSRefDocs(verj) {
@@ -95,8 +99,6 @@ function makeJSRefDocs(verj) {
             console.error(err);
             process.exit(-1);
         }
-
-       makeNodeJSRefDocs(verj);
     });
 }
 
@@ -106,8 +108,6 @@ function makeNodeJSRefDocs(verj) {
             console.error(err);
             process.exit(-1);
         }
-
-        makeManualDocs(verj);
     });
 }
 

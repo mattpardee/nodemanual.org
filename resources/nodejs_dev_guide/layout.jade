@@ -4,7 +4,7 @@ mixin identifyBuild('', 'nodejs_dev_guide')
 
 mixin doctype
 
-mixin head('Node.js Guide', '../resources/csses/devguide_overrides.css', outFile + ".html")
+mixin head('Node.js Guide', '../../assets/devguide_overrides.css', outFile + ".html")
 
 body(onload="styleCode()")
 
@@ -20,14 +20,20 @@ body(onload="styleCode()")
             include nodejs_dev_guide_menu.jade
         .span11
           div.title
-            h1.pageTitle #{title}
+            h1.pageTitle #{metadata.title}
               span.editInC9 
                 mixin formatGHHref(whoAmI, 'nodejs_dev_guide')
-            if byline.length
+
+            if metadata && metadata.author
               span.cite by 
-                mixin markdown(byline, true)
-          .dev_guide#content
-            mixin markdown(data)
+                -var authors = metadata.author.split(",")
+                -var urls = metadata.url.split(",")
+                -for (var a = 0; a < authors.length; a++)
+                  a(href='#{urls[a]}') #{authors[a]}
+                  if (a != authors.length - 1)
+                    ,
+
+          .dev_guide#content!= content
 
           div#disqus_thread
 
@@ -35,4 +41,5 @@ body(onload="styleCode()")
 
   mixin endingScripts
 
-</html>
+mixin assembleAuthors(author)
+  span testing
