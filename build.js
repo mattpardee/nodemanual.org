@@ -5,7 +5,7 @@ var argv = require("optimist").argv,
     fs = require('fs'),
     md2html = require('marked'),
     jade = require('jade'),
-    panda = require("panda-docs/bin/panda-docs"),
+    panda = require("../panda-docs/bin/panda-docs"),
     async = require('async'),
     path  = require('path'), 
     wrench = require('wrench');
@@ -52,7 +52,7 @@ function makeDevDocs(verj) {
         wrench.mkdirSyncRecursive(outDir);
     }
 
-    panda.make([manifestFile, "--template", "./resources/nodejs_dev_guide/layout.jade", "--assets", "./resources/nodejs_dev_guide/csses", "-o", outDir], function(err) {
+    panda.make([manifestFile, "--template", "./resources/nodejs_dev_guide/layout.jade", "--assets", "./resources/nodejs_dev_guide/skins", "-o", outDir, "--outputAssets", "./out/assets"], function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
