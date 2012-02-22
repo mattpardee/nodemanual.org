@@ -21,7 +21,7 @@
     "optimist": "~0.3.1",
     "stack": "~0.1.0",
     "creationix": "~0.3.1",
-    "panda-docs": "~0.2.0",
+    "panda-docs": "~0.2.1",
     "async": "~0.1.16"
   },
   "devDependencies": {}
