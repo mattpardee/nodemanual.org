@@ -61,7 +61,6 @@ Creates a credentials object, with  `details` being a dictionary with the follow
 - key (String): A string holding the PEM encoded private key file
 - cert (String): A string holding the PEM encoded certificate file
 - ca (String): Either a string or list of strings of PEM encoded CA certificates to trust
-- ciphers (String: A string describing the ciphers to use or exclude. Consult [OpenSSL.org](http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT) for details on the format
 
 If no `ca` details are given, then Node.js uses the default publicly trusted list of CAs as given by [Mozilla](http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt).
 

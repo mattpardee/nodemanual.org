@@ -19,6 +19,18 @@ Alternatively, you can send the CSR to a Certificate Authority for signing.
 
 (Documentation on creating a CA are pending; for now, interested users should just look at [`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/fixtures/keys/Makefile) in the Node.js source code.)
 
+#### Client-initiated renegotiation attack mitigation
+
+The TLS protocol lets the client renegotiate certain aspects of the TLS session. Unfortunately, session renegotiation requires a disproportional amount of server-side resources, which makes it a potential vector for denial-of-service attacks.
+
+To mitigate this, renegotiations are limited to three times every 10 minutes. An error is emitted on the [[tls.CleartextStream `CleartextStream] instance when the threshold is exceeded. The limits are configurable:
+
+  - `tls.CLIENT_RENEG_LIMIT`: renegotiation limit in seconds; default is 3.
+  - `tls.CLIENT_RENEG_WINDOW`: renegotiation window in seconds; default is 10 minutes
+
+Don't change the defaults unless you know what you are doing.
+
+To test your server, connect to it with `openssl s_client -connect address:port` and press `R<CR>` (that's the letter `R` followed by a carriage return) a few times.
 
 #### Using NPN and SNI
 
@@ -27,6 +39,13 @@ NPN (Next Protocol Negotiation) and SNI (Server Name Indication) are TLS handsha
 NPN is to use one TLS server for multiple protocols (HTTP, SPDY).
 
 SNI is to use one TLS server for multiple hostnames with different SSL certificates.
+
+
+#### Example: Using STARTTLS
+
+As of the v0.4 Node.js branch, no function exists for starting a TLS session on an already existing TCP connection.  This is possible, but it requires a bit of work. 
+
+The technique is to use `tls.createSecurePair()`, which returns two streams: an encrypted stream and a cleartext stream. The encrypted stream is then piped to the socket; the cleartext stream is what the user interacts with thereafter. [Here is a gist that shows how to do just that.](http://gist.github.com/848444)
 
 **/
 
@@ -77,6 +96,8 @@ Creates a new client connection to the given `port` and `host`. This function re
 
   - `servername`: The server name for the SNI (Server Name Indication) TLS extension.
 
+  -  `socket`: Establish secure connection on a given socket rather than creating a new socket. If this option is specified, `host` and `port` are ignored.  This is intended FOR INTERNAL USE ONLY.  As with all ndocumented APIs in Node.js, they should not be used.
+  
 `secureConnectionListener` automatically sets a listener for the [`secureConnection`](#tls.event.secureConnection) event.
 
 
@@ -140,6 +161,8 @@ The `options` object has the following mix of required values:
 `options` also has the following option values:
 
   - `ca`: An array of strings or `Buffer`s of trusted certificates. These are used to authorize connections. If this is omitted, several "well-known root" CAs will be used, like VeriSign. 
+
+  - ciphers (String: A string describing the ciphers to use or exclude. Consult [OpenSSL.org](http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT) for details on the format
 
   - `NPNProtocols`: An array of strings or a  `Buffer` containing supported NPN protocols. 
         `Buffer` should have the following format: `0x05hello0x05world`, where the preceding byte indicates the following protocol name's length. Passing an array is usually much simplier: `['hello', 'world']`. 

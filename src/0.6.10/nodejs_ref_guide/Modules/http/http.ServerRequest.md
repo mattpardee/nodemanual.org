@@ -4,17 +4,15 @@ class http.ServerRequest
 
 This object is created internally by an HTTP server&mdash;not by the user&mdash;and passed as the first argument to a `'request'` listener.
 
-The request implements the [Readable Stream](streams.readablestream.html) interface; it is also an [[EventEmitter `EventEmitter`]] with the following events:
-
 **/ 
 
 /**
 http.ServerRequest@data(chunk)
 - chunk (String): The data that's received (as a string)
 
-Emitted when a piece of the message body is received. The chunk is a string if an encoding has been set with [[http.ServerRequest.setEncoding `request.setEncoding()`]], otherwise it's a [Buffer](buffer.html).
+Emitted when a piece of the message body is received. For example, a chunk of the body is given as the single argument. The transfer-encoding has been decoded. 
 
-Note that the **data will be lost** if there is no listener when a `ServerRequest` emits a `'data'` event.
+The body encoding is set with [[http.ServerRequest.setEncoding `request.setEncoding()`]].
 
 **/ 
 
