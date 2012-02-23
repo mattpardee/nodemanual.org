@@ -33,6 +33,8 @@ mixin head(guideTitle, additionalCSS, filename)
   
   link(rel="canonical", href="http://www.nodemanual.org/out/latest/" + filename)
 
+  link(type="text/css", rel="stylesheet", href="http://yandex.st/highlightjs/6.1/styles/vs.min.css")
+
   if additionalCSS
     link(rel="stylesheet", href="#{additionalCSS}")
 
