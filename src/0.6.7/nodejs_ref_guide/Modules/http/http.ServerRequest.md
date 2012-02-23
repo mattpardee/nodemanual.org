@@ -2,7 +2,7 @@
 /**
 class http.ServerRequest
 
-This object is created internally by an HTTP server&mdash;not by the user&mdash;and passed as the first argument to a `'request'` listener.
+This object is created internally by an HTTP server—not by the user—and passed as the first argument to a `'request'` listener.
 
 **/ 
 

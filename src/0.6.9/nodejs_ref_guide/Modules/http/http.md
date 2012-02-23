@@ -2,7 +2,7 @@
 /** 
 class http
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses&mdash;the user is always able to stream data. To use the HTTP server and client, add `require('http')` to your code.
+The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses—the user is always able to stream data. To use the HTTP server and client, add `require('http')` to your code.
 
 HTTP message headers are represented by an object like this:
 
@@ -136,7 +136,7 @@ There are a few special headers that should be noted.
     req.write('data\n');
     req.end();
 
-Note that in the example, `req.end()` was called. With `http.request()` one must always call `req.end()` to signify that you're done with the request&mdash;even if there is no data being written to the request body.
+Note that in the example, `req.end()` was called. With `http.request()` one must always call `req.end()` to signify that you're done with the request—even if there is no data being written to the request body.
 
 Returns
 

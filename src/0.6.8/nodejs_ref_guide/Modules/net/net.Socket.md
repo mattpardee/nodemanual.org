@@ -49,7 +49,7 @@ This function is asynchronous. When the `'connect'` event is emitted the socket 
 /**
 net.Socket.bufferSize -> Number
 
-`net.Socket` has the property that `socket.write()` always works. This is to help users get up and running quickly. The computer can't always keep up with the amount of data that is written to a socket&mdash;the network connection simply might be too slow. Node.js will internally queue up the data written to a socket and send it out over the wire whenever it's possible. (Internally, it's polling on the socket's file descriptor for being writable.)
+`net.Socket` has the property that `socket.write()` always works. This is to help users get up and running quickly. The computer can't always keep up with the amount of data that is written to a socket—the network connection simply might be too slow. Node.js will internally queue up the data written to a socket and send it out over the wire whenever it's possible. (Internally, it's polling on the socket's file descriptor for being writable.)
 
 The consequence of this internal buffering is that memory may grow. This property shows the number of characters currently buffered to be written.  The number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the _exact_ number of bytes is not known.
 
@@ -80,7 +80,7 @@ net.Socket.write(data [, encoding='utf8'] [, callback()]) -> Boolean
 - enocding (String): The encoding to use
 - callback (Function): The callback to execute once the write is finished
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string&mdash;it defaults to UTF8 encoding.
+Sends data on the socket. The second parameter specifies the encoding in the case of a string—it defaults to UTF8 encoding.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` is emitted when the buffer is again free.
 

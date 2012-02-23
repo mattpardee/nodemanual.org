@@ -4,7 +4,7 @@ Title: Reading and Writing Files
 
 Everybody should be able to read, and Node.js is no different. File I/O is very interesting with Node.js, because it's one of the few modules with both asynchronous and synchronous operations for the same functions.
 
-But wait! Doesn't everyone (including this manual) say, "**Don't use the synchronous functions!**" Not quite&mdash;everyone simply _advises against it_ (including this manual). There are _some_ legitimate cases for reading a file in a blocking manner; for example, if you need to parse some configuration data or a password before continuing with the rest of your code. This happens on a case-by-case basis, so there's no rule that dictates when you should and shouldn't be blocking.
+But wait! Doesn't everyone (including this manual) say, "**Don't use the synchronous functions!**" Not quite—everyone simply _advises against it_ (including this manual). There are _some_ legitimate cases for reading a file in a blocking manner; for example, if you need to parse some configuration data or a password before continuing with the rest of your code. This happens on a case-by-case basis, so there's no rule that dictates when you should and shouldn't be blocking.
 
 You can refer to the file system methods in full by reading [the Node.js API Reference documentation on the `fs` module](../nodejs_ref_guide/fs.html).
 

@@ -5,7 +5,7 @@ class assert
 
 The Assert module is used for writing unit tests for your applications. You can access it by adding `require('assert')` to your code.
 
-All of the `assert` methods basically compare two different states&mdash;an expected one, and an actual one&mdash;and return a Boolean condition. If the comparisson is `true`, the condition passes. If an assert method is `false`, the entire Node.js app crashes.
+All of the `assert` methods basically compare two different states—an expected one, and an actual one—and return a Boolean condition. If the comparisson is `true`, the condition passes. If an assert method is `false`, the entire Node.js app crashes.
 
 Some methods have an additional `message` parameter, which sends text out to the console when the assert fails.
 

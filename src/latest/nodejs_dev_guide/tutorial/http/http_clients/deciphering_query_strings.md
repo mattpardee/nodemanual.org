@@ -2,7 +2,7 @@ Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
 Title: Deciphering Query Strings
 
-Often times when working with GET and POST requests, you'll need to manipulate the query string parameters in a URL to gain access or accomplish something you desire&mdash;or even just parsing what a web server is telling you.
+Often times when working with GET and POST requests, you'll need to manipulate the query string parameters in a URL to gain access or accomplish something you desire—or even just parsing what a web server is telling you.
 
 In Node.js, both the creation and parsing of query strings are interpreted as JSON objects that you can easily manipulate. To show this off, let's first make  to aid in the accessing of URL query string parameters is built into the standard library. The `url.parse()` method takes care of most of the heavy lifting.  Here is an example script using this handy function and an explanation on how it works:
 

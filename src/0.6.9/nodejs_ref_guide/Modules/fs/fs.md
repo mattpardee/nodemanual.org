@@ -7,7 +7,7 @@ The asynchronous form always take a completion callback as its last argument. Th
 
 When using the synchronous form, any exceptions are immediately thrown. You can use `try/catch` to handle exceptions, or allow them to bubble up. 
 
-In busy processes, the programmer is **strongly encouraged** to use the asynchronous versions of these calls. The synchronous versions block the entire process until they complete&mdash;halting all connections. However, with the asynchronous methods, there is no guaranteed ordering.
+In busy processes, the programmer is **strongly encouraged** to use the asynchronous versions of these calls. The synchronous versions block the entire process until they complete—halting all connections. However, with the asynchronous methods, there is no guaranteed ordering.
 
 <Note>When processing files, relative paths to filename can be used; however, this path is relative to `process.cwd()`.</Note>
 

@@ -2,7 +2,7 @@ Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
 Title: Implementing Logging Messages
 
-Logging isn't just something for beavers&mdash;it's also a function used by many processes, ranging from server tracking to debugging your own apps.
+Logging isn't just something for beavers—it's also a function used by many processes, ranging from server tracking to debugging your own apps.
 
 In Node.js, these logs are printed directly to your console. In fact, there's [a very useful global object _called_ `console`](../nodejs_ref_guide/console.html) that contains many methods, both blocking and non-blocking.
 

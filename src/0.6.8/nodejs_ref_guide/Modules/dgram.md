@@ -185,7 +185,7 @@ dgram.dropMembership(multicastAddress [, multicastInterface])
 - multicastAddress (String): The address to drop
 - multicastInterface (String): The interface to use
 
-The opposite of `addMembership`&mdash;this tells the kernel to leave a multicast group with `IP_DROP_MEMBERSHIP` socket option. This is automatically called by the kernel when the socket is closed or process terminates, so most apps will never need to call this.
+The opposite of `addMembership`—this tells the kernel to leave a multicast group with `IP_DROP_MEMBERSHIP` socket option. This is automatically called by the kernel when the socket is closed or process terminates, so most apps will never need to call this.
 
 If `multicastInterface` is not specified, the OS will try to drop membership to all valid interfaces.
 

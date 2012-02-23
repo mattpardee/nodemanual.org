@@ -7,7 +7,7 @@ TLS/SSL is a public/private key infrastructure. Each client and each server must
 
     openssl genrsa -out ryans-key.pem 1024
 
-where `ryans-key.pm` is the name of your file. All servers (and some clients) need to have a certificate. Certificates are public keys signed by a Certificate Authority&mdash; or, they are self-signed. The first step to getting a certificate is to create a "Certificate Signing Request" (CSR) file. This is done using:
+where `ryans-key.pm` is the name of your file. All servers (and some clients) need to have a certificate. Certificates are public keys signed by a Certificate Authority— or, they are self-signed. The first step to getting a certificate is to create a "Certificate Signing Request" (CSR) file. This is done using:
 
     openssl req -new -key ryans-key.pem -out ryans-csr.pem
 

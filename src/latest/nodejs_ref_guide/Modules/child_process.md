@@ -85,7 +85,7 @@ Note that if `spawn()` receives an empty `options` object, it spawns the process
 
 ##### Undocumented Options 
 
-There are several internal options&mdash;in particular: `stdinStream`, `stdoutStream`, and `stderrStream`. They are for INTERNAL USE ONLY. As with all undocumented APIs in Node.js, they shouldn't be used.
+There are several internal options—in particular: `stdinStream`, `stdoutStream`, and `stderrStream`. They are for INTERNAL USE ONLY. As with all undocumented APIs in Node.js, they shouldn't be used.
 
 There is also a deprecated option called `customFds`, which allows one to specify specific file descriptors for the `stdio` of the child process. This API was not portable to all platforms and therefore removed. With `customFds`, it was possible to hook up the new process' [stdin, stdout, stderr] to existing stream; `-1` meant that a new stream should be created. **Use this functionality at your own risk.**
 

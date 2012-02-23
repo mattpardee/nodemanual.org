@@ -14,7 +14,7 @@ Converting between Buffers and Javascript string objects requires an explicit en
 
 * `'utf8'`: multi-byte encoded Unicode characters.  Many web pages and other document formats use UTF-8. 
 
-* `'ucs2'`: 2-bytes, little endian encoded Unicode characters. It can encode only BMP (Basic Multilingual Plane&mdash;from U+0000 to U+FFFF).
+* `'ucs2'`: 2-bytes, little endian encoded Unicode characters. It can encode only BMP (Basic Multilingual Plane—from U+0000 to U+FFFF).
 
 * `'base64'`: Base64 string encoding
 

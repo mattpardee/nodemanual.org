@@ -82,7 +82,7 @@ http.ClientRequest.write(chunk [, encoding='utf8']) -> Void
 - chunk (Array): An array of integers or a string to write
 - encoding (String): The encoding of the chunk (only needed if it's a string)
 
-Sends a chunk of the body.  By calling this method many times, the user can stream a request body to a server&mdash;in that case, it's suggested you use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Sends a chunk of the body.  By calling this method many times, the user can stream a request body to a server—in that case, it's suggested you use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 
 **/ 

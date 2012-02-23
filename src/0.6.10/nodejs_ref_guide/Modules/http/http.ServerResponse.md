@@ -2,7 +2,7 @@
 /**
 class http.ServerResponse
 
-This object is created internally by a HTTP server&mdash;not by the user. It is passed as the second parameter to the `'request'` event.
+This object is created internally by a HTTP server—not by the user. It is passed as the second parameter to the `'request'` event.
 
 The response implements the [[streams.WritableStream `Writable Stream`]] interface; it is also an [[EventEmitter `EventEmitter`]].
 

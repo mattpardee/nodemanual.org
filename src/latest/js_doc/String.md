@@ -610,7 +610,7 @@ Returns a copy of the string, replacing various special characters in the string
 
 #### Example:
 
-<table class = \"standard-table\" style = \"table-layout: fixed; width: 100%;\"> <thead> <tr> <th class = \"header\" scope = \"col\"><code>str</code></th> <th class = \"header\" scope = \"col\"><code>str.quote()</code></th> <th class = \"header\" scope = \"col\"><code>eval(str.quote())</code></th> </tr> </thead> <tbody> <tr> <td><code>Hello world!</code></td> <td><code>&quot;Hello world!&quot;</code></td> <td><code>Hello world!</code></td> </tr> <tr> <td><code>Hello<br/> &nbsp; &nbsp; &nbsp; &nbsp; world!</code></td> <td><code>&quot;Hello\\n\\tworld!&quot;</code></td> <td><code>Hello<br/> &nbsp; &nbsp; &nbsp; &nbsp; world!</code></td> </tr> <tr> <td><code>&quot; \\ &mdash; '</code></td> <td><code>\\&quot; \\\\ \\u2014 '</code></td> <td><code>&quot; \\ &mdash; '</code></td> </tr> </tbody></table>
+<table class = \"standard-table\" style = \"table-layout: fixed; width: 100%;\"> <thead> <tr> <th class = \"header\" scope = \"col\"><code>str</code></th> <th class = \"header\" scope = \"col\"><code>str.quote()</code></th> <th class = \"header\" scope = \"col\"><code>eval(str.quote())</code></th> </tr> </thead> <tbody> <tr> <td><code>Hello world!</code></td> <td><code>&quot;Hello world!&quot;</code></td> <td><code>Hello world!</code></td> </tr> <tr> <td><code>Hello<br/> &nbsp; &nbsp; &nbsp; &nbsp; world!</code></td> <td><code>&quot;Hello\\n\\tworld!&quot;</code></td> <td><code>Hello<br/> &nbsp; &nbsp; &nbsp; &nbsp; world!</code></td> </tr> <tr> <td><code>&quot; \\ — '</code></td> <td><code>\\&quot; \\\\ \\u2014 '</code></td> <td><code>&quot; \\ — '</code></td> </tr> </tbody></table>
 
 **/
 
