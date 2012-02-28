@@ -4,7 +4,7 @@ class fs.Stats
 
 Objects returned from [[fs.stat `fs.stat()`]], [[fs.lstat `fs.lstat()`]], and [[fs.fstat `fs.fstat()`]] (and their synchronous counterparts) are of this type. The object contains the following methods:
 
-For a regular file, `util.inspect(fs.Stats)` returns a string similar to this:
+For a regular file, `util.inspect(fs.Stats)` returns an object similar to [the structure returned by the Unix stat command](http://www.kernel.org/doc/man-pages/online/pages/man2/stat.2.html):
 
     { dev: 2114,
       ino: 48064969,
@@ -19,6 +19,7 @@ For a regular file, `util.inspect(fs.Stats)` returns a string similar to this:
       atime: Mon, 10 Oct 2011 23:24:11 GMT,
       mtime: Mon, 10 Oct 2011 23:24:11 GMT,
       ctime: Mon, 10 Oct 2011 23:24:11 GMT }
+
 
 Please note that `atime`, `mtime`, and `ctime` are instances of the [Date](../js_doc/Date.html) object, and to compare the values of these objects you should use appropriate methods. For most general uses, [`getTime()`](../js_doc/Date.html#getTime) returns the number of milliseconds elapsed since _1 January 1970 00:00:00 UTC_, and this integer should be sufficient for any comparison. However, there are additional methods which can be used for displaying fuzzy information.
 
