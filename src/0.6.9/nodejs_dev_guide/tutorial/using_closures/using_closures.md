@@ -2,7 +2,7 @@ Author: Tim Caswell
 URL: https://twitter.com/#!/creationix
 Title: Simulating Object-Orientation with Closures
 
-One of the greatest features of Javascript is the [closure][wikipedia-closure]. From Wikipedia, a closure is:
+One of the greatest features of Javascript is the [closure](http://en.wikipedia.org/wiki/Closure_(computer_science)). From Wikipedia, a closure is:
 
 > [A] first-class function with free variables that are bound in the lexical environment. Such a function is said to be "closed over" its free variables. A closure is defined within the scope of its free variables, and the extent of those variables is at least as long as the lifetime of the closure itself.
 
