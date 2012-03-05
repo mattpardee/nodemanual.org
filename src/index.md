@@ -48,4 +48,6 @@ For additional resources with Node.js:
 
 * [Node Guide](http://nodeguide.com), an opinionated and unofficial guide to help people getting started with Node.js
 
+* [NodeCloud](http://www.nodecloud.org), an ordered Node.js resource directory allowing to evaluate relative popularity of a project.
+
 Find more links by hovering over the Node.js logo in the toolbar.
