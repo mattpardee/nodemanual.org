@@ -133,6 +133,12 @@ If you want to have a module execute code multiple times, then export a function
 
 Modules are cached based on their resolved filename.  Since modules may resolve to a different filename based on the location of the calling module (loading from `node_modules` folders), it is not a guarantee that `require('foo')` always returns the exact same object, if it would resolve to different files.
 
+## The `module` Object
+
+In each module, the `module` variable is a reference to the object representing the current module. In particular, `module.exports` is the same as the `exports` object.
+
+`module` isn't actually a global, but rather local to each module.
+
 <a id="module.exports"></a>
 
 The `exports` object is created by the Module system. Sometimes, this is not acceptable, as some developers want their module to be an instance of some class. 
@@ -170,13 +176,45 @@ In a file called `y.js`:
     var x = require('./x');
     console.log(x.a);
 
+/**
+module.require(id) -> Object
+* id (String): The name of the module
 
-#### `module.require`
-
-The `module.require` method provides a way to load a module as if `require()` was called from the original module.
+The `module.require` method provides a way to load a module as if `require()` was called from the original module. The object returned is actually the `exports` from the resolved module.
 
 Note that in order to do this, you must get a reference to the `module` object.  Since `require()` returns the `exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
+*/
 
+/**
+module.id -> String
+
+The identifier for the module. Typically this is the fully resolved filename.
+*/
+
+/**
+module.filename -> String
+
+The fully resolved filename to the module.
+*/
+
+/**
+module.loaded -> Boolean
+
+WIdentifies wether or not the module is done loading (`true`), or is in the process of loading.
+*/
+
+/**
+module.parent -> Object
+
+The module that required this one.
+*/
+
+/**
+module.children -> Array
+
+The module objects required by this one.
+
+*/
 
 #### All Together Now
 

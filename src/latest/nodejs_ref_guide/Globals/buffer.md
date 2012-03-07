@@ -598,10 +598,10 @@ The size of the buffer in bytes.  Note that this is not necessarily the size of 
 
 
 /**
-Buffer.INSPECT_MAX_BYTES = "50"
+Buffer.INSPECT_MAX_BYTES -> Number
 
 
-The number of bytes returned when `buffer.inspect()` is called. This can be overridden by user modules.
+The number of bytes returned when `buffer.inspect()` is called; the default is 50. This can be overridden by user modules.
 
 **/
 

@@ -70,7 +70,7 @@ If you want to receive datagrams, call `socket.bind()`. `socket.bind()` binds to
 dgram.send(buf, offset, length, port, address, [callback(err)]) -> Void
 - buf (Buffer): The data buffer to send
 - offset (Number):  Indicates where in the buffer to start at
-- length (Number):  Indicates how much of the buffer to use
+- length (Number):  Indicates how much of the buffer to use (its number of bytes)
 - port (Number):  The port to send to
 - address (String):  The address to send to
 - callback (Function): The callback to execute once the method completes that may be used to detect any DNS errors and when `buf` may be reused

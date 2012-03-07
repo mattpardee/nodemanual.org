@@ -1,7 +1,7 @@
 /** section: Crypto
 class cipher
   
-  This class is a representation of the [OpenSSL implementation of cipher](http://www.openssl.org/docs/apps/ciphers.html). It can be created as a returned value from [[crypto.createCipher `crypto.createCipher()`]] or [[crypto.createCipheriv `crypto.createCipheriv()`]].
+A class for encrypting data. It's a representation of the [OpenSSL implementation of cipher](http://www.openssl.org/docs/apps/ciphers.html). It can be created as a returned value from [[crypto.createCipher `crypto.createCipher()`]] or [[crypto.createCipheriv `crypto.createCipheriv()`]].
   
    
 #### Example

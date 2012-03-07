@@ -62,5 +62,5 @@ These objects are available to all modules. Some of these objects aren't actuall
 `setInterval(cb, ms)`<br/>
 `clearInterval(t)`</dt>
 <dd>These timer functions are all global variables. See the [timer](timer.html) section for more information.</dd>
-
+</dl>
 **/

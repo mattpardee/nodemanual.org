@@ -2,7 +2,7 @@
 /** section: Crypto
 class hash
 
-This class is a representation of the [OpenSSL implementation of hash](http://www.openssl.org/docs/crypto/crypto.html#item_AUTHENTICATION) algorithms. It can be created as a returned value from [[crypto.createHash `crypto.createHash()`]].
+The class for creating hash digests of data. It's class a representation of the [OpenSSL implementation of hash](http://www.openssl.org/docs/crypto/crypto.html#item_AUTHENTICATION) algorithms. It can be created as a returned value from [[crypto.createHash `crypto.createHash()`]].
 
 #### Example
 

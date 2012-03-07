@@ -1,7 +1,7 @@
 /** section: Crypto
 class diffieHellman
 
-This class is a representation of the [OpenSSL implementation of diffie-Hellman](http://www.openssl.org/docs/crypto/dh.html#). It can be created as a returned value from [[crypto.createDiffieHellman `crypto.createDiffieHellman()`]].
+This is a class for creating Diffie-Hellman key exchanges. It's a representation of the [OpenSSL implementation of diffie-Hellman](http://www.openssl.org/docs/crypto/dh.html#). It can be created as a returned value from [[crypto.createDiffieHellman `crypto.createDiffieHellman()`]].
 
 #### Example
 

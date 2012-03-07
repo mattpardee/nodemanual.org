@@ -25,19 +25,9 @@ Alternatively, you can send the CSR to a Certificate Authority for signing.
 NPN (Next Protocol Negotiation) and SNI (Server Name Indication) are TLS handshake extensions provided with this module.
 
 NPN is to use one TLS server for multiple protocols (HTTP, SPDY).
-
 SNI is to use one TLS server for multiple hostnames with different SSL certificates.
 
 **/
-
-/**
-tls@secure()
-
-The event is emitted from the SecurePair once the pair has successfully established a secure connection.
-
-Similar to the checking for the server `'secureConnection'` event, [[tls.CleartextStream.authorized `tls.CleartextStream.authorized`]] should be checked to confirm whether the certificate used properly authorized.
-**/ 
-
 
 /**
 tls@secureConnection(cleartextStream)

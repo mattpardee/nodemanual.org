@@ -1,7 +1,7 @@
 /** section: Crypto
 class decipher
 
- This class is used to decipher previously created [[cipher `cipher`]] objects. It can be created as a returned value from [[crypto.createDecipher `crypto.createDeipher()`]] or [[crypto.createDecipheriv `crypto.createDecipheriv()`]].
+ A class for decrypting data. It's used to decipher previously created [[cipher `cipher`]] objects. It can be created as a returned value from [[crypto.createDecipher `crypto.createDeipher()`]] or [[crypto.createDecipheriv `crypto.createDecipheriv()`]].
 
 #### Example
 
