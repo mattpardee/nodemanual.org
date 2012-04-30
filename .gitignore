@@ -2,3 +2,5 @@
 tmp/
 out/
 node_modules/
+.c9revisions
+.settings.xml

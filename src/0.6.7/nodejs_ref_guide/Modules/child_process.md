@@ -23,7 +23,7 @@ Child processes always have three streams associated with them. They are:
 /**
 child_process@exit(code, signal)
 - code (Number): The final exit code of the process (otherwise, `null`)
-- signal (String): The string name of the signal (otherwise, `null`)
+* signal (String): The string name of the signal (otherwise, `null`)
 
 
 This event is emitted after the child process ends.

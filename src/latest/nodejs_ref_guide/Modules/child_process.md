@@ -153,8 +153,8 @@ child_process.execFile(file, args, options, callback(error, stdout, stderr)) -> 
 - options (Object): The options to pass to the `exec` call
 - callback (Function): The function to run after the method completes
 - error (Error): The standard `Error` object, except `err.code` is the exit code of the child process, and `err.signal is set to the signal that terminated the process
-- stdout (Streams): is the standard output stream
-- stderr (Streams): is the standard error stream
+- stdout (Buffer): is the standard output stream
+- stderr (Buffer): is the standard error stream
 
 A function similar to `child.exec()`, except instead of executing a subshell it executes the specified file directly. This makes it slightly leaner than `child.exec`. It has the same options and callback.
 
@@ -164,10 +164,14 @@ A function similar to `child.exec()`, except instead of executing a subshell it 
 
 
 /** related to: child_process.spawn
-child_process.fork(modulePath, arguments, options) -> Object
+child_process.fork(modulePath, arguments, options, callback) -> Object
 - modulePath (String): The location of the module
 - arguments (String): Any starting arguments to use
 - options (Object): Any additional options to pass
+- callback (Function): The function to run after the process terminates
+- code (Number): The exit code
+- stdout (Buffer): is the standard output stream
+- stderr (Buffer): is the standard error stream
 
 This is a special case of the [[child\_process.spawn `child_process.spawn()`]] functionality for spawning Node.js processes. In addition to having all the methods in a normal ChildProcess instance, the returned object has a communication channel built-in. The channel is written with `child.send(message, [sendHandle])`, and messages are recieved by a `'message'` event on the child.
 

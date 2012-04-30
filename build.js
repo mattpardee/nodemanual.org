@@ -34,10 +34,10 @@ fs.readdir("./src", function(err, files) {
     }
 
     versions.forEach(function(verj) {
-        makeIndexes(verj);
-        makeJSRefDocs(verj);
+        //makeIndexes(verj);
+       // makeJSRefDocs(verj);
         makeNodeJSRefDocs(verj);
-        makeDevDocs(verj);
+       // makeDevDocs(verj);
     });
 
     var robotFile = fs.createReadStream("resources/robots.txt");
