@@ -69,9 +69,11 @@ All options from [http.request `httprequest()`]] are valid for `options`:
 
 The following options from [tls.connect()](tls.html#tls.connect) can also be specified. However, a [[http.globalAgent globalAgent]] silently ignores these.
 
+  - `pfx`: A certificate, private key, and any CA certificates to use for SSL. The default is `null`.
+
   - `key`: A string or `Buffer` containing the private key of the client in aPEM format. The default is `null`.
 
-  - `passphrase`: A string of a passphrase for the private key. The default is `null`.
+  - `passphrase`: A string of a passphrase for the private key or pfx. The default is `null`.
 
   - `cert`: A string or `Buffer` containing the certificate key of the client in a PEM format; in other words, the public x509 certificate to use. The default is `null`.
 

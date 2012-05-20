@@ -20,6 +20,17 @@ Alternatively, you can send the CSR to a Certificate Authority for signing.
 (Documentation on creating a CA are pending; for now, interested users should just look at [`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/fixtures/keys/Makefile) in the Node.js source code.)
 
 
+To create a .pfx or .p12, do this:
+
+    openssl pkcs12 -export -in agent5-cert.pem -inkey agent5-key.pem \
+        -certfile ca-cert.pem -out agent5.pfx
+
+  - `in`: The certificate
+  - `inkey`: The private key
+  - `certfile`: All your CA certs concatenated in one file like, 
+    `cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
+
+
 #### Using NPN and SNI
 
 NPN (Next Protocol Negotiation) and SNI (Server Name Indication) are TLS handshake extensions provided with this module.
@@ -53,9 +64,12 @@ Creates a new client connection to the given `port` and `host`. This function re
 
 `options` should be an object that specifies the following values:
 
+  - `pfx`: A String or `Buffer` containing the private key, certificate, and
+    CA certs of the server in PFX or PKCS12 format.
+
   - `key`: A string or `Buffer` containing the private key of the client in aPEM format. The default is `null`.
 
-  - `passphrase`: A string of a passphrase for the private key. The default is `null`.
+  - `passphrase`: A string of a passphrase for the private key or pfx. The default is `null`.
 
   - `cert`: A string or `Buffer` containing the certificate key of the client in a PEM format; in other words, the public x509 certificate to use. The default is `null`.
 
@@ -124,6 +138,9 @@ Creates a new [[tls.Server `tls.Server`]].
 
 The `options` object has the following mix of required values:
 
+  - `pfx`: A String or `Buffer` containing the private key, certificate and
+    CA certs of the server in PFX or PKCS12 format. (Mutually exclusive with
+    the `key`, `cert` and `ca` options.)
   - `key`: A string or `Buffer` containing the private key of the server in a PEM format. (Required)
   - `cert`: A string or `Buffer` containing the certificate key of the server in a PEM format. (Required)
 
@@ -135,7 +152,7 @@ The `options` object has the following mix of required values:
         `Buffer` should have the following format: `0x05hello0x05world`, where the preceding byte indicates the following protocol name's length. Passing an array is usually much simplier: `['hello', 'world']`. 
         Protocols should be ordered by their priority.
 
-  - `passphrase`: A string of a passphrase for the private key.
+  - `passphrase`: A string of a passphrase for the private key or pfx.
 
   - `rejectUnauthorized`: If `true` the server rejects any connection that is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. This defaults to `false`.
 

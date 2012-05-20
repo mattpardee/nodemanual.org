@@ -58,8 +58,10 @@ crypto.createCredentials([details]) -> Object
 
 Creates a credentials object, with  `details` being a dictionary with the following keys:
 
+- pfx (String): A string or buffer holding the PFX or PKCS12 encoded private key, certificate, and CA certificates
 - key (String): A string holding the PEM encoded private key file
 - cert (String): A string holding the PEM encoded certificate file
+- passphrase (String): A string or passphrase for the private key or pfx
 - ca (String): Either a string or list of strings of PEM encoded CA certificates to trust
 - ciphers (String: A string describing the ciphers to use or exclude. Consult [OpenSSL.org](http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT) for details on the format
 

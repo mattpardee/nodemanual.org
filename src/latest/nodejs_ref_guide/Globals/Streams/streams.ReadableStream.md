@@ -53,14 +53,6 @@ Closes the underlying file descriptor. The stream will not emit any more events.
 
 
 /**
-streams.ReadableStream.destroySoon()-> Void
-
-After the write queue is drained, close the file descriptor.
-
-**/ 
-
-
-/**
 streams.ReadableStream.pause()-> Void
 
 Pause any incoming `'data'` events.
