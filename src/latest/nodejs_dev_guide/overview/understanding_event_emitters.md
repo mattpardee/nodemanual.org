@@ -23,7 +23,7 @@ Sometimes you want to listen for events that can happen several times. For examp
 
 The `on()` function also returns a reference to the object it belongs to, allowing you to chain several of such event listeners. If you're only interested in the first occurrence of an event, you can use the `once()` function instead. You can also remove event listeners by using the `removeListener()` function.
 
-<Note>By default, events can only have a maximum of 10 listeners. In order to create more, you'll need to make a call to [`setMaxListeners(n)`](../nodejs_ref_guide/eventemitter.html#setMaxListeners). The maximum limit ensures you aren't leaking event listeners by mistake.</Note>
+<Note>By default, events can only have a maximum of 10 listeners. In order to create more, you'll need to make a call to [`setMaxListeners`](../nodejs_ref_guide/eventemitter.html#eventemitter.setMaxListeners). The maximum limit ensures you aren't leaking event listeners by mistake.</Note>
 
 Here's a full example converying many of the methods discussed:
 
