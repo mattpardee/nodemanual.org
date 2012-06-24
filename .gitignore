@@ -3,6 +3,7 @@ tmp/
 out/
 out_json/
 node_modules/
+nodemanual.input/
 .c9revisions
 .settings.xml
 .settings
