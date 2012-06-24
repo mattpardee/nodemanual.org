@@ -375,7 +375,8 @@ If `compareFunction` is not supplied, elements are sorted by converting them to 
 If `compareFunction` is supplied, the array elements are sorted according to the return value of the compare function. If `a` and `b` are two elements being compared, then:
 
 * If `compareFunction(a, b)` is less than 0, sort `a` to a lower index than `b`.
-* If `compareFunction(a, b)` returns 0, leave `a` and `b` unchanged with respect to each other, but sorted with respect to all different elements. Note: the ECMAscript standard does not guarantee this behaviour, and thus not all browsers (e.g. Mozilla versions dating back to at least 2003, respect this.
+* If `compareFunction(a, b)` returns 0, leave `a` and `b` unchanged with respect to each other, but sorted with respect to all different elements.
+  Note: the ECMAscript standard does not guarantee this behaviour, and thus not all browsers (e.g. Mozilla versions dating back to at least 2003, respect this.
 * If `compareFunction(a, b)` is greater than 0, sort `b` to a lower index than `a`.
 * compareFunction(a, b)` must always returns the same value when given a specific pair of elements a and b as its two arguments. If inconsistent results are returned then the sort order is undefined
 

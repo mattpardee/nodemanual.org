@@ -71,19 +71,18 @@ usage.
 
 #### Examples
 
-Note: These examples are drastically simplified to show the basic concept. Zlib
-encoding can be expensive, and the results ought to be cached.  See [Memory
-Usage Tuning](#memory_Usage_Tuning) for more information on the
-speed/memory/compression tradeoffs involved in zlib usage.
+Note: These examples are drastically simplified to show the basic concept. Zlib encoding can be expensive, and the results ought to be cached.  See [Memory Usage Tuning](#memory_Usage_Tuning) for more information on the speed/memory/compression tradeoffs involved in zlib usage.
 
 Compressing or decompressing a file can be done by piping an `fs.ReadStream`
 into a zlib stream, then into an `fs.WriteStream`.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/zlib/zlib.ex.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 Compressing or decompressing data in one step can be done by using the
 convenience methods.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/zlib/zlib.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 To use this module in an HTTP client or server, use the
 [accept-encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
 ) on requests, and the

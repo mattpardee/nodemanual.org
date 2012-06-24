@@ -45,10 +45,8 @@ stack trace and exit) won't occur.
 #### Example: Listening for an `'uncaughtException'`:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.uncaughtException.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
-Note: An `uncaughtException` is a very crude mechanism for exception handling.
-Using `try / catch` in your program gives you more control over your program's
-flow.  Especially for server programs that are designed to stay running forever,
-`uncaughtException` can be a useful safety mechanism.
+
+Note: An `uncaughtException` is a very crude mechanism for exception handling. Using `try / catch` in your program gives you more control over your program's flow.  Especially for server programs that are designed to stay running forever, `uncaughtException` can be a useful safety mechanism.
 
 
  
@@ -133,9 +131,7 @@ Send a signal to a process. The `signal` names are strings like 'SIGINT' or
 'SIGUSR1'. For more information, see
 [kill(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/kill.2.html).
 
-Note: Just because the name of this function is `process.kill`, it is really
-just a signal sender, like the `kill` system call.  The signal sent may do
-something other than kill the target process.
+Note: Just because the name of this function is `process.kill`, it is really just a signal sender, like the `kill` system call.  The signal sent may do something other than kill the target process.
 
 #### Example: Sending a signal to yourself
 
@@ -161,6 +157,7 @@ bytes.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.memoryusage.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 This generates:
 
   { rss: 4935680,
@@ -254,6 +251,7 @@ will be any additional command line arguments.
 First, create a file called process.argv.js:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.argv.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+
 Then, using the Node.js REPL, type the following command:
 
   $ node process-2.js one two=three four
@@ -324,6 +322,7 @@ A property exposing version strings of Node.js and its dependencies.
 The following code:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.versions.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+
 outputs something similar to:
 
    { node: '0.4.12',

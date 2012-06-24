@@ -31,6 +31,7 @@ listeners are added.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+
 ### eventemitter@newListener(event, listener)
 - event {String}  The event to emit
 - listener {Function}  The attaching listener
@@ -48,6 +49,7 @@ Adds a listener to the end of the listeners array for the specified event.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.addlistener.js?linestart=0&lineend=0&showlines=fals e' defer='defer'></script>
+
 ### eventemitter.emit(event [, arg...])
 - event {String}  The event to listen for
 - arg {Object}   Any optional arguments for the listeners

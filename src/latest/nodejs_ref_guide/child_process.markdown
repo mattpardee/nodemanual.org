@@ -18,6 +18,7 @@ Child processes always have three streams associated with them. They are:
 #### Example: Running ls in a child process
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child_process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### child_process@exit(code, signal)
 - code {Number} The final exit code of the process (otherwise, `null`)
 - signal {String} The string name of the signal (otherwise, `null`)
@@ -46,6 +47,7 @@ The PID of the child process.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.pid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### child_process.spawn(command [, args] [, options])
 - command {String} The Unix command to spawn
 - args {String | Array} The command line arguments to pass
@@ -91,9 +93,11 @@ code
 #### Example: A very elaborate way to run `'ps ax | grep ssh'`:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.spawn_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 #### Example: Checking for a failed `exec`:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.spawn_3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### child_process.exec(command[, options], callback(error, stdout, stderr)),
 Object
 - command {String} The Unix command to run
@@ -135,6 +139,7 @@ the child process with
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.exec.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 * `modulePath` {String} The module to run in the child
 * `args` {Array} List of string arguments
 * `options` {Object}
@@ -196,9 +201,11 @@ thousands of them.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/child.fork.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 The child script, `'sub.js'`, might look like this:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/child_process/sub.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 In the child, the `process` object has a `send()` method, and `process` emits
 objects each time it receives a message on its channel.
 

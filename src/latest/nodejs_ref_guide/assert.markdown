@@ -13,6 +13,7 @@ console when the assert fails.
 #### Example: Testing for equivalency
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+
 ### assert.fail(actual, expected, message, operator)
 - actual {Object} The value you receive
 - expected {Object} The expected value you're looking for
@@ -27,6 +28,7 @@ separated by the provided operator.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.fail.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### assert.assert(value, message)
 - value {Object} The value you receive
 - message {String} The message to send to the console if the comparisson fails

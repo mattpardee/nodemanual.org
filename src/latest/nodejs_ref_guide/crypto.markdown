@@ -20,15 +20,12 @@ contains these objects:
 This documentation is organized to describe those objects within their own
 sections.
 
-Note: All `algorithm` parameter implementations below are dependent on the
-OpenSSL version installed on the platform. Some common examples of these
-algoritihms are `'sha1'`, `'md5'`, `'sha256'`, and `'sha512'`. On recent Node.js
-releases, `openssl list-message-digest-algorithms` displays the available digest
-algorithms.
+Note: All `algorithm` parameter implementations below are dependent on the OpenSSL version installed on the platform. Some common examples of these algoritihms are `'sha1'`, `'md5'`, `'sha256'`, and `'sha512'`. On recent Node.js releases, `openssl list-message-digest-algorithms` displays the available digest algorithms.
 
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.createCipher(algorithm, password), crypto.cipher
 - algorithm {String}   The algorithm to use
 - password {String}   The password to use
@@ -76,6 +73,7 @@ ertdata.txt).
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createCredentials.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.createDecipher(algorithm, password), crypto.decipher
 - algorithm {String}  The algorithm to use
 - password {String}  The password to use
@@ -102,6 +100,7 @@ bit length. The generator used is `2`.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.getDiffieHellman(group_name), crypto.diffieHellman
 - group_name {String} One of the following group names:  
   * `'modp1'`, as defined in [RFC
@@ -157,6 +156,7 @@ object can be used to generate hash digests.
 Testing an MD5 Hash:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 This program takes the sha1 sum of a file:
 
     var filename = "my_secret_file.txt";
@@ -192,6 +192,7 @@ article](http://en.wikipedia.org/wiki/HMAC).
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.pbkdf2(password, salt, iterations, keylen, callback(err, derivedKey))
 - password {String}  The password to use
 - salt {String}  The salt to use
@@ -208,6 +209,7 @@ iterations.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.pbkdf2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.randomBytes(size [, callback(ex, buf)]), String | Void
 - size {Number}  The size of the cryptographic data
 - callback {Function}  The callback to execute when finished
@@ -220,6 +222,7 @@ synchronously.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.randomBytes.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.createVerify(algorithim), crypto.verifier
 - algorithm {String} The algorithm to use
 
@@ -238,6 +241,7 @@ be created as a returned value from [[crypto.createCipher
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.cipher.final([output_encoding='binary']), String
 - output_encoding {String}  The encoding to use for the output; defaults to
 binary
@@ -245,8 +249,7 @@ binary
 Returns any remaining enciphered contents. `output_encoding` can be `'binary'`,
 `'base64'`, or `'hex'`.
 
-Note: The `cipher` object can't be used after the `final()` method has been
-called.
+Note: The `cipher` object can't be used after the `final()` method has been called.
 
 ### crypto.cipher.update(data, [input_encoding='binary'], [output_encoding='binary']),
 crypto.cipher
@@ -300,8 +303,7 @@ The `output_encoding` can be `'binary'`, `'ascii'` or `'utf8'`.
 
 Returns any remaining plaintext which is deciphered.
 
-Note: The `decipher` object can't be used after the `final()` method been
-called.
+Note: The `decipher` object can't be used after the `final()` method been called.
 
 ### crypto.decipher.setAutoPadding(auto_padding=true)
 - auto_padding {Boolean} Specifies wheter automatic padding is on, or not
@@ -324,6 +326,7 @@ as a returned value from [[crypto.createDiffieHellman
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.diffieHellman.computeSecret(other_public_key, [input_encoding='binary'],
 [output_encoding='input_encoding']), String
 - other_public_key {String}  The other party's public key
@@ -343,6 +346,7 @@ Returns the Diffie-Hellman prime in the specified encoding.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/diffieHellman.getGenerator.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.diffieHellman.getPrime([encoding='binary']), String
 - encoding {String}  The encoding to use;  can be `'binary'`, `'hex'`, or
 `'base64'`
@@ -352,6 +356,7 @@ Returns the Diffie-Hellman prime in the specified encoding.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/diffieHellman.getPrime.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.diffieHellman.getPrivateKey([encoding='binary']), String
 - encoding {String}  The encoding to use;  can be `'binary'`, `'hex'`, or
 `'base64'`
@@ -397,6 +402,7 @@ algorithms. It can be created as a returned value from [[crypto.createHash
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.hash.digest([encoding='binary'])
 - encoding {String}  The encoding to use; can be `'binary'`, `'hex'`, or
 `'base64'`
@@ -404,7 +410,6 @@ algorithms. It can be created as a returned value from [[crypto.createHash
 Calculates the digest of all of the passed data to be hashed.
 
 Note: The `hash` object can't be used after the `digest()` method been called.
-
 
 ### crypto.hash.update(data, [input_encoding]), String
 - data {String}  The data to use for an update
@@ -425,6 +430,7 @@ algorithms. It can be created as a returned value from [[crypto.createHmac
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### crypto.hmac.digest([encoding='binary']), String
 - encoding {String}  The encoding to use; can be `'hex'`, `'binary'` or
 `'base64'`
@@ -465,8 +471,7 @@ or `'base64'`
 
 Calculates the signature on all the updated data passed through the signer.
 
-Note: The `signer` object can not be used after the `sign()` method has been
-called.
+Note: The `signer` object can not be used after the `sign()` method has been called.
 
 #### Returns
 
@@ -506,8 +511,7 @@ the following: an RSA public key, a DSA public key or an X.509 certificate
 Returns `true` or `false` depending on the validity of the signature for the
 data and public key.
 
-Note: The `verifier` object can't be used after the `verify()` method has been
-called.
+Note: The `verifier` object can't be used after the `verify()` method has been called.
 
 ### crypto.verifier.update(data), crypto.verifier
 - data {String} The data to use for an update

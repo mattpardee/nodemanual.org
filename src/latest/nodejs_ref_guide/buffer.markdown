@@ -88,6 +88,7 @@ Performs a copy between buffers. The source and target regions can overlap.
 #### Example: Building two buffers
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.copy.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### Buffer.fill(value, offset=0, end=buffer.length)
 - value {Object}  The value to use to fill the buffer
 - offset {Number}  The position in the buffer to start filling at
@@ -330,6 +331,7 @@ method doesn't write partial characters.
 Writing a utf8 string into a buffer, then printing it:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.write.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+
 #### Returns
 
 Returns number of octets written.
@@ -347,6 +349,7 @@ Note that `value` must be a valid 64 bit double.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+
 ### Buffer.writeDoubleLE(value, offset, noAssert=false)
 - value {String}  The content to write
 - offset {Number}  The starting position
@@ -387,6 +390,7 @@ format. Note that `value` must be a valid 32 bit float.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+
 ### Buffer.writeInt8(value, offset, noAssert=false)
 - value {String}  The content to write
 - offset {Number}  The starting position
@@ -529,6 +533,7 @@ individual bytes, so the legal range is between `0x00` and `0xFF` hex or `0` and
 #### Example: Copy an ASCII string into a buffer, one byte at a time
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.index.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+
 ### Buffer._charsWritten, Number
 
 The number of characters written by [[Buffer.write `buffer.write()`]]. This

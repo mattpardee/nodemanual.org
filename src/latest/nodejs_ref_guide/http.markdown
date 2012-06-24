@@ -245,6 +245,7 @@ server, you'll need to first call [[http.createServer `http.createServer()`]],
 with something like this:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 This object is also an [[eventemitter `eventemitter`]].
 
 For more information, read [this article on how to create HTTP
@@ -289,8 +290,7 @@ should continue to send the request body, or generating an appropriate HTTP
 response (_e.g._ `400 Bad Request`) if the client should not continue to send
 the request body.
 
-Note: When this event is emitted and handled, the `request` event is not be
-emitted.
+Note: When this event is emitted and handled, the `request` event is not be emitted.
 
 
 
@@ -419,6 +419,7 @@ If you would like to parse the URL into its parts, you can use
 `require('url').parse(request.url)`. For example:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 If you would like to extract the params from the query string, you can use
 [[querystring.parse `require('querystring').parse()`]], or pass `true` as the
 second argument to `require('url').parse`.  For example:
@@ -534,14 +535,7 @@ implicit/mutable headers will be calculated and call this function for you.
       'Content-Length': body.length,
       'Content-Type': 'text/plain' });
 
-Note: `Content-Length` is given in bytes, not characters. The above example
-works because the string `'hello world'` contains only single byte characters.
-If the body contains higher coded characters then `Buffer.byteLength()` should
-be used to determine the number of bytes in a given encoding. Node.js does not
-check whether `Content-Length` and the length of the body which has been
-transmitted are equal or not.
-
-
+Note: `Content-Length` is given in bytes, not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Node.js does not check whether `Content-Length` and the length of the body which has been transmitted are equal or not.
 
 
 
@@ -611,8 +605,7 @@ switch to implicit header mode and flush the implicit headers.
 This sends a chunk of the response body. This method may be called multiple
 times to provide successive parts of the body.
 
-Note: This is the raw HTTP body and has nothing to do with higher-level
-multi-part body encodings that may be used.
+Note: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time `response.write()` is called, it sends the buffered header
 information and the first body to the client. The second time `response.write()`
@@ -678,8 +671,7 @@ To get the response, add a listener for `'response'` to the request object.
 have been received.  The `'response'` event is executed with one argument which
 is an instance of `http.ClientResponse`.
 
-Note: Node.js does not check whether `Content-Length`and the length of the body
-which has been transmitted are equal or not.
+Note: Node.js does not check whether `Content-Length`and the length of the body which has been transmitted are equal or not.
 
 During the `'response'` event, one can add listeners to the response object,
 particularly to listen for the `'data'` event. Note that the `'response'` event

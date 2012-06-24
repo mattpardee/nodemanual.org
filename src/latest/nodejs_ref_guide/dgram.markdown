@@ -27,10 +27,7 @@ fragment reassembly buffer size is `1500` octets. The value of `68` octets is
 very small, since most current link layer technologies have a minimum `MTU` of
 `1500` (like Ethernet).
 
-Note: It's impossible to know in advance the MTU of each link through which a
-packet might travel, and that generally sending a datagram greater than the
-(receiver) `MTU` won't work (the packet gets silently dropped, without informing
-the source that the data did not reach its intended recipient).
+Note: It's impossible to know in advance the MTU of each link through which a packet might travel, and that generally sending a datagram greater than the (receiver) `MTU` won't work (the packet gets silently dropped, without informing the source that the data did not reach its intended recipient).
 
 #### Example
 		
@@ -75,6 +72,7 @@ interfaces" address (0.0.0.0 for `udp4` sockets, ::0 for `udp6` sockets).
 #### Example: Sending a UDP packet to a random port on `localhost`;
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.send.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### dgram.bind(port [, address])
 - port {Number}  The port to bind to
 - address {String}  The address to attach to
@@ -85,6 +83,7 @@ If `address` isn't specified, the OS tries to listen on all addresses.
 #### Example: A UDP server listening on port 41234:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.bind.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### dgram.close()
 
 Close the underlying socket and stop listening for data on it.
@@ -143,6 +142,7 @@ all valid interfaces.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.addMembership.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### dgram.dropMembership(multicastAddress [, multicastInterface])
 - multicastAddress {String}  The address to drop
 - multicastInterface {String}  The interface to use

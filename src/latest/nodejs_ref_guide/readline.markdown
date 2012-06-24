@@ -5,9 +5,7 @@
 Readline allows you to read of a stream (such as STDIN) on a line-by-line basis.
 To use this module, add `require('readline')` to your code.
 
-Note: Once you've invoked this module, your Node.js program won't terminate
-until you've closed the interface, and the STDIN stream. Here's how to allow
-your program to gracefully terminate:
+Note: Once you've invoked this module, your Node.js program won't terminate until you've closed the interface, and the STDIN stream. Here's how to allow your program to gracefully terminate:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/readline/readline.escaping.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
@@ -15,6 +13,7 @@ your program to gracefully terminate:
 #### Example: Crafting a tiny command line interface:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/readline/readline.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 For more real-life use cases, take a look at this slightly more complicated
 [example](https://gist.github.com/901104), as well as the
 [http-console](https://github.com/cloudhead/http-console) module.

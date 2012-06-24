@@ -93,6 +93,7 @@ Finish the previous timer and prints output.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/console/console.time.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 console.trace()
 
 Prints a stack trace to stderr of the current position.

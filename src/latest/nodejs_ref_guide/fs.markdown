@@ -20,15 +20,16 @@ asynchronous versions of these calls. The synchronous versions block the entire
 process until they complete—halting all connections. However, with the
 asynchronous methods, there is no guaranteed ordering.
 
-Note: When processing files, relative paths to filename can be used; however,
-this path is relative to [[process.cwd `process.cwd()`]].
+Note: When processing files, relative paths to filename can be used; however, this path is relative to [[process.cwd `process.cwd()`]].
 
 #### Example: An asynchronous file delete:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 #### Example: A synchronous file delete:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 #### Example: Handling timing issues with callback
 
 Here's an example of the **wrong** way to perform more than one asynchronous

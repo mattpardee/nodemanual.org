@@ -12,6 +12,7 @@ this module in your code with `require('net');`
 Here is an example of a echo server which listens for connections on port 8124:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 You can test this by using `telnet`:
 
     telnet localhost 8124
@@ -251,8 +252,7 @@ number of characters is approximately equal to the number of bytes to be
 written, but the buffer may contain strings, and the strings are lazily encoded,
 so the _exact_ number of bytes is not known.
 
-Note: Users who experience a large or growing `bufferSize` should attempt to
-"throttle" the data flows in their program with `pause()` and `resume()`.
+Note: Users who experience a large or growing `bufferSize` should attempt to "throttle" the data flows in their program with `pause()` and `resume()`.
 
 
 ### net.Socket.setEncoding([encoding=null])

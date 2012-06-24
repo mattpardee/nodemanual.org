@@ -19,6 +19,7 @@ C-Ares.
 addresses that are returned:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### dns.lookup(domain, [family=null], callback(err, address, family))
 - domain {String}  The domain to resolve
 - family {Number}  Indicates whether to use IPv4 (`4`) or IPv6 (`6`)

@@ -117,11 +117,11 @@ function makeIndexes(verj) {
 
         writeStream.write(r);
         
-        funcDoc.runTests([ './out/' + verj], {stopOnFail: false, ext: ".html"}, function(err) {
+        /*funcDoc.runTests([ './out/' + verj], {stopOnFail: false, ext: ".html"}, function(err) {
             if (err)
                 console.log(err);
             console.log("All done!");
-        });
+        });*/
     });
 }
 

@@ -11,6 +11,7 @@ certificates.
  #### Examples
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.js?linestart=1&lineend=0&showlines=false' defer='defer'></script>
+
 Or, with pfx:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https_pfx.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
@@ -111,6 +112,7 @@ will be used, like VeriSign.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.request_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 Here's an example specifying these options using a custom `Agent`:
 
     var options = {
@@ -158,6 +160,7 @@ automatically.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.get.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
 ### https.globalAgent, https.Agent
 
 A global instance of the [[https.Agent `https.Agent`]], which is used as the
@@ -220,8 +223,7 @@ should continue to send the request body, or generating an appropriate HTTP
 response (_e.g._ `400 Bad Request`) if the client should not continue to send
 the request body.
 
-Note: When this event is emitted and handled, the `request` event is not be
-emitted.
+Note: When this event is emitted and handled, the `request` event is not be emitted.
 
 ### https.Server@upgrade(request, socket, head)
 - request {http.ServerRequest}  The arguments for the http request, as it is in
