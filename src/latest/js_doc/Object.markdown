@@ -274,7 +274,7 @@ The `__defineSetter__` method allows a [setter](https://developer.mozilla.org/en
 * [JS Guide:Defining Getters and Setters](https://developer.mozilla.org/en/Javascript/Guide/Obsolete_Pages/Creating_New_Objects/Defining_Getters_and_Setters)
 
 
-### Object.hasOwnProperty() -> Boolean
+### Object.hasOwnProperty(prop) -> Boolean
 - prop (String): The name of the property to test.
   
 Returns a boolean indicating whether the object has the specified property.
@@ -785,7 +785,7 @@ Creates a new object with the specified prototype object and properties. Throws 
  
 
 
-### Object.defineProperties() -> Void
+### Object.defineProperties(obj, props) -> Void
 - obj (Object): The object on which to define or modify properties.
 - props (Object): An object whose own enumerable properties constitute descriptors for the properties to be defined or modified.
 
