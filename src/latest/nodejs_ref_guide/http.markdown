@@ -73,7 +73,7 @@ Returns a new web server object.
 (deprecated)
 
 This function is **deprecated**; please use
-[[`http.request` http.request()]] instead. 
+[[http.request http.request()]] instead. 
 
 Constructs a new HTTP client. `port` and `host` refer to the server to be
 connected to.
