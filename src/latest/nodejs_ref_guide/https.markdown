@@ -16,9 +16,10 @@ Or, with pfx:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https_pfx.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-### https.createServer(options [, requestListener]), https.Server
+### https.createServer(options [, callback(request, response)]), https.Server
 - options {Object}   Any options you want to pass to the server
-- requestListener {Function}  An optional listener
+- request {http.ClientRequest}   Any options you want to pass to the server
+- response {http.ClientResponse}  An optional listener
 (related to: tls.createServer)
 
 Returns a new HTTPS web server object. 

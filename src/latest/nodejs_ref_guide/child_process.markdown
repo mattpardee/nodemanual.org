@@ -103,8 +103,7 @@ Object
 - command {String} The Unix command to run
 - options {Object} The options to pass to the command
 - callback {Function} The function to run after the method completes
-- error {Error} The standard `Error` object; `err.code` is the exit code of the
-child process and `err.signal` is set to the signal that terminated the process
+- error {Error} The standard `Error` object; `err.code` is the exit code of the child process and `err.signal` is set to the signal that terminated the process
 - stdout {streams.ReadableStream} The standard output stream
 - stderr {streams.ReadableStream} The standard error stream
 (related to: child_process.spawn)
