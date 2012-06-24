@@ -4,42 +4,43 @@ mixin identifyBuild('', 'nodejs_dev_guide')
 
 mixin doctype
 
-mixin head('Node.js Guide', '../../assets/csses/devguide_overrides.css', outFile + ".html")
-  
-body(onload="styleCode()")
+html(xmlns="http://www.w3.org/1999/xhtml")
+  head
+    mixin head('./../../', whoAmI)
+    link(rel="stylesheet", href="../../latest/assets/csses/devguide_overrides.css")
 
-  mixin topBar(whoAmI)
+  body
 
-  mixin header
+    mixin topBar(whoAmI)
 
-  .container
-    .content
-      .row.container
-        .span5.offset4.sidebarContainer
-          #sidebar
-            include nodejs_dev_guide_menu.jade
-        .span11
-          div.title
-            h1.pageTitle #{metadata.title}
-              span.editInC9 
-                mixin formatGHHref(whoAmI, 'nodejs_dev_guide')
+    .container#main
+      .content
+        .row.container
+          .span5.offset4.sidebarContainer
+            #sidebar
+              include nodejs_dev_guide_menu.jade
+          .span11
+            div.title
+              h1.pageTitle #{metadata.title}
+                span.editInC9 
+                  mixin formatGHHref(whoAmI, 'nodejs_dev_guide')
 
-            if metadata && metadata.author
-              span.cite by 
-                -var authors = metadata.author.split(",")
-                -var urls = metadata.url.split(",")
-                -for (var a = 0; a < authors.length; a++)
-                  a(href='#{urls[a]}') #{authors[a]}
-                  if (a != authors.length - 1)
-                    ,
+              if metadata && metadata.author
+                span.cite by 
+                  -var authors = metadata.author.split(",")
+                  -var urls = metadata.url.split(",")
+                  -for (var a = 0; a < authors.length; a++)
+                    a(href='#{urls[a]}') #{authors[a]}
+                    if (a != authors.length - 1)
+                      ,
 
-          .dev_guide#content!= content
+            .dev_guide#content!= content
 
-          div#disqus_thread
+            div#disqus_thread
 
-    mixin footer
+      mixin footer
 
-  mixin endingScripts
+    mixin endingScripts
 
 mixin assembleAuthors(author)
   span testing

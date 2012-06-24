@@ -1,6 +1,8 @@
 .DS_Store
 tmp/
 out/
+out_json/
 node_modules/
 .c9revisions
 .settings.xml
+.settings

@@ -12,7 +12,7 @@ Here's a trivial example to demonstrates reading and writing files:
 
 At first glance, this might appear to be the same as [reading and writing from a file regularly](reading_and_writing_files.html). The important thing to notice is that the `console.log()` statement is executed multiple times. That means that the `'data'` event is firing multiple times, which means the file reading and writing are happening multiple times. Node.js basically reads in as much data from the original file as it can, then writes some of it, then reads some more, and writes some more, and so on, until the process is finished and the `'end'` event is called.
 
-In fact, performing this operation is rather common, and Node.js has several helper functions to assist this process, like [`streams.ReadableStream.pipe()`](../nodejs_ref_guide/streams.ReadableStream.html#streams.ReadableStream.pipe) and [`util.pump`](../nodejs_ref_guide/util.html#util.pump). To demonstrate this latter method, and to show how HTTP servers can use streams, too, take a look at this code:
+In fact, performing this operation is rather common, and Node.js has several helper functions to assist this process, like [`streams.ReadableStream.pipe()`](../nodejs_ref_guide/stream.html#streams.ReadableStream@pipe) and [`util.pump`](../nodejs_ref_guide/util.html#util.pump). To demonstrate this latter method, and to show how HTTP servers can use streams, too, take a look at this code:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_streams/streams.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 

@@ -519,7 +519,9 @@ ul.tabs .double ul, ul.tabs .triple ul, ul.tabs .quad ul{
 /*
   Center content (the "real stuff")
 */
-
+#main {
+    padding-top: 40px;
+}
 .content .container {
     background: url(../images/sidebar-border.png) repeat-y 95px 0;
     padding-bottom : 50px;
@@ -689,6 +691,10 @@ li.signature {
 }
 .signature-call a {
     color: #859c59;
+}
+
+.sigClassName {
+    display: none;
 }
 
 .eventObjName {

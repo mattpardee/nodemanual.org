@@ -6,4 +6,4 @@ This section  provides a resource for developers of all levels—beginning, inte
 
 In order to get Node.js, you can either download [the latest stable release](http://nodejs.org/#download), or clone the version submitted into the GitHub repo. Keep in mind that stable releases are even-numbered (0.4, 0.6), while unstable releases are odd (0.3, 0.5).
 
-If you're new to Node.js or Javascript, review the article on [asynchronous programming](writing_asynchronous_code.html), [designing callbacks](working_with_callbacks.html), and [defining event emitters](understanding_event_emitters.html). Otherwise, you might want to review what Node.js offers in its constructs through the article on [Javascript conventions](reference/ecma5_in_nodejs.html).
+If you're new to Node.js or Javascript, review the article on [asynchronous programming](./writing_asynchronous_code.html), [designing callbacks](./working_with_callbacks.html), and [defining event emitters](./understanding_event_emitters.html). Otherwise, you might want to review what Node.js offers in its constructs through the article on [Javascript conventions](./ecma5_in_nodejs.html).

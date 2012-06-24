@@ -4,36 +4,31 @@ mixin identifyBuild('','')
 
 mixin doctype
 
-mixin head('Node.js Manual')
+html(xmlns="http://www.w3.org/1999/xhtml")
+  head
+    mixin head('./../', whoAmI)
+  
+  body
 
-body(onload="styleCode()")
+    mixin topBar(whoAmI)
 
-  mixin topBar(whoAmI)
+    .container#main
+      .content
+        .row.container
+          .span5.offset4.sidebarContainer
+            #sidebar
+              h3
+                a(href='./nodejs_ref_guide/index.html') Node.js API Reference
+              h3
+                a(href='./nodejs_dev_guide/index.html') Node.js Guide
+              h3
+                a(href='./js_doc/index.html') Javascript Reference
+          .span11
+            .dev_guide#content
+              mixin markdown(data)
 
-  mixin header
+            div#disqus_thread
 
-  .container
-    .content
-      .row.container
-        .span5.offset4.sidebarContainer
-          #sidebar
-            h3
-              a(href='./nodejs_ref_guide/') Node.js API Reference
-            h3
-              a(href='./nodejs_dev_guide/') Node.js Guide
-            h3
-              a(href='./js_doc/') Javascript Reference
-        .span11
-          div.title
-            h1.pageTitle #{title}
+      mixin footer
 
-          .dev_guide#content
-            mixin markdown(data)
-
-          div#disqus_thread
-
-    mixin footer
-
-  mixin endingScripts
-
-</html>
+    mixin endingScripts
