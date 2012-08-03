@@ -125,6 +125,9 @@ this order:
 
 This allows programs to localize their dependencies, so that they don't clash.
 
+If the given path does not exist, `require()` throws an Error with its
+`code` property set to `'MODULE_NOT_FOUND'`.
+
 #### Folders as Modules
 
 It is convenient to organize programs and libraries into self-contained
@@ -303,7 +306,7 @@ Additionally, Node.js searches in the following locations:
 * 3: `$PREFIX/lib/node`
 
 Where `$HOME` is the user's home directory, and `$PREFIX` is Node's configured
-`installPrefix`.
+`node_prefix`.
 
 These are mostly for historic reasons. You are highly encouraged to place your
 dependencies locally in `node_modules` folders.  They will be loaded faster, and

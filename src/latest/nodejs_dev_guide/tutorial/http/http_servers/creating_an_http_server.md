@@ -1,6 +1,7 @@
 Author: Felix Geisendörfer
 URL: https://twitter.com/#!/felixge
-Title: Creating an HTTP Server
+
+#  Creating an HTTP Server
 
 Printing messages to the console isn't all that exciting. Let's do what Node.js was designed to do, and write a program that writes out via HTTP. Create a new file called _http.server.js_ and put the following code into it:
 

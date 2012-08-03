@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: Serving Static Files
+
+#  Serving Static Files
 
 Of course, having a server that prints messages only you can see is pretty terrible. You're going to want your server to load files to your users, right?
 

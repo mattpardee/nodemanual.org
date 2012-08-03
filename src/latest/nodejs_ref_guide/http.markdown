@@ -31,9 +31,6 @@ servers](../nodejs_dev_guide/creating_an_http_server.html).
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js?&linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
-
-
-
 ### http.get(options, callback())
 - options {Object}  Options to pass to the request
 - callback {Function}   The callback to execute once the method finishes 
@@ -45,19 +42,18 @@ automatically.
 
 #### Example
 
-    var options = {
-      host: 'www.google.com',
-      port: 80,
-      path: '/index.html'
-    };
-
-    http.get(options, function(res) {
+    http.get("http://www.google.com/index.html", function(res) {
       console.log("Got response: " + res.statusCode);
     }).on('error', function(e) {
       console.log("Got error: " + e.message);
     });
 
 
+### http.STATUS_CODES, Object
+
+A collection of all the standard HTTP response status codes, and the
+short description of each.  For example, `http.STATUS_CODES[404] === 'Not
+Found'`.
 
 
 ### http.createServer(callback(request, response)), http.Server
@@ -95,7 +91,8 @@ sockets. **Don't modify this!**
 
 
 ### http.request(options, callback(response)), http.ClientRequest
-- options {Object}  Options to pass to the request
+- options {Object | String}  Options to pass to the request; is a string, it's
+parsed with [[url.parse `url.parse()`]]
 - callback {Function}   The callback to execute once the method finishes
 - response {http.ClientRequest}  The server's response, including headers and
 status code
@@ -109,6 +106,7 @@ The `options` align with the return value of [[url.parse `url.parse()`]]:
 Defaults to `'localhost'`.
 - `hostname`: To support `url.parse()`, `hostname` is preferred over `host`
 - `port`: the port of the remote server. Defaults to `80`.
+- `localAddress`: local interface to bind for network connections.
 - `socketPath`: the Unix Domain Socket (in other words, use either `host:port`
 or `socketPath`)
 - `method`: a string specifying the HTTP request method. Defaults to `'GET'`.
@@ -187,10 +185,10 @@ returned request object.
 
 ## http.Agent
 
-Starting with Node.js version 0.5.3, there's a new implementation of the HTTP
+Starting with Node.js 0.5.3, there's a new implementation of the HTTP
 Agent which is used for pooling sockets used in HTTP client requests.
 
-Previously, a single agent instance help the pool for single host+port. The
+Previously, a single agent instance helped pool for a single host+port. The
 current implementation now holds sockets for any number of hosts.
 
 The current HTTP Agent also defaults client requests to using
@@ -290,9 +288,29 @@ should continue to send the request body, or generating an appropriate HTTP
 response (_e.g._ `400 Bad Request`) if the client should not continue to send
 the request body.
 
-Note: When this event is emitted and handled, the `request` event is not be emitted.
+Note: When this event is emitted and handled, the `request` event is not be 
+emitted.
 
 
+### http.Server@connect(request, socket, head)
+- request  {http.ServerRequest} An instance of `http.ServerRequest`, that
+are the arguments for the http request
+- socket {net.Socket} The network socket between the server and client.
+- head {Buffer} The first packet of the tunneling stream; this may be empty.
+
+This event is emitted each time a client requests a http CONNECT method. If this 
+event isn't
+listened for, then clients requesting a CONNECT method will have their
+connections closed.
+
+* `request` is , as it is in the request
+  event.
+* `socket` is t
+* `head` is an instance of Buffer, 
+
+After this event is emitted, the request's socket will not have a `data`
+event listener, meaning you will need to bind to it in order to handle data
+sent to the server on that socket.
 
 
 ### http.Server@upgrade(request, socket, head)
@@ -319,12 +337,16 @@ If a client connection emits an `'error'` event, it's forwarded here.
 
 
 
-### http.Server.listen(port [, hostname] [, callback()]) 
+### http.Server.listen(port [, hostname] [, backlog=511] [, callback()]) 
 ### http.Server.listen(port [, callback()]) 
+### http.Server.listen(handle [, callback()]) 
 - port {Number}  The port to listen to
 - hostname {String}   The hostname to listen to
-- callback {Function}   The function to execute once the server has been bound
+- backlog {Number} The maximum length of the queue of pending connections.
+- callback {Function} The function to execute once the server has been bound
 to the port
+- handle {Object} Either a server or socket (anything with an underlying 
+`_handle` member), or a `{fd: <n>}` object
 (related to: net.Server.listen)
 
 Begin accepting connections on the specified port and hostname. If the hostname
@@ -332,29 +354,38 @@ is omitted, the server accepts connections directed to any IPv4 address
 (`INADDR_ANY`). To listen to a Unix socket, supply a filename instead of port
 and hostname.
 
+**If using the `backlog` signature**: The actual length for `backlog` is 
+determined by your OS through sysctl` settings such as `tcp_max_syn_backlog` and 
+`somaxconn` on linux. The default value of this parameter is 511 (not 512).
+
+**If using the `handle` signature: This causes the server to accept connections 
+on the specified handle, but it is presumed that the file descriptor or handle
+has already been bound to a port or domain socket.
+
+Listening on a file descriptor is not supported on Windows.
+
 This function is asynchronous. The `callback()` is added as a listener for the
-[[net.Server@listening `net.Server@listening`]] event.
+[[net.Server@listening `net.Server`'s `'listening'`]] event.
 
 
-
-
-### http.Server.close()
-
+### http.Server.close([callback()])
+- callback {Function} A function to call once the server closes
 (related to: net.Server.close)
 
 Stops the server from accepting new connections.
  
+### http.Server.maxHeadersCount, Number
 
-
+Limits the maximum incoming headers count. The default is 1000. If set to 
+0, then no limit is applied.
 
 ## http.ServerRequest
 
 This object is created internally by an HTTP server—not by the user—and passed
 as the first argument to a `'request'` listener.
 
-The request implements the [[streams.ReadableStream Readable Stream]] interface;
+The request implements the [[stream.ReadableStream Readable Stream]] interface;
 it is also an [[eventemitter `eventemitter`]] with the following events:
-
 
 
 
@@ -363,20 +394,16 @@ it is also an [[eventemitter `eventemitter`]] with the following events:
 
 Emitted when a piece of the message body is received. The chunk is a string if
 an encoding has been set with [[http.ServerRequest.setEncoding
-`request.setEncoding()`]], otherwise it's a [Buffer](buffer.html).
+`request.setEncoding()`]], otherwise it's a [[Buffer]].
 
 Note that the **data will be lost** if there is no listener when a
 `ServerRequest` emits a `'data'` event.
-
-
 
 
 ### http.ServerRequest@end()
 
 Emitted exactly once for each request. After that, no more `'data'` events are
 emitted on the request.
-
-
 
 
 
@@ -461,7 +488,8 @@ Set the encoding for the request body. Defaults to `null`, which means that the
 `'data'` event emits a `Buffer` object.
 
 
-
+For more information, see 
+[[stream.ReadableStream.setEncoding `stream.ReadableStream.setEncoding()`]].
 
 
 ### http.ServerRequest.pause()
@@ -493,7 +521,7 @@ details.
 
 This object is created internally by a HTTP server—not by the user. It is passed
 as the second parameter to the `'request'` event. It is a
-[[streams.WritableStream `Writable Stream`]].
+[[stream.WritableStream `Writable Stream`]].
 
 
 
@@ -510,7 +538,7 @@ before `response.end()` was called or able to flush.
 
 Sends an `HTTP/1.1 100 Continue` message to the client, indicating that the
 request body should be sent. For more information, see the
-[[http.Server@checkContinue `http.Server@checkContinue`]] event.
+[[http.Server@checkContinue `http.Server`'s `'checkContinue'`]] event.
 
 
 
@@ -536,7 +564,6 @@ implicit/mutable headers will be calculated and call this function for you.
       'Content-Type': 'text/plain' });
 
 Note: `Content-Length` is given in bytes, not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Node.js does not check whether `Content-Length` and the length of the body which has been transmitted are equal or not.
-
 
 
 ### http.ServerResponse.statusCode, Number
@@ -567,6 +594,13 @@ if you need to send multiple headers with the same name.
     response.setHeader("Set-Cookie", ["type=ninja", "language=javascript"]);
 
 
+### http.ServerResponse.sendDate, Boolean
+
+When `true`, the Date header is automatically generated and sent in 
+the response if it is not already present in the headers. The default is `true`.
+
+This should only be disabled for testing; HTTP requires the Date header
+in responses.
 
 
 ### http.ServerResponse.getHeader(name), String
@@ -663,7 +697,7 @@ This object is created internally and returned from [[http.request
 already been queued.  The header is still mutable using the `setHeader(name,
 value)`, `getHeader(name)`, and `removeHeader(name)` methods.  The actual header
 will be sent along with the first data chunk or when closing the connection.
-This is both a [[streams.WritableStream `Writable Stream`]] and an
+This is both a [[stream.WritableStream `Writable Stream`]] and an
 [[eventemitter `EventEmitter`]].
 
 To get the response, add a listener for `'response'` to the request object.
@@ -671,14 +705,19 @@ To get the response, add a listener for `'response'` to the request object.
 have been received.  The `'response'` event is executed with one argument which
 is an instance of `http.ClientResponse`.
 
-Note: Node.js does not check whether `Content-Length`and the length of the body which has been transmitted are equal or not.
-
 During the `'response'` event, one can add listeners to the response object,
 particularly to listen for the `'data'` event. Note that the `'response'` event
 is called before any part of the response body is received, so there is no need
 to worry about racing to catch the first part of the body. As long as a listener
 for `'data'` is added during the `'response'` event, the entire body will be
 caught.
+
+Note: Node.js does not check whether `Content-Length`and the length of the body 
+which has been transmitted are equal or not.
+
+
+The request implements the [[stream.WritableStream Writable Stream]] interface. 
+
 
 #### Example
 
@@ -699,11 +738,9 @@ caught.
     });
 
 
-
-
-
 ### http.ClientRequest@response(response)
-- response {http.ClientResponse}  An instance of `http.ClientResponse`
+- response {http.ClientResponse}  An instance of [[http.ClientResponse 
+`http.ClientResponse`]]
 
 Emitted when a response is received to this request. This event is emitted only
 once. 
@@ -723,6 +760,24 @@ Options include:
 Emitted after a socket is assigned to this request.
 
 
+### http.ClientRequest@connect(response, socket, head)
+- response {http.ClientResponse}  An instance of [[http.ClientResponse 
+`http.ClientResponse`]]
+- socket {net.Socket}  An instance of [[http.ClientResponse 
+`http.ClientResponse`]]
+- head {http.ClientResponse}  An instance of [[http.ClientResponse 
+`http.ClientResponse`]]
+
+Emitted each time a server responds to a request with a CONNECT method. If this
+event isn't being listened for, clients receiving a CONNECT method will have
+their connections closed.
+
+#### Example: A client server pair that show you how to listen for the `connect` event.
+
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.connect.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+
+
 
 
 ### http.ClientRequest@upgrade(response, socket, head)
@@ -739,7 +794,6 @@ connections closed.
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.upgrade.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
-
 ### http.ClientRequest@continue()
 
 Emitted when the server sends a `'100 Continue'` HTTP response, usually because
@@ -750,7 +804,7 @@ client should send the request body.
 
 
 ### http.ClientRequest.write(chunk [, encoding='utf8'])
-- chunk {Array}  An array of integers or a string to write
+- chunk {Buffer | String}  The buffer or string to write
 - encoding {String}  The encoding of the chunk (only needed if it's a string)
 
 Sends a chunk of the body.  By calling this method many times, the user can
@@ -819,7 +873,7 @@ This object is created when making a request with [[http.request
 `http.request()`]]. It is passed to the `'response'` event of the request
 object.
 
-The response implements the [[streams.ReadableStream `Readable Stream`]]
+The response implements the [[stream.ReadableStream `Readable Stream`]]
 interface.
 
 

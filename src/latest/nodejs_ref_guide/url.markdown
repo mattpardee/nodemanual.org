@@ -94,7 +94,7 @@ that:
 * `auth` is used if it's available
 * `hostname` is only used if `host` is absent
 * `port` is only used if `host` is absent
-* `host` is only used in place of `auth`, `hostname`, and `port`
+* `host` is only used in place of `hostname` and `port`
 * `pathname` is treated the same with or without the leading `/` (slash)
 * `search` is used in place of `query`
 * `query`, a [querystring](querystring.html) object, is only used if `search` is

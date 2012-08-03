@@ -11,12 +11,8 @@ It's important to note that printing to stdout and stderr is synchronous, and
 therefore, blocking.
 
 
-### console.assert()
-
+### console.assert(expression, [message])
 (alias of: assert.ok)
-
-An alias to `assert.ok()`.
-
 
 
 ### console.dir(obj)
@@ -24,17 +20,17 @@ An alias to `assert.ok()`.
 (alias of: util.inspect)
 
 Uses [[util.inspect `util.inspect()`]] on `obj` and prints the resulting string
-to stderr.
+to stdout.
 
 
-### console.warn([arg...])
-- warn {String}  A message to send
+### console.warn([data...])
+- data {String}  A message to send
 (related to: console.log)
 
 This performs the same role as `console.log()`, but prints to stderr instead.
 
 
-### console.error([arg...])
+### console.error([data...])
 - obj {Object}  An object to inspect
 (related to: console.log)
 
@@ -42,15 +38,14 @@ This performs the same role as `console.log()`, but prints to stderr instead.
 
 
 
-### console.info()
-
+### console.info([data...])
 (alias of: console.log)
 
-This is just an alias to `console.log()`.
+This is just an alias to [[console.log `console.log()`]].
 
 
-### console.log([arg...])
-- arg {String}   The string to print, and any additional formatting arguments
+### console.log([data...])
+- data {String}   The string to print, and any additional formatting arguments
 (alias of: util.format)
 
 Prints to stdout with a newline. This function can take multiple arguments in [a
@@ -94,6 +89,6 @@ Finish the previous timer and prints output.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/console/console.time.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-console.trace()
+console.trace(label)
 
 Prints a stack trace to stderr of the current position.

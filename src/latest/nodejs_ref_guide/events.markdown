@@ -50,6 +50,13 @@ Adds a listener to the end of the listeners array for the specified event.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.addlistener.js?linestart=0&lineend=0&showlines=fals e' defer='defer'></script>
 
+### eventemitter.on(event, callback())
+- event {String}   The event to listen for
+- callback {Function}   The listener callback to execute
+(alias of: eventemitter.addListener)
+
+Adds a listener to the end of the listeners array for the specified event.
+
 ### eventemitter.emit(event [, arg...])
 - event {String}  The event to listen for
 - arg {Object}   Any optional arguments for the listeners
@@ -59,12 +66,27 @@ Execute each of the subscribed listeners in order with the supplied arguments.
 ### eventemitter.listeners(event)
 - event {String}  The event type to listen for
 
-Returns an array of listeners for the specified event. This array can be
-manipulated, e.g. to remove listeners.
+Returns an array of listeners for the specified event.
+
+This array **may** be a mutable reference to the same underlying list of
+listeners that is used by the event subsystem.  However, certain
+actions (specifically, [[eventemitter.removeAllListeners `removeAllListeners()`]]) invalidates this
+reference.
+
+If you would like to get a copy of the listeners at a specific point in
+time that is guaranteed not to change, make a copy by doing something like
+`emitter.listeners(event).slice(0)`.
+
+In a future release of node, this behavior **may** change to always
+return a copy, for consistency.  In your programs, please do not rely on
+being able to modify the EventEmitter listeners using array methods.
+Always use the [[eventemitter.on `on()`]] method to add new listeners.
+
 
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.listeners.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>    
+
 ### eventemitter.once(event, listener)
 - event {String}   The event to listen for
 - callback {Function}   The listener callback to execute
@@ -82,6 +104,9 @@ next time the event is fired, after which it is removed.
 - event {String}  An optional event type to remove
 
 Removes all listeners, or those of the specified event.
+
+Note: This **invalidates** any arrays that have previously been
+returned by [[eventemitter.listeners `eventemitter.listeners`]].
 
 ### eventemitter.removeListener(event, listener)
 - event {String}   The event to listen for

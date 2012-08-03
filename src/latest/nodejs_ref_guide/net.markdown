@@ -39,35 +39,40 @@ non-readable, but still writable. You should call the `end()` method explicitly.
 See [[net.Socket@end `'end'`]] event for more information.
 
 
-
-### net.connect(port, [host='localhost'] [, connectionListener()])
-### net.connect(port, [,connectionListener()])
-- port {Number}  The port to connect to
-- host {String}  The name of the host to connect to
+### net.connect(options, [, connectionListener()])
+- options {Object}  Properties to pass to the connection
 - connectionListener {Function}  Automatically set as a listener for the
 [[net.Server@connection `'connection'`]] event
-(alias of: createConnection)
+(alias of: net.createConnection)
 
-Construct a new socket object and opens a socket to the given location. When the
-socket is established, the `'connect'` event is emitted.
+Constructs a new socket object, and opens the socket to the given location. 
+When the socket is established, the [[net.connect `'connect'`]] event is emitted.
 
-The arguments for these methods change the type of connection. For example, if
-you include `host`, you create a TCP connection to `port` on `host`. If you
-don't include it, you create a unix socket connection to `path`.
+For TCP sockets, the `options` argument should be an object which specifies:
 
-### net.createConnection(port, [host='localhost'] [, connectionListener()])
-### net.createConnection(port, [,connectionListener()])
-- port {Number}  The port to connect to
-- host {String}  The name of the host to connect to
-- connectionListener {Function}  Automatically set as a listener for the
-[[net.Server@connection `'connection'`]] event
+  - `port`: Port the client should connect to (Required).
 
-Construct a new socket object and opens a socket to the given location. When the
-socket is established, the `'connect'` event is emitted.
+  - `host`: Host the client should connect to. Defaults to `'localhost'`.
 
-The arguments for these methods change the type of connection. For example, if
-you include `host`, you create a TCP connection to `port` on `host`. If you
-don't include it, you create a unix socket connection to `path`.
+  - `localAddress`: Local interface to bind to for network connections.
+
+For UNIX domain sockets, the `options` argument should be an object that specifies:
+
+  - `path`: Path the client should connect to (Required).
+
+Other common options include:
+
+  - `allowHalfOpen`: if `true`, the socket won't automatically send
+    a FIN packet when the other end of the socket sends a FIN packet.
+    Defaults to `false`.  See ['end'][] event for more information.
+
+
+#### Example
+
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+
+### net.createConnection(options [, connectionListener()])
+(alias of: net.createServer)
 
 ### net.isIP(input), String
 - input {String}  The data to check against
@@ -91,10 +96,6 @@ Returns `true` if input is a version 6 IP address.
 This class is used to create a TCP or UNIX server. A server is a `net.Socket`
 that can listen for new incoming connections.
 
-#### Example
-
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
-
 ### net.Server@listening()
 
 
@@ -108,8 +109,8 @@ Emitted when a new connection is made.
 
 ### net.Server@close()
 
-Emitted when the server closes.
-
+Emitted when the server closes. Note that if connections exist, this event is 
+not emitted until all connections are ended.
 
 ### net.Server@error(exception)
 
@@ -118,19 +119,30 @@ this event.  See an example in the discussion of [[net.Server.listen
 `net.Server.listen`]]
 
 
-### net.Server.listen(port [, host] [, listeningListener])
+### net.Server.listen(port [, host] [, backlog=511] [, callback()])
 ### net.Server.listen(path [, listeningListener])
+### net.Server.listen(handle [, callback()]) 
 - port {Number}  The port to connect to
 - host {String}  The name of the host to connect to
-- connectionListener {Function}  Automatically set as a listener for the
+- callback {Function}  Automatically set as a listener for the
 [[net.Server@listening `'listening'`]] event
 
 Begin accepting connections on the specified `port` and `host`.  If the `host`
 is omitted, the server accepts connections directed to any IPv4 address
 (`INADDR_ANY`). A port value of zero will assign a random port.
 
-This function is asynchronous.  When the server has been bound, the
-`'listening'` event is emitted.
+**If using the `backlog` signature**: The actual length for `backlog` is 
+determined by your OS through sysctl` settings such as `tcp_max_syn_backlog` and 
+`somaxconn` on linux. The default value of this parameter is 511 (not 512).
+
+**If using the `handle` signature: This causes the server to accept connections 
+on the specified handle, but it is presumed that the file descriptor or handle
+has already been bound to a port or domain socket.
+
+Listening on a file descriptor is not supported on Windows.
+
+The `callback()` is added as a listener for the
+[[net.Server@listening `net.Server`'s `'listening'`]] event.
 
 One issue some users run into is getting `EADDRINUSE` errors. This means that
 another server is already running on the requested port. One way of handling
@@ -156,7 +168,8 @@ Stop accepting connections for the given number of milliseconds. This could be
 useful for throttling new connections against DoS attacks or other
 oversubscriptions.
 
-### net.Server.close()
+### net.Server.close([callback()])
+- callback {Function} A function to call once the server closes
 
 Stops the server from accepting new connections. This function is asynchronous,
 and  the server is finally closed when it emits a `'close' event.
@@ -164,13 +177,13 @@ and  the server is finally closed when it emits a `'close' event.
 
 ### net.Server.address(), Object
 
-Returns the bound address and port of the server as reported by the operating
-system. Useful to find which port was assigned when giving getting an
-OS-assigned address. 
+Returns the bound address, the address family name, and port of the server as 
+reported by the operating system. Useful to find which port was assigned when 
+giving getting an OS-assigned address. 
 
-This returns an object with two properties, like this:
+This returns an object with three properties, like this:
 
-    {"address":"127.0.0.1", "port":2121}`
+    {"address":"127.0.0.1", family: "IPv4", "port":2121}`
 
 #### Example
 
@@ -181,10 +194,15 @@ This returns an object with two properties, like this:
 Set this property to reject connections when the server's connection count gets
 high.
 
+Warning: It is not recommended to use this option once a socket has been sent to 
+a child with [[child_process.fork `child_process.fork()`]].
 
 ### net.Server.connections, Number
 
 The number of concurrent connections on the server.
+
+This becomes `null` when sending a socket to a child with 
+[[child_process.fork `child_process.fork()`]].
 
 ## net.Socket
 
@@ -232,9 +250,10 @@ Normally this method isn't needed, as `net.createConnection()` opens the socket.
 Use this only if you are implementing a custom Socket or if a Socket is closed
 and you want to reuse it to connect to another server.
 
-This function is asynchronous. When the `'connect'` event is emitted the socket
-is established. If there is a problem connecting, the `'connect'` event  isn't
-emitted,  and the `'error'` event is emitted with the exception.
+This function is asynchronous. When the [[net.Socket@connect `'connect'`]] event
+ is emitted the socket is established. If there is a problem connecting, the 
+ `'connect'` event  isn't emitted,  and the `'error'` event is emitted with the 
+ exception.
 
 
 ### net.Socket.bufferSize, Number
@@ -259,7 +278,10 @@ Note: Users who experience a large or growing `bufferSize` should attempt to "th
 - encoding {String}  The encoding to use (either `'ascii'`, `'utf8'`, or
 `'base64'`)
 
-Sets the encoding for data that is received.
+Sets the encoding for the socket as a Readable Stream. 
+
+For more information, see 
+[[stream.ReadableStream.setEncoding `stream.ReadableStream.setEncoding()`]].
 
 ### net.Socket.setSecure()
 
@@ -345,25 +367,22 @@ previous) setting.
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.server.address.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### net.Socket.address(), Object
++ {Object} An object with three properties, that looks like this:
+`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
-Returns the bound address and port of the socket as reported by the operating
-system. Returns an object with two properties that looks like this:
-
-		{"address":"192.168.57.1", "port":62053}
+Returns the bound address, the address family name, and port of the socket as 
+reported by the operating system. 
 
 ### net.Socket.remoteAddress, String
-
 
 The string representation of the remote IP address. For example,
 `'74.125.127.100'` or `'2001:4860:a005::68'`.
 
 ### net.Socket.remotePort, Number
 
-
 The numeric representation of the remote port. For example, `80` or `21`.
 
 ### net.Socket.bytesRead, Number
-
 
 The amount of received bytes.
 
@@ -384,7 +403,7 @@ information, see [[net.Socket.connect `connect()`]].
 Emitted when data is received. The encoding of `data` is set by
 `socket.setEncoding()`.
 
-For more information, see the [[streams.ReadableStream ReadableStream]] section.
+For more information, see the [[stream.ReadableStream ReadableStream]] section.
 
 ### net.Socket@end()
 

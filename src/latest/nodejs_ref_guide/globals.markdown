@@ -48,6 +48,7 @@ made accessible through <code>require()</code>.</dd>
 more information.</dd>
 <dd><code>exports</code> isn't actually on the global scope, but is local to each
 module.</dd>
+<dd>See the [module system documentation][modules.html] for more information.</dd>
 
 <dt><code>global</code></dt>
 <dd>The global namespace object.</dd>
@@ -62,6 +63,7 @@ module.</dd>
 same as the <code>exports</code> object. See <code>src/node.js</code> for more information.</dd>
 <dd><code>module</code> isn't actually on the global scope, but is local to each
 module.</dd>
+<dd>See the [module system documentation][modules.html] for more information.</dd>
 
 <dt><code>process</code></dt>
 <dd>The process object. See the [process object](process.html) section for more
@@ -72,6 +74,21 @@ information.</dd>
 section for more information.</dd>
 <dd><code>require</code> isn't actually on the global scope, but is local to each
 module.</dd>
+
+<dt><code>require.extensions</code></dt>
+<dd>An [[Array array]] that instructs `require` on how to handle certain file extensions.
+
+For example, to process files with the extension <code>.sjs</code> as <code>.js</code>:
+
+    require.extensions['.sjs'] = require.extensions['.js'];
+
+Or, to write your own extension handler:
+
+    require.extensions['.sjs'] = function(module, filename) {
+      var content = fs.readFileSync(filename, 'utf8');
+      // Parse the file content and give to module.exports
+      module.exports = content;
+    };</dd>
 
 <dt><code>require.cache</code></dt>
 <dd>Modules are cached in this object when they are required. By deleting a key

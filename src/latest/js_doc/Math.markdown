@@ -21,7 +21,7 @@ The following function returns the natural log of 2:
 
 The base of natural logarithms, e.
 
- #### Example: Using `Math.E`
+#### Example: Using `Math.E`
 
  The following function returns e:
     function getNapier() {
@@ -33,7 +33,7 @@ The base of natural logarithms, e.
 
 The natural logarithm of 10.
 
- #### Example: Using `Math.LN10`
+#### Example: Using `Math.LN10`
 
  The following function returns the natural log of 10:
     function getNatLog10() {
@@ -45,7 +45,7 @@ The natural logarithm of 10.
 
 The base 2 logarithm of `E`.
 
- #### Example: Using `Math.LOG2E`
+#### Example: Using `Math.LOG2E`
 
  The following function returns the base 2 logarithm of `E`:
 
@@ -150,7 +150,7 @@ If you pass -1 to `getAcos`, it returns 3.141592653589793; if you pass 2, it ret
 * [[Math.tan `tan()`]]
 
 
-	Math.asin(x) -> Number
+### Math.asin(x) -> Number
 - x (Number): A number
 	
 The `asin` method returns a numeric value between -pi/2 and pi/2 radians for x between -1 and 1. If the value of `number` is outside this range, it returns `NaN`.
@@ -176,7 +176,7 @@ If you pass `getAsin` the value 1, it returns 1.570796326794897 (pi/2); if you p
 * [[Math.tan `tan()`]] 
 
 
-	Math.atan(x) -> Number
+### Math.atan(x) -> Number
 - x (Number): A number
 	
 The `atan` method returns a numeric value between -pi/2 and pi/2 radians.
@@ -238,7 +238,7 @@ If you pass `getAtan2` the values (90,15), it returns 1.4056476493802699; if you
 * [[Math.tan `tan()`]] 
 
 
-	Math.ceil(x) -> Number
+### Math.ceil(x) -> Number
 - x (Number): A number
 	
 Returns the smallest integer greater than or equal to a number.
@@ -258,7 +258,7 @@ If you pass 45.95 to `getCeil`, it returns 46; if you pass -45.95, it returns -4
 * [[Math.floor `floor()`]]
 * [[Math.round `round()`]]
 
-	Math.cos(x) -> Number
+###	Math.cos(x) -> Number
 - x (Number): A number
 	
 The `cos` method returns a numeric value between -1 and 1\. which represents the cosine of the angle.
@@ -283,7 +283,7 @@ If `x` equals 2*`Math.PI`, `getCos` returns 1; if `x` equals `Math.PI`, the `get
 * [[Math.tan `tan()`]] 
 
 	
-	Math.floor(x) -> Number
+### Math.floor(x) -> Number
 - x (Number): A number
 
 Returns the largest integer less than or equal to a number.
@@ -303,7 +303,7 @@ If you pass 45.95 to `getFloor`, it returns 45; if you pass -45.95, it returns -
 * [[Math.round `round()`]]
 
 	
-	Math.log(x) -> Number
+### Math.log(x) -> Number
 - x (Number): A number
 
 Returns the natural logarithm (base `E`) of a number. If the value of `x` is negative, the return value is always `NaN`.
@@ -327,7 +327,7 @@ If you pass `getLog` the value 10, it returns 2.302585092994046; if you pass it 
 * [[Math.pow `pow()`]] 
 
 
-	Math.exp(x) -> Void
+### Math.exp(x) -> Void
 - x (Number): A number
 
 Returns `E^x`, where `x` is the argument, and `E` is Euler's constant, the base of the natural logarithms.
@@ -369,7 +369,7 @@ If at least one of arguments can't be converted to a number, the result is [[NaN
 This function uses [[Function.apply `Function.apply()`]] to find the maximum element in a numeric array. `getMaxOfArray([1,2,3])` is equivalent to `Math.max(1, 2, 3)`, but you can use `getMaxOfArray` on programmatically constructed arrays of any size.
 
 
-	Math.pow(base,exponent) -> Number
+### Math.pow(base,exponent) -> Number
 - base (Number): The base number.
 - exponents (Number): The exponent to which to raise base.
 	
@@ -429,7 +429,7 @@ Note that as numbers in Javascript are IEEE 754 floating point numbers with roun
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Math/math.random.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
-	Math.sin(x) -> Number
+###	Math.sin(x) -> Number
 - x (Number): A number.
 
 The `sin` method returns a numeric value between -1 and 1, which represents the sine of the argument.
@@ -481,7 +481,7 @@ If the fractional portion of `number` is .5 or greater, the argument is rounded 
 * [[Math.ceil `Math.ceil()`]]
 
 
-	Math.sqrt(x) -> Number
+### Math.sqrt(x) -> Number
 - x (Number): A number.
 
 Returns the square root of a number. If the value of `number` is negative, `sqrt` returns `NaN`.
@@ -498,7 +498,7 @@ If you pass `getRoot` the value 9, it returns 3; if you pass it the value 2, it 
 
 
 
-	Math.tan(x) -> Number
+### Math.tan(x) -> Number
 - x (Number): A number representing an angle in radians.
 	
 The `tan` method returns a numeric value that represents the tangent of the angle.

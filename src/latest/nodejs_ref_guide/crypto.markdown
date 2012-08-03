@@ -6,7 +6,7 @@ The `crypto` module offers a way of encapsulating secure credentials to be used
 as part of a secure HTTPS net or HTTP connection. To access this module, add
 `require('crypto')` to your code. 
 
- The module also offers a set of wrappers for OpenSSL's methods, which actually
+The module also offers a set of wrappers for OpenSSL's methods, which actually
 contains these objects:
 
 * [[crypto.cipher Cipher]]
@@ -33,19 +33,19 @@ Note: All `algorithm` parameter implementations below are dependent on the OpenS
 Creates and returns a cipher object with the given algorithm and password.
 
 The `password` is used to derive both the key and IV, which must be a
-binary-encoded string. For more information, see the section on [[Buffer
-buffers]].
+`'binary'`-encoded string, or a [[Buffer
+buffer]].
 
 ### crypto.createCipheriv(algorithm, key, iv), crypto.cipher
-- algorithm {String}  The algorithm to use
-- key {String}  A raw key used in the algorithm
+- algorithm {String}  The algorithm to use (same as the argument in [[crypto.createCipher `createCipher()`]])
+- key {String}  A raw key used by the algorithm
 - iv {String}  The [initialization
 vector](http://en.wikipedia.org/wiki/Initialization_vector)
 
 Creates and returns a cipher object, with the given algorithm, key, and IV.
 
-Both `key` and `iv` must be a binary-encoded string. For more information, see
-the section on [[Buffer buffers]].
+`key` and `iv` must be `'binary'`-encoded strings or a [[Buffer
+buffer]].
 
 
 ### crypto.createCredentials([details]), Object
@@ -61,6 +61,7 @@ certificate, and CA certificates
 - `passphrase`: A string of passphrases for the private key or pfx
 - `ca`: Either a string or list of strings of PEM encoded CA certificates
 to trust
+* `crl` : Either a string or list of strings of PEM encoded CRLs (Certificate Revocation List)
 - `ciphers`: A string describing the ciphers to use or exclude. Consult
 [OpenSSL.org](http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT)
 for details on the format

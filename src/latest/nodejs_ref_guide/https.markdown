@@ -8,7 +8,7 @@ separate module. To use this module, include `require('https')` in your code.
 Creating HTTPS servers is somewhat complicated and requires generating
 certificates.
 
- #### Examples
+#### Examples
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.js?linestart=1&lineend=0&showlines=false' defer='defer'></script>
 
@@ -69,7 +69,7 @@ used (for more information, see below).
 
 Makes a request to a secure web server. 
 
-All options from [http.request `httprequest()`]] are valid for `options`:
+All options from [http.request `http.request()`]] are valid for `options`:
 
 - host: a domain name or IP address of the server to issue the request to.
 Defaults to `'localhost'`.
@@ -90,7 +90,7 @@ used, the request defaults to `Connection: keep-alive`. The possible values are:
  - `false`: this opts out of connection pooling with an Agent, and defaults the
 request to `Connection: close`.
 
-The following options from [tls.connect()](tls.html#tls.connect) can also be
+The following options from [[tls.connect `tls.connect()`]] can also be
 specified. However, a [[http.globalAgent globalAgent]] silently ignores these.
 
  - `pfx`: Certificate, private key, and CA certificates to use for SSL. The 
@@ -109,6 +109,15 @@ a PEM format; in other words, the public x509 certificate to use. The default is
   - `ca`: An array of strings or `Buffer`s of trusted certificates. These are
 used to authorize connections. If this is omitted, several "well-known root" CAs
 will be used, like VeriSign. 
+
+- `ciphers`: A string describing the ciphers to use or exclude. Consult
+  <http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT> for
+  details on the format.
+
+- `rejectUnauthorized`: If `true`, the server certificate is verified against
+  the list of supplied CAs. An `'error'` event is emitted if verification
+  fails. Verification happens at the connection level, *before* the HTTP
+  request is sent. Default to `false`.
 
 #### Example
 

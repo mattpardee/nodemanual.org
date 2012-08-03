@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: The Node Package Manager
+
+# The Node Package Manager
 
 "Modules" in Node.js are similar to libs in C or JAR files in Java. A module can be a single file (or a collection of files) that you include in your code for additional methods and functionality. Node.js is partially compatible with [the CommonJS securable module system](http://wiki.commonjs.org/wiki/Modules/1.1), so there's an entire set of specifications on how to create new modules. We won't get into that here.
 

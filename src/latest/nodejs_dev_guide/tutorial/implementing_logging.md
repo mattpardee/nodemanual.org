@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: Implementing Logging Messages
+
+# Implementing Logging Messages
 
 Logging isn't just something for beavers—it's also a function used by many processes, ranging from server tracking to debugging your own apps.
 

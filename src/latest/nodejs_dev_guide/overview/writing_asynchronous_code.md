@@ -1,6 +1,7 @@
 Author: Tim Caswell
 URL: https://twitter.com/#!/creationix
-Title: Writing Asynchronous Code
+
+#  Writing Asynchronous Code
 
 Node.js is, as you might already know, an asynchronous framework.  One of the unique aspects of programming like this is the ability to decide between which function will run in serial (synchronous and blocking) and which will run in parallel (asynchronous and non-blocking). 
 

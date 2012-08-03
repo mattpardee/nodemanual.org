@@ -91,7 +91,7 @@ Close the underlying socket and stop listening for data on it.
 ### dgram.address(), Object
 
 Returns an object containing the address information for a socket.  For UDP
-sockets, this object contains the properties `address` and `port`.
+sockets, this object contains the properties `address`, `family` and `port`.
 
 ### dgram.setBroadcast(flag)
 - flag {Boolean}  The value of `SO_BROADCAST`
@@ -109,7 +109,7 @@ the TTL is decremented to 0 by a router, it will not be forwarded.  Changing TTL
 values is typically done for network probes or when multicasting.
 
 The argument to `setTTL()` is a number of hops between 1 and 255.  The default
-on most systems is 64.
+on most systems is 1.
 
 ### dgram.setMulticastTTL(ttl)
 - ttl {Number}  The value of `IP_MULTICAST_TTL` 

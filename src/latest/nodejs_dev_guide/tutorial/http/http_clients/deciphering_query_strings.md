@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: Deciphering Query Strings
+
+#  Deciphering Query Strings
 
 Often times when working with GET and POST requests, you'll need to manipulate the query string parameters in a URL to gain access or accomplish something you desire—or even just parsing what a web server is telling you.
 

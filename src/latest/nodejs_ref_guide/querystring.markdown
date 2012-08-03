@@ -18,13 +18,17 @@ be overridden, if necessary.
  
 
 
-### querystring.parse(str [, sep='&'] [, eq='=']), Object
+### querystring.parse(str [, sep='&'] [, eq='='] [, options]), Object
 - str {String}  The query string to parse
 - sep {String}  The separator character
 - eq {String}  The equivalency character
+- options {Object}  Additional configurations to pass
 
 Deserialize a query string to an object and returns it. You can choose to
 override the default separator and assignment characters.
+
+`options` may contain the `maxKeys` property (equal to 1000 by default). This is
+used to limit processed keys. Set it to 0 to remove the key count limitation.
 
 #### Example
 

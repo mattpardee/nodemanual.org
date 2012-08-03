@@ -93,7 +93,7 @@ The arguments to the function are as follows:
 
 <table class = "fullwidth-table"> <tbody> <tr> <td class = "header">Possible name</td> <td class = "header">Supplied value</td> </tr> <tr> <td>`str`</td> <td>The matched substring. (Corresponds to $& above.)</td> </tr> <tr> <td>`p1\. p2\. ...`</td> <td>The _n_th parenthesized submatch string, provided the first argument to `replace` was a `RegExp` object. (Correspond to $1\. $2\. etc. above.)</td> </tr> <tr> <td>`offset`</td> <td>The offset of the matched substring within the total string being examined. (For example, if the total string was `"abcd"`, and the matched substring was `"bc"`, then this argument will be `1`.)</td> </tr> <tr> <td style = "white-space: nowrap;">`s`</td> <td>The total string being examined.</td> </tr> </tbody> </table>
 
-(The exact number of arguments will depend on whether the first argument was a `RegExp `object and, if so, how many parenthesized submatches it specifies.)
+The exact number of arguments depends on whether the first argument was a `RegExp `object and, if so, how many parenthesized submatches it specifies.
 
 The following example will set `newString `to `"XXzzzz - XX , zzzz"`:
 

@@ -9,26 +9,26 @@ html(xmlns="http://www.w3.org/1999/xhtml")
     mixin head('./../', whoAmI)
   
   body
+    mixin navBar(whoAmI)
+    #nonFooter
+      #wrapper
+        .content
+          .row.centerpiece
+            .span3#sidebarContainer
+              #sidebar
+                h3
+                  a(href='./nodejs_ref_guide/index.html') Node.js API Reference
+                h3
+                  a(href='./nodejs_dev_guide/index.html') Node.js Guide
+                h3
+                  a(href='./js_doc/index.html') Javascript Reference
+            .span9#mainContent
+              #documentation
+               .dev_guide#content
+                 mixin markdown(data)
 
-    mixin topBar(whoAmI)
-
-    .container#main
-      .content
-        .row.container
-          .span5.offset4.sidebarContainer
-            #sidebar
-              h3
-                a(href='./nodejs_ref_guide/index.html') Node.js API Reference
-              h3
-                a(href='./nodejs_dev_guide/index.html') Node.js Guide
-              h3
-                a(href='./js_doc/index.html') Javascript Reference
-          .span11
-            .dev_guide#content
-              mixin markdown(data)
-
-            div#disqus_thread
-
-      mixin footer
-
+              div(id="disqus_thread")
+      .push
+    mixin footer
+  
     mixin endingScripts

@@ -8,8 +8,9 @@ readable/writable Stream.
 
 You can access this module by adding `var zlib = require('zlib');` to your code.
 
-All of the constants defined in `zlib.h` are also defined in this module.  They
-are described in more detail in the [zlib
+All of the constants defined in `zlib.h` are also defined in this module.  In 
+the normal course of operations, you will not need to ever set any of these.
+They are described in more detail in the [zlib
 documentation](http://zlib.net/manual.html#Constants).
 
 ### zlib.options, Object
@@ -27,6 +28,7 @@ The options are:
 * level (compression only)
 * memLevel (compression only)
 * strategy (compression only)
+* dictionary (deflate/inflate only, empty dictionary by default)
 
 See the description of `deflateInit2` and `inflateInit2` at
 <http://zlib.net/manual.html#Advanced> for more information on these.
@@ -71,7 +73,10 @@ usage.
 
 #### Examples
 
-Note: These examples are drastically simplified to show the basic concept. Zlib encoding can be expensive, and the results ought to be cached.  See [Memory Usage Tuning](#memory_Usage_Tuning) for more information on the speed/memory/compression tradeoffs involved in zlib usage.
+Note: These examples are drastically simplified to show the basic concept. Zlib 
+encoding can be expensive, and the results ought to be cached.  See 
+[Memory Usage Tuning](#zlib_memory_usage_tuning) for more information on the 
+speed/memory/compression tradeoffs involved in zlib usage.
 
 Compressing or decompressing a file can be done by piping an `fs.ReadStream`
 into a zlib stream, then into an `fs.WriteStream`.

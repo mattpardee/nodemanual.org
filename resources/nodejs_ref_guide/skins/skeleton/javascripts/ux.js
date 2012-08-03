@@ -1,6 +1,20 @@
 $(function () {
     'use strict';
 
+   var pagePath = document.location.pathname.substring(document.location.pathname.lastIndexOf("/") + 1);
+
+   // select current page in sidenav and set up prev/next links if they exist
+   var $selNavLink = $('#sidebar').find('a[href="' + pagePath + '"]');
+   if ($selNavLink.length) {
+      //$selListItem = $selNavLink.closest('li');
+
+      $selNavLink.addClass('currentItem');
+   }
+
+    // init prettyprint
+    $('pre > code').addClass('prettyprint');
+    prettyPrint();
+
     var baseTitle = document.title,
         // base (general) part of title
         pathName = window.location.pathname,
@@ -12,14 +26,6 @@ $(function () {
     if (pathName.indexOf("nodejs_ref_guide") >= 0) $('li#node_js_ref').addClass("active");
     else if (pathName.indexOf("nodejs_dev_guide") >= 0) $('li#nodejs_dev_guide').addClass("active");
     else if (pathName.indexOf("js_doc") >= 0) $('li#js_doc').addClass("active");
-
-    // sticky footer stuff
-    if ($('#mainContent').height() > $('#sidebarContainer').height()) {
-        $('#nonFooter').css( {
-            'min-height': '100%'
-        });
-        $('#nonFooter').height("auto");
-    }
     
     function loadCallback(evt) {
         var form = document.getElementById("searchbox");
@@ -37,25 +43,12 @@ $(function () {
         };
     }
 
-    var fileNameRE = new RegExp("^" + fileName, "i");
-
-    $('a.menuLink').each(function (index) {
-        if ($(this).attr("href").match(fileNameRE)) {
-            $(this).addClass("currentItem");
-            return false;
-        }
-    });
-
     // init search
     $('#search')
     // prevent from form submit
     .on('submit', function () {
         return false;
     }).find('input');
-
-    // init prettyprint
-    $('pre > code').addClass('prettyprint');
-    prettyPrint();
 });
 
 $(document).ready(function () {
@@ -65,6 +58,11 @@ $(document).ready(function () {
         $(d).parent('li').each(function () {
             $(this).removeClass('open')
         });
+    }
+
+    // HACKY: toc is longer than content, change height to retain the side border
+    if ($('#sidebarContainer').height() < $('#mainContent').height()) {
+        $('.centerpiece').addClass('shortToc');
     }
 
     var s, sx;

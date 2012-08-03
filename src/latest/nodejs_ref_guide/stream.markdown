@@ -1,4 +1,4 @@
-## streams
+## stream
 (metadata: {"type": "global"})
 
 > Stability: 2 - Unstable
@@ -19,19 +19,19 @@ streams](../nodejs_dev_guide/understanding_streams.html).
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/streams/streams.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-## streams.ReadableStream
+## stream.ReadableStream
 
 
 
-### streams.ReadableStream@close()
+### stream.ReadableStream@close()
 
-Emitted when the underlying file descriptor has been closed. Not all streams
-emit this.  For example, an incoming HTTP request don't emit `close`.
+Emitted when the underlying resource (for example, the backing file descriptor)
+has been closed. Not all streams emit this.
 
  
 
 
-### streams.ReadableStream@data(data)
+### stream.ReadableStream@data(data)
 - data {Buffer | String}   The data being emitted
 
 The `data` event emits either a `Buffer` (by default) or a string if
@@ -40,7 +40,7 @@ The `data` event emits either a `Buffer` (by default) or a string if
  
 
 
-### streams.ReadableStream@end()
+### stream.ReadableStream@end()
 
 Emitted when the stream has received an EOF (FIN in TCP terminology). Indicates
 that no more `data` events will happen. If the stream is also writable, it may
@@ -49,35 +49,40 @@ be possible to continue writing.
  
 
 
-### streams.ReadableStream@error()
+### stream.ReadableStream@error()
 
 Emitted if there was an error receiving data.
  
 
 
-### streams.ReadableStream@pipe(src)
-- src {streams.ReadableStream}  The readable stream
+### stream.ReadableStream@pipe(src)
+- src {stream.ReadableStream}  The readable stream
 
 Emitted when the stream is passed to a readable stream's pipe method.
 
  
 
 
-### streams.ReadableStream.destroy()
+### stream.ReadableStream.destroy()
 
 Closes the underlying file descriptor. The stream will not emit any more events.
 
 
 
-### streams.ReadableStream.pause()
+### stream.ReadableStream.pause()
 
-Pause any incoming `'data'` events.
+Issues an advisory signal to the underlying communication layer, requesting
+that no further data be sent until `resume()` is called.
+
+Note that, due to the advisory nature, certain streams will not be paused
+immediately, and so `'data'` events may be emitted for some indeterminate
+period of time even after `pause()` is called. You may wish to buffer such
+`'data'` events.
 
 
 
-
-### streams.ReadableStream.pipe(destination [, options]), streams
-- destination {streams.WritableStream}   The WriteStream to connect to
+### stream.ReadableStream.pipe(destination [, options]), stream
+- destination {stream.WritableStream}   The WriteStream to connect to
 - options {Object}   Any optional commands to send
 
 This is the `Stream.prototype()` method available on all `Stream` objects. It
@@ -113,34 +118,33 @@ This keeps `process.stdout` open so that "Goodbye" can be written at the end.
  
  
 
-/** related to: streams.ReadableStream.data
-streams.ReadableStream.setEncoding(encoding)
-- encoding {String}  The encoding to use; this can be `'utf8'`, `'ascii'`, or
-`'base64'`.
+### stream.ReadableStream.setEncoding([encoding='utf8'])
+- encoding {String}  The encoding to use; this can be `'utf8'`, 
+`'utf16le'` (`'ucs2'`), `'ascii'`, or `'hex'`
 
-Makes the `data` event emit a string instead of a `Buffer`.
+Makes the [[stream.ReadableStream@data `'data'`]] event emit a string instead of a `Buffer`.
 
  
 
 
-### streams.ReadableStream.resume()
+### stream.ReadableStream.resume()
 
 Resumes the incoming `'data'` events after a `pause()`. 
 
  
 
-## streams.WritableStream
+## stream.WritableStream
 
  
 
-### streams.WritableStream.writable, Boolean
+### stream.WritableStream.writable, Boolean
 
 A boolean that is `true` by default, but turns `false` after an `error` event
 occurs, the stream comes to an `'end'`, or if `destroy()` was called.
 
 
 
-### streams.WritableStream@close()
+### stream.WritableStream@close()
 
 
 Emitted when the underlying file descriptor has been closed.
@@ -149,7 +153,7 @@ Emitted when the underlying file descriptor has been closed.
 
 
 
-### streams.WritableStream@drain()
+### stream.WritableStream@drain()
 
 After a `write()` method returns `false`, this event is emitted to indicate that
 it is safe to write again.
@@ -157,7 +161,7 @@ it is safe to write again.
  
 
 
-### streams.WritableStream@error(exception)
+### stream.WritableStream@error(exception)
 - exception {Error}  The exception that was received
 
 Emitted when there's an error with the exception `exception`.
@@ -165,7 +169,7 @@ Emitted when there's an error with the exception `exception`.
  
 
 
-### streams.WritableStream.destroy()
+### stream.WritableStream.destroy()
 
 Closes the underlying file descriptor. The stream doesn't emit any more events.
 Any queued write data is not sent.
@@ -173,7 +177,7 @@ Any queued write data is not sent.
 
 
 
-### streams.WritableStream.destroySoon()
+### stream.WritableStream.destroySoon()
 
 After the write queue is drained, this closes the file descriptor.
 `destroySoon()` can still destroy straight away, as long as there is no data
@@ -182,9 +186,9 @@ left in the queue for writes.
 
  
 
-### streams.WritableStream.end()
-### streams.WritableStream.end(string, encoding)
-### streams.WritableStream.end(Buffer)
+### stream.WritableStream.end()
+### stream.WritableStream.end(string, encoding)
+### stream.WritableStream.end(Buffer)
 - string {String}  The message to send
 - encoding {String}  The encoding to use
 - buffer {Buffer}   The buffer to send
@@ -192,16 +196,16 @@ left in the queue for writes.
 Terminates the stream with EOF or FIN. This call send queued write data before
 closing the stream.
 
-For `streams.WritableStream.end(string, encoding)`, a `string` with the given
+For `stream.WritableStream.end(string, encoding)`, a `string` with the given
 `encoding` is sent. This is useful to reduce the number of packets sent.
 
-For `streams.WritableStream.end(Buffer)`, a `buffer` is sent.
+For `stream.WritableStream.end(Buffer)`, a `buffer` is sent.
 
 
 
 
-### streams.WritableStream.write(string, encoding='utf8' [, fd])
-### streams.WritableStream.write(Buffer)
+### stream.WritableStream.write(string, encoding='utf8' [, fd])
+### stream.WritableStream.write(Buffer)
 - string {String}   The string to write
 - encoding {String}   The encoding to use; defaults to `utf8`
 - fd {Number}   An optional file descriptor to pass

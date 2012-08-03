@@ -1,6 +1,7 @@
 Author: Tim Caswell
 URL: https://twitter.com/#!/creationix
-Title: Closures for Events and Callbacks
+
+#  Closures for Events and Callbacks
 
 This is where closures are the most useful. In fact, this is the reason that Ryan Dahl (the creator of Node.js) used Javascript in the first place.  C doesn't have closures, and it makes non-blocking code difficult to write.
 

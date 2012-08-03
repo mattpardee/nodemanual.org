@@ -16,13 +16,11 @@ immediately to `stderr`.
 
 
 
-### util.format(format, [arg...]), String
-- format {String} Placeholders used for formatting
-- arg {String}   The string to print, and any additional formatting arguments
+### util.format(format...), String
+- format {String} A message, and placeholders used for formatting
 
 Returns a formatted string using the first argument in [a
-`printf()`-like](http://en.wikipedia.org/wiki/Printf_format_string#Format_placeh
-olders) way.
+`printf()`-like](http://en.wikipedia.org/wiki/Printf_format_string#Format_placeholders) way.
 
 The first argument is a string that contains zero or more placeholders. Each
 placeholder is replaced with the converted value from its corresponding
@@ -59,19 +57,20 @@ Here's an example inspecting all the properties of the `util` object:
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.inspect.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
-### util.error(str...), String
+### util.error([str...]), String
 - str {String}   The string to print
 
 Same as `util.debug()` except this will output all arguments immediately to
 `stderr`.
 
-### util.puts(str...), String
+### util.puts([str...]), String
 - str {String}   The string to print
 
 A synchronous output function. Will block the process and output all arguments
 to `stdout` with newlines after each argument.
 
-### util.print(str...)
+### util.print([str...])
+- str {String}   The string to print
 
 A synchronous output function. Will block the process, cast each argument to a
 string then output to `stdout`. Does not place newlines after each argument.
@@ -130,8 +129,8 @@ Outputs to `stdout`...but with a timestamp!
 
 
 ### util.pump(readableStream, writableStream, [callback()])
-- readableStream {streams.ReadableStream}  The stream to read from
-- writableStream {streams.WritableStream}  The stream to write to
+- readableStream {stream.ReadableStream}  The stream to read from
+- writableStream {stream.WritableStream}  The stream to write to
 - callback {Function}   An optional callback function once the pump is through
 
 Reads the data from `readableStream` and sends it to the `writableStream`.

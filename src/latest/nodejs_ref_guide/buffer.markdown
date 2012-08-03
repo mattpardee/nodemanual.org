@@ -33,11 +33,14 @@ be removed in future versions of Node.js.
 
 * `'hex'`: Encodes each byte as two hexidecimal characters.
 
-* `'ucs2'`: 2-bytes, little endian encoded Unicode characters. It can encode
-only BMP (Basic Multilingual Plane—from U+0000 to U+FFFF).
-
 * `'utf8'` - Multi byte encoded Unicode characters.  Many web pages and other
 document formats use UTF-8.
+
+* `'utf16le'` - 2 or 4 bytes, little endian encoded Unicode characters.
+Surrogate pairs (U+10000 to U+10FFFF) are supported.
+
+* `'ucs2'`: 2-bytes, little endian encoded Unicode characters. It can encode
+only BMP (Basic Multilingual Plane—from U+0000 to U+FFFF).
 
 In most cases, the default of `'utf8'` is used.
 
@@ -63,6 +66,8 @@ You can use either:
 Buffer.byteLength(string, encoding='utf8'), Number
 - string {String}  The string to check
 - encoding {String}  The encoding that the string is in
+
+<!-- Class Method -->
 
 Gives the actual byte length of a string.  This is not the same as
 `String.length` since that returns the number of _characters_ in a string.
@@ -104,6 +109,8 @@ this fills the entire buffer.
 ### Buffer.isBuffer(obj), Boolean
 - obj {Object}  The object to check
 
+<!-- Class Method -->
+
 Returns `true` if `obj` is a `Buffer`.
 
 
@@ -119,6 +126,29 @@ notation.
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+
+### Buffer.concat(list, [totalLength]), Buffer
+
+* `list` {Array} List of Buffer objects to concat
+* `totalLength` {Number} Total length of the buffers when concatenated
+
+<!-- Class Method -->
+
+Returns a buffer that is the result of concatenating all the buffers in
+the list together.
+
+If the list has no items, or if `totalLength` is 0, then it returns a
+zero-length buffer.
+
+If the list has exactly one item, then the first item of the list is
+returned.
+
+If the list has more than one item, then a new Buffer is created.
+
+If `totalLength` is not provided, it is read from the buffers in the list.
+However, this adds an additional loop to the function, so it is faster
+to explicitly provide the length.
+
 ### Buffer.readDoubleLE(offset, noAssert=false), String
 - offset {Number}  The starting position
 - noAssert {Boolean}  If `true`, skips the validation of the offset. This means
@@ -307,7 +337,7 @@ byte from the original `Buffer`:
 - start {Number}  The starting byte offset; defaults to `0`
 - end {Number}  The number of bytes to write; defaults to the length of the
 buffer
-(related to: buffer.write)
+(related to: Buffer.write)
 
 Decodes and returns a string from buffer data encoded with `encoding` beginning
 at `start` and ending at `end`.
@@ -548,7 +578,8 @@ object.  It does not change when the contents of the buffer are changed.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>     
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>   
+  
 ### Buffer.INSPECT_MAX_BYTES, Number
 
 

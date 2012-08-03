@@ -6,9 +6,7 @@ This module contains utilities for handling and transforming file paths. Add
 `require('path')` to your code to use this module.
 
 Almost all these methods perform only string transformations. **The file system
-is not consulted to check whether paths are valid.** `path.exists` and
-`path.existsSync` are the exceptions, and should logically be found in the fs
-module as they do access the file system.
+is not consulted to check whether paths are valid.
 
 
 #### Example
@@ -151,11 +149,22 @@ Tests whether or not the given path exists by checking with the file system.
 
 ###  path.existsSync(p), Boolean
 - p {String}   A path to check
++ {Boolean} `true` if the path exists, `false` otherwise.
 
 The synchronous version of `path.exists`. Tests whether or not the given path
 exists by checking with the file system
 
-#### Returns
-`true` if the path exists, `false` otherwise.
 
+### path.sep, String
 
+The platform-specific file separator; `'\\'` or `'/'`.
+
+An example on Linux:
+
+    'foo/bar/baz'.split(path.sep)
+    // returns ['foo', 'bar', 'baz']
+
+An example on Windows:
+
+    'foo\\bar\\baz'.split(path.sep)
+    // returns ['foo', 'bar', 'baz']

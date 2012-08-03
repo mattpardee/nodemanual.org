@@ -1,9 +1,9 @@
 ## repl
 
 A Read-Eval-Print-Loop (REPL) is available both as a standalone program and
-easily includable in other programs.  REPL provides a way to interactively run
-Javascript and see the results.  It can be used for debugging, testing, or just
-trying things out.
+easily includable in other programs. The REPL provides a way to interactively 
+run JavaScript and see the results.  It can be used for debugging, testing, or 
+just trying things out.
 
 By executing `node` without any arguments from the command line, you'll be
 dropped into the REPL. It has a simplistic emacs line-editing:
@@ -20,8 +20,8 @@ dropped into the REPL. It has a simplistic emacs line-editing:
     3
 
 For advanced line-editors, start `node` with the environmental variable
-`NODE_NO_READLINE=1`. This starts the REPL in canonical terminal settings which
-allow you to use with `rlwrap`.
+`NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical 
+terminal settings which allow you to use with `rlwrap`.
 
 For a quicker configuration, you could add this to your `.bashrc` file:
 
@@ -82,45 +82,71 @@ command.  Press twice on a blank line to forcibly exit the REPL.
 the REPL
         
 
-### repl.start([prompt='&gt; '] [, stream=process.stdin] [, eval=eval] [,
-useGlobal=false] [, ignoreUndefined=false])
- - prompt {String}  The starting prompt
- - stream {String}  The stream to read from
- - eval {String}  An asynchronous wrapper function that executes after each line
- - useGlobal {String}   If `true`, then the REPL uses the global objectm instead
-of scripts in a separate context
- - ignoreUndefined {String}  If `true`, the REPL won't output return valyes of a
-command if it's `undefined`
+### repl.start(options)
+- options {Object} Configuration options for the REPL
 
- Starts a REPL with `prompt` as the prompt and `stream` for all I/O. 
- 
+Returns and starts a `REPLServer` instance.
+
+`options` is an object with following properties: 
+
+- `prompt`: The starting prompt and `stream` for all I/O. Defaults to `> `.
+
+ - `input`: The readable stream to listen to. Defaults to `process.stdin`.
+
+ - `output`: The writable stream to write readline data to. Defaults to
+   `process.stdout`.
+
+ - `terminal`: Pass `true` if the `stream` should be treated like a TTY, and
+   have ANSI/VT100 escape codes written to it. Defaults to checking `isTTY`
+   on the `output` stream upon instantiation.
+
+ - `eval`: An asynchronous wrapper function that is used to eval each given 
+   line. Defaults to an async wrapper for `eval()`. See below for an example of 
+   a custom `eval`.
+
+ - `useColors`: Specifies whether the `writer` function
+   should output colors. If a different `writer` function is set then this does
+   nothing. Defaults to the repl's `terminal` value.
+
+ - `useGlobal`: Specifies whether the repl uses the `global` object,
+   instead of running scripts in a separate context. Defaults to `false`.
+
+ - `ignoreUndefined`: Specifies whether the repl should output the
+   return value of a command if it's `undefined`. Defaults to `false`.
+
+ - `writer`: The function to invoke for each command that gets evaluated which
+   returns the formatting (including coloring) to display. Defaults to
+   `util.inspect`.
+
+
  You can use your own `eval` function if it has the following signature:
-  
-     function eval(cmd, callback) {
-       callback(null, result);
-     }
  
- Multiple REPLs can be started against the same running instance of node.  Each
+    function eval(cmd, context, filename, callback) {
+      callback(null, result);
+    }
+ 
+Multiple REPLs can be started against the same running instance of node.  Each
 share the same global object but will have unique I/O.
  
- #### Example
+#### Examples
  
- Here's an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
- 
-     var net = require("net"),
-         repl = require("repl");
- 
-     connections = 0;
- 
-     repl.start("node via stdin> ");
- 
-     net.createServer(function (socket) {
-       connections += 1;
-       repl.start("node via Unix socket> ", socket);
-     }).listen("/tmp/node-repl-sock");
- 
-    net.createServer(function (socket) {
-       connections += 1;
-       repl.start("node via TCP socket> ", socket);
-     }).listen(5001);
+ <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/repl/repl.start.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
+For an example of running a "full-featured" (`terminal`) REPL over
+a `net.Server` and `net.Socket` instance, see: <https://gist.github.com/2209310>
+
+For an example of running a REPL instance over `curl(1)`,
+see: <https://gist.github.com/2053342>
+
+### repl@exit
+
+Emitted when the user exits the REPL in any of the defined ways. Namely, typing
+`.exit` at the repl, pressing Ctrl+C twice to signal SIGINT, or pressing Ctrl+D
+to signal "end" on the `input` stream.
+
+#### Example: Listening for `exit`
+
+    r.on('exit', function () {
+      console.log('Got "exit" event from repl!');
+      process.exit();
+    });

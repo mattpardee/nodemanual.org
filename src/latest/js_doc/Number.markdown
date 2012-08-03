@@ -243,7 +243,7 @@ A string representing a `Number` object in fixed-point or exponential notation r
 * [[Number.toString `toString()`]]
 
 
-	Number.toSource() -> String
+### Number.toSource() -> String
 
 Returns a string representing the source code of the object. The `toSource` method returns the following values:
 
@@ -278,7 +278,7 @@ If toString is given a radix not between 2 and 36, an exception is thrown.
 
 #### See Also
 * [[Number.toExponential `toExponential()`]]
-* [[Number.ToLocaleString `ToLocaleString()`]]
+* [[Number.toLocaleString `ToLocaleString()`]]
 * [[Number.toPrecision `toPrecision()`]]
 * [[Number.toFixed `toFixed()`]]
 * [[Number.toSource `toSource()`]]

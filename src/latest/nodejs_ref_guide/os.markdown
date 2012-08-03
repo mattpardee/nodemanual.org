@@ -97,7 +97,9 @@ Example inspection of os.cpus:
 
 Returns the amount of free system memory in bytes.
 
- 
+###  os.tmpDir(), String
+
+Returns the operating system's default directory for temp files.
 
 
 ### os.hostname(), String
@@ -106,8 +108,6 @@ Returns the amount of free system memory in bytes.
 Returns the hostname of the operating system.
 
  
-
-
 ### os.networkInterfaces(), Object
 
 

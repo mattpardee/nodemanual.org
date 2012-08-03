@@ -101,10 +101,12 @@ prints the active watchers. To remove a watcher, type
 * `next`, `n`: Step next
 * `step`, `s`: Step in
 * `out`, `o`: Step out
+* `pause` - Pause running code (like pause button in Developer Tools)
 
 ### Breakpoints
 
 * `setBreakpoint()`, `sb()`: Sets a breakpoint on the current line
+* `setBreakpoint(line)`, `sb(line)`: Set breakpoint on specific line
 * `setBreakpoint('fn()')`, `sb(...)`: Sets a breakpoint on the first statement
 in the function's body
 * `setBreakpoint('script.js', 1)`, `sb(...)`: Sets a  breakpoint on the first

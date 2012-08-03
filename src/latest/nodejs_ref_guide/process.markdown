@@ -102,6 +102,8 @@ Gets the group identity of the process. This is the numerical group id, not the
 group name. For more information, see
 [getgid(2)](http://kernel.org/doc/man-pages/online/pages/man2/getgid.2.html).
 
+Note: This function is only available on POSIX platforms (_i.e._, not Windows).
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
@@ -115,6 +117,8 @@ group name. For more information, see
 Gets the user identity of the process. Note that this is the numerical userid,
 not the username. For more information, see
 [getuid(2)](http://kernel.org/doc/man-pages/online/pages/man2/getuid.2.html).
+
+Note: This function is only available on POSIX platforms (_i.e._, not Windows).
 
 #### Example
 
@@ -189,6 +193,8 @@ groupname string. If a groupname is specified, this method blocks while
 resolving it to a numerical ID. For more information, see
 [setgid(2)](http://kernel.org/doc/man-pages/online/pages/man2/setgid.2.html).
 
+Note: This function is only available on POSIX platforms (_i.e._, not Windows).
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
@@ -202,6 +208,8 @@ Sets the user identity of the process. This accepts either a numerical ID or a
 username string.  If a username is specified, this method blocks while resolving
 it to a numerical ID. For more information, see
 [setuid(2)](http://kernel.org/doc/man-pages/online/pages/man2/setuid.2.html).
+
+Note: This function is only available on POSIX platforms (_i.e._, not Windows).
 
 #### Example
 
@@ -275,7 +283,9 @@ This is the absolute pathname of the executable that started the process.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.execpath.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>    
  
+### process.abort()
 
+This causes Node.js to emit an abort. Node.js will exit and generate a core file.
 
 ### process.pid, Number
 
@@ -289,7 +299,8 @@ Returns the PID of the process.
    
 ### process.platform, String
 
-Identifies the platform you're running on, like `'linux2'`, `'darwin'`, etc.
+Identifies the platform you're running on: `'darwin'`, `'freebsd'`, `'linux'`, 
+`'solaris'` or `'win32'`
 
 #### Example
 
@@ -332,6 +343,33 @@ outputs something similar to:
     openssl: '1.0.0e-fips' }
  
 
+### process.config, Object
+
+Contains the JavaScript representation of the configure options
+that were used to compile the current node executable. This is the same as
+the "config.gypi" file that was produced when running the `./configure` script.
+
+An example of the possible output looks like:
+
+    { target_defaults:
+       { cflags: [],
+         default_configuration: 'Release',
+         defines: [],
+         include_dirs: [],
+         libraries: [] },
+      variables:
+       { host_arch: 'x64',
+         node_install_npm: 'true',
+         node_install_waf: 'true',
+         node_prefix: '',
+         node_shared_v8: 'false',
+         node_shared_zlib: 'false',
+         node_use_dtrace: 'false',
+         node_use_openssl: 'true',
+         node_shared_openssl: 'false',
+         strict_aliasing: 'true',
+         target_arch: 'x64',
+         v8_use_snapshot: 'true' } }
 
 ### process.installPrefix, String
 
@@ -393,4 +431,16 @@ As an aside, here's what the innards of `console.log()` look like:
     };
 
  
+#@# process.hrtime(), Array[Number]
 
+Returns the current high-resolution real time in a `[seconds, nanoseconds]`
+tuple Array. It is relative to an arbitrary time in the past. It is not
+related to the time of day and therefore not subject to clock drift. The
+primary use is for measuring performance between intervals.
+
+You may pass in the result of a previous call to `process.hrtime()` to get
+a diff reading, useful for benchmarks and measuring intervals.
+
+#### Example
+
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.hrtime.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>

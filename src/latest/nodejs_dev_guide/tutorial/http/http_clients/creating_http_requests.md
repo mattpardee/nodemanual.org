@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: Creating HTTP GET and POST Requests
+
+#  Creating HTTP GET and POST Requests
 
 For client-side HTTP functionality, you might frequently find yourself making GET and POST requests to a server out on in the vastness of the Internet. We're going to be using [the same `http` module](../nodejs_ref_guide/http.html) used for creating servers. However, there are several objects contained within this module that can also handle client requests and responses.
 

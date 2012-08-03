@@ -32,16 +32,16 @@ separated by the provided operator.
 ### assert.assert(value, message)
 - value {Object} The value you receive
 - message {String} The message to send to the console if the comparisson fails
-(alias of: asset.ok)
+(related to: assert.ok)
 
-Tests if value is a `true` value. This is equivalent to `assert.equal(true,
-value, message)`. This is the same as `assert.ok()`, except that `message` is
+Tests if value is "truthy." This is equivalent to `assert.equal(true,
+!!value, message);`. This is the same as `assert.ok()`, except that `message` is
 required.
 
 ### assert.ok(value, [message])
 - value {Object} The value you receive
 - message {String} The message to send to the console if the comparisson fails
-(alias of: assert.assert)
+(related to: assert.assert)
 
 Tests if value is a `true` value. This is equivalent to `assert.equal(true,
 value, message);`. This is the same as `assert()`, except that `message` is not
@@ -101,13 +101,11 @@ If `block`throws an error, then the assertion passes.
 
 #### Example: Validate `instanceof` using a constructor:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guid
-e/assert/assert.throws_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Validate an error message using regular expressions:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guid
-e/assert/assert.throws_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Custom error validation:
 

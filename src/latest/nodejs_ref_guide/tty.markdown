@@ -1,20 +1,20 @@
 ## tty
 
-> Stability: 3 - Stable
+> Stability: 2 - Unstable
     
-This module controls printing to the terminal output. Use `require('tty')` to
-access this module.
+The `tty` module houses the `tty.ReadStream` and `tty.WriteStream` classes. In
+most cases, you will not need to use this module directly.
 
-#### Example
+When node detects that it is being run inside a TTY context, then `process.stdin`
+will be a `tty.ReadStream` instance and `process.stdout` will be
+a `tty.WriteStream` instance. The preferred way to check if node is being run in
+a TTY context is to check `process.stdout.isTTY`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/tty/tty.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+    $ node -p -e "Boolean(process.stdout.isTTY)"
+    true
+    $ node -p -e "Boolean(process.stdout.isTTY)" | cat
+    false
 
-### tty.getWindowSize(fd), Array
-- fd {Number}   The file descriptor to check
-(deprecated: 0.6.0)
-
-This function no longer exists. Use [[process.stdout
-`process.stdout.getWindowSize()`]] instead.
 
 ### tty.isatty(fd), Boolean
 - fd {Number}   The file descriptor to check
@@ -24,14 +24,53 @@ a terminal.
 
 ### tty.setRawMode(mode)
 - mode {Boolean}  A boolean value indicating how to set the rawness
+(deprecated)
 
-This sets the properties of the current process's stdin file descriptor to act
-either as a raw device (`true`) or default (`false`).
+Deprecated. Use [[tty.ReadStream.setRawMode `tty.ReadStream.setRawMode()`]] 
+instead.
 
-### tty.setWindowSize(fd, row, col)
-- fd {Number}  The file descriptor to use
-- row {Number}  The number of rows
-- col {Number}  The number of columns
-(deprecated: 0.6.0)
+## tty.ReadStream
 
-This function no longer exists.
+A `net.Socket` subclass that represents the readable portion of a tty. In normal
+circumstances, `process.stdin` is the only `tty.ReadStream` instance in any
+Node.js program (only when `isatty(0)` is true).
+
+### tty.ReadStream.isRaw, Boolean
+
+Represents the current "raw" state of the `tty.ReadStream` instance. Initialized
+to `false`.
+
+### tty.ReadStream.setRawMode(mode)
+- mode {Boolean} Sets the raw state of the `tty.ReadStream` instance
+
+Sets the properties of the `tty.ReadStream` to act either as a raw device or 
+default. `isRaw` will be set to the resulting mode.
+
+
+## tty.WriteStream
+
+A `net.Socket` subclass that represents the writable portion of a tty. In normal
+circumstances, `process.stdout` will be the only `tty.WriteStream` instance
+ever created (and only when `isatty(1)` is true).
+
+### tty.WriteStream.columns, Number
+
+Returns the number of columns the TTY currently has. This property is updated on
+"resize" events.
+
+### tty.WriteStream.rows, Number
+
+Returns the number  of rows the TTY currently has. This property is updated on 
+"resize" events.
+
+### tty.WriteStream@resize
+
+Emitted by `refreshSize()` when either of the `columns` or `rows` properties
+has changed.
+
+#### Example
+
+    process.stdout.on('resize', function() {
+      console.log('screen size has changed!');
+      console.log(process.stdout.columns + 'x' + process.stdout.rows);
+    });

@@ -1,6 +1,7 @@
 Author: Tim Caswell, Felix Geisendörfer
 URL: https://twitter.com/#!/creationix, https://twitter.com/#!/felixge
-Title: Understanding Event Emitters
+
+# Understanding Event Emitters
 
 In order to facilitiate its asynchronisity, Node.js operates with an "event loop" in the background. This loops "listens" for actions that are "emitted," and executes functions as a result. Node.js runs in a single thread of execution, but as soon as a block of synchronous code is done, the event loop runs the next event in the queue. 
 
@@ -23,7 +24,7 @@ Sometimes you want to listen for events that can happen several times. For examp
 
 The `on()` function also returns a reference to the object it belongs to, allowing you to chain several of such event listeners. If you're only interested in the first occurrence of an event, you can use the `once()` function instead. You can also remove event listeners by using the `removeListener()` function.
 
-<Note>By default, events can only have a maximum of 10 listeners. In order to create more, you'll need to make a call to [`setMaxListeners(n)`](../nodejs_ref_guide/events.html#setMaxListeners). The maximum limit ensures you aren't leaking event listeners by mistake.</Note>
+<Note>By default, events can only have a maximum of 10 listeners. In order to create more, you'll need to make a call to [`setMaxListeners(n)`](../nodejs_ref_guide/events.html#eventemitter.setMaxListeners). The maximum limit ensures you aren't leaking event listeners by mistake.</Note>
 
 Here's a full example converying many of the methods discussed:
 

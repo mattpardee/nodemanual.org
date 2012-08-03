@@ -10,8 +10,8 @@ mixin doctype
   !!! 5
 
   <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-  <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-  <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+  <!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+  <!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
   <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 mixin head(dirP, whoAmI)
@@ -23,86 +23,85 @@ mixin head(dirP, whoAmI)
   -if (isIndex !== undefined || fileName.indexOf("ndex") >= 0)
     title #{title}
   -else
-    title #{title} - #{fileName}
+    if (nodejsDev == 'true')
+      title #{title} - #{pageTitle}
+    else
+      title #{title} - #{fileName}
 
   mixin makeVersionLabel(whoAmI, false)
 
-  meta(name="generator", content="c9-doc-build")
-  meta(name="description", content="A complete and community-driven resource for learning and developing Node.js applications.")
+  meta(name="generator", content="panino-doc-build")
   meta(name="author", content="Garen J. Torikian")
 
   meta(name="viewport", content="width=device-width,initial-scale=1")
 
-  link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/bootstrap.css")
+  link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/bootstrap.min.css")
   link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/prettify.css")
   link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/refguide_overrides.css")
 
-  link(href="#{verj}/assets/images/favicon.ico", rel="icon", type="image/x-icon")
-  
-  //-link(rel="canonical", href="http://www.nodemanual.org/out/latest/" + filename)
+  link(href="#{dirPrefix}#{verj}/assets/images/favicon.ico", rel="icon", type="image/x-icon")
 
-  link(type="text/css", rel="stylesheet", href="http://yandex.st/highlightjs/6.1/styles/vs.min.css")
+  link(type="text/css", rel="stylesheet", href="http://yandex.st/highlightjs/7.0/styles/vs.min.css")
 
   script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery.js")
+  script(src="#{dirPrefix}#{verj}/assets/javascripts/ux.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/clicker.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery.collapse.js")
-  script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery.cookie.js")
-  script(src="#{dirPrefix}#{verj}/assets/javascripts/bootstrap-dropdown.js")
-  script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery-scrollspy.js") 
-  script(src="#{dirPrefix}#{verj}/assets/javascripts/ux.js")
 
-mixin topBar(fullPath)
-  div.topbar
-      div.fill
-        div.container#topSection
-          ul.nav(class="leftnav")
-              li(class="dropdown", data-dropdown="dropdown")
-                  a(class="dropdown-toggle brand", href="/")
-                    //div(class="arrow-down")
-                  ul(class="dropdown-menu")
-                      li
-                          a(href="http://nodebits.org/") Nodebits
-                      li
-                          a(href="http://howtonode.org/") HowToNode
-                      li
-                          a(href="http://training.c9.io/") Node.js Training
-              li(class="dropdown versions")
-                  a(class="dropdown-toggle versionToggler", href="#") Version&nbsp;
-                    mixin makeVersionLabel(fullPath)
-                  ul(class="dropdown-menu")
-                    include versionsList
+mixin navBar(fullPath)
+  div.navbar.navbar-fixed-top
+    div.navbar-inner
+      div#topSection.container
 
-          ul.nav
-            li#node_js_ref
-              a(href='#{dirPrefix}#{verj}/nodejs_ref_guide/index.html') Node.js API Reference
-            li#nodejs_dev_guide
-              a(href='#{dirPrefix}#{verj}/nodejs_dev_guide/index.html') Node.js Guide
-            li#js_doc
-              a(href='#{dirPrefix}#{verj}/js_doc/index.html') Javascript Reference
-          form(id='searchbox', action='', class='pull-right')  
-            input(class='span3', name='query', type='text', placeholder="Search Documentation", title="Search across all the documentation types")
-          span(id='currentVersion', style='display: none')
-            mixin makeVersionLabel(fullPath, true)
+        ul.nav
+          li(class="dropdown")
+              a(class="dropdown-toggle brand", data-toggle="dropdown", href="http://www.nodemanual.org")
+              ul(class="dropdown-menu")
+                  li
+                      a(href="http://nodebits.org/") Nodebits
+                  li
+                      a(href="http://howtonode.org/") HowToNode
+                  li
+                      a(href="http://training.c9.io/") Node.js Training
+        ul.nav
+          li(class="dropdown versions")
+              a(class="dropdown-toggle versionToggler", href="#") Version&nbsp;
+                mixin makeVersionLabel(fullPath)
+                b.caret
+              ul(class="dropdown-menu")
+                include versionsList
+
+        ul.nav
+          li#node_js_ref
+            a(href='#{dirPrefix}#{verj}/nodejs_ref_guide/index.html') Node.js API Reference
+          li#nodejs_dev_guide
+            a(href='#{dirPrefix}#{verj}/nodejs_dev_guide/index.html') Node.js Guide
+          li#js_doc
+            a(href='#{dirPrefix}#{verj}/js_doc/index.html') Javascript Reference
+        form(id='searchbox', action='', class='navbar-search pull-right') 
+          input(class='search-query span3', name='query', type='text', placeholder="Search the Manual", title="Search across all the documentation")
 
 mixin footer
-  footer#footer
-        .container
-          .footer-text Thanks to these content providers | &#169; 2012:
-          .sponsors
-              a(class="c9-logo sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
-              a(class="joyent-logo sponsor", href="http://www.joyent.com/", title="joyent", target="_blank")
-              a(class="mozilla-logo sponsor", href="http://www.mozilla.org/", title="mozilla", target="_blank")
-              a(class="debuggable-logo sponsor", href="http://www.debuggable.com/", title="debuggable", target="_blank")
+  div#footer
+    .footerInner
+      .sponsors
+          span.footer-text Thanks to these content providers | &#169; 2012:
+          a(class="c9-logo sponsor", href="http://c9.io/", title="cloud9 ide", target="_blank")
+          a(class="joyent-logo sponsor", href="http://www.joyent.com/", title="joyent", target="_blank")
+          a(class="mozilla-logo sponsor", href="http://www.mozilla.org/", title="mozilla", target="_blank")
+          a(class="debuggable-logo sponsor", href="http://www.debuggable.com/", title="debuggable", target="_blank")
 
 
 mixin endingScripts
   // scripts concatenated and minified via ant build script
   script(src="#{dirPrefix}#{verj}/assets/javascripts/ga.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/plugins.js")
+  script(src="#{dirPrefix}#{verj}/assets/javascripts/bootstrap-dropdown.js")
+  script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery-scrollspy.js") 
   script(src="#{dirPrefix}#{verj}/assets/javascripts/prettify.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/prettify-extension.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/disqus-ext.js")
-  
+
   //-<script defer src="tree.js"></script>
   // end scripts
 
@@ -143,14 +142,14 @@ mixin makeVersionLabel(fullPath, showText)
   -if (fullPath === undefined)
      != 'latest'
   -else
-  -if (fullPath.indexOf("latest") >= 0)
+      -if (fullPath.indexOf("latest") >= 0)
         -if (showText === undefined)
-          -id = '0.6.19'
+          -id = '0.8.0'
         -else
           -id = 'latest'
       -else
          -id = fullPath.match(/\d\.\d\.\d+/)
       -if (verj.length < 1)
          -verj = id
-  -else
+      -else
          != id

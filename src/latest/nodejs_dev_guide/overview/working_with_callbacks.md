@@ -1,6 +1,7 @@
 Author: Tim Caswell
 URL: https://twitter.com/#!/creationix
-Title: Working with Callbacks
+
+# Working with Callbacks
 
 Callbacks are _essential_ for understanding how to program efficiently with Node.js. Callbacks are essentially just functions that execute once a method completes. It's considered standard to create  callbacks with at least two parameters: the [global `Error` object](../js_doc/Error.html), and the result of the asynchronous method completing.
 

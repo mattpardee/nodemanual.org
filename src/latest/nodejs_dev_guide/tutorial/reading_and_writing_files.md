@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: Reading and Writing Files
+
+# Reading and Writing Files
 
 Everybody should be able to read, and Node.js is no different. File I/O is very interesting with Node.js, because it's one of the few modules with both asynchronous and synchronous operations for the same functions.
 

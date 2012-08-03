@@ -1,5 +1,5 @@
 - var methodSection, constructorSection, propertySection, eventSection;
-    
+
 -function renameMemberTitle(title, count)
   if title.indexOf("ethods") >= 0
     span Functions (#{count})
@@ -116,11 +116,9 @@ mixin article(obj, parents)
                           else if obj.aliases.length
                             li
                               span.label.alias.multiple
-                                | Aliased as:
-                                ul.alias
-                                  for alias in obj.aliases
-                                    li
-                                      mixin link(alias)
+                                | Aliased as:&nbsp;
+                                for alias in obj.aliases
+                                    mixin link(alias)&nbsp;
 
                           if obj.related_to
                             li
@@ -130,11 +128,11 @@ mixin article(obj, parents)
                                   
           div.sideToggler
 
-            if obj.ellipsis_description
+            if obj.short_description
               div(id='ellipsis_#{obj.id}', class='ellipsis_description')
-                mixin markdown(obj.ellipsis_description)
-              div(id='short_#{obj.id}', class='short_description hiddenSpan')
                 mixin markdown(obj.short_description)
+              div(id='short_#{obj.id}', class='short_description hiddenSpan')
+                mixin markdown(obj.description)
 
             h3(id='#{obj.id}', class='methodToggle methodClicker inactive')
               &nbsp;&nbsp;&nbsp;
@@ -159,11 +157,11 @@ mixin article(obj, parents)
 
               if obj.arguments
                 h4 Arguments
-                != argumentTable(obj.arguments, ["argument-list", "zebra-striped", "bordered-table"])
+                != argumentTable(obj.arguments, ["argument-list", "table", "table-striped", "table-bordered"])
 
               if obj.retDesc
                 h4 Returns
-                != returnTable(obj.retDesc, ["argument-list", "zebra-striped", "bordered-table"])
+                != returnTable(obj.retDesc, ["return-list", "table", "table-striped", "table-bordered"])
 
   //- children
   for child in obj.children.filter(function(x){return x.type === 'section'})
@@ -229,7 +227,7 @@ mixin api()
                         a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') (View original on MDN)
 
             -if (true || obj.filename.indexOf("index") < 0)
-              ul(class='tabs pos#{pos}', data-tabs='tabs')
+              ul(class='nav tabs pos#{pos}', data-tabs='tabs')
                 for selector, title in {'Events': ['event', 'events'], 'Constructors': ['constructor', 'constructors'], 'Class methods': ['class method', 'class_methods'], 'Class properties': ['class property', 'class_properties'], 'Instance methods': ['instance method', 'instance_methods'], 'Instance properties': ['instance property', 'instance_properties'], 'Constants': ['constant', 'constants']}
                   members = obj.children.filter(function(x){return x.type === selector[0]})
                     li(class="dropdown", data-dropdown="dropdown")
@@ -243,7 +241,7 @@ mixin api()
                               mixin link(m, [], true)
        -pos++
        -methodSection = constructorSection = propertySection = eventSection = false;
-      mixin article(obj, [])
+       mixin article(obj, [])
 
 
 mixin short_description_list(collection)

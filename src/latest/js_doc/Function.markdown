@@ -184,7 +184,7 @@ Since ECMAScript 5th Edition you can also use any kind of object which is array 
 	var cheese = new Food('feta', 5);
 	var fun = new Toy('robot', 40);
          
- #### Example: `apply()` and built-in functions
+#### Example: `apply()` and built-in functions
 
  Clever usage of `apply` allows you to use built-ins functions for some tasks that otherwise probably would have been written by looping over the array values. As an example here we are going to use Math.max/Math.min to find out the maximum/minimum value in an array.
  
@@ -266,7 +266,7 @@ With `call`, you can write a method once and then inherit it in another object, 
 	 var cheese = new Food('feta', 5);
 	 var fun = new Toy('robot', 40);
          
- #### Example: Using `call` to invoke an anonymous function 
+#### Example: Using `call` to invoke an anonymous function 
 
  In this purely constructed example, we create anonymous function and use `call` to invoke it on every object in an array. The main purpose of the anonymous function here is to add a print function to every object, which is able to print the right index of the object in the array. Passing the object as `this` value was not strictly necessary, but is done for explanatory purpose.
  
@@ -380,7 +380,7 @@ The `bind` function creates a new function (a _bound function_) with the same fu
 		var boundGetX = getX.bind(module);
 		boundGetX(); // 81
          
- #### Example: Currying 
+#### Example: Currying 
 
  The next simplest use of `bind` is to make a function with pre-specified initial arguments. These arguments (if any) follow the provided `this` value and are then inserted at the start of the arguments passed to the target function, followed by the arguments passed to the bound function, whenever the bound function is called.
  
@@ -396,7 +396,7 @@ The `bind` function creates a new function (a _bound function_) with the same fu
 		var list2 = leadingZeroList(); // [37]
 		var list3 = leadingZeroList(1, 2, 3); // [37, 1, 2, 3]
          
- #### Example: Bound functions used as constructors 
+#### Example: Bound functions used as constructors 
 
  Bound functions are automatically suitable for use with the `new` operator to construct new instances created by the target function. When a bound function is used to construct a value, the provided `this` is ignored. However, provided arguments are still prepended to the constructor call:
  
@@ -434,7 +434,7 @@ The `bind` function creates a new function (a _bound function_) with the same fu
 		emptyObj.x + "," + emptyObj.y;
 		// >  "0,13"
          
- #### Example: Creating Shortcuts 
+#### Example: Creating Shortcuts 
  `bind` is also helpful in cases where you want to create a shortcut to a function which requires a specific `this` value. Take [[Array.slice `Array.slice()`]], for example, which you want to use for converting an array-like object to a real array. You could create a shortcut like this:
 
 		var slice = Array.prototype.slice;

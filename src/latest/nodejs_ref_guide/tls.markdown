@@ -30,7 +30,7 @@ just look at
 [`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/
 fixtures/keys/Makefile) in the Node.js source code.)
 
-To create .pfx or .p12, do this:
+To create a .pfx or .p12, do this:
 
     openssl pkcs12 -export -in agent5-cert.pem -inkey agent5-key.pem \
         -certfile ca-cert.pem -out agent5.pfx
@@ -49,15 +49,33 @@ NPN is to use one TLS server for multiple protocols (HTTP, SPDY).
 SNI is to use one TLS server for multiple hostnames with different SSL
 certificates.
 
+##### Client-initiated Renegotiation Attack Mitigation
 
+The TLS protocol lets the client renegotiate certain aspects of the TLS session.
+Unfortunately, session renegotiation requires a disproportional amount of
+server-side resources, which makes it a potential vector for denial-of-service
+attacks.
+
+To mitigate this, renegotiations are limited to three times every 10 minutes. An
+error is emitted on the [[tls.CleartextStream CleartextStream]] instance when 
+the threshold is exceeded. The limits are configurable:
+
+  - `tls.CLIENT_RENEG_LIMIT`: the renegotiation limit; default is 3.
+
+  - `tls.CLIENT_RENEG_WINDOW`: the renegotiation window in seconds; default is
+                               10 minutes.
+
+Don't change the defaults unless you know what you are doing.
+
+To test your server, connect to it with `openssl s_client -connect address:port`
+and tap `R<CR>` (that's the letter `R` followed by a carriage return) a few
+times.
 
 ### tls@secureConnection(cleartextStream)
 - cleartextStream {tls.CleartextStream}  A object containing the NPN and SNI
 string protocols
 
 This event is emitted after a new connection has been successfully handshaked.
-The argument is a instance of [[tls.CleartextStream CleartextStream]]. It has
-all the common stream methods and events.
 
 If [[tls.CleartextStream.authorized `tls.CleartextStream.authorized`]] is
 `false`, then [[tls.CleartextStream.authorizationError
@@ -71,9 +89,10 @@ with SNI.
 
  
 
-
+### tls.connect(options, [secureConnectListener])
 ### tls.connect(port [, host=localhost] [, options] [, secureConnectListener]),
 tls.CleartextStream
+- options {Object} Configuration options to pass in
 - port {Number}   The port to connect to
 - host {String}   An optional hostname to connect to`
 - options {Object}   Any options you want to pass to the server
@@ -83,6 +102,17 @@ Creates a new client connection to the given `port` and `host`. This function
 returns a [[tls.CleartextStream `tls.CleartextStream`]] object.
 
 `options` should be an object that specifies the following values:
+
+  - `host`: Host the client should connect to
+
+  - `port`: Port the client should connect to
+
+  - `socket`: Establish secure connection on a given socket rather than
+    creating a new socket. If this option is specified, `host` and `port`
+    are ignored.
+
+  - `pfx`: A string or `Buffer` containing the private key, certificate and
+    CA certs of the server in PFX or PKCS12 format.
 
   - `key`: A string or `Buffer` containing the private key of the client in aPEM
 format. The default is `null`.
@@ -97,6 +127,11 @@ a PEM format; in other words, the public x509 certificate to use. The default is
   - `ca`: An array of strings or `Buffer`s of trusted certificates. These are
 used to authorize connections. If this is omitted, several "well-known root" CAs
 will be used, like VeriSign. 
+
+  - `rejectUnauthorized`: If `true`, the server certificate is verified against
+    the list of supplied CAs. An `'error'` event is emitted if verification
+    fails. Default to  `false`.
+
 
   - `NPNProtocols`: An array of strings or a  `Buffer` containing supported NPN
 protocols. 
@@ -190,7 +225,8 @@ stream.
 
 ### tls.createServer(options [, secureConnectionListener])
 - options {Object}   Any options you want to pass to the server
-- secureConnectionListener {Function}  An optional listener
+- secureConnectionListener {Function}  An optional listener, automatically set 
+as a listiner for the [[tls@secureConnection `'secureConnection'`]] event.
 
 Creates a new [[tls.Server `tls.Server`]].
 
@@ -211,6 +247,27 @@ a PEM format. (Required)
   - `ca`: An array of strings or `Buffer`s of trusted certificates. These are
 used to authorize connections. If this is omitted, several "well-known root" CAs
 will be used, like VeriSign. 
+
+  - `crl`: Either a string or list of strings of PEM encoded CRLs (Certificate
+    Revocation List)
+
+  - `ciphers`: A string describing the ciphers to use or exclude. Consult
+    <http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT> for
+    details on the format.
+    To mitigate [BEAST attacks]
+    (http://blog.ivanristic.com/2011/10/mitigating-the-beast-attack-on-tls.html),
+    it is recommended that you use this option in conjunction with the
+    `honorCipherOrder` option described below to prioritize the RC4 algorithm,
+    since it is a non-CBC cipher. A recommended cipher list follows:
+    `ECDHE-RSA-AES256-SHA:AES256-SHA:RC4-SHA:RC4:HIGH:!MD5:!aNULL:!EDH:!AESGCM`
+
+  - `honorCipherOrder` : When choosing a cipher, use the server's preferences 
+  instead of the client preferences.  
+  Note that if SSLv2 is used, the server will send its list of preferences
+  to the client, and the client chooses the cipher.
+  Although, this option is disabled by default, it is *recommended* that you
+  use this option in conjunction with the `ciphers` option to mitigate
+  BEAST attacks.
 
   - `NPNProtocols`: An array of strings or a  `Buffer` containing supported NPN
 protocols. 
@@ -386,7 +443,7 @@ checked to confirm whether the certificate used properly authorized.
 This is a stream on top of the encrypted stream that makes it possible to
 read/write an encrypted data as a cleartext data.
 
-This instance implements the duplex [[streams `Stream`]] interfaces. It has all
+This instance implements the duplex [[stream `Stream`]] interfaces. It has all
 the common stream methods and events.
 
 ### tls.CleartextStream@secureConnect()
@@ -454,6 +511,23 @@ object.
 '2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF' }
  
 
+### cleartextStream.getCipher(), Object
+
+Returns an object representing the cipher name and the SSL/TLS
+protocol version of the current connection. The format is:
+
+  { name: 'AES256-SHA', version: 'TLSv1/SSLv3' }
+
+See SSL_CIPHER_get_name() and SSL_CIPHER_get_version() in
+<http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_CIPHERS> for more
+information.
+
+### cleartextStream.address(), Object
++ {Object} An object with three properties, e.g.
+`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+
+Returns the bound address, the address family name, and port of the
+underlying socket as reported by the operating system. 
 
 ### tls.CleartextStream.connections(), Object
 

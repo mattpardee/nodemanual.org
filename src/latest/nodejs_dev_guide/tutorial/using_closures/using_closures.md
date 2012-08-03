@@ -1,6 +1,7 @@
 Author: Tim Caswell
 URL: https://twitter.com/#!/creationix
-Title: Simulating Object-Orientation with Closures
+
+#  Simulating Object-Orientation with Closures
 
 One of the greatest features of Javascript is the [closure](http://en.wikipedia.org/wiki/Closure_(computer_science)). From Wikipedia, a closure is:
 

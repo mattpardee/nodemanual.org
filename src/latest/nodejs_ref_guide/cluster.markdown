@@ -10,6 +10,50 @@ To use this module, add `require('cluster')` to your code.
 
 Note: This feature was introduced recently, and may change in future versions. Please try it out and provide feedback.
 
+##### How It Works
+
+Worker processes are spawned using the [[child_process.fork `child_process.fork()`]] method,
+so that they can communicate with the parent via IPC and pass server
+handles back and forth.
+
+When you call `server.listen(...)` in a worker, it serializes the
+arguments and passes the request to the master process.  If the master
+process already has a listening server matching the worker's
+requirements, it passes the handle to the worker.  If it does not
+already have a listening server matching that requirement, it creates one, 
+and passes the handle to the child.
+
+This causes potentially surprising behavior in three edge cases:
+
+1. `server.listen({fd: 7})`: Because the message is passed to the master,
+   file descriptor 7 **in the parent** will be listened on, and the
+   handle passed to the worker, rather than listening to the worker's
+   idea of what the number 7 file descriptor references.
+2. `server.listen(handle)`: Listening on handles explicitly will cause
+   the worker to use the supplied handle, rather than talk to the master
+   process.  If the worker already has the handle, then it's presumed
+   that you know what you are doing.
+3. `server.listen(0)`: Normally, this will case servers to listen on a
+   random port.  However, in a cluster, each worker will receive the
+   same "random" port each time they do `listen(0)`.  In essence, the
+   port is random the first time, but predictable thereafter.  If you
+   want to listen on a unique port, generate a port number based on the
+   cluster worker ID.
+
+When multiple processes are all `accept()`ing on the same underlying
+resource, the operating system load-balances across them very
+efficiently.  There is no routing logic in Node.js, or in your program,
+and no shared state between the workers.  Therefore, it is important to
+design your program such that it does not rely too heavily on in-memory
+data objects for things like sessions and login.
+
+Because workers are all separate processes, they can be killed or
+re-spawned depending on your program's needs, without affecting other
+workers.  As long as there are some workers still alive, the server will
+continue to accept connections.  Node does not automatically manage the
+number of workers for you, however.  It is your responsibility to manage
+the worker pool for your application's needs.
+
 #### Example: Launching one cluster working for each CPU
 
 The cluster module allows you to easily create a network of processes that all
@@ -31,20 +75,6 @@ sharing the HTTP port 8000:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-### cluster.settings(settings)
-- settings {Object} Various settings to configure. The properties on this
-parameter are:
-  * `exec`, the [[String `String`]] file path to worker file. The default is
-`__filename`.
-  * `args`, an  [[Array `Array`]] of string arguments passed to worker. The
-default is `process.argv.slice(2)`.
-  * `silent`, [[Boolean `Boolean`]] specifying whether or not to send output to
-parent's stdio. The default is `false`.
-
-All settings set by the [[cluster.setupMaster `setupMaster`]] are stored in this
-settings object. This object is not supposed to be change or set manually by
-you.
-
 ### cluster@death(worker)
 - worker {cluster}  The dying worker in the cluster
 
@@ -63,20 +93,27 @@ application.
 
 Spawns a new worker process. This can only be called from the master process.
 
- `cluster.fork` is actually implemented on top of [[child_process.fork
-`child_process.fork()`]]. The difference between `cluster.fork()` and
-`child_process.fork` is simply that `cluster` allows TCP servers to be shared
-between workers. The message passing API that is available on
-`child_process.fork` is available with `cluster` as well.
+### cluster.settings, Object
+
+All settings set by [[cluster.setupMaster `setupMaster()`]] are stored in this
+settings object. This object is not supposed to be change or set manually by
+you.
+
+Properties include:
+
+  * `exec`, the [[String `String`]] file path to worker file. The default is
+`__filename`.
+  * `args`, an  [[Array `Array`]] of string arguments passed to worker. The
+default is `process.argv.slice(2)`.
+  * `silent`, [[Boolean `Boolean`]] specifying whether or not to send output to
+parent's stdio. The default is `false`.
 
 ### cluster.isWorker, Boolean
-
 
 Flag to determine if the current process is a worker process in a cluster. A
 process is a worker if `process.env.NODE_WORKER_ID` is defined.
 
 ### cluster.isMaster, Boolean
-
 
 Flag to determine if the current process is a master process in a cluster. A
 process is a master if `process.env.NODE_WORKER_ID` is undefined.
@@ -123,7 +160,7 @@ being executed.
 
 ### cluster@listening(worker, address)
 - worker {worker} The worker to listen for
-- address {Object}
+- address {Object} Contains the `address` and `port` information where the worker is listening
 
 #### Example
 
@@ -158,7 +195,7 @@ cleanup or if there are long-living connections.
 - worker {worker} The worker that executed
 
 When the [[cluster.setupMaster `setupMaster()`]] function has been executed this
-event emits. If `.setupMaster()` was not executed before `fork()`, this function
+event emits. If [[cluster.setupMaster `setupMaster()`]] was not executed before [[cluster.fork `fork()`]], this function
 calls `setupMaster()` with no arguments.
 
 ### cluster.setupMaster([settings])
@@ -221,9 +258,9 @@ A `Worker` object contains all public information and methods about a worker. In
 the master, it can be obtained using `cluster.workers`. In a worker it can be
 obtained using `cluster.worker`.
 
-### worker.uniqueID, String
+### worker.id, String
 
-Each new worker is given its own unique id, stored in the `uniqueID`.
+Each new worker is given its own unique id, stored here.
 
 While a worker is alive, this is the key that indexes it in `cluster.workers`.
 
@@ -400,22 +437,28 @@ state changes on the specified worker.
 ### worker@disconnect(worker)
 - worker {worker} The disconnected worker
 
-Same as the `cluster.on('disconnect')` event, but emits only when the state
-change
-on the specified worker.
+Same as the [[cluster@disconnect `cluster.on('disconnect')`]] event, but emits only when the state
+change on the specified worker.
 
     cluster.fork().on('disconnect', function (worker) {
       // Worker has disconnected
     };
 
-### worker@death(worker)
-- worker {worker} The dead worker
+### worker@exit(code, signal)
+- code {Number} The exit code, if exited normally
+- signal {String} The name of the signal, (_e.g._ `'SIGHUP'`) that caused
+  the process to be killed.
 
-Same as the `cluster.on('death')` event, but emits only when the state change on
-the specified worker.
+Emitted by the individual worker instance, when the underlying child process
+is terminated.  For more information, see [[child_process@exit child_process' `'exit'` event].
 
-#### Example
-
-    cluster.fork().on('death', function (worker) {
-      // Worker has died
+    var worker = cluster.fork();
+    worker.on('exit', function(code, signal) {
+      if( signal ) {
+        console.log("worker was killed by signal: "+signal);
+      } else if( code !== 0 ) {
+        console.log("worker exited with error code: "+code);
+      } else {
+        console.log("worker success!");
+      }
     };

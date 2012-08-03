@@ -1,6 +1,7 @@
 Author: Node.js Community Wiki
 URL: https://github.com/joyent/node/wiki/node-core-vs-userland
-Title: Core Libraries versus User-Submitted Modules
+
+# Core Libraries versus User-Submitted Modules
 
 Occasionally, in the discussions in the Node.js mailing lists and IRC channels, you may hear things referred to as "node-core" and "userland".
 

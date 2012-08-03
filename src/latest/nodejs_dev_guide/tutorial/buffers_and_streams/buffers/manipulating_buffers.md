@@ -1,6 +1,7 @@
 Author: Garen J. Torikian
 URL: https://twitter.com/#!/gjtorikian
-Title: Manipulating Buffers
+
+#  Manipulating Buffers
 
 Javascript, as a language refined to exist on the browser, has many excellent ways to deal with strings. However, Node.js applications must also interact with various streams, either with the file system or TCP, as well as handling many other forms of binary data. That's where buffers come in. When you end up writing a bunch of information through a socket, it's more efficient to have that data in binary format.
 

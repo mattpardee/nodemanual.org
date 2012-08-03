@@ -31,6 +31,10 @@ addresses that are returned:
 Resolves a domain (e.g. `'google.com'`) into the first found A (IPv4) or AAAA
 (IPv6) record.
 
+On error, keep in mind that `err.code` will be set to `'ENOENT'` not only when
+the domain does not exist but also when the lookup fails in other ways
+such as no available file descriptors.
+
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.lookup.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
@@ -122,6 +126,35 @@ records).
 - domains {Array}  An array of possible domain names
 
 Reverse resolves an IP address to an array of domain names.
+
+##### Error codes
+
+Each DNS query can return one of the following error codes:
+
+- `dns.NODATA`: DNS server returned answer with no data.
+- `dns.FORMERR`: DNS server claims query was misformatted.
+- `dns.SERVFAIL`: DNS server returned general failure.
+- `dns.NOTFOUND`: Domain name not found.
+- `dns.NOTIMP`: DNS server does not implement requested operation.
+- `dns.REFUSED`: DNS server refused query.
+- `dns.BADQUERY`: Misformatted DNS query.
+- `dns.BADNAME`: Misformatted domain name.
+- `dns.BADFAMILY`: Unsupported address family.
+- `dns.BADRESP`: Misformatted DNS reply.
+- `dns.CONNREFUSED`: Could not contact DNS servers.
+- `dns.TIMEOUT`: Timeout while contacting DNS servers.
+- `dns.EOF`: End of file.
+- `dns.FILE`: Error reading file.
+- `dns.NOMEM`: Out of memory.
+- `dns.DESTRUCTION`: Channel is being destroyed.
+- `dns.BADSTR`: Misformatted string.
+- `dns.BADFLAGS`: Illegal flags specified.
+- `dns.NONAME`: Given hostname is not numeric.
+- `dns.BADHINTS`: Illegal hints flags specified.
+- `dns.NOTINITIALIZED`: c-ares library initialization not yet performed.
+- `dns.LOADIPHLPAPI`: Error loading iphlpapi.dll.
+- `dns.ADDRGETNETWORKPARAMS`: Could not find GetNetworkParams function.
+- `dns.CANCELLED`: DNS query cancelled.
 
 ### dns.resolveNs(domain, callback(err, domains))
 - domain {String}  The domain to resolve

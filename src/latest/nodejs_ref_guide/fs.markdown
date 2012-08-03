@@ -57,28 +57,28 @@ The correct way to do this is to chain the callbacks, like this:
     });
 
 
-### fs.rename(path1, path2 [, callback(err)])
-- path1 {String}  The original filename and path
-- path2 {String}  The new filename and path
+### fs.rename(oldPath, newPath [, callback(err)])
+- oldPath {String}  The original filename and path
+- newPath {String}  The new filename and path
 - callback {Function} An optional callback to execute once the function completes
 - err {Error} The possible exception
 
 An asynchronous
 [rename(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/rename.2.html)
-operation. Turns `path1` into `path2`.
+operation. Turns `oldPath` into `newPath`.
 
 
 
  
 
 
-### fs.renameSync(path1, path2)
-- path1 {String}  The original filename and path
-- path2 {String}  The new filename and path
+### fs.renameSync(oldPath, newPath)
+- oldPath {String}  The original filename and path
+- newPath {String}  The new filename and path
 
 A synchronous
 [rename(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/rename.2.html)
-operation. Turns `path1` into `path2`.
+operation. Turns `oldPath` into `newPath`.
 
  
 
@@ -384,11 +384,11 @@ A synchronous
 
 
 
-### fs.symlink(linkdata, path, [type='file'], [callback(err)])
-- linkdata {String}  The original path of a file
+### fs.symlink(destination, path, [type='file'], [callback(err)])
+- destination {String}  The original path of a file
 - path {String}  The new file link path
-- type {String}  This can be either `'dir'` or `'file'`.  It is only used on
-Windows ( andignored on other platforms)
+- type {String}  This can be either `'dir'`, `'file'`, or `'junction'`.  It is only used on
+Windows (and ignored on other platforms)
 - callback {Function}    An optional callback to execute once the function
 completes
 - err {Error}  The possible exception
@@ -397,23 +397,21 @@ An asynchronous
 [symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.htm
 l).
 
- 
+ Note: Windows junction points require the destination path to be absolute.  When using
+`'junction'`, the `destination` argument will automatically be normalized to an absolute path.
 
-
-
-### fs.symlinkSync(linkdata, path, [type='file'])
-- linkdata {String}  The original path of a file
+### fs.symlinkSync(destination, path, [type='file'])
+- destination {String}  The original path of a file
 - path {String}  The new file link path
 - type {String}  This can be either `'dir'` or `'file'`.  It is only used on
-Windows ( andignored on other platforms)
+Windows (and ignored on other platforms)
 
 A synchronous
 [symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.htm
 l).
 
- 
-
-
+Note: Windows junction points require the destination path to be absolute.  When using
+`'junction'`, the `destination` argument will automatically be normalized to an absolute path.
 
 ### fs.readlink(path, [callback(err, linkString)])
 - path {String}  The original path of a link
@@ -445,8 +443,10 @@ The symbolic link's string value.
 
 
 
-### fs.realpath(path, [callback(err, resolvedPath)])
+### fs.realpath(path, [cache], [callback(err, resolvedPath)])
 - path {String}  A path to a file
+- cache {Object} A literal of mapped paths that can be used to force a specific path
+resolution or avoid additional `fs.stat` calls for known real paths.
 - callback {Function}   An optional callback to execute once the function
 completes
 - err {Error}  The possible exception
@@ -457,25 +457,15 @@ An asynchronous
 tml). You can use [[process.cwd `process.cwd()`]] to resolve relative paths.
 
 
- 
-
-
-
 ### fs.realpathSync(path), String
 - path {String}  A path to a file
++ {String} The resolved path
 
 A synchronous
 [realpath(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.h
 tml).
 
-#### Returns
-
-The resolved path.
-
  
-
-
-
 ### fs.unlink(path, [callback(err)])
 - srcpath {String}  The path to a file
 - callback {Function}    An optional callback to execute once the function
@@ -619,20 +609,39 @@ exist.
 * `'r+'`: Opens the file for reading and writing. An exception occurs if the
 file does not exist.
 
+* `'rs'`: Open file for reading in synchronous mode. Instructs the operating
+  system to bypass the local file system cache.
+
+  This is primarily useful for opening files on NFS mounts as it allows you to
+  skip the potentially stale local cache. It has a very real impact on I/O
+  performance so don't use this mode unless you need it.
+
+  Note that this doesn't turn `fs.open()` into a synchronous blocking call.
+  If that's what you want, then you should be using `fs.openSync()`
+
+* `'rs+'`: Open file for reading and writing, telling the OS to open it
+  synchronously. See notes for `'rs'` about using this with caution.
+
 * `'w'`: Opens the file for writing. The file is created (if it does not exist)
 or truncated (if it exists).
 
+* `'wx'`: Like `'w'`, but opens the file in exclusive mode
+
 * `'w+'`: Opens the file for reading and writing. The file is created (if it
 doesn't exist) or truncated (if it exists).
+
+* `'wx+'`: Like `'w+'` but opens the file in exclusive mode
 
 * `'a'`: Opens the file for appending. The file is created if it doesn't exist.
 
 * `'a+'`: Opens the file for reading and appending. The file is created if it
 doesn't exist.
 
- 
+ * `'ax+'`: Like `'a+'` but opens the file in exclusive mode
 
-
+Note: Exclusive mode (`O_EXCL`) ensures that `path` is newly created. `fs.open()`
+fails if a file by that name already exists. On POSIX systems, symlinks are
+not followed. Exclusive mode may or may not work with network file systems.
 
 ### fs.openSync(path, flags, [mode=666]), Number
 - path {String}  The path to the file
@@ -820,7 +829,7 @@ Read data from the file specified by `fd` and writes it to `buffer`. If
 
 
 ### fs.readSync(fd, buffer, offset, length, position), Number
-### fs.readSync(fd, length, position, encoding), Number
+### fs.readSync(fd, length, position, encoding), Array
 - fd {Number}  The file descriptor to read from
 - buffer {Buffer}  The buffer to write to
 - offset {Number}  Indicates where in the buffer to start writing at
@@ -833,12 +842,12 @@ The synchronous version of buffer-based [[fs.read `fs.read()`]]. Reads data from
 the file specified by `fd` and writes it to `buffer`. If `position` is `null`,
 data will be read from the current file position.
 
+The `encoding` parameter represents the legacy version of this function.
 
 #### Returns
 
-The number of bytes read.
-
- 
+The number of bytes read. The legacy version return an array with the
+data from the file specified and number of bytes read--`[String, bytesRead]`.
 
 
 
@@ -902,12 +911,31 @@ Asynchronously writes data to a file, replacing the file if it already exists.
 - data {String | Buffer}  The data to write (this can be a string or a buffer)
 - encoding {String}  The encoding to use (this is ignored if `data` is a buffer)
 
-
 The synchronous version of [[fs.writeFile `fs.writeFile()`]].
 
  
+### fs.appendFile(filename, data, encoding='utf8', [callback])
+- filename {String}  The name of the file to write to
+- data {String | Buffer}  The data to write (this can be a string or a buffer)
+- encoding {String}  The encoding to use (this is ignored if `data` is a buffer)
 
+Asynchronously append data to a file, creating the file if it does not yet exist.
+`data` can be a string or a buffer. The `encoding` argument is ignored if
+`data` is a buffer.
 
+Example:
+
+    fs.appendFile('message.txt', 'data to append', function (err) {
+      if (err) throw err;
+      console.log('The "data to append" was appended to file!');
+    });
+
+### fs.appendFileSync(filename, data, encoding='utf8')
+- filename {String}  The name of the file to write to
+- data {String | Buffer}  The data to write (this can be a string or a buffer)
+- encoding {String}  The encoding to use (this is ignored if `data` is a buffer)
+
+The synchronous version of [[fs.appendFile `appendFile()`]].
 
 ### fs.watchFile(filename, [options], callback(curr, prev))
 - filename {String}  The name of the file to watch
@@ -924,7 +952,7 @@ Watches for changes on `filename`.
 `persistent` and `interval`:
 * `persistent` indicates whether the process should continue to run as long as
 files are being watched; defaults to `true`
-* `interval` indicates how often the target should be polled, in milliseconds; defaults to `0`
+* `interval` indicates how often the target should be polled, in milliseconds; defaults to `5007`
 
 On Linux systems with [inotify](http://en.wikipedia.org/wiki/Inotify),
 `interval` is ignored.
@@ -938,9 +966,6 @@ On Linux systems with [inotify](http://en.wikipedia.org/wiki/Inotify),
 
 
  
-
-
-
 ### fs.unwatchFile(filename)
 - filename {String}  The filename to watch
 
@@ -950,7 +975,7 @@ Stops watching for changes on `filename`.
 
 
 
-### fs.watch(filename[, options], callback(event, filename)), fs.FSWatcher
+### fs.watch(filename[, options], [callback(event, filename)]), fs.FSWatcher
 - filename {String}  The filename (or directory) to watch
 - options {Object}  An optional arguments indicating how to watch the files; defaults to `true`
 - listener {Function}   The callback to execute each time the file is accessed
@@ -959,11 +984,26 @@ Stops watching for changes on `filename`.
 
 Watch for changes on `filename`.
 
-> Stability: 2 - Unstable.  Use fs.watch instead, if available.
+> Stability: 2 - Unstable. Not available on all platforms. Use fs.watch instead, if available.
 
 `options`, if provided, should be an object containing a boolean member
 `persistent`, which indicates whether the process should continue to run as long
 as files are being watched.
+
+This feature depends on the underlying operating system providing a way
+to be notified of filesystem changes.
+
+* On Linux systems, this uses `inotify`.
+* On BSD systems (including OS X), this uses `kqueue`.
+* On SunOS systems (including Solaris and SmartOS), this uses `event ports`.
+* On Windows systems, this feature depends on `ReadDirectoryChangesW`.
+
+If the underlying functionality is not available for some reason, then
+`fs.watch` will not be able to function.  You can still use
+`fs.watchFile`, which uses stat polling, but it is slower and less
+reliable.
+
+#### Filename Argument
 
 Warning: Providing the `filename` argument in the callback is not supported on
 every platform (currently it's only supported on Linux and Windows).  Even on
@@ -984,7 +1024,25 @@ example.
     });
 
  
+### fs.exists(path, [callback(exists)])
+- path {String} The path to check
+- callback {Function} An optional callback to execute once the function
+completes
+- exists {Boolean} `true` if the `path` exists
 
+Tests whether or not the given path exists by checking with the file system.
+Then calls the `callback` argument with either true or false.
+
+#### Example
+
+    fs.exists('/etc/passwd', function (exists) {
+      util.debug(exists ? "it's there" : "no passwd!");
+    });
+
+
+### fs.existsSync(path)
+
+Synchronous version of [[fs.exists `exists()`]].
 
 ### fs.createReadStream(path, [options]), fs.ReadStream
 - path {String}  The path to read from
@@ -1005,7 +1063,7 @@ Returns a new [[fs.ReadStream `fs.ReadStream`]] object.
 
 `options` can include `start` and `end` values to read a range of bytes from the
 file instead of the entire file.  Both `start` and `end` are inclusive and start
-at 0.
+at 0. The `encoding` can be `'utf8'`, `'ascii'`, or `'base64'`.
 
 #### Example
 
@@ -1021,7 +1079,7 @@ Here's an example to read the last 10 bytes of a file which is 100 bytes long:
 - path {String}  The path to read from
 - options {Object}   Any optional arguments indicating how to write the stream
 
-Returns a new [[streams.WritableStream WriteStream]] object.
+Returns a new [[stream.WritableStream WriteStream]] object.
 
 `options` is an object with the following defaults:
 
@@ -1116,7 +1174,7 @@ file](http://en.wikipedia.org/wiki/Unix_file_types#Socket).
 
 ## fs.WriteStream
 
-This is a [[streams.WritableStream WriteStream]], created from the function
+This is a [[stream.WritableStream WriteStream]], created from the function
 [[fs.createWriteStream `fs.createWriteStream()`]].
 
  
@@ -1138,7 +1196,7 @@ queued for writing.
 
 ## fs.ReadStream
 
-This is a [[streams.ReadableStream streams.ReadableStream]], created from the
+This is a [[stream.ReadableStream `stream.ReadableStream`]], created from the
 function [[fs.createReadStream `fs.createReadStream()`]].
 
  
