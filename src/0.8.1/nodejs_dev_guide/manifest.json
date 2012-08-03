@@ -1,0 +1,4 @@
+{
+	"files": [ "./index.md", "./overview", "./reference", "./tutorial"],
+	"codeHighlightTheme": "idea"
+}

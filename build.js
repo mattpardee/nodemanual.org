@@ -6,43 +6,65 @@ var argv = process.argv,
     panda = require("panda-docs"),
     path  = require('path'), 
     wrench = require('wrench'),
-    funcDoc = require('functional-docs');
+    funcDoc = require('functional-docs'),
+    path = require("path"),
+    exec = require('child_process').exec;
     
 argv.shift();
 argv.shift();
 
-var version = argv[0];
-var versions = [];
+var versionToBuild = argv[0] || "empty";
 var jadeTemplateFile = "resources/landing/layout.jade";
 var jadeTemplate = fs.readFileSync(jadeTemplateFile);
 
-//var outDir = "out/nodejs_dev_guide";
+var jadeVersionsList = fs.readFileSync("resources/versionsList.jade");
+var jadeCommonLayout = fs.readFileSync("resources/common_layout.jade");
 
 console.log("GENERATING DOCUMENTATION");
 
 fs.readdir("./src", function(err, files) {
-    if (/[\d]\.[\d]\.[\d]/.test(version)) {         
-        versions.push(version);
-    }
-    else if ("latest" == version || version === undefined) {
-        versions.push("latest");
-    }
-    /* builds everything...we don't want this anymore
-    else {
-        versions = files;
-        versions = versions.filter(function (value) {
-            return (value === '' || value == "index.md" || value.match(/^\./)) ? 0 : 1;
-        });
-    } */
-    
-    versions.forEach(function(verj) {
-        var outAssetsDir = "./out/" + verj + "/assets";
-        makeNodeJSRefDocs(verj, outAssetsDir);  
-    });
+    // whatever the last folder (alphabetically) is == latest version
+    var sourceFiles = wrench.readdirSyncRecursive('./src');
+    var latestVersion = sourceFiles[sourceFiles.length - 2].split("/")[0];
 
+    // we didn't pass in a specific version, assume only last in dir
+    if (!/[\d]\.[\d]\.[\d]/.test(versionToBuild)) {   
+        versionToBuild = latestVersion;
+        createSymlinkToLatest(versionToBuild, function() {
+            buildDocs(versionToBuild);
+        })
+    }
+    else { // otherwise, we're doing a specific build
+        buildDocs(versionToBuild);
+    }
+});
+
+function createSymlinkToLatest(latestVersion, callback) {
+    var relativeOut = path.resolve("./out") + "/";
+
+    wrench.mkdirSyncRecursive(relativeOut +  latestVersion);
+    if (/0\.6\.\d+/.test(process.version)) {
+       exec("ln -fs " + relativeOut +  latestVersion + " " + relativeOut + "latest", function (error, stdout, stderr) {
+            if (error) {
+                console.error(stdout)
+                process.exit(1);
+            }
+
+            callback();
+        });
+    }
+    else if (/0\.8\.\d+/.test(process.version)) {
+       // do something else via fs.symlink
+    }
+}
+
+function buildDocs(verj) {
+    var outAssetsDir = "./out/" + verj + "/assets";
+    makeNodeJSRefDocs(verj, outAssetsDir);  
+    
     var robotFile = fs.createReadStream("resources/robots.txt");
     robotFile.pipe(fs.createWriteStream("out/robots.txt"));
-});
+}
 
 function makeNodeJSRefDocs(verj, outAssetsDir) {
     panino.main(["--path=./src/" + verj + "/nodejs_ref_guide", "-s", "-d", "-e", "markdown", "-g", "javascript", "-f", "html", "-p", "./parseOptions.json", "-a", "./additionalObjs.json", "-o", "./out/" + verj + "/nodejs_ref_guide", "-t", "Node.js Reference Guide", "--skin", "./resources/nodejs_ref_guide/skins", "-u", outAssetsDir], function(err) {
@@ -117,11 +139,11 @@ function makeIndexes(verj) {
 
         writeStream.write(r);
         
-        funcDoc.runTests([ './out/' + verj], {stopOnFail: false, ext: ".html"}, function(err) {
+       /* funcDoc.runTests([ './out/' + verj], {stopOnFail: false, ext: ".html"}, function(err) {
             if (err)
                 console.log(err);
             console.log("All done!");
-        });
+        });*/
     });
 }
 
