@@ -1,21 +1,12 @@
 # Introduction
 
-This is both the source documentation and build system for the [Node Manual](http://www.nodemanual.org). It consists of:
+This is the source documentation for [Node Manual](http://www.nodemanual.org). It consists of:
 
 * Source files for the Node.js Reference Guide, Node.js tutorials, and Node.js Javascript Reference Guide (located in _src/_)
-* A build system to generate this content (located at _build.js_)
 * Resources such as CSS, Javascript, and images, for the final output (located at _resources/_)
+* Templates for the design (also located at _resources/_)
 
-The build system relies on two repos as submodules (both located under (_build/_):
-
-* The [doc-build](https://github.com/c9/doc-build) system converts Markdown to HTML, and is used for the Node Manual documentation
-* C9's fork of [ndoc](https://github.com/c9/ndoc), which takes Javascript source files and generates HTML documentation from the comments (also styled in Markdown)
-
-Remember! After you clone this repo, call 
-
-    git submodule init
-    git submodule update
-    npm install
+For API documentation, we use [Panino](https://github.com/gjtorikian/panino-docs); for the reference material, we use [Panda-Docs](https://github.com/gjtorikian/panda-docs).
 
 It's worth noting that there is a [git commit hook](http://book.git-scm.com/5_git_hooks.html) running on the NodeManual server. Any pushes or merges into the master branch of this repo automatically rebuilds all versions of the documentation on the website.
 
@@ -23,18 +14,9 @@ It's worth noting that there is a [git commit hook](http://book.git-scm.com/5_gi
 
 To run the build, open your command prompt and type:
 
-    node build.js
-    
-This first launches doc-build, which reads _nodejs\_dev\_guide/_ and begins to assemble the subdirectory markdown files. These markdown files are modified, and placed into a `tmp` directory. From there, they are converted into HTML files, and placed into _out/_.
+    node build.js [optional_version_number]
 
-After that, ndoc runs across the files in _src/js\_doc_ and _src/nodejs\_ref\_guide_, and proceeds to convert them into HTML files also placed into the _out/_ directory. 
-
-By default, this system ONLY builds whatever is in the _latest_ folder. You can also pass in one more argument to specify the Node.js source version. This can be one of the following values:
-
-* The word "latest," which automatically builds the latest version.
-* A string like `x.y.z`, where x, y, and z are all numerals, to build a specific version. For example, to build the 0.6.7 branch, type:
-
-    node build.js 0.6.7
+This launches a build of the latest documentation set, which is determind by whatever the last folder in _src/_ is. These converted HTML files are placed into _out/_. Also, a symlink called _latest/_ is created, that points to the latest output files. If you pass in `optional_version_number`, then _only_ that doc set is built, and no symlink is created. 
 
 # Contributing
 
@@ -47,7 +29,7 @@ Major content providers include:
 * [Cloud9 IDE](http://www.c9.io)
 * [Joyent](http://www.joyent.com/) (Node.js Reference)
 * [Mozilla Foundation](http://www.mozilla.org/) (Javascript Reference)
-* [Debuggable](http://www.debuggable.com/)
+* [Debuggable](http://www.debuggable.com/) (Various reference materials)
 
 
 # License
