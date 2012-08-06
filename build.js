@@ -24,8 +24,8 @@ console.log("GENERATING DOCUMENTATION");
 
 fs.readdir("./src", function(err, files) {
     // whatever the last folder (alphabetically) is == latest version
-    var sourceFiles = wrench.readdirSyncRecursive('./src');
-    var latestVersion = sourceFiles[sourceFiles.length - 2].split("/")[0];
+    var sourceFiles = wrench.readdirSyncRecursive('./src').sort();
+    var latestVersion = sourceFiles[sourceFiles.length - 3].split("/")[0]; // -3, to skip index.md
 
     // we didn't pass in a specific version, assume only last in dir
     if (!/[\d]\.[\d]\.[\d]/.test(versionToBuild)) {   
