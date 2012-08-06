@@ -1,16 +1,20 @@
-# Domain
-(metadata: {"type": "misc"})
+## domain
 
 > Stability: 1 - Experimental
 
 Domains provide a way to handle multiple different IO operations as a
-single group.  If any of the event emitters or callbacks registered to a
+single group. The Domain class encapsulates the functionality of routing errors 
+and uncaught exceptions to the active Domain object.
+
+Domain is a child class of EventEmitter.  To handle the errors that it
+catches, listen to its `error` event. If any of the event emitters or callbacks 
+registered to a
 domain emit an `error` event, or throw an error, then the domain object
 will be notified, rather than losing the context of the error in the
 `process.on('uncaughtException')` handler, or causing the program to
 exit with an error code.
 
-This feature is new in Node version 0.8.  It is a first pass, and is
+This feature is new in Node.js version 0.8.  It is a first pass, and is
 expected to change significantly in future versions.  Please use it and
 provide feedback.
 
@@ -20,9 +24,7 @@ registered by default.  This is by design, to prevent adverse effects on
 current programs.  It is expected to be enabled by default in future
 Node.js versions.
 
-## Additions to Error objects
-
-<!-- type=misc -->
+#### Additions to Error objects
 
 Any time an Error object is routed through a domain, a few extra fields
 are added to it.
@@ -35,9 +37,7 @@ are added to it.
 * `error.domain_thrown` A boolean indicating whether the error was
   thrown, emitted, or passed to a bound callback function.
 
-## Implicit Binding
-
-<!--type=misc-->
+#### Implicit Binding
 
 If domains are in use, then all new EventEmitter objects (including
 Stream objects, requests, responses, etc.) will be implicitly bound to
@@ -61,9 +61,7 @@ Domain's `error` event, but does not register the EventEmitter on the
 Domain, so `domain.dispose()` will not shut down the EventEmitter.
 Implicit binding only takes care of thrown errors and `'error'` events.
 
-## Explicit Binding
-
-<!--type=misc-->
+#### Explicit Binding
 
 Sometimes, the domain in use is not the one that ought to be used for a
 specific event emitter.  Or, the event emitter could have been created
@@ -109,23 +107,13 @@ serverDomain.run(function() {
 });
 ```
 
-## domain.create()
-
-* return: {Domain}
+### domain.create()
++ {domain} A new Domain object
 
 Returns a new Domain object.
 
-## Class: Domain
-
-The Domain class encapsulates the functionality of routing errors and
-uncaught exceptions to the active Domain object.
-
-Domain is a child class of EventEmitter.  To handle the errors that it
-catches, listen to its `error` event.
-
 ### domain.run(fn)
-
-* `fn` {Function}
+- fn {Function} A function to run
 
 Run the supplied function in the context of the domain, implicitly
 binding all event emitters, timers, and lowlevel requests that are
@@ -133,7 +121,7 @@ created in that context.
 
 This is the most basic way to use a domain.
 
-Example:
+#### Example
 
 ```
 var d = domain.create();
@@ -155,16 +143,13 @@ d.run(function() {
 In this example, the `d.on('error')` handler will be triggered, rather
 than crashing the program.
 
-### domain.members
-
-* {Array}
+### domain.members, Array
 
 An array of timers and event emitters that have been explicitly added
 to the domain.
 
 ### domain.add(emitter)
-
-* `emitter` {EventEmitter | Timer} emitter or timer to be added to the domain
+- emitter {eventemitter | timer} An emitter or timer to be added to the domain
 
 Explicitly adds an emitter to the domain.  If any event handlers called by
 the emitter throw an error, or if the emitter emits an `error` event, it
@@ -179,17 +164,15 @@ If the Timer or EventEmitter was already bound to a domain, it is removed
 from that one, and bound to this one instead.
 
 ### domain.remove(emitter)
-
-* `emitter` {EventEmitter | Timer} emitter or timer to be removed from the
+- emitter {eventemitter | timer} An emitter or timer to be removed from the
 domain
 
-The opposite of `domain.add(emitter)`.  Removes domain handling from the
+The opposite of [[domain.add `domain.add()`]].  Removes domain handling from the
 specified emitter.
 
-### domain.bind(cb)
-
-* `cb` {Function} The callback function
-* return: {Function} The bound function
+### domain.bind(cb), Function
+- cb {Function} The callback function
++ {Function} The bound function
 
 The returned function will be a wrapper around the supplied callback
 function.  When the returned function is called, any errors that are
@@ -197,6 +180,7 @@ thrown will be routed to the domain's `error` event.
 
 #### Example
 
+```
     var d = domain.create();
 
     function readSomeFile(filename, cb) {
@@ -211,11 +195,11 @@ thrown will be routed to the domain's `error` event.
       // if we throw it now, it will crash the program
       // with the normal line number and stack message.
     });
+```
 
 ### domain.intercept(cb)
-
-* `cb` {Function} The callback function
-* return: {Function} The intercepted function
+- cb {Function} The callback function
++ {Function} The intercepted function
 
 This method is almost identical to `domain.bind(cb)`.  However, in
 addition to catching thrown errors, it will also intercept `Error`
@@ -226,6 +210,7 @@ with a single error handler in a single place.
 
 #### Example
 
+```
     var d = domain.create();
 
     function readSomeFile(filename, cb) {
@@ -247,6 +232,7 @@ with a single error handler in a single place.
       // if we throw it now, it will crash the program
       // with the normal line number and stack message.
     });
+```
 
 ### domain.dispose()
 
