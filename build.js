@@ -44,9 +44,11 @@ function createSymlinkToLatest(latestVersion, callback) {
 
     wrench.mkdirSyncRecursive(relativeOut +  latestVersion);
     if (/0\.6\.\d+/.test(process.version)) {
-       exec("ln -fs " + relativeOut +  latestVersion + " " + relativeOut + "latest", function (error, stdout, stderr) {
+       var symlinkPath = relativeOut + "latest";
+
+       exec("rm -f " + symlinkPath + " && ln -s " + relativeOut + latestVersion + " " + symlinkPath, function (error, stdout, stderr) {
             if (error) {
-                console.error(stdout)
+                console.error(stdout || error);
                 process.exit(1);
             }
 
@@ -121,7 +123,7 @@ function makeIndexes(verj) {
 
         var title = "";
         var data = dataArray.join("\n");
-
+console.log(verj)
         var vars = extend({
             title: "Node.js Manual",
             data: data,
