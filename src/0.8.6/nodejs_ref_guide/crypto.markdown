@@ -68,8 +68,7 @@ for details on the format
 
 If no `ca` details are given, then Node.js uses the default publicly trusted
 list of CAs as given by
-[Mozilla](http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/c
-ertdata.txt).
+[Mozilla](http://mxr.mozilla.org/mozilla/source/security/nss/lib/ckfw/builtins/certdata.txt).
 
 #### Example
 
@@ -279,15 +278,13 @@ padding. You must call this before `cipher.final`.
 
 A class for decrypting data. It's used to decipher previously created 
 [[crypto.cipher `cipher`]] objects. It can be created as a returned value from
-[[crypto.createDecipher `crypto.createDeipher()`]] or [[crypto.createDecipheriv
-`crypto.createDecipheriv()`]].
+[[crypto.createDecipher `crypto.createDeipher()`]] or [[crypto.createDecipheriv `crypto.createDecipheriv()`]].
 
 #### Example
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-### crypto.decipher.update(data, [input_encoding='binary'],
-[output_encoding='binary']), crypto.decipher
+### crypto.decipher.update(data, [input_encoding='binary'], [output_encoding='binary']), crypto.decipher
 - data {String}  The data to use for an update
 - input_encoding {String}  Defines how the input is encoded
 - output_encoding {String}  Defines how the output is encoded
@@ -328,8 +325,7 @@ as a returned value from [[crypto.createDiffieHellman
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-### crypto.diffieHellman.computeSecret(other_public_key, [input_encoding='binary'],
-[output_encoding='input_encoding']), String
+### crypto.diffieHellman.computeSecret(other_public_key, [input_encoding='binary'], [output_encoding='input_encoding']), String
 - other_public_key {String}  The other party's public key
 - input_encoding {String}  The encoding used to interprate the public key; can
 be `'binary'`, `'base64'`, or `'hex'`. 
@@ -395,10 +391,8 @@ Sets the Diffie-Hellman public key.
 ## crypto.hash
 
 The class for creating hash digests of data. It's class a representation of the
-[OpenSSL implementation of
-hash](http://www.openssl.org/docs/crypto/crypto.html#item_AUTHENTICATION)
-algorithms. It can be created as a returned value from [[crypto.createHash
-`crypto.createHash()`]].
+[OpenSSL implementation of hash algorithms](http://www.openssl.org/docs/crypto/crypto.html#item_AUTHENTICATION). 
+It can be created as a returned value from [[crypto.createHash `crypto.createHash()`]].
 
 #### Example
 

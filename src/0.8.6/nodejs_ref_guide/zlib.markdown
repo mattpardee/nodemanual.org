@@ -89,10 +89,8 @@ convenience methods.
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/zlib/zlib.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 To use this module in an HTTP client or server, use the
-[accept-encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
-) on requests, and the
-[content-encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.
-11) header on responses. Here's an example:
+[accept-encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3) on requests, and the
+[content-encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) header on responses. Here's an example:
 
     // client request example
     var zlib = require('zlib');

@@ -27,8 +27,7 @@ Alternatively, you can send the CSR to a Certificate Authority for signing.
 
 (Documentation on creating a CA are pending; for now, interested users should
 just look at
-[`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/
-fixtures/keys/Makefile) in the Node.js source code.)
+[`test/fixtures/keys/Makefile`](https://github.com/joyent/node/blob/master/test/fixtures/keys/Makefile) in the Node.js source code.)
 
 To create a .pfx or .p12, do this:
 

@@ -9,9 +9,8 @@ Whenever a Node.js developer does something like `net.connect(80, 'google.com')`
 or `http.get({ host: 'google.com' })`, the [[dns.lookup `dns.lookup()`]] method
 is used.  All methods in the dns module use C-Ares—except for `dns.lookup()`
 which uses
-[`getaddrinfo(3)`](http://www.kernel.org/doc/man-pages/online/pages/man3/getaddr
-info.3.html) in a thread pool. C-Ares is much faster than `getaddrinfo`, but the
-system resolver is more constant with how other programs operate. Users who need
+[`getaddrinfo(3)`](http://www.kernel.org/doc/man-pages/online/pages/man3/getaddrinfo.3.html) in a thread pool. 
+C-Ares is much faster than `getaddrinfo`, but the system resolver is more constant with how other programs operate. Users who need
 to do a large number of look ups quickly should use the methods that go through
 C-Ares.
 

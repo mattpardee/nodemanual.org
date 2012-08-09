@@ -155,8 +155,7 @@ As an additional convenience, `superConstructor` is accessible through the
 `constructor.super_` property.
 
 For more information, see the MDN
-[`constructor`](https://developer.mozilla.org/en/Javascript/Reference/Global_Obj
-ects/Object/constructor) documentation.
+[`constructor`](https://developer.mozilla.org/en/Javascript/Reference/Global_Objects/Object/constructor) documentation.
 
 #### Example
 

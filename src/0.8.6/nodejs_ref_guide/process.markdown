@@ -8,8 +8,7 @@ is an instance of [[eventemitter `EventEmitter`]].
 #### Example: Handling Signal Events
 
 Signal events are emitted when processes receive a signal. See
-[sigaction(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/sigaction.2
-.html) for a list of standard POSIX signal names such as SIGINT, SIGUSR1, etc.
+[sigaction(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/sigaction.2.html) for a list of standard POSIX signal names such as SIGINT, SIGUSR1, etc.
 
 #### Example: Listening for `SIGINT`:
 

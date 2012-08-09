@@ -321,8 +321,7 @@ thousands of them.
 - signal {String} The kill signal to send
 
 Sends a signal to the child process. See
-[`signal(7)`](http://www.kernel.org/doc/man-pages/online/pages/man7/signal.7.htm
-l) for a list of available signals.
+[`signal(7)`](http://www.kernel.org/doc/man-pages/online/pages/man7/signal.7.html) for a list of available signals.
 
 Note that while the function is called `kill`, the signal delivered to the child
 process may not actually kill it. `kill` really just sends a signal to a

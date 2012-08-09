@@ -98,8 +98,7 @@ from one to the other. This is actually the reverse transform of [[path.resolve
 - p {String}   A path
 
 Return the directory name of a path.  Similar to the Unix
-[`dirname`](http://www.kernel.org/doc/man-pages/online/pages/man3/basename.3.htm
-l) command.
+[`dirname`](http://www.kernel.org/doc/man-pages/online/pages/man3/basename.3.html) command.
 
 #### Example
 
@@ -112,8 +111,7 @@ l) command.
 - ext {String}  If provided, the extension to omit
 
 Return the last portion of a path.  Similar to the Unix
-[`basename`](http://www.kernel.org/doc/man-pages/online/pages/man3/basename.3.ht
-ml) command.
+[`basename`](http://www.kernel.org/doc/man-pages/online/pages/man3/basename.3.html) command.
 
 #### Example
 

@@ -90,8 +90,7 @@ completes
 - err {Error}  The possible exception
 
 An asynchronous
-[ftruncate(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/truncate.2.
-html). It truncates a file to the specified length.
+[ftruncate(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/truncate.2.html). It truncates a file to the specified length.
 
  
 
@@ -102,8 +101,7 @@ html). It truncates a file to the specified length.
 - len {Number}  The final file length 
 
 A synchronous
-[ftruncate(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/truncate.2.
-html). It truncates a file to the specified length.
+[ftruncate(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/truncate.2.html). It truncates a file to the specified length.
 
  
 
@@ -393,8 +391,7 @@ completes
 - err {Error}  The possible exception
 
 An asynchronous
-[symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.htm
-l).
+[symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.html).
 
  Note: Windows junction points require the destination path to be absolute.  When using
 `'junction'`, the `destination` argument will automatically be normalized to an absolute path.
@@ -406,8 +403,7 @@ l).
 Windows (and ignored on other platforms)
 
 A synchronous
-[symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.htm
-l).
+[symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.html).
 
 Note: Windows junction points require the destination path to be absolute.  When using
 `'junction'`, the `destination` argument will automatically be normalized to an absolute path.
@@ -420,8 +416,7 @@ completes
 - linkString {String} T he symlink's string value
  
 An asynchronous
-[readlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/readlink.2.h
-tml).
+[readlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/readlink.2.html).
 
  
 
@@ -431,8 +426,7 @@ tml).
 - path {String}  The original path of a link
 
 A synchronous
-[readlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/readlink.2.h
-tml).
+[readlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/readlink.2.html).
 
 #### Returns
 
@@ -452,8 +446,8 @@ completes
 - resolvedPath {String} The resolved path string
 
 An asynchronous
-[realpath(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.h
-tml). You can use [[process.cwd `process.cwd()`]] to resolve relative paths.
+[realpath(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.html). 
+You can use [[process.cwd `process.cwd()`]] to resolve relative paths.
 
 
 ### fs.realpathSync(path), String
@@ -461,8 +455,7 @@ tml). You can use [[process.cwd `process.cwd()`]] to resolve relative paths.
 + {String} The resolved path
 
 A synchronous
-[realpath(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.h
-tml).
+[realpath(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.html).
 
  
 ### fs.unlink(path, [callback(err)])
@@ -545,8 +538,7 @@ completes
 `'.'` and `'..'`)
 
 An asynchronous
-[readdir(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/readdir.3.htm
-l).  It reads the contents of a directory.
+[readdir(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/readdir.3.html).  It reads the contents of a directory.
 
  
 
@@ -557,8 +549,7 @@ l).  It reads the contents of a directory.
 
 
 A synchronous
-[readdir(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/readdir.3.htm
-l). Returns an array of filenames, excluding `'.'` and `'..'`.
+[readdir(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/readdir.3.html). Returns an array of filenames, excluding `'.'` and `'..'`.
 
  
 
@@ -713,8 +704,7 @@ Change the timestamps of the file referenced by the supplied path.
 completes
 
 An asynchronous
-[futimes(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/lutimes.3.htm
-l). Change the file timestamps of a file referenced by the supplied file
+[futimes(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/lutimes.3.html). Change the file timestamps of a file referenced by the supplied file
 descriptor.
 
  
@@ -728,8 +718,7 @@ descriptor.
 
 
 A synchronous
-[futimes(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/lutimes.3.htm
-l). Change the file timestamps of a file referenced by the supplied file
+[futimes(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/lutimes.3.html). Change the file timestamps of a file referenced by the supplied file
 descriptor.
 
  
