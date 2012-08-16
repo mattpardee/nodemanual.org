@@ -145,7 +145,7 @@ you'll see `> `, which is Node's prompt.
  
 
 ### readline.interface.write(data, [key])
-- write {String} Data to write
+- data {String} Data to write
 - key {Object} Represents the key sequence; only available if the terminal 
 is a TTY.
 

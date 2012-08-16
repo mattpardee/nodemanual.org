@@ -155,7 +155,7 @@ Each DNS query can return one of the following error codes:
 - `dns.ADDRGETNETWORKPARAMS`: Could not find GetNetworkParams function.
 - `dns.CANCELLED`: DNS query cancelled.
 
-### dns.resolveNs(domain, callback(err, domains))
+### dns.resolveNs(domain, callback(err, addresses))
 - domain {String}  The domain to resolve
 - callback {Function}  The function to execute once the method completes
 - err {Error}  The `Error` object
@@ -166,7 +166,7 @@ The same as [[dns.resolve `dns.resolve()`]], but only for name server records
 (`NS` records).
 
 
-### dns.resolveCname(domain, callback(err, domains))
+### dns.resolveCname(domain, callback(err, addresses))
 - domain {String}  The domain to resolve
 - callback {Function}  The function to execute once the method completes
 - err {Error}  The `Error` object

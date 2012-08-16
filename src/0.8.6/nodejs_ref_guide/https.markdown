@@ -18,6 +18,7 @@ Or, with pfx:
 
 ### https.createServer(options [, callback(request, response)]), https.Server
 - options {Object}   Any options you want to pass to the server
+- callback {Function} A callback to execute
 - request {http.ClientRequest}   Any options you want to pass to the server
 - response {http.ClientResponse}  An optional listener
 (related to: tls.createServer)

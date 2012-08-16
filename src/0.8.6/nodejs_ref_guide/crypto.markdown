@@ -223,7 +223,7 @@ synchronously.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.randomBytes.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
-### crypto.createVerify(algorithim), crypto.verifier
+### crypto.createVerify(algorithm), crypto.verifier
 - algorithm {String} The algorithm to use
 
 Creates and returns a verification object, with the given algorithm.

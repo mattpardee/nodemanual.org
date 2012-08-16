@@ -88,8 +88,8 @@ with SNI.
 
  
 
-### tls.connect(options, [secureConnectListener])
-### tls.connect(port [, host=localhost] [, options] [, secureConnectListener]),
+### tls.connect(options, [secureConnectionListener])
+### tls.connect(port [, host=localhost] [, options] [, secureConnectionListener]),
 tls.CleartextStream
 - options {Object} Configuration options to pass in
 - port {Number}   The port to connect to
@@ -510,7 +510,7 @@ object.
 '2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF' }
  
 
-### cleartextStream.getCipher(), Object
+### tls.CleartextStream.getCipher(), Object
 
 Returns an object representing the cipher name and the SSL/TLS
 protocol version of the current connection. The format is:
@@ -521,7 +521,7 @@ See SSL_CIPHER_get_name() and SSL_CIPHER_get_version() in
 <http://www.openssl.org/docs/ssl/ssl.html#DEALING_WITH_CIPHERS> for more
 information.
 
-### cleartextStream.address(), Object
+### tls.CleartextStream.address(), Object
 + {Object} An object with three properties, e.g.
 `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 

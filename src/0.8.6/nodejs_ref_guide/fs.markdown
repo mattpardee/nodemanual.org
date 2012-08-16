@@ -39,7 +39,7 @@ operation:
       if (err) throw err;
       console.log('renamed complete');
     });
-		// ERROR: THIS IS NOT CORRECT!
+    // ERROR: THIS IS NOT CORRECT!
     fs.stat('/tmp/world', function (err, stats) {
       if (err) throw err;
       console.log('stats: ' + JSON.stringify(stats));
@@ -138,7 +138,7 @@ dereferenced if it is a symbolic link
 
 
 ### fs.fchown(fd, uid, gid, [callback(err)])
-- path {String}  The path to the file
+- fd {Number}  The file descriptor
 - uid {Number}  The new owner id
 - gid {Number}  The new group id
 - callback {Function}  An optional callback to execute once the function
@@ -154,7 +154,7 @@ fd.
 
 
 ### fs.fchownSync(fd, uid, gid)
-- path {String}  The path to the file
+- fd {Number}  The file descriptor
 - uid {Number}  The new owner id
 - gid {Number}  The new group id
 
@@ -458,7 +458,7 @@ A synchronous
 [realpath(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/realpath.3.html).
 
  
-### fs.unlink(path, [callback(err)])
+### fs.unlink(srcpath, [callback(err)])
 - srcpath {String}  The path to a file
 - callback {Function}    An optional callback to execute once the function
 completes
@@ -472,7 +472,7 @@ An asynchronous
 
 
 
-### fs.unlinkSync(path)
+### fs.unlinkSync(srcpath)
 - srcpath {String}  The path to a file
 
 A synchronous
@@ -909,7 +909,7 @@ The synchronous version of [[fs.appendFile `appendFile()`]].
 ### fs.watchFile(filename, [options], callback(curr, prev))
 - filename {String}  The name of the file to watch
 - options {Object}   Any optional arguments indicating how often to watch
-- listener {Function}   The callback to execute each time the file is accessed
+- callback {Function}   The callback to execute each time the file is accessed
 - curr {fs.Stats}  The current `stats` object
 - prev {fs.Stats}  The previous `stats` object
 
@@ -952,7 +952,7 @@ watching `filename`.
 ### fs.watch(filename[, options], [callback(event, filename)]), fs.FSWatcher
 - filename {String}  The filename (or directory) to watch
 - options {Object}  An optional arguments indicating how to watch the files; defaults to `true`
-- listener {Function}   The callback to execute each time the file is accessed
+- callback {Function}   The callback to execute each time the file is accessed
 - event {String}  Either `'rename'` or '`change'`
 - filename {String}  The name of the file which triggered the event
 

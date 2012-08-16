@@ -191,7 +191,7 @@ left in the queue for writes.
 
 ### stream.WritableStream.end()
 ### stream.WritableStream.end(string, encoding)
-### stream.WritableStream.end(Buffer)
+### stream.WritableStream.end(buffer)
 - string {String}  The message to send
 - encoding {String}  The encoding to use
 - buffer {Buffer}   The buffer to send
@@ -208,7 +208,7 @@ For `stream.WritableStream.end(Buffer)`, a `buffer` is sent.
 
 
 ### stream.WritableStream.write(string, encoding='utf8' [, fd])
-### stream.WritableStream.write(Buffer)
+### stream.WritableStream.write(buffer)
 - string {String}   The string to write
 - encoding {String}   The encoding to use; defaults to `utf8`
 - fd {Number}   An optional file descriptor to pass

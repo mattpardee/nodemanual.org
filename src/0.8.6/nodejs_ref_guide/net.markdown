@@ -120,12 +120,15 @@ this event.  See an example in the discussion of [[net.Server.listen
 
 
 ### net.Server.listen(port [, host] [, backlog=511] [, callback()])
-### net.Server.listen(path [, listeningListener])
+### net.Server.listen(port [, callback()])
 ### net.Server.listen(handle [, callback()]) 
 - port {Number}  The port to connect to
 - host {String}  The name of the host to connect to
+- backlog {Number} The maximum length of the queue of pending connection
 - callback {Function}  Automatically set as a listener for the
 [[net.Server@listening `'listening'`]] event
+- handle {Object} Either a server or socket (anything with an underlying 
+`_handle` member), or a `{fd: <n>}` object
 
 Begin accepting connections on the specified `port` and `host`.  If the `host`
 is omitted, the server accepts connections directed to any IPv4 address
@@ -293,7 +296,7 @@ section for the new API.
 
 ### net.Socket.write(data [, encoding='utf8'] [, callback()]), Boolean
 - data {String}  The data to write
-- enocding {String}  The encoding to use
+- encoding {String}  The encoding to use
 - callback {Function}  The callback to execute once the write is finished
 
 Sends data on the socket. The second parameter specifies the encoding in the

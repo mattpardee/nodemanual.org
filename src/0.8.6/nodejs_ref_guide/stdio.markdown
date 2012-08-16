@@ -31,7 +31,7 @@ This performs the same role as `console.log()`, but prints to stderr instead.
 
 
 ### console.error([data...])
-- obj {Object}  An object to inspect
+- data {Object}  A message to send
 (related to: console.log)
 
 This performs the same role as `console.log()`, but prints to stderr instead.

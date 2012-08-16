@@ -57,7 +57,7 @@ Found'`.
 
 
 ### http.createServer(callback(request, response)), http.Server
-- function {Function}  A callback that is automatically added to the `'request'` event
+- callback {Function}  A callback that is automatically added to the `'request'` event
 - request {http.ClientRequest}   Any options you want to pass to the server
 - response {http.ClientResponse}  An optional listener
 
@@ -861,7 +861,7 @@ Once a socket is assigned to this request and is connected,
 
 ### http.ClientRequest.setSocketKeepAlive([enable=false] [, initialDelay])
 - enable {Boolean}  If `true`, then keep-alive funcitonality is set
-- initalDelay {Number}  Sets the initial delay before the first keep-alive probe
+- initialDelay {Number}  Sets the initial delay before the first keep-alive probe
 is sent on an idle socket
 
 Once a socket is assigned to this request and is connected,

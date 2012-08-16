@@ -32,7 +32,7 @@ listeners are added.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
-### eventemitter@newListener(event, listener)
+### eventemitter@newListener(event, listener())
 - event {String}  The event to emit
 - listener {Function}  The attaching listener
 
@@ -87,9 +87,9 @@ Always use the [[eventemitter.on `on()`]] method to add new listeners.
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.listeners.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>    
 
-### eventemitter.once(event, listener)
+### eventemitter.once(event, listener())
 - event {String}   The event to listen for
-- callback {Function}   The listener callback to execute
+- listener {Function}   The listener callback to execute
 
 Adds a **one time** listener for the event. This listener is invoked only the
 next time the event is fired, after which it is removed.
@@ -108,9 +108,9 @@ Removes all listeners, or those of the specified event.
 Note: This **invalidates** any arrays that have previously been
 returned by [[eventemitter.listeners `eventemitter.listeners`]].
 
-### eventemitter.removeListener(event, listener)
+### eventemitter.removeListener(event, listener())
 - event {String}   The event to listen for
-- callback {Function}   The listener callback to execute
+- listener {Function}   The listener callback to execute
 
 Remove a listener from the listener array for the specified event.
 
