@@ -1,24 +1,28 @@
 var argv = process.argv,
     panino = require("panino"),
     fs = require('fs'),
-    md2html = require('marked'),
-    jade = require('jade'),
     panda = require("panda-docs"),
     path  = require('path'), 
     wrench = require('wrench'),
     funcDoc = require('functional-docs'),
-    path = require("path"),
     exec = require('child_process').exec;
     
 argv.shift();
 argv.shift();
 
 var versionToBuild = argv[0] || "empty";
-var jadeTemplateFile = "resources/landing/layout.jade";
-var jadeTemplate = fs.readFileSync(jadeTemplateFile);
 
 var jadeVersionsList = fs.readFileSync("resources/versionsList.jade");
 var jadeCommonLayout = fs.readFileSync("resources/common_layout.jade");
+
+var buildOptions = {
+  split       : true,
+  disableTests : true,
+  skin        : "./resources/nodejs_ref_guide/skins/templates/layout.jade",
+  assets      : "./resources/nodejs_ref_guide/skins/assets",
+  additionalObjs : "./additionalObjs.json",
+  parseOptions   : "./parseOptions.json"
+};
 
 console.log("GENERATING DOCUMENTATION");
 
@@ -62,43 +66,73 @@ function createSymlinkToLatest(latestVersion, callback) {
 
 function buildDocs(verj) {
     var outAssetsDir = "./out/" + verj + "/assets";
-    makeNodeJSRefDocs(verj, outAssetsDir);  
+    buildOptions.outputAssets = outAssetsDir;
+    makeNodeJSRefDocs(verj);  
     
     var robotFile = fs.createReadStream("resources/robots.txt");
     robotFile.pipe(fs.createWriteStream("out/robots.txt"));
 }
 
-function makeNodeJSRefDocs(verj, outAssetsDir) {
-    panino.main(["--path=./src/" + verj + "/nodejs_ref_guide", "-s", "-d", "-e", "markdown", "-g", "javascript", "-f", "html", "-p", "./parseOptions.json", "-a", "./additionalObjs.json", "-o", "./out/" + verj + "/nodejs_ref_guide", "-t", "Node.js Reference Guide", "--skin", "./resources/nodejs_ref_guide/skins", "-u", outAssetsDir], function(err) {
+function makeNodeJSRefDocs(verj) {
+    var files = wrench.readdirSyncRecursive("./src/" + verj + "/nodejs_ref_guide").map(function(f) {
+        return path.join(__dirname + "/src/" + verj + "/nodejs_ref_guide/" + f);
+    });
+
+    buildOptions.output = "./out/" + verj + "/nodejs_ref_guide";
+    buildOptions.title = "Node.js Reference Guide";
+
+    panino.parse(files, buildOptions, function (err, ast) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+
+      panino.render('html', ast, buildOptions, function (err) {
         if (err) {
-            console.error(err);
-            process.exit(-1);
+          console.error(err);
+          process.exit(1);
         }
-        
-        makeJSRefDocs(verj, outAssetsDir);
+        makeJSRefDocs(verj);
+      });
     });
 }
 
-function makeJSRefDocs(verj, outAssetsDir) {
-    panino.main(["--path=./src/" + verj + "/js_doc", "-s", "-d", "-e", "markdown", "-g", "javascript", "-f", "html", "-a", "./additionalObjs.json", "-o", "./out/" + verj + "/js_doc/", "-t", "Javascript Reference", "--skin", "./resources/nodejs_ref_guide/skins", "-u", outAssetsDir], function(err) {
+function makeJSRefDocs(verj) {
+    var files = wrench.readdirSyncRecursive("./src/" + verj + "/js_doc").map(function(f) {
+        return path.join(__dirname + "/src/" + verj + "/js_doc/" + f);
+    });
+
+    buildOptions.output = "./out/" + verj + "/js_doc";
+    buildOptions.title = "Javascript Reference";
+    buildOptions.parseOptions = undefined; // not needed here
+
+    panino.parse(files, buildOptions, function (err, ast) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+
+      panino.render('html', ast, buildOptions, function (err) {
         if (err) {
-            console.error(err);
-            process.exit(-1);
+          console.error(err);
+          process.exit(1);
         }
-        
-        makeDevDocs(verj, outAssetsDir);
+
+        makeDevDocs(verj);
+      });
     });
 }
 
-function makeDevDocs(verj, outAssetsDir) {
+function makeDevDocs(verj) {
     var outDir = "./out/" + verj + "/nodejs_dev_guide";
     var manifestFile = "./src/" + verj + "/nodejs_dev_guide/manifest.json";
 
-    if (!path.existsSync(outDir)) {
-        wrench.mkdirSyncRecursive(outDir);
-    }
-    
-    panda.make([manifestFile, "--template", "./resources/nodejs_dev_guide/layout.jade", "--assets", "./resources/nodejs_dev_guide/skins", "-d", "-t", "Node.js Guide", "-o", outDir, "--outputAssets", outAssetsDir], function(err) {
+    buildOptions.template = "./resources/nodejs_dev_guide/layout.jade";
+    buildOptions.assets = "./resources/nodejs_dev_guide/skins";
+    buildOptions.title = "Node.js Guide";
+    buildOptions.output = outDir;
+
+    panda.make(manifestFile, buildOptions, function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
@@ -109,43 +143,22 @@ function makeDevDocs(verj, outAssetsDir) {
 }
 
 function makeIndexes(verj) {
-    var readContentStream = fs.createReadStream("src/index.md", {
-        encoding: 'utf8'
-    });
+    var outDir = "./out/" + verj;
+    var manifestFile = "./src/manifest.json";
 
-    readContentStream.on('data', function(data) {
-        var fn = jade.compile(jadeTemplate, {
-            filename: jadeTemplateFile,
-            pretty: false
-        });
+    buildOptions.template = "resources/landing/layout.jade";
+    buildOptions.title = "Node.js Manual";
+    buildOptions.output = outDir;
+    buildOptions.removeOutDir = false;
+    buildOptions.disableTests = false; // run tests on final output
 
-        var dataArray = data.split("\n");
-
-        var title = "";
-        var data = dataArray.join("\n");
-console.log(verj)
-        var vars = extend({
-            title: "Node.js Manual",
-            data: data,
-            whoAmI: verj,
-            markdown: markdown,
-            isIndex: true,
-            fileName: "Index"
-        });
-
-        var r = fn(vars);
-
-        var writeStream = fs.createWriteStream("out/" + verj + "/index.html", {
-            flags: "w"
-        });
-
-        writeStream.write(r);
+    panda.make(manifestFile, buildOptions, function(err) {
+        if (err) {
+            console.error(err);
+            process.exit(-1);
+        }
         
-       /* funcDoc.runTests([ './out/' + verj], {stopOnFail: false, ext: ".html"}, function(err) {
-            if (err)
-                console.log(err);
-            console.log("All done!");
-        });*/
+        console.log("All done!");
     });
 }
 

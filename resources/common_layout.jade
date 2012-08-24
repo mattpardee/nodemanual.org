@@ -104,9 +104,9 @@ mixin endingScripts
 
 mixin identifyBuild(tree, type)
   if tree
-    if tree.children[0].parentDir.indexOf('nodejs_ref_guide') >= 0
+    if tree.children[0].file.indexOf('nodejs_ref_guide') >= 0
         -nodejsRef = 'true'
-    else if tree.children[0].parentDir.indexOf('js_doc') >= 0 
+    else if tree.children[0].file.indexOf('js_doc') >= 0 
         -jsDoc = 'true'
   else if (type == 'nodejs_dev_guide')
       -nodejsDev = 'true'
@@ -136,11 +136,13 @@ mixin makeVersionLabel(fullPath, showText)
   -else
       -if (fullPath.indexOf("latest") >= 0)
         -if (showText === undefined)
-          -id = '0.8.6'
+          -id = '0.8.8'
         -else
           -id = 'latest'
       -else
          -id = fullPath.match(/\d\.\d\.\d+/)
+      if id == null 
+          -id = 'latest'
       -if (verj.length < 1)
          -verj = id
       -else

@@ -7,10 +7,10 @@ mixin doctype
 
 html(xmlns="http://www.w3.org/1999/xhtml")
   head
-    mixin head('./../../', tree.children[0].href)
+    mixin head('./../../', tree.children[0].file)
   
   body
-    mixin navBar(tree.children[0].href)
+    mixin navBar(tree.children[0].file)
     #nonFooter
       #wrapper
         .content

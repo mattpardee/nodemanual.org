@@ -24,8 +24,7 @@ html(xmlns="http://www.w3.org/1999/xhtml")
                   a(href='./js_doc/index.html') Javascript Reference
             .span9#mainContent
               #documentation
-               .dev_guide#content
-                 mixin markdown(data)
+               .dev_guide#content!= content
 
               div(id="disqus_thread")
       .push
