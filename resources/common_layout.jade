@@ -131,10 +131,11 @@ mixin formatGHHref(url, type)
 
 mixin makeVersionLabel(fullPath, showText)
   -var id = ''
+  
   -if (fullPath === undefined)
      != 'latest'
   -else
-      -if (fullPath.indexOf("latest") >= 0)
+      -if (fullPath.indexOf("latest") >= 0 || fullPath.indexOf("nodemanual.org/src/index.md") >= 0)
         -if (showText === undefined)
           -id = '0.8.8'
         -else
