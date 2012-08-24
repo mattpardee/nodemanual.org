@@ -74,14 +74,10 @@ function buildDocs(verj) {
 }
 
 function makeNodeJSRefDocs(verj) {
-    var files = wrench.readdirSyncRecursive("./src/" + verj + "/nodejs_ref_guide").map(function(f) {
-        return path.join(__dirname + "/src/" + verj + "/nodejs_ref_guide/" + f);
-    });
-
     buildOptions.output = "./out/" + verj + "/nodejs_ref_guide";
     buildOptions.title = "Node.js Reference Guide";
 
-    panino.parse(files, buildOptions, function (err, ast) {
+    panino.parse(["./src/" + verj + "/nodejs_ref_guide"], buildOptions, function (err, ast) {
       if (err) {
         console.error(err);
         process.exit(1);
@@ -98,15 +94,11 @@ function makeNodeJSRefDocs(verj) {
 }
 
 function makeJSRefDocs(verj) {
-    var files = wrench.readdirSyncRecursive("./src/" + verj + "/js_doc").map(function(f) {
-        return path.join(__dirname + "/src/" + verj + "/js_doc/" + f);
-    });
-
     buildOptions.output = "./out/" + verj + "/js_doc";
     buildOptions.title = "Javascript Reference";
     buildOptions.parseOptions = undefined; // not needed here
 
-    panino.parse(files, buildOptions, function (err, ast) {
+    panino.parse(["./src/" + verj + "/js_doc"], buildOptions, function (err, ast) {
       if (err) {
         console.error(err);
         process.exit(1);
