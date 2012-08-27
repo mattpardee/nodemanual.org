@@ -152,11 +152,9 @@ The regular expression `test` checks for any number that ends with F. The number
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.7.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 
-### String.length() -> Number
+### String.length -> Number
 
-The length of a string.
-
-This property returns the number of code units in the string. 
+This property returns the length of the string. 
 
 [UTF-16](http://en.wikipedia.org/wiki/UTF-16), the string format used by Javascript, uses a single 16-bit code unit to represent the most common characters, but needs to use two code units for less commonly-used characters, so it's possible for the value returned by `length` to not match the actual number of characters in the string.
 
