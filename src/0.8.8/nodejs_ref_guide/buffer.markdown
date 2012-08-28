@@ -63,11 +63,10 @@ You can use either:
 
     var bBuffer = new Buffer("This is a Buffer.", "utf8");
 
-Buffer.byteLength(string, encoding='utf8'), Number
+
+### Buffer.byteLength(string, encoding='utf8'), Number
 - string {String}  The string to check
 - encoding {String}  The encoding that the string is in
-
-<!-- Class Method -->
 
 Gives the actual byte length of a string.  This is not the same as
 `String.length` since that returns the number of _characters_ in a string.
