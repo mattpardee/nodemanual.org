@@ -20,8 +20,7 @@ to create a "Certificate Signing Request" (CSR) file. This is done using:
 
 To create a self-signed certificate with the CSR, enter this:
 
-    openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out
-ryans-cert.pem
+    openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 
 Alternatively, you can send the CSR to a Certificate Authority for signing.
 
@@ -34,10 +33,12 @@ To create a .pfx or .p12, do this:
     openssl pkcs12 -export -in agent5-cert.pem -inkey agent5-key.pem \
         -certfile ca-cert.pem -out agent5.pfx
 
-  - `in`: The certificate
-  - `inkey`: The private key
-  - `certfile`: All the CA certs concatenated in one file, like this:
-    `cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
+where: 
+
+- `in` is the certificate
+- `inkey`is the private key
+- `certfile`is all the CA certs concatenated in one file, like this:
+`cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
 
 #### Using NPN and SNI
 
@@ -61,8 +62,7 @@ the threshold is exceeded. The limits are configurable:
 
   - `tls.CLIENT_RENEG_LIMIT`: the renegotiation limit; default is 3.
 
-  - `tls.CLIENT_RENEG_WINDOW`: the renegotiation window in seconds; default is
-                               10 minutes.
+  - `tls.CLIENT_RENEG_WINDOW`: the renegotiation window in seconds; default is 10 minutes.
 
 Don't change the defaults unless you know what you are doing.
 
