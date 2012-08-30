@@ -104,8 +104,7 @@ and sets a new one. These globals are contained in the sandbox.
 
 ### vm.runInContext(code, context [, filename]), String
 - code {String}  The code to run
-- context {Object}  The context to execute it in, coming from [[vm.createContext
-`vm.createContext()`]]
+- context {Object}  The context to execute it in, coming from [[vm.createContext]]
 - filename {String}  A filename to emulate where the code is coming from
 + {String} A string representing the result of running `code`.
 
