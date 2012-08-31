@@ -13,26 +13,7 @@ the normal course of operations, you will not need to ever set any of these.
 They are described in more detail in the [zlib
 documentation](http://zlib.net/manual.html#Constants).
 
-### zlib.options, Object
-
-Each class takes an optional options object.  All options are optional.  (The
-convenience methods use the default settings for all options.)
-
-Note that some options are only relevant when compressing, and are ignored by
-the decompression classes.
-
-The options are:
-
-* chunkSize (default: 16*1024)
-* windowBits
-* level (compression only)
-* memLevel (compression only)
-* strategy (compression only)
-* dictionary (deflate/inflate only, empty dictionary by default)
-
-See the description of `deflateInit2` and `inflateInit2` at
-<http://zlib.net/manual.html#Advanced> for more information on these.
-
+<a id="zlib_memory_usage_tuning"></a>
 #### Memory Usage Tuning
 
 From `zlib/zconf.h`, modified to Node's usage:
@@ -70,6 +51,26 @@ In general, greater memory usage options will mean that node has to make fewer
 calls to zlib, since it'll be able to process more data in a single `write`
 operation.  This is another factor that affects the speed, at the cost of memory
 usage.
+
+### zlib.options, Object
+
+Each class takes an optional options object.  All options are optional.  (The
+convenience methods use the default settings for all options.)
+
+Note that some options are only relevant when compressing, and are ignored by
+the decompression classes.
+
+The options are:
+
+* chunkSize (default: 16*1024)
+* windowBits
+* level (compression only)
+* memLevel (compression only)
+* strategy (compression only)
+* dictionary (deflate/inflate only, empty dictionary by default)
+
+See the description of `deflateInit2` and `inflateInit2` at
+<http://zlib.net/manual.html#Advanced> for more information on these.
 
 #### Examples
 
