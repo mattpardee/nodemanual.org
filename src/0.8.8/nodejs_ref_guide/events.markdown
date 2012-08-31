@@ -105,8 +105,7 @@ next time the event is fired, after which it is removed.
 
 Removes all listeners, or those of the specified event.
 
-Note: This **invalidates** any arrays that have previously been
-returned by [[eventemitter.listeners `eventemitter.listeners`]].
+Note: This **invalidates** any arrays that have previously been returned by [[eventemitter.listeners `eventemitter.listeners`]].
 
 ### eventemitter.removeListener(event, listener())
 - event {String}   The event to listen for

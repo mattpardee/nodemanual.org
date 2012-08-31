@@ -141,7 +141,7 @@ function makeIndexes(verj) {
     buildOptions.template = "resources/landing/layout.jade";
     buildOptions.title = "Node.js Manual";
     buildOptions.output = outDir;
-    buildOptions.removeOutDir = false;
+    buildOptions.keepOutDir = true;
     buildOptions.disableTests = false; // run tests on final output
 
     panda.make(manifestFile, buildOptions, function(err) {

@@ -119,9 +119,7 @@ global object held within `context` is used as the global object for `code`. The
 In case of syntax error in `code`, `vm.runInContext()` emits the syntax error to
 stderr and throws an exception.
 
-Note: Running untrusted code is a tricky business requiring great care.  To 
-prevent accidental global variable leakage, `vm.runInContext()` is quite useful, 
-but safely running untrusted code requires a separate process.
+Note: Running untrusted code is a tricky business requiring great care.  To prevent accidental global variable leakage, `vm.runInContext()` is quite useful, but safely running untrusted code requires a separate process.
 
 #### Example
 

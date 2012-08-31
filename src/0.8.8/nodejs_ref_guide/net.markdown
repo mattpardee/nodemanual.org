@@ -274,7 +274,9 @@ number of characters is approximately equal to the number of bytes to be
 written, but the buffer may contain strings, and the strings are lazily encoded,
 so the _exact_ number of bytes is not known.
 
-Note: Users who experience a large or growing `bufferSize` should attempt to "throttle" the data flows in their program with `pause()` and `resume()`.
+Note: Users who experience a large or growing `bufferSize` should attempt
+to "throttle" the data flows in 
+their program with  `pause()` and `resume()`.
 
 
 ### net.Socket.setEncoding([encoding=null])

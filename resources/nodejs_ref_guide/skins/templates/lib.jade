@@ -12,7 +12,7 @@ mixin article(obj, parents)
   if typeof obj === 'string'
     obj = list[obj]
 
-  title = obj.id + (obj.type ? ' (' + obj.type + ')' : '')
+  title = obj.path + (obj.type ? ' (' + obj.type + ')' : '')
   article.article(id=obj.path, data-title=title)
     if obj.type === 'section' || obj.type === 'namespace' || obj.type === 'class' || obj.type === 'mixin'
 
@@ -128,10 +128,10 @@ mixin article(obj, parents)
                                   
           div.sideToggler
 
-            div(id='ellipsis_#{obj.id}', class='ellipsis_description')
+            div(id='ellipsis_#{obj.path}', class='ellipsis_description')
               mixin markdown(obj.short_description)
 
-            h3(id='#{obj.id}', class='methodToggle methodClicker inactive')
+            h3(id='#{obj.path}', class='methodToggle methodClicker inactive')
               &nbsp;&nbsp;&nbsp;
             div.description
 
@@ -168,9 +168,6 @@ mixin article(obj, parents)
       h3.sectionHeader Constructors
     mixin article(child, parents.concat(obj))
 
-  for child in obj.children.filter(function(x){return x.type === 'namespace' || x.type === 'class' || x.type === 'mixin'})
-    mixin article(child, parents.concat(obj))
-
   for child in obj.children.filter(function(x){return x.type === 'event'})
     - if (!eventSection)
       - eventSection = true
@@ -201,41 +198,49 @@ mixin article(obj, parents)
 mixin api()
   -pos = 0
   for obj in tree.children
-    .classContent
-      .membersBackground
+    -if (obj.subclasses.length == 0)
+      mixin render_starting_tabs(obj, pos)
+    -else
+      mixin render_starting_tabs(obj, pos)
+      for child in obj.children.filter(function(x){return x.type === 'namespace' || x.type === 'class' || x.type === 'mixin'})
+        -pos++
+        mixin render_starting_tabs(child, pos)
 
-      div(class=' members pos#{pos}')
-        div(class=' membersContent pos#{pos}')
-            h1.memberHeader
-              -var heading = obj.path
-              span.name #{heading}
-                -if (pos >= 0)
-                    if nodejsRef == 'true'
-                      span.editInC9 
-                        mixin formatGHHref(obj.file, 'nodejs_ref_guide')
-                    if nodejsRef != 'true'
-                      span.backToMDN
-                        if heading == 'Index'
-                          heading = '' 
-                        a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') (View original on MDN)
 
-            -if (true || obj.filename.indexOf("index") < 0)
-              ul(class='nav tabs pos#{pos}', data-tabs='tabs')
-                for selector, title in {'Events': ['event', 'events'], 'Constructors': ['constructor', 'constructors'], 'Class methods': ['class method', 'class_methods'], 'Class properties': ['class property', 'class_properties'], 'Instance methods': ['instance method', 'instance_methods'], 'Instance properties': ['instance property', 'instance_properties'], 'Constants': ['constant', 'constants']}
-                  members = obj.children.filter(function(x){return x.type === selector[0]})
-                    li(class="dropdown", data-dropdown="dropdown")
-                      if members.length
-                         a(href="\#", class="dropdown-toggle", data-toggle="dropdown")
-                            != renameMemberTitle(title, members.length)
-                            b.caret
-                        ul.dropdown-menu
-                          for m in members
-                            li(data-id='#{m.id}', class='memberLink')
-                              mixin link(m, [], true)
-       -pos++
-       -methodSection = constructorSection = propertySection = eventSection = false;
-       mixin article(obj, [])
+mixin render_starting_tabs(obj, pos)
+  .classContent
+    .membersBackground
 
+    div(class=' members pos#{pos}')
+      div(class=' membersContent pos#{pos}')
+          h1.memberHeader
+            -var heading = obj.path
+            span.name #{heading}
+              -if (pos >= 0)
+                  if nodejsRef == 'true'
+                    span.editInC9 
+                      mixin formatGHHref(obj.file, 'nodejs_ref_guide')
+                  if nodejsRef != 'true'
+                    span.backToMDN
+                      if heading == 'Index'
+                        heading = '' 
+                      a(href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/#{heading}', target='_blank') (View original on MDN)
+
+          -if (true || obj.filename.indexOf("index") < 0)
+            ul(class='nav tabs pos#{pos}', data-tabs='tabs')
+              for selector, title in {'Events': ['event', 'events'], 'Constructors': ['constructor', 'constructors'], 'Class methods': ['class method', 'class_methods'], 'Class properties': ['class property', 'class_properties'], 'Instance methods': ['instance method', 'instance_methods'], 'Instance properties': ['instance property', 'instance_properties'], 'Constants': ['constant', 'constants']}
+                members = obj.children.filter(function(x){return x.type === selector[0]})
+                  li(class="dropdown", data-dropdown="dropdown")
+                    if members.length
+                       a(href="\#", class="dropdown-toggle", data-toggle="dropdown")
+                          != renameMemberTitle(title, members.length)
+                          b.caret
+                      ul.dropdown-menu
+                        for m in members
+                          li(data-id='#{m.path}', class='memberLink')
+                            mixin link(m, [], true)
+     -methodSection = constructorSection = propertySection = eventSection = false;
+     mixin article(obj, [])
 
 mixin short_description_list(collection)
   ul.method-details-list

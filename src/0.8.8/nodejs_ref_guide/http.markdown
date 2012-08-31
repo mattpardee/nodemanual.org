@@ -212,7 +212,7 @@ Alternatively, you could just opt out of pooling entirely using `agent:false`:
 
 
     http.get({host:'localhost', port:80, path:'/', agent:false}, function (res)
-{
+    {
       // Do stuff
     });
 
@@ -288,8 +288,7 @@ should continue to send the request body, or generating an appropriate HTTP
 response (_e.g._ `400 Bad Request`) if the client should not continue to send
 the request body.
 
-Note: When this event is emitted and handled, the `request` event is not be 
-emitted.
+Note: When this event is emitted and handled, the `request` event is not emitted.
 
 
 ### http.Server@connect(request, socket, head)
@@ -715,8 +714,7 @@ to worry about racing to catch the first part of the body. As long as a listener
 for `'data'` is added during the `'response'` event, the entire body will be
 caught.
 
-Note: Node.js does not check whether `Content-Length`and the length of the body 
-which has been transmitted are equal or not.
+Note: Node.js does not check whether `Content-Length`and the length of the body which has been transmitted are equal or not.
 
 
 The request implements the [[stream.WritableStream Writable Stream]] interface. 

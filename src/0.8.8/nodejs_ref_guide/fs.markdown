@@ -393,8 +393,7 @@ completes
 An asynchronous
 [symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.html).
 
- Note: Windows junction points require the destination path to be absolute.  When using
-`'junction'`, the `destination` argument will automatically be normalized to an absolute path.
+Note: Windows junction points require the destination path to be absolute.  When using `'junction'`, the `destination` argument will automatically be normalized to an absolute path.
 
 ### fs.symlinkSync(srcpath, dstpath, [type='file'])
 - srcpath {String}  The original path of a file
@@ -405,8 +404,7 @@ Windows (and ignored on other platforms)
 A synchronous
 [symlink(2)](http://www.kernel.org/doc/man-pages/online/pages/man2/symlink.2.html).
 
-Note: Windows junction points require the destination path to be absolute.  When using
-`'junction'`, the `destination` argument will automatically be normalized to an absolute path.
+Note: Windows junction points require the destination path to be absolute.  When using `'junction'`, the `destination` argument will automatically be normalized to an absolute path.
 
 ### fs.readlink(path, [callback(err, linkString)])
 - path {String}  The original path of a link
@@ -629,9 +627,7 @@ doesn't exist.
 
  * `'ax+'`: Like `'a+'` but opens the file in exclusive mode
 
-Note: Exclusive mode (`O_EXCL`) ensures that `path` is newly created. `fs.open()`
-fails if a file by that name already exists. On POSIX systems, symlinks are
-not followed. Exclusive mode may or may not work with network file systems.
+Note: Exclusive mode (`O_EXCL`) ensures that `path` is newly created. `fs.open()` fails if a file by that name already exists. On POSIX systems, symlinks are not followed. Exclusive mode may or may not work with network file systems.
 
 ### fs.openSync(path, flags, [mode=666]), Number
 - path {String}  The path to the file
