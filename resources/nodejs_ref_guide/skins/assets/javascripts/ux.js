@@ -60,11 +60,6 @@ $(document).ready(function () {
         });
     }
 
-    // HACKY: toc is longer than content, change height to retain the side border
-    if ($('#sidebarContainer').height() < $('#mainContent').height()) {
-        $('.centerpiece').addClass('shortToc');
-    }
-
     var s, sx;
 
     // scrolling offset calculation via www.quirksmode.org
