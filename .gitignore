@@ -8,3 +8,4 @@ nodemanual.input/
 .settings.xml
 .settings
 out/latest
+json_build.js

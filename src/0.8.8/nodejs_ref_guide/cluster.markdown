@@ -279,7 +279,7 @@ This property is a boolean. It is set when a worker dies after calling
 `destroy()` or immediately after calling the `disconnect()` method. Until then,
 it is `undefined`.
 
-### cluster.worker.send(message, [sendHandle]), Void
+### cluster.worker.send(message), Void
 - message {Object} A message to send
 
 This function is equal to the send methods provided by `child_process.fork()`.
@@ -301,7 +301,7 @@ send a message to a specific worker.  However, in a worker you can also use
 
 ### cluster.worker.destroy(), Void
 
-This function kills the worker, and inform the master to not spawn a new worker.
+This function kills the worker, and informs the master to not spawn a new worker.
 To know the difference between suicide and accidentally death, a suicide boolean
 is set to `true`.
 

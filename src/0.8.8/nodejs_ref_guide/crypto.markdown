@@ -39,13 +39,11 @@ buffer]].
 ### crypto.createCipheriv(algorithm, key, iv), crypto.cipher
 - algorithm {String}  The algorithm to use (same as the argument in [[crypto.createCipher `createCipher()`]])
 - key {String}  A raw key used by the algorithm
-- iv {String}  The [initialization
-vector](http://en.wikipedia.org/wiki/Initialization_vector)
+- iv {String}  The [initialization vector](http://en.wikipedia.org/wiki/Initialization_vector)
 
 Creates and returns a cipher object, with the given algorithm, key, and IV.
 
-`key` and `iv` must be `'binary'`-encoded strings or a [[Buffer
-buffer]].
+`key` and `iv` must be `'binary'`-encoded strings or a [[Buffer buffer]].
 
 
 ### crypto.createCredentials([details]), Object

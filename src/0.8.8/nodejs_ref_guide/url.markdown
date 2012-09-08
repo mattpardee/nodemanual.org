@@ -79,7 +79,7 @@ Takes a URL string, and return it as an object.
 
 
 ### url.format(urlObj), String
- - urlObj {String}  The object to tranform into a URL
+- urlObj {String}  The object to tranform into a URL
 
 Takes a parsed URL object and returns a formatted URL string that contains these
 properties:

@@ -109,11 +109,11 @@ The replacer parameter can be either a function or an array. As a function, it t
 
 * If you return a [[Number `Number`]], the string corresponding to that number is used as the value for the property when added to the JSON string.
 * If you return a [[String `String`]], that string is used as the property's value when adding it to the JSON string.
-* If you return a [[Boolean `Boolean]], `true` or `false` is used as the property's value, as appropriate, when adding it to the JSON string.
+* If you return a [[Boolean `Boolean`]], `true` or `false` is used as the property's value, as appropriate, when adding it to the JSON string.
 * If you return any other object, the object is recursively stringified into the JSON string, calling the replacer function on each property, unless the object is a function, in which case nothing is added to the JSON string.
 * If you return `undefined`, the property is not included in the output JSON string. 
 
-<Note>You can't use the replacer function to remove values from an array. If you return undefined or a function then null is used instead.</Note>
+Note: You can't use the replacer function to remove values from an array. If you return undefined or a function then null is used instead.
 
 #### `space` argument
 
@@ -123,12 +123,12 @@ The space argument may be used to control spacing in the final string. If it is 
 
 Using a tab character mimics standard pretty-print appearance:
 
-	JSON.stringify({ uno: 1\. dos : 2 }, null, '\t')
+	JSON.stringify({ uno: 1, dos : 2 }, null, '\t')
 
 	// returns the string:
 	// '{            \
-	//      "uno ": 1\. \
-	//      "dos ": 2\. \
+	//      "uno ": 1, \
+	//      "dos ": 2, \
 	// }'
 
 #### toJSON behavior
