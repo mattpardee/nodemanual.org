@@ -166,7 +166,7 @@ listening on more than one address.
 - worker {cluster.worker} The worker that disconnected
 
 When a worker's IPC channel has disconnected, this event is emitted. This
-happens when the worker dies, usually after calling [[cluster.worker.destroy]].
+happens when the worker dies, usually after calling [[worker.destroy]].
 
 When calling `disconnect()`, there may be a delay between the `disconnect` and
 `death` events.  This event can be used to detect if the process is stuck in a
@@ -231,7 +231,7 @@ When calling this method, all workers will commit a graceful suicide. After they
 are disconnected, all internal handlers will be closed, allowing the master
 process to die graceful if no other event is waiting.
 
-## cluster.worker, Object
+### cluster.worker, Object
 
 A reference to the current worker object. This is not available in the master process.
 
@@ -269,19 +269,19 @@ worker's uniqueID is the easiest way to find the worker:
       var worker = cluster.workers[uniqueID];
     });
 
-## cluster.worker
+## worker < cluster
 
 A `Worker` object contains all public information and methods about a worker. In
 the master, it can be obtained using `cluster.workers`. In a worker it can be
 obtained using `cluster.worker`.
 
-### cluster.worker.id, String
+### worker.id, String
 
 Each new worker is given its own unique id, stored here.
 
 While a worker is alive, this is the key that indexes it in `cluster.workers`.
 
-### cluster.worker.process, child_process
+### worker.process, child_process
 
 Since all workers are created using [[child_process.fork
 `child_process.fork()`]], the returned object from that function is stored in
@@ -289,13 +289,13 @@ Since all workers are created using [[child_process.fork
 
 For more information, see the [[`child_process` module](child_process.html).
 
-### cluster.worker.suicide, Boolean
+### worker.suicide, Boolean
 
 This property is a boolean. It is set when a worker dies after calling
 `destroy()` or immediately after calling the `disconnect()` method. Until then,
 it is `undefined`.
 
-### cluster.worker.send(message), Void
+### worker.send(message), Void
 - message {Object} A message to send
 
 This function is equal to the send methods provided by `child_process.fork()`.
@@ -315,7 +315,7 @@ send a message to a specific worker.  However, in a worker you can also use
       });
     }
 
-### cluster.worker.destroy(), Void
+### worker.destroy(), Void
 
 This function kills the worker, and informs the master to not spawn a new worker.
 To know the difference between suicide and accidentally death, a suicide boolean
@@ -331,7 +331,7 @@ is set to `true`.
     worker.destroy();
 
 
-### cluster.worker.disconnect(), Void
+### worker.disconnect(), Void
 
 When calling this function the worker will no longer accept new connections, but
 they will be handled by any other listening worker. Existing connection will be
@@ -382,7 +382,7 @@ needed.
       });
     }
 
-### cluster.worker@message(message)
+### worker@message(message)
 - message {Object} The message to send
 
 This event is the same as the one provided by `child_process.fork()`. In the
@@ -430,7 +430,7 @@ process using the message system:
       }).listen(8000);
     }
 
-### cluster.worker@online(worker)
+### worker@online(worker)
 - worker {cluster.worker} The worker that came online
 
 Same as a cluster's [[cluster@online `'online'`]] event, but emits only when the
@@ -442,16 +442,18 @@ state changes on the specified worker.
       // Worker is online
     };
 
-### cluster.worker@listening(worker)
-- worker {cluster.worker} The worker that's being listened
+### worker@listening@listening(address)
+- address {Object} Contains the `address` and `port` information where the worker is listening
+
+Same as the [[cluster@listening]] event, but emits only when the state change on the specified worker.
 
 #### Example
 
-    cluster.fork().on('listening', function (worker, address) {
+    cluster.fork().on('listening', function (address) {
       // Worker is listening
     };
 
-### cluster.worker@disconnect(worker)
+### worker@disconnect(worker)
 - worker {cluster.worker} The disconnected worker
 
 Same as the [[cluster@disconnect `cluster.on('disconnect')`]] event, but emits only when the state
@@ -461,7 +463,7 @@ change on the specified worker.
       // Worker has disconnected
     };
 
-### cluster.worker@exit(code, signal)
+### worker@exit(code, signal)
 - code {Number} The exit code, if exited normally
 - signal {String} The name of the signal, (_e.g._ `'SIGHUP'`) that caused
   the process to be killed.

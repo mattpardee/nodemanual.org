@@ -101,22 +101,14 @@ bit length. The generator used is `2`.
 
 ### crypto.getDiffieHellman(group_name), crypto.diffieHellman
 - group_name {String} One of the following group names:  
-  * `'modp1'`, as defined in [RFC
-2412](http://www.rfc-editor.org/rfc/rfc2412.txt)
-  * `'modp2'`, as defined in [RFC
-2412](http://www.rfc-editor.org/rfc/rfc2412.txt)
-  * `'modp5'`, as defined in [RFC
-2412](http://www.rfc-editor.org/rfc/rfc2412.txt)
-  * `'modp14'`, as defined in [RFC
-3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
-  * `'modp15'`, as defined in [RFC
-3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
-  * `'modp16'`, as defined in [RFC
-3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
-  * `'modp17'`, as defined in [RFC
-3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
-  * `'modp18'`, as defined in [RFC
-3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
+  * `'modp1'`, as defined in [RFC 2412](http://www.rfc-editor.org/rfc/rfc2412.txt)
+  * `'modp2'`, as defined in [RFC 2412](http://www.rfc-editor.org/rfc/rfc2412.txt)
+  * `'modp5'`, as defined in [RFC 2412](http://www.rfc-editor.org/rfc/rfc2412.txt)
+  * `'modp14'`, as defined in [RFC 3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
+  * `'modp15'`, as defined in [RFC 3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
+  * `'modp16'`, as defined in [RFC 3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
+  * `'modp17'`, as defined in [RFC 3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
+  * `'modp18'`, as defined in [RFC 3526](http://www.rfc-editor.org/rfc/rfc3526.txt)
 
 Creates a predefined Diffie-Hellman key exchange object.
 

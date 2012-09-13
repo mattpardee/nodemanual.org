@@ -23,56 +23,8 @@ mixin article(obj, parents)
         .section.description
           .memberContent
             mixin markdown(obj.description)
-
-      collection = obj.children.filter(function(x){return x.type === 'namespace'});
-      if collection.length
-        .section.namespaces
-          // 
-            h3 Namespaces
-            .memberContent
-              mixin short_description_list(collection)
-
-      collection = obj.children.filter(function(x){return x.type === 'mixin'});
-      if collection.length
-        .section.mixins
-          // 
-            h3 Mixins
-            .memberContent
-              mixin short_description_list(collection)
-
-      if obj.type === 'class'
-
-        if obj.superclass
-          .section.superclass
-            // h3 
-              Superclass
-              .memberContent
-                mixin link(obj.superclass)
-
-        if obj.subclasses.length
-          .section.subclasses
-            // h3 
-              Subclasses
-              .memberContent
-                mixin links(obj.subclasses)
-
-      if obj.included_mixins
-        .section.mixins
-          // h3 
-            Includes
-            .memberContent
-              mixin links(obj.included_mixins)
-
-      collection = obj.children.filter(function(x){return x.type === 'utility'})
-      if collection.length
-        .section.utilities
-          // h3 
-            Utilities
-            .memberContent
-              mixin links(collection)
     
     else
-
       .section.method
         .memberContent
           if obj.signatures
