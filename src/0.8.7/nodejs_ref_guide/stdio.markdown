@@ -1,5 +1,5 @@
 ## console
-(metadata: {"type": "global"})
+({"type": "global"})
 
 > Stability: 3 - Stable
     

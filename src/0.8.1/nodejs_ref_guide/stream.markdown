@@ -1,5 +1,5 @@
 ## stream
-(metadata: {"type": "global"})
+({"type": "global"})
 
 > Stability: 2 - Unstable
 

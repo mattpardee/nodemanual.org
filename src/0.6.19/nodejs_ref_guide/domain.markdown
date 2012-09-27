@@ -1,5 +1,5 @@
 # Domain
-(metadata: {"type": "misc"})
+({"type": "misc"})
 
 > Stability: 1 - Experimental
 

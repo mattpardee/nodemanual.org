@@ -35,7 +35,7 @@ mixin head(dirP, whoAmI)
 
   meta(name="viewport", content="width=device-width,initial-scale=1")
 
-  link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/bootstrap.min.css")
+  link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/bootstrap.css")
   link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/prettify.css")
   link(rel="stylesheet", href="#{dirPrefix}#{verj}/assets/csses/refguide_overrides.css")
 
@@ -49,7 +49,7 @@ mixin head(dirP, whoAmI)
   script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery.collapse.js")
 
 mixin navBar(fullPath)
-  div.navbar.navbar-fixed-top
+  div.navbar.navbar-fixed-top.navbar-inverse
     div.navbar-inner
       div#topSection.container
 
@@ -96,7 +96,7 @@ mixin endingScripts
   // scripts concatenated and minified via ant build script
   script(src="#{dirPrefix}#{verj}/assets/javascripts/ga.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/plugins.js")
-  script(src="#{dirPrefix}#{verj}/assets/javascripts/bootstrap-dropdown.js")
+  script(src="#{dirPrefix}#{verj}/assets/javascripts/bootstrap.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/jquery-scrollspy.js") 
   script(src="#{dirPrefix}#{verj}/assets/javascripts/prettify.js")
   script(src="#{dirPrefix}#{verj}/assets/javascripts/prettify-extension.js")
@@ -137,7 +137,7 @@ mixin makeVersionLabel(fullPath, showText)
   -else
       -if (fullPath.indexOf("latest") >= 0 || fullPath.indexOf("nodemanual.org/src/index.md") >= 0)
         -if (showText === undefined)
-          -id = '0.8.9'
+          -id = '0.8.10'
         -else
           -id = 'latest'
       -else

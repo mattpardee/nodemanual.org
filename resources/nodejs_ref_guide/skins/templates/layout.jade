@@ -15,7 +15,7 @@ html(xmlns="http://www.w3.org/1999/xhtml")
       #wrapper
         .content
           .row.centerpiece
-            .span3#sidebarContainer
+            .span3(id="sidebarContainer", data-spy="affix", data-offset-top="200")
               #sidebar
                 if nodejsRef == 'true'
                   include nodejs_ref_menu.jade

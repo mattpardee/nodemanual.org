@@ -1,5 +1,5 @@
 # Index
-(metadata: {"type": "misc"})
+({"type": "misc"})
 
 Node.js is a server-side Javascript environment. It's event-driven,
 asynchronous, and allows you to write a web server in a relatively quick amount

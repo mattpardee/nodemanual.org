@@ -1,5 +1,5 @@
 # Index
-(metadata: {"type": "misc"})
+({"type": "misc"})
 
 Javascript&reg; (sometimes shortened to JS) is a lightweight, object-oriented language, most known as the scripting language for web pages, but used in many non-browser environments as well. For more information on the constructs of the language, see [this article](https://developer.mozilla.org/en/Javascript/About_Javascript).
 

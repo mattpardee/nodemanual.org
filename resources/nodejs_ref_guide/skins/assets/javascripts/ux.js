@@ -90,6 +90,7 @@ $(document).ready(function () {
             min: $classContent.position().top - 35,
             max: $classContent.position().top + $classContent.height() - 35,
             onEnter: function (element, position) {
+                //$('#sidebarContainer').affix();
                 var $pagination = $(element);
                 var $paginationContent = $('.membersContent pos' + i);
                 var $tabs = $('.tabs pos' + i);

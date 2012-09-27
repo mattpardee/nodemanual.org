@@ -1,5 +1,5 @@
 # Globals
-(metadata: {"type": "misc"})
+({"type": "misc"})
 
 These objects are available to all modules. Some of these objects aren't
 actually in the global scope, but in the module scope; they'll be noted as such

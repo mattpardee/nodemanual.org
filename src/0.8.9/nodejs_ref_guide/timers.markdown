@@ -1,5 +1,5 @@
 ## timer
-(metadata: {"type": "global"})
+({"type": "global"})
 
 > Stability: 5 - Locked
 

@@ -1,5 +1,5 @@
 # Debugger
-(metadata: {"type": "misc"})
+({"type": "misc"})
 
 > Stability: 3 - Stable
 

@@ -1,5 +1,5 @@
 ## process
-(metadata: {"type": "global"})
+({"type": "global"})
 
 The `process` object is a global object, and can be accessed from anywhere. It
 is an instance of [[eventemitter `EventEmitter`]].

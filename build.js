@@ -5,6 +5,7 @@ var argv = process.argv,
     path  = require('path'), 
     wrench = require('wrench'),
     funcDoc = require('functional-docs'),
+    semver = require('semver'),
     exec = require('child_process').exec;
     
 argv.shift();
@@ -29,7 +30,19 @@ console.log("GENERATING DOCUMENTATION");
 fs.readdir("./src", function(err, files) {
     // whatever the last folder (alphabetically) is == latest version
     var sourceFiles = wrench.readdirSyncRecursive('./src').sort();
-    var latestVersion = sourceFiles[sourceFiles.length - 3].split("/")[0]; // -3, to skip index.md
+    var versions = sourceFiles.filter(function(dir){
+        if (dir.indexOf("/") < 0 && semver.valid(dir))
+            return true;
+        return false;
+    });
+
+    // reverse sort to pluck first one
+     var latestVersion = versions.sort(function(a, b){
+        if (semver.gt(a, b))
+            return -1;
+        else
+            return 1;
+    })[0];
 
     // we didn't pass in a specific version, assume only last in dir
     if (!/[\d]\.[\d]\.[\d]/.test(versionToBuild)) {   
