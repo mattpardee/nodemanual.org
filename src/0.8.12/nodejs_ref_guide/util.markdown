@@ -50,6 +50,21 @@ To make the function recurse an object indefinitely, pass in `null` for `depth`.
 
 If `colors` is `true`, the output is styled with ANSI color codes.
 
+Objects also may define their own `inspect(depth)` function, which `util.inspect()`
+will invoke and use the result of when inspecting the object:
+
+```javascript
+var util = require('util');
+
+var obj = { name: 'nate' };
+obj.inspect = function(depth) {
+  return '{' + this.name + '}';
+};
+
+util.inspect(obj);
+  // "{nate}"
+```
+
 #### Example
 
 Here's an example inspecting all the properties of the `util` object:
