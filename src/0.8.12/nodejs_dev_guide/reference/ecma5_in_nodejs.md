@@ -98,7 +98,7 @@ If the `initialValue` parameter is provided, it is the very first parameter call
  * `Object.create(proto, props)`: Creates a new object whose prototype is the passed in parent object and whose properties are those specified by `props`. For example:
 
 <pre>
-    var obj = Object.create(x: 10, y: 20);
+    var obj = Object.create({x: 10, y: 20});
     // obj.x = 10; obj.y = 20
 </pre>
 
