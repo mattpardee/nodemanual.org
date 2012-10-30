@@ -28,7 +28,7 @@ var buildOptions = {
 console.log("GENERATING DOCUMENTATION");
 
 fs.readdir("./src", function(err, files) {
-    // whatever the last folder (alphabetically) is == latest version
+    // whatever the last folder is == latest version
     var sourceFiles = wrench.readdirSyncRecursive('./src').sort();
     var versions = sourceFiles.filter(function(dir){
         if (dir.indexOf("/") < 0 && semver.valid(dir))
@@ -37,7 +37,7 @@ fs.readdir("./src", function(err, files) {
     });
 
     // reverse sort to pluck first one
-     var latestVersion = versions.sort(function(a, b){
+    var latestVersion = versions.sort(function(a, b){
         if (semver.gt(a, b))
             return -1;
         else
@@ -60,21 +60,13 @@ function createSymlinkToLatest(latestVersion, callback) {
     var relativeOut = path.resolve("./out") + "/";
 
     wrench.mkdirSyncRecursive(relativeOut +  latestVersion);
-    if (/0\.6\.\d+/.test(process.version)) {
-       var symlinkPath = relativeOut + "latest";
+    var symlinkPath = relativeOut + "latest";
 
-       exec("rm -f " + symlinkPath + " && ln -s " + relativeOut + latestVersion + " " + symlinkPath, function (error, stdout, stderr) {
-            if (error) {
-                console.error(stdout || error);
-                process.exit(1);
-            }
+    exec("rm -f " + symlinkPath + " && ln -s " + relativeOut + latestVersion + " " + symlinkPath, function (error, stdout, stderr) {
+         if (error) console.error(stdout || error);
 
-            callback();
-        });
-    }
-    else if (/0\.8\.\d+/.test(process.version)) {
-       // do something else via fs.symlink
-    }
+         callback();
+     });
 }
 
 function buildDocs(verj) {
@@ -130,14 +122,17 @@ function makeJSRefDocs(verj) {
 
 function makeDevDocs(verj) {
     var outDir = "./out/" + verj + "/nodejs_dev_guide";
-    var manifestFile = "./src/" + verj + "/nodejs_dev_guide/manifest.json";
 
-    buildOptions.template = "./resources/nodejs_dev_guide/layout.jade";
+    buildOptions.skin = "./resources/nodejs_dev_guide/layout.jade";
     buildOptions.assets = "./resources/nodejs_dev_guide/skins";
     buildOptions.title = "Node.js Guide";
     buildOptions.output = outDir;
+    buildOptions.codeHighlightTheme = "idea";
 
-    panda.make(manifestFile, buildOptions, function(err) {
+    panda.make(["./src/" + verj + "/nodejs_dev_guide/index.md", 
+                "./src/" + verj + "/nodejs_dev_guide/overview", 
+                "./src/" + verj + "/nodejs_dev_guide/reference", 
+                "./src/" + verj + "/nodejs_dev_guide/tutorial"], buildOptions, function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
@@ -149,15 +144,14 @@ function makeDevDocs(verj) {
 
 function makeIndexes(verj) {
     var outDir = "./out/" + verj;
-    var manifestFile = "./src/manifest.json";
 
-    buildOptions.template = "resources/landing/layout.jade";
+    buildOptions.skin = "resources/landing/layout.jade";
     buildOptions.title = "Node.js Manual";
     buildOptions.output = outDir;
     buildOptions.keepOutDir = true;
     buildOptions.disableTests = false; // run tests on final output
 
-    panda.make(manifestFile, buildOptions, function(err) {
+    panda.make(["./src/index.md"], buildOptions, function(err) {
         if (err) {
             console.error(err);
             process.exit(-1);
