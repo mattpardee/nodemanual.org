@@ -101,7 +101,7 @@ function makeNodeJSRefDocs(verj) {
             console.error(err);
             process.exit(1);
           }
-          //makeJSRefDocs(verj);
+          makeJSRefDocs(verj);
         });
       });
     });
