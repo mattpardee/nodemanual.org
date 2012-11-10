@@ -22,7 +22,9 @@ var buildOptions = {
   skin        : "./resources/nodejs_ref_guide/skins/templates/layout.jade",
   assets      : "./resources/nodejs_ref_guide/skins/assets",
   additionalObjs : "./additionalObjs.json",
-  parseOptions   : "./parseOptions.json"
+  parseOptions   : "./parseOptions.json",
+  guidPrefix   : "nodejs_latest:", 
+  docUrlPrefix : "http://nodemanual.org/latest/nodejs_ref_guide/"
 };
 
 console.log("GENERATING DOCUMENTATION");
@@ -88,12 +90,19 @@ function makeNodeJSRefDocs(verj) {
         process.exit(1);
       }
 
-      panino.render('html', ast, buildOptions, function (err) {
+      panino.render('c9ac', ast, buildOptions, function (err) {
         if (err) {
           console.error(err);
           process.exit(1);
         }
-        makeJSRefDocs(verj);
+        buildOptions.keepOutDir = true;
+        panino.render('html', ast, buildOptions, function (err) {
+          if (err) {
+            console.error(err);
+            process.exit(1);
+          }
+          makeJSRefDocs(verj);
+        });
       });
     });
 }
@@ -159,29 +168,4 @@ function makeIndexes(verj) {
         
         console.log("All done!");
     });
-}
-
-// helpers
-
-function markdown(text) {
-    return md2html(text);
-}
-
-function extend(o, plus) {
-    var r = {},
-        i;
-    for (i in o) {
-        if (o.hasOwnProperty(i)) {
-            r[i] = o[i];
-        }
-    }
-    if (plus) {
-        for (i in plus) {
-            if (plus.hasOwnProperty(i)) {
-                r[i] = plus[i];
-            }
-        }
-    }
-
-    return r;
 }
