@@ -457,7 +457,7 @@ This method combines the text from one or more strings and returns a new string.
 The following example combines strings into a new string.
     
 	var hello = "Hello, ";
- console.log(hello.concat("Kevin", " have a nice day.")); /// Hello, Kevin have a nice day.
+    console.log(hello.concat("Kevin", " have a nice day.")); /// Hello, Kevin have a nice day.
    
 
 
