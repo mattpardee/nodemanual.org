@@ -9,13 +9,13 @@ This manual consists of three different sections:
 
 * The Node.js API Reference documents the core Node.js modules
 * The Node.js Guide contains articles and code samples on coding in Node.js
-* The Javascript Reference contains doucmentation about the Javascript language 
+* The Javascript Reference contains documentation about the Javascript language
 
 You can instantaneously copy and run the code samples found here _live_ into your [Cloud9 IDE](http://c9.io) account by just clicking a button.
 
 #### Contributing
 
-You can help! This website is a community effort, and is [available on GitHub](https://github.com/c9/nodemanual.org). The API Reference will be in synch with the official Node.js stable APIs. 
+You can help! This website is a community effort, and is [available on GitHub](https://github.com/c9/nodemanual.org). The API Reference will be in sync with the official Node.js stable APIs.
 
 Use the `[edit]` links near the article titles to edit them online into the Cloud9 IDE. After writing and updating articles, you can issue a pull request.
 
@@ -29,7 +29,7 @@ Here are some tutorials to get you started with Node.js:
 
 * [The Node Package Manager](nodejs_dev_guide/npm.html)
 
-#### Node.js Community 
+#### Node.js Community
 
 For additional resources with Node.js:
 

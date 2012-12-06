@@ -43,9 +43,9 @@ Now, try and run this code sample:
 
 It might cause a crash. That's ok. Or, in fact, it might not. Can you see what's wrong?
 
-Since the writing of the file is happening asynchronously, Node.js continues it's merry way, getting ready to read the file. And there's the rub: the file you're trying to read _might not exist yet_. 
+Since the writing of the file is happening asynchronously, Node.js continues it's merry way, getting ready to read the file. And there's the rub: the file you're trying to read _might not exist yet_.
 
-How can you get around this? Well, you _could_ perform the same task synchronusly:
+How can you get around this? Well, you _could_ perform the same task synchronously:
 
 	var fs = require('fs');
 
@@ -57,7 +57,7 @@ How can you get around this? Well, you _could_ perform the same task synchronusl
 	  if (err) {
 	    return console.log(err);
 	  }
-	  
+
 	  console.log(data);
 	});
 

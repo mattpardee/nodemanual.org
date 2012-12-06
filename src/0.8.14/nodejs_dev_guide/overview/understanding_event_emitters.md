@@ -3,7 +3,7 @@ URL: https://twitter.com/#!/creationix, https://twitter.com/#!/felixge
 
 # Understanding Event Emitters
 
-In order to facilitiate its asynchronisity, Node.js operates with an "event loop" in the background. This loops "listens" for actions that are "emitted," and executes functions as a result. Node.js runs in a single thread of execution, but as soon as a block of synchronous code is done, the event loop runs the next event in the queue. 
+In order to facilitate its asynchronicity, Node.js operates with an "event loop" in the background. This loops "listens" for actions that are "emitted," and executes functions as a result. Node.js runs in a single thread of execution, but as soon as a block of synchronous code is done, the event loop runs the next event in the queue.
 
 Events are represented in Node.js by the [EventEmitter](../nodejs_ref_guide/events.html) object. Many objects in Node.js are instances of this object. Using `EventEmitter`'s is fairly straight-forward. You can listen to a specific event by calling the `on()` function on your object, providing the name of the event, as well as a callback closure as the parameters. For example:
 
@@ -26,6 +26,6 @@ The `on()` function also returns a reference to the object it belongs to, allowi
 
 <Note>By default, events can only have a maximum of 10 listeners. In order to create more, you'll need to make a call to [`setMaxListeners(n)`](../nodejs_ref_guide/events.html#eventemitter.setMaxListeners). The maximum limit ensures you aren't leaking event listeners by mistake.</Note>
 
-Here's a full example converying many of the methods discussed:
+Here's a full example covering many of the methods discussed:
 
 <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>

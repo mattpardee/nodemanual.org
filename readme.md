@@ -16,11 +16,11 @@ To run the build, open your command prompt and type:
 
     node build.js [optional_version_number]
 
-This launches a build of the latest documentation set, which is determind by whatever the last folder in _src/_ is. These converted HTML files are placed into _out/_. Also, a symlink called _latest/_ is created, that points to the latest output files. If you pass in `optional_version_number`, then _only_ that doc set is built, and no symlink is created. 
+This launches a build of the latest documentation set, which is determined by whatever the last folder in _src/_ is. These converted HTML files are placed into _out/_. Also, a symlink called _latest/_ is created, that points to the latest output files. If you pass in `optional_version_number`, then _only_ that doc set is built, and no symlink is created.
 
 # Contributing
 
-We'll very gladly take any pull requests for new documentation! This source material is intended to be open and sharable to all. 
+We'll very gladly take any pull requests for new documentation! This source material is intended to be open and sharable to all.
 
 # Copyright
 
