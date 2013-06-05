@@ -13,11 +13,11 @@ You can refer to the file system methods in full by reading [the Node.js API Ref
 
 Here's a quick example that you've probably seen before: asynchronously reading a file, and printing its contents to the console:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.file.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.file.1.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 Now, what happens if you try to read a file that doesn't exist (or that, for some reason, you don't have access to)? Let's find out:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.file.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.file.2.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 You should get some output that's vastly different:
 
@@ -35,11 +35,11 @@ This output is a printout of [the global `Error` object](../js_doc/Error.html). 
 
 Similarly, writing to a file is pretty easy to grok:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.write.file.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/fs/fs.write.file.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Now, try and run this code sample:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.write.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.write.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 It might cause a crash. That's ok. Or, in fact, it might not. Can you see what's wrong?
 
@@ -63,6 +63,6 @@ How can you get around this? Well, you _could_ perform the same task synchronusl
 
 But that's silly. Why not make it _all_ asynchronous?
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.write.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/fs/fs.read.write.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 When the reading ends, the writing begins. Another, more advanced alternative, is to take a look at [streams](understanding_streams.html).

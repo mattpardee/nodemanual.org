@@ -7,7 +7,7 @@ include this module, add `require('querystring')` to your code.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### querystring.escape(), String
@@ -32,7 +32,7 @@ used to limit processed keys. Set it to 0 to remove the key count limitation.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.parse.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>  
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.parse.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>  
  
 
 
@@ -46,7 +46,7 @@ the default separator and assignment characters.
 
 #### Examples
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.stringify.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.stringify.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 
 ### querystring.unescape() , String

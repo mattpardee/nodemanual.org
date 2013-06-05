@@ -8,7 +8,7 @@ Note that [you shouldn't use an array as an associative array](http://www.andrew
 
 JavaScript arrays are zero-indexed; the first element of an array is actually at index 0, and the last element is at the index one less than the value of the array's [[Array.length `length`]] property:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.examples.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.examples.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 	 	
 Array elements are just object properties, in the way that [[Array.toString `toString()`]] is a property. However, note that trying to access the first element of an array as follows will throw a syntax error:
 
@@ -78,13 +78,13 @@ The properties and elements returned from this match are as follows:
 
 The following example creates an array, msgArray, with a length of 0, then assigns values to msgArray[0] and msgArray[99], changing the length of the array to 100.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.examples.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.examples.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 #### Example: Creating a Two-dimensional Array
 
 The following creates chess board as a two dimensional array of strings. The first move is made by copying the 'P' in 6,4 to 4,4. The position 4,4 is left blank.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.examples.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.examples.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 	// Move King's Pawn forward 2
 	board[4][4] = board[6][4];
@@ -136,7 +136,7 @@ You can set the `length` property to truncate an array at any time. When you ext
 
 In the following example the array numbers is iterated through by looking at the length property to see how many elements it has. Each value is then doubled.
 	 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 #### Example: Shortening an array 
   
@@ -185,7 +185,7 @@ If a new element is added to either array, the other array is not affected.
 
  In the following example, `slice()` creates a new array, `newCar`, from `myCar`. Both include a reference to the object `myHonda`. When the color of `myHonda` is changed to purple, both arrays reflect the change.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.slice.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.slice.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 This script writes:
 	
@@ -210,13 +210,13 @@ This script writes:
 	
 The following example uses indexOf to locate values in an array.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.indexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.indexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 		 	
 #### Example: Finding all the occurrences of an element
 
 The following example uses indexOf to find all the indices of an element in a given array, using push to add them to another array as they are found.
 	 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.indexof.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.indexof.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 		 	
 #### See also
 
@@ -263,7 +263,7 @@ If you specify a different number of elements to insert than the number you're r
 
 The following script illustrate the use of splice:
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.splice.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.splice.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 #### Returns
 
@@ -352,7 +352,7 @@ Removes the first element from an array and returns that element. This method ch
 #### Example: Removing an element from an array
 The following code displays the `myFish` array before and after removing its first element. It also displays the removed element:
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.shift.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.shift.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 This example displays the following:
 	
@@ -413,7 +413,7 @@ The `sort()` method can be conveniently used with [closures](https://developer.m
 
 The following example creates four arrays and displays the original array, then the sorted arrays. The numeric arrays are sorted without, then with, a compare function.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.sort.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.sort.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 		 	
 This example produces the following output. As the output shows, when a compare function is used, numbers sort correctly whether they are numbers or numeric strings.
 	
@@ -497,7 +497,7 @@ Adds one or more elements to the beginning of an array and returns the new lengt
 
 	The following code displays the `myFish` array before and after adding elements to it.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.unshift.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.unshift.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 	This example displays the following:
 	
@@ -590,7 +590,7 @@ The range of elements processed by `filter` is set before the first invocation o
 
 The following example uses `filter` to create a filtered array that has all elements with values less than 1, removed.
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.filter.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.filter.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 		
  
 ### Array.forEach(callback(element, index, array)[, thisArg]) -> Array
@@ -612,7 +612,7 @@ The range of elements processed by `forEach` is set before the first invocation 
 
  The following code logs a line for each element in an array:
  
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.foreach.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.foreach.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 #### Example: An object copy function
 
@@ -685,7 +685,7 @@ The range of elements processed by `map` is set before the first invocation of `
 
 	The following code creates an array of "plural" forms of nouns from an array of their singular forms.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.map.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>			 	
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.map.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>			 	
 	
 #### Example: Mapping an array of numbers to an array of square roots
 
@@ -818,12 +818,12 @@ And if you were to provide an `initialValue`, the result would look like this:
 	 
 #### Example: Sum up all values within an array
 		
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.reduceright.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.reduceright.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 		 	
 	
 #### Example: Flatten an array of arrays
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.reduceright.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.reduceright.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 #### See Also
 
@@ -867,11 +867,11 @@ The value returned by `reduce` this time would be, of course, `20`.
 
 #### Example: Sum up all values within an array
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.reduce.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.reduce.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 	
 #### Example: Flatten an array of arrays
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Array/array.reduce.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Array/array.reduce.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 		
 #### See Also
 

@@ -17,7 +17,7 @@ Similar to `vm.runInThisContext()`, but a method of the precompiled `Script` obj
 
 Using `script.runInThisContext()` to compile code once and run it multiple times:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Returns
 
@@ -40,7 +40,7 @@ Similar to `vm.runInNewContext()`, this is a method of a precompiled `Script` ob
 
 Compiling code that increments a global variable and sets one, then execute the code multiple times:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Returns
 

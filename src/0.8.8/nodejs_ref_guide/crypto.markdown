@@ -24,7 +24,7 @@ Note: All `algorithm` parameter implementations below are dependent on the OpenS
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.createCipher(algorithm, password), crypto.cipher
 - algorithm {String}   The algorithm to use
@@ -70,7 +70,7 @@ list of CAs as given by
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createCredentials.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createCredentials.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.createDecipher(algorithm, password), crypto.decipher
 - algorithm {String}  The algorithm to use
@@ -97,7 +97,7 @@ bit length. The generator used is `2`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.getDiffieHellman(group_name), crypto.diffieHellman
 - group_name {String} One of the following group names:  
@@ -153,7 +153,7 @@ object can be used to generate hash digests.
 
 Testing an MD5 Hash:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This program takes the sha1 sum of a file:
 
@@ -189,7 +189,7 @@ article](http://en.wikipedia.org/wiki/HMAC).
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.pbkdf2(password, salt, iterations, keylen, callback(err, derivedKey))
 - password {String}  The password to use
@@ -206,7 +206,7 @@ iterations.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.pbkdf2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.pbkdf2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.randomBytes(size [, callback(ex, buf)]), String | Void
 - size {Number}  The size of the cryptographic data
@@ -219,7 +219,7 @@ synchronously.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.randomBytes.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.randomBytes.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.createVerify(algorithm), crypto.verifier
 - algorithm {String} The algorithm to use
@@ -238,7 +238,7 @@ be created as a returned value from [[crypto.createCipher
   
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.cipher.final([output_encoding='binary']), String
 - output_encoding {String}  The encoding to use for the output; defaults to
@@ -280,7 +280,7 @@ A class for decrypting data. It's used to decipher previously created
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/cipher.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.decipher.update(data, [input_encoding='binary'], [output_encoding='binary']), crypto.decipher
 - data {String}  The data to use for an update
@@ -321,7 +321,7 @@ as a returned value from [[crypto.createDiffieHellman
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createDiffieHellman.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.diffieHellman.computeSecret(other_public_key, [input_encoding='binary'], [output_encoding='input_encoding']), String
 - other_public_key {String}  The other party's public key
@@ -340,7 +340,7 @@ Returns the Diffie-Hellman prime in the specified encoding.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/diffieHellman.getGenerator.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/diffieHellman.getGenerator.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.diffieHellman.getPrime([encoding='binary']), String
 - encoding {String}  The encoding to use;  can be `'binary'`, `'hex'`, or
@@ -350,7 +350,7 @@ Returns the Diffie-Hellman prime in the specified encoding.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/diffieHellman.getPrime.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/diffieHellman.getPrime.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.diffieHellman.getPrivateKey([encoding='binary']), String
 - encoding {String}  The encoding to use;  can be `'binary'`, `'hex'`, or
@@ -394,7 +394,7 @@ It can be created as a returned value from [[crypto.createHash `crypto.createHas
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHash.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.hash.digest([encoding='binary'])
 - encoding {String}  The encoding to use; can be `'binary'`, `'hex'`, or
@@ -422,7 +422,7 @@ algorithms. It can be created as a returned value from [[crypto.createHmac
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/crypto/crypto.createHmac.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### crypto.hmac.digest([encoding='binary']), String
 - encoding {String}  The encoding to use; can be `'hex'`, `'binary'` or

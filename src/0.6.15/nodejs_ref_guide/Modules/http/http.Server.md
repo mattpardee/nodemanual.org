@@ -4,7 +4,7 @@ class http.Server
 
 A representation of the server within the `http` module. To create an HTTP server, you'll need to first call [[http.createServer `http.createServer()`]], with something like this:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This object is also an [[eventemitter `EventEmitter`]].
 

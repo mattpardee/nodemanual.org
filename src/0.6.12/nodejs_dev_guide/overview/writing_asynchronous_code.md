@@ -16,7 +16,7 @@ In a synchronous programming language where I/O is blocking, this task is very s
 
 For this example, we'll need a method from Node's [`fs`](../nodejs_ref_guide/fs.html) package. We'll be using `fs.readFileSync()` to read a file and print its contents to the console:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/writing_asynchronous_code/fs.readFile.sync.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/writing_asynchronous_code/fs.readFile.sync.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 For reading a single file, this is fine. But imagine running a server that's reading several thousand files, or is handling many requests that require database access. Your program waits while waiting for the blocking `fs` operations to finish.  Since CPUs are very fast compared to other hardware (like hard drives), the CPU is wasted when it could be busy working on requests for another client if this was part of a hot running event loop.
 
@@ -28,7 +28,7 @@ An advantage to synchronous coding style is that it's very easy to read and writ
 
 Here's the same read file operation handled asynchronously:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/writing_asynchronous_code/fs.readFile.async.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/writing_asynchronous_code/fs.readFile.async.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Good golly, it's nearly twice as many lines! In the end, however, this is a better option. `fs.readFile()` takes a filename and "returns" the contents of the file.  It doesn't actually return it, but passes it to the passed in callback function. You can learn more about callback functions in [this article](working_with_callbacks.html).
 

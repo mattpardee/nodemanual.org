@@ -13,11 +13,11 @@ In busy processes, the programmer is **strongly encouraged** to use the asynchro
 
 #### Example: An asynchronous file delete:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: A synchronous file delete:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/fs/fs.ex.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Handling timing issues with callback
 
@@ -739,7 +739,7 @@ Asynchronously writes data to a file, replacing the file if it already exists.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/fs/fs.writefile.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/fs/fs.writefile.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 

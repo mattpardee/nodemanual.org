@@ -9,7 +9,7 @@ var isRoot = !process.getuid();
 // Set some common variables
 var PORT = process.env.PORT || 8000;
 
-HTTP.createServer(handle).listen(PORT);
+HTTP.createServer(handle).listen(PORT, "0.0.0.0");
 process.title ="nodemanual.org";
 console.log("Server %s listening at http://localhost" + (PORT === 80 ? "" : ":" + PORT) + "/", process.title);
 

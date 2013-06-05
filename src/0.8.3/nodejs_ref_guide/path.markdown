@@ -11,7 +11,7 @@ is not consulted to check whether paths are valid.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### path.normalize(p), String
@@ -24,7 +24,7 @@ contains a trailing slash, it is preserved. On Windows backslashes are used.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.normalize.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.normalize.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -38,7 +38,7 @@ arguments are ignored.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.join.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.join.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -72,7 +72,7 @@ files.
 
 #### Examples
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -90,7 +90,7 @@ from one to the other. This is actually the reverse transform of [[path.resolve
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.relative.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.relative.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -103,7 +103,7 @@ l) command.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.dirname.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.dirname.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -117,7 +117,7 @@ ml) command.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.basename.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.basename.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -130,7 +130,7 @@ first character of it is '.', then the method returns an empty string.
 
 #### Examples
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.extname.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.extname.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -143,7 +143,7 @@ Tests whether or not the given path exists by checking with the file system.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/path/path.exists.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/path/path.exists.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 

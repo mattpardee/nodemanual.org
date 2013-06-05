@@ -5,7 +5,7 @@ This module controls printing to the terminal output. Use `require('tty')` to ac
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/tty/tty.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/tty/tty.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 **/
 
 /** deprecated: 0.6.0

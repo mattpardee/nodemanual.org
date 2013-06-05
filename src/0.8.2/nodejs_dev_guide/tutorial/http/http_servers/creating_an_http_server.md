@@ -5,7 +5,7 @@ URL: https://twitter.com/#!/felixge
 
 Printing messages to the console isn't all that exciting. Let's do what Node.js was designed to do, and write a program that writes out via HTTP. Create a new file called _http.server.js_ and put the following code into it:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/http_server/http.server.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/http_server/http.server.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 After you run this program, you'll notice that it doesn't exit right away. That's because a Node.js program always runs until it's certain that no further events are possible. In this case, the open HTTP server is the source of events that will keep things going.
 

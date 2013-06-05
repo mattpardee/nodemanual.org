@@ -34,7 +34,7 @@ argument. Supported placeholders are:
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.format.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.format.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 
 ### util.inspect(object, showHidden=false, depth=2), String
@@ -54,7 +54,7 @@ If `colors` is `true`, the output is styled with ANSI color codes.
 
 Here's an example inspecting all the properties of the `util` object:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.inspect.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.inspect.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### util.error([str...]), String
@@ -82,7 +82,7 @@ Returns `true` if the given object is an `Array`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.isArray.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.isArray.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -93,7 +93,7 @@ Returns `true` if the given object is a `Date`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.isDate.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.isDate.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -104,7 +104,7 @@ Returns `true` if the given object is an `Error`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.isError.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.isError.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -115,7 +115,7 @@ Returns `true` if the given "object" is a `RegExp`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.isRegExp.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.isRegExp.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -157,7 +157,7 @@ ects/Object/constructor) documentation.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/util/util.inherits.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/util/util.inherits.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 

@@ -46,7 +46,7 @@ the example problem with `Array`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### vm.runInThisContext(code [, filename]), String
@@ -62,7 +62,7 @@ error to stderr and throws an exception.
 
 #### Example: Using `vm.runInThisContext` and `eval` to run the same code:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Since `vm.runInThisContext()` doesn't have access to the local scope, `localVar`
 is unchanged. `eval` does have access to the local scope, so `localVar` is
@@ -98,7 +98,7 @@ to stderr and throws an exception.
 Here's an example to ompile and execute code that increments a global variable
 and sets a new one. These globals are contained in the sandbox.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 
 
@@ -127,7 +127,7 @@ but safely running untrusted code requires a separate process.
 
 Compiling and executing code in an existing context.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.runInContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -181,7 +181,7 @@ Running code doesn't have access to local scope, but does have access to the
 Using `script.runInThisContext()` to compile code once and run it multiple
 times:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInThisContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Returns
 
@@ -210,7 +210,7 @@ useful, but safely running untrusted code requires a separate process.
 Compiling code that increments a global variable and sets one, then execute the
 code multiple times:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/vm/vm.Script.runInNewContext.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Returns
 

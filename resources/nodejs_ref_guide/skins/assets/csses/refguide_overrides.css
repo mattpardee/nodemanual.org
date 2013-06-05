@@ -4,7 +4,7 @@
 body {
     min-width: 1010px;
     color: #2D2D2D;
-    background: #ffffff url(../images/main_bg.png) 0 0 repeat;
+    background: #fff;
 }
 
 ul {
@@ -64,10 +64,15 @@ a code {
 h2 {
     font-size: 26px;
 }
+h4 {
+    font-size: 16px;
+    padding: 10px 0;
+}
 p {
-    font-size: 13px;
-    line-height : 20px;
+    font-size: 16px;
+    line-height : 21px;
     margin-bottom : 13px;
+    padding: 9px 0;
 }
 li p:last-child {
     margin-bottom : 5px;
@@ -78,6 +83,11 @@ blockquote p{
     font-weight: 500;
     line-height: 23px;
     font-style: italic;
+}
+
+.alert h4 {
+    font-size: 14px;
+    display: inline;
 }
 
 .alert-message{
@@ -159,6 +169,7 @@ ul.menu {
 
 .menu li .menu-item a.menuLink, .menu li .menu-item span.menuLink {
     color: #262626;
+    font-weight: 400;
 }
 .menuTwo {
     margin-bottom: 5px;
@@ -475,7 +486,7 @@ header.filler {
 }
 
 .centerpiece {
-    background: url(../images/sidebar_border.png) repeat-y 90px 0;
+    /*background: url(../images/sidebar_border.png) repeat-y 90px 0;*/
     min-height: 100%;
 }
 
@@ -854,19 +865,19 @@ h3.methodToggle.active {
     /*background: url(../images/arrow-footer.png) no-repeat 588px -11px;*/
 }
 #footer .footer-text {
-    font-size: 12px;
-    padding-right: 5px;
+    font-size: 13px;
+    padding-right: 15px;
 }
 
 #footer .sponsors {
-    display: inline-block;
     float: right;
     margin-right: 5px;
-    margin-top: 8px;
 }
 
 #footer .sponsors .sponsor {
-    padding-right: 22px;
+    padding: 0 10px;
+    position: relative;
+    top: 6px;
 }
 #footer .container
 #footer a {
@@ -987,4 +998,5 @@ clear: both;
 }
 #footer {
     margin-top: 40px;
+    overflow: hidden;
 }

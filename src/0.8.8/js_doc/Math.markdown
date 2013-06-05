@@ -364,7 +364,7 @@ If at least one of arguments can't be converted to a number, the result is [[NaN
 
 #### Example: Using `Math.max` with an array
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Math/math.max.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Math/math.max.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This function uses [[Function.apply `Function.apply()`]] to find the maximum element in a numeric array. `getMaxOfArray([1,2,3])` is equivalent to `Math.max(1, 2, 3)`, but you can use `getMaxOfArray` on programmatically constructed arrays of any size.
 
@@ -426,7 +426,7 @@ The random number generator is seeded from the current time, as in Java.
 
 Note that as numbers in Javascript are IEEE 754 floating point numbers with round-to-nearest-even behavior, these ranges, excluding the one for `Math.random()` itself, aren't exact, and depending on the bounds it's possible in extremely rare cases (on the order of 1 in 2<sup>62</sup>) to calculate the usually-excluded upper bound.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Math/math.random.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Math/math.random.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ###	Math.sin(x) -> Number

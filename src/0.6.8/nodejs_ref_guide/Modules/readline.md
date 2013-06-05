@@ -5,13 +5,13 @@ Readline allows you to read of a stream (such as STDIN) on a line-by-line basis.
 
 <Note>Once you've invoked this module, your Node.js program won't terminate until you've closed the interface, and the STDIN stream. Here's how to allow your program to gracefully terminate:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/readline/readline.escaping.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/readline/readline.escaping.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 </Note>
 
 #### Example: Crafting a tiny command line interface:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/readline/readline.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/readline/readline.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 For more real-life use cases, take a look at this slightly more complicated [example](https://gist.github.com/901104), as well as the [http-console](https://github.com/cloudhead/http-console) module.
 
@@ -28,7 +28,7 @@ Emitted whenever the `in` stream receives a `^C` (`SIGINT`) or `^D` (`EOT`). Thi
 
 Example of listening for `close`, and exiting the program afterward:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/readline/readline.close.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/readline/readline.close.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
     
 **/ 
 
@@ -42,7 +42,7 @@ Emitted whenever the `in` stream receives a `\n`, usually received when the user
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/readline/readline.line.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/readline/readline.line.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 **/ 
 
 

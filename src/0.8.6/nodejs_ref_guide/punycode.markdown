@@ -16,7 +16,7 @@ points.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.decode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.decode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### punycode.encode(str), String
@@ -27,7 +27,7 @@ points.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.encode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.encode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### punycode.toUnicode(domain), String
@@ -39,7 +39,7 @@ if you call it on a string that has already been converted to Unicode.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.tounicode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.tounicode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 ### punycode.toASCII(domain), String
 - domain {String} A domain to convert to Unicode
@@ -50,7 +50,7 @@ if you call it with a domain that's already in ASCII.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.toascii.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.toascii.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 ## punycode.ucs2
 
@@ -67,7 +67,7 @@ separate characters) into a single code point, matching UTF-16.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.ucs2.decode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.ucs2.decode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 ### punycode.ucs2.encode(codePoints), Array
 - codePoints {Array} An array of UTF code points
@@ -76,7 +76,7 @@ Creates a string based on an array of decimal code points.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.ucs2.encode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/punycode/punycode.ucs2.encode.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 ### punycode.version, String
 

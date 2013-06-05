@@ -8,7 +8,7 @@ The `net` module provides you with an asynchronous network wrapper. It contains 
 
 Here is an example of a echo server which listens for connections on port 8124:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/net/net.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/net/net.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 You can test this by using `telnet`:
 

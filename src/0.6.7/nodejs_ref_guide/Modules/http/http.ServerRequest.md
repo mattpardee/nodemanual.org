@@ -59,11 +59,11 @@ Then `request.url` becomes:
 
 If you would like to parse the URL into its parts, you can use `require('url').parse(request.url)`. For example:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 If you would like to extract the params from the query string, you can use [[querystring.parse `require('querystring').parse()`]], or pass `true` as the second argument to `require('url').parse`.  For example:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/
 

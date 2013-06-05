@@ -7,7 +7,7 @@ Of course, having a server that prints messages only you can see is pretty terri
 
 Again, in Node.js, this is not that difficult to accomplish: you read the file, and then you redirect to that file. Here's a quick example that does just that:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/serving_files/serving.files.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/serving_files/serving.files.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 How could something so simple go so wrong? Well, to begin with, there's no handling of MIME types, there's no caching, there's no real validation (sending a `404` is fine, but it should really redirect to another known page with some sort of apology).
 

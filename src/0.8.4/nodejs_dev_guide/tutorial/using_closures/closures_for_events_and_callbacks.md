@@ -9,10 +9,10 @@ The simplest example (which we just saw earlier) is `setTimeout()`.  This is a n
 
 Take a look at this code, and try to run it:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This won't work: `message` is undefined since it's a local variable to `setAlarm()`, and doesn't exist outside that function.  Instead, we need to define the `handle` function inside of the `setAlarm` function:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/closures/settimeout2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Using `this` is especially painful when dealing with setting callbacks. This is because specifying a method of an object as the callback function will cause the function by itself to be the callback, not the object associated with it.

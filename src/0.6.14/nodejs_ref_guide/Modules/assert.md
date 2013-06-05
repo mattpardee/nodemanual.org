@@ -11,7 +11,7 @@ Some methods have an additional `message` parameter, which sends text out to the
 
 #### Example: Testing for equivalency
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/assert/assert.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 **/
 
@@ -27,7 +27,7 @@ Throws an exception that displays the values for `actual` and `expected` separat
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.fail.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/assert/assert.fail.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -129,15 +129,15 @@ If `block`throws an error, then the assertion passes.
 
 #### Example: Validate `instanceof` using a constructor:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Validate an error message using regular expressions:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Custom error validation:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/assert/assert.throws_3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 

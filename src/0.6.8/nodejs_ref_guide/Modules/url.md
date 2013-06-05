@@ -97,6 +97,6 @@ Takes a base URL, and a href URL, and resolve them as a browser would for an anc
 
 #### Example
 	
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/url/url.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/url/url.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 **/ 
 

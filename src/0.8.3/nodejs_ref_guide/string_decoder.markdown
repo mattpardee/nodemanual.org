@@ -9,7 +9,7 @@ To use this module, add `require('string_decoder')` to your code.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/string_decoder/string_decoder.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/string_decoder/string_decoder.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 ### new StringDecoder(encoding = 'utf8')
 - encoding {String}  The encoding that the string is in

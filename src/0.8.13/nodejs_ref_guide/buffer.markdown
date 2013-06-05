@@ -73,7 +73,7 @@ Gives the actual byte length of a string.  This is not the same as
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.byteLength.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.byteLength.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 #### Returns
 
 Returns the byte length of a buffer
@@ -91,7 +91,7 @@ Performs a copy between buffers. The source and target regions can overlap.
 
 #### Example: Building two buffers
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.copy.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.copy.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.fill(value, offset=0, end=buffer.length)
 - value {Object}  The value to use to fill the buffer
@@ -103,7 +103,7 @@ this fills the entire buffer.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.fill.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>    
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.fill.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>    
 
 ### Buffer.isBuffer(obj), Boolean
 - obj {Object}  The object to check
@@ -124,7 +124,7 @@ notation.
  
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 ### Buffer.concat(list, [totalLength]), Buffer
 
@@ -160,7 +160,7 @@ notation.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readDoubleBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 ### Buffer.readFloatBE(offset, noAssert=false), String
 - offset {Number}  The starting position
 * noAssert {Boolean}  If `true`, skips the validation of the offset. This means
@@ -173,7 +173,7 @@ notation.
  
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readFloatBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>     
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readFloatBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>     
 ### Buffer.readFloatLE(offset, noAssert=false), String
 - offset {Number}  The starting position
 - noAssert {Boolean}  If `true`, skips the validation of the offset. This means
@@ -186,7 +186,7 @@ notation.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readFloatBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>       
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readFloatBELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>       
 ### Buffer.readInt8(offset, noAssert=false), String
 - offset {Number}  The starting position
 - noAssert {Boolean}  If `true`, skips the validation of the offset. This means
@@ -261,7 +261,7 @@ Reads an unsigned 8 bit integer from the buffer at the specified offset.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt8.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt8.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 ### Buffer.readUInt16BE(offset, noAssert=false), String
 - offset {Number}  The starting position
@@ -274,7 +274,7 @@ big endian format.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt16BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt16BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 
 ### Buffer.readUInt16LE(offset, noAssert=false), String
 - offset {Number}  The starting position
@@ -287,7 +287,7 @@ little endian format.
  
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt16BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt16BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
 ### Buffer.readUInt32BE(offset, noAssert=false), String
 - offset {Number}  The starting position
 - noAssert {Boolean}  If `true`, skips the validation of the offset. This means
@@ -299,7 +299,7 @@ big endian format.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>   
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>   
 
 ### Buffer.readUInt32LE(offset, noAssert=false), String
 - offset {Number}  The starting position
@@ -313,7 +313,7 @@ little endian format.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>       
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>       
 
 ### Buffer.slice(start, end=buffer.length), Buffer
 - start {Number}  The offset in the buffer to start from
@@ -330,7 +330,7 @@ Note: Modifying the new buffer slice modifies memory in the original buffer!
 Building a `Buffer` with the ASCII alphabet, taking a slice, then modifying one
 byte from the original `Buffer`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>       
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.readUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>       
 ### Buffer.toString(encoding="utf8", start=0, end=buffer.length), String
 - encoding {String}  The encoding to use; defaults to `utf8`
 - start {Number}  The starting byte offset; defaults to `0`
@@ -359,7 +359,7 @@ method doesn't write partial characters.
 
 Writing a utf8 string into a buffer, then printing it:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.write.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.write.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 #### Returns
 
@@ -377,7 +377,7 @@ Note that `value` must be a valid 64 bit double.
  
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeDoubleLE(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -391,7 +391,7 @@ format. Note that `value` must be a valid 64 bit double.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeDoubleBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeFloatBE(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -405,7 +405,7 @@ Note that `value` must be a valid 32 bit float.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>   
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>   
 ### Buffer.writeFloatLE(value, offset, noAssert=false)
 - value {String}  The content to write
 - offset {Number}  The starting position
@@ -418,7 +418,7 @@ format. Note that `value` must be a valid 32 bit float.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeFloatBELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeInt8(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -500,7 +500,7 @@ a valid unsigned 8 bit integer.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt8.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt8.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeUInt16BE(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -514,7 +514,7 @@ Note that `value` must be a valid unsigned 16 bit integer.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt16BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt16BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeUInt16LE(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -526,7 +526,7 @@ format. Note that `value` must be a valid unsigned 16 bit integer.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt16BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt16BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeUInt32BE(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -540,7 +540,7 @@ Note that `value` must be a valid unsigned 32 bit integer.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer.writeUInt32LE(value, offset, noAssert=false)
 - value {String}  The content to write
@@ -552,7 +552,7 @@ format. Note that `value` must be a valid unsigned 32 bit integer.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.writeUInt32BELE.js?linestart=4&lineend=0&showlines=false' defer='defer'></script> 
 ### Buffer.index, Number
 
 Gets and sets the octet at `index` in an array format. The values refer to
@@ -561,7 +561,7 @@ individual bytes, so the legal range is between `0x00` and `0xFF` hex or `0` and
 
 #### Example: Copy an ASCII string into a buffer, one byte at a time
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.index.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.index.js?linestart=4&lineend=0&showlines=false' defer='defer'></script>
 
 ### Buffer._charsWritten, Number
 
@@ -577,7 +577,7 @@ object.  It does not change when the contents of the buffer are changed.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>   
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/buffer/buffer.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>   
   
 ### Buffer.INSPECT_MAX_BYTES, Number
 

@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/c9/nodemanual.org.git"
+    "url": "git://github.com/mattpardee/nodemanual.org.git"
   },
   "engines": {
     "node": "~0.6.0"

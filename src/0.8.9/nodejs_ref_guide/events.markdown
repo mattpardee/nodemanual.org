@@ -30,7 +30,7 @@ listeners are added.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>
 
 ### eventemitter@newListener(event, listener())
 - event {String}  The event to emit
@@ -48,7 +48,7 @@ Adds a listener to the end of the listeners array for the specified event.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.addlistener.js?linestart=0&lineend=0&showlines=fals e' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.addlistener.js?linestart=0&lineend=0&showlines=fals e' defer='defer'></script>
 
 ### eventemitter.on(event, callback())
 - event {String}   The event to listen for
@@ -85,7 +85,7 @@ Always use the [[eventemitter.on `on()`]] method to add new listeners.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.listeners.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>    
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.listeners.js?linestart=0&lineend=0&showlines=false' defer='defer'></script>    
 
 ### eventemitter.once(event, listener())
 - event {String}   The event to listen for
@@ -137,4 +137,4 @@ to be increased. Set it to `0` for unlimited listeners.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.setMaxListeners.js?linestart=0&lineend=0&showlines= false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/event_emitter/eventemitter.setMaxListeners.js?linestart=0&lineend=0&showlines= false' defer='defer'></script>

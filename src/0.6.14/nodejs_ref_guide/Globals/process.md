@@ -10,7 +10,7 @@ Signal events are emitted when processes receive a signal. See [sigaction(2)](ht
 
 #### Example: Listening for `SIGINT`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/
 
@@ -39,7 +39,7 @@ Emitted when an exception bubbles all the way back to the event loop. If a liste
 
 #### Example: Listening for an `'uncaughtException'`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.uncaughtException.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.uncaughtException.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 <Note>An `uncaughtException` is a very crude mechanism for exception handling. Using `try / catch` in your program gives you more control over your program's flow.  Especially for server programs that are designed to stay running forever, `uncaughtException` can be a useful safety mechanism.</Note>
 
@@ -100,7 +100,7 @@ Gets the group identity of the process. This is the numerical group id, not the 
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.getgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 **/
@@ -114,7 +114,7 @@ Gets the user identity of the process. Note that this is the numerical userid, n
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.getuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -151,7 +151,7 @@ Returns an object describing the memory usage of the Node.js process measured in
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.memoryusage.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.memoryusage.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This generates:
 
@@ -172,7 +172,7 @@ On the next loop around the event loop call this callback. This is **not** a sim
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.nexttick.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.nexttick.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -185,7 +185,7 @@ Sets the group identity of the process. This accepts either a numerical ID or a 
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.setgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 **/ 
 
@@ -198,7 +198,7 @@ Sets the user identity of the process. This accepts either a numerical ID or a u
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.setuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -211,7 +211,7 @@ Sets or reads the process's file mode creation mask. Child processes inherit the
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.umask.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.umask.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -231,7 +231,7 @@ Identifies which processor architecture you're running on: `'arm'`, `'ia32'`, or
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.arch.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.arch.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -245,7 +245,7 @@ An array containing the command line arguments.  The first element is 'node', an
 
 First, create a file called process.argv.js:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.argv.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.argv.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 Then, using the Node.js REPL, type the following command:
 
@@ -269,7 +269,7 @@ This is the absolute pathname of the executable that started the process.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.execpath.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.execpath.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
     
 **/ 
 
@@ -281,7 +281,7 @@ Returns the PID of the process.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.pid.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.pid.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
     
 **/ 
 
@@ -293,7 +293,7 @@ Identifies the platform you're running on, like `'linux2'`, `'darwin'`, etc.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.platform.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.platform.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 **/ 
 
@@ -314,7 +314,7 @@ A compiled-in property that exposes the `NODE_VERSION`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.version.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.version.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 **/ 
 
@@ -328,7 +328,7 @@ A property exposing version strings of Node.js and its dependencies.
 
 The following code:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.versions.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.versions.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 outputs something similar to:
 
@@ -347,7 +347,7 @@ A compiled-in property that exposes the `NODE_PREFIX`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.installprefix.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.installprefix.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 **/ 
 
@@ -379,7 +379,7 @@ A `Readable Stream` for stdin. The stdin stream is paused by default, so one mus
 
 Here's an example of opening standard input and listening for both events:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.stdin.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.stdin.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 **/
 

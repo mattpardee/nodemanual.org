@@ -15,7 +15,7 @@ You can instantaneously copy and run the code samples found here _live_ into you
 
 #### Contributing
 
-You can help! This website is a community effort, and is [available on GitHub](https://github.com/c9/nodemanual.org). The API Reference will be in synch with the official Node.js stable APIs. 
+You can help! This website is a community effort, and is [available on GitHub](https://github.com/mattpardee/nodemanual.org). The API Reference will be in synch with the official Node.js stable APIs. 
 
 Use the `[edit]` links near the article titles to edit them online into the Cloud9 IDE. After writing and updating articles, you can issue a pull request.
 

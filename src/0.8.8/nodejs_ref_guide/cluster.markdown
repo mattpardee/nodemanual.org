@@ -61,7 +61,7 @@ share server ports.
 
 Create a file called _server.js_ and paste the following code:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/server.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/cluster/server.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 By launching _server.js_ with the Node.js REPL, you can see that the workers are
 sharing the HTTP port 8000:
@@ -73,7 +73,7 @@ sharing the HTTP port 8000:
 
 #### Example: Message passing between clusters and the master process
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### cluster@death(worker)
 - worker {cluster}  The dying worker in the cluster
@@ -86,7 +86,7 @@ application.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.death.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/cluster/cluster.death.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### cluster.fork([env]), cluster.worker
 - env {Object} Additional key/value pairs to add to child process environment.

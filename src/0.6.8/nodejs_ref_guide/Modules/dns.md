@@ -7,7 +7,7 @@ Whenever a Node.js developer does something like `net.connect(80, 'google.com')`
 
 #### Example: Resolving `'www.google.com'`, and then reverse resolving the IP addresses that are returned:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dns/dns.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/
 
@@ -24,7 +24,7 @@ Resolves a domain (e.g. `'google.com'`) into the first found A (IPv4) or AAAA (I
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.lookup.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dns/dns.lookup.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 
@@ -50,7 +50,7 @@ Resolves a domain (e.g. `'google.com'`) into an array of the record types specif
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dns/dns.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 

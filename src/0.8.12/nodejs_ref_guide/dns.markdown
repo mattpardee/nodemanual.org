@@ -17,7 +17,7 @@ C-Ares.
 #### Example: Resolving `'www.google.com'`, and then reverse resolving the IP
 addresses that are returned:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dns/dns.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dns.lookup(domain, [family=null], callback(err, address, family))
 - domain {String}  The domain to resolve
@@ -36,7 +36,7 @@ such as no available file descriptors.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.lookup.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dns/dns.lookup.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dns.resolve(domain, [rrtype='A'], callback(err, addresses))
 - domain {String}  The domain to resolve
@@ -60,7 +60,7 @@ specified by `rrtype`. Valid rrtypes are:
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dns/dns.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dns/dns.resolve.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dns.resolve4(domain, callback(err, addresses))
 - domain {String}  The domain to resolve

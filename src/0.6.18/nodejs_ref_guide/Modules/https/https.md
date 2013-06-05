@@ -7,7 +7,7 @@ Creating HTTPS servers is somewhat complicated and requires generating certifica
 
  #### Examples
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/https/https.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/
 
@@ -81,7 +81,7 @@ The following options from [tls.connect()](tls.html#tls.connect) can also be spe
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.request_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/https/https.request_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Here's an example specifying these options using a custom `Agent`:
 
@@ -129,7 +129,7 @@ Since most requests are GET requests without bodies, Node.js provides this conve
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/https/https.get.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/https/https.get.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 **/
 
 

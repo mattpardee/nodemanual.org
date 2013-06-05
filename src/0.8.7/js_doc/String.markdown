@@ -20,7 +20,7 @@ For character access using bracket notation, attempting to delete or assign a va
 
 C developers have the `strcmp()` function for comparing strings. In Javascript, you just use the `<` and `>` operators:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 A similar result can be achieved using the [[String.localeCompare `localeCompare()`]] method inherited by String instances.
 
@@ -30,7 +30,7 @@ Note that Javascript distinguishes between String objects and primitive string v
 
 String literals (denoted by double or single quotes) and strings returned from String calls in a non-constructor context (i.e., without using the `new` keyword) are primitive strings. Javascript automatically converts primitives and String objects, so that it's possible to use String object methods for primitive strings. In contexts where a method is to be invoked on a primitive string or a property lookup occurs, Javascript will automatically wrap the string primitive and call the method or perform the property lookup.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Some more examples:
 
@@ -97,17 +97,17 @@ The exact number of arguments depends on whether the first argument was a `RegEx
 
 The following example will set `newString `to `"XXzzzz - XX , zzzz"`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Using `global` and `ignore` with `replace`
 
 In the following example, the regular expression includes the global and ignore case flags which permits `replace` to replace each occurrence of 'apples' in the string with 'oranges'.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 In this version, a string is used as the first parameter and the global and ignore case flags are specified in the `flags` parameter.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 Both of these examples print "oranges are round, and oranges are juicy."
 
@@ -115,7 +115,7 @@ Both of these examples print "oranges are round, and oranges are juicy."
 
 In the following example, the regular expression is defined in `replace` and includes the ignore case flag.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.4.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.4.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 This prints "Twas the night before Christmas..."
    
@@ -123,7 +123,7 @@ This prints "Twas the night before Christmas..."
 
 The following script switches the words in the string. For the replacement text, the script uses the `$1\. and `$2\. replacement patterns.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.5.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.5.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 This prints "Smith, John".
     
@@ -133,7 +133,7 @@ In this example, all occurrences of capital letters in the string are converted 
 
 The replacement function accepts the matched snippet as its parameter, and uses it to transform the case and concatenate the hyphen before returning.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.6.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.6.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Given `styleHyphenFormat('borderTop')`, this returns 'border-top'.
 
@@ -149,7 +149,7 @@ The following example replaces a Fahrenheit degree with its equivalent Celsius d
 
 The regular expression `test` checks for any number that ends with F. The number of Fahrenheit degree is accessible to the function through its second parameter, `p1`. The function sets the Celsius number based on the Fahrenheit degree passed in a string to the `f2c` function. `f2c` then returns the Celsius number. This function approximates Perl's s///e flag.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.replace.7.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.replace.7.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 
 ### String.length() -> Number
@@ -194,14 +194,14 @@ If `indexA` is larger than `indexB`, then the effect of `substring` is as if the
 
  The following example uses `substring` to display characters from the string "`Mozilla`":
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.substring.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.substring.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
     
    
 #### Example: Replacing a substring within a string
 
 The following example replaces a substring within a string. It will replace both individual characters and substrings. The function call at the end of the example changes the string "`Brave New World`" into "`Brave New Web`".
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.substring.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.substring.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Note that this can result in an infinite loop if `oldS` is itself a substring of `newS` -- for example, if you attempted to replace "World" with "OtherWorld" here. A better method for replacing strings is as follows:
     
@@ -234,7 +234,7 @@ If `length` is 0 or negative, `substr` returns an empty string. If `length` is o
 
 Consider the following script:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.substr.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.substr.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
     
 This script displays:
 
@@ -263,7 +263,7 @@ Characters in a string are indexed from left to right. The index of the first ch
 
 The following example displays characters at different locations in the string "`Brave new world`":
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.charat.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.charat.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 These lines display the following:
 
@@ -279,14 +279,14 @@ These lines display the following:
 
 The following provides a means of ensuring that going through a string loop always provides a whole character, even if the string contains characters that are not in the Basic Multi-lingual Plane.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.charat.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>       
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.charat.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>       
          
  
 #### Example: Fixing charAt to support non-Basic-Multilingual-Plane (BMP) characters
 
 While the previous example may be more frequently useful for those wishing to support non-BMP characters (since the above does not require the caller to know where any non-BMP character might appear), in the event that one _does_ wish, in choosing a character by index, to treat the surrogate pairs within a string as the single characters they represent, one can use the following:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.charat.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>      
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.charat.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>      
 
 #### See Also
 * [[String.indexOf `indexOf()`]]
@@ -330,7 +330,7 @@ Although most common Unicode values can be represented in a fixed width system/w
 Be aware, therefore, that the following utility function to grab the accurate character even for higher value code points, may be returning a value which is rendered as a single character, but which has a string count of two (though usually the count will be one).
 
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.fromcharcode.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.fromcharcode.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 #### Example: Using `fromCharCode`
 
@@ -352,7 +352,7 @@ Returns a number indicating whether a reference string comes before or after or 
 
 The following example demonstrates the different potential results for a string occurring before, after, or at the same level as another:
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.localecompare.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.localecompare.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
  
 ### String.constructor -> Function
@@ -487,19 +487,19 @@ Note that '0' doesn't evaluate to `true` and '-1' doesn't evaluate to `false`. T
 #### Example: Using `indexOf` and `lastIndexOf`
 The following example uses `indexOf` and `lastIndexOf` to locate values in the string "`Brave new world`".
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.indexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.indexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 #### Example: `indexOf` and case-sensitivity
 
 The following example defines two string variables. The variables contain the same string except that the second string contains uppercase letters. The first `writeln` method displays 19. But because the `indexOf` method is case sensitive, the string "`cheddar`" is not found in `myCapString`, so the second `writeln` method displays -1.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.indexof.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.indexof.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 #### Example: Using `indexOf` to count occurrences of a letter in a string
 
 The following example sets `count` to the number of occurrences of the letter `x` in the string `str`:
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.indexof.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.indexof.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
    
 #### See Also
 * [[String.charAt `charAt()`]]
@@ -524,7 +524,7 @@ The `lastIndexOf` method is case sensitive. For example, the following expressio
 
 The following example uses `indexOf` and `lastIndexOf` to locate values in the string "`Brave new world`".
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.lastindexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.lastindexof.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
     
 #### See Also
 * [[String.charAt `charAt()`]]
@@ -555,7 +555,7 @@ The returned [[Array `Array`]] has an extra `input` property, which contains the
 
 In the following example, `match` is used to find "`Chapter`" followed by 1 or more numeric characters followed by a decimal point and numeric character 0 or more times. The regular expression includes the `i` flag so that case will be ignored.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.match.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.match.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
     
 This returns the array containing Chapter 3.4.5.1,Chapter 3.4.5.1,.1.
 
@@ -567,7 +567,7 @@ This returns the array containing Chapter 3.4.5.1,Chapter 3.4.5.1,.1.
 
 The following example demonstrates the use of the global and ignore case flags with `match`. All letters A through E and a through e are returned, each its own element in the array
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.match.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.match.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 	String.quote() -> String
@@ -592,7 +592,7 @@ When you want to know whether a pattern is found in a string use `search()` (sim
 
 The following example prints a message which depends on the success of the test.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.search.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.search.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 
 ### String.slice(beginSlice[, endSlice]) -> String
@@ -635,7 +635,7 @@ If `separator` is a regular expression that contains capturing parentheses, then
 
 The following example defines a function that splits a string into an array of strings using the specified separator. After splitting the string, the function displays messages indicating the original string (before the split), the separator used, the number of elements in the array, and the individual array elements.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.split.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.split.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 This example produces the following output:
 
@@ -655,7 +655,7 @@ This example produces the following output:
 
 In the following example, `split` looks for 0 or more spaces followed by a semicolon followed by 0 or more spaces and, when found, removes the spaces from the string. `nameList` is the array returned as a result of `split`.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.split.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.split.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 This prints two lines; the first line prints the original string, and the second line prints the resulting array:
 
@@ -666,7 +666,7 @@ This prints two lines; the first line prints the original string, and the second
 
 In the following example, `split` looks for 0 or more spaces in a string and returns the first 3 splits that it finds.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.split.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.split.3.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 This script displays the following:
 	
@@ -676,7 +676,7 @@ This script displays the following:
 
 If `separator` contains capturing parentheses, matched results are returned in the array.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/String/string.split.4.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/String/string.split.4.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 This script displays the following:
 

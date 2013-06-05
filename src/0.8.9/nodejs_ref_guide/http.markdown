@@ -28,7 +28,7 @@ servers](../nodejs_dev_guide/creating_an_http_server.html).
 
 #### Example: The famous hello world
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js?&linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.js?&linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### http.get(options, callback())
@@ -242,7 +242,7 @@ A representation of the server within the `http` module. To create an HTTP
 server, you'll need to first call [[http.createServer `http.createServer()`]],
 with something like this:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This object is also an [[eventemitter `eventemitter`]].
 
@@ -444,13 +444,13 @@ Then `request.url` becomes:
 If you would like to parse the URL into its parts, you can use
 `require('url').parse(request.url)`. For example:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 If you would like to extract the params from the query string, you can use
 [[querystring.parse `require('querystring').parse()`]], or pass `true` as the
 second argument to `require('url').parse`.  For example:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.serverrequest_2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 read-only
@@ -775,7 +775,7 @@ their connections closed.
 
 #### Example: A client server pair that show you how to listen for the `connect` event.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.connect.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.connect.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -792,7 +792,7 @@ connections closed.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.upgrade.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.upgrade.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### http.ClientRequest@continue()

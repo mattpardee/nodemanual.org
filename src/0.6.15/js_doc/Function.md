@@ -23,7 +23,7 @@ Invoking the Function constructor as a function (without using the new operator)
 
  The following code creates a `Function` object that takes two arguments.
     
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Function/function.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Function/function.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
             
 The arguments "`a`" and "`b`" are formal argument names that are used in the function body, "`return a + b`".
 **/
@@ -94,7 +94,7 @@ Function.length -> Number
 
 #### Example
  
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Function/function.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>          
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Function/function.length.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>          
  
 **/
 

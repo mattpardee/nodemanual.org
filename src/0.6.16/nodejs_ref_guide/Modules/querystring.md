@@ -5,7 +5,7 @@ This module provides utilities for dealing with query strings in URLs. To includ
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/
 
@@ -27,7 +27,7 @@ Deserialize a query string to an object and returns it. You can choose to overri
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.parse.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.parse.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
   
 **/ 
 
@@ -42,7 +42,7 @@ Serialize an object to a query string and returns it. You can choose to override
 
 #### Examples
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.stringify.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/querystring/querystring.stringify.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 **/ 
 
 

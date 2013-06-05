@@ -54,7 +54,7 @@ Creates an error object.
 
 The Error object can be extended to create Error Types for your project.
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/js_doc/Error/error.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/js_doc/Error/error.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### Error.message -> String

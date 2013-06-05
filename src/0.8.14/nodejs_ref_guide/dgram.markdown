@@ -31,7 +31,7 @@ Note: It's impossible to know in advance the MTU of each link through which a pa
 
 #### Example
 		
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dgram.createSocket(type, [callback()]), dgram
 - type {String}   The type of socket to create; valid types are `udp4` and
@@ -71,7 +71,7 @@ interfaces" address (0.0.0.0 for `udp4` sockets, ::0 for `udp6` sockets).
 
 #### Example: Sending a UDP packet to a random port on `localhost`;
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.send.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.send.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dgram.bind(port [, address])
 - port {Number}  The port to bind to
@@ -82,7 +82,7 @@ If `address` isn't specified, the OS tries to listen on all addresses.
 
 #### Example: A UDP server listening on port 41234:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.bind.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.bind.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dgram.close()
 
@@ -141,7 +141,7 @@ all valid interfaces.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.addMembership.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/dgram/dgram.addMembership.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 ### dgram.dropMembership(multicastAddress [, multicastInterface])
 - multicastAddress {String}  The address to drop

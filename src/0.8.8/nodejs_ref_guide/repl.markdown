@@ -130,7 +130,7 @@ share the same global object but will have unique I/O.
  
 #### Examples
  
- <script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/repl/repl.start.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+ <script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/repl/repl.start.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 For an example of running a "full-featured" (`terminal`) REPL over
 a `net.Server` and `net.Socket` instance, see: <https://gist.github.com/2209310>

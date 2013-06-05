@@ -13,7 +13,7 @@ Signal events are emitted when processes receive a signal. See
 
 #### Example: Listening for `SIGINT`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 ### process@exit()
@@ -44,7 +44,7 @@ stack trace and exit) won't occur.
 
 #### Example: Listening for an `'uncaughtException'`:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.uncaughtException.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.uncaughtException.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 Warning: An `uncaughtException` is a very crude mechanism for exception handling. Using `try / catch` in your program gives you more control over your program's flow.  Especially for server programs that are designed to stay running forever, `uncaughtException` can be a useful safety mechanism.  
 Don't use it; use [domains](domain.html) instead. If you do use it, restart
@@ -110,7 +110,7 @@ Note: This function is only available on POSIX platforms (_i.e._, not Windows).
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.getgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 
 
@@ -126,7 +126,7 @@ Note: This function is only available on POSIX platforms (_i.e._, not Windows).
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.getuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.getuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 
 
@@ -164,7 +164,7 @@ bytes.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.memoryusage.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.memoryusage.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 This generates:
 
@@ -185,7 +185,7 @@ simple alias to `setTimeout(fn, 0)`; it's much more efficient.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.nexttick.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.nexttick.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 
 
@@ -201,7 +201,7 @@ Note: This function is only available on POSIX platforms (_i.e._, not Windows).
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.setgid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script> 
  
 
 
@@ -217,7 +217,7 @@ Note: This function is only available on POSIX platforms (_i.e._, not Windows).
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.setuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.setuid.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 
 
@@ -230,7 +230,7 @@ otherwise returns the current mask.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.umask.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.umask.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 
 
@@ -248,7 +248,7 @@ Identifies which processor architecture you're running on: `'arm'`, `'ia32'`, or
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.arch.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.arch.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
  
 
 
@@ -262,7 +262,7 @@ will be any additional command line arguments.
 
 First, create a file called process.argv.js:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.argv.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.argv.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 Then, using the Node.js REPL, type the following command:
 
@@ -285,7 +285,7 @@ This is the absolute pathname of the executable that started the process.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.execpath.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>    
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.execpath.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>    
  
 ### process.abort()
 
@@ -297,7 +297,7 @@ Returns the PID of the process.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.pid.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>    
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.pid.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>    
  
 
    
@@ -308,7 +308,7 @@ Identifies the platform you're running on: `'darwin'`, `'freebsd'`, `'linux'`,
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.platform.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.platform.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  
 
 
@@ -324,7 +324,7 @@ A compiled-in property that exposes the `NODE_VERSION`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.version.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.version.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  
 
 
@@ -336,7 +336,7 @@ A property exposing version strings of Node.js and its dependencies.
 
 The following code:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.versions.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.versions.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 outputs something similar to:
 
@@ -381,7 +381,7 @@ A compiled-in property that exposes the `NODE_PREFIX`.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.installprefix.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.installprefix.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
  
 
 
@@ -414,7 +414,7 @@ must call `process.stdin.resume()` to read from it.
 
 Here's an example of opening standard input and listening for both events:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.stdin.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.stdin.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
 
 
 
@@ -447,4 +447,4 @@ a diff reading, useful for benchmarks and measuring intervals.
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/process/process.hrtime.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/process/process.hrtime.js?linestart=3&lineend=0&showlines=true' defer='defer'></script>

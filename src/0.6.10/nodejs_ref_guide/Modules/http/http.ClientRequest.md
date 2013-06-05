@@ -66,7 +66,7 @@ Emitted each time a server responds to a request with an upgrade. If this event 
 
 #### Example
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.upgrade.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_ref_guide/http/http.clientrequest.upgrade.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 **/ 
 

@@ -19,7 +19,7 @@ What this is essentially saying is: when the request object gets data (`.on('dat
 
 Sometimes you want to listen for events that can happen several times. For example, in a web server, when processing a web request, the `data` event is fired one or more times and then the `end` event gets fired. You might end up doing something like this:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.1.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
 
 The `on()` function also returns a reference to the object it belongs to, allowing you to chain several of such event listeners. If you're only interested in the first occurrence of an event, you can use the `once()` function instead. You can also remove event listeners by using the `removeListener()` function.
 
@@ -27,4 +27,4 @@ The `on()` function also returns a reference to the object it belongs to, allowi
 
 Here's a full example converying many of the methods discussed:
 
-<script src='http://snippets.c9.io/github.com/c9/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
+<script src='http://snippets.nodemanual.org/github.com/mattpardee/nodemanual.org-examples/nodejs_dev_guide/understanding_event_emitters/understanding.event.emitters.2.js?linestart=3&lineend=0&showlines=false' defer='defer'></script>
