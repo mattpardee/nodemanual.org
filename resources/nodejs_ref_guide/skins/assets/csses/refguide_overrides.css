@@ -890,4 +890,5 @@ clear: both;
 #footer {
     margin-top: 40px;
     overflow: hidden;
+    padding-bottom: 15px;
 }
