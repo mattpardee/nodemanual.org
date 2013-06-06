@@ -1,8 +1,6 @@
 
 # Welcome to the Node.js Manual!
 
-<br/>
-
 > Node.js is a platform built on [Chrome's JavaScript runtime](http://code.google.com/p/v8/) for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices. — The official [Node.js website](http://nodejs.org)
 
 This manual consists of three different sections:

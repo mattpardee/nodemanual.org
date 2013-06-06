@@ -783,6 +783,12 @@ h3.methodToggle.active {
     display: inline-block;
     padding-right: 10px;
 }
+
+#footer .strongloop-logo {
+    display: inline-block;
+    padding-right: 10px;
+}
+
 #footer .joyent-logo {
     width: 70px;
     height: 19px;
